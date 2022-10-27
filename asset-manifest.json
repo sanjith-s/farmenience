@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/farmenience/static/js/main.5ee45ded.js",
+    "index.html": "/farmenience/index.html",
+    "main.5ee45ded.js.map": "/farmenience/static/js/main.5ee45ded.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.5ee45ded.js"
+  ]
+}

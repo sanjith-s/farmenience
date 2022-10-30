@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/farmenience/static/js/main.9ff167f6.js",
+    "main.css": "/farmenience/static/css/main.d753a78f.css",
+    "main.js": "/farmenience/static/js/main.4c17940a.js",
     "index.html": "/farmenience/index.html",
-    "main.9ff167f6.js.map": "/farmenience/static/js/main.9ff167f6.js.map"
+    "main.d753a78f.css.map": "/farmenience/static/css/main.d753a78f.css.map",
+    "main.4c17940a.js.map": "/farmenience/static/js/main.4c17940a.js.map"
   },
   "entrypoints": [
-    "static/js/main.9ff167f6.js"
+    "static/css/main.d753a78f.css",
+    "static/js/main.4c17940a.js"
   ]
 }

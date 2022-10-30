@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-// import './App.css';
+import './css/signup.css';
 import { useState, useRef } from 'react';
 import validator from 'validator';
 import ReCAPTCHA from "react-google-recaptcha"
@@ -57,7 +57,8 @@ function Signup() {
   return (
     <div>
       <form onSubmit={submit} method='post'>
-        <span>Signup</span><br /><br />
+        <center>
+        <span><label class='title'>Signup</label></span><br /><br />
         <label>Name <input type='text' name='name' value={signupdata.name} onChange={handleChange} /><br /><br /></label>
         <label>Phone Number <input type='text' name='phone' value={signupdata.phone} onChange={handleChange} /><br /><br /></label>
         <label>Aadhaar Number <input type='text' name='aadhar' value={signupdata.aadhar} onChange={handleChange} /><br /><br /></label>
@@ -79,7 +80,8 @@ function Signup() {
         </select>
         <br/>
         <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef} /><br />
-        <button type='submit'>Submit</button>
+        <button type='submit' class="button">Submit</button>
+        </center>
       </form>
     </div>
   );

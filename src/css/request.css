@@ -1,0 +1,61 @@
+.request-box {
+	/*display: inline-block;*/
+	margin: auto;
+	width: 90%;
+	background-color: white;
+	border-radius: 5% 10%;
+	padding: 3%;
+	position: relative;
+	margin-bottom: 2%;
+}
+.req-img {
+	position: absolute;
+	right: 5%;
+	top: 25%;
+	background-color: greenyellow;
+	height: 40%;
+	width: 25%;
+	border-radius: 5% 10%;
+}
+.container1 {
+   display: flex;
+}
+.reasonbox {
+	width: 50%;
+	font-size: 1.4rem;
+}
+.req-no {
+	flex: 3;
+	font-size: 1.5rem;
+}
+
+.req-btn {
+	flex: 2;
+	font-size: 1.3rem;
+	margin-left: 2%;
+	background-color: #1FE57A;
+}
+.edit-btn {
+	font-size: 20px;
+}
+.label {
+display: inline-block;
+width: 19%;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 1.376rem;
+padding: 4px 2px 4px 2px;
+background-color:  #1FE57A;
+border-radius: 3% 7%;
+margin-bottom: 3%;
+margin-right: 3%;
+}
+.values {
+font-size: 1.676rem;
+}
+.total-req-count {
+	font-size: 1.262rem;
+	margin-left: 5%;
+	margin-top: 3%;
+}

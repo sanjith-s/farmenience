@@ -8,7 +8,7 @@ function Request(props) {
 	return (
      <div className="request-box">
         <div className="container1">
-             <div className="f-items"><span className="req-no">Farmers Request {props.ReqNo+1}</span></div>
+             <div className="f1"><span className="req-no">Farmers Request {props.ReqNo+1}</span></div>
              <div className="f-items"><button className="req-btn req-btn1">accept</button></div>
              <div className="f-items"><button className="req-btn req-btn2">update</button></div>
              <div className="f-items"><button className="req-btn req-btn3">cancel</button></div>

@@ -7,7 +7,7 @@ function AllRequest() {
         meetDate:"2023-01-31",
         meetTime:"04:30",
         cropsGrowing:"paddy, wheat",
-        meetReason:"The reason is to discuss about increase the producity of paddy",
+        meetReason:"To discuss about paddy cultivation",
         soilDetails:"red soil used to grow sbjkbsjkb",
         NGOType:"NGO",
         img_src:""
@@ -16,7 +16,7 @@ function AllRequest() {
         meetDate:"2022-11-19",
         meetTime:"02:30",
         cropsGrowing:"paddy, wheat",
-        meetReason:"The reason is to discuss about increase the producity of paddy",
+        meetReason:"The reason is to discuss about jkcnsjs",
         soilDetails:"red soil used to grow sbjkbsjkb",
         NGOType:"NGO",
         img_src:""

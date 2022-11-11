@@ -7,14 +7,13 @@ function Request(props) {
      }
 	return (
      <div className="request-box">
-        <div className="container1">
-             <div className="f1"><span className="req-no">Farmers Request {props.ReqNo+1}</span></div>
-             <div className="f-items"><button className="req-btn req-btn1">accept</button></div>
-             <div className="f-items"><button className="req-btn req-btn2">update</button></div>
-             <div className="f-items"><button className="req-btn req-btn3">cancel</button></div>
-        </div>
-        <div className="container2">
+        <div className="container-2">
              <div className="part-1">
+                 <div className="container-1">
+                   <div className="f1"><span className="req-no">Farmers Request {props.ReqNo+1}</span></div>
+                   <div className="f-items"><button className="req-btn req-btn1">accept</button></div>
+                   <div className="f-items"><button className="req-btn req-btn2">update</button></div>
+                   <div className="f-items"><button className="req-btn req-btn3">cancel</button></div></div>
                  <div className="flex-item"><span className="label">Meet Date</span>
                       <input type="date" className="values" value={props.meetDate}/></div>
                  <div className="flex-item">
@@ -27,9 +26,9 @@ function Request(props) {
                      <span className="label">Crops Growing </span>
                      <span className="values">{props.cropsGrowing}</span></div>
                 <div className="flex-item">
-                     <span className="label">Reason for meet</span>
+                     <span className="label reason">Reason for meet</span>
                      {updateReason ? 
-                     <textarea name="" id="" cols="60" rows="2"  className="reasonbox" placeHolder="Type your reason here" ></textarea>:
+                     <textarea name="" id="" cols="30" rows="2"  className="reasonbox" placeHolder="Type your reason here" ></textarea>:
                      <span className="values">{props.meetReason} <button className="edit-btn" onClick={GiveEdit}>✏️</button></span>
                      }<br /></div>
                 <div className="flex-item">

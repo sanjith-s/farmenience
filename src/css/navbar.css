@@ -1,0 +1,18 @@
+.nav-brand {
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+color: #E4E4E4;
+font-size: xx-large;
+-webkit-text-stroke: 1px #000000;
+}
+.nav {
+	padding: 2% 1% 2% 1%;
+	background-color: #16E575;
+}
+.nav-items {
+	margin-top: 2px;
+	font-size: larger;
+	float: right;
+	margin-left: 2%;
+}

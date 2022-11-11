@@ -1,28 +1,38 @@
 .request-box {
-	/*display: inline-block;*/
+	display: flex;
+	width: fit-content;
 	margin: auto;
-	width: 90%;
 	background-color: white;
+   flex-direction: column;
 	border-radius: 5% 10%;
-	padding: 3%;
-	position: relative;
 	margin-bottom: 2%;
+	align-items: center;
 }
 .req-img {
-	position: absolute;
 	right: 5%;
 	top: 25%;
-	background-color: greenyellow;
-	height: 40%;
-	width: 25%;
 	border-radius: 5% 10%;
 }
 .container1 {
+	flex: 1;
    display: flex;
 }
+.f-items {
+	display: inline-block;
+	flex: 1
+}
+.container2 {
+	flex: 4;
+	display: flex;
+}
 .reasonbox {
-	width: 50%;
 	font-size: 1.4rem;
+}
+.part-1 {
+	display: flex;
+	flex-direction: column;
+	align-items: space-between;
+	justify-content: center;
 }
 .req-no {
 	flex: 3;

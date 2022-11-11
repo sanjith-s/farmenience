@@ -16,3 +16,17 @@ font-size: xx-large;
 	float: right;
 	margin-left: 2%;
 }
+.cmp-logo {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	border-radius: 50%;
+	background-color: white;
+}
+.prof-logo {
+	height: 30px;
+	width: 30px;
+	margin-left: 10px;
+	border-radius: 50%;
+	background-color: white;
+}

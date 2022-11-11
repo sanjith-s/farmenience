@@ -4,6 +4,7 @@
 import Signup from './signup';
 import Navbar from './components/navbar';
 import AllRequest from './showAllRequest';
+import PageM2 from './pageM2';
 function App() {
 
 
@@ -11,6 +12,7 @@ function App() {
     <div>
     <Navbar />
     <AllRequest />
+    <PageM2 />
     </div>
   );
 }

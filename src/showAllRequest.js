@@ -24,7 +24,7 @@ function AllRequest() {
     ]
 	return (
      <div className="">
-     <p className="total-req-count">You Have N Request</p>
+     <p className="total-req-count">(PAGE N6) You Have N Request</p>
      {listOfRequests.map((request,index) => {
        return <Request ReqNo={index} meetDate={request.meetDate} meetTime={request.meetTime} cropsGrowing={request.cropsGrowing}
         meetReason={request.meetReason} soilDetails={request.soilDetails}

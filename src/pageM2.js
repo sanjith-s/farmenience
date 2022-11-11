@@ -22,7 +22,7 @@ function pageM2() {
 	]
 	return (
      <div className="pageM2">
-     <p className="label2" style={{marginLeft:"15%"}}>You have N Request</p>
+     <p className="label2" style={{marginLeft:"15%"}}>(PAGE M2)You have N Request</p>
      {AllRequests.map((req,index)=>{
      	return <BuyerRequest reqNo={index+1} reqId={req.reqId} name={req.name} phoneNo={req.phoneNo} address={req.address} 
      	itemName={req.itemName} itemQuantity={req.itemQuantity} itemPrice={req.itemPrice} />

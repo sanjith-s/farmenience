@@ -24,6 +24,7 @@
 .container2 {
 	flex: 4;
 	display: flex;
+	margin: auto;
 }
 .reasonbox {
 	font-size: 1.4rem;

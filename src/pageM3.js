@@ -1,30 +1,62 @@
 import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
+import Navbar from "./components/navbar";
 
 function PageM3(props) {
+  // SALES DATA :-----------------------------------------------------------------------
+
+  const salesDetails = [
+    {
+      id: "1",
+      name: "Metta",
+      date: new Date(2022, 4, 23),
+      items: ["rice", "whear", "miller"],
+      amount: 343,
+    },
+    {
+      id: "2",
+      name: "surendhar",
+      date: new Date(2022, 4, 23),
+      items: ["rice", "whear", "miller"],
+      amount: 343,
+    },
+    {
+      id: "3",
+      name: "Metta Surendhar",
+      date: new Date(2022, 4, 23),
+      items: ["rice", "whear", "miller"],
+      amount: 343,
+    },
+  ];
+
+  const salesItems = ["Rice", "Jute", "Fibre", "Wheat", "Millet"];
+
+  // ------------------------------------------------------------------------------------
   return (
-    <div className="pageM3">
-      <div className="left">
-        <div className="sales-filters">
-          <h1> SALES DETAILS</h1>
-          <h2> Filter by </h2>
-          <div className="items">
-            <h2> ITEMS </h2>
-            <SalesItemsList cards={props.itemsList} />
-          </div>
-          <div className="date">
-            <h2> DATE </h2>
-            <label> From: </label>
-            <input type="date"></input>
-            <label> To: </label>
-            <input type="date"></input>
+    <div>
+      <Navbar />
+      <div className="pageM3">
+        <div className="left">
+          <div className="sales-filters">
+            <h1> SALES DETAILS</h1>
+            <h2> Filter by </h2>
+            <div className="items">
+              <h2> ITEMS </h2>
+              <SalesItemsList cards={salesItems} />
+            </div>
+            <div className="date">
+              <h2> DATE </h2>
+              <label> From: </label>
+              <input type="date"></input>
+              <label> To: </label>
+              <input type="date"></input>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="right">
-        <SalesCardsList cards={props.items} />
+        <div className="right">
+          <SalesCardsList cards={salesDetails} />
+        </div>
       </div>
     </div>
   );

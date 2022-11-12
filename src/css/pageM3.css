@@ -1,0 +1,87 @@
+.pageM3 {
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.left-half h1,
+.left-half h2,
+.left-half label {
+  width: fit-content;
+  padding: 0.4rem 0;
+  background-color: #e2f3eb;
+  margin: 0.8rem 0;
+  border-radius: 8px;
+}
+
+.left-half {
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  grid-column: 1/1;
+}
+
+.sales-filters,
+.date {
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.sales-filters h1 {
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 500;
+  align-self: center;
+  padding: 0.8rem 0;
+  text-align: center;
+}
+
+.sales-filters h1 + h2 {
+  padding: 0.4rem 0.8rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date h2,
+.items h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.date label,
+.date input {
+  padding: 0.4rem;
+  width: 40%;
+}
+
+.date label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date input {
+  width: 50%;
+  align-self: flex-end;
+  border-radius: 8px;
+  color: black;
+  background-color: #e2f3eb;
+}
+
+.right-half {
+  grid-column: 2/-1;
+  display: flex;
+  justify-content: center;
+}
+
+.sales-items-list {
+  padding: 0;
+}

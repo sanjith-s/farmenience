@@ -1,0 +1,45 @@
+li {
+  border-radius: 10px;
+  padding: 0.4rem;
+}
+
+.salesCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2f3eb;
+  text-transform: capitalize;
+  margin: 2rem 5rem;
+  /* width: 50%; */
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.key,
+.card-button,
+.value {
+  text-align: center;
+  width: 8.6rem;
+  padding: 6.4px;
+  margin: 0.8rem;
+  border-radius: 5px;
+}
+
+.card-button {
+  background-color: #16e575;
+}
+
+.key {
+  text-align: left;
+  background-color: #16e575;
+}
+
+.value {
+  width: 12rem;
+  background-color: #66e2a0;
+}

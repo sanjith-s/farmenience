@@ -10,7 +10,7 @@ function Navbar() {
   }
 
   return (
-    <div className="">
+    <div className="navbar">
       <div className="nav">
         <span className="nav-brand">
           <img src="" className="cmp-logo" />

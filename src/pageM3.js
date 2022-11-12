@@ -37,36 +37,33 @@ function PageM3(props) {
   return (
     <div>
       <Navbar />
-      <div>
-        <Navbar />
-        <div className="pageM3">
-          <div className="left-half">
-            <div className="sales-filters">
-              <h1> SALES DETAILS</h1>
-              <h2> Filter by </h2>
-              <div className="items">
-                <h2> ITEMS </h2>
-                <SalesItemsList
-                  className="sales-items-list"
-                  cards={salesItems}
-                  items={salesDetails}
-                />
-              </div>
+      <div className="pageM3">
+        <div className="left-half">
+          <div className="sales-filters">
+            <h1> SALES DETAILS</h1>
+            <h2> Filter by </h2>
+            <div className="items">
+              <h2> ITEMS </h2>
+              <SalesItemsList
+                className="sales-items-list"
+                cards={salesItems}
+                items={salesDetails}
+              />
             </div>
+          </div>
 
-            <div className="date">
-              <h2> DATE </h2>
-              <label>
-                <span>From</span>
-                <span>:</span>
-              </label>
-              <input type="date"></input>
-              <label>
-                <span>To</span>
-                <span>:</span>
-              </label>
-              <input type="date"></input>
-            </div>
+          <div className="date">
+            <h2> DATE </h2>
+            <label>
+              <span>From</span>
+              <span>:</span>
+            </label>
+            <input type="date"></input>
+            <label>
+              <span>To</span>
+              <span>:</span>
+            </label>
+            <input type="date"></input>
           </div>
         </div>
 

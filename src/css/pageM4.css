@@ -4,6 +4,15 @@
 	align-items: center;
 
 }
+@media only screen and (max-width: 800px)  {
+	.pagem4 {
+		flex-direction: column;
+	}
+	.pagem4 > div {
+		width: 90%;
+	}
+}
+
 .salebox {
 	font-size: 1.2rem;
 	background: rgba(217, 217, 217, 1);
@@ -62,6 +71,14 @@
 .printbox {
 	padding: 5% 5% 5% 5%;
 	background-color: rgba(22, 229, 117, 1);
+	box-shadow: 2px 3px darkgreen;
+	border-radius: 10px 15px;
+	font-weight: normal;
+}
+.printbox:hover,.b-row5 > div:hover {
+	background-color: rgba(30, 369, 117, 6);
+	font-weight: bolder;
+	color: black;
 }
 .b-row2 {
 	display: flex;

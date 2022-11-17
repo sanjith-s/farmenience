@@ -6,7 +6,7 @@
 	border-radius: 5% 7%;
 	background-color: white;
 	margin-bottom: 4%;
-	padding: 4% 2% 4% 2%;
+	padding: 2%;
 }
 .left-part {
 	flex: 2;
@@ -27,6 +27,7 @@
 	font-size: 1rem;
 	background-color: #16E575;
 	display: flex;
+	text-align: center;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -44,3 +45,9 @@
     background-color: greenyellow;
     color: brown;
 }
+.inc-btn,.dec-btn {
+	text-align: center;
+	font-weight: bolder;
+}
+
+

@@ -3,7 +3,6 @@ import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
 import ReCAPTCHA from "react-google-recaptcha";
-import Navbar from "./components/navbar";
 
 function Signup() {
   const captchaRef = useRef(null);
@@ -54,8 +53,6 @@ function Signup() {
 
   return (
     <div>
-      <Navbar />
-
       <form onSubmit={submit} method="post">
         <center>
           <span>

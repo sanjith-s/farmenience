@@ -25,7 +25,6 @@ function AllRequest() {
   ];
   return (
     <div className="">
-      <Navbar />
       <p className="total-req-count">(PAGE N6) You Have N Request</p>
       {listOfRequests.map((request, index) => {
         return (

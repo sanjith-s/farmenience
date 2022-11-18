@@ -1,6 +1,11 @@
 .navbar {
-  position: static;
-  margin-bottom: 2.8rem;
+  position: sticky;
+  top:0px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #16e575;
+  padding: 1%;
 }
 
 .nav-brand {
@@ -17,10 +22,22 @@
   /* font-size: 62.5%; */
 }
 .nav-items {
-  margin-top: 2px;
+  flex: 2;
+/*  margin-top: 2px;*/
   font-size: larger;
-  float: right;
-  margin-left: 2%;
+  text-align: center;
+/*  float: right;*/
+/*  margin-left: 2%;*/
+}
+.nav-items > a {
+  text-decoration: none;
+}
+.item1,.item5 {
+  flex: 1;
+}
+.item2 {
+  flex:12;
+  text-align: left;
 }
 .cmp-logo {
   height: 40px;

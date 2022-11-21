@@ -5,7 +5,9 @@ import AllRequest from "./showAllRequest";
 import PageM2 from "./pageM2";
 import PageM3 from "./pageM3";
 import PageM4 from "./pageM4";
-import Footer from "./components/footer.js"
+import Footer from "./components/footer.js";
+import PageM5 from "./pageM5";
+
 function App() {
   return (
     <div>{/*---hr tag here is just to split two pages----*/}

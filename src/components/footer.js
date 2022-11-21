@@ -3,7 +3,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import '../css/footer.css';
-// import FacebookLogo from "https://p.kindpng.com/picc/s/16-167851_rageon-logo-facebook-logo-white-transparent-background-hd.png";
 function Footer() {
 	return (
 	<div className="foot">
@@ -18,7 +17,7 @@ function Footer() {
         <div className="foot-items-logo"><a href="#" className="foot-links"><FacebookOutlinedIcon fontSize="large"/></a></div>
         <div className="foot-items-logo"><a href="#" className="foot-links"><LocalPhoneOutlinedIcon fontSize="large"/></a></div>
     </div>
-     </div>
+    </div>
 	)
 }
 export default Footer;

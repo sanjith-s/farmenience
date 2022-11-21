@@ -10,10 +10,11 @@ function App() {
   return (
     <div>{/*---hr tag here is just to split two pages----*/}
       <Navbar />
-      <Signup /><hr />
-      <AllRequest /><hr />
-      <PageM2 /><hr />
-      <PageM3 /><hr />
+      <PageM5/>
+      {/* <Signup /><hr /> */}
+      {/* <AllRequest /><hr /> */}
+     {/* <PageM2 /><hr /> */}
+      {/* <PageM3 /><hr />
      (PAGE M4)
       <PageM4 saleName="XXXXXX" orderDate="10/11/2022" deliveryDate="13/11/2022"  
       clientName="YYYYYY" paymentMode="By cash" transactionId="34232211" remarks="hhsckbhsbhsbj" 
@@ -34,7 +35,7 @@ function App() {
           price:25
         }
         ]} /><hr />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

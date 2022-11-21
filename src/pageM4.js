@@ -4,6 +4,7 @@ function PageM4(props) {
 	var tot_amount = 0;
 	props.itemsBought.map((item)=>{
 		tot_amount+=item.quantity * (item.price);
+		return;
 	})
 	return (
      <div className="pagem4">

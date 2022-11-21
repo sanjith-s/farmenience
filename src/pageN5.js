@@ -36,7 +36,8 @@ const PageN5 = () => {
   ]
   return (
     <div className="box">
-      <Navbar />
+    <img src={process.env.PUBLIC_URL + '/ngo-meet.jpg'} alt="Hi"></img>
+      {/* <Navbar />
       <div className="titlebox"><span className="title">Schedule meet with NGO</span></div>
 
       <div className="container">
@@ -65,7 +66,7 @@ const PageN5 = () => {
         </div>
         <div className="pic-cont"><img src='/logo512.png' alt="ngo meet" /></div>
       </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Submit</button> */}
       <Footer />
     </div>
   );

@@ -1,5 +1,7 @@
-import React from 'react';
-import './css/pageM4.css';
+import React from "react";
+import "./css/pageM4.css";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 function PageM4(props) {
 	var tot_amount = 0;
 	props.itemsBought.map((item)=>{

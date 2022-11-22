@@ -25,6 +25,8 @@ padding-right: 2%;
 .foot-links {
 	text-decoration: none;
 	font-weight: bolder;
+	color: inherit; 
+ 	text-decoration: inherit;
 }
 .foot-items-logo {
 /*	flex:2;*/

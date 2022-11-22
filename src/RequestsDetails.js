@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import './css/request.css';
+import EditIcon from '@mui/icons-material/Edit';
 function Request(props) {
      var [updateReason,setUpdate] = useState(false);
      const GiveEdit = () => {
@@ -29,7 +30,7 @@ function Request(props) {
                      <span className="label reason">Reason for meet</span>
                      {updateReason ? 
                      <textarea name="" id="" cols="30" rows="2"  className="reasonbox" placeHolder="Type your reason here" ></textarea>:
-                     <span className="values">{props.meetReason} <button className="edit-btn" onClick={GiveEdit}>✏️</button></span>
+                     <span className="values">{props.meetReason} <a className="edit-btn" onClick={GiveEdit}><EditIcon fontSize="medium" /></a></span>
                      }<br /></div>
                 <div className="flex-item">
                      <span className="label">TYpe of NGO</span>

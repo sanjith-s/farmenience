@@ -91,7 +91,7 @@ body > #root > div {
 
 .pic-cont {
     width: 35vw;
-
+    margin-top: 1.7%;
 }
 
 .input-txt {
@@ -131,4 +131,12 @@ input {
     background-color: rgb(150, 245, 177);
     border-color: gainsboro;
     border-width: 1px;
+}
+
+.img-cont {
+    height: 93%;
+    max-width: 96%;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
 }

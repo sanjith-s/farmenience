@@ -36,7 +36,6 @@ function PageM3(props) {
   // ------------------------------------------------------------------------------------
   return (
     <div>
-      <Navbar />
       <div className="pageM3">
         <div className="left-half">
           <div className="sales-filters">

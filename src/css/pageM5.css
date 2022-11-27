@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+
+.rectangle-29 {
+  position: absolute;
+  width: 55%;
+  height: 62%;
+  left: 4%;
+  top: 25%;
+
+  background: #d9d9d9;
+  border-radius: 50px;
+}
+
+.frame-2 {
+  position: absolute;
+  width: 17%;
+  height: 10%;
+  left: 8%;
+  top: 12%;
+  background: #3dd282;
+  border-radius: 10px;
+}
+
+.frame-2-text {
+  padding-top: 10%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+.rectangle-7-1 {
+  position: absolute;
+  width: 42%;
+  height: 10%;
+  left: 40%;
+  top: 12%;
+
+  background: #c4e1c5;
+  border-radius: 10px;
+}
+
+.frame-1 {
+  position: absolute;
+  width: 17%;
+  height: 10%;
+  left: 8%;
+  top: 29%;
+  background: #3dd282;
+  border-radius: 10px;
+}
+
+.frame-1-text {
+  padding-top: 10%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+.rectangle-5 {
+  position: absolute;
+  width: 42%;
+  height: 10%;
+  left: 40%;
+  top: 29%;
+
+  background: #c4e1c5;
+  border-radius: 10px;
+}
+
+.frame-3 {
+  position: absolute;
+  width: 17%;
+  height: 10%;
+  left: 8%;
+  top: 45%;
+  background: #3dd282;
+  border-radius: 10px;
+}
+
+.frame-3-text {
+  padding-top: 10%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+.rectangle-9 {
+  position: absolute;
+  width: 42%;
+  height: 10%;
+  left: 40%;
+  top: 45%;
+
+  background: #c4e1c5;
+  border-radius: 10px;
+}
+
+.rectangle-15 {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  right: 0%;
+  top: 4%;
+
+  background: #1fe57a;
+  border-radius: 10px;
+}
+
+.rectangle-15-text {
+  padding-top: 20%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+.frame-4 {
+  position: absolute;
+  width: 17%;
+  height: 10%;
+  left: 8%;
+  top: 62%;
+  background: #3dd282;
+  border-radius: 10px;
+}
+
+.frame-4-text {
+  padding-top: 10%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+.rectangle-7-2 {
+  position: absolute;
+  width: 42%;
+  height: 10%;
+  left: 40%;
+  top: 62%;
+
+  background: #c4e1c5;
+  border-radius: 10px;
+}
+
+.rectangle-15-4 {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  right: 0%;
+  top: 4%;
+
+  background: #1fe57a;
+  border-radius: 10px;
+}
+
+.rectangle-15-text {
+  padding-top: 20%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+.rectangle-4 {
+  position: absolute;
+  width: 20%;
+  height: 10%;
+  left: 8%;
+  top: 81%;
+  border-radius: 10px;
+
+  background: #1fe67a;
+}
+
+.rectangle-4-text {
+  padding-top: 9%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+.rectangle-4-2 {
+  position: absolute;
+  width: 42%;
+  height: 10%;
+  left: 40%;
+  top: 81%;
+
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+
+.btn-1 {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  left: 0%;
+
+  background: #1fe57a;
+  border-radius: 10px;
+}
+.btn-2 {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  left: 20%;
+
+  background: #c4e1c5;
+  border-radius: 10px;
+}
+
+.btn-text {
+  padding-top: 17%;
+  font-family: "Ubuntu", sans-serif;
+  text-align: center;
+}
+
+.rectangle-11 {
+  position: absolute;
+  width: 28%;
+  height: 50%;
+  right: 8%;
+  top: 25%;
+  max-width: auto;
+  background-image: url("image.png");
+  border-radius: 7px;
+}
+
+.edit-Deal {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  right: 23%;
+  top: 81%;
+
+  background: #1fe57a;
+  border-radius: 15px;
+}
+
+.edit-Deal-text {
+  padding-top: 17%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+.post-Deal {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  right: 10%;
+  top: 81%;
+
+  background: #1fe57a;
+  border-radius: 15px;
+}
+
+.post-Deal-text {
+  padding-top: 17%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+.post-Deal-btn {
+  border: none;
+  outline: none;
+  background-color: #1fe57a;
+  padding-top: 0%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+.edit-Deal-btn {
+  border: none;
+  outline: none;
+  background-color: #1fe57a;
+  padding-top: 0%;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+input {
+  width: 90%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #c4e1c5;
+  padding-left: 10%;
+  font-family: "Ubuntu", sans-serif;
+  font-size: large;
+}
+
+input:focus {
+  outline: none;
+}
+
+.box select {
+  background-color: #1fe57a;
+  border: none;
+  padding-left: 10%;
+  font-family: "Ubuntu", sans-serif;
+  font-size: large;
+}
+
+.box select:focus {
+  outline: none;
+}

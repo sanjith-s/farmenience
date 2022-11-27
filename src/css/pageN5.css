@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+body > #root > div {
+    height: 100vh;
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+}
+
+.box {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ip-cont {
+  width: 61vw;
+  margin: 1%;
+  display: grid;
+  margin-left: 1%;
+  margin-right: 1%;
+  grid-template-columns: [first] 40% [line2] 60% [end];
+  grid-template-rows: repeat(6, 16% [row-start]);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "r1c r1i"
+    "r2c r2i"
+    "r3c r3i"
+    "r4c r4i"
+    "r5c r5i"
+    "r6c r6i";
+  column-gap: 5px;
+  row-gap: 5px;
+  background-color: rgba(255, 254, 254, 0.966);
+  padding: 2%;
+  border-radius: 30px;
+}
+
+.r1c {
+    grid-area: r1c;
+}
+
+.r1i {
+    grid-area: r1i;
+}
+
+.r2c {
+    grid-area: r2c;
+}
+
+.r2i {
+    grid-area: r2i;
+}
+
+.r3c {
+    grid-area: r3c;
+}
+
+.r3i {
+    grid-area: r3i;
+}
+
+.r4c {
+    grid-area: r4c;
+}
+
+.r4i {
+    grid-area: r4i;
+}
+
+.r5c {
+    grid-area: r5c;
+}
+
+.r5i {
+    grid-area: r5i;
+}
+
+.r6c {
+    grid-area: r6c;
+}
+
+.r6i {
+    grid-area: r6i;
+}
+
+.pic-cont {
+    width: 35vw;
+    margin-top: 1.7%;
+}
+
+.input-txt {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.3em;
+}
+
+button {
+    margin: auto;
+    padding: 10px 20px 10px 20px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+button:hover {
+    background-color: #07e06c;
+}
+
+.title {
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.titlebox {
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    height: 4vh;
+}
+
+input {
+    padding: 6px;
+    border-radius: 8px;
+    background-color: rgb(150, 245, 177);
+    border-color: gainsboro;
+    border-width: 1px;
+}
+
+.img-cont {
+    height: 93%;
+    max-width: 96%;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+}

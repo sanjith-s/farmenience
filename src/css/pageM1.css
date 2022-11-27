@@ -1,0 +1,8 @@
+.allBoxes {
+	display: flex;
+	align-items: space-evenly;
+	flex-wrap: wrap;
+	align-content: space-evenly;
+    row-gap: 20px;
+	column-gap: 5%;
+}

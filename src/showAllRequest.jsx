@@ -8,7 +8,7 @@ function AllRequest() {
       meetDate: "2023-01-31",
       meetTime: "04:30",
       cropsGrowing: "paddy, wheat",
-      meetReason: "To discuss about paddy cultivation",
+      meetReason: "To discuss ab cultivation",
       soilDetails: "red soil used to grow sbjkbsjkb",
       NGOType: "NGO",
       img_src: "",
@@ -25,7 +25,6 @@ function AllRequest() {
   ];
   return (
     <div className="">
-      <Navbar />
       <p className="total-req-count">(PAGE N6) You Have N Request</p>
       {listOfRequests.map((request, index) => {
         return (

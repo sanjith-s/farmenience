@@ -63,7 +63,7 @@ const PageN5 = () => {
             <div className="r6i"><input type="file" name="image" value={appntdata.image} onChange={handleChange} /></div>
             
         </div>
-        <div className="pic-cont"><img className="img-cont" src={process.env.PUBLIC_URL+'/ngo-meet.jpg'} alt="ngo meet" /></div>
+        <div className="pic-cont"><img className="img-cont" src={'/ngo-meet.jpg'} alt="ngo meet" /></div>
       </div>
       <button onClick={handleSubmit}>Submit</button>
       <Footer />

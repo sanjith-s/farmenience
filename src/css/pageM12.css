@@ -1,4 +1,3 @@
-
 .pay-details {
 	display:flex;
 	flex-direction: column;
@@ -135,18 +134,81 @@
 	padding: 5%;
 	width: 100px;
 }
+
 .iname {
 	font-size: 1.3rem;
 	font-weight: bolder;
 }
+
 .i-desc {
 	display: flex;
 	flex-direction: column;
 }
+
 .bot-head,.table1,.all-items,.items-head {
      margin-left: 2%;
 }
+
 .bot-head {
 	font-size: 1.6rem;
 	font-weight: bolder;
+	display: flex;
 }
+
+.order-row {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-left: 2%;
+}
+
+.order-btn {
+	border-radius: 999em;
+	padding: 10px 15px;
+	text-decoration: none;
+	font-weight: bolder;
+    background-color: palegreen;
+}
+.order-btn:hover {
+    color: ghostwhite;
+    background-color: darkgreen;
+}
+
+.table1 {
+	display: flex;
+}
+.progress-title {
+	margin: 1%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.4rem;
+	color: darkolivegreen;
+}
+.pro-bar {
+	position: sticky;
+	padding-top: 1%;
+	top:0;
+    background: rgba(190, 202, 190, 1);
+}
+.del-slot {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.d-box {
+	padding: 1%;
+    border: 1px solid black;
+    text-align: center;
+}
+.time-slot {
+	padding: 1%;
+}
+.ex-text {
+	font-weight: bolder;
+	font-size: 1.0rem;
+}
+.order-summary {
+	font-size: 1.4rem;
+	padding: 1%;
+	text-align: center;
+}
+

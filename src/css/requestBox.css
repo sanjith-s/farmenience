@@ -22,6 +22,7 @@
 	margin: auto;
 	text-align: center;
 }
+
 .r-row {
     padding: 2%;
     padding-left: 6%;
@@ -29,6 +30,7 @@
 	justify-content: space-between;
 	align-items: space-between;
 }
+
 .r-view {
 	flex:1;
 	text-align: center;
@@ -39,6 +41,7 @@
     border-radius: 999em;
 	background-color: rgba(22, 229, 117, 1);
 }
+
 .r-view:hover {
 	background-color: greenyellow;
 	box-shadow: 2px 3px black;

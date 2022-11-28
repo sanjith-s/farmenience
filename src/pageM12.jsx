@@ -55,7 +55,7 @@ function Fname() {
                     <div className="add1"><div className="top top1"><span>Deliver to : </span></div><div className="ans ans1"><span>{username}</span></div></div>
                     <div className="add2"><div className="top top2"><span>Delivery Address :</span></div><div className=" ans ans2">
                     {!isEditOn ? <span>{Address}</span> : <input type="text" className="add-in" onChange={handleAddress} value={Address} />}
-                    {!isEditOn ? <button  className="chg-btn" onClick={GiveEdit}>Change</button> : <button  onClick={updateAddress}>Update</button>}</div></div>
+                    {!isEditOn ? <button  className="chg-btn" onClick={GiveEdit}>Change</button> : <button  className="chg-btn"  onClick={updateAddress}>Update</button>}</div></div>
                 </div>
              </div>
              <div className="mid-row">

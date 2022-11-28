@@ -1,8 +1,25 @@
 import React,{useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import './../css/requestBox.css';
 function BuyerRequest(props) {
-	return (
-     <div className="requestbox">
+  let navigate = useNavigate();
+
+	const viewRequest = () => {
+    const [buyerRequestDetails, setBuyerRequestDetails] = useState([]);
+
+    Axios.post('http://localhost:9091/api/admin/deleteitem', {
+        itemID: id
+    }).then((response) => {
+        console.log(response)
+        if (response.data == 'success') {
+            setBuyerRequestDetails(response.data);
+            navigate('/pageM3');
+        }
+    });
+}
+  
+  return (
+    <div className="requestbox">
              <div className="r-row">
                <div className="r-key">Request ID</div>
                <div className="r-value">{props.reqId}</div>
@@ -24,7 +41,7 @@ function BuyerRequest(props) {
                <div className="r-value">{props.itemQuantity}</div>
              </div>
              <div className="r-row">
-             <button className="r-view">View Request</button>
+             <button onClick={viewRequest} className="r-view">View Request</button>
              </div>
        </div>
 	)

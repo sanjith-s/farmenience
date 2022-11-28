@@ -24,7 +24,7 @@ function BuyerRequest(props) {
                <div className="r-value">{props.itemQuantity}</div>
              </div>
              <div className="r-row">
-             <div className="r-view">View Request</div>
+             <button className="r-view">View Request</button>
              </div>
        </div>
 	)

@@ -12,7 +12,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PageM12 />} />
+          <Route path="/" element={<PageM3 />} />
           <Route path="/ordersummary" />
         </Routes>
       </BrowserRouter>

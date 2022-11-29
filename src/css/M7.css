@@ -1,0 +1,39 @@
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.title-bar{
+    flex-direction: row;
+    width: fit-content;
+    height: 8%;
+background: #1FE57A;
+border-radius: 15px;
+}
+
+th{
+    flex-wrap: wrap;
+    padding-left: 1%;
+    padding-bottom: 1.5%;
+    text-align : center
+}
+
+.item-list{
+    flex-direction: row;
+}
+
+.part-2{
+    flex-direction: row;
+}
+
+.amt{
+    float: right;
+}
+
+.btn{
+    background: #1FE57A;
+    outline: none;
+    padding: 3%;
+    border-radius: 15px;
+}

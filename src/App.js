@@ -8,6 +8,7 @@ import PageM3 from "./pageM3";
 import PageM4 from "./pageM4";
 import Footer from "./components/footer.js";
 import PageM5 from "./pageM5";
+import M7 from './M7';
 
 function App() {
     const itemsBought=[
@@ -30,7 +31,7 @@ function App() {
   return (
     <div>{/*---hr tag here is just to split two pages----*/}
       <Navbar />
-      <Signup /><hr />
+      {/* <Signup /><hr />
       <AllRequest /><hr />
       <PageM1 /><hr />
       <PageM3 /><hr />
@@ -38,8 +39,9 @@ function App() {
       <PageM4 saleName="XXXXXX" orderDate="10/11/2022" deliveryDate="13/11/2022"  
       clientName="YYYYYY" paymentMode="By cash" transactionId="34232211" remarks="hhsckbhsbhsbj" 
       itemsBought={itemsBought} /><hr />
-      <PageM5 />
-      <Footer />
+      <PageM5 /> */}
+      <M7/>
+      {/* <Footer /> */}
     </div>
   );
 }

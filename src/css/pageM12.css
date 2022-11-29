@@ -64,7 +64,6 @@
 .ans {
 	font-weight: bolder;
 }
-
 .chg-btn {
 	display: inline-block;
 	padding: 3px;
@@ -208,7 +207,10 @@
 }
 .order-summary {
 	font-size: 1.4rem;
-	padding: 1%;
+/*	padding: 1%;*/
 	text-align: center;
+/*	padding-bottom: 2%;*/
+/*	display: none;*/
+/*    visibility: none;*/
 }
 

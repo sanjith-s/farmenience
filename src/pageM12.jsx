@@ -2,17 +2,18 @@ import React,{useState} from 'react';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import './css/pageM12.css';
 import ShareIcon from '@mui/icons-material/Share';
-import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ItemBox from './components/itemBox';
 import ProcessBar from './components/process_bar';
+import OrderSummary from './components/orderSummary';
+import PaymentPage from './components/payment-page';
 function Fname() {
   var username = "Yuvaraj";
   var [Address,setAddress] = useState("Ceg-chennai");
   var [isEditOn,setEditOn] = useState(false);
+  var [displays,setDisplay] = useState(["","none","none"]);
   var total_amount = 0;
   const GiveEdit = () => {
     setEditOn(true);
@@ -25,41 +26,41 @@ function Fname() {
     setAddress(document.querySelector(".add-in").value);
   }
   var [process_no,setProcess] = useState([1,'10']);
-
   const placeOrder = () => {
+    setDisplay(["","","none"]);
     setProcess([2,'55']);
+    setTimeout(()=>{
+        setDisplay(["none","","none"]);
+    }, 150);
   }
-  var dates = [];
-  var curdate = new Date();
-  for (var i = 0;i <= 6;i++) {
-  var thatDate = new Date();
-  thatDate.setDate(curdate.getDate()+i);
-  dates.push(thatDate);
+  const handleContinue = () => {
+   setDisplay(["none","",""]);
+    setProcess([3,'90']);
+    setTimeout(()=>{
+        setDisplay(["none","none",""]);
+    }, 150);
   }
-  const itemsAdded = [
-   {
+  
+  const itemsAdded = [ {
     iName : "Wheat",
     quantity : 10,
     price : 500,
     imgSrc:"",
     discount:80
-   },
-   {
+   }, {
     iName : "Rice",
     quantity : 20,
     price : 300,
     imgSrc:"",
     discount:40
-   }
-    ]
+   } ]
   itemsAdded.forEach(item=>{
     total_amount += (item.price - item.discount + 50);
   })
   return (
-     <div className="paymentpage">
+     <div className="cart1">
          <div className="pay-details">
-         <Element className="page1" id="page1">
-             <div className="pay-nav">
+         <div className="pay-nav">
                 <div className="cart">
                     <div><a className="cart-ele1 back-btn"><KeyboardBackspaceIcon className="back-icon" fontSize="large" /></a></div>     
                     <div className="cart-ele2"><h1 className="cart-text">My Cart</h1></div>
@@ -76,6 +77,7 @@ function Fname() {
                    <ProcessBar bgcolor="blue" progress={process_no[1]}  height={7} />
                 </div>
              </div>
+         <div className="page1" id="page1" style={{display:displays[0]}}>
              <div className="address-box">
                 <div className="del-address">
                     <div className="add1"><div className="top top1"><span>Deliver to : </span></div><div className="ans ans1"><span>{username}</span></div></div>
@@ -107,46 +109,19 @@ function Fname() {
                         return <tr><td>{index+1}</td><td>{item.iName}</td><td>{item.quantity}</td><td> ₹ {item.price}</td><td>₹ {item.discount}</td><td>₹ 50</td><td>₹ {item.price + 50 - item.discount}</td></tr>
                        })
                        }
-                       <tr className="bold"><td colspan="6"><strong>Total Amount </strong></td><td>₹ {total_amount}</td></tr>
+                       <tr className="bold"><td colSpan="6">Total Amount</td><td>₹ {total_amount}</td></tr>
                       </table>
                  </div>
-              <div className="order-row"><div><Link to="order-summary" smooth={true} duration={500} className="order-btn" onClick={placeOrder}>Place Order</Link></div></div>
+              <div className="order-row"><div><button onClick={placeOrder} className="order-btn">Place Order</button></div></div>
 
              </div>
-             </Element>
-             <Element className="order-summary" id="order-summary">
-              <div className="orderSummary">
-                
-                <div className="address-box">
-                <div className="del-address">
-                    <div className="add1">
-                        <div className="top top1"><span>Deliver to : </span></div>
-                        <div className="ans ans1"><span>{username}</span></div>
-                    </div>
-                    <div className="add2">
-                        <div className="top top2"><span>Delivery Address :</span></div>
-                        <div className=" ans ans2"><span>{Address}</span></div>
-                    </div>
-                </div>
-                </div>
-                <p  className="ex-text bot-head">Choose Your Preffered Date for the Delivery</p><br />
-                <div className="del-slot">
-                  {dates.map(date=>{
-                    return <div className="d-box">
-                       <p>{date.toLocaleDateString()}</p>
-                       <input type="radio" name="date-opt" className="date-option" />                      
-                    </div>
-                  })}
-                </div>
-                <div className="time-slot" style={{textAlign:"center"}}>
-                <div style={{textAlign:"left",display:"inline-block"}}>
-                 <p className="ex-text">Choose Your Preffered Time slot</p>
-                  <input type="radio" name="time-opt" /><span>10.00 AM - 1.30 PM</span><br/>
-                  <input type="radio" name="time-opt" /><span>1.30 PM - 7.00 PM</span>
-                </div>
-                </div>
-               </div>
-             </Element>
+             </div>
+             <div name="order-summary" className="order-summary" style={{display:displays[1]}} id="order-summary">
+                 <OrderSummary itemDetails={itemsAdded} userDetails={[username,Address]} handleContinue={handleContinue}/>
+             </div>
+             <div className="payment-page" style={{display:displays[2]}}>
+                 <PaymentPage />
+             </div>
          </div>
      </div>
   )

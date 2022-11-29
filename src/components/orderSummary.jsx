@@ -30,25 +30,28 @@ function Fname(props) {
                                    </div>
                             </div>
                      </div>
-                     <p  className="ex-text bot-head">Choose Your Preffered Date for the Delivery</p><br />
+                     <div style={{textAlign:"center",marginTop:"1%"}}><p  className="ex-text">Choose Your Preffered Date for the Delivery</p><br />
+                     </div>
                      <div className="del-slot">
                          {dates.map(date=>{
                          return <div className="d-box">
-                               <p>{date.toLocaleDateString()}</p>
-                               <input type="radio" name="date-opt" className="date-option" />                      
+                               <input type="radio" name="date-opt" className="date-option" />
+                               <p>{date.toLocaleDateString()}</p>                      
                                </div>
                         })}
                      </div>
                      <div className="time-slot" style={{textAlign:"center"}}>
-                           <div className="time-sl" style={{textAlign:"left",display:"inline-block"}}>
                                  <p className="ex-text">Choose Your Preffered Time slot</p>
-                                 <input type="radio" name="time-opt" /><span>10.00 AM - 1.30 PM</span><br/>
-                                 <input type="radio" name="time-opt" /><span>1.30 PM - 7.00 PM</span>
+                           <div className="time-sl" style={{textAlign:"left",display:"inline-block"}}>
+                                 <div><input type="radio" name="time-opt" className="time-opt"/><span>10.00 AM - 01.30 PM</span><br/>
+                                 </div>
+                                <div><input type="radio" name="time-opt" className="time-opt"/><span>01.30 PM - 07.00 PM</span>
+                                </div>
                            </div>
                      </div>
                      
-                     <h1 className="bot-head">Price Details</h1><br />
-                     <div className="table1">
+                     <h1 className="bot-head another">Price Details</h1><br />
+                     <div className="table1 another-table">
                             <div><table border="2">
                                  <tr className="bold"><td>S.no</td><td>Item</td><td>Quantity</td><td>Price</td><td>Discount</td><td>Delivery Fee</td><td>Amount</td></tr>
                                  {itemsAdded.map((item,index)=>{

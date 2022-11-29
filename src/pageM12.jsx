@@ -40,6 +40,12 @@ function Fname() {
         setDisplay(["none","none",""]);
     }, 150);
   }
+  const goAddress = () => {
+    setProcess([1,'10']);
+    setTimeout(()=>{
+        setDisplay(["","none","none"]);
+    }) 
+  }
   
   const itemsAdded = [ {
     iName : "Wheat",
@@ -69,9 +75,9 @@ function Fname() {
              </div>
              <div className="pro-bar">
                 <div className="progress-title">
-                   <div className="p-items"><span>Address Confirmation</span></div>
-                   <div className="p-items"><span>Order Summary</span></div>
-                   <div className="p-items"><span>Payment</span></div>
+                   <div className="p-items"><a href="#" style={{textDecoration:"none"}} onClick={goAddress}>Address Confirmation</a></div>
+                   <div className="p-items"><a href="#" style={{textDecoration:"none"}} onClick={placeOrder}>Order Summary</a></div>
+                   <div className="p-items"><a href="#" style={{textDecoration:"none"}} onClick={handleContinue}>Payment</a></div>
                 </div>
                 <div className="progress-bar">
                    <ProcessBar bgcolor="blue" progress={process_no[1]}  height={7} />

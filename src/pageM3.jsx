@@ -2,6 +2,7 @@ import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import "./css/pageM3.css";
 
 function PageM3(props) {
@@ -36,6 +37,7 @@ function PageM3(props) {
   // ------------------------------------------------------------------------------------
   return (
     <div>
+      <Navbar />
       <div className="pageM3">
         <div className="left-half">
           <div className="sales-filters">
@@ -70,6 +72,7 @@ function PageM3(props) {
           <SalesCardsList cards={salesDetails} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

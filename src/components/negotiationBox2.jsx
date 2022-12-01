@@ -3,8 +3,8 @@ import WheatImg from "../WheatImg.png";
 import "../css/negotiationBox.css";
 
 function NegotiationBox2(props) {
-  const [counter, setcounter] = useState(1);
-  const [limit, setlimit] = useState(props.discountPrice);
+  let [counter, setcounter] = useState(1);
+  let [limit, setlimit] = useState(props.discountPrice);
   const increment = () => {
     setcounter(counter + 1);
   };

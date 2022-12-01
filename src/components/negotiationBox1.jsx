@@ -4,7 +4,7 @@ import "../css/negotiationBox.css";
 
 function NegotiationBox1(props) {
   let [counter, setcounter] = useState(1);
-  const increment = () => {
+  let increment = () => {
     setcounter(counter + 1);
   };
   const decrement = () => {

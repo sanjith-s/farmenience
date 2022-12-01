@@ -1,0 +1,63 @@
+.negot_address {
+  position: relative;
+  background-color: #fff;
+  padding: 10px;
+  line-height: 20px;
+  color: #555;
+  font-weight: 300;
+}
+
+.negot_address h3 {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.chg_btn {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: #41d13e;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.chg_btn:hover {
+  color: #fff;
+  background-color: #41d13e;
+}
+
+.pg1_items {
+  position: relative;
+  line-height: 20px;
+  color: #555;
+  font-weight: 300;
+}
+
+.pg2_items {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.price_btn,
+.submit_btn {
+  padding: 10px 40px;
+  display: inline-block;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  background: #41d13e;
+  color: #fff;
+  border-radius: 0;
+
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+}

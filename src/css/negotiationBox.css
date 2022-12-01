@@ -1,0 +1,149 @@
+.negot_card {
+  display: flex;
+  flex-direction: row;
+  column-gap: 3rem;
+  background-color: #fff;
+  color: #555;
+  font-size: 200;
+  line-height: 20px;
+  padding: 2rem;
+  margin-top: 10px;
+}
+
+.product_img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.iname {
+  color: #000;
+  font-size: 600;
+  text-transform: uppercase;
+}
+
+.negot_price {
+  display: flex;
+  column-gap: 10px;
+}
+
+.discount_price {
+  color: #000;
+  font-size: 1.2rem;
+  font-size: 700;
+}
+
+.actual_price {
+  text-decoration: line-through;
+}
+
+.discount_amount {
+  padding-top: 2rem;
+  color: #41d13e;
+}
+
+.counter,
+.price_limit {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter_btn {
+  /* padding: ; */
+  height: fit-content;
+  width: fit-content;
+  display: inline-block;
+  font-size: 1.8rem;
+  border-radius: 50px;
+  border-style: none;
+  background: none;
+  color: #41d13e;
+}
+
+.counter_btn:hover {
+  background: none;
+}
+
+.price_limit_text {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #000;
+}
+
+.limit_btn {
+  height: fit-content;
+  width: fit-content;
+  display: inline-block;
+  font-size: 1.8rem;
+  border-radius: 10px;
+  border-style: none;
+  color: #41d13e;
+}
+
+.limit_btn:hover {
+  background-color: #41d13e;
+  color: #fff;
+}
+
+.limit_input {
+  block-size: 40px;
+}
+
+.price_content {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+}
+
+.end_price_content,
+.date_img {
+  display: flex;
+  flex-direction: column;
+}
+
+.date_img {
+  align-self: center;
+  row-gap: 20px;
+}
+
+.product_img_caption {
+  color: #000;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.end_price_content {
+  text-align: center;
+  row-gap: 20px;
+}
+
+.accept_btn {
+  padding: 10px 40px;
+  display: inline-block;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  background: #41d13e;
+  color: #fff;
+  border-radius: 0;
+
+  /* position: absolute;
+  bottom: 15px;
+  right: 30px; */
+}
+
+.price_list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.4rem;
+  text-transform: uppercase;
+}
+
+.price_list_label {
+  color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}

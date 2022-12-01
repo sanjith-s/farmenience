@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./css/pageM15.css";
 import NegotNav from "./components/negotNav";
-import NegotiationBox from "./components/negotiationBox";
+import NegotiationBox1 from "./components/negotiationBox1";
+import NegotiationBox2 from "./components/negotiationBox2";
+import NegotiationBox3 from "./components/negotiationBox3";
 import WheatImg from "./WheatImg.png";
 
 function PageM15() {
@@ -48,7 +50,7 @@ function PageM15() {
     <div>
       <div className="pg1">
         <NegotNav />
-        <div>
+        <div className="negot_address">
           <p>Adress:</p>
           <h3>{userData.name}</h3>
           {!isEditOn ? (
@@ -62,11 +64,11 @@ function PageM15() {
             />
           )}
           {!isEditOn ? (
-            <button className="chg-btn" onClick={editHandler}>
+            <button className="chg_btn" onClick={editHandler}>
               Change
             </button>
           ) : (
-            <button className="chg-btn" onClick={updateAddress}>
+            <button className="chg_btn" onClick={updateAddress}>
               Update
             </button>
           )}
@@ -76,7 +78,7 @@ function PageM15() {
         <div className="pg1_items">
           {salesItems.map((item, index) => {
             return (
-              <NegotiationBox
+              <NegotiationBox1
                 key={index}
                 iName={item.itemName}
                 quantity={item.quantity}
@@ -86,7 +88,7 @@ function PageM15() {
               />
             );
           })}
-          <p>Negotiative price</p>
+          <button className="price_btn">Negotiative price</button>
         </div>
       </div>
 
@@ -96,7 +98,7 @@ function PageM15() {
         <div className="pg2_items">
           {salesItems.map((item, index) => {
             return (
-              <NegotiationBox
+              <NegotiationBox2
                 key={index}
                 iName={item.itemName}
                 quantity={item.quantity}
@@ -106,7 +108,7 @@ function PageM15() {
               />
             );
           })}
-          ;<p>sumbit</p>
+          <button className="submit_btn">sumbit</button>
         </div>
       </div>
       <div className="pg3">
@@ -115,7 +117,7 @@ function PageM15() {
         <div className="pg3_items">
           {salesItems.map((item, index) => {
             return (
-              <NegotiationBox
+              <NegotiationBox3
                 key={index}
                 iName={item.itemName}
                 quantity={item.quantity}
@@ -125,7 +127,7 @@ function PageM15() {
               />
             );
           })}
-          ;<p>sumbit</p>
+          ;<button>sumbit</button>
         </div>
       </div>
     </div>

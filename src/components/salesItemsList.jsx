@@ -8,8 +8,8 @@ function SalesItemsList(props) {
   const cardList = props.cards;
   return (
     <ul className="sales-items-list">
-      {cardList.map((card) => (
-        <li value={card} onClick={onClickHandler}>
+      {cardList.map((card, index) => (
+        <li key={index} value={card} onClick={onClickHandler}>
           {card}
         </li>
       ))}

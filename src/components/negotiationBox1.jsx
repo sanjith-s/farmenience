@@ -3,7 +3,7 @@ import WheatImg from "../WheatImg.png";
 import "../css/negotiationBox.css";
 
 function NegotiationBox1(props) {
-  const [counter, setcounter] = useState(1);
+  let [counter, setcounter] = useState(1);
   const increment = () => {
     setcounter(counter + 1);
   };

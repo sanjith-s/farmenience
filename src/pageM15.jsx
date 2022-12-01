@@ -5,6 +5,7 @@ import NegotiationBox1 from "./components/negotiationBox1";
 import NegotiationBox2 from "./components/negotiationBox2";
 import NegotiationBox3 from "./components/negotiationBox3";
 import WheatImg from "./WheatImg.png";
+import { YoutubeSearchedFor } from "@mui/icons-material";
 
 function PageM15() {
   const [address, setAddress] = useState(
@@ -15,34 +16,56 @@ function PageM15() {
     name: "Rakesh k",
     number: 8300677299,
   };
+
   const [isEditOn, setEditOn] = useState(false);
   const editHandler = () => {
     setEditOn(true);
   };
+
   const updateAddress = () => {
     setAddress(document.querySelector(".address").value);
     setEditOn(false);
   };
+
   const handleAddress = () => {
     setAddress(document.querySelector(".address").value);
   };
 
+  const [priceLimit1, setPriceLimit1] = useState();
+  const [priceLimit2, setPriceLimit2] = useState();
+
+  const priceLimitHandler = (limit, index) => {
+    if (index == 1) {
+      setPriceLimit1(limit);
+    } else if (index == 2) {
+      setPriceLimit2(limit);
+    }
+  };
+
   const salesItems = [
     {
+      index: 1,
+      seller: 1,
       itemName: "Whole wheat",
       quantity: 10,
       actualPrice: 525,
       discountPrice: 500,
       imgSrc: "WheatImg",
       discountAmount: 25,
+      purchaseDate: new Date(2022, 4, 23),
+      acceptance: "yes",
     },
     {
+      index: 2,
+      seller: 2,
       itemName: "parboiled rice",
       quantity: 15,
       actualPrice: 950,
       discountPrice: 800,
       imgSrc: "WheatImg",
       discountAmount: 150,
+      purchaseDate: new Date(2022, 4, 23),
+      acceptance: "no",
     },
   ];
 
@@ -88,7 +111,7 @@ function PageM15() {
               />
             );
           })}
-          <button className="price_btn">Negotiative price</button>
+          <button className="price_btn">Negotiate price</button>
         </div>
       </div>
 
@@ -105,6 +128,8 @@ function PageM15() {
                 actualPrice={item.actualPrice}
                 discountAmount={item.discountAmount}
                 discountPrice={item.discountPrice}
+                index={item.index}
+                onlimitHandler={priceLimitHandler}
               />
             );
           })}
@@ -116,18 +141,19 @@ function PageM15() {
 
         <div className="pg3_items">
           {salesItems.map((item, index) => {
+            const plimit = item.index == 1 ? priceLimit1 : priceLimit2;
             return (
               <NegotiationBox3
                 key={index}
+                seller={item.seller}
                 iName={item.itemName}
-                quantity={item.quantity}
-                actualPrice={item.actualPrice}
-                discountAmount={item.discountAmount}
                 discountPrice={item.discountPrice}
+                purchaseDate={item.purchaseDate}
+                userPrice={plimit}
+                acceptance={item.acceptance}
               />
             );
           })}
-          ;<button>sumbit</button>
         </div>
       </div>
     </div>

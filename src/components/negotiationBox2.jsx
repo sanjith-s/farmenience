@@ -19,6 +19,12 @@ function NegotiationBox2(props) {
       limit >= props.discountPrice / 2 ? limit - 1 : (limit = discountPrice / 2)
     );
   };
+  const limitHandler = (event) => {
+    newLimit = event.target.value;
+    setlimit(newLimit);
+  };
+
+  props.onlimitHandler(limit, props.index);
 
   return (
     <div className="negot_card">
@@ -44,20 +50,24 @@ function NegotiationBox2(props) {
           -
         </button>
       </div>
-      <div className="price_limit">
-        <button className="limit_btn" onClick={limitIncrement}>
-          +
-        </button>
-        <input
-          className="limit_input"
-          type="number"
-          min={props.actualPrice / 2}
-          max={props.actualPrice}
-          value={limit}
-        />
-        <button className="limit_btn" onClick={limitDecrement}>
-          -
-        </button>
+      <div>
+        <h3 className="price_limit_text">your price</h3>
+        <div className="price_limit">
+          <input
+            className="limit_input"
+            type="number"
+            min={props.actualPrice / 2}
+            max={props.actualPrice}
+            value={limit}
+            onChange={limitHandler}
+          />
+          <button className="limit_btn" onClick={limitIncrement}>
+            +
+          </button>
+          <button className="limit_btn" onClick={limitDecrement}>
+            -
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import PageM3 from './pageM3';
 import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
 import PageM12 from "./pageM12";
+import PageM17 from "./pageM17";
 import PageN5 from "./pageN5";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PageN5 />} />
+          <Route path="/" element={<PageM17 />} />
           <Route path="/ordersummary" />
         </Routes>
       </BrowserRouter>

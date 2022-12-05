@@ -9,6 +9,7 @@ import PageM4 from "./pageM4";
 import Footer from "./components/footer.js";
 import PageM5 from "./pageM5";
 import M7 from './M7';
+import M2 from './M2';
 
 function App() {
     const itemsBought=[
@@ -40,7 +41,8 @@ function App() {
       clientName="YYYYYY" paymentMode="By cash" transactionId="34232211" remarks="hhsckbhsbhsbj" 
       itemsBought={itemsBought} /><hr />
       <PageM5 /> */}
-      <M7/>
+      {/* <M7/> */}
+      <M2/>
       {/* <Footer /> */}
     </div>
   );

@@ -54,20 +54,20 @@ function M17() {
         <><div>
             <center>
                 <h1 id="buyconfirmation">
-                    TRANSACTION HISTORY
+                    View Transaction History
                 </h1>
             </center>
         </div>
             <div id="details">
                 {buyerHistory.map((record)=>(
                         <div key={record.id}>
-                            <h5> IFSC Code: {bill.IFSCCode} </h5>
-                            <h5> Transaction ID: {bill.TransactionID}</h5>
-                            <h5> Payment Mode: {bill.PaymentMode}</h5>
-                            <h5> Bank Name: {bill.BankName}</h5>
-                            <h5> Total Amount: {bill.Amount}</h5>
-                            <h5> Sender: {bill.Sender}</h5>
-                            <h5> Receiver: {bill.Receiver}</h5>
+                            <h5> IFSC Code: {record.IFSCCode} </h5>
+                            <h5> Transaction ID: {record.TransactionID}</h5>
+                            <h5> Payment Mode: {record.PaymentMode}</h5>
+                            <h5> Bank Name: {record.BankName}</h5>
+                            <h5> Total Amount: {record.Amount}</h5>
+                            <h5> Sender: {record.Sender}</h5>
+                            <h5> Receiver: {record.Receiver}</h5>
                             -------------------------------------
                         </div>
                     )

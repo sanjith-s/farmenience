@@ -1,5 +1,6 @@
 
 import React, {useEffect, useState} from "react";
+import './css/pageM17.css';
 //import Axios from "axios";
 
 function M17() {
@@ -51,13 +52,14 @@ function M17() {
       ];
 
     return (
-        <><div>
+        <><div id="top">
             <center>
-                <h1 id="buyconfirmation">
+                <label id="header">
                     View Transaction History
-                </h1>
+                </label>
             </center>
         </div>
+        <br></br>
             <div id="details">
                 {buyerHistory.map((record)=>(
                         <div key={record.id}>

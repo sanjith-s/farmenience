@@ -35,8 +35,7 @@ const PageN5 = () => {
     { value: 'type2', label: 'Non Profit' }
   ]
   return (
-    <div className="box">
-      <Navbar />
+    <div className="box customScroll">
       <div className="titlebox"><span className="title">Schedule meet with NGO</span></div>
 
       <div className="container">
@@ -65,8 +64,7 @@ const PageN5 = () => {
         </div>
         <div className="pic-cont"><img className="img-cont" src={'/ngo-meet.jpg'} alt="ngo meet" /></div>
       </div>
-      <button onClick={handleSubmit}>Submit</button>
-      <Footer />
+      <button onClick={handleSubmit} className="submit">Submit</button>
     </div>
   );
 };

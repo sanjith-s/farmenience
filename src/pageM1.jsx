@@ -1,7 +1,8 @@
 import React from 'react';
 import RequestBox from './components/requestBox';
+
 import './css/pageM1.css'
-function pageM2() {
+function PageM1() {
 	const AllRequests = [
     {
      reqId:"XXXXXXX",
@@ -50,7 +51,7 @@ function pageM2() {
 	]
 	return (
      <div className="pageM1">
-     <p className="label2" style={{marginLeft:"15%"}}>(PAGE M2)You have N Request</p>
+     {/* <p className="label2" style={{marginLeft:"15%"}}>(PAGE M2)You have N Request</p> */}
      <div className="allBoxes">
      {AllRequests.map((req,index)=>{
      	return <RequestBox key={index+1} reqId={req.reqId} name={req.name} phoneNo={req.phoneNo} 
@@ -60,4 +61,4 @@ function pageM2() {
      </div>
 	)
 }
-export default pageM2;
+export default PageM1;

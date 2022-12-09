@@ -1,0 +1,43 @@
+.optCont {
+    display: flex;
+    flex-direction: row;
+}
+
+.ocart {
+    display: flex;
+    margin-left: 10px;
+}
+
+.cart-logo {
+    color: rgb(0, 136, 255);
+}
+
+.cart-logo:hover {
+    color: rgba(255, 255, 255, 0.937);
+    background-color: rgb(0, 136, 255);
+}
+.viewButton {
+    background-color: rgb(244, 129, 15);
+    color: white;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.cardBox {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    margin: 2%;
+    width: max-content;
+}
+
+.viewButton:hover {
+    background-color: white;
+    color: rgb(244, 129, 15);
+}
+
+.flexItem {
+    margin: 5px;
+}

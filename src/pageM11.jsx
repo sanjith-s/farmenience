@@ -41,7 +41,17 @@ const PageM11 = () => {
         </div>
       </div>
       <div className="container">
-        <div className="ip-cont"><span>Filter By</span></div>
+        <div className="ip-cont">
+          <span
+            style={{
+              color: "black",
+              fontSize: "1.5em",
+              fontFamily: "Montserrat",
+            }}
+          >
+            Filter By
+          </span>
+        </div>
         <div className="item-cont">
           <ItemCard />
         </div>

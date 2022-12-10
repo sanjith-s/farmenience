@@ -1,26 +1,7 @@
-
-import React, {useEffect, useState} from "react";
 import TransactionHistory from "./components/TransactionHistory";
 import './css/pageM17.css';
-//import Axios from "axios";
 
 function M17() {
-
-    //const [buydetails, setBuydetails] = useState([]);
-
-    /*useEffect(() => {
-    Axios.post('http://localhost:9091/api/buy/confirm', {
-        custEmail: email
-    }).then((response) => {
-        setBuydetails(response.data);
-        console.log(response)
-        if (response.data == 'success') {
-            window.location.href = "http://localhost:3000/login";
-        }
-    });
-    }, []);
-
-    let i;*/
 
     const buyerHistory = [
         {

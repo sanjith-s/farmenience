@@ -2,9 +2,6 @@ import React from "react";
 import "../css/transactionHistory.css";
 
 function TransactionHistory(props) {
-    const onClickHandler = (event) => {
-        console.log(event.target.outerText);
-    };
     const cardList = props.cards;
     return (
         <ul className="transaction">

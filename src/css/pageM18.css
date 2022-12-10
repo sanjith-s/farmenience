@@ -3,17 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 #text {
-    margin-bottom: 25px;
-    margin-left: 0px;
+    margin-bottom: 1.5625rem;
+    margin-left: 0rem;
   }
 
   label {
     display: inline-block;
-    width: 250px;
+    width: 15.625rem;
     text-align: left;
     color: black;
     font-weight: 700;
-    size: 20px;
+    size: 1.25rem;
     padding: 0 0.6em;
     line-height: 1;
     white-space: nowrap;
@@ -30,9 +30,9 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: solid black 1px;
-    padding: 3px 10px;
-    width: 300px;
+    border-bottom: solid black 0.063rem;
+    padding: 0.188rem 0.625rem;
+    width: 18.75rem;
   }
 
 #bold {
@@ -42,11 +42,11 @@
 .buttons {
     background-color: #138808;
     color: white;
-    border-width: 2px;
+    border-width: 0.125rem;
     border-color: white;
-    border-radius: 5px;
+    border-radius: 0.313rem;
     height: 100%;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .buttons:hover {

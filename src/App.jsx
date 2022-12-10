@@ -18,6 +18,7 @@ function App() {
       <Navbar/>
       <BrowserRouter>
         <Routes>
+          <Route path="/M3" element={<PageM3/>} />  
           <Route path="/M11" element={<PageM11/>} />
           <Route path="/M17" element={<PageM17 />} />
           <Route path="/M18" element={<PageM18 />} />

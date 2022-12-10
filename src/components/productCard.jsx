@@ -1,7 +1,8 @@
 import React from "react";
 import "../css/pageM18.css";
+import { useState } from "react";
 
-function productCard() {
+function ProductCard() {
   
       const [name, setName] = useState("");
       const [price, setPrice] = useState(0);
@@ -50,4 +51,4 @@ function productCard() {
   );
 }
 
-export default productCard;
+export default ProductCard;

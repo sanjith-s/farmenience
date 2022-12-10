@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header{
+    font-weight: bold;
+    font-size: 210%;
+}
+
+.transac-header{
+    font-weight: 700;
+    font-size: 190%;
+}
+
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.transac-elem {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10vh;
+}
+
+.btn-class {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10vh;
+}
+
+.btn-class-a{
+    background: #FF8787;
+    outline: none;
+    border: none;
+    padding-left:  10%;
+    padding-right:  10%;
+    padding-top:  10%;
+    padding-bottom:  10%;
+    border-radius: 10px;
+}
+
+.a1{
+    font-weight: 500;
+    font-size: large;
+}
+
+.btn-class-b{
+    background: #59D246;
+    outline: none;
+    border: none;
+    padding-left:  10%;
+    padding-right:  10%;
+    padding-top:  10%;
+    padding-bottom:  10%;
+    border-radius: 10px;
+}
+
+.transac-elem-defn{
+    font-weight: 500;
+    font-size: medium;
+    background-color: #1fe57a;
+    border-radius: 10px;
+    /* padding-top: 5%; */
+    padding-left: 5%;
+    padding-right: 10%;
+}

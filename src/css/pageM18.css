@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+#text {
+    margin-bottom: 25px;
+    margin-left: 0px;
+  }
+
+  label {
+    display: inline-block;
+    width: 250px;
+    text-align: left;
+    color: black;
+    font-weight: 700;
+    size: 20px;
+    padding: 0 0.6em;
+    line-height: 1;
+    white-space: nowrap;
+    border-radius: .25em;
+  }
+
+  input {
+    display: inline-block;
+    /* margin-left: 10px; */
+    background-color: transparent;
+    color: black;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid black 1px;
+    padding: 3px 10px;
+    width: 300px;
+  }
+
+#bold {
+    font-weight: bold;
+}
+
+.buttons {
+    background-color: #138808;
+    color: white;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 5px;
+    height: 100%;
+    font-size: 20px;
+}
+
+.buttons:hover {
+    background-color: white;
+    color: #138808
+}

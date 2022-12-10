@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './css/request.css';
-function Request(props) {
+function Query(props) {
      var [updateReason,setUpdate] = useState(false);
      const GiveEdit = () => {
           setUpdate(true);
@@ -32,7 +32,7 @@ function Request(props) {
                      <span className="values">{props.meetReason} <button className="edit-btn" onClick={GiveEdit}>✏️</button></span>
                      }<br /></div>
                 <div className="flex-item">
-                     <span className="label">TYpe of NGO</span>
+                     <span className="label">Type of NGO</span>
                      <select name="" id="" className="values" >
                      <option value="NGO">NGO</option>
                      <option value="Non-NGO">Non-NGO</option>
@@ -45,4 +45,4 @@ function Request(props) {
      </div>
 	)
 }
-export default Request;
+export default Query;

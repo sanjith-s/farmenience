@@ -1,0 +1,286 @@
+.pay-details {
+	display:flex;
+	flex-direction: column;
+/*	text-align: center;*/
+    padding-bottom: 2%;
+}
+
+.pay-nav {
+	display: flex;
+	background: rgba(65, 209, 62, 1);
+	width: 100%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+.cart {
+	display: flex;
+	font-size: xx-large;
+	align-items: center;
+/*	justify-content: space-between;*/
+	width: 20%;
+}
+
+.cart-ele2 {
+/*	padding-left: 2%;*/
+    text-align: center;
+    flex: 2;
+}
+
+.cart-icon {
+	padding-right: 4%;
+}
+
+.cart-ele1 {
+	flex: 1;
+}
+
+.cart-icon {
+	flex: 1;
+}
+
+.back-icon:hover {
+	background-color: darkgreen;
+	border-radius: 20%;
+}
+
+.add1 {
+    padding-top: 2%;
+}
+
+.address-box {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.del-address {
+	display: flex;
+	flex-direction: column;
+	border-radius: 999em;
+}
+
+.top1,.top2 {
+	display: flex;
+}
+
+.del-address > div {
+	display: flex;
+}
+
+.ans {
+	font-weight: bolder;
+}
+.chg-btn {
+	display: inline-block;
+	padding: 3px;
+	margin-left: 10px;
+}
+
+.add2 {
+    align-items: center;
+    justify-content: center;
+}
+
+.address-box > div {
+	border: 1px solid black;
+	padding: 1% 2% 1% 2%;
+	margin-top: 1%;
+}
+.mid-row {
+	display: flex;
+	background: rgba(190, 202, 190, 1);
+	align-items: center;
+	margin-top: 1%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 1%;
+}
+.m-items {
+	font-size: 1.4rem;
+	flex: 1;
+}
+.m1 {
+	flex: 13;
+}
+.back-btn {
+/*	margin-right: 1%;*/
+}
+.m-btn {
+	border-radius: 20%;
+	padding: 2px;
+}
+.m-btn:hover {
+    background-color: darkgrey;
+    color: white;
+}
+.m-text {
+	border-radius: 999em;
+	padding: 1%;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.items-head {
+	font-size: 1.9rem;
+	padding: 1%;
+}
+.all-items {
+	display: flex;
+	flex-wrap: wrap;
+}
+.item-short-detail {
+	padding: 1% 2%;
+	display: flex;
+	align-items: center;
+	background-color: ghostwhite;
+	border-radius: 999em;
+	margin-right: 1%;
+}
+.i-img {
+	padding: 5%;
+	width: 100px;
+}
+
+.iname {
+	font-size: 1.3rem;
+	font-weight: bolder;
+}
+
+.i-desc {
+	display: flex;
+	flex-direction: column;
+}
+
+.bot-head,.table1,.all-items,.items-head {
+     margin-left: 2%;
+}
+
+.bot-head {
+	font-size: 1.6rem;
+	font-weight: bolder;
+	display: flex;
+	justify-content: center;
+}
+
+.order-row {
+	display: flex;
+	flex-direction: column-reverse;
+	margin-left: 2%;
+}
+
+.order-btn {
+	border-radius: 999em;
+	padding: 10px 15px;
+	text-decoration: none;
+	font-weight: bolder;
+    background-color: palegreen;
+}
+.order-btn:hover {
+    color: ghostwhite;
+    background-color: darkgreen;
+}
+
+.table1 {
+	display: flex;
+/*	justify-content: center;*/
+/*	flex-direction: column;*/
+}
+.time-sl > div {
+	display: flex;
+	align-items:center;
+}
+.time-sl > div > input {
+	flex: 2;
+}
+.another-table {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;	
+}
+.another-table > div {
+	display: flex;
+	justify-content: center;
+}
+.progress-title {
+	margin: 1%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.4rem;
+	color: darkolivegreen;
+}
+.pro-bar {
+	position: sticky;
+	padding-top: 1%;
+	top:0;
+    background: rgba(190, 202, 190, 1);
+}
+.del-slot {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.d-box {
+	padding: 1%;
+    border: 1px solid black;
+    text-align: center;
+}
+.time-slot {
+	padding: 1%;
+}
+.ex-text {
+	font-weight: bolder;
+	font-size: 1.0rem;
+	text-align: center;
+}
+.order-summary,.orderSummary {
+	font-size: 1.1rem;
+/*	padding: 1%;*/
+	text-align: center;
+/*	padding-bottom: 2%;*/
+/*	display: none;*/
+/*    visibility: none;*/
+}
+.pay {
+    text-align: left;
+	padding-left: 2%;
+	font-size: 1.4rem;
+}
+.options {
+	display: flex;
+	flex-direction: column;
+}
+.radio-btn {
+	padding: 0;
+	margin: 0;
+	text-align: left;
+/*	display: inline-block;*/
+}
+.radio {
+	display: inline-block;
+	width: 20px;
+}
+.options > div {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 10px;
+	width: 30%;
+}
+.date-option:checked + p {
+	color: ghostwhite;
+	background-color: darkolivegreen;
+	border-radius: 999em;
+	font-weight: bolder;
+	font-size: 1.1rem;
+	padding: 2px;
+}
+.time-opt:checked + span {
+    color:black;
+    font-weight: bolder;
+	border-radius: 999em;
+	padding: 2px;	
+}
+.time-sl > div {
+	padding: 5px;
+}

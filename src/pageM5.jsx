@@ -7,7 +7,7 @@ import "./css/pageM5.css";
 function PageM5() {
   return (
     <div>
-        <Navbar/>
+        {/*<Navbar/>*/}
         <div className='rectangle-29'>
           <form>
           <div>

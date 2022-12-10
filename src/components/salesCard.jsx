@@ -25,7 +25,7 @@ function SalesCard(props) {
         </div>
       </div>
       <div>
-        <div className="card-button"> view sale </div>
+        <button className="card-button"> view sale </button>
       </div>
     </li>
   );

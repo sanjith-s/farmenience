@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useRef } from "react";
 import "./css/pageM18.css";
 import ProductCard from './components/productCard'
 
@@ -7,14 +6,14 @@ import ProductCard from './components/productCard'
 const PageM18 = () => {
 
   return (
-    <div className="box">
-      <div className="titlebox">
+    <div>
+      <div>
         <span className="title">Publish New Request</span>
       </div>
       <div>
-      <ProductCard />
+        <ProductCard />
       </div>
-      <center><button class="buttons" onClick={() => {}}>Submit Request</button></center>
+      <center><button class="buttons">Submit Request</button></center>
     </div>
   );
 };

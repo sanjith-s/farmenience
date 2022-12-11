@@ -1,7 +1,8 @@
 import React from "react";
 import "../css/pageM18.css";
+import { useState } from "react";
 
-function productCard() {
+function ProductCard() {
   
       const [name, setName] = useState("");
       const [price, setPrice] = useState(0);
@@ -43,11 +44,12 @@ function productCard() {
           onChange={(event) => { setLocation(event.target.value); } }></input>
            <br></br>
       </div>
-      <center><button class="buttons" onClick={() => {Check()}}>+ Add Product</button></center>
+      <br></br><br></br>
+      <center><button class="buttons" onClick={() => ProductCard()}>+ Add Product</button></center>
       <br></br>
       <br></br>
       </>
   );
 }
 
-export default productCard;
+export default ProductCard;

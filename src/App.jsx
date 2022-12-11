@@ -9,6 +9,7 @@ import PageM12 from "./pageM12";
 import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageN5 from "./pageN5";
+import Image from "./image";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/M11" element={<PageM11/>} />
           <Route path="/M17" element={<PageM17 />} />
           <Route path="/M18" element={<PageM18 />} />
+          <Route path="/image" element={<Image />} />
           <Route path="/ordersummary" />
         </Routes>
       </BrowserRouter>

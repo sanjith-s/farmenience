@@ -10,10 +10,12 @@ const PageM18 = () => {
       <div>
         <span className="title">Publish New Request</span>
       </div>
+      <br></br><br></br><br></br><br></br>
       <div>
         <ProductCard />
       </div>
       <center><button class="buttons">Submit Request</button></center>
+      <br></br><br></br>
     </div>
   );
 };

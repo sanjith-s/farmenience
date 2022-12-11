@@ -45,7 +45,7 @@ function ProductCard() {
            <br></br>
       </div>
       <br></br><br></br>
-      <center><button class="buttons" onClick={() => {Check()}}>+ Add Product</button></center>
+      <center><button class="buttons" onClick={ProductCard()}>+ Add Product</button></center>
       <br></br>
       <br></br>
       </>

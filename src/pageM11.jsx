@@ -41,7 +41,7 @@ const PageM11 = () => {
         </div>
       </div>
       <div className="container">
-        <div className="ip-cont">
+        <div className="filter-cont">
           <span
             style={{
               color: "black",
@@ -52,7 +52,14 @@ const PageM11 = () => {
             Filter By
           </span>
         </div>
-        <div className="item-cont">
+        <div className="card-cont">
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
           <ItemCard />
         </div>
       </div>

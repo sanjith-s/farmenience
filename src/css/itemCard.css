@@ -30,7 +30,9 @@
     flex-direction: column;
     height: max-content;
     margin: 2%;
-    width: max-content;
+    border: solid rgb(140, 140, 140);
+    border-width: 2px;
+    border-radius: 5px;
 }
 
 .viewButton:hover {
@@ -40,4 +42,30 @@
 
 .flexItem {
     margin: 5px;
+}
+
+.itemName {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1em;
+    color: rgb(0, 136, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.sellerCount {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    color: rgb(93, 93, 93);
+}
+
+.sfrom {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(244, 129, 15);
+    font-size: 0.8rem;
+}
+
+.itemPrice {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(0, 136, 255);
+    font-size: 1.2rem;
 }

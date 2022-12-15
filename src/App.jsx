@@ -1,5 +1,9 @@
 import React from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Homepage1 from './homepage1';
+import Homepage2 from './homepage2';
+import Signup from './signup';
+import Login from './login';
 import PageM1 from './pageM1';
 import PageM3 from './pageM3';
 import PageM4 from "./pageM4";
@@ -10,7 +14,6 @@ import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageM19 from './pageM19';
 import PageN5 from "./pageN5";
-import PageM9 from "./pageM9";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
@@ -20,6 +23,10 @@ function App() {
       <Navbar/>
       <BrowserRouter>
         <Routes>
+          <Route path="/homepage1" element={<Homepage1/>} />
+          <Route path="/homepage2" element={<Homepage2/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup/>} />
           <Route path="/M3" element={<PageM19/>} />  
           <Route path="/M12" element={<PageM12/>} />
           <Route path="/M5" element={<PageM5/>} />

@@ -206,7 +206,7 @@ function Signup() {
           />
           <br />
           <button type="submit" class="button">
-            Submit
+          <Link id="sign" to='/login'>Submit</Link>
           </button>
         </center>
       </form>

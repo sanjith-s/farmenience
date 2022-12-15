@@ -3,11 +3,27 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageM3 from "./pageM3";
 
 import PageM6 from "./pageM6";
+import React from 'react'
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Homepage1 from './homepage1';
+import Homepage2 from './homepage2';
+import Signup from './signup';
+import Login from './login';
+import PageM1 from './pageM1';
+import PageM3 from './pageM3';
+import PageM4 from "./pageM4";
+import PageM5 from "./pageM5";
 import PageM11 from "./pageM11";
 
 import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageM19 from "./pageM19";
+import PageM19 from './pageM19';
+import PageN5 from "./pageN5";
+import PageN2 from './pageN2';
+import AllQueries from './N1'; 
+import Navbar from './components/navbar';
+import Footer from './components/footer';
 
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";

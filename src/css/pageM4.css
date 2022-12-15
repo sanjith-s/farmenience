@@ -1,138 +1,140 @@
 .pagem4 {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-@media only screen and (max-width: 800px)  {
-	.pagem4 {
-		flex-direction: column;
-	}
-	.pagem4 > div {
-		width: 90%;
-	}
+@media only screen and (max-width: 800px) {
+  .pagem4 {
+    flex-direction: column;
+  }
+  .pagem4 > div {
+    width: 90%;
+  }
 }
 
 .salebox {
-	font-size: 1.2rem;
-	background: rgba(217, 217, 217, 1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    column-gap: 2%;
-	width: 40%;
+  font-size: 1.2rem;
+  background: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  column-gap: 2%;
+  width: 40%;
 }
 .s-key {
-	flex: 1;
-	background: rgba(22, 229, 117, 1);
-	width: 30%;
-	padding: 2% 1% 2% 1%;
+  flex: 1;
+  background: rgba(22, 229, 117, 1);
+  width: 30%;
+  padding: 2% 1% 2% 1%;
 }
 .s-value {
-	flex: 1;
-	padding-left: 5%;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	background: rgba(196, 225, 197, 1);
-	margin: auto;
-	text-align: center;
+  flex: 1;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background: rgba(196, 225, 197, 1);
+  margin: auto;
+  text-align: center;
 }
 .s-row {
-    padding: 2%;
-    padding-left: 6%;
-	display: flex;
-	justify-content: space-between;
-	align-items: space-between;
+  padding: 2%;
+  padding-left: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
 }
 .s-contact {
-	flex:1;
-	text-align: center;
-	padding-top: 1%;
-	padding-bottom: 1%;
-	border-radius: 10px 15px 20px;
-	background-color: rgba(22, 229, 117, 1);
+  flex: 1;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 10px 15px 20px;
+  background-color: rgba(22, 229, 117, 1);
 }
 .billbox {
-	background-color: rgba(196, 225, 197, 1);
-	flex: 1;
-	padding: 2%;
-	border-radius: 20px 30px;
-	display: flex;
-	flex-direction: column;
-    justify-content: space-between;
-    align-items: space-between;
-    font-size: 1.2rem;
-	border: 1px solid darkgreen;
+  background-color: rgba(196, 225, 197, 1);
+  flex: 1;
+  padding: 2%;
+  border-radius: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  font-size: 1.2rem;
+  border: 1px solid darkgreen;
 }
 .b-row1 {
-	display: flex;
-	justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .printbox {
-	padding: 5% 5% 5% 5%;
-	background-color: rgba(22, 229, 117, 1);
-	box-shadow: 2px 3px darkgreen;
-	border-radius: 10px 15px;
-	font-weight: normal;
+  padding: 5% 5% 5% 5%;
+  background-color: rgba(22, 229, 117, 1);
+  box-shadow: 2px 3px darkgreen;
+  border-radius: 10px 15px;
+  font-weight: normal;
 }
-.printbox:hover,.b-row5 > div:hover {
-	background-color: rgba(30, 369, 117, 6);
-	font-weight: bolder;
-	color: black;
+.printbox:hover,
+.b-row5 > div:hover {
+  background-color: rgba(30, 369, 117, 6);
+  font-weight: bolder;
+  color: black;
 }
 .b-row2 {
-	display: flex;
-	justify-content: center;
-    align-items: center;
-    padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto;
 }
 .b-row2 > div {
-	background: rgba(217, 217, 217, 1);
-	padding: 1% 2% 1% 2%;
+  background: rgba(217, 217, 217, 1);
+  padding: 1% 2% 1% 2%;
 }
 .b-row3 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .a-head {
-	font-weight: bolder;
+  font-weight: bolder;
 }
 .b-row4 {
-	flex: 1;
-	display: flex;
-	justify-content: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 .b-row5 {
-	flex:1;
-	display: flex;
-	justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
-table, th, td {
-  border:1px solid black;
+table,
+th,
+td {
+  border: 1px solid black;
 }
 table {
-	background-color: white;
+  background-color: white;
 }
 td {
-  padding:10px;
+  padding: 10px;
 }
 .s-box {
-	padding-bottom: 3%;
+  padding-bottom: 3%;
 }
 .totamt {
-	padding: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 1%;
 }
 .amt {
-	background-color: rgba(22, 229, 117, 1);
-	padding: 1% 1% 1% 1%;
-	border: 1px solid;
-	border-radius: 10px 15px;	
+  background-color: rgba(22, 229, 117, 1);
+  padding: 1% 1% 1% 1%;
+  border: 1px solid;
+  border-radius: 10px 15px;
 }
 .delsale {
-	background-color: rgba(22, 229, 117, 1);
-	padding: 2% 1% 2% 1%;
-	border: 1px solid;
-	border-radius: 10px 15px;
+  background-color: rgba(22, 229, 117, 1);
+  padding: 2% 1% 2% 1%;
+  border: 1px solid;
+  border-radius: 10px 15px;
 }

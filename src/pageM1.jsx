@@ -5,41 +5,35 @@ import './css/pageM1.css'
 function PageM1() {
 	const AllRequests = [
     {
-     reqId:"XXXXXXX",
-     name:"YYYYYYY",
-     phoneNo:9789656573,
-     // address:"AA,YYYYYYY,ZZZ",
-     itemName : "Mango",
-     itemQuantity : 10,
-     // itemPrice : 700  
-    },{
-     reqId : "JJKKKK",
-     name:"KHBKJBSK",
-     phoneNo:8737628723,
-     itemName:"Tomato",
-     itemQuantity:7,
-     // itemPrice:350
+      reqId: "XXXXXXX",
+      name: "YYYYYYY",
+      phoneNo: 9789656573,
+      // address:"AA,YYYYYYY,ZZZ",
+      itemName: "Mango",
+      itemQuantity: 10,
+      // itemPrice : 700
     },
     {
-     reqId : "JJKKKK",
-     name:"KHBKJBSK",
-     phoneNo:8737628723,
-     itemName:"Tomato",
-     itemQuantity:7
+      reqId: "JJKKKK",
+      name: "KHBKJBSK",
+      phoneNo: 8737628723,
+      itemName: "Tomato",
+      itemQuantity: 7,
+      // itemPrice:350
     },
     {
-     reqId : "JJKKKK",
-     name:"KHBKJBSK",
-     phoneNo:8737628723,
-     itemName:"Tomato",
-     itemQuantity:7
+      reqId: "JJKKKK",
+      name: "KHBKJBSK",
+      phoneNo: 8737628723,
+      itemName: "Tomato",
+      itemQuantity: 7,
     },
     {
-     reqId : "JJKKKK",
-     name:"KHBKJBSK",
-     phoneNo:8737628723,
-     itemName:"Tomato",
-     itemQuantity:7
+      reqId: "JJKKKK",
+      name: "KHBKJBSK",
+      phoneNo: 8737628723,
+      itemName: "Tomato",
+      itemQuantity: 7,
     },
     {
      reqId : "JJKKKK",

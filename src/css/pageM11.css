@@ -18,7 +18,7 @@ body > #root > div {
     justify-content: space-between;
 }
 
-.ip-cont {
+.filter-cont {
   width: 15vw;
   margin: 1%;
   display: flex;
@@ -94,7 +94,7 @@ input {
     width: 60%;
 }
 
-.item-cont {
+.card-cont {
     background-color: white;
     margin: 1%;
     background-color: rgba(255, 254, 254, 0.904);

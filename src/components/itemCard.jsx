@@ -6,18 +6,18 @@ const ItemCard = () => {
   return (
     <div className="cardBox">
       <div className="flexItem">
-        <span>Item Name</span>
+        <span className="itemName">Item Name</span>
       </div>
       <div className="flexItem">
         <img src="#" alt="Item image" />
       </div>
       <div className="flexItem">
-        <span>5 sellers</span>
+        <span className="sellerCount">5 Sellers</span>
       </div>
       <div className="flexItem">
-        <span>Starting from</span>
+        <span className="sfrom">Starting from</span>
         <br />
-        <span>&#8377; 1000 INR</span>
+        <span className='itemPrice'>&#8377; 1000 INR</span>
       </div>
       <div className="flexItem optCont">
         <div>

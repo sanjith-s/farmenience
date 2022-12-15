@@ -10,6 +10,7 @@ import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageM19 from './pageM19';
 import PageN5 from "./pageN5";
+import PageM9 from "./pageM9";
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 

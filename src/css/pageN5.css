@@ -99,7 +99,7 @@ body > #root > div {
     font-size: 1.3em;
 }
 
-button {
+.submit {
     margin: auto;
     padding: 10px 20px 10px 20px;
     font-family: "Open Sans", sans-serif;
@@ -109,7 +109,7 @@ button {
     border-width: 1px;
 }
 
-button:hover {
+.submit:hover {
     background-color: #07e06c;
 }
 

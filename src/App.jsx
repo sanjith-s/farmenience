@@ -1,51 +1,51 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PageM1 from "./pageM1";
-import PageM3 from "./pageM3";
+
+import React from 'react'
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import Homepage1 from './homepage1';
+import Homepage2 from './homepage2';
+import Signup from './signup';
+import Login from './login';
+import PageM1 from './pageM1';
+import PageM3 from './pageM3';
 import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
-import PageM9 from "./pageM9";
-import PageM15 from "./pageM15";
-// import PageM12 from "./pageM12";
+import PageM6 from "./pageM6";
+import PageM11 from "./pageM11";
+import PageM17 from "./pageM17";
+import PageM18 from "./pageM18";
+import PageM19 from "./pageM19";
+import PageN2 from './pageN2';
 import PageN5 from "./pageN5";
+import AllQueries from './N1'; 
+import Navbar from './components/navbar';
+import Footer from './components/footer';
 
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import "./css/app.css";
+import Headroom from "react-headroom";
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        {/* <Routes>
-          <Route path="/" element={<PageM1 />} />
-          <Route path="/ordersummary" />
-        </Routes> */}
-        <Routes>
-          <Route path="/" element={<PageM3 />} />
-          <Route path="/ordersummary" />
-        </Routes>
-        {/* <Routes>
-          <Route path="/" element={<PageM4 />} />
-          <Route path="/ordersummary" />
-        </Routes> */}
-        {/* <Routes>
-          <Route path="/" element={<PageM5 />} />
-          <Route path="/ordersummary" />
-        </Routes> */}
-        <Routes>
-          <Route path="/" element={<PageM15 />} />
-          <Route path="/ordersummary" />
-        </Routes>
-        <Routes>
-          <Route path="/" element={<PageM9 />} />
-          <Route path="/ordersummary" />
-        </Routes>
-        {/* <Routes>10
-          <Route path="/" element={<PageM12 />} />
-          <Route path="/ordersummary" />
-        </Routes> */}
-        {/* <Routes>
-          <Route path="/" element={<PageN5 />} />
-          <Route path="/ordersummary" />
-        </Routes> */}
-      </BrowserRouter>
+      <Headroom>
+        <Navbar />
+      </Headroom>
+      <main className="main-content">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/M3" element={<PageM3 />} />
+            <Route path="/M11" element={<PageM11 />} />
+            <Route path="/M6" element={<PageM6 />} />
+            <Route path="/M17" element={<PageM17 />} />
+            <Route path="/M18" element={<PageM18 />} />
+            <Route path="/M19" element={<PageM19 />} />
+            <Route path="/ordersummary" />
+          </Routes>
+        </BrowserRouter>
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Query from "./QueriesDetails";
+import Query from "./QueryDetails";
 import Navbar from "./components/navbar";
 import "./css/request.css";
 function AllQueries() {

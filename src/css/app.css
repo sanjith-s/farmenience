@@ -1,0 +1,17 @@
+body > #root > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* body {
+  display: flex;
+  flex-direction: column;
+} */
+
+.footer {
+  flex-shrink: 0;
+}
+
+.main-content {
+    flex: 1 0 auto;
+}

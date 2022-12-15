@@ -2,6 +2,7 @@
 import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
+import { Link } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
 function Signup() {
@@ -200,13 +201,13 @@ function Signup() {
             <option value="jobseeker">Job seeker</option>
           </select>
           <br />
-          <ReCAPTCHA
+          {/* <ReCAPTCHA
             sitekey={process.env.REACT_APP_SITE_KEY}
             ref={captchaRef}
-          />
+          /> */}
           <br />
           <button type="submit" class="button">
-          <Link id="sign" to='/login'>Submit</Link>
+          <Link id="sign" to='/'>Submit</Link>
           </button>
         </center>
       </form>

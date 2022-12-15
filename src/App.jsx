@@ -10,6 +10,8 @@ import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageM19 from './pageM19';
 import PageN5 from "./pageN5";
+import PageN2 from './pageN2';
+import AllQueries from './N1'; 
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 
@@ -25,6 +27,7 @@ function App() {
           <Route path="/M17" element={<PageM17 />} />
           <Route path="/M18" element={<PageM18 />} />
           <Route path="/M19" element={<PageM19/>} />
+          <Route path="/N2" element={<PageN2/>}/>
           <Route path="/ordersummary" />
         </Routes>
       </BrowserRouter>

@@ -5,16 +5,21 @@ import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
+
 import { Typography } from "@mui/material";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
+import Fab from "@mui/material/Fab";
 import { Button } from "@mui/material";
 import { Box } from "@mui/material";
-import Fab from "@mui/material/Fab";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
+import { TextField } from "@mui/material";
+import { InputAdornment } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
 
+import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+
+import SellItemCard from "./components/sellItemCard";
 const PageM6 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
@@ -46,70 +51,7 @@ const PageM6 = () => {
             alignItems: "center",
           }}
         >
-          <TextField
-            id="filled-basic"
-            label="Product Name"
-            variant="filled"
-            color="success"
-            sx={{
-              backgroundColor: "#C4E1C5",
-              borderBottomColor: "black",
-              width: "70%",
-            }}
-          />
-          <TextField
-            id="filled-basic"
-            label="Price"
-            variant="filled"
-            color="success"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">₹</InputAdornment>,
-            }}
-            sx={{
-              backgroundColor: "#C4E1C5",
-              borderBottomColor: "black",
-              width: "70%",
-            }}
-          />
-          <TextField
-            id="filled-basic"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-            }}
-            label="Quantity"
-            variant="filled"
-            color="success"
-            sx={{
-              backgroundColor: "#C4E1C5",
-              borderBottomColor: "black",
-              width: "70%",
-            }}
-          />
-          <TextField
-            id="filled-basic"
-            label="Type"
-            variant="filled"
-            color="success"
-            sx={{
-              backgroundColor: "#C4E1C5",
-              borderBottomColor: "black",
-              width: "70%",
-            }}
-          />
-          <Stack
-            direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
-            spacing={2}
-            display="flex"
-            justifyContent="center"
-          >
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
-              Add Item
-            </Button>
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
-              Delete Item
-            </Button>
-          </Stack>
+          <SellItemCard />
         </Container>
         <Container
           disableGutters={true}
@@ -121,23 +63,38 @@ const PageM6 = () => {
             paddingLeft: "0px",
             paddingRight: "0px",
             display: "flex",
-            justifyItems: "center"
+            justifyItems: "center",
           }}
         >
           {!isUploaded && (
-            <React.Fragment>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
               <input
                 type="file"
                 id="imgUp"
                 style={{ display: "none" }}
                 onChange={handleChange}
               />
-              <label htmlFor="imgUp">
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
+              >
                 <Fab component="span">
                   <FileUploadOutlinedIcon />
                 </Fab>
+                <br />
+                <br />
               </label>
-            </React.Fragment>
+              <Typography>Upload Image</Typography>
+            </div>
           )}
           {isUploaded && (
             <img

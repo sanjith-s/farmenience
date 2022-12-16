@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import React from 'react'
-import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Homepage1 from './homepage1';
 import Homepage2 from './homepage2';
 import Signup from './signup';
@@ -21,11 +18,10 @@ import PageN5 from "./pageN5";
 import AllQueries from './N1'; 
 import Navbar from './components/navbar';
 import Footer from './components/footer';
-
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
 import "./css/app.css";
 import Headroom from "react-headroom";
+
+
 function App() {
   return (
     <div>

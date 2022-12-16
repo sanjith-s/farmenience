@@ -12,12 +12,22 @@ import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import { Button } from "@mui/material";
 import { Box } from "@mui/material";
+import Fab from "@mui/material/Fab";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 
 const PageM6 = () => {
+  const [file, setFile] = useState();
+  const [isUploaded, setIsUploaded] = useState(false);
+  function handleChange(e) {
+    console.log(e.target.files);
+    setIsUploaded(true);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Schedule meet with NGO</span>
+      <span className="title">Sell Products</span>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -101,9 +111,48 @@ const PageM6 = () => {
             </Button>
           </Stack>
         </Container>
-        <Container sx={{ bgcolor: "#ffff", height: "100%", width: "40vw" }} />
+        <Container
+          disableGutters={true}
+          sx={{
+            bgcolor: "#ffff",
+            height: "100%",
+            width: "40vw",
+            borderRadius: "50px",
+            paddingLeft: "0px",
+            paddingRight: "0px",
+            display: "flex",
+            justifyItems: "center"
+          }}
+        >
+          {!isUploaded && (
+            <React.Fragment>
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                onChange={handleChange}
+              />
+              <label htmlFor="imgUp">
+                <Fab component="span">
+                  <FileUploadOutlinedIcon />
+                </Fab>
+              </label>
+            </React.Fragment>
+          )}
+          {isUploaded && (
+            <img
+              src={file}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "fill",
+                borderRadius: "50px",
+              }}
+            />
+          )}
+        </Container>
       </Stack>
-      <Box textAlign="center">
+      <Box textAlign="center" padding={"20px"}>
         <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Submit
         </Button>

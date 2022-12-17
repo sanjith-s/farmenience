@@ -43,8 +43,8 @@ function Login() {
 
   const LogMeIn = () => {
     Axios.post('http://localhost:5000/login', {
-      email: email,
-      password: password
+      email: logindata.email,
+      password: logindata.password
     }).then((response) => {
       if (response.data !== null) {
         localStorage.setItem("email", email);

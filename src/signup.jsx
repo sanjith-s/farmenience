@@ -55,16 +55,23 @@ function Signup() {
   };
 
   const SignMeUp = () => {
-    let address = addr1 + "," + addr2 + "," + city + "," + district + "," + pincode;
+    let address = {
+      a1: signupdata.addr1,
+      a2: signupdata.addr2,
+      c : signupdata.city,
+      d : signupdata.district,
+      s : signupdata.state,
+      p : signupdata.pincode
+    };
 
     if (emailregex.test(email) && passregex.test(password) && phone.length == 10 && password === confpass) {
       Axios.post('http://localhost:5000/signup', {
-        username: name,
-        aadhar: aadhar,
-        phone: phone,
-        password: password,
+        username: signupdata.name,
+        aadhar: signupdata.aadhar,
+        phone: signupdata.phone,
+        password: signupdata.password,
         address: address,
-        typeOfAcc: utype
+        typeOfAcc: signupdata.utype
       }).then((response) => {
         // setUserdetails(response.data);
         console.log(response)

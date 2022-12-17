@@ -7,6 +7,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 function Signup() {
   const captchaRef = useRef(null);
+  const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+  const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
   const [signupdata, setsignupdata] = useState({
     email: "",
@@ -51,6 +53,29 @@ function Signup() {
     alert("Validation successful");
     console.log(token);
   };
+
+  const SignMeUp = () => {
+    let address = addr1 + "," + addr2 + "," + city + "," + district + "," + pincode;
+
+    if (emailregex.test(email) && passregex.test(password) && phone.length == 10 && password === confpass) {
+      Axios.post('http://localhost:5000/signup', {
+        username: name,
+        aadhar: aadhar,
+        phone: phone,
+        password: password,
+        address: address,
+        typeOfAcc: utype
+      }).then((response) => {
+        // setUserdetails(response.data);
+        console.log(response)
+        if (response.data == 'success') {
+          window.location.href = "http://localhost:3000/login";
+        }
+      });
+    } else {
+      setMessage('Signup not correct');
+    }
+  }
 
   return (
     <div>
@@ -206,8 +231,8 @@ function Signup() {
             ref={captchaRef}
           /> */}
           <br />
-          <button type="submit" class="button">
-          <Link id="sign" to='/'>Submit</Link>
+          <button type="submit" class="button" onClick={SignMeUp}>
+            <Link id="sign" to='/'>Submit</Link>
           </button>
         </center>
       </form>

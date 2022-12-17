@@ -31,12 +31,15 @@ function App() {
       <main className="main-content">
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Signup />} />
             <Route path="/M3" element={<PageM3 />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/ordersummary" />
           </Routes>
         </BrowserRouter>

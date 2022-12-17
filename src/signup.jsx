@@ -3,6 +3,7 @@ import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
 
 function Signup() {
@@ -32,8 +33,8 @@ function Signup() {
 
   const submit = (event) => {
     event.preventDefault();
-    const token = captchaRef.current.getValue();
-    captchaRef.current.reset();
+    //const token = captchaRef.current.getValue();
+    //captchaRef.current.reset();
     let emailChk = 0;
     let passChk = 0;
 
@@ -51,42 +52,37 @@ function Signup() {
     }
 
     alert("Validation successful");
-    console.log(token);
-  };
+    //console.log(token);
 
-  const SignMeUp = () => {
-    let address = {
-      a1: signupdata.addr1,
-      a2: signupdata.addr2,
-      c : signupdata.city,
-      d : signupdata.district,
-      s : signupdata.state,
-      p : signupdata.pincode
-    };
-
-    if (emailregex.test(email) && passregex.test(password) && phone.length == 10 && password === confpass) {
+    if (emailregex.test(signupdata.email) && passregex.test(signupdata.password) && signupdata.phone.length == 10 && signupdata.password === signupdata.confpass) {
       Axios.post('http://localhost:5000/signup', {
-        username: signupdata.name,
-        aadhar: signupdata.aadhar,
-        phone: signupdata.phone,
+        name: signupdata.name,
+        phoneno: signupdata.phone,
+        aadhaarno: signupdata.aadhar,
+        addline1: signupdata.addr1,
+        addline2: signupdata.addr2,
+        city: signupdata.city,
+        district: signupdata.district,
+        state: signupdata.state,
+        pincode: signupdata.pincode,
+        email: signupdata.email,
         password: signupdata.password,
-        address: address,
         typeOfAcc: signupdata.utype
       }).then((response) => {
         // setUserdetails(response.data);
         console.log(response)
-        if (response.data == 'success') {
+        if (response.data.message == 'Success') {
           window.location.href = "http://localhost:3000/login";
         }
       });
     } else {
-      setMessage('Signup not correct');
+      alert("Signup not correct !")
     }
-  }
+  };
 
   return (
     <div>
-      <form onSubmit={submit} method="post">
+      <form>
         <center>
           <span>
             <label class="title">Signup</label>
@@ -206,7 +202,7 @@ function Signup() {
           <label>
             Password{" "}
             <input
-              type="text"
+              type="password"
               name="password"
               value={signupdata.password}
               onChange={handleChange}
@@ -217,7 +213,7 @@ function Signup() {
           <label>
             Confirm Password{" "}
             <input
-              type="text"
+              type="password"
               name="confpass"
               value={signupdata.confpass}
               onChange={handleChange}
@@ -238,7 +234,7 @@ function Signup() {
             ref={captchaRef}
           /> */}
           <br />
-          <button type="submit" class="button" onClick={SignMeUp}>
+          <button type="submit" class="button" onClick={submit}>
             <Link id="sign" to='/'>Submit</Link>
           </button>
         </center>

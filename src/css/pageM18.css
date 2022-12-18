@@ -52,3 +52,8 @@
     background-color: white;
     color: #138808
 }
+.up-cont {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

@@ -11,8 +11,8 @@ function ProductCard() {
       const [location, setLocation] = useState("");
 
   return (
-    <>
-    <div>
+    <div className="up-cont">
+    <div className="prod-cont">
         <label>NAME OF PRODUCT &nbsp;&nbsp; <span id="bold">:</span> </label>
         <input type="text" placeholder='Enter value'
           onChange={(event) => { setName(event.target.value); } }></input>
@@ -48,7 +48,7 @@ function ProductCard() {
       <center><button class="buttons" onClick={() => ProductCard()}>+ Add Product</button></center>
       <br></br>
       <br></br>
-      </>
+      <div/>
   );
 }
 

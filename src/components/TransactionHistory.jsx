@@ -4,20 +4,31 @@ import "../css/transactionHistory.css";
 function TransactionHistory(props) {
     const cardList = props.cards;
     return (
-        <ul className="transaction">
+        <div className="transaction">
+        <table>
+        <tr>
+        <th className="t-rows">T.ID</th>
+        <th className="t-rows">IFSC Code</th>
+        <th className="t-rows">Payment Mode</th>
+        <th className="t-rows">Bank Name</th>
+        <th className="t-rows">Amount</th>
+        <th className="t-rows">Sender</th>
+        <th className="t-rows">Receiver</th>
+        </tr>
             {cardList.map((record) => (
-                <div id="card-trans-his" key={record.id}>
-                    <h5> IFSC Code: {record.IFSCCode} </h5>
-                    <h5> Transaction ID: {record.TransactionID}</h5>
-                    <h5> Payment Mode: {record.PaymentMode}</h5>
-                    <h5> Bank Name: {record.BankName}</h5>
-                    <h5> Total Amount: {record.Amount}</h5>
-                    <h5> Sender: {record.Sender}</h5>
-                    <h5> Receiver: {record.Receiver}</h5>
-                </div>
+              <tr>
+               <td className="t-rows">{record.TransactionID}</td>
+               <td className="t-rows">{record.IFSCCode}</td>
+               <td className="t-rows">{record.PaymentMode}</td>
+               <td className="t-rows">{record.BankName}</td>
+               <td className="t-rows">{record.Amount}</td>
+               <td className="t-rows">{record.Sender}</td>
+               <td className="t-rows">{record.Receiver}</td>
+              </tr>
             )
             )}
-        </ul>
+            </table>
+        </div>
     );
 }
 

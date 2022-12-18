@@ -14,7 +14,7 @@ function M17() {
           Receiver: "B"
         },
         {
-            IFSCCode: null,
+            IFSCCode: "",
             TransactionID: 2,
             PaymentMode: "Cash On Delivery",
             BankName: null,

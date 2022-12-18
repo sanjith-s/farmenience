@@ -22,4 +22,9 @@
 #card-trans-his{
   margin: 30px;
 }
-  
+.t-rows {
+  padding: 1%;
+}
+th {
+  font-weight: bolder;
+}

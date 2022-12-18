@@ -15,28 +15,28 @@ function ProductCard() {
       <div className="up-cont">
     <div className="prod-cont">
       <div>
-        <span>NAME OF PRODUCT</span>
+        <span id="bold">NAME OF PRODUCT:</span>
         <input className="f-input" type="text" placeholder='Enter value'
           onChange={(event) => { setName(event.target.value); } }></input>
   
       </div>
       <div>
-        <span>PRICE</span>
+        <span id="bold">PRICE:</span>
         <input className="f-input" type="number" placeholder='Enter value (in Rs.)'
           onChange={(event) => { setPrice(event.target.value); } }></input>
       </div>
       <div>
-        <span>QUANTITY REQUIRED</span>
-        <input className="f-input" type="number" placeholder="Enter value (in Kg's)"
+        <span id="bold">QUANTITY REQUIRED:</span>
+        <input className="f-input" type="number" placeholder="Enter value (in kg)"
           onChange={(event) => { setQty(event.target.value); } }></input>
       </div>
       <div>
-        <span>SPECIFIC TYPE</span>
+        <span id="bold">SPECIFIC TYPE:</span>
         <input className="f-input" type="number" placeholder='Enter value'
           onChange={(event) => { setType(event.target.value); } }></input>
       </div>
       <div>
-        <span>LOCATION (ADDRESS) <span id="bold">:</span> </span>
+        <span id="bold">LOCATION (ADDRESS):</span>
         <input className="f-input" type="number" placeholder='Enter value'
           onChange={(event) => { setLocation(event.target.value); } }></input>
       </div>

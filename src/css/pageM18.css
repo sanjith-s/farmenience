@@ -45,6 +45,8 @@
     border-color: white;
     border-radius: 0.313rem;
     height: 100%;
+    border-radius: 999em;
+    padding: 1%;
     font-size: 1.25rem;
 }
 

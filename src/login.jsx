@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Link } from 'react-router-dom'
 import validator from "validator";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from "react-router-dom/dist";
 
 function Login() {
   const captchaRef = useRef(null);
@@ -41,13 +42,16 @@ function Login() {
     console.log(token);
   };
 
-  const LogMeIn = () => {
-    Axios.post('http://localhost:5000/login', {
+  const LogMeIn = (em, pass) => {
+    let em1 = em;
+    let pass1 = pass;
+    Axios.post('http://localhost:5000/login/em1/pass1', {
       email: logindata.email,
       password: logindata.password
     }).then((response) => {
-      if (response.data !== null) {
+      if (response.data == "Successful") {
         localStorage.setItem("email", email);
+        navigate('/homepage2');
 
         /*if (response.data === "Admin") {
           window.location.href = "http://localhost:3000/admin_homepage"
@@ -57,14 +61,14 @@ function Login() {
           window.location.href = "http://localhost:3000/homepage3"
         }*/
 
-      } else if (response.data === null) {
+      } else if (response.data == "Password doesn't exist") {
         console.log("Invalid Email/Password")
         localStorage.setItem("email", "");
         console.log("Success");
       }
 
       else {
-        console.log("error");
+        console.log("Error");
       }
     });
 
@@ -103,8 +107,9 @@ function Login() {
             <br />
           </label>
           <br />
-          <button type="submit" class="button" onClick={LogMeIn}>
-            <Link id="sign" to='/homepage2'>Login</Link>
+          <button type="submit" class="button" onClick={() => LogMeIn(logindata.email, logindata.password)}>
+            {/* <Link id="sign" to='/homepage2'>Login</Link> */}
+            Login
           </button>
         </center>
       </form>

@@ -35,11 +35,11 @@ function M17() {
 
     return (
         <><div id="top">
-            <center>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <label id="header">
                     View Transaction History
                 </label>
-            </center>
         </div>
         <br></br>
             <div id="details">

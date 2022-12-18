@@ -11,6 +11,7 @@ function Signup() {
   const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate=useNavigate();
+  const [type,setType]=useState("Farmer");
   const [signupdata, setsignupdata] = useState({
     email: "",
     password: "",
@@ -67,7 +68,7 @@ function Signup() {
         pincode: signupdata.pincode,
         email: signupdata.email,
         password: signupdata.password,
-        typeOfAcc: signupdata.utype
+        typeOfAcc: type
       }).then((response) => {
         if (response.data.message == 'Success') {
           navigate('/login');
@@ -234,7 +235,7 @@ function Signup() {
           </label>
           <br></br>
           <label for="type">Account type </label>
-          <select name="utype" id="utype">
+          <select name="utype" id="utype" onClick={()=>{setType(value)}}>
             <option value="farmer">Farmer</option>
             <option value="volunteer">Volunteer</option>
             <option value="retailer">Retailer</option>

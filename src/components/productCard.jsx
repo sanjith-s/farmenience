@@ -11,7 +11,8 @@ function ProductCard() {
       const [location, setLocation] = useState("");
 
   return (
-    <div className="up-cont">
+    <>
+      <div className="up-cont">
     <div className="prod-cont">
       <div>
         <span>NAME OF PRODUCT</span>
@@ -45,6 +46,8 @@ function ProductCard() {
       <br></br>
       <br></br>
       </div>
+    </>
+    
   );
 }
 

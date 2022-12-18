@@ -1,16 +1,16 @@
-// import logo from './logo.svg';
 import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useNavigate } from "react-router-dom/dist";
 
 function Signup() {
   const captchaRef = useRef(null);
   const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-
+  const navigate=useNavigate();
   const [signupdata, setsignupdata] = useState({
     email: "",
     password: "",
@@ -53,8 +53,8 @@ function Signup() {
 
     alert("Validation successful");
     //console.log(token);
-
-    if (emailregex.test(signupdata.email) && passregex.test(signupdata.password) && signupdata.phone.length == 10 && signupdata.password === signupdata.confpass) {
+    //emailregex.test(signupdata.email) && passregex.test(signupdata.password) && 
+    if (signupdata.phone.length == 10 && signupdata.password === signupdata.confpass) {
       Axios.post('http://localhost:5000/signup', {
         name: signupdata.name,
         phoneno: signupdata.phone,
@@ -63,17 +63,15 @@ function Signup() {
         addline2: signupdata.addr2,
         city: signupdata.city,
         district: signupdata.district,
-        state: signupdata.state,
         pincode: signupdata.pincode,
         email: signupdata.email,
-        password: signupdata.password,
-        typeOfAcc: signupdata.utype
+        password: signupdata.password
       }).then((response) => {
-        // setUserdetails(response.data);
-        console.log(response)
         if (response.data.message == 'Success') {
-          window.location.href = "http://localhost:3000/login";
+          navigate('/login');
         }
+      }).catch((res,err)=>{
+        alert(res.response.data.message);
       });
     } else {
       alert("Signup not correct !")
@@ -100,6 +98,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Phone Number{" "}
             <input
@@ -111,6 +110,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Aadhaar Number{" "}
             <input
@@ -122,6 +122,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Address Line 1{" "}
             <input
@@ -133,6 +134,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Address Line 2{" "}
             <input
@@ -144,6 +146,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             City/Town{" "}
             <input
@@ -155,6 +158,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             District{" "}
             <input
@@ -166,6 +170,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             State{" "}
             <input
@@ -177,6 +182,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Pincode{" "}
             <input
@@ -188,6 +194,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Email{" "}
             <input
@@ -199,6 +206,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Password{" "}
             <input
@@ -210,6 +218,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label>
             Confirm Password{" "}
             <input
@@ -221,6 +230,7 @@ function Signup() {
             <br />
             <br />
           </label>
+          <br></br>
           <label for="type">Account type </label>
           <select name="utype" id="utype">
             <option value="farmer">Farmer</option>
@@ -228,6 +238,7 @@ function Signup() {
             <option value="retailer">Retailer</option>
             <option value="jobseeker">Job seeker</option>
           </select>
+          <br></br>
           <br />
           {/* <ReCAPTCHA
             sitekey={process.env.REACT_APP_SITE_KEY}
@@ -235,7 +246,8 @@ function Signup() {
           /> */}
           <br />
           <button type="submit" class="button" onClick={submit}>
-            <Link id="sign" to='/'>Submit</Link>
+            {/* <Link id="sign" to='/'>Submit</Link> */}
+            Submit
           </button>
         </center>
       </form>

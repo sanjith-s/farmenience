@@ -14,36 +14,32 @@ function ProductCard() {
     <>
       <div className="up-cont">
     <div className="prod-cont">
-        <label>NAME OF PRODUCT &nbsp;&nbsp; <span id="bold">:</span> </label>
-        <input type="text" placeholder='Enter value'
+      <div>
+        <span>NAME OF PRODUCT</span>
+        <input className="f-input" type="text" placeholder='Enter value'
           onChange={(event) => { setName(event.target.value); } }></input>
-           <br></br>
+  
       </div>
       <div>
-        <label>PRICE 
-            <span id="bold">:</span></label>
-        <input type="number" placeholder='Enter value'
-          onChange={(event) => { setPrice(event.target.value); } }></input> &nbsp;&nbsp; <span id="bold">Rs.</span>
-           <br></br>
+        <span>PRICE</span>
+        <input className="f-input" type="number" placeholder='Enter value (in Rs.)'
+          onChange={(event) => { setPrice(event.target.value); } }></input>
       </div>
       <div>
-        <label>QUANTITY REQUIRED <span id="bold">:</span></label>
-        <input type="number" placeholder='Enter value'
-          onChange={(event) => { setQty(event.target.value); } }></input> &nbsp;&nbsp; <span id="bold">(in kg)</span> 
-           <br></br>
+        <span>QUANTITY REQUIRED</span>
+        <input className="f-input" type="number" placeholder="Enter value (in Kg's)"
+          onChange={(event) => { setQty(event.target.value); } }></input>
       </div>
       <div>
-        <label>SPECIFIC TYPE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            <span id="bold">:</span> </label>
-        <input type="number" placeholder='Enter value'
+        <span>SPECIFIC TYPE</span>
+        <input className="f-input" type="number" placeholder='Enter value'
           onChange={(event) => { setType(event.target.value); } }></input>
-           <br></br>
       </div>
       <div>
-        <label>LOCATION (ADDRESS) <span id="bold">:</span> </label>
-        <input type="number" placeholder='Enter value'
+        <span>LOCATION (ADDRESS) <span id="bold">:</span> </span>
+        <input className="f-input" type="number" placeholder='Enter value'
           onChange={(event) => { setLocation(event.target.value); } }></input>
-           <br></br>
+      </div>
       </div>
       <br></br><br></br>
       <center><button class="buttons" onClick={() => ProductCard()}>+ Add Product</button></center>

@@ -15,6 +15,7 @@ const PageM18 = () => {
         <span className="title">Publish New Request</span>
       </div>
       <br></br><br></br><br></br><br></br>
+      <br></br>
       <div>
       {
         prod.map((val)=>{
@@ -22,11 +23,9 @@ const PageM18 = () => {
             <div>
               <ProductCard />
               <br></br>
-              <center><button class="buttons" onClick={()=>{
-                let temp=prod.filter((id)=> id!=val)
-                setProd(temp);
-              }}>Delete</button></center>
-              <br></br>
+              {
+                prod.length>1? <div><center><button class="buttons" onClick={()=>{let temp=prod.filter((id)=> id!=val);setProd(temp);}}>Delete</button></center><br></br></div> : <></>
+              }
             </div>
           )
         })

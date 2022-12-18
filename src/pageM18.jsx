@@ -7,7 +7,7 @@ const PageM18 = () => {
 
   return (
     <div>
-      <div>
+      <div style={{textAlign:"center",marginTop:"1%"}}>
         <span className="title">Publish New Request</span>
       </div>
       <br></br><br></br><br></br><br></br>

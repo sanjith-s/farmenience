@@ -9,6 +9,7 @@
     scrollbar-color: #1e1e1e4d #e4e4e4;
     scrollbar-width: revert-layer;
     border-radius: 8px;
+    width: 1300px;
   }
   
   .sales-items-list li {
@@ -22,9 +23,14 @@
 #card-trans-his{
   margin: 30px;
 }
+
 .t-rows {
   padding: 1%;
+  width: 10px;
+  text-align: center;
 }
+
 th {
   font-weight: bolder;
+  text-align: center;
 }

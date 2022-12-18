@@ -31,7 +31,7 @@ function App() {
       <main className="main-content">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Signup />} />
+            <Route path="/" element={<Homepage1 />} />
             <Route path="/M3" element={<PageM3 />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />

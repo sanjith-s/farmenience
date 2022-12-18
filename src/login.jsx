@@ -41,6 +41,35 @@ function Login() {
     console.log(token);
   };
 
+  const LogMeIn = () => {
+    Axios.post('http://localhost:5000/login', {
+      email: logindata.email,
+      password: logindata.password
+    }).then((response) => {
+      if (response.data !== null) {
+        localStorage.setItem("email", email);
+
+        /*if (response.data === "Admin") {
+          window.location.href = "http://localhost:3000/admin_homepage"
+        } else if (response.data === "Buyer") {
+          window.location.href = "http://localhost:3000/homepage2"
+        } else if (response.data === "Seller") {
+          window.location.href = "http://localhost:3000/homepage3"
+        }*/
+
+      } else if (response.data === null) {
+        console.log("Invalid Email/Password")
+        localStorage.setItem("email", "");
+        console.log("Success");
+      }
+
+      else {
+        console.log("error");
+      }
+    });
+
+  }
+
   return (
     <div>
       <form onSubmit={submit} method="post">
@@ -73,8 +102,8 @@ function Login() {
             <br />
           </label>
           <br />
-          <button type="submit" class="button">
-          <Link id="sign" to='/homepage2'>Login</Link>
+          <button type="submit" class="button" onClick={LogMeIn}>
+            <Link id="sign" to='/homepage2'>Login</Link>
           </button>
         </center>
       </form>

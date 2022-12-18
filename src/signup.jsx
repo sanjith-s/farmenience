@@ -63,9 +63,11 @@ function Signup() {
         addline2: signupdata.addr2,
         city: signupdata.city,
         district: signupdata.district,
+        state: signupdata.state,
         pincode: signupdata.pincode,
         email: signupdata.email,
-        password: signupdata.password
+        password: signupdata.password,
+        typeOfAcc: signupdata.utype
       }).then((response) => {
         if (response.data.message == 'Success') {
           navigate('/login');

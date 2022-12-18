@@ -41,9 +41,6 @@ function ProductCard() {
           onChange={(event) => { setLocation(event.target.value); } }></input>
       </div>
       </div>
-      <br></br><br></br>
-      <center><button class="buttons" onClick={() => ProductCard()}>+ Add Product</button></center>
-      <br></br>
       <br></br>
       </div>
     </>

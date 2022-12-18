@@ -5,9 +5,9 @@ import { useState } from "react";
 
 
 const PageM18 = () => {
-  let [prod,setProd]=useState([0]);
+  let [prod,setProd]=useState([{ele:<ProductCard />,delStatus:0,num:0}]);
   const addProd = () =>{
-    setProd([...prod,prod[prod.length-1]+1]);
+    setProd([...prod,{ele:<ProductCard />,delStatus:0,num:prod[prod.length-1].num+1}]);
   }
   return (
     <div>
@@ -21,10 +21,37 @@ const PageM18 = () => {
         prod.map((val)=>{
           return(
             <div>
-              <ProductCard />
-              <br></br>
               {
-                prod.length>1? <div><center><button class="buttons" onClick={()=>{let temp=prod.filter((id)=> id!=val);setProd(temp);}}>Delete</button></center><br></br></div> : <></>
+                val.delStatus==0  ?  
+                <div>
+                <div>
+                {val.ele}
+                <br></br>
+                {
+                  prod.length>1 ?
+                  <div>
+                  <center>
+                  <button class="buttons" onClick={()=>{let temp=prod.map((id)=> {
+                    if(id.num==val.num)
+                    {
+                      return {...id,delStatus:1};
+                    }
+                    else
+                    {
+                      return id;
+                    }
+                  });setProd(temp);}}>
+                  Delete
+                  </button>
+                  </center>
+                  <br></br>
+                  </div>
+                   : <></>
+                }
+                  
+                  </div>
+                </div>
+                  : <></>
               }
             </div>
           )

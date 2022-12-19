@@ -2,6 +2,7 @@ import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
 import "./css/pageM3.css";
+import { CssBaseline } from "@mui/material";
 
 function PageM3(props) {
   // SALES DATA :-----------------------------------------------------------------------
@@ -34,7 +35,8 @@ function PageM3(props) {
 
   // ------------------------------------------------------------------------------------
   return (
-    <div>
+    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+      <CssBaseline />
       <div className="pageM3">
         <div className="left-half">
           <div className="sales-filters">

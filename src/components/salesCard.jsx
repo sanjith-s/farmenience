@@ -1,59 +1,88 @@
 import React from "react";
-import { CardContent, Typography } from "@mui/material";
-// import { createTheme } from "@mui/material";
-// import Box from "@mui/material/Box";
+import { CardContent, CardActions, Typography, Button } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 
 function SalesCard(props) {
   const date = props.date.toLocaleDateString();
 
   return (
-    <>
-      <Stack>
-        <CardContent>
-          <Typography paragraph>Name</Typography>
-          <Typography paragraph>{props.name}</Typography>
+    <React.Fragment>
+      <Box
+        padding="2px"
+        margin="0px"
+        sx={{
+          width: 300,
+          height: 270,
+          bgcolor: "#D9D9D9;",
+          display: "flex",
+          flexDirection: "column",
+          borderRadius: "10px",
+        }}
+      >
+        <CardContent padding="0px" margin="0px">
+          <Stack padding="0px" margin="0px">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography paragraph variant="h7">
+                Name
+              </Typography>
+              <Typography paragraph>{props.name}</Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography paragraph variant="h7">
+                Date
+              </Typography>
+              <Typography paragraph>{date}</Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography paragraph variant="h7">
+                {" "}
+                Items
+              </Typography>
+              <Typography paragraph>{props.items.toString()}</Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography paragraph variant="h7">
+                Amount
+              </Typography>
+              <Typography paragraph>{props.amount}</Typography>
+            </Box>
+          </Stack>
         </CardContent>
 
-        <CardContent>
-          <Typography paragraph>Date</Typography>
-          <Typography paragraph>{props.date}</Typography>
-        </CardContent>
-
-        <CardContent>
-          <Typography paragraph>Items</Typography>
-          <Typography paragraph>{props.items}</Typography>
-        </CardContent>
-
-        <CardContent>
-          <Typography paragraph>Amount</Typography>
-          <Typography paragraph>{props.amount}</Typography>
-        </CardContent>
-      </Stack>
-    </>
-
-    // <li className="salesCard">
-    //   <div>
-    //     <div className="card">
-    //       <p className="key"> name :</p>
-    //       <p className="value"> {props.name} </p>
-    //     </div>
-    //     <div className="card">
-    //       <p className="key"> date :</p>
-    //       <p className="value"> {date} </p>
-    //     </div>
-    //     <div className="card">
-    //       <p className="key"> items :</p>
-    //       <p className="value"> {props.items.toString()} </p>
-    //     </div>
-    //     <div className="card">
-    //       <p className="key"> amount :</p>
-    //       <p className="value"> Rs. {props.amount} </p>
-    //     </div>
-    //   </div>
-    //   <div>
-    //     <button className="card-button"> view sale </button>
-    //   </div>
-    // </li>
+        <CardActions
+          padding="0px"
+          margin="0px"
+          sx={{
+            alignSelf: "center",
+            display: "inline",
+            margin: "0px",
+            padding: "0px",
+          }}
+        >
+          <Box
+            textAlign="center"
+            margin="0px"
+            padding="0px"
+            sx={{ display: "inline" }}
+          >
+            <Button
+              variant="contained"
+              margin="0px"
+              padding="0px"
+              sx={{ bgcolor: "#1FE57A" }}
+            >
+              View Sale
+            </Button>
+          </Box>
+        </CardActions>
+      </Box>
+    </React.Fragment>
   );
 }
 

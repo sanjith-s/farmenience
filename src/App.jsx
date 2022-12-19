@@ -20,7 +20,6 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./css/app.css";
 import Headroom from "react-headroom";
-import PageM3Copy from "./pageM3Copy";
 
 function App() {
   return (
@@ -33,7 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage1 />} />
             <Route path="/M3" element={<PageM3 />} />
-            <Route path="/M3copy" element={<PageM3Copy />} />
+
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M17" element={<PageM17 />} />

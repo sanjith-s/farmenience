@@ -24,9 +24,8 @@ function SalesItemsList(props) {
     >
       <List
         sx={{
-          width: "100%",
-          maxWidth: 270,
-          maxHeight: 200,
+          width: 270,
+          height: 200,
           overflow: "auto",
           position: "relative",
         }}
@@ -40,7 +39,7 @@ function SalesItemsList(props) {
             disablePadding
           >
             <ListItemButton>
-              <ListItemText primary={` ${index + 1} ${card}`} />
+              <ListItemText primary={` ${index + 1}. ${card}`} />
             </ListItemButton>
           </ListItem>
         ))}

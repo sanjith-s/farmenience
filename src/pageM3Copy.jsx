@@ -1,9 +1,10 @@
 import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
+
 import "./css/pageM3.css";
 
-function PageM3(props) {
+function PageM3Copy(props) {
   // SALES DATA :-----------------------------------------------------------------------
 
   const salesDetails = [
@@ -73,4 +74,4 @@ function PageM3(props) {
   );
 }
 
-export default PageM3;
+export default PageM3Copy;

@@ -1,9 +1,11 @@
 import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import "./css/pageM3.css";
+import { CssBaseline, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import Divider from "@mui/material/Divider";
 
 function PageM3(props) {
   // SALES DATA :-----------------------------------------------------------------------
@@ -30,50 +32,149 @@ function PageM3(props) {
       items: ["rice", "wheat", "miller"],
       amount: 343,
     },
+    {
+      id: "4",
+      name: "Surendhar Metta ",
+      date: new Date(2022, 5, 23),
+      items: ["rice", "wheat", "miller"],
+      amount: 343,
+    },
+    {
+      id: "5",
+      name: "Surendhar Metta ",
+      date: new Date(2022, 5, 23),
+      items: ["rice", "wheat", "miller"],
+      amount: 343,
+    },
+    {
+      id: "6",
+      name: "Surendhar Metta ",
+      date: new Date(2022, 5, 23),
+      items: ["rice", "wheat", "miller"],
+      amount: 343,
+    },
   ];
 
-  const salesItems = ["Rice", "Jute", "Fibre", "Wheat", "Millet"];
+  const salesItems = [
+    "Rice",
+    "Jute",
+    "Fibre",
+    "Wheat",
+    "Millet",
+    "Peanut",
+    "Cashew",
+  ];
 
   // ------------------------------------------------------------------------------------
   return (
-    <div>
-      <Navbar />
-      <div className="pageM3">
-        <div className="left-half">
-          <div className="sales-filters">
-            <h1> SALES DETAILS</h1>
-            <h2> Filter by </h2>
-            <div className="items">
-              <h2> ITEMS </h2>
-              <SalesItemsList
-                className="sales-items-list"
-                cards={salesItems}
-                items={salesDetails}
-              />
-            </div>
-          </div>
+    <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
+      <CssBaseline />
+      <Typography
+        textAlign="center"
+        variant="h3"
+        sx={{ display: "block", padding: "10px" }}
+      >
+        SALES DETAILS
+      </Typography>
 
-          <div className="date">
-            <h2> DATE </h2>
-            <label>
-              <span>From</span>
-              <span>:</span>
-            </label>
-            <input type="date"></input>
-            <label>
-              <span>To</span>
-              <span>:</span>
-            </label>
-            <input type="date"></input>
-          </div>
-        </div>
+      <Stack
+        spacing={4}
+        direction="row"
+        divider={<Divider orientation="vertical" flexItem />}
+      >
+        <Box
+          component="div"
+          sx={{
+            width: "40%",
+            bgcolor: "#cccccc",
+            padding: "20px",
+            borderRadius: "15px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            rowGap: "20px",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="subtitle1"
+            sx={{ fontSize: "20px", alignSelf: "flex-start" }}
+          >
+            Filter by
+          </Typography>
+          <Divider flexItem />
+          <Box>
+            <Typography variant="h5" textAlign="center">
+              ITEMS
+            </Typography>
+            <SalesItemsList cards={salesItems} items={salesDetails} />
+          </Box>
 
-        <div className="right-half">
+          <Box sx={{ paddingTop: "20px", width: "75%" }}>
+            <Typography variant="h5" textAlign="center">
+              DATE
+            </Typography>
+            <Box component="div">
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  columnGap: "3px",
+                  justifyContent: "space-between",
+                  padding: "20px 0px",
+                }}
+              >
+                From :{" "}
+                <input
+                  style={{
+                    width: "75%",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                  type="date"
+                ></input>
+              </Typography>
+
+              <Typography
+                variant="h6"
+                sx={{
+                  display: "flex",
+                  columnGap: "3px",
+                  justifyContent: "space-between",
+                  padding: "20px 0px",
+                }}
+              >
+                To :
+                <input
+                  style={{
+                    width: "75%",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                  type="date"
+                ></input>
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+
+        <Box
+          component="div"
+          sx={{
+            width: "60%",
+            bgcolor: "#aaaaaa",
+            padding: "20px ",
+            borderRadius: "15px",
+          }}
+        >
+          <Typography variant="subtitle1" sx={{ fontSize: "20px" }}>
+            Filtered details{" "}
+          </Typography>
+          <Divider flexItem />
           <SalesCardsList cards={salesDetails} />
-        </div>
-      </div>
-      <Footer />
-    </div>
+        </Box>
+      </Stack>
+    </Container>
   );
 }
 

@@ -2,7 +2,7 @@ import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+// import Axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
 
@@ -10,8 +10,8 @@ function Signup() {
   const captchaRef = useRef(null);
   const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-  const navigate=useNavigate();
-  const [type,setType]=useState("Farmer");
+  const navigate = useNavigate();
+  const [type, setType] = useState("Farmer");
   const [signupdata, setsignupdata] = useState({
     email: "",
     password: "",
@@ -53,10 +53,12 @@ function Signup() {
     }
 
     alert("Validation successful");
-    //console.log(token);
-    //emailregex.test(signupdata.email) && passregex.test(signupdata.password) && 
-    if (signupdata.phone.length == 10 && signupdata.password === signupdata.confpass) {
-      Axios.post('http://localhost:5000/signup', {
+
+    if (
+      signupdata.phone.length == 10 &&
+      signupdata.password === signupdata.confpass
+    ) {
+      Axios.post("http://localhost:5000/signup", {
         name: signupdata.name,
         phoneno: signupdata.phone,
         aadhaarno: signupdata.aadhar,
@@ -68,16 +70,18 @@ function Signup() {
         pincode: signupdata.pincode,
         email: signupdata.email,
         password: signupdata.password,
-        typeOfAcc: type
-      }).then((response) => {
-        if (response.data.message == 'Success') {
-          navigate('/login');
-        }
-      }).catch((res,err)=>{
-        alert(res.response.data.message);
-      });
+        typeOfAcc: type,
+      })
+        .then((response) => {
+          if (response.data.message == "Success") {
+            navigate("/login");
+          }
+        })
+        .catch((res, err) => {
+          alert(res.response.data.message);
+        });
     } else {
-      alert("Signup not correct !")
+      alert("Signup not correct !");
     }
   };
 
@@ -235,7 +239,13 @@ function Signup() {
           </label>
           <br></br>
           <label for="type">Account type </label>
-          <select name="utype" id="utype" onClick={()=>{setType(value)}}>
+          <select
+            name="utype"
+            id="utype"
+            onClick={() => {
+              setType(value);
+            }}
+          >
             <option value="farmer">Farmer</option>
             <option value="volunteer">Volunteer</option>
             <option value="retailer">Retailer</option>

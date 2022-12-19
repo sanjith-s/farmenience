@@ -10,7 +10,7 @@ function SalesCardsList(props) {
   }
   return (
     <Box sx={{ flexGrow: 1, padding: "20px 0px" }}>
-      <Grid container direction="column" alignItems="center" spacing={2}>
+      <Grid container direction="column" alignItems="center" spacing={5}>
         {props.cards.map((item) => (
           <Grid item padding={3} key={item.id}>
             <SalesCard

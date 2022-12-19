@@ -13,11 +13,11 @@ function SalesCard(props) {
         margin="0px"
         sx={{
           width: 300,
-          height: 270,
-          bgcolor: "#D9D9D9;",
+          maxHeight: 360,
+          bgcolor: "#e2f3eb;",
           display: "flex",
           flexDirection: "column",
-          borderRadius: "10px",
+          borderRadius: "5px",
         }}
       >
         <CardContent padding="0px" margin="0px">
@@ -26,42 +26,92 @@ function SalesCard(props) {
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "100%",
+                alignItems: "center",
+                padding: "10px 5px",
+                borderRadius: "2 px",
+                margin: "2px 0px",
               }}
             >
-              <Typography paragraph variant="h7">
+              <Typography margin="0px" paragraph variant="h7">
                 Name
               </Typography>
-              <Typography paragraph>{props.name}</Typography>
+              <Typography margin="0px" paragraph>
+                {props.name}
+              </Typography>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography paragraph variant="h7">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "100%",
+                alignItems: "center",
+                padding: "10px 5px",
+                borderRadius: "2 px",
+                margin: "2px 0px",
+              }}
+            >
+              <Typography margin="0px" paragraph variant="h7">
                 Date
               </Typography>
-              <Typography paragraph>{date}</Typography>
+              <Typography margin="0px" paragraph>
+                {date}
+              </Typography>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography paragraph variant="h7">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "100%",
+                alignItems: "center",
+                padding: "10px 5px",
+                borderRadius: "2 px",
+                margin: "2px 0px",
+              }}
+            >
+              <Typography margin="0px" paragraph variant="h7">
                 {" "}
                 Items
               </Typography>
-              <Typography paragraph>{props.items.toString()}</Typography>
+              <Typography margin="0px" paragraph>
+                {props.items.toString()}
+              </Typography>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography paragraph variant="h7">
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "100%",
+                alignItems: "center",
+                padding: "10px 5px",
+                borderRadius: "2 px",
+                margin: "2px 0px",
+              }}
+            >
+              <Typography margin="0px" paragraph variant="h7">
                 Amount
               </Typography>
-              <Typography paragraph>{props.amount}</Typography>
+              <Typography margin="0px" paragraph>
+                {props.amount}
+              </Typography>
             </Box>
           </Stack>
         </CardContent>
 
         <CardActions
-          padding="0px"
-          margin="0px"
           sx={{
             alignSelf: "center",
             display: "inline",
             margin: "0px",
+            marginBottom: "15px",
             padding: "0px",
           }}
         >

@@ -1,7 +1,6 @@
 import React from "react";
 import SalesCardsList from "./components/salesCardsList";
 import SalesItemsList from "./components/salesItemsList";
-import "./css/pageM3.css";
 import { CssBaseline } from "@mui/material";
 
 function PageM3(props) {

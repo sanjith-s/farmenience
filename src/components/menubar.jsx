@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import "./../css/menubar.css";
+import AppBar from "@mui/material/AppBar";
+import { Toolbar, Typography } from "@mui/material/";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 function Menubar() {
   const [theme, setTheme] = useState("default");
@@ -9,35 +13,45 @@ function Menubar() {
     setTheme("#16e575");
   };
   return (
-    <div className="menubar">
-      <div className="menu">
-        <div className="menu_item">
-          <a className="menu_link" href="#">
-            <HomeRoundedIcon fontSize="large" />
-          </a>
-        </div>
-        <div style={{ backgroundColor: theme }} className="menu_item">
-          <a className="menu_link" href="#" onClick={onClickHandler}>
-            track orders
-          </a>
-        </div>
-        <div className="menu_item">
-          <a className="menu_link" href="#">
-            view requests
-          </a>
-        </div>
-        <div className="menu_item">
-          <a className="menu_link" href="#">
-            enter details
-          </a>
-        </div>
-      </div>
-      <div className="menu_item">
-        <a className="menu_link" href="#">
-          <NotificationsIcon fontSize="large" />
-        </a>
-      </div>
-    </div>
+    <AppBar position="relative" sx={{ bgcolor: "#48f559" }}>
+      <Toolbar
+        style={{
+          color: "#000000",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box sx={{ display: "flex", alignItems: "center", columnGap: "25px" }}>
+          <IconButton>
+            <HomeRoundedIcon fontSize="large" style={{ fill: "#000000" }} />
+          </IconButton>
+          <Typography variant="h5">
+            <Button
+              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+            >
+              Track Orders
+            </Button>
+          </Typography>
+          <Typography variant="h5">
+            <Button
+              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+            >
+              View Requests{" "}
+            </Button>
+          </Typography>
+          <Typography variant="h5">
+            <Button
+              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+            >
+              Enter Details
+            </Button>
+          </Typography>
+        </Box>
+        <IconButton>
+          <NotificationsIcon fontSize="large" style={{ fill: "#000000" }} />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 }
 

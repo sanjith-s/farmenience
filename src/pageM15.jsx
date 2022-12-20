@@ -156,6 +156,7 @@ function PageM15() {
 
         <div className="pg3_items">
           {salesItems.map((item, index) => {
+            const qcounter = item.index == 1 ? quantity1 : quantity2;
             const plimit = item.index == 1 ? priceLimit1 : priceLimit2;
             return (
               <NegotiationBox3
@@ -165,6 +166,7 @@ function PageM15() {
                 discountPrice={item.discountPrice}
                 purchaseDate={item.purchaseDate}
                 userPrice={plimit}
+                userQuantity={qcounter}
                 acceptance={item.acceptance}
               />
             );

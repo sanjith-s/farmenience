@@ -47,8 +47,10 @@ function NegotiationBox2(props) {
     let regex = /^[0-9]+$/;
     if (!limit.match(regex)) {
       setOpen(true);
+      setlimit(props.discountPrice);
     } else if (limit < minimum || limit > maximum) {
       setOpen(true);
+      setlimit(props.discountPrice);
     } else {
       return;
     }
@@ -83,7 +85,7 @@ function NegotiationBox2(props) {
         component="img"
         height="120"
         image="../wheatimg.jpg"
-        sx={{ width: "10%" }}
+        sx={{ width: "150px" }}
       />
 
       <CardContent
@@ -164,7 +166,11 @@ function NegotiationBox2(props) {
           quantity
         </Typography>
 
-        <StyledBadge badgeContent={props.userQuantity} color="success">
+        <StyledBadge
+          style={{ position: "sticky" }}
+          badgeContent={props.userQuantity}
+          color="success"
+        >
           <ShoppingCartIcon style={{ fill: "#000000", fontSize: "40px" }} />
         </StyledBadge>
       </CardActions>

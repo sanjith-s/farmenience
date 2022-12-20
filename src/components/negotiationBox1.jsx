@@ -37,7 +37,7 @@ function NegotiationBox1(props) {
         component="img"
         height="120"
         image="../wheatimg.jpg"
-        sx={{ width: "10%" }}
+        sx={{ width: "150px" }}
       />
 
       <CardContent

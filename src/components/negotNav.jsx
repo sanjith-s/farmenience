@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/negotNav.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { IconButton, Typography, Box, CssBaseline } from "@mui/material";
 

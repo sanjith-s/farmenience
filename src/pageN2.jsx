@@ -52,4 +52,4 @@ const PageN2 = () => {
   )
 }
 
-export default PageN2
+export default PageN2;

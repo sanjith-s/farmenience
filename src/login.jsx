@@ -45,10 +45,10 @@ function Login() {
   const LogMeIn = (em, pass) => {
     let em1 = em;
     let pass1 = pass;
-    Axios.post('http://localhost:5000/login/em1/pass1', {
-      email: logindata.email,
-      password: logindata.password
-    }).then((response) => {
+    Axios.post('http://localhost:5000/login', null, { params: {
+      em1,
+      pass1
+    }}).then((response) => {
       if (response.data == "Successful") {
         localStorage.setItem("email", email);
         navigate('/homepage2');

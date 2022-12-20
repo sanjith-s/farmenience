@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+#title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 400%;
+    font-size: xx-large;
+    text-align: center;
+}
+#main-com{
+    width: 80%;
+    background-color: #DAFC8E73;
+    border-radius: 24px;
+    margin: auto;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#left{
+    margin: auto;
+}
+#right{
+    margin: auto;
+}
+#left-content{
+    border: none;
+    background-color: inherit;
+    margin: 15px;
+}
+#left-table{
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+#right-table{
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+}
+#right-table-inr{
+    border:none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+#price-entry{ 
+    background: #B8FFB2;
+    border-radius: 14px;
+    margin: 4px;
+}
+#price-entry-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 5px;
+}
+#price-input{
+    border: none;
+    background-color: inherit;
+    border-bottom: 2.5px solid black;
+    border-radius: 0px;
+    width: 100px;
+}
+#price-entry-box{
+    border: none;
+    background-color: inherit;
+    margin: 15px;
+}
+input::placeholder {
+    font-size: 13px;
+    color: black;
+}
+#inr-style{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    float: right;
+    border: none;
+}
+#price-submit{
+    background: rgba(111, 154, 18, 0.38);
+    border-radius: 9px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border: 2px;
+    margin: 7px;
+    cursor: pointer;
+    padding: 7px;
+    font-size:medium;
+}

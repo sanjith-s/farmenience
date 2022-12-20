@@ -21,13 +21,14 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./css/app.css";
 import Headroom from "react-headroom";
+import PageM16 from "./pageM16";
 
 function App() {
   return (
     <div>
-      <Headroom>
+      {/* <Headroom>
         <Navbar />
-      </Headroom>
+      </Headroom> */}
       <main className="main-content">
         <BrowserRouter>
           <Routes>
@@ -36,6 +37,7 @@ function App() {
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />
+            <Route path="/M16" element={<PageM16 />} />
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
@@ -45,7 +47,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

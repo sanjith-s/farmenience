@@ -1,8 +1,7 @@
 import './css/pageM16.css'
-import { useState } from 'react'
+import Negotiate from './components/negotitate_price'
 
 const PageM16 = () => {
-    const [price,setPrice]=useState(0);
     let content=[
         {
             'Name': 'Product 1',
@@ -29,86 +28,8 @@ const PageM16 = () => {
             {content.map((id,key)=>{
                 return (
                     <>
-                    <div id="main-com">
-                        <div id="left">
-                            <table id="left-content">
-                                <tr>
-                                    <td id="left-table">
-                                        Product Name
-                                    </td>
-                                    <td id="right-table">
-                                        : {id.Name}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td id="left-table">
-                                        Quantity
-                                    </td>
-                                    <td id="right-table">
-                                        : {id.Quantity}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td id="left-table">
-                                        Specific Type
-                                    </td>
-                                    <td id="right-table">
-                                        : {id.Type}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td id="left-table">
-                                        Buyer name
-                                    </td>
-                                    <td id="right-table">
-                                        : {id.Buyer}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td id="left-table">
-                                        Buyer Address
-                                    </td>
-                                    <td id="right-table">
-                                        : {id.Address}
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div id="right">
-                            <table id="left-content">
-                                    <tr>
-                                        <td id="left-table">
-                                            Pricings
-                                        </td>
-                                        <td id="right-table">
-                                            :  {id.Price} INR
-                                        </td>
-                                    </tr>
-                            </table>
-                            <div id="price-entry">
-                                <h4 id="price-entry-title">
-                                    Enter the price
-                                </h4>
-                                <table id="price-entry-box">
-                                    <tr>
-                                        <td id="left-table">
-                                            <input type="number" id="price-input"
-                                            >
-                                            </input>
-                                        </td>
-                                        <td id="right-table-inr">
-                                            INR
-                                        </td>
-                                    </tr>
-                                </table>
-                                <center>
-                                    <button id="price-submit">
-                                        Submit
-                                    </button>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
+                        <Negotiate Name={id.Name} Price={id.Price} Quantity={id.Quantity}
+                        Buyer={id.Buyer} Type={id.Type} Address={id.Address} />
                     </>
                 )
             })}

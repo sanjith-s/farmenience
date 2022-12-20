@@ -4,10 +4,37 @@ import NegotNav from "./components/negotNav";
 import NegotiationBox1 from "./components/negotiationBox1";
 import NegotiationBox2 from "./components/negotiationBox2";
 import NegotiationBox3 from "./components/negotiationBox3";
-import WheatImg from "./WheatImg.png";
-import { YoutubeSearchedFor } from "@mui/icons-material";
+import Container from "@material-ui/core/Container";
+import { CssBaseline } from "@mui/material";
 
 function PageM15() {
+  const salesItems = [
+    {
+      index: 1,
+      seller: 1,
+      itemName: "Whole wheat",
+      quantity: 10,
+      actualPrice: 525,
+      discountPrice: 500,
+      imgSrc: "WheatImg",
+      discountAmount: 25,
+      purchaseDate: new Date(2022, 4, 23),
+      acceptance: "yes",
+    },
+    {
+      index: 2,
+      seller: 2,
+      itemName: "parboiled rice",
+      quantity: 15,
+      actualPrice: 950,
+      discountPrice: 800,
+      imgSrc: "WheatImg",
+      discountAmount: 150,
+      purchaseDate: new Date(2022, 4, 23),
+      acceptance: "no",
+    },
+  ];
+
   const [address, setAddress] = useState(
     "No 7, dr sadaasivam road , HI Look salon , Thirumurthy street ,TNagar , Chennai 600017"
   );
@@ -42,35 +69,9 @@ function PageM15() {
     }
   };
 
-  const salesItems = [
-    {
-      index: 1,
-      seller: 1,
-      itemName: "Whole wheat",
-      quantity: 10,
-      actualPrice: 525,
-      discountPrice: 500,
-      imgSrc: "WheatImg",
-      discountAmount: 25,
-      purchaseDate: new Date(2022, 4, 23),
-      acceptance: "yes",
-    },
-    {
-      index: 2,
-      seller: 2,
-      itemName: "parboiled rice",
-      quantity: 15,
-      actualPrice: 950,
-      discountPrice: 800,
-      imgSrc: "WheatImg",
-      discountAmount: 150,
-      purchaseDate: new Date(2022, 4, 23),
-      acceptance: "no",
-    },
-  ];
-
   return (
-    <div>
+    <Container style={{ padding: "10px 0px" }}>
+      <CssBaseline />
       <div className="pg1">
         <NegotNav />
         <div className="negot_address">
@@ -156,7 +157,7 @@ function PageM15() {
           })}
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

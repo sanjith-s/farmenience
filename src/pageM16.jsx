@@ -93,7 +93,6 @@ const PageM16 = () => {
                                     <tr>
                                         <td id="left-table">
                                             <input type="number" id="price-input"
-                                            onChange={(e)=>{setPrice(e.target.value)}}
                                             >
                                             </input>
                                         </td>

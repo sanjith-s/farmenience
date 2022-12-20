@@ -26,9 +26,9 @@ import PageM16 from "./pageM16";
 function App() {
   return (
     <div>
-      {/* <Headroom>
+      <Headroom>
         <Navbar />
-      </Headroom> */}
+      </Headroom>
       <main className="main-content">
         <BrowserRouter>
           <Routes>
@@ -47,7 +47,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

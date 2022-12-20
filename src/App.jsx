@@ -9,6 +9,7 @@ import PageM3 from "./pageM3";
 import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
+import PageN4 from "./pageN4";
 import PageM9 from "./pageM9";
 import PageM11 from "./pageM11";
 import PageM17 from "./pageM17";
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Homepage1 />} />
             <Route path="/M3" element={<PageM3 />} />
             <Route path="/M9" element={<PageM9 />} />
+            <Route path="/N4" element={<PageN4 />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M16" element={<PageM16 />} />

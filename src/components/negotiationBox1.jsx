@@ -23,7 +23,13 @@ function NegotiationBox1(props) {
   };
 
   return (
-    <Card style={{ display: "flex", backgroundColor: "#ffffff" }}>
+    <Card
+      style={{
+        display: "flex",
+        backgroundColor: "#ffffff",
+        padding: "20px",
+      }}
+    >
       <CardMedia
         component="img"
         height="120"

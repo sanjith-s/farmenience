@@ -3,9 +3,8 @@ import WheatImg from "../WheatImg.png";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import AddIcon from "@mui/icons-material/Add";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Snackbar from "@mui/material/Snackbar";
 import {
   CardMedia,
@@ -17,28 +16,18 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
+  Badge,
   Button,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 
 function NegotiationBox2(props) {
-  let [counter, setcounter] = useState(1);
-  const increment = () => {
-    setcounter(counter + 1);
-  };
-  const decrement = () => {
-    setcounter(counter >= 2 ? counter - 1 : (counter = 1));
-  };
-
   let [limit, setlimit] = useState(props.discountPrice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
     setlimit(newLimit);
-    console.log(typeof newLimit);
-    let regex = /^[0-9]+$/;
-    if (newLimit.match(regex)) {
-      console.log("its a not string");
-    }
   };
 
   const [open, setOpen] = useState(false);
@@ -67,12 +56,27 @@ function NegotiationBox2(props) {
 
   props.onlimitHandler(limit, props.index);
 
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: -2,
+      top: 13,
+      border: `1px solid ${theme.palette.background.paper}`,
+      padding: "0 4px",
+      width: "30px",
+      height: "30px",
+      fontSize: "20px",
+      fontWeight: "600",
+      borderRadius: "20px",
+    },
+  }));
+
   return (
     <Card
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
         padding: "20px",
+        margin: "8px 0px",
       }}
     >
       <CardMedia
@@ -146,38 +150,23 @@ function NegotiationBox2(props) {
         style={{
           width: "20%",
           display: "flex",
+          flexDirection: "column",
+          rowGap: "20px",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignContent: "center",
-            justifyItems: "center",
-          }}
+        <Typography
+          variant="h6"
+          lineHeight={0.2}
+          sx={{ textTransform: "uppercase", fontWeight: "600" }}
         >
-          <IconButton
-            style={{ backgroundColor: "#cccccc" }}
-            color="success"
-            size="large"
-            onClick={increment}
-          >
-            <AddIcon />
-          </IconButton>
-          <Box sx={{ padding: "10px" }}>
-            <Typography variant="h6">{counter}</Typography>
-          </Box>
-          <IconButton
-            style={{ backgroundColor: "#cccccc" }}
-            color="success"
-            size="large"
-            onClick={decrement}
-          >
-            <HorizontalRuleIcon />
-          </IconButton>
-        </Box>
+          quantity
+        </Typography>
+
+        <StyledBadge badgeContent={props.userQuantity} color="success">
+          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "40px" }} />
+        </StyledBadge>
       </CardActions>
 
       <CardActions

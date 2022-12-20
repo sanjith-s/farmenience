@@ -60,12 +60,22 @@ function PageM15() {
 
   const [priceLimit1, setPriceLimit1] = useState();
   const [priceLimit2, setPriceLimit2] = useState();
+  const [quantity1, setQuantity1] = useState();
+  const [quantity2, setQuantity2] = useState();
 
   const priceLimitHandler = (limit, index) => {
     if (index == 1) {
       setPriceLimit1(limit);
     } else if (index == 2) {
       setPriceLimit2(limit);
+    }
+  };
+
+  const QuantityCounterHandler = (counter, index) => {
+    if (index == 1) {
+      setQuantity1(counter);
+    } else if (index == 2) {
+      setQuantity2(counter);
     }
   };
 
@@ -109,6 +119,8 @@ function PageM15() {
                 actualPrice={item.actualPrice}
                 discountAmount={item.discountAmount}
                 discountPrice={item.discountPrice}
+                index={item.index}
+                onCounterHandler={QuantityCounterHandler}
               />
             );
           })}
@@ -121,6 +133,7 @@ function PageM15() {
 
         <div className="pg2_items">
           {salesItems.map((item, index) => {
+            const qcounter = item.index == 1 ? quantity1 : quantity2;
             return (
               <NegotiationBox2
                 key={index}
@@ -130,6 +143,7 @@ function PageM15() {
                 discountAmount={item.discountAmount}
                 discountPrice={item.discountPrice}
                 index={item.index}
+                userQuantity={qcounter}
                 onlimitHandler={priceLimitHandler}
               />
             );

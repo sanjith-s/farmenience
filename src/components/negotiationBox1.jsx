@@ -22,12 +22,15 @@ function NegotiationBox1(props) {
     setcounter(counter >= 2 ? counter - 1 : (counter = 1));
   };
 
+  props.onCounterHandler(counter, props.index);
+
   return (
     <Card
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
         padding: "20px",
+        margin: "8px 0px",
       }}
     >
       <CardMedia

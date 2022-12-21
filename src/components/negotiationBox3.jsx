@@ -182,7 +182,18 @@ function NegotiationBox3(props) {
             </Typography>
           </Box>
         </CardContent>
-        <Button variant="contained" color="success">
+        <Button
+          variant="contained"
+          color="success"
+          style={{
+            display: "flex",
+            columnGap: "10px",
+            padding: "10px",
+            justifyContent: "center",
+            alignItems: "center",
+            fontWeight: "600",
+          }}
+        >
           {props.acceptance == "no" ? (
             <VerifiedIcon />
           ) : (

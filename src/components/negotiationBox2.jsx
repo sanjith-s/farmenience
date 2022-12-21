@@ -43,6 +43,7 @@ function NegotiationBox2(props) {
     Math.round(props.actualPrice / 2 + props.actualPrice)
   );
   let [minimum, setMinimum] = useState(Math.round(props.actualPrice / 2));
+
   const handleSubmit = () => {
     let regex = /^[0-9]+$/;
     if (!limit.match(regex)) {

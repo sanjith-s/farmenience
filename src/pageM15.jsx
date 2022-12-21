@@ -18,7 +18,7 @@ function PageM15() {
       discountPrice: 500,
       imgSrc: "WheatImg",
       discountAmount: 25,
-      purchaseDate: new Date(2022, 4, 23),
+      purchaseDate: new Date(2022, 5, 13),
       acceptance: "yes",
     },
     {

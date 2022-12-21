@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NegotNav from "./components/negotNav";
 import UserDetails from "./components/userDetails";
+import ShowUserDetails from "./components/showUserDetails";
 import NegotiationBox1 from "./components/negotiationBox1";
 import NegotiationBox2 from "./components/negotiationBox2";
 import NegotiationBox3 from "./components/negotiationBox3";
@@ -119,6 +120,11 @@ function PageM15() {
           userName={userData.name}
           userNumber={userData.number}
           onDataHandler={userDataHandler}
+        />
+        <ShowUserDetails
+          userName={consumerName}
+          userAddress={consumerAddress}
+          userNumber={consumerNumber}
         />
         {/* <Card
           sx={{

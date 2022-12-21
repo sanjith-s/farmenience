@@ -20,7 +20,7 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
 import QueryDetails from "./components/queryDetails";
-const PageM6 = () => {
+const PageN2 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
   function handleChange(e) {
@@ -39,7 +39,7 @@ const PageM6 = () => {
         <Container
           sx={{
             bgcolor: "#D9D9D9;",
-            height: "100%",
+            height: auto,
             width: "60vw",
             borderRadius: "50px",
             display: "flex",
@@ -61,4 +61,4 @@ const PageM6 = () => {
   );
 };
 
-export default PageM6;
+export default PageN2;

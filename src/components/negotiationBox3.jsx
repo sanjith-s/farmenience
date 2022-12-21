@@ -13,11 +13,11 @@ import {
   Typography,
   CardHeader,
   CardActions,
+  Divider,
   InputLabel,
   Button,
   // IconButton,
 } from "@mui/material";
-import { CardGiftcard } from "@mui/icons-material";
 
 function NegotiationBox3(props) {
   let text = "sent to seller " + props.seller;
@@ -54,17 +54,18 @@ function NegotiationBox3(props) {
 
       <CardActions
         style={{
-          width: "50%",
+          width: "75%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           padding: "5px",
+          columnGap: "20px",
         }}
       >
         <CardContent
           lineHeight={0.5}
           style={{
-            width: "60%",
+            width: "50%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -90,6 +91,7 @@ function NegotiationBox3(props) {
               width: "80%",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -112,6 +114,7 @@ function NegotiationBox3(props) {
               width: "80%",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -134,6 +137,7 @@ function NegotiationBox3(props) {
               width: "80%",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -151,11 +155,19 @@ function NegotiationBox3(props) {
               {props.userPrice - props.discountPrice}
             </Typography>
           </Box>
+          <Divider
+            sx={{
+              width: "80%",
+              alignSelf: "center",
+            }}
+            flexItem
+          />
           <Box
             sx={{
               width: "80%",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <Typography
@@ -166,7 +178,7 @@ function NegotiationBox3(props) {
                 fontSize: "18px",
               }}
             >
-              total
+              total amount
             </Typography>
             <Typography variant="h6">
               <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
@@ -183,7 +195,7 @@ function NegotiationBox3(props) {
 
           {props.acceptance == "no"
             ? "Accepted by Seller-Contact Now"
-            : "Revised by Seller-Repond Now"}
+            : "Revised by Seller-Respond Now"}
         </Button>
       </CardActions>
 

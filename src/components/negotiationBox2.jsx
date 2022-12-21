@@ -198,7 +198,7 @@ function NegotiationBox2(props) {
             alignItems: "center",
           }}
         >
-          <FormControl>
+          <FormControl style={{ position: "sticky" }}>
             <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
             <OutlinedInput
               id="outlined-adornment-amount"

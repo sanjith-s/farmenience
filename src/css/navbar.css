@@ -1,6 +1,6 @@
 .navbar {
-/*  position: sticky;*/
-  top:0px;
+  position: sticky;
+  top: 0px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -23,20 +23,21 @@
 }
 .nav-items {
   flex: 2;
-/*  margin-top: 2px;*/
+  /*  margin-top: 2px;*/
   font-size: larger;
   text-align: center;
-/*  float: right;*/
-/*  margin-left: 2%;*/
+  /*  float: right;*/
+  /*  margin-left: 2%;*/
 }
 .nav-items > a {
   text-decoration: none;
 }
-.item1,.item5 {
+.item1,
+.item5 {
   flex: 1;
 }
 .item2 {
-  flex:12;
+  flex: 12;
   text-align: left;
 }
 .cmp-logo {
@@ -71,7 +72,6 @@
   flex-direction: column;
   border-radius: 10%;
 }
-
 
 /* .customScroll::-webkit-scrollbar-track
 {

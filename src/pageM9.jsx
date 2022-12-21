@@ -3,8 +3,19 @@ import farm_land from "./farm_land.jpg";
 import sunset from "./sunset.jpg";
 import Menubar from "./components/menubar";
 import Card from "@mui/material/Card";
-import { CardMedia, CardContent, Typography, CssBaseline } from "@mui/material";
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import {
+  Container,
+  CardActions,
+  CardMedia,
+  CardContent,
+  Typography,
+  CssBaseline,
+  Box,
+  IconButton,
+} from "@mui/material";
 import Divider from "@mui/material/Divider";
+import { CollectionsBookmark } from "@mui/icons-material";
 
 function PageM9() {
   const orders = [
@@ -34,37 +45,22 @@ function PageM9() {
     },
   ];
   return (
-    <div>
+    <Box style={{ boxSizing: "borderBox" }}>
       <CssBaseline />
       <Menubar />
-      <Card sx={{ display: "flex", padding: "20px", columnGap: "10px" }}>
-        <CardMedia
-          sx={{
-            height: "500px",
-            width: "65%",
-            display: "flex",
-            flexDirection: "column",
-            rowGap: "2px",
-          }}
-        >
-          <img
-            style={{ height: "50%", borderRadius: "10px" }}
-            src={farm_land}
-            alt="farm_land "
-          ></img>
-          <Divider flexItem />
-          <img
-            style={{ height: "50%", borderRadius: "10px" }}
-            src={sunset}
-            alt=" sunset "
-          ></img>
-        </CardMedia>
-        <Divider orientation="vertical" flexItem />
+      <Card
+        sx={{
+          display: "flex",
+          padding: "20px",
+          columnGap: "10px",
+          flexDirection: "row",
+        }}
+      >
         <CardContent
           sx={{
             bgcolor: "#d9d9d9",
             borderRadius: "10px",
-            width: "35%",
+            // width: "60%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -105,8 +101,56 @@ function PageM9() {
             );
           })}
         </CardContent>
+
+        <Divider orientation="vertical" flexItem />
+        <CardActions>
+          <CardMedia
+            sx={{
+              height: "500px",
+              // width: "40%",
+              display: "flex",
+              flexDirection: "column",
+              rowGap: "2px",
+              position: "relative",
+            }}
+          >
+            <img
+              style={{
+                position: "absolute",
+                height: "50%",
+                borderRadius: "10px",
+                width: "500px",
+                top: "25px",
+                left: "25px",
+              }}
+              src={farm_land}
+              alt="farm_land "
+            ></img>
+
+            <img
+              style={{
+                position: "absolute",
+                height: "50%",
+                borderRadius: "10px",
+                width: "500px",
+                top: "10px",
+                left: "10px",
+              }}
+              src={sunset}
+              alt=" sunset "
+            ></img>
+            <IconButton
+              style={{ position: "absolute", top: "-14px", left: "-14px" }}
+              aria-label="collectionsBookmark"
+            >
+              <PhotoLibraryIcon
+                style={{ fontSize: "50px", color: "#1c315e" }}
+              />
+            </IconButton>
+          </CardMedia>
+        </CardActions>
       </Card>
-    </div>
+    </Box>
   );
 }
 

@@ -34,11 +34,11 @@ function UserDetails(props) {
       }}
     >
       <Typography
-        variant="h6"
+        variant="h5"
         sx={{
           textTransform: "uppercase",
           fontWeight: "600",
-          marginBottom: "30px",
+          marginBottom: "15 px",
           alignSelf: "center",
         }}
       >
@@ -59,7 +59,6 @@ function UserDetails(props) {
           id="standard-basic"
           defaultValue={name}
           variant="standard"
-          style={{ fontWeight: "600" }}
           label={
             <Typography
               variant="body1"
@@ -80,14 +79,12 @@ function UserDetails(props) {
           id="standard-basic"
           defaultValue={address}
           variant="standard"
-          style={{ fontWeight: "600" }}
           label={
             <Typography
               variant="body1"
               style={{
                 textTransform: "uppercase",
                 color: "#2e7d32",
-                // fontWeight: "600",
               }}
             >
               address
@@ -100,14 +97,12 @@ function UserDetails(props) {
           id="standard-basic"
           defaultValue={number}
           variant="standard"
-          style={{ fontWeight: "600" }}
           label={
             <Typography
               variant="body1"
               style={{
                 textTransform: "uppercase",
                 color: "#2e7d32",
-                // fontWeight: "600",
               }}
             >
               number

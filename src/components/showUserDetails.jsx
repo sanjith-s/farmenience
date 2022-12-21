@@ -1,27 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 
 function ShowUserDetails(props) {
-  // const [address, setAddress] = useState(props.userAddress);
-  // const addressHandler = (event) => {
-  //   let newAddress = event.target.value;
-  //   setAddress(newAddress);
-  // };
-
-  // const [name, setName] = useState(props.userName);
-  // const nameHandler = (event) => {
-  //   let newName = event.target.value;
-  //   setName(newName);
-  // };
-
-  // const [number, setNumber] = useState(props.userNumber);
-  // const numberHandler = (event) => {
-  //   let newNumber = event.target.value;
-  //   setNumber(newNumber);
-  // };
-
-  // props.onDataHandler(name, address, number);
-
   return (
     <Card
       sx={{
@@ -50,7 +30,6 @@ function ShowUserDetails(props) {
           flexDirection: "column",
           justifyContent: "center",
           padding: "5px",
-          // alignItems: "flex-start",
           width: "100%",
         }}
       >

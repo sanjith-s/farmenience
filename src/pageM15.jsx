@@ -6,7 +6,7 @@ import NegotiationBox1 from "./components/negotiationBox1";
 import NegotiationBox2 from "./components/negotiationBox2";
 import NegotiationBox3 from "./components/negotiationBox3";
 import Container from "@material-ui/core/Container";
-import { Box, Card, Divider, TextField, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 
 function PageM15() {
@@ -44,40 +44,6 @@ function PageM15() {
     number: 8300677299,
   };
 
-  // const [address, setAddress] = useState(
-  //   "No 7, Dr Sadaasivam road , HI Look salon , Thirumurthy street ,TNagar , Chennai 600017"
-  // );
-  // const addressHandler = (event) => {
-  //   let newAddress = event.target.value;
-  //   setAddress(newAddress);
-  // };
-
-  // const [name, setName] = useState(userData.name);
-  // const nameHandler = (event) => {
-  //   let newName = event.target.value;
-  //   setName(newName);
-  // };
-
-  // const [number, setNumber] = useState(userData.number);
-  // const numberHandler = (event) => {
-  //   let newNumber = event.target.value;
-  //   setNumber(newNumber);
-  // };
-
-  // const [isEditOn, setEditOn] = useState(false);
-  // const editHandler = () => {
-  //   setEditOn(true);
-  // };
-
-  // const updateAddress = () => {
-  //   setAddress(document.querySelector(".address").value);
-  //   setEditOn(false);
-  // };
-
-  // const handleAddress = () => {
-  //   setAddress(document.querySelector(".address").value);
-  // };
-
   const [priceLimit1, setPriceLimit1] = useState();
   const [priceLimit2, setPriceLimit2] = useState();
   const [quantity1, setQuantity1] = useState();
@@ -109,116 +75,66 @@ function PageM15() {
     console.log(consumerName, consumerAddress, consumerNumber);
   };
 
+  const [update, setUpdate] = useState("editCard");
+  const updateHandler = () => {
+    setUpdate("updatedCard");
+  };
+  const returnHandler = () => {
+    setUpdate("editCard");
+  };
+
   return (
     <Container style={{ padding: "10px 0px" }}>
       <CssBaseline />
 
       <Box>
         <NegotNav />
-        <UserDetails
-          userAddress={userData.address}
-          userName={userData.name}
-          userNumber={userData.number}
-          onDataHandler={userDataHandler}
-        />
-        <ShowUserDetails
-          userName={consumerName}
-          userAddress={consumerAddress}
-          userNumber={consumerNumber}
-        />
-        {/* <Card
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "#ffffff",
-            padding: "20px",
-            margin: "8px 0px",
-            borderRadius: "4px",
-          }}
-        >
-          <Typography
-            variant="h6"
-            sx={{
-              textTransform: "uppercase",
-              fontWeight: "600",
-              marginBottom: "30px",
-              alignSelf: "center",
-            }}
-          >
-            consumer details
-          </Typography>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-end",
-              width: "100%",
-            }}
-          >
-            <TextField
-              type="text"
-              onChange={nameHandler}
-              id="standard-basic"
-              defaultValue={name}
-              variant="standard"
-              style={{ fontWeight: "600" }}
-              label={
-                <Typography
-                  variant="body1"
-                  style={{
-                    textTransform: "uppercase",
-                    color: "#2e7d32",
-                  }}
-                >
-                  name
-                </Typography>
-              }
+        {update === "editCard" && (
+          <Box style={{ position: "relative " }}>
+            <UserDetails
+              userAddress={userData.address}
+              userName={userData.name}
+              userNumber={userData.number}
+              onDataHandler={userDataHandler}
             />
-            <TextField
-              multiline
-              fullWidth
-              maxRows={2}
-              onChange={addressHandler}
-              id="standard-basic"
-              defaultValue={address}
-              variant="standard"
-              style={{ fontWeight: "600" }}
-              label={
-                <Typography
-                  variant="body1"
-                  style={{
-                    textTransform: "uppercase",
-                    color: "#2e7d32",
-                    // fontWeight: "600",
-                  }}
-                >
-                  address
-                </Typography>
-              }
-            />
-            <TextField
-              type="tel"
-              onChange={addressHandler}
-              id="standard-basic"
-              defaultValue={number}
-              variant="standard"
-              style={{ fontWeight: "600" }}
-              label={
-                <Typography
-                  variant="body1"
-                  style={{
-                    textTransform: "uppercase",
-                    color: "#2e7d32",
-                    // fontWeight: "600",
-                  }}
-                >
-                  number
-                </Typography>
-              }
-            />
+            <Button
+              variant="contained"
+              color="success"
+              onClick={updateHandler}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontWeight: "600",
+              }}
+            >
+              update
+            </Button>
           </Box>
-        </Card> */}
+        )}
+
+        {update === "updatedCard" && (
+          <Box style={{ position: "relative " }}>
+            <ShowUserDetails
+              userName={consumerName}
+              userAddress={consumerAddress}
+              userNumber={consumerNumber}
+            />
+            <Button
+              variant="contained"
+              color="success"
+              onClick={returnHandler}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontWeight: "600",
+              }}
+            >
+              Back
+            </Button>
+          </Box>
+        )}
 
         {/* <div className="negot_address">
           <p>Adress:</p>
@@ -260,7 +176,7 @@ function PageM15() {
               />
             );
           })}
-          <button className="price_btn">Negotiate price</button>
+          <Button>Negotiation price</Button>
         </Box>
       </Box>
 
@@ -284,7 +200,7 @@ function PageM15() {
               />
             );
           })}
-          <button className="submit_btn">sumbit</button>
+          <Button> Submit Deal </Button>
         </Box>
       </Box>
       <Box>

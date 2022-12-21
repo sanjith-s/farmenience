@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import validator from "validator";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
+import Axios from "axios";
 
 function Login() {
   const captchaRef = useRef(null);
@@ -20,21 +21,21 @@ function Login() {
 
   const submit = (event) => {
     event.preventDefault();
-    const token = captchaRef.current.getValue();
-    captchaRef.current.reset();
+    //const token = captchaRef.current.getValue();
+    //captchaRef.current.reset();
     let emailChk = 0;
-    let passChk = 0;
+    let passChk = 1;
 
     if (validator.isEmail(logindata.email)) emailChk = 1;
 
-    if (logindata.password === logindata.confpass) passChk = 1;
+    //if (logindata.password === logindata.confpass) passChk = 1;
 
     if (!emailChk) {
       alert("Invalid Email Address");
       return;
     }
     if (!passChk) {
-      alert("Passwords donot match");
+      alert("Passwords do not match");
       return;
     }
 
@@ -43,13 +44,12 @@ function Login() {
   };
 
   const LogMeIn = (em, pass) => {
-    let em1 = em;
-    let pass1 = pass;
-    Axios.post('http://localhost:5000/login', null, { params: {
-      em1,
-      pass1
-    }}).then((response) => {
+    //let em1 = em;
+    //let pass1 = pass;
+    Axios.get('http://localhost:5000/login/${em}/${pass}')
+    .then((response) => {
       if (response.data == "Successful") {
+        alert('Login Successful');
         localStorage.setItem("email", email);
         navigate('/homepage2');
 

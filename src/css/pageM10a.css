@@ -1,0 +1,13 @@
+#icon-style{
+    color: #76E741;
+}
+#search-bar{
+    background-color: white;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 7px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}

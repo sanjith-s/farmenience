@@ -24,6 +24,7 @@ import Footer from "./components/footer";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import PageM16 from "./pageM16";
+import PageM10a from "./pageM10";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
+            <Route path="/M10" element={<PageM10a />} />
             <Route path="/N2a" element={<PageN2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />

@@ -104,10 +104,19 @@ function NegotiationBox1(props) {
         style={{
           width: "20%",
           display: "flex",
+          flexDirection: "column",
+          rowGap: "30px",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
+        <Typography
+          variant="h6"
+          lineHeight={0.2}
+          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+        >
+          quantity
+        </Typography>
         <Box
           sx={{
             display: "flex",

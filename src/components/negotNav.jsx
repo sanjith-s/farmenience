@@ -28,11 +28,11 @@ function NegotNav() {
         }}
       >
         <Typography
-          variant="h4"
           color="#ffffff"
           style={{
             textTransform: "uppercase",
             fontWeight: "600",
+            fontSize: "30px",
             marginTop: "7px",
           }}
         >

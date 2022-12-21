@@ -11,6 +11,7 @@ import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
 import PageN4 from "./pageN4";
 import PageM9 from "./pageM9";
+import PageM15 from "./pageM15";
 import PageM11 from "./pageM11";
 import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
@@ -40,6 +41,7 @@ function App() {
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M16" element={<PageM16 />} />
+            <Route path="/M15" element={<PageM15 />} />
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />

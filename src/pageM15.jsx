@@ -1,47 +1,15 @@
 import React, { useState } from "react";
-import "./css/pageM15.css";
 import NegotNav from "./components/negotNav";
+import UserDetails from "./components/userDetails";
+import ShowUserDetails from "./components/showUserDetails";
 import NegotiationBox1 from "./components/negotiationBox1";
 import NegotiationBox2 from "./components/negotiationBox2";
 import NegotiationBox3 from "./components/negotiationBox3";
-import WheatImg from "./WheatImg.png";
-import { YoutubeSearchedFor } from "@mui/icons-material";
+import Container from "@material-ui/core/Container";
+import { Box, Button } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 
 function PageM15() {
-  const [address, setAddress] = useState(
-    "No 7, dr sadaasivam road , HI Look salon , Thirumurthy street ,TNagar , Chennai 600017"
-  );
-
-  const userData = {
-    name: "Rakesh k",
-    number: 8300677299,
-  };
-
-  const [isEditOn, setEditOn] = useState(false);
-  const editHandler = () => {
-    setEditOn(true);
-  };
-
-  const updateAddress = () => {
-    setAddress(document.querySelector(".address").value);
-    setEditOn(false);
-  };
-
-  const handleAddress = () => {
-    setAddress(document.querySelector(".address").value);
-  };
-
-  const [priceLimit1, setPriceLimit1] = useState();
-  const [priceLimit2, setPriceLimit2] = useState();
-
-  const priceLimitHandler = (limit, index) => {
-    if (index == 1) {
-      setPriceLimit1(limit);
-    } else if (index == 2) {
-      setPriceLimit2(limit);
-    }
-  };
-
   const salesItems = [
     {
       index: 1,
@@ -52,7 +20,7 @@ function PageM15() {
       discountPrice: 500,
       imgSrc: "WheatImg",
       discountAmount: 25,
-      purchaseDate: new Date(2022, 4, 23),
+      purchaseDate: new Date(2022, 5, 13),
       acceptance: "yes",
     },
     {
@@ -69,94 +37,221 @@ function PageM15() {
     },
   ];
 
+  const userData = {
+    name: "Rakesh k",
+    address:
+      "No 7, Dr Sadaasivam road , HI Look salon , Thirumurthy street ,TNagar , Chennai 600017",
+    number: 8300677299,
+  };
+
+  const [priceLimit1, setPriceLimit1] = useState();
+  const [priceLimit2, setPriceLimit2] = useState();
+  const [quantity1, setQuantity1] = useState();
+  const [quantity2, setQuantity2] = useState();
+  const [consumerName, setConsumerName] = useState();
+  const [consumerAddress, setConsumerAddress] = useState();
+  const [consumerNumber, setConsumerNumber] = useState();
+
+  const priceLimitHandler = (limit, index) => {
+    if (index == 1) {
+      setPriceLimit1(limit);
+    } else if (index == 2) {
+      setPriceLimit2(limit);
+    }
+  };
+
+  const QuantityCounterHandler = (counter, index) => {
+    if (index == 1) {
+      setQuantity1(counter);
+    } else if (index == 2) {
+      setQuantity2(counter);
+    }
+  };
+
+  const userDataHandler = (userName, address, number) => {
+    setConsumerName(userName);
+    setConsumerAddress(address);
+    setConsumerNumber(number);
+    console.log(consumerName, consumerAddress, consumerNumber);
+  };
+
+  const [update, setUpdate] = useState("editCard");
+  const updateHandler = () => {
+    if (update === "editCard") {
+      setUpdate("updatedCard");
+    } else if (update === "updatedCard") {
+      setUpdate("editCard");
+    }
+  };
+
+  const [active, setActive] = useState("negot1");
+  const negotHandler = () => {
+    if (active === "negot1") {
+      setActive("negot2");
+    } else if (active === "negot2") {
+      setActive("negot3");
+    } else if (active === "negot3") {
+      setActive("negot1");
+    }
+  };
+
   return (
-    <div>
-      <div className="pg1">
+    <Container style={{ padding: "10px 0px" }}>
+      <CssBaseline />
+
+      <Box>
         <NegotNav />
-        <div className="negot_address">
-          <p>Adress:</p>
-          <h3>{userData.name}</h3>
-          {!isEditOn ? (
-            <span>{address}</span>
-          ) : (
-            <input
-              type="text"
-              className="address"
-              onChange={handleAddress}
-              value={address}
+        {update === "editCard" && (
+          <Box style={{ position: "relative " }}>
+            <UserDetails
+              userAddress={userData.address}
+              userName={userData.name}
+              userNumber={userData.number}
+              onDataHandler={userDataHandler}
             />
-          )}
-          {!isEditOn ? (
-            <button className="chg_btn" onClick={editHandler}>
-              Change
-            </button>
-          ) : (
-            <button className="chg_btn" onClick={updateAddress}>
-              Update
-            </button>
-          )}
-          <p>{userData.number}</p>
-        </div>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={updateHandler}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontWeight: "600",
+              }}
+            >
+              update
+            </Button>
+          </Box>
+        )}
 
-        <div className="pg1_items">
-          {salesItems.map((item, index) => {
-            return (
-              <NegotiationBox1
-                key={index}
-                iName={item.itemName}
-                quantity={item.quantity}
-                actualPrice={item.actualPrice}
-                discountAmount={item.discountAmount}
-                discountPrice={item.discountPrice}
-              />
-            );
-          })}
-          <button className="price_btn">Negotiate price</button>
-        </div>
-      </div>
+        {update === "updatedCard" && (
+          <Box style={{ position: "relative " }}>
+            <ShowUserDetails
+              userName={consumerName}
+              userAddress={consumerAddress}
+              userNumber={consumerNumber}
+            />
+            <Button
+              variant="contained"
+              color="success"
+              onClick={updateHandler}
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                fontWeight: "600",
+              }}
+            >
+              Back
+            </Button>
+          </Box>
+        )}
 
-      <div className="pg2">
-        <NegotNav />
+        {active === "negot1" && (
+          <Box style={{ position: "relative " }}>
+            {salesItems.map((item, index) => {
+              return (
+                <NegotiationBox1
+                  key={index}
+                  iName={item.itemName}
+                  quantity={item.quantity}
+                  actualPrice={item.actualPrice}
+                  discountAmount={item.discountAmount}
+                  discountPrice={item.discountPrice}
+                  index={item.index}
+                  onCounterHandler={QuantityCounterHandler}
+                />
+              );
+            })}
+            <Button
+              variant="contained"
+              color="success"
+              onClick={negotHandler}
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                fontWeight: "600",
+                fontSize: "15px",
+              }}
+            >
+              Negotiation price
+            </Button>
+          </Box>
+        )}
 
-        <div className="pg2_items">
-          {salesItems.map((item, index) => {
-            return (
-              <NegotiationBox2
-                key={index}
-                iName={item.itemName}
-                quantity={item.quantity}
-                actualPrice={item.actualPrice}
-                discountAmount={item.discountAmount}
-                discountPrice={item.discountPrice}
-                index={item.index}
-                onlimitHandler={priceLimitHandler}
-              />
-            );
-          })}
-          <button className="submit_btn">sumbit</button>
-        </div>
-      </div>
-      <div className="pg3">
-        <NegotNav />
+        {active === "negot2" && (
+          <Box style={{ position: "relative " }}>
+            {salesItems.map((item, index) => {
+              const qcounter = item.index == 1 ? quantity1 : quantity2;
+              return (
+                <NegotiationBox2
+                  key={index}
+                  iName={item.itemName}
+                  quantity={item.quantity}
+                  actualPrice={item.actualPrice}
+                  discountAmount={item.discountAmount}
+                  discountPrice={item.discountPrice}
+                  index={item.index}
+                  userQuantity={qcounter}
+                  onlimitHandler={priceLimitHandler}
+                />
+              );
+            })}
+            <Button
+              variant="contained"
+              color="success"
+              onClick={negotHandler}
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                fontWeight: "600",
+                fontSize: "15px",
+              }}
+            >
+              Submit Deal{" "}
+            </Button>
+          </Box>
+        )}
 
-        <div className="pg3_items">
-          {salesItems.map((item, index) => {
-            const plimit = item.index == 1 ? priceLimit1 : priceLimit2;
-            return (
-              <NegotiationBox3
-                key={index}
-                seller={item.seller}
-                iName={item.itemName}
-                discountPrice={item.discountPrice}
-                purchaseDate={item.purchaseDate}
-                userPrice={plimit}
-                acceptance={item.acceptance}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </div>
+        {active === "negot3" && (
+          <Box style={{ position: "relative " }}>
+            {salesItems.map((item, index) => {
+              const qcounter = item.index == 1 ? quantity1 : quantity2;
+              const plimit = item.index == 1 ? priceLimit1 : priceLimit2;
+              return (
+                <NegotiationBox3
+                  key={index}
+                  seller={item.seller}
+                  iName={item.itemName}
+                  discountPrice={item.discountPrice}
+                  purchaseDate={item.purchaseDate}
+                  userPrice={plimit}
+                  userQuantity={qcounter}
+                  acceptance={item.acceptance}
+                />
+              );
+            })}
+            <Button
+              variant="contained"
+              color="success"
+              onClick={negotHandler}
+              style={{
+                position: "absolute",
+                bottom: "10px",
+                right: "10px",
+                fontWeight: "600",
+                fontSize: "15px",
+              }}
+            >
+              Cancel Deal{" "}
+            </Button>
+          </Box>
+        )}
+      </Box>
+    </Container>
   );
 }
 

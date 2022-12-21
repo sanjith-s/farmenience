@@ -1,7 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./css/app.css";
+import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
 import Homepage2 from "./homepage2";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import Signup from "./signup";
 import Login from "./login";
 import PageM1 from "./pageM1";
@@ -9,21 +13,18 @@ import PageM3 from "./pageM3";
 import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
-import PageN4 from "./pageN4";
 import PageM9 from "./pageM9";
-import PageM15 from "./pageM15";
 import PageM11 from "./pageM11";
+import PageM15 from "./pageM15";
+import PageM16 from "./pageM16";
 import PageM17 from "./pageM17";
 import PageM18 from "./pageM18";
 import PageM19 from "./pageM19";
-import PageN2 from "./pageN2a";
-import PageN5 from "./pageN5";
 import AllQueries from "./N1";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
-import "./css/app.css";
-import Headroom from "react-headroom";
-import PageM16 from "./pageM16";
+import PageN2 from "./pageN2a";
+import PageN4 from "./pageN4";
+import PageN5 from "./pageN5";
+import CropRecommendation from "./cropRecommendation"; 
 
 function App() {
   return (
@@ -35,7 +36,12 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/M1" element={<PageM1 />} />
             <Route path="/M3" element={<PageM3 />} />
+            <Route path="/M4" element={<PageM4 />} />
+            <Route path="/M5" element={<PageM5 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/M11" element={<PageM11 />} />
@@ -46,8 +52,8 @@ function App() {
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
             <Route path="/N2a" element={<PageN2 />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/N5" element={<PageN5 />} />
+            <Route path="/cropRecommendation" element={<CropRecommendation />} />
             <Route path="/ordersummary" />
           </Routes>
         </BrowserRouter>

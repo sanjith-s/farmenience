@@ -9,7 +9,7 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import Fab from "@mui/material/Fab";
 
-const queryDetails = () => {
+const cropML = () => {
     return (
         <React.Fragment>
             <Stack
@@ -24,7 +24,7 @@ const queryDetails = () => {
             </Stack>
             <TextField
                 id="filled-basic"
-                label="Query ID"
+                label="Nitrogen"
                 variant="filled"
                 color="success"
                 sx={{
@@ -36,7 +36,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Query Subject"
+                label="Phosphorus"
                 variant="filled"
                 color="success"
                 sx={{
@@ -48,7 +48,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Description"
+                label="Potassium"
                 variant="filled"
                 color="success"
                 sx={{
@@ -60,7 +60,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Status"
+                label="pH Level"
                 variant="filled"
                 color="success"
                 sx={{
@@ -72,7 +72,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Response"
+                label="Rainfall (in mm)"
                 variant="filled"
                 color="success"
                 sx={{
@@ -84,7 +84,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Date of Submission"
+                label="State"
                 variant="filled"
                 color="success"
                 sx={{
@@ -96,7 +96,7 @@ const queryDetails = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="Date of Response"
+                label="City"
                 variant="filled"
                 color="success"
                 sx={{
@@ -106,17 +106,6 @@ const queryDetails = () => {
                 }}
             />
             <br />
-            <TextField
-                id="filled-basic"
-                label="Details"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
             <Stack
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
@@ -129,4 +118,4 @@ const queryDetails = () => {
     );
 };
 
-export default queryDetails;
+export default cropML;

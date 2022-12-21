@@ -20,7 +20,8 @@ import Divider from "@mui/material/Divider";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
-import QueryDetails from "./components/queryDetails";
+import Crop from "./components/cropML";
+
 const PageN2 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
@@ -33,7 +34,7 @@ const PageN2 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <center><b><span className="title">Query Details</span></b></center>
+      <center><b><span className="title">Find out the most suitable crop to grow in<br />your farm</span></b></center>
       <Stack
         sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
       >
@@ -48,21 +49,17 @@ const PageN2 = () => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
-            overflow: "auto"
+            //overflow: "auto"
           }}
         >
-          <QueryDetails />
+          <Crop />
         </Container>
       </Stack>
-      <br /><br /><br /><br /><br /><br /><br /><br />
+      <br /><br /><br /><br /><br />
       <Box textAlign="center" padding={"20px"}>
         <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-          Submit
+          Predict
         </Button>
-        <br /><br />
-        <Link href="#" variant="body2" fontSize={"1.1rem"}>
-          Not Happy With The Reply ?
-        </Link>
       </Box>
     </div>
   );

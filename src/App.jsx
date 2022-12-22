@@ -24,6 +24,7 @@ import PageM19 from "./pageM19";
 import AllQueries from "./N1";
 import PageN2 from "./pageN2a";
 import PageN4 from "./pageN4";
+import PageN7 from "./pageN7";
 import PageN5 from "./pageN5";
 import CropRecommendation from "./cropRecommendation";
 import PageN1 from "./pageN1";
@@ -50,6 +51,7 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M16" element={<PageM16 />} />
             <Route path="/M15" element={<PageM15 />} />
+            <Route path="/N7" element={<PageN9 />} /> 
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />

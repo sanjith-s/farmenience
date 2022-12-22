@@ -116,7 +116,7 @@ const PageN2 = () => {
           // if (response.data.message == "Success") {
           //   navigate("/login");
           // }
-          alert(1)
+          // alert(1)
           alert(response.data)
         })
         .catch((res, err) => {

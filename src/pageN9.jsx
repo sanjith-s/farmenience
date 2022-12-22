@@ -7,6 +7,8 @@ import PageN7 from "./pageN7";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,6 +41,11 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const history = useNavigate();
+  
+  const handlePath = () =>{ 
+    history("/n7");
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -83,6 +90,11 @@ export default function BasicTabs() {
                  </CardContent>
                </Card>
                })}
+      <Box textAlign="center" padding={"20px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A",color:"black" }} onClick={handlePath}>
+          Make a New Query
+        </Button>
+      </Box>
       </TabPanel>
       <TabPanel value={value} index={1}>
       {allAppointments.map((Appointment,index)=>{
@@ -103,6 +115,11 @@ export default function BasicTabs() {
                  </CardContent>
                </Card>
       })}
+      <Box textAlign="center" padding={"20px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A",color:"black" }} onClick={()=>{history("/n4")}}>
+          Create a new Appointment
+        </Button>
+      </Box>
       </TabPanel>
     </Box>
   );

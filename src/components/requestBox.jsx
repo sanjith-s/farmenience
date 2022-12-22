@@ -210,6 +210,7 @@ function BuyerRequest(props) {
             fontWeight: "600",
             fontSize: "16px",
             border: "2px solid #000000",
+            marginTop: "15px",
           }}
           onClick={viewRequest}
         >

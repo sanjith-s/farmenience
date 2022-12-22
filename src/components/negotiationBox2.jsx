@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WheatImg from "../WheatImg.png";
+import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -85,8 +85,12 @@ function NegotiationBox2(props) {
       <CardMedia
         component="img"
         height="120"
-        image="../wheatimg.jpg"
-        sx={{ width: "150px" }}
+        image={WheatImg}
+        sx={{
+          width: "150px",
+          border: "3px solid #285430",
+          borderRadius: "3px",
+        }}
       />
 
       <CardContent

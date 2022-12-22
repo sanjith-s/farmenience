@@ -16,6 +16,7 @@ import PageM6 from "./pageM6";
 import PageM9 from "./pageM9";
 import PageM10a from "./pageM10";
 import PageM11 from "./pageM11";
+import PageM12 from "./pageM12";
 import PageM15 from "./pageM15";
 import PageM16 from "./pageM16";
 import PageM17 from "./pageM17";
@@ -26,8 +27,9 @@ import PageN1 from "./pageN1";
 import PageN2 from "./pageN2a";
 import PageN4 from "./pageN4";
 import PageN5 from "./pageN5";
+import PageN7 from "./pageN7";
+import PageN9 from "./pageN9";
 import CropRecommendation from "./cropRecommendation";
-
 function App() {
   return (
     <div>
@@ -48,8 +50,11 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M11" element={<PageM11 />} />
+            <Route path="/M12" element={<PageM12 />} />
             <Route path="/M15" element={<PageM15 />} />
             <Route path="/M16" element={<PageM16 />} />
+            <Route path="/M15" element={<PageM15 />} />
+            <Route path="/N7" element={<PageN7 />} /> 
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />

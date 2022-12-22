@@ -49,20 +49,20 @@ function App() {
             <Route path="/M5" element={<PageM5 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
+            <Route path="/M10" element={<PageM10a />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M12" element={<PageM12 />} />
             <Route path="/M15" element={<PageM15 />} />
             <Route path="/M16" element={<PageM16 />} />
-            <Route path="/M15" element={<PageM15 />} />
-            <Route path="/N7" element={<PageN7 />} /> 
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
-            <Route path="/M19" element={<PageM19 />} />
-            <Route path="/M10" element={<PageM10a />} />
+            <Route path="/M19" element={<PageM19 />} />            
             <Route path="/N1" element={<PageN1 />} />
             <Route path="/N2a" element={<PageN2 />} />
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/N5" element={<PageN5 />} />
+            <Route path="/N7" element={<PageN7 />} /> 
+            <Route path="/N9" element={<PageN9 />} /> 
             <Route path="/cropRecommendation" element={<CropRecommendation />} />
             <Route path="/ordersummary" />
           </Routes>

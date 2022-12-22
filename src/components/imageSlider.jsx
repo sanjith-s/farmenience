@@ -46,7 +46,6 @@ function ImageSlider() {
     <CardContent>
       <Typography
         variant="h5"
-        // lineHeight={0.2}
         sx={{
           textTransform: "uppercase",
           fontWeight: "600",

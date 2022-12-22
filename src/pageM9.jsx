@@ -3,8 +3,6 @@ import Menubar from "./components/menubar";
 import ImageSlider from "./components/imageSlider";
 import Card from "@mui/material/Card";
 import {
-  CardActions,
-  CardMedia,
   CardContent,
   Typography,
   CssBaseline,
@@ -48,141 +46,101 @@ function PageM9() {
       <Card
         sx={{
           display: "flex",
-          padding: "20px",
-          columnGap: "10px",
+          padding: "30px",
+          columnGap: "30px",
           flexDirection: "row",
         }}
       >
         <CardContent
           sx={{
             bgcolor: "#d9d9d9",
-            borderRadius: "10px",
-            // width: "60%",
+            borderRadius: "5px",
+            border: "3px solid #000",
+            width: "50%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            height: "500px",
+            height: "400px",
             overflow: "auto",
             position: "relative",
           }}
         >
           <Typography
-            variant="h5"
-            sx={{ fontWeight: "large" }}
-            textAlign="center"
-            padding="20px"
+            variant="h4"
+            sx={{
+              textTransform: "uppercase",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
           >
-            ORDERS PLACED
+            orders placed
           </Typography>
-          <Divider flexItem />
+          <Divider style={{ width: "90%", alignSelf: "center" }} flexItem />
 
           {orders.map((order, index) => {
             return (
-              <div
+              <CardContent
                 key={index}
                 style={{
-                  padding: "20px 5px",
+                  padding: "15px 5px",
+                  marginTop: "15px",
                   backgroundColor: " #eeeeee",
-                  width: "100%",
+                  width: "90%",
                   margin: "10px 0px",
-                  borderRadius: "10px",
+                  borderRadius: "8px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <Typography textAlign="center" variant="h6">
-                  Order ID : {order.id}
+                <Typography
+                  variant="h6"
+                  style={{
+                    fontWeight: "600",
+                    textTransform: "uppercase",
+                    width: "30%",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  order id :
+                  <Typography
+                    variant="h6"
+                    style={{
+                      fontWeight: "600",
+                    }}
+                  >
+                    {order.id}
+                  </Typography>
                 </Typography>
-                <Typography textAlign="center" variant="h6">
-                  items: {order.items.toString().toLocaleUpperCase()} etc.
+                <Typography
+                  variant="h6"
+                  style={{
+                    fontWeight: "600",
+                    width: "55%",
+                    textTransform: "uppercase",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  items :
+                  <Typography
+                    variant="h5"
+                    style={{
+                      textTransform: "lowercase",
+                    }}
+                  >
+                    {order.items.toString()} etc.
+                  </Typography>
                 </Typography>
-              </div>
+              </CardContent>
             );
           })}
         </CardContent>
 
         <Divider orientation="vertical" flexItem />
         <ImageSlider />
-        {/* <CardActions
-          style={{
-            position: "sticky",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CardMedia
-            sx={{
-              height: "100%",
-              position: "relative",
-            }}
-          >
-            <img
-              style={{
-                zIndex: 99,
-                position: "absolute",
-                height: "250px",
-                borderRadius: "10px",
-                width: "500px",
-                top: "25px",
-                left: "25px",
-              }}
-              src={farm_land}
-              alt="farm_land "
-            ></img>
-
-            <img
-              style={{
-                zIndex: 98,
-                position: "absolute",
-                height: "250px",
-                borderRadius: "10px",
-                width: "500px",
-                top: "50px",
-                left: "50px",
-              }}
-              src={sunset}
-              alt=" sunset "
-            ></img>
-            <img
-              style={{
-                zIndex: 97,
-                position: "absolute",
-                height: "250px",
-                borderRadius: "10px",
-                width: "500px",
-                top: "75px",
-                left: "75px",
-              }}
-              src={himalaya}
-              alt=" himalaya"
-            ></img>
-            <img
-              style={{
-                zIndex: 96,
-                position: "absolute",
-                height: "250px",
-                borderRadius: "10px",
-                width: "500px",
-                top: "100px",
-                left: "100px",
-              }}
-              src={green_land}
-              alt="green_land"
-            ></img>
-            <IconButton
-              style={{
-                zIndex: 100,
-                position: "absolute",
-                top: "0px",
-                left: "0px",
-              }}
-              aria-label="collectionsBookmark"
-            >
-              <PhotoLibraryIcon
-                style={{ fontSize: "50px", color: "#1c315e" }}
-              />
-            </IconButton>
-          </CardMedia>
-        </CardActions> */}
       </Card>
     </Box>
   );

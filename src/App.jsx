@@ -26,6 +26,7 @@ import PageN2 from "./pageN2a";
 import PageN4 from "./pageN4";
 import PageN5 from "./pageN5";
 import CropRecommendation from "./cropRecommendation";
+import PageN1 from "./pageN1";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
               path="/cropRecommendation"
               element={<CropRecommendation />}
             />
+            <Route path="/N1" element={<PageN1/>}/>
             <Route path="/ordersummary" />
           </Routes>
         </BrowserRouter>

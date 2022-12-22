@@ -7,63 +7,63 @@ import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 
+const salesDetails = [
+  {
+    id: "1",
+    name: "Metta",
+    date: new Date(2022, 4, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+  {
+    id: "2",
+    name: "surendhar",
+    date: new Date(2022, 4, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+  {
+    id: "3",
+    name: "Metta Surendhar",
+    date: new Date(2022, 4, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+  {
+    id: "4",
+    name: "Surendhar Metta ",
+    date: new Date(2022, 5, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+  {
+    id: "5",
+    name: "Surendhar Metta ",
+    date: new Date(2022, 5, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+  {
+    id: "6",
+    name: "Surendhar Metta ",
+    date: new Date(2022, 5, 23),
+    items: ["rice", "wheat", "miller"],
+    amount: 343,
+  },
+];
+
+const salesItems = [
+  "Rice",
+  "Jute",
+  "Fibre",
+  "Wheat",
+  "Millet",
+  "Peanut",
+  "Cashew",
+];
+
 function PageM3(props) {
   // SALES DATA :-----------------------------------------------------------------------
-
-  const salesDetails = [
-    {
-      id: "1",
-      name: "Metta",
-      date: new Date(2022, 4, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-    {
-      id: "2",
-      name: "surendhar",
-      date: new Date(2022, 4, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-    {
-      id: "3",
-      name: "Metta Surendhar",
-      date: new Date(2022, 4, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-    {
-      id: "4",
-      name: "Surendhar Metta ",
-      date: new Date(2022, 5, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-    {
-      id: "5",
-      name: "Surendhar Metta ",
-      date: new Date(2022, 5, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-    {
-      id: "6",
-      name: "Surendhar Metta ",
-      date: new Date(2022, 5, 23),
-      items: ["rice", "wheat", "miller"],
-      amount: 343,
-    },
-  ];
-
-  const salesItems = [
-    "Rice",
-    "Jute",
-    "Fibre",
-    "Wheat",
-    "Millet",
-    "Peanut",
-    "Cashew",
-  ];
 
   // ------------------------------------------------------------------------------------
   return (

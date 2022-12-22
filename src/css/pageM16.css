@@ -3,7 +3,6 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     line-height: 400%;
-    font-size: xx-large;
     text-align: center;
 }
 #main-com{
@@ -74,6 +73,8 @@ input::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     float: right;
+    text-align: center;
+    vertical-align: middle;
     border: none;
 }
 #price-submit{
@@ -86,4 +87,5 @@ input::placeholder {
     cursor: pointer;
     padding: 7px;
     font-size:medium;
+    color: black;
 }

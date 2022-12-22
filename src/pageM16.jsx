@@ -1,5 +1,7 @@
 import './css/pageM16.css'
 import Negotiate from './components/negotitate_price'
+import { Typography } from '@material-ui/core'
+
 
 const PageM16 = () => {
     let content=[
@@ -22,9 +24,9 @@ const PageM16 = () => {
     ]
     return (
         <>
-            <h3 id="title">
+            <Typography id="title" variant='h3'>
                 Negotiate Prices
-            </h3>
+            </Typography>
             {content.map((id,key)=>{
                 return (
                     <>

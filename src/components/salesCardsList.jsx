@@ -3,7 +3,6 @@ import React from "react";
 import SalesCard from "./salesCard";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
 
 function SalesCardsList(props) {
   if (props.cards.length === 0) {
@@ -20,9 +19,15 @@ function SalesCardsList(props) {
         position: "relative",
       }}
     >
-      <Grid container direction="column" alignItems="center" spacing={5}>
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        spacing={5}
+        style={{ padding: "0px" }}
+      >
         {props.cards.map((item) => (
-          <Grid item padding={3} key={item.id}>
+          <Grid item padding={2} key={item.id}>
             <SalesCard
               key={item.id}
               name={item.name}

@@ -4,6 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import { Typography } from "@material-ui/core";
 
 function SalesItemsList(props) {
   const onClickHandler = (event) => {
@@ -19,7 +20,7 @@ function SalesItemsList(props) {
         height: 200,
         maxWidth: 270,
         bgcolor: "#1FE57A",
-        borderRadius: "5px",
+        marginTop: "20px",
       }}
     >
       <List
@@ -28,6 +29,8 @@ function SalesItemsList(props) {
           height: 200,
           overflow: "auto",
           position: "relative",
+          border: "3px solid ",
+          borderRadius: "5px",
         }}
       >
         {cardList.map((card, index) => (
@@ -39,7 +42,16 @@ function SalesItemsList(props) {
             disablePadding
           >
             <ListItemButton>
-              <ListItemText primary={` ${index + 1}. ${card}`} />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="h6"
+                    style={{ textTransform: "uppercase" }}
+                  >
+                    {index + 1}. {card}
+                  </Typography>
+                }
+              />
             </ListItemButton>
           </ListItem>
         ))}

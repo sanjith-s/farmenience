@@ -1,49 +1,222 @@
-import React,{useState} from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './../css/requestBox.css';
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
+
 function BuyerRequest(props) {
   let navigate = useNavigate();
 
-	const viewRequest = () => {
+  const viewRequest = () => {
     const [buyerRequestDetails, setBuyerRequestDetails] = useState([]);
 
-    Axios.post('http://localhost:9091/api/admin/deleteitem', {
-        itemID: id
+    Axios.post("http://localhost:9091/api/admin/deleteitem", {
+      itemID: id,
     }).then((response) => {
-        console.log(response)
-        if (response.data == 'success') {
-            setBuyerRequestDetails(response.data);
-            navigate('/pageM3');
-        }
+      console.log(response);
+      if (response.data == "success") {
+        setBuyerRequestDetails(response.data);
+        navigate("/pageM3");
+      }
     });
-}
-  
+  };
+
   return (
-    <div className="requestbox">
-             <div className="r-row">
-               <div className="r-key">Request ID</div>
-               <div className="r-value">{props.reqId}</div>
-             </div>
-             <div className="r-row">
-               <div className="r-key">Name</div>
-               <div className="r-value">{props.name}</div>
-             </div>
-             <div className="r-row">
-               <div className="r-key">Phone Number</div>
-               <div className="r-value">{props.phoneNo}</div>
-             </div>
-             <div className="r-row">
-               <div className="r-key">Item Name</div>
-               <div className="r-value">{props.itemName}</div>
-             </div>
-             <div className="r-row">
-               <div className="r-key">Quantity</div>
-               <div className="r-value">{props.itemQuantity}</div>
-             </div>
-             <div className="r-row">
-             <button onClick={viewRequest} className="r-view">View Request</button>
-             </div>
-       </div>
-	)
+    <Card
+      style={{
+        padding: "15px",
+        width: "450px",
+        borderRadius: "5px",
+        border: "2px solid #000000",
+      }}
+    >
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          padding: "10px 5px",
+          borderTop: "2px solid",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Request ID
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.reqId}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Name
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.name}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Phone Number
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.phoneNo}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Item Name
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.itemName}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          columnGap: "20px",
+          padding: "10px 5px",
+          borderBottom: "2px solid",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            backgroundColor: "#16e575",
+            padding: "5px 5px 5px 10px",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Quantity
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.itemQuantity}
+        </Typography>
+      </CardContent>
+      <CardActions
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Button
+          style={{
+            backgroundColor: "#1fe57a",
+            color: "#000000",
+            fontWeight: "600",
+            fontSize: "16px",
+            border: "2px solid #000000",
+          }}
+          onClick={viewRequest}
+        >
+          View Request
+        </Button>
+      </CardActions>
+    </Card>
+  );
 }
 export default BuyerRequest;

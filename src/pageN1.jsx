@@ -1,5 +1,8 @@
 import './css/pageN1.css'
 import QueryBox from './components/queryBox';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 
 const PageN1 = () =>{
     const data=[
@@ -30,14 +33,14 @@ const PageN1 = () =>{
     ]
     return (
         <>
-        <div id="title-background">
-            <div  id="n1-title">
+        <Card id="title-background">
+            <Typography variant="h5"  id="n1-title">
                 Queries
-            </div>
-        </div>
-        <div id="flex-cards">
+            </Typography>
+        </Card>
+        <Box id="flex-cards">
             {
-                data.map((val,key)=>{
+                data.map((val)=>{
                     return(
                         <div>
                             <QueryBox ID={val.ID} Date={val.Date} Status={val.Status} Subject={val.Subject} />
@@ -45,7 +48,7 @@ const PageN1 = () =>{
                     )
                 })
             }
-        </div>
+        </Box>
         </>
     )
 }

@@ -3,7 +3,6 @@
     font-family: 'Roboto', sans-serif;
     text-align: center;
     padding: 5px;
-    font-size: larger;
 }
 #flex-cards{
     display: flex;
@@ -32,6 +31,7 @@
 #right-column{
     border: none;
     background: #C4E1C5;
+    border-radius: 5px;
 }
 #semi-colon{
     float: right;
@@ -47,9 +47,9 @@
 #button-n1{
     background: #1FE57A;
     border-radius: 7px;
-    border: none;
     width: 80px;
     cursor: pointer;
+    color: black;
 }
 #buttons-n1{
     display: grid;
@@ -58,4 +58,6 @@
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 7px;
+    background-color: inherit;
+    border: none;
 }

@@ -1,11 +1,8 @@
 import React from "react";
-import farm_land from "./farm_land.jpg";
-import sunset from "./sunset.jpg";
 import Menubar from "./components/menubar";
+import ImageSlider from "./components/imageSlider";
 import Card from "@mui/material/Card";
-import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
 import {
-  Container,
   CardActions,
   CardMedia,
   CardContent,
@@ -15,35 +12,35 @@ import {
   IconButton,
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { CollectionsBookmark } from "@mui/icons-material";
+
+const orders = [
+  {
+    id: 1,
+    items: ["onions", "tomato"],
+  },
+  {
+    id: 2,
+    items: ["potato", "ginger"],
+  },
+  {
+    id: 3,
+    items: ["garlic", "cucumber"],
+  },
+  {
+    id: 4,
+    items: ["garlic", "cucumber"],
+  },
+  {
+    id: 5,
+    items: ["garlic", "cucumber"],
+  },
+  {
+    id: 6,
+    items: ["garlic", "cucumber"],
+  },
+];
 
 function PageM9() {
-  const orders = [
-    {
-      id: 1,
-      items: ["onions", "tomato"],
-    },
-    {
-      id: 2,
-      items: ["potato", "ginger"],
-    },
-    {
-      id: 3,
-      items: ["garlic", "cucumber"],
-    },
-    {
-      id: 4,
-      items: ["garlic", "cucumber"],
-    },
-    {
-      id: 5,
-      items: ["garlic", "cucumber"],
-    },
-    {
-      id: 6,
-      items: ["garlic", "cucumber"],
-    },
-  ];
   return (
     <Box style={{ boxSizing: "borderBox" }}>
       <CssBaseline />
@@ -103,21 +100,26 @@ function PageM9() {
         </CardContent>
 
         <Divider orientation="vertical" flexItem />
-        <CardActions>
+        <ImageSlider />
+        {/* <CardActions
+          style={{
+            position: "sticky",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <CardMedia
             sx={{
-              height: "500px",
-              // width: "40%",
-              display: "flex",
-              flexDirection: "column",
-              rowGap: "2px",
+              height: "100%",
               position: "relative",
             }}
           >
             <img
               style={{
+                zIndex: 99,
                 position: "absolute",
-                height: "50%",
+                height: "250px",
                 borderRadius: "10px",
                 width: "500px",
                 top: "25px",
@@ -129,18 +131,50 @@ function PageM9() {
 
             <img
               style={{
+                zIndex: 98,
                 position: "absolute",
-                height: "50%",
+                height: "250px",
                 borderRadius: "10px",
                 width: "500px",
-                top: "10px",
-                left: "10px",
+                top: "50px",
+                left: "50px",
               }}
               src={sunset}
               alt=" sunset "
             ></img>
+            <img
+              style={{
+                zIndex: 97,
+                position: "absolute",
+                height: "250px",
+                borderRadius: "10px",
+                width: "500px",
+                top: "75px",
+                left: "75px",
+              }}
+              src={himalaya}
+              alt=" himalaya"
+            ></img>
+            <img
+              style={{
+                zIndex: 96,
+                position: "absolute",
+                height: "250px",
+                borderRadius: "10px",
+                width: "500px",
+                top: "100px",
+                left: "100px",
+              }}
+              src={green_land}
+              alt="green_land"
+            ></img>
             <IconButton
-              style={{ position: "absolute", top: "-14px", left: "-14px" }}
+              style={{
+                zIndex: 100,
+                position: "absolute",
+                top: "0px",
+                left: "0px",
+              }}
               aria-label="collectionsBookmark"
             >
               <PhotoLibraryIcon
@@ -148,7 +182,7 @@ function PageM9() {
               />
             </IconButton>
           </CardMedia>
-        </CardActions>
+        </CardActions> */}
       </Card>
     </Box>
   );

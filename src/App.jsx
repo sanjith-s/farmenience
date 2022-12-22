@@ -22,6 +22,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./css/app.css";
 import Headroom from "react-headroom";
+// import farm_land from "./farm_land.jpg";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
+            {/* <Route path="/farm_land.jpg" element={<farm_land />} /> */}
             <Route path="/M3" element={<PageM3 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M11" element={<PageM11 />} />

@@ -48,14 +48,15 @@ const PageN2 = () => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
-            overflow: "auto"
+            padding:"55px"
+            // overflow: "auto"
           }}
         >
           <QueryDetails />
         </Container>
       </Stack>
-      <br /><br /><br /><br /><br /><br /><br /><br />
-      <Box textAlign="center" padding={"20px"}>
+      
+      <Box textAlign="center" padding={"350px 250px 50px 250px"}>
         <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Submit
         </Button>

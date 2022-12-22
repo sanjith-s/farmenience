@@ -56,10 +56,7 @@ function App() {
             <Route path="/M10" element={<PageM10a />} />
             <Route path="/N2a" element={<PageN2 />} />
             <Route path="/N5" element={<PageN5 />} />
-            <Route
-              path="/cropRecommendation"
-              element={<CropRecommendation />}
-            />
+            <Route path="/cropRecommendation" element={<CropRecommendation />} />
             <Route path="/N1" element={<PageN1/>}/>
             <Route path="/ordersummary" />
           </Routes>

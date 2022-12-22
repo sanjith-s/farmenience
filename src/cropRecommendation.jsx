@@ -29,7 +29,7 @@ const PageN2 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <b><span textAlign="center" className="title">Find out the most suitable crop to grow in your farm</span></b>
+      <b><span text-align="center" className="title">Find out the most suitable crop to grow in your farm</span></b>
       <Stack
         sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
       >
@@ -44,14 +44,15 @@ const PageN2 = () => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
+            padding: "25px"
             //overflow: "auto"
           }}
         >
           <Crop />
         </Container>
       </Stack>
-      <Box textAlign="center" padding={"50px"}>
-        <Button variant="contained" onClick={CheckNitrogen()} sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+      <Box textAlign="center" padding={"200px 250px 50px 250px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Predict
         </Button>
       </Box>

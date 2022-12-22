@@ -86,7 +86,11 @@ function NegotiationBox2(props) {
         component="img"
         height="120"
         image={WheatImg}
-        sx={{ width: "150px" }}
+        sx={{
+          width: "150px",
+          border: "3px solid #285430",
+          borderRadius: "3px",
+        }}
       />
 
       <CardContent

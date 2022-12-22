@@ -23,18 +23,13 @@ import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import Crop from "./components/cropML";
 
 const PageN2 = () => {
-  const [file, setFile] = useState();
-  const [isUploaded, setIsUploaded] = useState(false);
-  function handleChange(e) {
-    console.log(e.target.files);
-    setIsUploaded(true);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+
+  function
 
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <center><b><span className="title">Find out the most suitable crop to grow in<br />your farm</span></b></center>
+      <b><span textAlign="center" className="title">Find out the most suitable crop to grow in your farm</span></b>
       <Stack
         sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
       >
@@ -55,9 +50,8 @@ const PageN2 = () => {
           <Crop />
         </Container>
       </Stack>
-      <br /><br /><br /><br /><br />
-      <Box textAlign="center" padding={"20px"}>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+      <Box textAlign="center" padding={"50px"}>
+        <Button variant="contained" onClick={CheckNitrogen()} sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Predict
         </Button>
       </Box>

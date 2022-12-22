@@ -24,6 +24,7 @@ const cropML = () => {
             </Stack>
             <TextField
                 id="filled-basic"
+                type="number"
                 label="Nitrogen"
                 variant="filled"
                 color="success"
@@ -36,6 +37,7 @@ const cropML = () => {
             <br />
             <TextField
                 id="filled-basic"
+                type="number"
                 label="Phosphorus"
                 variant="filled"
                 color="success"
@@ -48,6 +50,7 @@ const cropML = () => {
             <br />
             <TextField
                 id="filled-basic"
+                type="number"
                 label="Potassium"
                 variant="filled"
                 color="success"
@@ -60,7 +63,8 @@ const cropML = () => {
             <br />
             <TextField
                 id="filled-basic"
-                label="pH Level"
+                type="number"
+                label="Temperature (in °C)"
                 variant="filled"
                 color="success"
                 sx={{
@@ -72,31 +76,34 @@ const cropML = () => {
             <br />
             <TextField
                 id="filled-basic"
+                type="number"
+                label="Humidity (in %)"
+                variant="filled"
+                color="success"
+                sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                }}
+            />
+            <br />
+            <TextField
+                id="filled-basic"
+                type="number"
+                label="ph Value of Soil"
+                variant="filled"
+                color="success"
+                sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                }}
+            />
+            <br />
+            <TextField
+                id="filled-basic"
+                type="number"
                 label="Rainfall (in mm)"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="State"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="City"
                 variant="filled"
                 color="success"
                 sx={{

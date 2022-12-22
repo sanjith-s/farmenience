@@ -25,8 +25,7 @@ import AllQueries from "./N1";
 import PageN2 from "./pageN2a";
 import PageN4 from "./pageN4";
 import PageN5 from "./pageN5";
-import PageN1 from "./pageN1";
-import CropRecommendation from "./cropRecommendation"; 
+import CropRecommendation from "./cropRecommendation";
 
 function App() {
   return (
@@ -56,8 +55,10 @@ function App() {
             <Route path="/M10" element={<PageM10a />} />
             <Route path="/N2a" element={<PageN2 />} />
             <Route path="/N5" element={<PageN5 />} />
-            <Route path="/N1" element={<PageN1 />}/>
-            <Route path="/cropRecommendation" element={<CropRecommendation />} />
+            <Route
+              path="/cropRecommendation"
+              element={<CropRecommendation />}
+            />
             <Route path="/ordersummary" />
           </Routes>
         </BrowserRouter>

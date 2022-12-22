@@ -33,7 +33,7 @@ const PageN2 = () => {
   const [rainfall, setRainfall] = useState(0);
 
   function CheckNitrogen() {
-    if(nitrogen >= 0 && nitrogen <= 100) {
+    if(nitrogen > 0 && nitrogen <= 100) {
       CheckPhosphorous();
     }
 
@@ -43,7 +43,7 @@ const PageN2 = () => {
   }
 
   function CheckPhosphorous() {
-    if(phosphorous >= 0 && phosphorous <= 100) {
+    if(phosphorous > 0 && phosphorous <= 100) {
       CheckPotassium();
     }
 
@@ -53,7 +53,7 @@ const PageN2 = () => {
   }
 
   function CheckPotassium() {
-    if(potassium >= 0 && potassium <= 100) {
+    if(potassium > 0 && potassium <= 100) {
       CheckTemp();
     }
 
@@ -63,7 +63,7 @@ const PageN2 = () => {
   }
 
   function CheckTemp() {
-    if(temp >= 0 && temp <= 50) {
+    if(temp > 0 && temp <= 50) {
       CheckHumidity();
     }
 
@@ -73,7 +73,7 @@ const PageN2 = () => {
   }
 
   function CheckHumidity() {
-    if(humidity >= 0 && nitrogen <= 100) {
+    if(humidity > 0 && nitrogen <= 100) {
       CheckPH();
     }
 
@@ -83,7 +83,7 @@ const PageN2 = () => {
   }
 
   function CheckPH() {
-    if(ph >= 0 && ph <= 14) {
+    if(ph > 0 && ph <= 14) {
       CheckRainfall();
     }
 
@@ -93,7 +93,7 @@ const PageN2 = () => {
   }
 
   function CheckRainfall() {
-    if(rainfall >= 0 && rainfall <= 1000) {
+    if(rainfall > 0 && rainfall <= 1000) {
       PredictCrop();
     }
 
@@ -116,10 +116,11 @@ const PageN2 = () => {
           // if (response.data.message == "Success") {
           //   navigate("/login");
           // }
-
+          alert(1)
           alert(response.data)
         })
         .catch((res, err) => {
+          alert(2)
           alert(res.response.data.message);
         });
   }
@@ -265,7 +266,7 @@ const PageN2 = () => {
         </Container>
       </Stack>
       <Box textAlign="center" padding={"200px 250px 50px 250px"}>
-        <Button variant="contained" onClick={CheckNitrogen()} sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button variant="contained" onClick={CheckNitrogen} sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Predict
         </Button>
       </Box>

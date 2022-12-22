@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -10,6 +10,14 @@ import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import Fab from "@mui/material/Fab";
 
 const cropML = () => {
+    const [nitrogen,setNitrogen]=useState(0);
+    const [phosphorus,setPhosphorus]=useState(0);
+    const [potassium,setPotassium]=useState(0);
+    const [temp,setTemp]=useState(0);
+    const [humidity,setHumidity]=useState(0);
+    const [ph,setPh]=useState(0);
+    const [rainfall,setRainfall]=useState(0);
+
     return (
         <React.Fragment>
             <Stack
@@ -28,6 +36,7 @@ const cropML = () => {
                 label="Nitrogen"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setNitrogen(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -41,6 +50,7 @@ const cropML = () => {
                 label="Phosphorus"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setPhosphorus(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -54,6 +64,7 @@ const cropML = () => {
                 label="Potassium"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setPotassium(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -67,6 +78,7 @@ const cropML = () => {
                 label="Temperature (in °C)"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setTemp(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -80,6 +92,7 @@ const cropML = () => {
                 label="Humidity (in %)"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setHumidity(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -93,6 +106,7 @@ const cropML = () => {
                 label="ph Value of Soil"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setPh(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",
@@ -106,6 +120,7 @@ const cropML = () => {
                 label="Rainfall (in mm)"
                 variant="filled"
                 color="success"
+                onChange={(e)=>{setRainfall(e.target.value)}}
                 sx={{
                     backgroundColor: "#C4E1C5",
                     borderBottomColor: "black",

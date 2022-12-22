@@ -24,7 +24,7 @@ import Crop from "./components/cropML";
 
 const PageN2 = () => {
 
-  function
+  
 
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>

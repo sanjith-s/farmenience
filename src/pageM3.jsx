@@ -72,7 +72,7 @@ function PageM3(props) {
       <Typography
         textAlign="center"
         variant="h3"
-        sx={{ display: "block", padding: "10px" }}
+        sx={{ display: "block", padding: "10px", fontWeight: "600" }}
       >
         SALES DETAILS
       </Typography>
@@ -88,7 +88,7 @@ function PageM3(props) {
             width: "40%",
             bgcolor: "#cccccc",
             padding: "20px",
-            borderRadius: "15px",
+            borderRadius: "8px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
@@ -97,39 +97,60 @@ function PageM3(props) {
           }}
         >
           <Typography
-            variant="subtitle1"
-            sx={{ fontSize: "20px", alignSelf: "flex-start" }}
+            variant="h5"
+            sx={{
+              alignSelf: "flex-start",
+              marginTop: "15px",
+              lineHeight: "0px",
+            }}
           >
             Filter by
           </Typography>
           <Divider flexItem />
           <Box>
-            <Typography variant="h5" textAlign="center">
-              ITEMS
+            <Typography
+              style={{
+                textAlign: "center",
+                textTransform: "uppercase",
+                fontWeight: "600",
+                fontSize: "32px",
+              }}
+            >
+              items
             </Typography>
             <SalesItemsList cards={salesItems} items={salesDetails} />
           </Box>
 
           <Box sx={{ paddingTop: "20px", width: "75%" }}>
-            <Typography variant="h5" textAlign="center">
-              DATE
+            <Typography
+              style={{
+                textAlign: "center",
+                textTransform: "uppercase",
+                fontWeight: "600",
+                fontSize: "32px",
+              }}
+            >
+              date
             </Typography>
             <Box component="div">
               <Typography
                 variant="h6"
-                sx={{
+                style={{
                   display: "flex",
                   columnGap: "3px",
                   justifyContent: "space-between",
                   padding: "20px 0px",
+                  fontWeight: "600",
                 }}
               >
-                From :{" "}
+                From :
                 <input
                   style={{
                     width: "75%",
+                    border: "2px solid ",
                     borderRadius: "4px",
                     cursor: "pointer",
+                    textTransform: "uppercase",
                   }}
                   type="date"
                 ></input>
@@ -137,19 +158,22 @@ function PageM3(props) {
 
               <Typography
                 variant="h6"
-                sx={{
+                style={{
                   display: "flex",
                   columnGap: "3px",
                   justifyContent: "space-between",
                   padding: "20px 0px",
+                  fontWeight: "600",
                 }}
               >
                 To :
                 <input
                   style={{
                     width: "75%",
-                    borderRadius: "4px",
                     cursor: "pointer",
+                    border: "2px solid ",
+                    borderRadius: "4px",
+                    textTransform: "uppercase",
                   }}
                   type="date"
                 ></input>
@@ -163,12 +187,12 @@ function PageM3(props) {
           sx={{
             width: "60%",
             bgcolor: "#aaaaaa",
-            padding: "20px ",
-            borderRadius: "15px",
+            padding: "20px 0px",
+            borderRadius: "8px",
           }}
         >
-          <Typography variant="subtitle1" sx={{ fontSize: "20px" }}>
-            Filtered details{" "}
+          <Typography variant="h5" sx={{ padding: "0px 20px" }}>
+            Filtered details
           </Typography>
           <Divider flexItem />
           <SalesCardsList cards={salesDetails} />

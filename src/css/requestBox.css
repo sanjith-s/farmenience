@@ -1,48 +1,48 @@
 .requestbox {
-	font-size: 1.2rem;
-	background: rgba(217, 217, 217, 1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    column-gap: 2%;
-/*	width: 30%;*/
+  font-size: 1.2rem;
+  background: rgba(217, 217, 217, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  column-gap: 2%;
+  /*	width: 30%;*/
 }
 .r-key {
-	flex: 1;
-	background: rgba(22, 229, 117, 1);
-	width: 30%;
-	padding: 2% 1% 2% 1%;
+  flex: 1;
+  background: #00cb00;
+  width: 30%;
+  padding: 2% 1% 2% 1%;
 }
 .r-value {
-	flex: 1;
-	padding-left: 5%;
-	padding-top: 2%;
-	padding-bottom: 2%;
-	background: rgba(196, 225, 197, 1);
-	margin: auto;
-	text-align: center;
+  flex: 1;
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background: #bdfbbf;
+  margin: auto;
+  text-align: center;
 }
 
 .r-row {
-    padding: 2%;
-    padding-left: 6%;
-	display: flex;
-	justify-content: space-between;
-	align-items: space-between;
+  padding: 2%;
+  padding-left: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
 }
 
 .r-view {
-	flex:1;
-	text-align: center;
-	padding-top: 1%;
-	font-size: 1rem;
-	font-weight: bold;
-	padding-bottom: 1%;
-    border-radius: 999em;
-	background-color: rgba(22, 229, 117, 1);
+  flex: 1;
+  text-align: center;
+  padding-top: 1%;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-bottom: 1%;
+  border-radius: 999em;
+  background-color: rgba(22, 229, 117, 1);
 }
 
 .r-view:hover {
-	background-color: greenyellow;
-	box-shadow: 2px 3px black;
+  background-color: greenyellow;
+  box-shadow: 2px 3px black;
 }

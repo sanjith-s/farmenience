@@ -14,7 +14,7 @@ import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
 import PageM9 from "./pageM9";
-import PageM10a from "./pageM10";
+import PageM10a from "./pageM10a";
 import PageM11 from "./pageM11";
 import PageM12 from "./pageM12";
 import PageM15 from "./pageM15";
@@ -30,6 +30,8 @@ import PageN5 from "./pageN5";
 import PageN7 from "./pageN7";
 import PageN9 from "./pageN9";
 import CropRecommendation from "./cropRecommendation";
+import PageM10b from "./pageM10b";
+import PageM10c from "./pageM10c";
 function App() {
   return (
     <div>
@@ -49,7 +51,9 @@ function App() {
             <Route path="/M5" element={<PageM5 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
-            <Route path="/M10" element={<PageM10a />} />
+            <Route path="/M10a" element={<PageM10a />} />
+            <Route path="/M10b" element={<PageM10b />} />
+            <Route path="/M10c" element={<PageM10c />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M12" element={<PageM12 />} />
             <Route path="/M15" element={<PageM15 />} />

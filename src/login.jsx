@@ -6,10 +6,11 @@ import validator from "validator";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
+import Cookies from 'js-cookie';
 
 function Login() {
   const captchaRef = useRef(null);
-
+  const navigate=useNavigate();
   const [logindata, setLogindata] = useState({
     email: "",
     password: ""
@@ -21,15 +22,9 @@ function Login() {
 
   const submit = (event) => {
     event.preventDefault();
-    //const token = captchaRef.current.getValue();
-    //captchaRef.current.reset();
     let emailChk = 0;
     let passChk = 1;
-
     if (validator.isEmail(logindata.email)) emailChk = 1;
-
-    //if (logindata.password === logindata.confpass) passChk = 1;
-
     if (!emailChk) {
       alert("Invalid Email Address");
       return;
@@ -38,37 +33,31 @@ function Login() {
       alert("Passwords do not match");
       return;
     }
-
     alert("Validation successful");
-    console.log(token);
   };
 
   const LogMeIn = (em, pass) => {
-    //let em1 = em;
-    //let pass1 = pass;
-    Axios.get('http://localhost:5000/login/${em}/${pass}')
+    Axios.post('http://localhost:5000/login',{
+      email:em,
+      password:pass
+    }
+    )
     .then((response) => {
-      if (response.data == "Successful") {
+      if (response.data.message == "Successful") {
         alert('Login Successful');
-        localStorage.setItem("email", email);
+        Cookies.set('token', response.data.token,{ expires: 1 });
         navigate('/homepage2');
-
-        /*if (response.data === "Admin") {
-          window.location.href = "http://localhost:3000/admin_homepage"
-        } else if (response.data === "Buyer") {
-          window.location.href = "http://localhost:3000/homepage2"
-        } else if (response.data === "Seller") {
-          window.location.href = "http://localhost:3000/homepage3"
-        }*/
-
-      } else if (response.data == "Password doesn't exist") {
-        console.log("Invalid Email/Password")
-        localStorage.setItem("email", "");
-        console.log("Success");
       }
-
-      else {
-        console.log("Error");
+      else
+      {
+        alert("Error");
+      }
+    }).
+    catch((response)=>{
+      alert(response.response.data.message);
+      if(response.response.data.message==="Error in login")
+      {
+        navigate("/logoutALL",{state:{email:em}});
       }
     });
 

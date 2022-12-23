@@ -32,6 +32,7 @@ import PageN9 from "./pageN9";
 import CropRecommendation from "./cropRecommendation";
 import PageM10b from "./pageM10b";
 import PageM10c from "./pageM10c";
+import LogoutAllDevice from "./LogoutAllDevice";
 function App() {
   return (
     <div>
@@ -63,6 +64,7 @@ function App() {
             <Route path="/M19" element={<PageM19 />} />            
             <Route path="/N1" element={<PageN1 />} />
             <Route path="/N2a" element={<PageN2 />} />
+            <Route path="/logoutAll" element={<LogoutAllDevice />}/>
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/N5" element={<PageN5 />} />
             <Route path="/N7" element={<PageN7 />} /> 

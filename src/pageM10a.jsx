@@ -14,7 +14,6 @@ import {
   Box,
   Container,
   CssBaseline,
-  Divider,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
@@ -69,15 +68,17 @@ const PageM10a = () => {
   return (
     <Container
       style={{
-        padding: "10px 0px",
+        padding: "15px 0px",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "20px",
+        rowGap: "15px",
       }}
     >
       <CssBaseline />
-
+      <Box>
+        <Page10Nav title="market name" />
+      </Box>
       <CardActions
         style={{
           width: "100%",
@@ -193,7 +194,6 @@ const PageM10a = () => {
                 }}
               >
                 <Typography
-                  // variant="h4"
                   style={{
                     fontWeight: "600",
                     textTransform: "uppercase",

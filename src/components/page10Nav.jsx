@@ -16,7 +16,14 @@ function Page10Nav(props) {
       }}
     >
       <CssBaseline />
-      <Box sx={{ position: "absolute", left: "20px ", top: "7px" }}>
+      <Box
+        sx={{
+          position: "absolute",
+          left: "20px ",
+          top: "7px",
+          marginTop: "5px",
+        }}
+      >
         <IconButton color="success">
           <ArrowBackIosIcon style={{ color: "#ffffff" }} />
         </IconButton>

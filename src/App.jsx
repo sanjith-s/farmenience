@@ -33,6 +33,8 @@ import CropRecommendation from "./cropRecommendation";
 import PageM10b from "./pageM10b";
 import PageM10c from "./pageM10c";
 import LogoutAllDevice from "./LogoutAllDevice";
+import PageM2 from "./pageM2";
+import PageM7 from "./pageM7";
 function App() {
   return (
     <div>
@@ -61,7 +63,9 @@ function App() {
             <Route path="/M16" element={<PageM16 />} />
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
-            <Route path="/M19" element={<PageM19 />} />            
+            <Route path="/M19" element={<PageM19 />} />  
+            <Route path="/M2" element={<PageM2 />} />
+            <Route path="/M7" element={<PageM7 />} />          
             <Route path="/N1" element={<PageN1 />} />
             <Route path="/N2a" element={<PageN2 />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />}/>

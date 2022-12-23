@@ -2,9 +2,35 @@ import React from "react";
 import "./css/pageM4.css";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-function PageM4(props) {
+function PageM4() {
+  var saleDetails = {
+    saleName:"Wheat",
+    orderDate:"21/12/2022",
+    deliveryDate:"27/12/2022",
+    clientName:"Person Z",
+    paymentMode:"Cash On Delivery",
+    transactionID:"---------",
+    remarks:"--------",
+    itemsBought:[
+      {
+        itemName:"Wheat",
+        quantity:30,
+        price:20
+      },
+      {
+        itemName:"Sugarcane",
+        quantity:20,
+        price:40
+      },
+      {
+        itemName:"Tomato",
+        quantity:60,
+        price:7
+      }
+      ]
+  }
 	var tot_amount = 0;
-	props.itemsBought.map((item)=>{
+	saleDetails.itemsBought.map((item)=>{
 		tot_amount+=item.quantity * (item.price);
 		return;
 	})
@@ -13,31 +39,31 @@ function PageM4(props) {
        <div className="salebox">
              <div className="s-row">
                <div className="s-key">Sale name</div>
-               <div className="s-value">{props.saleName}</div>
+               <div className="s-value">{saleDetails.saleName}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Order Date</div>
-               <div className="s-value">{props.orderDate}</div>
+               <div className="s-value">{saleDetails.orderDate}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Delivery date</div>
-               <div className="s-value">{props.deliveryDate}</div>
+               <div className="s-value">{saleDetails.deliveryDate}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Client Name</div>
-               <div className="s-value">{props.clientName}</div>
+               <div className="s-value">{saleDetails.clientName}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Payment Mode</div>
-               <div className="s-value">{props.paymentMode}</div>
+               <div className="s-value">{saleDetails.paymentMode}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Transcation Id</div>
-               <div className="s-value">{props.transactionId}</div>
+               <div className="s-value">{saleDetails.transactionID}</div>
              </div>
              <div className="s-row">
                <div className="s-key">Remarks</div>
-               <div className="s-value">{props.remarks}</div>
+               <div className="s-value">{saleDetails.remarks}</div>
              </div>
              <div className="s-row">
              <div className="s-contact">Contact Client</div>
@@ -54,7 +80,7 @@ function PageM4(props) {
                     <div className="bill">
                       <table border="2">
                        <tr><td>S.no</td><td>Item</td><td>Quantity</td><td>Price per KG</td><td>Price</td></tr>
-                       {props.itemsBought.map((item,index)=>{
+                       {saleDetails.itemsBought.map((item,index)=>{
                         return <tr><td>{index+1}</td><td>{item.itemName}</td><td>{item.quantity}</td><td>{item.price}</td><td>{item.price * item.quantity}</td></tr>
                        })
                        }

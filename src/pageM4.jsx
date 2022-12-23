@@ -81,14 +81,14 @@ function PageM4() {
                       <table border="2">
                        <tr><td>S.no</td><td>Item</td><td>Quantity</td><td>Price per KG</td><td>Price</td></tr>
                        {saleDetails.itemsBought.map((item,index)=>{
-                        return <tr><td>{index+1}</td><td>{item.itemName}</td><td>{item.quantity}</td><td>{item.price}</td><td>{item.price * item.quantity}</td></tr>
+                        return <tr><td>{index+1}</td><td>{item.itemName}</td><td>{item.quantity}</td><td>₹ {item.price}</td><td>₹ {item.price * item.quantity}</td></tr>
                        })
                        }
                       </table>
                     </div> 
            </div>
            <div className="b-row4 s-box"> 
-           <div className="totamt">Total amount to be paid : </div><div className="amt">Rs:{tot_amount}</div>
+           <div className="totamt">Total amount to be paid : </div><div className="amt">₹ {tot_amount}</div>
            </div>
            <div className="b-row5 s-box"> <div className="delsale">Delete Sale</div></div>
        </div>

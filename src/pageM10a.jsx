@@ -158,92 +158,105 @@ const PageM10a = () => {
           </Button>
         </CardActionArea>
       </CardActions>
-
-      {data.map((val) => {
-        return (
-          <CardContent
-            style={{
-              width: "100%",
-              backgroundColor: "#ffffff",
-              borderRadius: "8px",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box
-              sx={{
+      <Card
+        style={{
+          backgroundColor: "#86fe9ede",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: "20px",
+          height: "500px",
+          overflow: "auto",
+          padding: "20px 15px",
+          borderRadius: "5px",
+          border: "3px solid #000000",
+        }}
+      >
+        {data.map((val) => {
+          return (
+            <CardContent
+              style={{
+                width: "100%",
+                backgroundColor: "#ffffff",
+                borderRadius: "8px",
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "center",
-                width: "50%",
-                padding: "0px 20px",
+                justifyContent: "space-between",
               }}
             >
-              <Typography
-                // variant="h4"
-                style={{
-                  fontWeight: "600",
-                  textTransform: "uppercase",
-                  fontSize: "22px",
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  width: "50%",
+                  padding: "0px 20px",
                 }}
               >
-                {val.market}
-              </Typography>
-              <Typography
-                variant="boby1"
-                style={{ fontSize: "20px", fontWeight: "400" }}
-              >
-                {val.distance}
-              </Typography>
-            </Box>
-            <Box
-              style={{
-                width: "20%",
-                display: "flex",
-                alignItems: "center",
-                padding: "0px 20px",
-              }}
-            >
-              <Typography
+                <Typography
+                  // variant="h4"
+                  style={{
+                    fontWeight: "600",
+                    textTransform: "uppercase",
+                    fontSize: "22px",
+                  }}
+                >
+                  {val.market}
+                </Typography>
+                <Typography
+                  variant="boby1"
+                  style={{ fontSize: "20px", fontWeight: "400" }}
+                >
+                  {val.distance}
+                </Typography>
+              </Box>
+              <Box
                 style={{
-                  fontWeight: "600",
-                  textTransform: "uppercase",
-                  fontSize: "22px",
+                  width: "20%",
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "0px 20px",
                 }}
               >
-                {val.city}
-              </Typography>
-            </Box>
+                <Typography
+                  style={{
+                    fontWeight: "600",
+                    textTransform: "uppercase",
+                    fontSize: "22px",
+                  }}
+                >
+                  {val.city}
+                </Typography>
+              </Box>
 
-            <Box
-              style={{
-                width: "30%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "green", padding: "12px" }}
+              <Box
+                style={{
+                  width: "30%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
               >
-                <Link to="/M10b" style={{ textDecoration: "none" }}>
-                  <Typography
-                    style={{
-                      color: "#ffffff",
-                      fontWeight: "600",
-                      fontSize: "16px",
-                    }}
-                  >
-                    View Market
-                  </Typography>
-                </Link>
-              </Button>
-            </Box>
-          </CardContent>
-        );
-      })}
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "green", padding: "12px" }}
+                >
+                  <Link to="/M10b" style={{ textDecoration: "none" }}>
+                    <Typography
+                      style={{
+                        color: "#ffffff",
+                        fontWeight: "600",
+                        fontSize: "16px",
+                      }}
+                    >
+                      View Market
+                    </Typography>
+                  </Link>
+                </Button>
+              </Box>
+            </CardContent>
+          );
+        })}
+      </Card>
     </Container>
   );
 };

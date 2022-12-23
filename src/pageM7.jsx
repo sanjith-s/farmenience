@@ -38,7 +38,7 @@ const PageM7 = () => {
         </div>
         <div className='part-2'>
         <div className='img-show'>
-        {/* <img src={process.env.PUBLIC_URL + '/image1.png'} alt="Hi"></img> */}
+        {/* <img src={process.env.PUBLIC_URL + '/image1.jpg'} alt="Hi"></img> */}
         </div>
         <div style={{alignItems: "center"}}>
             <button className='btn'>BACK</button>

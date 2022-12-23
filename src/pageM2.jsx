@@ -39,7 +39,7 @@ const PageM2 = () => {
           </div>
           <div class="img-btns">
           <div class="image">
-          {/* <img src={process.env.PUBLIC_URL + '/Rectangle 11.png'} alt="Hi"></img> */}
+          {/* <img src={process.env.PUBLIC_URL + '/Rectangle-11.jpg'} alt="Hi"></img> */}
           </div>
           <div class="buttons">
             <div><button class="btn">Reject</button></div>

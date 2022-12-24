@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -122,7 +122,6 @@ const PageM10a = () => {
           width: "100%",
           backgroundColor: "#ffffff",
           borderRadius: "8px",
-          // border: "2px solid #555555",
           padding: "0px",
         }}
       >
@@ -240,7 +239,13 @@ const PageM10a = () => {
                   variant="contained"
                   style={{ backgroundColor: "green", padding: "12px" }}
                 >
-                  <Link to="/M10b" style={{ textDecoration: "none" }}>
+                  <Link
+                    to={{
+                      pathname: "/M10b",
+                      state: { marketName: "metta" },
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       style={{
                         color: "#ffffff",

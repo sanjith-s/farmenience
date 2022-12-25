@@ -26,41 +26,49 @@ const data = [
     market: "SABJI MANDI",
     distance: "2208.3 km from your location",
     city: "DELHI",
+    rate: 3,
   },
   {
     market: "KOYEMBEDU MARKET",
     distance: "5 km from your location",
     city: "CHENNAI",
+    rate: 3,
   },
   {
     market: "PATEL VEGETABLE MARKET",
     distance: "626 km from your location",
     city: "HYDERABAD",
+    rate: 3,
   },
   {
     market: "RMC MARKET",
     distance: "345 km from your location",
     city: "BANGALORE",
+    rate: 3,
   },
   {
     market: "SABJI MANDI",
     distance: "2208.3 km from your location",
     city: "DELHI",
+    rate: 3,
   },
   {
     market: "KOYEMBEDU MARKET",
     distance: "5 km from your location",
     city: "CHENNAI",
+    rate: 3,
   },
   {
     market: "PATEL VEGETABLE MARKET",
     distance: "626 km from your location",
     city: "HYDERABAD",
+    rate: 3,
   },
   {
     market: "RMC MARKET",
     distance: "345 km from your location",
     city: "BANGALORE",
+    rate: 3,
   },
 ];
 
@@ -240,10 +248,8 @@ const PageM10a = () => {
                   style={{ backgroundColor: "green", padding: "12px" }}
                 >
                   <Link
-                    to={{
-                      pathname: "/M10b",
-                      state: { marketName: "metta" },
-                    }}
+                    to="/M10b"
+                    state={{ from: val.market, rate: val.rate }}
                     style={{ textDecoration: "none" }}
                   >
                     <Typography
@@ -253,7 +259,7 @@ const PageM10a = () => {
                         fontSize: "16px",
                       }}
                     >
-                      View Market
+                      view market
                     </Typography>
                   </Link>
                 </Button>

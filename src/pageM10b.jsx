@@ -1,6 +1,5 @@
 import React from "react";
-import { AiOutlineSearch, AiOutlineCamera, AiFillStar } from "react-icons/ai";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -26,50 +25,24 @@ import Page10Nav from "./components/page10Nav";
 
 const data = [
   {
-    market: "RAJA",
-    distance: "ANGEL STORE",
-    city: (
-      <div>
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-      </div>
-    ),
+    sellerName: "RAJA",
+    storeName: "ANGEL STORE",
+    rate: 2.5,
   },
   {
-    market: "RAHUL ",
-    distance: "SS STORE",
-    city: (
-      <div>
-        <AiFillStar />
-        <AiFillStar />
-      </div>
-    ),
+    sellerName: "RAHUL ",
+    storeName: "SS STORE",
+    rate: 2.5,
   },
   {
-    market: "RAKESH ",
-    distance: "KP STORE",
-    city: (
-      <div>
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-      </div>
-    ),
+    sellerName: "RAKESH ",
+    storeName: "KP STORE",
+    rate: 2.5,
   },
   {
-    market: "MAHESH ",
-    distance: "MANI STORE",
-    city: (
-      <div>
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-        <AiFillStar />
-      </div>
-    ),
+    sellerName: "MAHESH ",
+    storeName: "MANI STORE",
+    rate: 2.5,
   },
 ];
 
@@ -88,8 +61,9 @@ const PageM10b = () => {
     >
       <CssBaseline />
       <Box>
-        {console.log(location.state)}
-        <Page10Nav title="market Name" />
+        <Page10Nav
+          title={location.state ? location.state.from : "Market Name"}
+        />
       </Box>
       <CardActions
         style={{
@@ -204,21 +178,52 @@ const PageM10b = () => {
                   padding: "0px 20px",
                 }}
               >
-                <Typography
-                  style={{
-                    fontWeight: "600",
-                    textTransform: "uppercase",
-                    fontSize: "22px",
-                  }}
-                >
-                  NAME OF THE SELLER:{val.market}
-                </Typography>
-                <Typography
-                  variant="boby1"
-                  style={{ fontSize: "20px", fontWeight: "400" }}
-                >
-                  NAME OF THE SELLER:{val.distance}
-                </Typography>
+                <Box style={{ display: "flex" }}>
+                  <Typography
+                    style={{
+                      fontWeight: "600",
+                      textTransform: "uppercase",
+                      fontSize: "22px",
+                    }}
+                  >
+                    name of the seller:
+                  </Typography>
+                  {
+                    <Typography
+                      style={{
+                        fontWeight: "400",
+                        textTransform: "uppercase",
+                        fontSize: "22px",
+                        paddingLeft: "20px",
+                      }}
+                    >
+                      {val.sellerName}
+                    </Typography>
+                  }
+                </Box>
+                <Box style={{ display: "flex" }}>
+                  <Typography
+                    variant="boby1"
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: "600",
+                      textTransform: "uppercase",
+                      display: "flex",
+                    }}
+                  >
+                    name of the store:
+                  </Typography>
+                  <Typography
+                    style={{
+                      fontWeight: "400",
+                      textTransform: "uppercase",
+                      fontSize: "22px",
+                      paddingLeft: "28px",
+                    }}
+                  >
+                    {val.storeName}
+                  </Typography>
+                </Box>
               </Box>
               <Box
                 style={{
@@ -228,15 +233,7 @@ const PageM10b = () => {
                   padding: "0px 20px",
                 }}
               >
-                <Typography
-                  style={{
-                    fontWeight: "600",
-                    textTransform: "uppercase",
-                    fontSize: "22px",
-                  }}
-                >
-                  {val.city}
-                </Typography>
+                <Rating value={val.rate} max={5} precision={0.5} readOnly />
               </Box>
 
               <Box
@@ -259,7 +256,7 @@ const PageM10b = () => {
                         fontSize: "16px",
                       }}
                     >
-                      View Market
+                      view details
                     </Typography>
                   </Link>
                 </Button>
@@ -272,94 +269,3 @@ const PageM10b = () => {
   );
 };
 export default PageM10b;
-
-// import {AiOutlineSearch, AiOutlineCamera,AiFillStar} from 'react-icons/ai';
-// import {BsMic,BsFilter} from 'react-icons/bs';
-// import {BiSortDown} from 'react-icons/bi'
-// import './css/pageM10b.css'
-// import { Link } from 'react-router-dom';
-// import Card from '@mui/material/Card';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
-
-// const PageM10b = () =>{
-// const data=[
-//     {
-//         market:"RAJA",
-//         distance:"ANGEL STORE",
-//         city:<div><AiFillStar/><AiFillStar/><AiFillStar/></div>
-//     },
-//     {
-//         market:"RAHUL ",
-//         distance:"SS STORE",
-//         city:<div><AiFillStar/><AiFillStar/></div>
-//     },
-//     {
-//         market:"RAKESH ",
-//         distance:"KP STORE",
-//         city:<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-//     },
-//     {
-//         market:"MAHESH ",
-//         distance:"MANI STORE",
-//         city:<div><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/><AiFillStar/></div>
-//     }
-// ]
-//     return (
-//         <>
-//             <Card id="search-bar">
-//                 <div>
-//                     <table id="table-text-search">
-//                         <tr>
-//                             <td id="table-text-search">
-//                                 <AiOutlineSearch id="icon-style2" size={30}/>
-//                             </td>
-//                             <td id="table-text-search">
-//                                 <input type="text" placeholder='Search for market' id="text-input"></input>
-//                             </td>
-//                         </tr>
-//                     </table>
-//                 </div>
-//                 <div id="right-icons">
-//                     <BsMic id="icon-style1" size={30}/>
-//                     <AiOutlineCamera id="icon-style1" size={30}/>
-//                 </div>
-//             </Card>
-//             <Card id="sort-filter-card">
-//                 <Typography>
-//                     <BiSortDown size={30}/>
-//                     SORT
-//                 </Typography>
-//                 <Typography>
-//                     <BsFilter size={30}/>
-//                     FILTER
-//                 </Typography>
-//             </Card>
-
-//                 {data.map((val)=>{
-//                     return(
-//                         <Card id="card-display">
-//                             <Typography id="text-in-card">
-//                                 NAME OF THE SELLER:{val.market}
-//                                 <br></br>
-//                                 NAME OF THE SELLER:{val.distance}
-//                             </Typography>
-//                             <Typography id="text-in-card">
-//                                 {val.city}
-//                             </Typography>
-//                             <div>
-//                                 <Button variant="contained" id="button-style-market">
-//                                     <Link id="link-style" to="/M10c">
-//                                         View
-//                                     </Link>
-//                                 </Button>
-//                             </div>
-//                         </Card>
-//                     )
-//                 })
-//                 }
-
-//         </>
-//     )
-// }
-// export default PageM10b;

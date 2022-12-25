@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import profilePhoto from "./face1.jpg";
 import {
   Card,
   Typography,
@@ -23,45 +22,6 @@ import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Page10Nav from "./components/page10Nav";
-
-const data = [
-  {
-    sellerName: "RAJA",
-    storeName: "ANGEL STORE",
-    places: ["koyambedu", "chennai"],
-    rate: 2.5,
-    profile: profilePhoto,
-    content:
-      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
-  },
-  {
-    sellerName: "RAHUL ",
-    storeName: "SS STORE",
-    places: ["koyambedu", "chennai"],
-    rate: 2.5,
-    profile: profilePhoto,
-    content:
-      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
-  },
-  {
-    sellerName: "RAKESH ",
-    storeName: "KP STORE",
-    places: ["koyambedu", "chennai"],
-    rate: 2.5,
-    profile: "",
-    content:
-      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
-  },
-  {
-    sellerName: "MAHESH ",
-    storeName: "MANI STORE",
-    places: ["koyambedu", "chennai"],
-    rate: 2.5,
-    profile: "",
-    content:
-      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
-  },
-];
 
 const PageM10b = () => {
   const location = useLocation();
@@ -174,7 +134,7 @@ const PageM10b = () => {
           border: "3px solid #000000",
         }}
       >
-        {data.map((val) => {
+        {(location.state ? location.state.marketData : "").map((val) => {
           return (
             <CardContent
               style={{

@@ -23,56 +23,25 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import Page10Nav from "./components/page10Nav";
 const data = [
   {
-    market: "SABJI MANDI",
-    distance: "2208.3 km from your location",
-    city: "DELHI",
+    market: "Market name",
+    distance: "address of the market",
+    city: "place",
     rate: 3,
   },
+];
+const marketData = [
   {
-    market: "KOYEMBEDU MARKET",
-    distance: "5 km from your location",
-    city: "CHENNAI",
-    rate: 3,
-  },
-  {
-    market: "PATEL VEGETABLE MARKET",
-    distance: "626 km from your location",
-    city: "HYDERABAD",
-    rate: 3,
-  },
-  {
-    market: "RMC MARKET",
-    distance: "345 km from your location",
-    city: "BANGALORE",
-    rate: 3,
-  },
-  {
-    market: "SABJI MANDI",
-    distance: "2208.3 km from your location",
-    city: "DELHI",
-    rate: 3,
-  },
-  {
-    market: "KOYEMBEDU MARKET",
-    distance: "5 km from your location",
-    city: "CHENNAI",
-    rate: 3,
-  },
-  {
-    market: "PATEL VEGETABLE MARKET",
-    distance: "626 km from your location",
-    city: "HYDERABAD",
-    rate: 3,
-  },
-  {
-    market: "RMC MARKET",
-    distance: "345 km from your location",
-    city: "BANGALORE",
-    rate: 3,
+    sellerName: "full name",
+    storeName: "some store",
+    places: ["place1", "place2"],
+    rate: 2.5,
+    profile: "",
+    content: "seller description given by the market itself",
   },
 ];
 
 const PageM10a = () => {
+  const location = useLocation();
   return (
     <Container
       style={{
@@ -85,7 +54,7 @@ const PageM10a = () => {
     >
       <CssBaseline />
       <Box>
-        <Page10Nav title="market name" />
+        <Page10Nav title={location.state ? location.state.from : "List"} />
       </Box>
       <CardActions
         style={{
@@ -179,7 +148,7 @@ const PageM10a = () => {
           border: "3px solid #000000",
         }}
       >
-        {data.map((val) => {
+        {(location.state ? location.state.dataList : data).map((val) => {
           return (
             <CardContent
               style={{
@@ -249,7 +218,13 @@ const PageM10a = () => {
                 >
                   <Link
                     to="/M10b"
-                    state={{ from: val.market, rate: val.rate }}
+                    state={{
+                      from: val.market,
+                      rate: val.rate,
+                      marketData: location.state
+                        ? location.state.marketData
+                        : marketData,
+                    }}
                     style={{ textDecoration: "none" }}
                   >
                     <Typography

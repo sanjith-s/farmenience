@@ -9,11 +9,14 @@ import Footer from "./components/footer";
 import Signup from "./signup";
 import Login from "./login";
 import PageM1 from "./pageM1";
+import PageM2 from "./pageM2";
 import PageM3 from "./pageM3";
 import PageM4 from "./pageM4";
 import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
+import PageM7 from "./pageM7";
 import PageM9 from "./pageM9";
+import PageM10 from "./pageM10";
 import PageM10a from "./pageM10a";
 import PageM10b from "./pageM10b";
 import PageM10c from "./pageM10c";
@@ -33,8 +36,7 @@ import PageN7 from "./pageN7";
 import PageN9 from "./pageN9";
 import CropRecommendation from "./cropRecommendation";
 import LogoutAllDevice from "./LogoutAllDevice";
-import PageM2 from "./pageM2";
-import PageM7 from "./pageM7";
+
 function App() {
   return (
     <div>
@@ -54,6 +56,7 @@ function App() {
             <Route path="/M5" element={<PageM5 />} />
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
+            <Route path="/M10" element={<PageM10 />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />

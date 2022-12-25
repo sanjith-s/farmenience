@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Card,
   Typography,
@@ -26,41 +26,49 @@ const data = [
     market: "SABJI MANDI",
     distance: "2208.3 km from your location",
     city: "DELHI",
+    rate: 3,
   },
   {
     market: "KOYEMBEDU MARKET",
     distance: "5 km from your location",
     city: "CHENNAI",
+    rate: 3,
   },
   {
     market: "PATEL VEGETABLE MARKET",
     distance: "626 km from your location",
     city: "HYDERABAD",
+    rate: 3,
   },
   {
     market: "RMC MARKET",
     distance: "345 km from your location",
     city: "BANGALORE",
+    rate: 3,
   },
   {
     market: "SABJI MANDI",
     distance: "2208.3 km from your location",
     city: "DELHI",
+    rate: 3,
   },
   {
     market: "KOYEMBEDU MARKET",
     distance: "5 km from your location",
     city: "CHENNAI",
+    rate: 3,
   },
   {
     market: "PATEL VEGETABLE MARKET",
     distance: "626 km from your location",
     city: "HYDERABAD",
+    rate: 3,
   },
   {
     market: "RMC MARKET",
     distance: "345 km from your location",
     city: "BANGALORE",
+    rate: 3,
   },
 ];
 
@@ -122,7 +130,6 @@ const PageM10a = () => {
           width: "100%",
           backgroundColor: "#ffffff",
           borderRadius: "8px",
-          // border: "2px solid #555555",
           padding: "0px",
         }}
       >
@@ -240,7 +247,11 @@ const PageM10a = () => {
                   variant="contained"
                   style={{ backgroundColor: "green", padding: "12px" }}
                 >
-                  <Link to="/M10b" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/M10b"
+                    state={{ from: val.market, rate: val.rate }}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       style={{
                         color: "#ffffff",
@@ -248,7 +259,7 @@ const PageM10a = () => {
                         fontSize: "16px",
                       }}
                     >
-                      View Market
+                      view market
                     </Typography>
                   </Link>
                 </Button>

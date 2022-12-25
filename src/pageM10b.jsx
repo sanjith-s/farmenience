@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import profilePhoto from "./face1.jpg";
 import {
   Card,
   Typography,
@@ -27,22 +28,38 @@ const data = [
   {
     sellerName: "RAJA",
     storeName: "ANGEL STORE",
+    places: ["koyambedu", "chennai"],
     rate: 2.5,
+    profile: profilePhoto,
+    content:
+      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
   },
   {
     sellerName: "RAHUL ",
     storeName: "SS STORE",
+    places: ["koyambedu", "chennai"],
     rate: 2.5,
+    profile: profilePhoto,
+    content:
+      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
   },
   {
     sellerName: "RAKESH ",
     storeName: "KP STORE",
+    places: ["koyambedu", "chennai"],
     rate: 2.5,
+    profile: "",
+    content:
+      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
   },
   {
     sellerName: "MAHESH ",
     storeName: "MANI STORE",
+    places: ["koyambedu", "chennai"],
     rate: 2.5,
+    profile: "",
+    content:
+      "Has been selling wheat ,rice,millets,etc for the past 45 years . Known for his fresh vegetables that is sold at a very reasonable rate",
   },
 ];
 
@@ -248,7 +265,17 @@ const PageM10b = () => {
                   variant="contained"
                   style={{ backgroundColor: "green", padding: "12px" }}
                 >
-                  <Link to="/M10b" style={{ textDecoration: "none" }}>
+                  <Link
+                    to="/M10c"
+                    state={{
+                      from: val.sellerName,
+                      branches: val.places,
+                      store: val.storeName,
+                      profile: val.profile,
+                      content: val.content,
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       style={{
                         color: "#ffffff",

@@ -7,6 +7,7 @@ import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Signup from "./signup";
+import Chart from "./chart";
 import Login from "./login";
 import PageM1 from "./pageM1";
 import PageM2 from "./pageM2";
@@ -52,6 +53,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M3" element={<PageM3 />} />
+            <Route path="/chart" element={<Chart />} />
             <Route path="/M4" element={<PageM4 />} />
             <Route path="/M5" element={<PageM5 />} />
             <Route path="/M6" element={<PageM6 />} />

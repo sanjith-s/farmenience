@@ -15,6 +15,8 @@ import PageM5 from "./pageM5";
 import PageM6 from "./pageM6";
 import PageM9 from "./pageM9";
 import PageM10a from "./pageM10a";
+import PageM10b from "./pageM10b";
+import PageM10c from "./pageM10c";
 import PageM11 from "./pageM11";
 import PageM12 from "./pageM12";
 import PageM15 from "./pageM15";
@@ -30,8 +32,6 @@ import PageN5 from "./pageN5";
 import PageN7 from "./pageN7";
 import PageN9 from "./pageN9";
 import CropRecommendation from "./cropRecommendation";
-import PageM10b from "./pageM10b";
-import PageM10c from "./pageM10c";
 import LogoutAllDevice from "./LogoutAllDevice";
 import PageM2 from "./pageM2";
 import PageM7 from "./pageM7";
@@ -63,17 +63,20 @@ function App() {
             <Route path="/M16" element={<PageM16 />} />
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
-            <Route path="/M19" element={<PageM19 />} />  
+            <Route path="/M19" element={<PageM19 />} />
             <Route path="/M2" element={<PageM2 />} />
-            <Route path="/M7" element={<PageM7 />} />          
+            <Route path="/M7" element={<PageM7 />} />
             <Route path="/N1" element={<PageN1 />} />
             <Route path="/N2a" element={<PageN2 />} />
-            <Route path="/logoutAll" element={<LogoutAllDevice />}/>
+            <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/N5" element={<PageN5 />} />
-            <Route path="/N7" element={<PageN7 />} /> 
-            <Route path="/N9" element={<PageN9 />} /> 
-            <Route path="/cropRecommendation" element={<CropRecommendation />} />
+            <Route path="/N7" element={<PageN7 />} />
+            <Route path="/N9" element={<PageN9 />} />
+            <Route
+              path="/cropRecommendation"
+              element={<CropRecommendation />}
+            />
             <Route path="/ordersummary" />
           </Routes>
         </BrowserRouter>

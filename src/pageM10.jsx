@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import lineGraph from "./lineGraph.png";
+
 import {
   Button,
   Container,
@@ -7,9 +9,11 @@ import {
   CssBaseline,
   Box,
   Card,
+  CardMedia,
 } from "@mui/material";
 import profilePhoto from "./face1.jpg";
 import Page10Nav from "./components/page10Nav";
+import Chart from "./components/chart";
 const data = [
   {
     market: "SABJI MANDI",
@@ -118,10 +122,33 @@ function PageM10() {
       <Box
         sx={{
           position: "relative ",
-          width: "500px",
-          backgroundColor: "#fff",
+          // width: "500px",
+          backgroundColor: "#86fe9ede",
+          width: "100%",
+          display: "flex",
+          justifyContent: "flex-start",
+          alignItems: "center",
+          padding: "30px 0px",
+          border: "1px solid #000",
+          borderRadius: "4px",
         }}
       >
+        <Box
+          sx={{
+            width: "90%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* <Chart /> */}
+          <img
+            src={lineGraph}
+            width={800}
+            height={350}
+            style={{ border: "2px solid #000", borderRadius: "4px" }}
+          />
+        </Box>
         <Button
           variant="contained"
           color="success"

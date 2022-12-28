@@ -9,28 +9,32 @@ import {
   Paper,
 } from "@mui/material";
 
-function PriceTable() {
-  const createData = (sno, item, quality, eachprice, price) => {
-    return { sno, item, quality, eachprice, price };
+function PriceTable(props) {
+  const createData = (sno, item, quantity, eachprice, price) => {
+    return { sno, item, quantity, eachprice, price };
   };
-  const rows = [
-    createData(1, "rice", 30, 20, 600),
-    createData(2, "wheat", 20, 40, 800),
-    createData(3, "ragi", 60, 7, 420),
-    createData(4, "fibre", 0, 42, 0),
-  ];
+
+  const rows = props.rows.map((row) => {
+    return createData(
+      row.sno,
+      row.item,
+      row.quantity,
+      row.eachPrice,
+      row.quantity * row.eachPrice
+    );
+  });
 
   return (
     <TableContainer
       component={Paper}
       style={{
-        // borderRadius: "8px",
         border: "3px solid",
         width: "fit-content",
-        overflow: "hidden",
+        overflow: "auto",
+        height: "300px",
       }}
     >
-      <Table sx={{ width: "650px" }} aria-label="prece table">
+      <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
         <TableHead
           style={{
             borderTop: "0px solid",
@@ -122,7 +126,7 @@ function PriceTable() {
                   fontSize: "18px",
                 }}
               >
-                {row.quality}
+                {row.quantity}
               </TableCell>
               <TableCell
                 align="right"
@@ -140,7 +144,7 @@ function PriceTable() {
                   fontSize: "18px",
                 }}
               >
-                {row.quality}
+                {row.price}
               </TableCell>
             </TableRow>
           ))}

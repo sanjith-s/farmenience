@@ -1,43 +1,131 @@
 import React from "react";
 import "./css/pageM4.css";
 import PriceTable from "./components/priceTable";
+import ProductList from "./components/productList";
+import { Box, CssBaseline, Typography, Container, Card } from "@mui/material";
 
-function PageM4() {
-  var saleDetails = {
-    saleName: "Wheat",
+const itemsBought = [
+  {
+    sno: 1,
+    item: "rice",
+    quantity: "20",
+    eachPrice: "60",
+    price: "600",
     orderDate: "21/12/2022",
     deliveryDate: "27/12/2022",
     clientName: "Person Z",
     paymentMode: "Cash On Delivery",
     transactionID: "---------",
     remarks: "--------",
-    itemsBought: [
-      {
-        itemName: "Wheat",
-        quantity: 30,
-        price: 20,
-      },
-      {
-        itemName: "Sugarcane",
-        quantity: 20,
-        price: 40,
-      },
-      {
-        itemName: "Tomato",
-        quantity: 60,
-        price: 7,
-      },
-    ],
-  };
-  var tot_amount = 0;
-  saleDetails.itemsBought.map((item) => {
-    tot_amount += item.quantity * item.price;
-    return;
-  });
+  },
+  {
+    sno: 2,
+    item: "wheat",
+    quantity: "20",
+    eachPrice: "40",
+    price: "800",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 3,
+    item: "ragi",
+    quantity: "7",
+    eachPrice: "60",
+    price: "420",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 4,
+    item: "fibre",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+
+  {
+    sno: 5,
+    item: "beans",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 6,
+    item: "carrot",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 7,
+    item: "apple",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+];
+
+let tot_amount = 0;
+itemsBought.map((item) => {
+  tot_amount += item.quantity * item.price;
+  return;
+});
+
+const saleDetails = {
+  sno: 1,
+  item: "rice",
+  quantity: "20",
+  eachPrice: "60",
+  price: "600",
+  orderDate: "21/12/2022",
+  deliveryDate: "27/12/2022",
+  clientName: "Person Z",
+  paymentMode: "Cash On Delivery",
+  transactionID: "---------",
+  remarks: "--------",
+};
+
+function PageM4() {
   return (
-    <div className="pagem4">
-      <div className="salebox">
-        <div className="s-row">
+    <Container>
+      <CssBaseline />
+      <div>
+        <ProductList cards={itemsBought} />
+        {/* <div className="s-row">
           <div className="s-key">Sale name</div>
           <div className="s-value">{saleDetails.saleName}</div>
         </div>
@@ -67,37 +155,34 @@ function PageM4() {
         </div>
         <div className="s-row">
           <div className="s-contact">Contact Client</div>
-        </div>
+        </div> */}
       </div>
-      <div className="billbox">
-        <div className="b-row1 s-box">
+      <Card>
+        <div>
           <div>
             <button className="printbox" onClick={window.print}>
               Print Pdf
             </button>
           </div>
         </div>
-        <div className="b-row2 s-box">
-          <div className="addressbox">
-            <span className="a-head">Billing Address : </span> Room
-            No:30,Kurinji Hostel, CEG, Anna University
-          </div>
-        </div>
         <div>
           <div>
-            <PriceTable />
+            <span>Billing Address : </span> Room No:30,Kurinji Hostel, CEG, Anna
+            University
           </div>
         </div>
-        <div className="b-row4 s-box">
-          <div className="totamt">Total amount to be paid : </div>
-          <div className="amt">₹ {tot_amount}</div>
+        <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+          <PriceTable rows={itemsBought} />
+        </Box>
+        <div>
+          <Typography>Total amount to be paid : </Typography>
+          <div>₹ {tot_amount}</div>
         </div>
-        <div className="b-row5 s-box">
-          {" "}
+        <div>
           <div className="delsale">Delete Sale</div>
         </div>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 }
 export default PageM4;

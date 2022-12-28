@@ -95,9 +95,9 @@ function PriceTable(props) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody style={{ backgroundColor: "#eee" }}>
+        <TableBody style={{ backgroundColor: "#c8f1d9" }}>
           {rows.map((row) => (
-            <TableRow key={row.sno}>
+            <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
               <TableCell
                 component="th"
                 scope="row"

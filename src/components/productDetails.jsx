@@ -3,11 +3,11 @@ import { CardContent, Typography } from "@mui/material";
 import { Stack, Box } from "@mui/material";
 
 const itemsName = [
-  "orderDate",
-  "deliveryDate",
-  "clientName",
-  "paymentMode",
-  "transactionID",
+  "order date",
+  "delivery date",
+  "client name",
+  "payment mode",
+  "transaction id",
   "remarks",
 ];
 
@@ -28,7 +28,7 @@ function ProductDetails(props) {
         margin="0px"
         sx={{
           width: "420px",
-          bgcolor: "#e2f3eb;",
+          bgcolor: "#fff",
           borderRadius: "8px",
         }}
       >

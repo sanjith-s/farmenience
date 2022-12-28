@@ -2,6 +2,7 @@ import React from "react";
 import "./css/pageM4.css";
 import PriceTable from "./components/priceTable";
 import ProductList from "./components/productList";
+import ProductDetails from "./components/productDetails";
 import {
   Box,
   CssBaseline,
@@ -107,6 +108,16 @@ const itemsBought = [
   },
 ];
 
+const item = {
+  sno: "1",
+  orderDate: "21/12/2022",
+  deliveryDate: "27/12/2022",
+  clientName: "Person Z",
+  paymentMode: "Cash On Delivery",
+  transactionID: "---------",
+  remarks: "--------",
+};
+
 let tot_amount = 0;
 itemsBought.map((item) => {
   tot_amount += item.quantity * item.price;
@@ -138,22 +149,35 @@ function PageM4() {
         <Typography
           variant="h5"
           sx={{
-            padding: "0px 20px 10px 20px",
+            padding: "0px 20px",
             textTransform: "capitalize",
-            borderBottom: "4px solid  #444",
           }}
         >
           product details
         </Typography>
-        <Divider flexItem />
-        <ProductList cards={itemsBought} />
+        <Box
+          sx={{
+            padding: "15px 0px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <ProductDetails
+            style={{ padding: "15px 0px" }}
+            key={item.sno}
+            orderDate={item.orderDate}
+            deliveryDate={item.deliveryDate}
+            clientName={item.clientName}
+            paymentMode={item.paymentMode}
+            transactionID={item.transactionID}
+            remarks={item.remarks}
+          />
+        </Box>
         <Box
           style={{
             width: "100%",
             display: "flex",
             justifyContent: "center",
-            paddingTop: "15px",
-            borderTop: "4px solid  #444",
           }}
         >
           <Button
@@ -173,7 +197,7 @@ function PageM4() {
         style={{
           width: "60%",
           position: "relative",
-          paddingTop: "110px",
+          paddingTop: "80px",
           border: "4px solid",
           borderRadius: "10px",
           backgroundColor: "#eee",

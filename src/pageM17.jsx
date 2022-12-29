@@ -1,5 +1,6 @@
 import TransactionHistory from "./components/TransactionHistory";
 import "./css/pageM17.css";
+import { Container, Typography, Box, Card } from "@mui/material";
 
 function M17() {
   const buyerHistory = [
@@ -30,20 +31,54 @@ function M17() {
       sender: "E",
       receiver: "F",
     },
+    {
+      ifscCode: "1xxx",
+      transactionid: 4,
+      paymentMode: "UPI",
+      bankName: "SBI",
+      amount: 10000.0,
+      sender: "A",
+      receiver: "B",
+    },
+    {
+      ifscCode: "1xxx",
+      transactionid: 5,
+      paymentMode: "UPI",
+      bankName: "SBI",
+      amount: 10000.0,
+      sender: "A",
+      receiver: "B",
+    },
   ];
 
   return (
-    <>
-      <div id="top">
-        {/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
-        <label id="header">View Transaction History</label>
-      </div>
+    <Card
+      style={{
+        padding: "20px 0px 30px 0px",
+        margin: "30px 100px",
+        borderRadius: "12px",
+        border: "2px solid",
+      }}
+    >
+      <Box>
+        <Typography
+          style={{
+            textTransform: "uppercase",
+            textAlign: "center",
+            fontSize: "38px",
+            fontWeight: "600",
+          }}
+        >
+          View Transaction History
+        </Typography>
+      </Box>
       <br></br>
-      <div id="details">
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
         <TransactionHistory rows={buyerHistory} />
-      </div>
-    </>
+      </Box>
+    </Card>
   );
 }
 export default M17;

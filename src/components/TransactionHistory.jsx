@@ -52,7 +52,7 @@ function TransactionHistory(props) {
           border: "3px solid",
           width: "fit-content",
           overflow: "auto",
-          height: "300px",
+          height: "350px",
         }}
       >
         <Table

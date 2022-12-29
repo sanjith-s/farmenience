@@ -148,9 +148,10 @@ const PageM10a = () => {
           border: "3px solid #000000",
         }}
       >
-        {(location.state ? location.state.dataList : data).map((val) => {
+        {(location.state ? location.state.dataList : data).map((val, index) => {
           return (
             <CardContent
+              key={index}
               style={{
                 width: "100%",
                 backgroundColor: "#ffffff",

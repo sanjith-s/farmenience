@@ -52,6 +52,9 @@ const PageM16 = () => {
           height: "500px",
           overflow: "scroll",
           borderRadius: "8px",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: "30px",
         }}
       >
         {content.map((id, key) => {

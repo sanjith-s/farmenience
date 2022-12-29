@@ -1,52 +1,49 @@
 import TransactionHistory from "./components/TransactionHistory";
-import './css/pageM17.css';
+import "./css/pageM17.css";
 
 function M17() {
+  const buyerHistory = [
+    {
+      ifscCode: "1xxx",
+      transactionid: 1,
+      paymentMode: "UPI",
+      bankName: "SBI",
+      amount: 10000.0,
+      sender: "A",
+      receiver: "B",
+    },
+    {
+      ifscCode: "",
+      transactionid: 2,
+      paymentMode: "Cash On Delivery",
+      bankName: null,
+      amount: 14500.0,
+      sender: "C",
+      receiver: "D",
+    },
+    {
+      ifscCode: "3xxx",
+      transactionid: 3,
+      paymentMode: "Credit Card",
+      bankName: "Canara Bank",
+      amount: 21000.0,
+      sender: "E",
+      receiver: "F",
+    },
+  ];
 
-    const buyerHistory = [
-        {
-          IFSCCode: "1xxx",
-          TransactionID: 1,
-          PaymentMode: "UPI",
-          BankName: "SBI",
-          Amount: 10000.0,
-          Sender: "A",
-          Receiver: "B"
-        },
-        {
-            IFSCCode: "",
-            TransactionID: 2,
-            PaymentMode: "Cash On Delivery",
-            BankName: null,
-            Amount: 14500.0,
-            Sender: "C",
-            Receiver: "D"
-        },
-        {
-            IFSCCode: "3xxx",
-            TransactionID: 3,
-            PaymentMode: "Credit Card",
-            BankName: "Canara Bank",
-            Amount: 21000.0,
-            Sender: "E",
-            Receiver: "F"
-        },
-      ];
-
-    return (
-        <><div id="top">
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                <label id="header">
-                    View Transaction History
-                </label>
-        </div>
-        <br></br>
-            <div id="details">
-            <TransactionHistory cards={buyerHistory} />
-            </div>
-        </>
-
-    )
+  return (
+    <>
+      <div id="top">
+        {/* &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; */}
+        <label id="header">View Transaction History</label>
+      </div>
+      <br></br>
+      <div id="details">
+        <TransactionHistory rows={buyerHistory} />
+      </div>
+    </>
+  );
 }
 export default M17;

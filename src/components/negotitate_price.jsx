@@ -40,8 +40,7 @@ const Negotiate = (props) => {
   return (
     <Card
       style={{
-        margin: "60px",
-        marginTop: "0px",
+        marginBottom: "40px",
         display: "flex",
         justifyContent: "center",
         padding: "50px 0px",

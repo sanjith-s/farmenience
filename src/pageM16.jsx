@@ -24,34 +24,52 @@ const content = [
 
 const PageM16 = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: "35px",
+      }}
+    >
       <Typography
         id="title"
         style={{
           textTransform: "uppercase",
           textAlign: "center",
-          margin: "30px 0px",
           fontWeight: "600px",
           fontSize: "52px",
+          marginBottom: "20px",
         }}
       >
         Negotiate Prices
       </Typography>
-      {content.map((id, key) => {
-        return (
-          <Box>
-            <Negotiate
-              key={key}
-              name={id.Name}
-              price={id.Price}
-              quantity={id.Quantity}
-              buyer={id.Buyer}
-              type={id.Type}
-              address={id.Address}
-            />
-          </Box>
-        );
-      })}
+      <Box
+        sx={{
+          border: "6px solid",
+          width: "95%",
+          padding: "25px",
+          height: "500px",
+          overflow: "scroll",
+          borderRadius: "8px",
+        }}
+      >
+        {content.map((id, key) => {
+          return (
+            <Box>
+              <Negotiate
+                key={key}
+                name={id.Name}
+                price={id.Price}
+                quantity={id.Quantity}
+                buyer={id.Buyer}
+                type={id.Type}
+                address={id.Address}
+              />
+            </Box>
+          );
+        })}
+      </Box>
     </Box>
   );
 };

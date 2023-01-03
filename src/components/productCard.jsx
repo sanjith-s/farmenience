@@ -22,7 +22,7 @@ function ProductCard() {
       <Box
         style={{
           width: "700px",
-          border: "6px solid green",
+          border: "8px solid green",
           padding: "30px",
           borderRadius: "12px",
           borderTopRightRadius: "50px",
@@ -37,7 +37,7 @@ function ProductCard() {
                 variant="h6"
                 style={{
                   textTransform: "uppercase",
-                  color: "white",
+                  color: "darkgreen",
                   fontWeight: "600",
                 }}
               >
@@ -64,7 +64,7 @@ function ProductCard() {
                 variant="h6"
                 style={{
                   textTransform: "uppercase",
-                  color: "white",
+                  color: "darkgreen",
                   fontWeight: "600",
                 }}
               >
@@ -74,7 +74,7 @@ function ProductCard() {
             <FilledInput
               endAdornment={
                 <InputAdornment position="end">
-                  <CurrencyRupeeIcon style={{ color: "white" }} />
+                  <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                 </InputAdornment>
               }
               onChange={(event) => {
@@ -95,7 +95,7 @@ function ProductCard() {
                 variant="h6"
                 style={{
                   textTransform: "uppercase",
-                  color: "white",
+                  color: "darkgreen",
                   fontWeight: "600",
                 }}
               >
@@ -109,7 +109,7 @@ function ProductCard() {
                     variant="h6"
                     style={{
                       textTransform: "uppercase",
-                      color: "white",
+                      color: "darkgreen",
                       fontWeight: "600",
                     }}
                   >
@@ -135,7 +135,7 @@ function ProductCard() {
                 variant="h6"
                 style={{
                   textTransform: "uppercase",
-                  color: "white",
+                  color: "darkgreen",
                   fontWeight: "600",
                 }}
               >
@@ -162,7 +162,7 @@ function ProductCard() {
                 variant="h6"
                 style={{
                   textTransform: "uppercase",
-                  color: "white",
+                  color: "darkgreen",
                   fontWeight: "600",
                 }}
               >

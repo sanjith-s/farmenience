@@ -1,69 +1,129 @@
-import React from "react";
-import "./css/pageM18.css";
-import ProductCard from './components/productCard'
-import { useState } from "react";
-
+import React, { useState } from "react";
+import ProductCard from "./components/productCard";
+import { Button, Box, Typography } from "@mui/material";
 
 const PageM18 = () => {
-  let [prod,setProd]=useState([{ele:<ProductCard />,delStatus:0,num:0}]);
-  const addProd = () =>{
-    setProd([...prod,{ele:<ProductCard />,delStatus:0,num:prod[prod.length-1].num+1}]);
-  }
-  return (
-    <div>
-      <div style={{textAlign:"center",marginTop:"1%"}}>
-        <span className="title">Publish New Request</span>
-      </div>
-      <br></br><br></br><br></br><br></br>
-      <br></br>
-      <div>
+  let [prod, setProd] = useState([
+    { ele: <ProductCard />, delStatus: 0, num: 0 },
+  ]);
+  const addProd = () => {
+    setProd([
+      ...prod,
       {
-        prod.map((val)=>{
-          return(
+        ele: <ProductCard />,
+        delStatus: 0,
+        num: prod[prod.length - 1].num + 1,
+      },
+    ]);
+  };
+  return (
+    <Box sx={{ margin: "30px" }}>
+      <Box sx={{ marginBottom: "30px" }}>
+        <Typography
+          variant="h4"
+          style={{ textTransform: "uppercase", textAlign: "center" }}
+        >
+          {" "}
+          publish new request{" "}
+        </Typography>
+      </Box>
+      <Box
+        style={{
+          margin: "0px 200px",
+          paddingTop: "30px",
+          overflow: "auto",
+          height: "460px",
+          borderRadius: "10px",
+        }}
+      >
+        {prod.map((val) => {
+          return (
             <div>
-              {
-                val.delStatus==0  ?  
-                <div>
-                <div>
-                {val.ele}
-                <br></br>
-                {
-                  prod.length>1 ?
+              {val.delStatus == 0 ? (
+                <Box>
                   <div>
-                  <center>
-                  <button class="buttons" onClick={()=>{let temp=prod.map((id)=> {
-                    if(id.num==val.num)
-                    {
-                      return {...id,delStatus:1};
-                    }
-                    else
-                    {
-                      return id;
-                    }
-                  });setProd(temp);}}>
-                  Delete
-                  </button>
-                  </center>
-                  <br></br>
+                    {val.ele}
+                    {prod.length >= 1 ? (
+                      <Box
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <Button
+                          variant="contained"
+                          style={{
+                            backgroundColor: "green",
+                            color: "white",
+                            fontWeight: "600",
+                            fontSize: "16px",
+                            margin: "30px",
+                          }}
+                          onClick={() => {
+                            let temp = prod.map((id) => {
+                              if (id.num == val.num) {
+                                return { ...id, delStatus: 1 };
+                              } else {
+                                return id;
+                              }
+                            });
+                            setProd(temp);
+                          }}
+                        >
+                          delete
+                        </Button>
+                      </Box>
+                    ) : (
+                      <></>
+                    )}
                   </div>
-                   : <></>
-                }
-                  
-                  </div>
-                </div>
-                  : <></>
-              }
+                </Box>
+              ) : (
+                <></>
+              )}
             </div>
-          )
-        })
-      }
-      </div>
-      <br></br><br></br>
-      <center><button class="buttons" onClick={addProd}>+ Add Product</button></center>
-      <br></br>
-      <center><button class="buttons">Submit Request</button></center>
-      <br></br><br></br>
-    </div>
+          );
+        })}
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "20px",
+          paddingBottom: "10px",
+        }}
+      >
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "800px",
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={addProd}
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            Add Product
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            submit request
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

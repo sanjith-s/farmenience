@@ -17,7 +17,15 @@ const PageM18 = () => {
     ]);
   };
   return (
-    <Box sx={{ margin: "30px" }}>
+    <Box
+      sx={{
+        margin: "50px",
+        backgroundColor: "white",
+        padding: "30px",
+        borderRadius: "30px",
+        border: "6px solid",
+      }}
+    >
       <Box sx={{ marginBottom: "30px" }}>
         <Typography
           variant="h4"

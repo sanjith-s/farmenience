@@ -1,6 +1,6 @@
+import React from "react";
 import TransactionHistory from "./components/TransactionHistory";
-import "./css/pageM17.css";
-import { Container, Typography, Box, Card } from "@mui/material";
+import { Typography, Box, Card } from "@mui/material";
 
 function M17() {
   const buyerHistory = [

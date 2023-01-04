@@ -1,5 +1,4 @@
 import React from "react";
-import "../css/transactionHistory.css";
 import {
   TableContainer,
   Table,

@@ -1,53 +1,220 @@
-import React from 'react'
-import './css/M7.css'
+import React from "react";
+import ConfirmationTable from "./components/confirmationTable";
+import {
+  CardContent,
+  Typography,
+  Box,
+  Card,
+  Button,
+  CssBaseline,
+} from "@mui/material";
+
+const itemsBought = [
+  {
+    sno: 1,
+    item: "rice",
+    quantity: "20",
+    eachPrice: "60",
+    price: "600",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 2,
+    item: "wheat",
+    quantity: "20",
+    eachPrice: "40",
+    price: "800",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 3,
+    item: "ragi",
+    quantity: "7",
+    eachPrice: "60",
+    price: "420",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 4,
+    item: "fibre",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+
+  {
+    sno: 5,
+    item: "beans",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 6,
+    item: "carrot",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+  {
+    sno: 7,
+    item: "apple",
+    quantity: "0",
+    eachPrice: "42",
+    price: "0",
+    orderDate: "21/12/2022",
+    deliveryDate: "27/12/2022",
+    clientName: "Person Z",
+    paymentMode: "Cash On Delivery",
+    transactionID: "---------",
+    remarks: "--------",
+  },
+];
+
+let tot_amount = 0;
+itemsBought.map((item) => {
+  tot_amount += item.quantity * item.eachPrice;
+  return;
+});
 
 const PageM7 = () => {
   return (
-    <>
-    <br/>  
-    <div className='flex-container'>  
-        <div>  
-        <div className='title-bar'>
-            You are in a Confirmation Page
-        </div>
-        <br></br>
-        <br/> 
-        <div className='item-list'>
-            <div>
-            <br/>
-                <table>
-                    <tr>
-                        <th>Sno</th>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Price per kg</th>
-                        <th>Price</th>
-                    </tr>
-                        <td>place</td>
-                        <td>place</td>
-                        <td>place</td>
-                        <td>place</td>
-                        <td>place</td>
-                </table>
-            </div>
-            <br/>
-            <div>
-                <div className='amt'>Total amount : 2000 Rs </div>
-            </div>
-        </div>
-        </div>
-        <div className='part-2'>
-        <div className='img-show'>
-        {/* <img src={process.env.PUBLIC_URL + '/image1.jpg'} alt="Hi"></img> */}
-        </div>
-        <div style={{alignItems: "center"}}>
-            <button className='btn'>BACK</button>
-            <button className='btn'>CONFIRM</button>
-        </div>
-        </div>
-    </div>
-    </>
-  )
-}
+    <Box
+      sx={{
+        backgroundColor: "white",
+        margin: "45px",
+        borderRadius: "8px",
+        border: "5px solid",
+      }}
+    >
+      <Card
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "transparent",
+          padding: "30px 0px",
+        }}
+      >
+        <CssBaseline />
+        <Typography
+          variant="h4"
+          style={{
+            textTransform: "uppercase",
+            textAlign: "center",
+            fontWeight: "600",
+            color: "darkgreen",
+          }}
+        >
+          confirmation page
+        </Typography>
+        <CardContent
+          style={{
+            position: "relative",
+            height: "500px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              padding: "20px",
+            }}
+          >
+            <ConfirmationTable rows={itemsBought} />
+          </Box>
 
-export default PageM7
+          <Box
+            sx={{
+              display: "flex",
+              columnGap: "20px",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "26px",
+            }}
+          >
+            <Typography
+              variant="h6"
+              style={{
+                textTransform: "uppercase",
+                fontWeight: "600",
+              }}
+            >
+              Total amount to be paid :
+            </Typography>
+            <Typography
+              variant="h6"
+              style={{
+                fontWeight: "600",
+              }}
+            >
+              ₹ {tot_amount}
+            </Typography>
+          </Box>
+          <Button
+            variant="contained"
+            style={{
+              fontWeight: "600",
+              fontSize: "17px",
+              backgroundColor: "green",
+              position: "absolute",
+              bottom: "20px",
+              right: "40px",
+            }}
+          >
+            confirm
+          </Button>
+          <Button
+            variant="contained"
+            style={{
+              fontWeight: "600",
+              fontSize: "17px",
+              backgroundColor: "green",
+              position: "absolute",
+              bottom: "20px",
+              left: "40px",
+            }}
+          >
+            cancel
+          </Button>
+        </CardContent>
+      </Card>
+    </Box>
+  );
+};
+
+export default PageM7;

@@ -7,7 +7,6 @@ import {
   CssBaseline,
   Typography,
   Card,
-  Divider,
   CardContent,
   Button,
 } from "@mui/material";
@@ -119,7 +118,7 @@ const item = {
 
 let tot_amount = 0;
 itemsBought.map((item) => {
-  tot_amount += item.quantity * item.price;
+  tot_amount += item.quantity * item.eachPrice;
   return;
 });
 
@@ -183,7 +182,7 @@ function PageM4() {
             variant="contained"
             style={{
               fontWeight: "600",
-              fontSize: "20px",
+              fontSize: "17px",
               backgroundColor: "green",
             }}
           >
@@ -202,13 +201,14 @@ function PageM4() {
           backgroundColor: "#eee",
         }}
       >
+        <CssBaseline />
         <Box>
           <Button
             onClick={window.print}
             variant="contained"
             style={{
               fontWeight: "600",
-              fontSize: "20px",
+              fontSize: "17px",
               backgroundColor: "green",
               position: "absolute",
               top: "20px",
@@ -295,7 +295,7 @@ function PageM4() {
             variant="contained"
             style={{
               fontWeight: "600",
-              fontSize: "20px",
+              fontSize: "17px",
               backgroundColor: "green",
               position: "absolute",
               bottom: "20px",

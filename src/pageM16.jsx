@@ -1,7 +1,6 @@
 import React from "react";
 import Negotiate from "./components/negotitate_price";
-import { Typography } from "@material-ui/core";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const content = [
   {
@@ -38,7 +37,7 @@ const PageM16 = () => {
           textTransform: "uppercase",
           textAlign: "center",
           fontWeight: "600px",
-          fontSize: "52px",
+          fontSize: "45px",
           marginBottom: "20px",
         }}
       >

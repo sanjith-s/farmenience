@@ -1,57 +1,70 @@
-import React from 'react'
-import './css/pageM2.css'
+import React from "react";
+import SellerNegotiate from "./components/sellerNegotiate";
+import { Box } from "@mui/material";
+
+const content = [
+  {
+    name: "Consumer name",
+    phno: 2484930933,
+    address: "no 323 , some street,  town, chennai-23232",
+    itemName: "wheat",
+    itemQuantity: "3 ",
+    itemPrice: 250,
+    regNo: "23.42.424",
+  },
+  {
+    name: "Consumer name",
+    phno: 2484930933,
+    address: "no 323 , some street,  town, chennai-23232",
+    itemName: "wheat",
+    itemQuantity: 3,
+    itemPrice: 350,
+    regNo: "23.42.425",
+  },
+];
+
 const PageM2 = () => {
   return (
-    <div class="container">
-      <div></div>
-        <div class="elem-back">
-          <div class="req-id">
-          Request ID : 123.67.665
-          </div>
-          <div class="gen-cont"> 
-          <div class="">
-          <div class="details">
-            <div class="sep-det">
-              <div class="item-defn">Name:</div>
-              <div  class="item-disp">XXXX</div>
-            </div>
-            <div class="sep-det" >
-              <div class="item-defn">Phone_No: </div>
-              <div class="item-disp">2564548897</div>
-            </div>
-            <div class="sep-det" >
-              <div class="item-defn">Address: </div>
-              <div class="item-disp">No. 123, XYZ Street, Chennai 600 025</div>
-            </div>
-            <div class="sep-det" >
-              <div class="item-defn">Item_Name: </div>
-              <div class="item-disp">Rice</div>
-            </div>
-            <div class="sep-det" >
-              <div class="item-defn">Item_Quantity: </div>
-              <div class="item-disp">1 kg</div>
-            </div>
-            <div class="sep-det" >
-              <div class="item-defn">Item_Price: </div>
-              <div class="item-disp">Rs. 890</div>
-            </div>
-          </div>
-          </div>
-          <div class="img-btns">
-          <div class="image">
-          {/* <img src={process.env.PUBLIC_URL + '/Rectangle-11.jpg'} alt="Hi"></img> */}
-          </div>
-          <div class="buttons">
-            <div><button class="btn">Reject</button></div>
-            <div class="btn-back"><button class="btn i">+</button>Price(in_Rs)<button class="btn i">-</button></div>
-            <div class="btn-back"><button class="btn i">+</button>Quantity(in_kg)<button class="btn i">-</button></div>
-            <div><button class="btn">Accept</button></div>
-          </div>
-          </div>
-          </div>
-          </div>
-          <div></div>
-    </div>
-  )
-}
-export default PageM2
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: "35px",
+      }}
+    >
+      <Box
+        sx={{
+          border: "5px solid ",
+          width: "95%",
+          padding: "25px",
+          height: "525px",
+          overflow: "scroll",
+          borderRadius: "8px",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: "30px",
+          backgroundColor: "#ccc",
+        }}
+      >
+        {content.map((id, key) => {
+          return (
+            <Box>
+              <SellerNegotiate
+                key={key}
+                name={id.name}
+                phno={id.phno}
+                iquantity={id.itemQuantity}
+                address={id.address}
+                iname={id.itemName}
+                iprice={id.itemPrice}
+                regno={id.regNo}
+              />
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+};
+export default PageM2;

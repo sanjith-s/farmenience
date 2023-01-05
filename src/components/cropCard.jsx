@@ -8,14 +8,16 @@ import {
   InputLabel,
   Typography,
   Box,
+  Button,
+  ButtonGroup,
 } from "@mui/material";
 
-function ProductCard() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [qty, setQty] = useState(0);
-  const [type, setType] = useState("");
-  const [location, setLocation] = useState("");
+function CropCard() {
+  const [cropName, setCropName] = useState("");
+  const [harvestDate, setHarvestDate] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [quotedAmount, setQuotedAmount] = useState(0);
+  const [cultivation, setCultivation] = useState("");
 
   return (
     <Box style={{ display: "flex", justifyContent: "center" }}>
@@ -25,9 +27,10 @@ function ProductCard() {
           border: "8px solid green",
           padding: "30px",
           borderRadius: "5px",
-          borderTopRightRadius: "50px",
-          borderBottomLeftRadius: "50px",
+          borderTopLeftRadius: "50px",
+          borderBottomRightRadius: "50px",
           backgroundColor: "lightgreen",
+          marginTop: "15px",
         }}
       >
         <Box>
@@ -41,13 +44,13 @@ function ProductCard() {
                   fontWeight: "600",
                 }}
               >
-                name of the product
+                crop name
               </Typography>
             </InputLabel>
             <FilledInput
               type="text"
               onChange={(event) => {
-                setName(event.target.value);
+                setCropName(event.target.value);
               }}
               style={{
                 borderRadius: "5px",
@@ -68,23 +71,19 @@ function ProductCard() {
                   fontWeight: "600",
                 }}
               >
-                price
+                harvest date
               </Typography>
             </InputLabel>
             <FilledInput
-              endAdornment={
-                <InputAdornment position="end">
-                  <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
-                </InputAdornment>
-              }
               onChange={(event) => {
-                setPrice(event.target.value);
+                setHarvestDate(event.target.value);
               }}
               style={{
                 borderRadius: "5px",
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
               }}
+              placeholder="dd/mm/yyyy"
             />
           </FormControl>
         </Box>
@@ -118,7 +117,7 @@ function ProductCard() {
                 </InputAdornment>
               }
               onChange={(event) => {
-                setQty(event.target.value);
+                setQuantity(event.target.value);
               }}
               style={{
                 borderRadius: "5px",
@@ -139,13 +138,18 @@ function ProductCard() {
                   fontWeight: "600",
                 }}
               >
-                specific type
+                quoted amount
               </Typography>
             </InputLabel>
             <FilledInput
               type="text"
+              endAdornment={
+                <InputAdornment position="end">
+                  <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
+                </InputAdornment>
+              }
               onChange={(event) => {
-                setType(event.target.value);
+                setQuotedAmount(event.target.value);
               }}
               style={{
                 borderRadius: "5px",
@@ -155,36 +159,47 @@ function ProductCard() {
             />
           </FormControl>
         </Box>
-        <Box>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
-                style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
-                }}
-              >
-                location
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              type="text"
-              onChange={(event) => {
-                setLocation(event.target.value);
-              }}
+        <Box
+          style={{
+            display: "flex",
+            padding: "10px",
+            borderBottom: "1px solid",
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <InputLabel>
+            <Typography
+              variant="h6"
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                textTransform: "uppercase",
+                color: "darkgreen",
+                fontWeight: "600",
               }}
-            />
-          </FormControl>
+            >
+              organic cultivation
+            </Typography>
+          </InputLabel>
+          <ButtonGroup
+            variant="contained"
+            color="success"
+            onChange={(event) => {
+              setCultivation(event.target.value);
+            }}
+          >
+            <Button style={{ fontWeight: "600", fontSize: "16px" }}>
+              {" "}
+              yes{" "}
+            </Button>
+            <Button style={{ fontWeight: "600", fontSize: "16px" }}>
+              {" "}
+              no{" "}
+            </Button>
+          </ButtonGroup>
         </Box>
       </Box>
     </Box>
   );
 }
 
-export default ProductCard;
+export default CropCard;

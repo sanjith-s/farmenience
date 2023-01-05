@@ -1,89 +1,150 @@
-import React from "react";
-import SalesCardsList from "./components/salesCardsList";
-import SalesItemsList from "./components/salesItemsList";
-import Navbar from "./components/navbar";
-import "./css/pageM5.css";
+import React, { useState } from "react";
+import CropCard from "./components/cropCard";
+import { Button, Box, Typography } from "@mui/material";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 function PageM5() {
+  let [prod, setProd] = useState([{ ele: <CropCard />, delStatus: 0, num: 0 }]);
+  const addProd = () => {
+    setProd([
+      ...prod,
+      {
+        ele: <CropCard />,
+        delStatus: 0,
+        num: prod[prod.length - 1].num + 1,
+      },
+    ]);
+  };
+
   return (
-    <div>
-      {/*<Navbar/>*/}
-      <div className="rectangle-29">
-        <form>
-          <div>
-            <div className="frame-2">
-              <div className="frame-2-text">Crop Name :</div>
-            </div>
-            <div className="rectangle-7-1">
-              <input type="text" />
-            </div>
-          </div>
-          <div>
-            <div className="frame-1">
-              <div className="frame-1-text">Harvest Date :</div>
-            </div>
-            <div className="rectangle-5">
-              <input type="text" />
-            </div>
-          </div>
-          <div>
-            <div className="frame-3">
-              <div className="frame-3-text">Quantity :</div>
-            </div>
-            <div className="rectangle-9">
-              <input type="text" />
-              <div className="rectangle-15">
-                <div className="rectangle-15-text">
-                  <div className="box">
-                    <select id="metric">
-                      <option value="Kg">Kg</option>
-                      <option value="g">g</option>
-                    </select>
-                  </div>
-                </div>
+    <Box
+      sx={{
+        margin: "50px",
+        backgroundColor: "white",
+        // padding: "30px 200px",
+        padding: "30px",
+        borderRadius: "30px",
+        border: "6px solid",
+      }}
+    >
+      <Box>
+        <Typography
+          variant="h4"
+          style={{ textTransform: "uppercase", textAlign: "center" }}
+        >
+          {" "}
+          new crop request{" "}
+        </Typography>
+      </Box>
+      <Box
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "20px",
+          marginTop: "10px",
+        }}
+      >
+        <Box
+          style={{
+            margin: "0px 200px",
+            overflow: "auto",
+            height: "480px",
+            borderRadius: "10px",
+            // margin: "10px 0px",
+            width: "820px",
+          }}
+        >
+          {prod.map((val) => {
+            return (
+              <div>
+                {val.delStatus == 0 ? (
+                  <Box>
+                    <div>
+                      {val.ele}
+                      {prod.length >= 1 ? (
+                        <Box
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <Button
+                            variant="contained"
+                            style={{
+                              backgroundColor: "green",
+                              color: "white",
+                              fontWeight: "600",
+                              fontSize: "16px",
+                              margin: "30px 30px 10px 30px",
+                            }}
+                            onClick={() => {
+                              let temp = prod.map((id) => {
+                                if (id.num == val.num) {
+                                  return { ...id, delStatus: 1 };
+                                } else {
+                                  return id;
+                                }
+                              });
+                              setProd(temp);
+                            }}
+                          >
+                            delete
+                          </Button>
+                        </Box>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </Box>
+                ) : (
+                  <></>
+                )}
               </div>
-            </div>
-          </div>
-          <div>
-            <div className="frame-4">
-              <div className="frame-4-text">Quoted Amount :</div>
-            </div>
-            <div className="rectangle-7-2">
-              <input type="text" />
-              <div className="rectangle-15-4">
-                <div className="rectangle-15-text">Rs</div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="rectangle-4">
-              <div className="rectangle-4-text">Organic Cultivation :</div>
-            </div>
-            <div className="rectangle-4-2">
-              <div className="btn-1">
-                <div className="btn-text">Yes</div>
-              </div>
-              <div className="btn-2">
-                <div className="btn-text">No</div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div>
-        <div className="rectangle-11"></div>
-        <div className="post-Deal">
-          <div className="post-Deal-text">
-            <button className="post-Deal-btn">Post Deal</button>
-          </div>
-        </div>
-        <div className="edit-Deal">
-          <div className="edit-Deal-text">
-            <button className="edit-Deal-btn">Edit Deal</button>
-          </div>
-        </div>
-      </div>
-    </div>
+            );
+          })}
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "10px 0px",
+        }}
+      >
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "800px",
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={addProd}
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            Add Product
+          </Button>
+
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "green",
+              color: "white",
+              fontWeight: "600",
+              fontSize: "16px",
+            }}
+          >
+            <ThumbUpIcon style={{ marginRight: "15px" }} />
+            post deal
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

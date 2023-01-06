@@ -223,6 +223,7 @@ const PageM11 = () => {
           border: "5px solid darkgreen",
           borderRadius: "3px",
           backgroundColor: "#86fe9ede",
+          margin: "16px 0px",
         }}
       >
         <Box

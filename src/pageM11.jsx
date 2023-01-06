@@ -127,6 +127,15 @@ const PageM11 = () => {
       }}
     >
       <CssBaseline />
+      <Typography
+        variant="h3"
+        style={{
+          textAlign: "center",
+          textTransform: "uppercase",
+        }}
+      >
+        market place
+      </Typography>
       <CardActions
         style={{
           width: "100%",

@@ -1,45 +1,97 @@
 import React, { useState } from "react";
-import "./css/pageM11.css";
-import Select from "react-select";
-import SearchIcon from "@mui/icons-material/Search";
-// import MultipleValueTextInput from "react-multivalue-text-input";
-import ItemCard from "./components/itemCard";
-import { Box, Grid } from "@mui/material";
 import MarketCard from "./components/marketCard";
-// import img1 from "./product1.jpg";
-
-let count = 6;
+import {
+  Card,
+  Typography,
+  Button,
+  CardActions,
+  CardActionArea,
+  FormControl,
+  Input,
+  InputAdornment,
+  IconButton,
+  Box,
+  Container,
+  CssBaseline,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import MicIcon from "@mui/icons-material/Mic";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import SortIcon from "@mui/icons-material/Sort";
+import FilterListIcon from "@mui/icons-material/FilterList";
 
 const content = [
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
   },
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
   },
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
   },
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
   },
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
   },
   {
     product: "promegranate",
     count: 4,
     price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
+  },
+  {
+    product: "promegranate",
+    count: 4,
+    price: 232,
+    rate: 3,
   },
 ];
 
@@ -64,105 +116,130 @@ const PageM11 = () => {
     ngoType: "",
   });
 
-  let list = [];
-  for (let i = 0; i < count; i++) {
-    list.push(<ItemCard />);
-  }
-
   return (
-    <div className="box">
-      <div className="titlebox">
-        <span className="title">Marketplace</span>
-      </div>
-      <div className="searchCont">
-        <div className="sip">
-          <input type="text" placeholder="search" className="searchbox" />
-        </div>
-        <div className="sic">
-          <SearchIcon className="sicon" fontSize="medium" />
-        </div>
-      </div>
-      <div className="container">
-        <div className="filter-cont">
-          <span
-            style={{
-              color: "black",
-              fontSize: "1.5em",
-              fontFamily: "Montserrat",
-            }}
-          >
-            Filter By
-          </span>
-        </div>
-
-        {/* <div className="card-cont">{list}</div> */}
-
-        {/* <Box
-          sx={{
+    <Container
+      style={{
+        padding: "15px 0px",
+        backgroundColor: "transparent",
+        display: "flex",
+        flexDirection: "column",
+        rowGap: "15px",
+      }}
+    >
+      <CssBaseline />
+      <CardActions
+        style={{
+          width: "100%",
+          backgroundColor: "#ffffff",
+          borderRadius: "8px",
+          border: "2px solid #555555",
+        }}
+      >
+        <FormControl
+          style={{
             width: "100%",
-            height: 600,
-            flexGrow: 1,
-            padding: "20px 0px",
-            overflow: "auto",
-            position: "relative",
+            height: "48px",
           }}
         >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            spacing={5}
-            style={{ padding: "0px" }}
-          >
-            {content.map((item) => (
-              <Grid item padding={2} key={item.id}>
-                <MarketCard
-                  key={item.id}
-                  name={item.name}
-                  date={item.date}
-                  items={item.items}
-                  amount={item.amount}
-                />
-              </Grid>
-            ))}
-          </Grid>
-        </Box> */}
+          <Input
+            style={{ height: "40px", fontSize: "25px" }}
+            id="input-with-icon-adornment"
+            startAdornment={
+              <InputAdornment position="start">
+                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+              </InputAdornment>
+            }
+            endAdornment={
+              <InputAdornment position="start">
+                <IconButton>
+                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                </IconButton>
+                <IconButton>
+                  <PhotoCameraIcon
+                    style={{ color: "green", fontSize: "35px" }}
+                  />
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </CardActions>
 
+      <CardActions
+        style={{
+          width: "100%",
+          backgroundColor: "#ffffff",
+          borderRadius: "8px",
+          padding: "0px",
+        }}
+      >
+        <CardActionArea style={{ width: "100%" }}>
+          <Button
+            style={{
+              display: "flex",
+              columnGap: "20px",
+              color: "green",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <SortIcon />
+            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+              sort
+            </Typography>
+          </Button>
+        </CardActionArea>
+        <CardActionArea style={{ width: "100%" }}>
+          <Button
+            style={{
+              display: "flex",
+              columnGap: "20px",
+              color: "green",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <FilterListIcon />
+            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+              filter
+            </Typography>
+          </Button>
+        </CardActionArea>
+      </CardActions>
+
+      <Card
+        style={{
+          height: "540px",
+          overflow: "auto",
+          border: "5px solid darkgreen",
+          borderRadius: "3px",
+          backgroundColor: "#86fe9ede",
+        }}
+      >
         <Box
           sx={{
-            height: "400px",
-            overflow: "auto",
-            width: "fit-content",
-            border: "5px solid",
-            borderRadius: "3px",
-            backgroundColor: "#bdfbbf",
-            margin: "20px",
+            padding: "40px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            columnGap: "45px",
+            rowGap: "45px",
           }}
         >
-          <Box
-            sx={{
-              padding: "40px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr ",
-              columnGap: "50px",
-              rowGap: "50px",
-            }}
-          >
-            {content.map((val, index) => {
-              return (
-                <MarketCard
-                  key={index + 1}
-                  image={val.image}
-                  productName={val.product}
-                  sellerCount={val.count}
-                  price={val.price}
-                />
-              );
-            })}
-          </Box>
+          {content.map((val, index) => {
+            return (
+              <MarketCard
+                key={index + 1}
+                image={val.image}
+                productName={val.product}
+                sellerCount={val.count}
+                price={val.price}
+                stars={val.rate}
+              />
+            );
+          })}
         </Box>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 

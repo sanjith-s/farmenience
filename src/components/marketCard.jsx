@@ -7,9 +7,11 @@ import {
   Button,
   CardMedia,
   Box,
+  Badge,
 } from "@mui/material";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import img from "../product8.jpg";
 
 function MarketCard(props) {
@@ -20,6 +22,7 @@ function MarketCard(props) {
         borderRadius: "5px",
         border: "5px solid darkmagenta",
         width: "240px",
+        position: "relative",
       }}
     >
       <CardMedia style={{ display: "flex", justifyContent: "center" }}>
@@ -56,7 +59,12 @@ function MarketCard(props) {
         >
           sellers - {props.sellerCount}
         </Typography>
-        <Box sx={{ display: "flex", columnGap: "10px", alignItems: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <Typography
             style={{
               textTransform: "uppercase",
@@ -70,19 +78,32 @@ function MarketCard(props) {
             sx={{
               textTransform: "uppercase",
               fontWeight: "600",
-              fontSize: "22px",
-              color: "steelblue",
+              fontSize: "24px",
+              color: "blue",
+              textAlign: "center",
             }}
           >
             ₹ {props.price}
           </Typography>
+        </Box>
+        <Box sx={{ position: "absolute", top: "1px", right: "1px" }}>
+          <Badge
+            color="info"
+            badgeContent={<Typography>{props.stars}</Typography>}
+            showZero
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <StarRoundedIcon style={{ color: "orange", fontSize: "30px" }} />
+          </Badge>
         </Box>
       </CardContent>
       <CardActions
         style={{
           display: "flex",
           justifyContent: "space-around",
-          paddingTop: "10px",
         }}
       >
         <Button

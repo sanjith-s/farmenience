@@ -17,7 +17,7 @@ const ItemCard = () => {
       <div className="flexItem">
         <span className="sfrom">Starting from</span>
         <br />
-        <span className='itemPrice'>&#8377; 1000 INR</span>
+        <span className="itemPrice">&#8377; 1000 INR</span>
       </div>
       <div className="flexItem optCont">
         <div>

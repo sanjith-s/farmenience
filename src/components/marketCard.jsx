@@ -95,6 +95,7 @@ function MarketCard(props) {
               vertical: "bottom",
               horizontal: "left",
             }}
+            style={{ position: "sticky" }}
           >
             <StarRoundedIcon style={{ color: "orange", fontSize: "30px" }} />
           </Badge>

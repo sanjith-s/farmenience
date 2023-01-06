@@ -51,6 +51,7 @@ function UserDetails(props) {
           justifyContent: "center",
           alignItems: "flex-end",
           width: "100%",
+          paddingTop: "20px",
         }}
       >
         <TextField

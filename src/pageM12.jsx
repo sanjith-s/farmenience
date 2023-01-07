@@ -182,7 +182,7 @@ function PageM12() {
 
         {(active === "negot1" || active === "negot2") && (
           <Box>
-            {update === "editCard" && (
+            {update === "editCard" && active === "negot1" && (
               <Box style={{ position: "relative " }}>
                 <UserDetails
                   userAddress={userData.address}
@@ -206,7 +206,7 @@ function PageM12() {
               </Box>
             )}
 
-            {update === "updatedCard" && (
+            {(update === "updatedCard" || active === "negot2") && (
               <Box style={{ position: "relative " }}>
                 <ShowUserDetails
                   userName={consumerName}

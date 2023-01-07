@@ -46,47 +46,39 @@ const PageM18 = () => {
       >
         {prod.map((val) => {
           return (
-            <div>
+            <Box>
               {val.delStatus == 0 ? (
                 <Box>
-                  <div>
-                    {val.ele}
-                    {prod.length >= 1 ? (
-                      <Box
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        <Button
-                          variant="contained"
-                          style={{
-                            backgroundColor: "green",
-                            color: "white",
-                            fontWeight: "600",
-                            fontSize: "16px",
-                            margin: "30px",
-                          }}
-                          onClick={() => {
-                            let temp = prod.map((id) => {
-                              if (id.num == val.num) {
-                                return { ...id, delStatus: 1 };
-                              } else {
-                                return id;
-                              }
-                            });
-                            setProd(temp);
-                          }}
-                        >
-                          delete
-                        </Button>
-                      </Box>
-                    ) : (
-                      <></>
-                    )}
-                  </div>
+                  {val.ele}
+                  <Box style={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: "green",
+                        color: "white",
+                        fontWeight: "600",
+                        fontSize: "16px",
+                        margin: "30px",
+                      }}
+                      onClick={() => {
+                        let temp = prod.map((id) => {
+                          if (id.num == val.num) {
+                            return { ...id, delStatus: 1 };
+                          } else {
+                            return id;
+                          }
+                        });
+                        setProd(temp);
+                      }}
+                    >
+                      delete
+                    </Button>
+                  </Box>
                 </Box>
               ) : (
                 <></>
               )}
-            </div>
+            </Box>
           );
         })}
       </Box>

@@ -72,9 +72,9 @@ function BasketBox1(props) {
           <Typography
             variant="overline"
             lineHeight={0.2}
-            sx={{ fontSize: "18px", fontWeight: "600" }}
+            sx={{ fontSize: "24px", fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "16px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "20px" }} />
             {props.discountPrice}
           </Typography>
           <Typography
@@ -82,7 +82,7 @@ function BasketBox1(props) {
             lineHeight={0.2}
             sx={{
               textDecoration: "line-through",
-              fontSize: "13px",
+              fontSize: "15px",
               paddingLeft: "10px",
             }}
           >
@@ -98,7 +98,7 @@ function BasketBox1(props) {
             lineHeight={2.5}
             sx={{ fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "18px" }} />
             {props.discountAmount} off
           </Typography>
         </Box>

@@ -1,126 +1,97 @@
 import React from "react";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 function PriceDetails(props) {
   return (
-    <Card
-      sx={{
+    <Box
+      style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "8px 0px",
-        borderRadius: "4px",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <Typography
-        variant="h5"
-        sx={{
-          textTransform: "uppercase",
-          fontWeight: "600",
-          alignSelf: "center",
-          marginBottom: "20px",
-        }}
-      >
-        price details
-      </Typography>
-
       <Box
-        style={{
+        sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
           justifyContent: "center",
+          padding: "0px",
+          width: "70%",
+          margin: "5px",
         }}
       >
-        <CardContent
-          style={{
+        <Box
+          sx={{
             display: "flex",
-            flexDirection: "column",
+            margin: "8px 0px",
             justifyContent: "center",
-            padding: "0px",
-            width: "70%",
           }}
         >
-          <Box
+          <Typography
+            variant="h5"
             sx={{
-              display: "flex",
-              margin: "8px 0px",
-              justifyContent: "space-between",
+              textTransform: "uppercase",
+              fontWeight: "600",
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-                fontWeight: "600",
-              }}
-            >
-              mrp
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-              }}
-            >
-              {props.mrp}
-            </Typography>
-          </Box>
+            {props.productName}
+          </Typography>
+        </Box>
 
-          <Box
+        <Box
+          sx={{
+            display: "flex",
+            margin: "8px 0px",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="h6"
             sx={{
-              display: "flex",
-              margin: "8px 0px",
-              justifyContent: "space-between",
+              textTransform: "uppercase",
+              fontWeight: "600",
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-                fontWeight: "600",
-              }}
-            >
-              product discount
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-              }}
-            >
-              {props.discount}
-            </Typography>
-          </Box>
-          <Box
+            mrp
+          </Typography>
+          <Typography
+            variant="h6"
             sx={{
-              display: "flex",
-              margin: "8px 0px",
-              justifyContent: "space-between",
+              textTransform: "uppercase",
             }}
           >
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-                fontWeight: "600",
-              }}
-            >
-              product name
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                textTransform: "uppercase",
-              }}
-            >
-              {props.productName}
-            </Typography>
-          </Box>
-        </CardContent>
+            {props.mrp}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            margin: "8px 0px",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              textTransform: "uppercase",
+              fontWeight: "600",
+            }}
+          >
+            product discount
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              textTransform: "uppercase",
+            }}
+          >
+            {props.discount}
+          </Typography>
+        </Box>
       </Box>
-    </Card>
+    </Box>
   );
 }
 

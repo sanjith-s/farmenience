@@ -237,7 +237,7 @@ function PageM12() {
           <Box sx={{ marginTop: "10px" }}>
             <Box
               sx={{
-                backgroundColor: "#eee",
+                backgroundColor: "#fff",
                 padding: "15px",
                 borderRadius: "5px",
                 display: "flex",

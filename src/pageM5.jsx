@@ -21,7 +21,6 @@ function PageM5() {
       sx={{
         margin: "50px",
         backgroundColor: "white",
-        // padding: "30px 200px",
         padding: "30px",
         borderRadius: "30px",
         border: "6px solid",
@@ -48,10 +47,7 @@ function PageM5() {
         <Box
           style={{
             margin: "0px 200px",
-            overflow: "auto",
-            height: "480px",
             borderRadius: "10px",
-            // margin: "10px 0px",
             width: "820px",
           }}
         >

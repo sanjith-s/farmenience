@@ -30,8 +30,8 @@ function ConfirmationTable(props) {
       style={{
         border: "3px solid",
         width: "fit-content",
-        overflow: "auto",
-        height: "300px",
+        // overflow: "auto",
+        // height: "400px",
       }}
     >
       <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">

@@ -216,7 +216,9 @@ function BasketBox2(props) {
               value="foornoon"
               control={<Radio />}
               label={
-                <Typography style={{ textTransform: "uppercase" }}>
+                <Typography
+                  style={{ textTransform: "uppercase", wordSpacing: "3px" }}
+                >
                   9:00 am to 12:00 pm
                 </Typography>
               }
@@ -226,8 +228,10 @@ function BasketBox2(props) {
               value="monday"
               control={<Radio />}
               label={
-                <Typography style={{ textTransform: "uppercase" }}>
-                  1:30 am to 5:30 pm
+                <Typography
+                  style={{ textTransform: "uppercase", wordSpacing: "3px" }}
+                >
+                  1:30 pm to 5:30 pm
                 </Typography>
               }
               style={{ width: "fit-content" }}

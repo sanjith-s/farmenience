@@ -9,7 +9,7 @@ const content = [
     Type: "Type 1",
     Buyer: "Harshit",
     Address: "Chennai",
-    Price: 123456789,
+    Price: 1234,
   },
   {
     Name: "Product 2",
@@ -17,7 +17,7 @@ const content = [
     Type: "Type 2",
     Buyer: "Sanjith",
     Address: "Chennai",
-    Price: 425456789,
+    Price: 4254,
   },
 ];
 

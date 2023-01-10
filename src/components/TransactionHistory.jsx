@@ -50,8 +50,6 @@ function TransactionHistory(props) {
         style={{
           border: "3px solid",
           width: "fit-content",
-          overflow: "auto",
-          height: "350px",
         }}
       >
         <Table
@@ -74,7 +72,7 @@ function TransactionHistory(props) {
                   textTransform: "uppercase",
                 }}
               >
-                t.id
+                trans.id
               </TableCell>
               <TableCell
                 align="center"

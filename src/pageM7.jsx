@@ -118,6 +118,7 @@ const PageM7 = () => {
         margin: "45px",
         borderRadius: "8px",
         border: "5px solid",
+        position: "relative",
       }}
     >
       <Card
@@ -141,12 +142,7 @@ const PageM7 = () => {
         >
           confirmation page
         </Typography>
-        <CardContent
-          style={{
-            position: "relative",
-            height: "500px",
-          }}
-        >
+        <CardContent>
           <Box
             sx={{
               display: "flex",
@@ -164,7 +160,6 @@ const PageM7 = () => {
               columnGap: "20px",
               justifyContent: "center",
               alignItems: "center",
-              marginTop: "26px",
             }}
           >
             <Typography
@@ -185,32 +180,36 @@ const PageM7 = () => {
               ₹ {tot_amount}
             </Typography>
           </Box>
-          <Button
-            variant="contained"
-            style={{
-              fontWeight: "600",
-              fontSize: "17px",
-              backgroundColor: "green",
+          <Box
+            sx={{
+              display: "flex",
+              columnGap: "30px",
               position: "absolute",
               bottom: "20px",
-              right: "40px",
+              right: "30px",
             }}
           >
-            confirm
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              fontWeight: "600",
-              fontSize: "17px",
-              backgroundColor: "green",
-              position: "absolute",
-              bottom: "20px",
-              left: "40px",
-            }}
-          >
-            cancel
-          </Button>
+            <Button
+              variant="contained"
+              style={{
+                fontWeight: "600",
+                fontSize: "17px",
+                backgroundColor: "green",
+              }}
+            >
+              confirm
+            </Button>
+            <Button
+              variant="contained"
+              style={{
+                fontWeight: "600",
+                fontSize: "17px",
+                backgroundColor: "green",
+              }}
+            >
+              cancel
+            </Button>
+          </Box>
         </CardContent>
       </Card>
     </Box>

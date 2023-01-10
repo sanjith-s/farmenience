@@ -72,7 +72,7 @@ function TransactionHistory(props) {
                   textTransform: "uppercase",
                 }}
               >
-                t.id
+                trans.id
               </TableCell>
               <TableCell
                 align="center"

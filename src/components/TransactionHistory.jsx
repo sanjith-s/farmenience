@@ -50,8 +50,8 @@ function TransactionHistory(props) {
         style={{
           border: "3px solid",
           width: "fit-content",
-          overflow: "auto",
-          height: "350px",
+          // overflow: "auto",
+          // height: "350px",
         }}
       >
         <Table

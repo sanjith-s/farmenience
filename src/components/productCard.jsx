@@ -30,7 +30,7 @@ function ProductCard() {
           backgroundColor: "lightgreen",
         }}
       >
-        <Box>
+        <Box style={{ position: "sticky" }}>
           <FormControl fullWidth variant="filled">
             <InputLabel>
               <Typography
@@ -57,7 +57,7 @@ function ProductCard() {
             />
           </FormControl>
         </Box>
-        <Box>
+        <Box style={{ position: "sticky" }}>
           <FormControl fullWidth variant="filled">
             <InputLabel>
               <Typography
@@ -88,7 +88,7 @@ function ProductCard() {
             />
           </FormControl>
         </Box>
-        <Box>
+        <Box style={{ position: "sticky" }}>
           <FormControl fullWidth variant="filled">
             <InputLabel>
               <Typography
@@ -128,7 +128,7 @@ function ProductCard() {
             />
           </FormControl>
         </Box>
-        <Box>
+        <Box style={{ position: "sticky" }}>
           <FormControl fullWidth variant="filled">
             <InputLabel>
               <Typography
@@ -155,7 +155,7 @@ function ProductCard() {
             />
           </FormControl>
         </Box>
-        <Box>
+        <Box style={{ position: "sticky" }}>
           <FormControl fullWidth variant="filled">
             <InputLabel>
               <Typography

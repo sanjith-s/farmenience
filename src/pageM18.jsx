@@ -6,6 +6,7 @@ const PageM18 = () => {
   let [prod, setProd] = useState([
     { ele: <ProductCard />, delStatus: 0, num: 0 },
   ]);
+
   const addProd = () => {
     setProd([
       ...prod,
@@ -39,8 +40,6 @@ const PageM18 = () => {
         style={{
           margin: "0px 200px",
           paddingTop: "30px",
-          overflow: "auto",
-          height: "460px",
           borderRadius: "10px",
         }}
       >

@@ -117,7 +117,7 @@ const Negotiate = (props) => {
           >
             pricings
           </Typography>
-          <Typography variant="h6">{props.price}</Typography>
+          <Typography variant="h6">₹ {props.price}</Typography>
         </Box>
         <Box
           style={{

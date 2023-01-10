@@ -100,7 +100,7 @@ const ScheduleCard = () => {
           width: "70%",
         }}>
        <FormControl fullWidth>
-      <InputLabel id="r1">NGO</InputLabel>
+      <InputLabel id="r1">Type of NGO</InputLabel>
         <Select
           labelId="r1"
           id="r2"

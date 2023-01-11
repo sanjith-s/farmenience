@@ -21,7 +21,7 @@ function MarketCard(props) {
         padding: "10px",
         borderRadius: "5px",
         border: "5px solid darkmagenta",
-        width: "240px",
+        width: "250px",
         position: "relative",
       }}
     >

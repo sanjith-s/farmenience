@@ -43,23 +43,26 @@ const PageN5 = () => {
             <div className="r1c"><span className="input-txt">Meeting Date</span></div>
             <div className="r1i"><input type="date" name="meetdate" value={appntdata.meetdate} onChange={handleChange} /></div>
             
-            <div className="r2c"><span className="input-txt" >Soil Type</span></div>
-            <div className="r2i"><input type="text" name="soil" value={appntdata.soil} onChange={handleChange} /></div>
+            <div className="r3c"><span className="input-txt" >Soil Type</span></div>
+            <div className="r3i"><input type="text" name="soil" value={appntdata.soil} onChange={handleChange} /></div>
 
-            <div className="r3c"><span className="input-txt">Crops cultivated</span></div>
-            <div className="r3i"><MultipleValueTextInput onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+            <div className="r4c"><span className="input-txt">Crops cultivated</span></div>
+            <div className="r4i"><MultipleValueTextInput style={{padding: "0px"}} onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
 	onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)} name="crop-input" placeholder="Enter the crops cultivated (Separate multiple crops by comma)" values={[]}
 /></div>
             
-            <div className="r4c"><span className="input-txt">Reason for visit</span></div>
-            <div className="r4i"><input type="text" name="reason" value={appntdata.reason} onChange={handleChange} /></div>
+            <div className="r5c"><span className="input-txt">Reason for visit</span></div>
+            <div className="r5i"><input type="text" name="reason" value={appntdata.reason} onChange={handleChange} /></div>
 
-            <div className="r5c"><span className="input-txt">NGO Type</span></div>
-            <div className="r5i"><Select onChange={handleNGOtype} options={ngotypes}  className="basic-single"
+            <div className="r6c"><span className="input-txt">NGO Type</span></div>
+            <div className="r6i"><Select onChange={handleNGOtype} options={ngotypes}  className="basic-single"
         classNamePrefix="select" isClearable={true}/></div>
             
-            <div className="r6c"><span className="input-txt">Upload crop picture</span></div>
-            <div className="r6i"><input type="file" name="image" value={appntdata.image} onChange={handleChange} /></div>
+            <div className="r7c"><span className="input-txt">Upload crop picture</span></div>
+            <div className="r7i"><input type="file" name="image" value={appntdata.image} onChange={handleChange} /></div>
+
+            <div className="r2c"><span className="input-txt">Meeting Time</span></div>
+            <div className="r2i"><input type="time" name="time" value={appntdata.meettime} onChange={handleChange} /></div>
             
         </div>
         <div className="pic-cont"><img className="img-cont" src={'/ngo-meet.jpg'} alt="ngo meet" /></div>

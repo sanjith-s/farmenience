@@ -45,14 +45,15 @@ const Negotiate = (props) => {
         padding: "50px 0px",
         borderRadius: "12px",
         columnGap: "50px",
-        backgroundColor: "#eee",
+        backgroundColor: "cornsilk",
+        border: "2px solid",
       }}
     >
       <Box
         sx={{
           width: "400px",
           borderRadius: "8px",
-          border: "2px solid #000",
+          border: "3px solid #888",
           backgroundColor: "#fff",
         }}
       >
@@ -76,6 +77,7 @@ const Negotiate = (props) => {
                       fontWeight: "600",
                       fontSize: "20px",
                       textTransform: "uppercase",
+                      color: "#000",
                     }}
                   >
                     {value}
@@ -127,7 +129,7 @@ const Negotiate = (props) => {
             backgroundColor: "#fff",
             padding: "20px",
             borderRadius: "8px",
-            border: "2px solid #888",
+            border: "3px solid #888",
           }}
         >
           <Typography

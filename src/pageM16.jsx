@@ -19,6 +19,14 @@ const content = [
     Address: "Chennai",
     Price: 4254,
   },
+  {
+    Name: "Product 3",
+    Quantity: 48,
+    Type: "Type 3",
+    Buyer: "Kumar",
+    Address: "madurai",
+    Price: 7890,
+  },
 ];
 
 const PageM16 = () => {
@@ -48,12 +56,11 @@ const PageM16 = () => {
           border: "6px solid",
           width: "95%",
           padding: "25px",
-          height: "500px",
-          overflow: "scroll",
           borderRadius: "8px",
           display: "flex",
           flexDirection: "column",
           rowGap: "30px",
+          backgroundColor: "#86fe9ede",
         }}
       >
         {content.map((id, key) => {

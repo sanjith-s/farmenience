@@ -125,12 +125,13 @@ body > #root > div {
     height: 4vh;
 }
 
-input {
+#ip-cont->input {
     padding: 6px;
     border-radius: 8px;
     background-color: rgb(150, 245, 177);
     border-color: gainsboro;
     border-width: 1px;
+    height: 50%;
 }
 
 .img-cont {

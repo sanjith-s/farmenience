@@ -104,7 +104,6 @@ const PageM19 = () => {
             style={{
               backgroundColor: "green",
               fontWeight: "600",
-              fontWeight: "600",
               fontSize: "18px",
             }}
           >

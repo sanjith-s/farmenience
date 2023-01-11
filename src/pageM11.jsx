@@ -218,8 +218,6 @@ const PageM11 = () => {
 
       <Card
         style={{
-          height: "540px",
-          overflow: "auto",
           border: "5px solid darkgreen",
           borderRadius: "3px",
           backgroundColor: "#86fe9ede",
@@ -231,8 +229,8 @@ const PageM11 = () => {
             padding: "40px",
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
-            columnGap: "45px",
-            rowGap: "45px",
+            columnGap: "35px",
+            rowGap: "38px",
           }}
         >
           {content.map((val, index) => {

@@ -99,8 +99,6 @@ function PageM1() {
       </Box>
       <Box
         sx={{
-          height: "500px",
-          overflow: "auto",
           width: "fit-content",
           border: "5px solid",
           borderRadius: "3px",

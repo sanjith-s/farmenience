@@ -36,6 +36,8 @@ import PageN5 from "./pageN5";
 import PageN6 from "./pageN6";
 import PageN7 from "./pageN7";
 import PageN9 from "./pageN9";
+import PageN14 from "./pageN14";
+import PageN14a from "./pageN14a";
 import CropRecommendation from "./cropRecommendation";
 import LogoutAllDevice from "./LogoutAllDevice";
 
@@ -79,6 +81,8 @@ function App() {
             <Route path="/N6" element={<PageN6 />} />
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
+            <Route path="/N14" element={<PageN14 />} />
+            <Route path="/N14a" element={<PageN14a />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

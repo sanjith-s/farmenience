@@ -1,119 +1,119 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import lineGraph from "./lineGraph.png";
+
 import {
-  Box,
-  CardContent,
-  Stack,
-  Typography,
-  Button,
-  Container,
+    InputAdornment,
+    FormControl,
+    FilledInput,
+    InputLabel, Button,
+    Container,
+    Typography,
+    CssBaseline,
+    Box,
+    Card,
+    CardMedia,
 } from "@mui/material";
+import profilePhoto from "./face1.jpg";
+import Page10Nav from "./components/page10Nav";
+import Chart from "./components/chart";
 
-const itemsName = [
-  "name of the product",
-  "quantity",
-  "pricing",
-  "specific type",
-  "location",
-];
-
-const itemsValue = ["rice", "5kg", "5000", "agro corps", "chennai"];
-
-const PageM19 = () => {
-  return (
-    <Container style={{ padding: "30px 0px" }}>
-      <Typography
-        variant="h3"
-        style={{ textTransform: "uppercase", textAlign: "center" }}
-      >
-        marketplace
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          border: "3px solid",
-          justifyContent: "center",
-          alignItems: "center",
-          rowGap: "20px",
-          padding: "30px 0px",
-          backgroundColor: "#7bff96",
-          margin: "26px",
-          borderRadius: "8px",
-        }}
-      >
-        <Typography variant="h4" style={{ textTransform: "uppercase" }}>
-          Confirmation
-        </Typography>
-        <Box
-          sx={{
-            width: "400px",
-            borderRadius: "8px",
-            border: "4px solid #000",
-            backgroundColor: "#fff",
-          }}
+function PageM10() {
+    return (
+        <Container
+            style={{
+                padding: "15px 0px",
+                backgroundColor: "transparent",
+                display: "flex",
+                flexDirection: "column",
+                rowGap: "15px",
+            }}
         >
-          <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
-            <Stack>
-              {itemsName.map((value, index) => {
-                return (
-                  <Box
-                    key={index}
+            <CssBaseline />
+            <Box>
+                <Page10Nav title="buyer dashboard" />
+            </Box>
+            <Box
+                sx={{
+                    position: "relative ",
+                    // width: "500px",
+                    backgroundColor: "#86fe9ede",
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    padding: "30px 0px",
+                    border: "1px solid #000",
+                    borderRadius: "4px",
+                }}
+            >
+                <Box
                     sx={{
-                      display: "flex",
-                      columnGap: "20px",
-                      justifyContent: "space-between",
-                      height: "50px",
-                      alignItems: "center",
-                      margin: "2px 0px",
+                        width: "90%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
                     }}
-                  >
-                    <Typography
-                      style={{
+                >
+                    <FormControl fullWidth variant="filled" style={{
+                            width: "600px"
+                        }}>
+                        <InputLabel>
+                            <Typography
+                                variant="h6"
+                                style={{
+                                    color: "darkgreen",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                Enter Appointment ID
+                            </Typography>
+                        </InputLabel>
+                        <FilledInput
+                            type="text"
+                            onChange={(event) => {
+                                setName(event.target.value);
+                            }}
+                            style={{
+                                borderRadius: "5px",
+                                borderBottomLeftRadius: "0px",
+                                borderBottomRightRadius: "0px",
+                            }}
+                        />
+                    </FormControl>
+                </Box>
+                <Button
+                    variant="contained"
+                    color="success"
+                    style={{
+                        position: "absolute",
+                        bottom: "10px",
+                        right: "10px",
                         fontWeight: "600",
-                        fontSize: "20px",
-                        textTransform: "uppercase",
-                      }}
+                        fontSize: "15px",
+                    }}
+                >
+                    <Link
+                        to="/N14a"
+                        state={{
+                            from: "market list",
+                        }}
+                        style={{ textDecoration: "none" }}
                     >
-                      {value}
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      style={{ textTransform: "capitalize" }}
-                    >
-                      {itemsValue[index]}
-                    </Typography>
-                  </Box>
-                );
-              })}
-            </Stack>
-          </CardContent>
-        </Box>
-        <Box sx={{ display: "flex", columnGap: "50px" }}>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
-          >
-            edit
-          </Button>
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
-          >
-            publish
-          </Button>
-        </Box>
-      </Box>
-    </Container>
-  );
-};
+                        <Typography
+                            style={{
+                                color: "#ffffff",
+                                fontWeight: "600",
+                                fontSize: "16px",
+                            }}
+                        >
+                            SEARCH
+                        </Typography>
+                    </Link>
+                </Button>
+            </Box>
+        </Container>
+    );
+}
 
-export default PageM19;
+export default PageM10;

@@ -70,6 +70,11 @@ const PageM19 = () => {
     setOpen3(false);
   };
 
+  const handleClose11x = () => {
+    setOpen1(false);
+    setOpen1x(false);
+  };
+
   return (
     <Container style={{ padding: "30px 0px" }}>
       <Typography
@@ -203,7 +208,7 @@ const PageM19 = () => {
               <Button onClick={handleClickOpen1x} autoFocus> Yes
                 <Dialog
                   open={open1x}
-                  onClose={handleClose1x}
+                  onClose={handleClose11x}
                   aria-labelledby="alert-dialog-title"
                   aria-describedby="alert-dialog-description"
                 >
@@ -211,7 +216,7 @@ const PageM19 = () => {
                     {"Appointment Deleted"}
                   </DialogTitle>
                   <DialogActions>
-                    <Button onClick={handleClose1x}>Ok</Button>
+                    <Button onClick={handleClose11x}>Ok</Button>
                   </DialogActions>
                 </Dialog>
               </Button>

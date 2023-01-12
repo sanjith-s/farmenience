@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   Dialog,
   DialogActions,
@@ -216,7 +217,22 @@ const PageM19 = () => {
                     {"Appointment Deleted"}
                   </DialogTitle>
                   <DialogActions>
-                    <Button onClick={handleClose11x}>Ok</Button>
+                    <Button onClick={handleClose11x}>
+                      <Link
+                        to="/N14"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Typography
+                          style={{
+                            color: "blue",
+                            fontWeight: "600",
+                            fontSize: "16px",
+                          }}
+                        >
+                          Ok
+                        </Typography>
+                      </Link>
+                    </Button>
                   </DialogActions>
                 </Dialog>
               </Button>
@@ -226,7 +242,6 @@ const PageM19 = () => {
             variant="contained"
             style={{
               backgroundColor: "green",
-              fontWeight: "600",
               fontWeight: "600",
               fontSize: "18px",
             }}
@@ -243,7 +258,22 @@ const PageM19 = () => {
               {"Appointment Accepted"}
             </DialogTitle>
             <DialogActions>
-              <Button onClick={handleClose2}>Ok</Button>
+              <Button onClick={handleClose2}>
+                <Link
+                  to="/N14"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Typography
+                    style={{
+                      color: "blue",
+                      fontWeight: "600",
+                      fontSize: "16px",
+                    }}
+                  >
+                    Ok
+                  </Typography>
+                </Link>
+              </Button>
             </DialogActions>
           </Dialog>
           <Button onClick={handleClickOpen3}
@@ -255,23 +285,21 @@ const PageM19 = () => {
               fontSize: "18px",
             }}
           >
-            Reschedule
+            <Link
+              to="/N14b"
+              style={{ textDecoration: "none" }}
+            >
+              <Typography
+                style={{
+                  color: "#ffffff",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                }}
+              >
+                Reschedule
+              </Typography>
+            </Link>
           </Button>
-          <Dialog
-            open={open3}
-            onClose={handleClose3}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {"Do you want to delete the appointment ?"}
-            </DialogTitle>
-            <DialogActions>
-              <Button onClick={handleClose3} autoFocus>
-                OK
-              </Button>
-            </DialogActions>
-          </Dialog>
         </Box>
       </Box>
     </Container>

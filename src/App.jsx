@@ -36,6 +36,8 @@ import PageN5 from "./pageN5";
 import PageN6 from "./pageN6";
 import PageN7 from "./pageN7";
 import PageN9 from "./pageN9";
+import PageN12 from "./pageN12";
+import PageN12a from "./pageN12a";
 import PageN14 from "./pageN14";
 import PageN14a from "./pageN14a";
 import PageN14b from "./pageN14b";
@@ -82,6 +84,8 @@ function App() {
             <Route path="/N6" element={<PageN6 />} />
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
+            <Route path="/N12" element={<PageN12 />}/>
+            <Route path="/N12a" element={<PageN12a />} />
             <Route path="/N14" element={<PageN14 />} />
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />

@@ -1,80 +1,80 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Grid,
-  Box,
-  CardContent,
-  Stack,
-  Typography,
-  Button,
-  Container,
-} from "@mui/material";
+  import { Link, useLocation } from "react-router-dom";
+  import {
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Grid,
+    Box,
+    CardContent,
+    Stack,
+    Typography,
+    Button,
+    Container,
+  } from "@mui/material";
 
-const itemsName1 = [
-  "Appointment ID",
-  "Appointment Type",
-  "Location",
-  "Purpose of Appointment",
-];
+  const itemsName1 = [
+    "Appointment ID",
+    "Appointment Type",
+    "Location",
+    "Purpose of Appointment",
+  ];
 
-const itemsName2 = [
-  "Client Name",
-  "",
-  "Date of Appointment",
-  "Timing",
-];
+  const itemsName2 = [
+    "Client Name",
+    "",
+    "Date of Appointment",
+    "Timing",
+  ];
 
-const itemsValue1 = ["lorem ipsum", "lorem ipsum", "lorem ipsum", "lorem ipsum"];
-const itemsValue2 = ["lorem ipsum", "", "29 November 2022", "12:30 PM IST"];
+  const itemsValue1 = ["lorem ipsum", "lorem ipsum", "lorem ipsum", "lorem ipsum"];
+  const itemsValue2 = ["lorem ipsum", "", "29 November 2022", "12:30 PM IST"];
 
-const PageM19 = () => {
+  const PageM19 = () => {
 
-  const [open1, setOpen1] = React.useState(false);
-  const [open1x, setOpen1x] = React.useState(false);
-  const [open2, setOpen2] = React.useState(false);
-  const [open3, setOpen3] = React.useState(false);
+    const [open1, setOpen1] = React.useState(false);
+    const [open1x, setOpen1x] = React.useState(false);
+    const [open2, setOpen2] = React.useState(false);
+    const [open3, setOpen3] = React.useState(false);
 
-  const handleClickOpen1 = () => {
-    setOpen1(true);
-  };
+    const handleClickOpen1 = () => {
+      setOpen1(true);
+    };
 
-  const handleClickOpen1x = () => {
-    setOpen1x(true);
-  };
+    const handleClickOpen1x = () => {
+      setOpen1x(true);
+    };
 
-  const handleClickOpen2 = () => {
-    setOpen2(true);
-  };
+    const handleClickOpen2 = () => {
+      setOpen2(true);
+    };
 
-  const handleClickOpen3 = () => {
-    setOpen3(true);
-  };
+    const handleClickOpen3 = () => {
+      setOpen3(true);
+    };
 
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
+    const handleClose1 = () => {
+      setOpen1(false);
+    };
 
-  const handleClose1x = () => {
-    setOpen1x(false);
-  };
+    const handleClose1x = () => {
+      setOpen1x(false);
+    };
 
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
+    const handleClose2 = () => {
+      setOpen2(false);
+    };
 
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
+    const handleClose3 = () => {
+      setOpen3(false);
+    };
 
-  const handleClose11x = () => {
-    setOpen1(false);
-    setOpen1x(false);
-  };
+    const handleClose11x = () => {
+      setOpen1(false);
+      setOpen1x(false);
+    };
 
   return (
     <Container style={{ padding: "30px 0px" }}>

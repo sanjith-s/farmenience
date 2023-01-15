@@ -30,16 +30,16 @@ function NegotiationBox1(props) {
         display: "flex",
         backgroundColor: "#ffffff",
         padding: "20px",
-        margin: "8px 0px",
+        margin: "6px 0px",
       }}
     >
       <CardMedia
         component="img"
-        height="120"
+        height="140px"
         image={WheatImg}
         sx={{
-          width: "150px",
-          border: "3px solid #285430",
+          width: "190px",
+          border: "4px solid #285430",
           borderRadius: "3px",
         }}
       />

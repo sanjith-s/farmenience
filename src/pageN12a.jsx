@@ -282,7 +282,6 @@ const PageN12a = () => {
           style={{
             backgroundColor: "green",
             fontWeight: "600",
-            fontWeight: "600",
             fontSize: "18px",
           }}
         >

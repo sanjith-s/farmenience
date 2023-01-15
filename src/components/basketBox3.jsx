@@ -10,7 +10,10 @@ import {
   Radio,
 } from "@mui/material";
 
-function BasketBox3() {
+function BasketBox3(props) {
+  const FormHandler = (event) => {
+    props.onPaymentHandler(event.target.value);
+  };
   return (
     <Card
       style={{
@@ -31,10 +34,10 @@ function BasketBox3() {
         payment methods
       </Typography>
       <CardContent style={{ width: "70%", justifySelf: "flex-start" }}>
-        <FormControl>
+        <FormControl onClick={FormHandler}>
           <RadioGroup>
             <FormControlLabel
-              value="upi"
+              value="upi payment"
               control={<Radio />}
               label={
                 <Typography
@@ -49,7 +52,7 @@ function BasketBox3() {
               }
             />
             <FormControlLabel
-              value="netBanking"
+              value="net banking"
               control={<Radio />}
               label={
                 <Typography
@@ -64,7 +67,7 @@ function BasketBox3() {
               }
             />
             <FormControlLabel
-              value="card"
+              value="credit/debit card"
               control={<Radio />}
               label={
                 <Typography
@@ -94,7 +97,7 @@ function BasketBox3() {
               }
             />
             <FormControlLabel
-              value="crypto"
+              value="crypto payment"
               control={<Radio />}
               label={
                 <Typography
@@ -104,12 +107,12 @@ function BasketBox3() {
                     padding: "10px 0px",
                   }}
                 >
-                  crypto wallet
+                  crypto payment
                 </Typography>
               }
             />
             <FormControlLabel
-              value="cashOnDelivery"
+              value="cash on delivery"
               control={<Radio />}
               label={
                 <Typography

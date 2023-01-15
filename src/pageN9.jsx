@@ -9,6 +9,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import Cookies from 'js-cookie';
+import Axios from "axios";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -36,13 +38,42 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
+ 
 
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const history = useNavigate();
-  
+  const navigate=useNavigate();
+  function logout(){
+    let token=Cookies.get('token') 
+    Axios.get('http://localhost:5000/logout',{ headers: { tokenstring: token } }
+          )
+          .then((response) => {
+            if (response.data.message == "Logout Successful") {
+              alert('Logout Successful');
+              Cookies.remove('token')
+              navigate('../login');
+            }
+            else
+            {
+              alert("Error");
+            }
+            console.log(response);
+          }).
+          catch((response)=>{
+            if(response.response.data.message==="Token not found"||response.response.data.message==="Logout Fail, Please Logout Again")
+            {
+              alert("Please login, before logout");
+              navigate('../login');
+            }
+            if(response.response.data.message==="Invalid token")
+            {
+              alert("Login expried , please login again");
+              navigate('../login');
+            }
+          });
+  }
   const handlePath = () =>{ 
     history("/n7");
   }
@@ -70,7 +101,40 @@ export default function BasicTabs() {
   } ]
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <>
+    <div>
+      <div>
+        <button onClick={logout}>
+          LogOut
+        </button>
+      </div>
+    </div>
+    <br></br>
+    <div>
+      <button>
+        View Queries
+      </button>
+    </div>
+    <br>
+    </br>
+    <div>
+      <button>
+        View Appoinments
+      </button>
+    </div>
+    <br></br>
+    <div>
+      <button>
+        New Query
+      </button>
+    </div>
+    <br></br>
+    <div>
+      <button>
+        New Appoinment
+      </button>
+    </div>
+      {/* <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="View Queries" {...a11yProps(0)} />
@@ -121,6 +185,7 @@ export default function BasicTabs() {
         </Button>
       </Box>
       </TabPanel>
-    </Box>
+    </Box> */}
+    </>
   );
 }

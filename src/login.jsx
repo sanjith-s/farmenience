@@ -46,7 +46,14 @@ function Login() {
       if (response.data.message == "Successful") {
         alert('Login Successful');
         Cookies.set('token', response.data.token,{ expires: 1 });
-        navigate('/homepage2');
+        if(response.data.details[0].typeOfAcc=='Farmer')
+        {
+          navigate('/N9');
+        }
+        else
+        {
+          navigate('/homepage2');
+        }
       }
       else
       {

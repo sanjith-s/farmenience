@@ -1,49 +1,306 @@
-import React,{useState} from 'react';
-import './css/request.css';
-import EditIcon from '@mui/icons-material/Edit';
-function Request(props) {
-     var [updateReason,setUpdate] = useState(false);
-     const GiveEdit = () => {
-          setUpdate(true);
-     }
-	return (
-     <div className="request-box">
-        <div className="container-2">
-             <div className="part-1">
-                 <div className="container-1">
-                   <div className="f1"><span className="req-no">Farmers Request {props.ReqNo+1}</span></div>
-                   <div className="f-items"><button className="req-btn req-btn1">accept</button></div>
-                   <div className="f-items"><button className="req-btn req-btn2">update</button></div>
-                   <div className="f-items"><button className="req-btn req-btn3">cancel</button></div></div>
-                 <div className="flex-item"><span className="label">Meet Date</span>
-                      <input type="date" className="values" value={props.meetDate}/></div>
-                 <div className="flex-item">
-                      <span className="label">Meet Time</span>
-                      <input type="time" className="values" value={props.meetTime}/></div>
-                <div className="flex-item">
-                      <span className="label">Soil Details </span>
-                     <span className="values">{props.soilDetails}</span></div>
-                <div className="flex-item">
-                     <span className="label">Crops Growing </span>
-                     <span className="values">{props.cropsGrowing}</span></div>
-                <div className="flex-item">
-                     <span className="label reason">Reason for meet</span>
-                     {updateReason ? 
-                     <textarea name="" id="" cols="30" rows="2"  className="reasonbox" placeHolder="Type your reason here" ></textarea>:
-                     <span className="values">{props.meetReason} <a className="edit-btn" onClick={GiveEdit}><EditIcon fontSize="medium" /></a></span>
-                     }<br /></div>
-                <div className="flex-item">
-                     <span className="label">TYpe of NGO</span>
-                     <select name="" id="" className="values" >
-                     <option value="NGO">NGO</option>
-                     <option value="Non-NGO">Non-NGO</option>
-                    </select></div>
-             </div>
-             <div className="part-2">
-               <img src="" alt="Assume there is a image here" className="req-img"/>
-             </div>
-       </div>
-     </div>
-	)
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
+
+function BuyerRequest(props) {
+  let navigate = useNavigate();
+
+  const viewRequest = () => {
+    
+  };
+  
+  return (
+    <Card
+      style={{
+        padding: "15px",
+        width: "80%",
+        marginLeft:"10%",
+        borderRadius: "5px",
+        border: "2px solid #000000",
+      }}
+    >
+    <Button
+          style={{
+            backgroundColor: "#1fe57a",
+            color: "#000000",
+            fontWeight: "600",
+            fontSize: "16px",
+            border: "2px solid #000000",
+            marginTop: "15px",
+          }} 
+        >
+          Accept
+        </Button>
+        <Button
+          style={{
+            backgroundColor: "#1fe57a",
+            color: "#000000",
+            fontWeight: "600",
+            fontSize: "16px",
+            border: "2px solid #000000",
+            marginTop: "15px",
+          }}
+          onClick={viewRequest}
+        >
+          update
+        </Button>
+        <Button
+          style={{
+            backgroundColor: "#1fe57a",
+            color: "#000000",
+            fontWeight: "600",
+            fontSize: "16px",
+            border: "2px solid #000000",
+            marginTop: "15px",
+          }}
+        >
+          Cancel
+        </Button>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-start",
+          padding: "10px 5px",
+          borderTop: "2px solid",
+          columnGap: "20px",
+        }}
+      >
+      
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Request ID
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.reqId}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Reason
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.meetReason}
+        </Typography>
+      </CardContent>
+        
+        <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          MeetDate
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.meetDate}
+        </Typography>
+      </CardContent>
+
+        <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Meet Time
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.meetTime}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          soil Details
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.soilDetails}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "10px 5px",
+          columnGap: "20px",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#16e575",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          crops Growing
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.cropsGrowing}
+        </Typography>
+      </CardContent>
+      <CardContent
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          columnGap: "20px",
+          padding: "10px 5px",
+          borderBottom: "2px solid",
+        }}
+      >
+        <Typography
+          style={{
+            width: "45%",
+            backgroundColor: "#16e575",
+            padding: "5px 5px 5px 10px",
+            borderRadius: "3px",
+            fontWeight: "600",
+            textTransform: "uppercase",
+          }}
+        >
+          Quantity
+        </Typography>
+        <Typography
+          style={{
+            width: "55%",
+            paddingLeft: "10px",
+            padding: "5px 5px 5px 10px",
+            backgroundColor: "#c4e1c5",
+            borderRadius: "3px",
+          }}
+        >
+          {props.itemQuantity}
+        </Typography>
+      </CardContent>
+      <CardActions
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        
+      </CardActions>
+    </Card>
+  );
 }
-export default Request;
+export default BuyerRequest;

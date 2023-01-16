@@ -51,11 +51,18 @@ export default function BasicTabs() {
     let token=Cookies.get('token') ;
     Axios.get('http://localhost:5000/profile',{headers: { tokenstring: token } }).
     then((response)=>{
-      console.log(response);
       setProfile(response.data.message);
     })
     .catch((response)=>{
-      navigate('../login');
+      if(res.response.data.message==='Error in connection')
+      {
+        alert('Please Check Network');
+      }
+      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
+      {
+        alert('Login error');
+        navigate('../login')
+      }
     })
   },[]);
   function logout(){

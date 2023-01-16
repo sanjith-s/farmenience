@@ -3,34 +3,33 @@ import QueryBox from './components/queryBox';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useEffect,useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PageN1 = () =>{
-    const data=[
-        {
-            ID:'XXXXXXXXX',
-            Subject: 'www.figma.com/queries/link',
-            Date:'10/10/2022',
-            Status: 'Not clarified'
-        },
-        {
-            ID:'YYYYYYYYYY',
-            Subject: 'www.figma.com/queries/link',
-            Date:'10/10/2022',
-            Status: 'Not clarified'
-        },
-        {
-            ID:'ZZZZZZZZZZ',
-            Subject: 'www.figma.com/queries/link',
-            Date:'10/10/2022',
-            Status: 'Not clarified'
-        },
-        {
-            ID:'AAAAAAAAAA',
-            Subject: 'www.figma.com/queries/link',
-            Date:'10/10/2022',
-            Status: 'Not clarified'
-        }
-    ]
+    const [data,setData]=useState([]);
+    const navigate=useNavigate();
+    useEffect(() => {
+        let token=Cookies.get('token') ;
+        Axios.get('http://localhost:5000/getquery',{headers: { tokenstring: token } }).
+        then((response)=>{
+          setData(response.data.message);
+        })
+        .catch((res)=>{
+            if(res.response.data.message==='Error in connection')
+            {
+              alert('Please Check Network');
+            }
+            else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
+            {
+              alert('Login error');
+              navigate('../login')
+            }
+        })
+      },[data]);
     return (
         <>
         <Card id="title-background">
@@ -43,12 +42,20 @@ const PageN1 = () =>{
                 data.map((val)=>{
                     return(
                         <div>
-                            <QueryBox ID={val.ID} Date={val.Date} Status={val.Status} Subject={val.Subject} />
+                            <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
+}/>
                         </div>
                     )
                 })
             }
         </Box>
+        <div>
+      <button onClick={()=>{
+        navigate('../N9')
+      }}>
+        Profile Page
+      </button>
+    </div>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import SellerNegotiate from "./components/sellerNegotiate";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const content = [
   {
@@ -25,44 +25,49 @@ const content = [
 
 const PageM2 = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        margin: "35px",
-      }}
-    >
-      <Box
-        sx={{
-          border: "5px solid ",
-          width: "95%",
-          padding: "25px",
-          height: "525px",
-          overflow: "scroll",
-          borderRadius: "8px",
-          display: "flex",
-          flexDirection: "column",
-          rowGap: "30px",
-          backgroundColor: "#ccc",
+    <Box sx={{ margin: "35px" }}>
+      <Typography
+        style={{
+          textTransform: "uppercase",
+          textAlign: "center",
+          fontSize: "36px",
+          marginBottom: "20px",
         }}
       >
-        {content.map((id, key) => {
-          return (
-            <Box>
-              <SellerNegotiate
-                key={key}
-                name={id.name}
-                phno={id.phno}
-                iquantity={id.itemQuantity}
-                address={id.address}
-                iname={id.itemName}
-                iprice={id.itemPrice}
-                regno={id.regNo}
-              />
-            </Box>
-          );
-        })}
+        Seller dashboard
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "95%",
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "40px",
+          }}
+        >
+          {content.map((id, key) => {
+            return (
+              <Box>
+                <SellerNegotiate
+                  key={key}
+                  name={id.name}
+                  phno={id.phno}
+                  iquantity={id.itemQuantity}
+                  address={id.address}
+                  iname={id.itemName}
+                  iprice={id.itemPrice}
+                  regno={id.regNo}
+                />
+              </Box>
+            );
+          })}
+        </Box>
       </Box>
     </Box>
   );

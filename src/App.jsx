@@ -23,6 +23,7 @@ import PageM10b from "./pageM10b";
 import PageM10c from "./pageM10c";
 import PageM11 from "./pageM11";
 import PageM12 from "./pageM12";
+import PageM13 from "./pageM13";
 import PageM15 from "./pageM15";
 import PageM16 from "./pageM16";
 import PageM17 from "./pageM17";
@@ -70,6 +71,7 @@ function App() {
             <Route path="/M10c" element={<PageM10c />} />
             <Route path="/M11" element={<PageM11 />} />
             <Route path="/M12" element={<PageM12 />} />
+            <Route path="/M13" element={<PageM13 />} />
             <Route path="/M15" element={<PageM15 />} />
             <Route path="/M16" element={<PageM16 />} />
             <Route path="/M17" element={<PageM17 />} />
@@ -84,7 +86,7 @@ function App() {
             <Route path="/N6" element={<PageN6 />} />
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
-            <Route path="/N12" element={<PageN12 />}/>
+            <Route path="/N12" element={<PageN12 />} />
             <Route path="/N12a" element={<PageN12a />} />
             <Route path="/N14" element={<PageN14 />} />
             <Route path="/N14a" element={<PageN14a />} />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import "./css/pageM12.css";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -67,7 +68,6 @@ function PageM12() {
     setConsumerName(userName);
     setConsumerAddress(address);
     setConsumerNumber(number);
-    console.log(consumerName, consumerAddress, consumerNumber);
   };
 
   const [update, setUpdate] = useState("editCard");
@@ -116,6 +116,7 @@ function PageM12() {
   };
 
   let total = 0;
+
   salesItems.map((item) => {
     total += item.actualPrice;
     total = total * quantity1;
@@ -125,12 +126,20 @@ function PageM12() {
 
   let delivery = total * (5 / 100);
   let save = 0;
+
   salesItems.map((item) => {
     save += item.discountAmount;
     return;
   });
 
   let totalAmount = delivery + total;
+
+  const [paymentMethod, setPaymentMethod] = useState("payment method");
+
+  const paymentHandler = (method) => {
+    console.log(method);
+    setPaymentMethod(method);
+  };
 
   return (
     <Container style={{ padding: "20px 0px" }}>
@@ -266,9 +275,8 @@ function PageM12() {
               {salesItems.map((item, index) => {
                 const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
-                  <Box>
+                  <Box key={index}>
                     <BasketBox1
-                      key={index}
                       iName={item.itemName}
                       quantity={item.quantity}
                       actualPrice={item.actualPrice}
@@ -321,7 +329,7 @@ function PageM12() {
               borderRadius: "8px",
             }}
           >
-            <BasketBox3 />
+            <BasketBox3 onPaymentHandler={paymentHandler} />
           </Box>
         )}
 
@@ -349,9 +357,8 @@ function PageM12() {
               {salesItems.map((item, index) => {
                 const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
-                  <Box>
+                  <Box key={index}>
                     <PriceDetails
-                      key={index}
                       userQuantity={qcounter}
                       mrp={item.actualPrice}
                       discount={item.discountAmount}
@@ -523,7 +530,23 @@ function PageM12() {
                   fontWeight: "600",
                 }}
               >
-                continue payment
+                <Link
+                  to="/M13"
+                  state={{
+                    from: paymentMethod,
+                  }}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Typography
+                    style={{
+                      color: "#ffffff",
+                      fontWeight: "600",
+                      fontSize: "16px",
+                    }}
+                  >
+                    continue payment
+                  </Typography>
+                </Link>
               </Button>
             </Box>
           )}

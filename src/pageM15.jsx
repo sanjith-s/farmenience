@@ -200,11 +200,9 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                height: "400px",
-                overflow: "auto",
                 margin: "20px 0px",
-                borderRadius: "8px",
-                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               {salesItems.map((item, index) => {
@@ -227,8 +225,8 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "10px",
-                  right: "10px",
+                  bottom: "18px",
+                  right: "14px",
                   fontWeight: "600",
                   fontSize: "15px",
                 }}
@@ -243,11 +241,10 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                height: "400px",
-                overflow: "auto",
                 margin: "20px 0px",
                 borderRadius: "8px",
-                backgroundColor: "white",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               {salesItems.map((item, index) => {
@@ -272,8 +269,8 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "10px",
-                  right: "10px",
+                  bottom: "18px",
+                  right: "14px",
                   fontWeight: "600",
                   fontSize: "15px",
                 }}
@@ -288,10 +285,10 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                height: "400px",
-                overflow: "auto",
                 margin: "20px 0px",
                 borderRadius: "8px",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               {salesItems.map((item, index) => {
@@ -316,8 +313,8 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "10px",
-                  right: "10px",
+                  bottom: "18px",
+                  right: "14px",
                   fontWeight: "600",
                   fontSize: "15px",
                 }}

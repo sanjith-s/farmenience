@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,6 +46,18 @@ export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const history = useNavigate();
   const navigate=useNavigate();
+  const [profile,setProfile]=useState({});
+  useEffect(() => {
+    let token=Cookies.get('token') ;
+    Axios.get('http://localhost:5000/profile',{headers: { tokenstring: token } }).
+    then((response)=>{
+      console.log(response);
+      setProfile(response.data.message);
+    })
+    .catch((response)=>{
+
+    })
+  },[]);
   function logout(){
     let token=Cookies.get('token') 
     Axios.get('http://localhost:5000/logout',{ headers: { tokenstring: token } }
@@ -101,6 +113,15 @@ export default function BasicTabs() {
     venue: "Forum Mall, Chennai"  
   } ]
 
+  const characteristics = Object.entries(profile).map((key, i) => {
+    return (
+      <div key={i}>
+      <br></br>
+        <span>{key[0]}</span> : <h2>{key[1]}</h2>
+        <br></br>
+      </div>
+    );});
+
   return (
     <>
     <div>
@@ -143,6 +164,12 @@ export default function BasicTabs() {
         New Appoinment
       </button>
     </div>
+    <h1>Profile</h1>
+    {
+
+      characteristics
+
+    }
       {/* <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

@@ -53,7 +53,7 @@ export default function BasicTabs() {
     then((response)=>{
       setProfile(response.data.message);
     })
-    .catch((response)=>{
+    .catch((res)=>{
       if(res.response.data.message==='Error in connection')
       {
         alert('Please Check Network');

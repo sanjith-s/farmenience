@@ -1,7 +1,13 @@
 import React from 'react';
 import './css/pageN2.css';
+import {useLocation} from 'react-router-dom';
+import { useNavigate } from "react-router-dom/dist";
+import { useEffect,useState } from "react";
 
 const PageN2 = () => {
+    const location = useLocation();
+    const navigate=useNavigate();
+    const id=location.state.id;
   return (
     <div class="ext-cont">
         <div></div>

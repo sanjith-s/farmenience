@@ -11,11 +11,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const QueryBox = (props) =>{
     const [open, setOpen] = useState(false);
-    const [subject,setSubject]=useState("");
-    const [desc,setDesc]=useState("");
+    const navigate=useNavigate();
+    const [subject,setSubject]=useState(props.Subject);
+    const [desc,setDesc]=useState(props.Desc);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -100,7 +102,11 @@ const QueryBox = (props) =>{
                     </tr>
                 </table>
                 <div id="buttons-n1">
-                    <Button variant="contained" color="success" id="button-n1">
+                    <Button variant="contained" color="success" id="button-n1" onClick={
+                        ()=>{
+                            navigate('../N2',{state:{id:props.ID,oldQuery:props.oldQuery}})
+                        }
+                    }>
                         Display
                     </Button>
                     <Button onClick={handleClickOpen} variant="contained" color="success" id="button-n1">
@@ -110,7 +116,7 @@ const QueryBox = (props) =>{
                         Delete
                     </Button>
                     <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle>Subscribe</DialogTitle>
+                        <DialogTitle>Edit Query</DialogTitle>
                         <DialogContent>
                         <DialogContentText>
                             Edit Query

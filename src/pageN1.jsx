@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect,useState } from "react";
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const PageN1 = () =>{
@@ -43,7 +42,7 @@ const PageN1 = () =>{
                     return(
                         <div>
                             <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-}/>
+} oldQuery={val.oldQuery} />
                         </div>
                     )
                 })

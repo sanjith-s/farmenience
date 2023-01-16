@@ -9,123 +9,130 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import Fab from "@mui/material/Fab";
 
-const queryDetails = () => {
+
+const queryDetails = (props) => {
+    console.log(props.query.oldQuery)
     return (
+        <>
+        
         <React.Fragment>
-            <Stack
-                direction="row"
-                sx={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                }}
-            >
-            </Stack>
-            <TextField
-                id="filled-basic"
-                label="Query ID"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Query Subject"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Description"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Status"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Response"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Date of Submission"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Date of Response"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <br />
-            <TextField
-                id="filled-basic"
-                label="Details"
-                variant="filled"
-                color="success"
-                sx={{
-                    backgroundColor: "#C4E1C5",
-                    borderBottomColor: "black",
-                    width: "70%",
-                }}
-            />
-            <Stack
-                direction="row"
-                divider={<Divider orientation="vertical" flexItem />}
-                spacing={2}
-                display="flex"
-                justifyContent="center"
-            >
-            </Stack>
-        </React.Fragment>
+        
+        <Stack
+            direction="row"
+            sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+            }}
+        >
+        </Stack>
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query._id}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.subject}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.description}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.status}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.response}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.createdAt}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.updatedAt}
+        />
+        <br />
+        <TextField
+            id="filled-basic"
+            variant="filled"
+            color="success"
+            sx={{
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "70%",
+            }}
+            value={props.query.responser}
+        />
+        <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={2}
+            display="flex"
+            justifyContent="center"
+        >
+        </Stack>
+    </React.Fragment>
+        </>
+        
     );
 };
 

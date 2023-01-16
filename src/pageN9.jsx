@@ -55,7 +55,7 @@ export default function BasicTabs() {
       setProfile(response.data.message);
     })
     .catch((response)=>{
-
+      navigate('../login');
     })
   },[]);
   function logout(){

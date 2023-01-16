@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
+import { useEffect } from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -111,26 +112,34 @@ export default function BasicTabs() {
     </div>
     <br></br>
     <div>
-      <button>
+      <button onClick={()=>{
+        navigate('../N1')
+      }}>
         View Queries
       </button>
     </div>
     <br>
     </br>
     <div>
-      <button>
+      <button onClick={()=>{
+        navigate('../N6')
+      }}>
         View Appoinments
       </button>
     </div>
     <br></br>
     <div>
-      <button>
+      <button onClick={()=>{
+        navigate('../N7')
+      }}>
         New Query
       </button>
     </div>
     <br></br>
     <div>
-      <button>
+      <button onClick={()=>{
+        navigate('../N4')
+      }}>
         New Appoinment
       </button>
     </div>

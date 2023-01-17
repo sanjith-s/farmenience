@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const PageN1 = () =>{
     const [data,setData]=useState([]);
@@ -49,11 +50,9 @@ const PageN1 = () =>{
             }
         </Box>
         <div>
-      <button onClick={()=>{
-        navigate('../N9')
-      }}>
-        Profile Page
-      </button>
+        <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            Home Page
+          </Button>
     </div>
         </>
     )

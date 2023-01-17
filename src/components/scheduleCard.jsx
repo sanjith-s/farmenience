@@ -19,9 +19,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Fab from "@mui/material/Fab";
 
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom/dist";
  
 const ScheduleCard = () => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
+  const navigate=useNavigate();
   const handleChange = (newValue) => {
   setValue(newValue);
   };
@@ -30,6 +35,52 @@ const ScheduleCard = () => {
   const handleChange2 = (event) => {
     setAge(event.target.value);
   };
+  const [details,setDetails]=useState("");
+  const [crops,setCrops]=useState("");
+  const [reason,setReason]=useState("");
+  const [ngo,setNgo]=useState("NGO");
+  const Reset = () => {
+    setCrops("");
+    setDetails("");
+    setNgo("NGO");
+    setReason("");
+    setValue(dayjs('2022-12-20T21:11:54'));
+  }
+  const postMeet = () => {
+    let token=Cookies.get('token') ;
+    let dateStr =new Date(value);
+    Axios.post('http://localhost:5000/postmeet',{
+      date:dateStr.toLocaleDateString(),
+      time:dateStr.toTimeString(),
+      details:details,
+      crops:crops,
+      reason:reason,
+      ngotype:ngo,
+  },{headers: { tokenstring: token } }).
+    then((response)=>{
+      console.log(response);
+      if(response.data.message==='Meet Added, Waiting for NGO Reply')
+      {
+        alert('Meet Added, Waiting for NGO Reply');
+        navigate('../N6');
+      }
+    })
+    .catch((res)=>{
+      if(res.response.data.message==='Error in connection')
+      {
+        alert('Please Check Network');
+      }
+      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
+      {
+        alert('Login error');
+        navigate('../login')
+      }
+      else
+      {
+        alert(res.response.data.message);
+      }
+    })
+  }
   return (
     <React.Fragment>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
@@ -42,7 +93,7 @@ const ScheduleCard = () => {
           backgroundColor: "#C4E1C5",
           borderBottomColor: "black",
           width: "70%",
-          }} />}   
+          }} />}  
         />
         <TimePicker
           label="Meet Time"
@@ -65,12 +116,15 @@ const ScheduleCard = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        onChange={(e)=>{setDetails(e.target.value)}} 
+        defaultValue={details}
       />
       <TextField
         id="filled-basic"
         label="Crops growing"
         variant="filled"
         color="success"
+        onChange={(e)=>{setCrops(e.target.value)}} 
         InputProps={{
           endAdornment: <InputAdornment position="end">₹</InputAdornment>,
         }}
@@ -79,12 +133,14 @@ const ScheduleCard = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        defaultValue={crops}
       />
       <TextField
         id="filled-basic"
         InputProps={{
           endAdornment: <InputAdornment position="end">kg</InputAdornment>,
         }}
+        onChange={(e)=>{setReason(e.target.value)}} 
         label="Reason for meet"
         variant="filled"
         color="success"
@@ -93,6 +149,7 @@ const ScheduleCard = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        defaultValue={reason}
       />
       <Box sx={{
           backgroundColor: "#C4E1C5",
@@ -104,9 +161,9 @@ const ScheduleCard = () => {
         <Select
           labelId="r1"
           id="r2"
-          value={age}
+          value={ngo}
           label="Age"
-          onChange={handleChange2}
+          onChange={(e)=>{setNgo(e.target.value)}} 
         >
           <MenuItem value={'NGO'}>NGO</MenuItem>
           <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
@@ -121,6 +178,14 @@ const ScheduleCard = () => {
         justifyContent="center"
       >
       </Stack>
+      <Box textAlign="center" padding={"20px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+          Reset To Old Values
+        </Button><br /><br />
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postMeet}>
+          Submit
+        </Button>
+      </Box>
     </React.Fragment>
   );
 };

@@ -179,6 +179,9 @@ const PageN7 = () => {
           )}
         </Container>
       </Stack>
+      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            Home Page
+          </Button>
     </div>
   );
 };

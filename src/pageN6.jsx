@@ -1,7 +1,5 @@
 import React from "react";
-
-import { useState, useRef } from "react";
-
+import { useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import farmImg from "./farm_land.jpg";
 import Container from "@mui/material/Container";
@@ -18,27 +16,51 @@ import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import Request from "./RequestsDetails";
 import Navbar from "./components/navbar";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 function AllRequest() {
-  const listOfRequests = [
-    {
-      meetDate: "2023-01-31",
-      meetTime: "04:30",
-      cropsGrowing: "paddy, wheat",
-      meetReason: "To discuss ab cultivation",
-      soilDetails: "red soil used to grow sbjkbsjkb",
-      NGOType: "NGO",
-      img_src: "",
-    },
-    {
-      meetDate: "2022-11-19",
-      meetTime: "02:30",
-      cropsGrowing: "paddy, wheat",
-      meetReason: "The reason is to discuss about jkcnsjs",
-      soilDetails: "red soil used to grow sbjkbsjkb",
-      NGOType: "NGO",
-      img_src: "",
-    },
-  ];
+  const [listOfRequests,setListOfRequests]=useState([]);
+  const navigate=useNavigate();
+  useEffect(() => {
+      let token=Cookies.get('token') ;
+      Axios.get('http://localhost:5000/getmeet',{headers: { tokenstring: token } }).
+      then((response)=>{
+        setListOfRequests(response.data.message);
+      })
+      .catch((res)=>{
+          if(res.response.data.message==='Error in connection')
+          {
+            alert('Please Check Network');
+          }
+          else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
+          {
+            alert('Login error');
+            navigate('../login')
+          }
+      })
+    },[listOfRequests]);
+  // const listOfRequests = [
+  //   {
+  //     meetDate: "2023-01-31",
+  //     meetTime: "04:30",
+  //     cropsGrowing: "paddy, wheat",
+  //     meetReason: "To discuss ab cultivation",
+  //     soilDetails: "red soil used to grow sbjkbsjkb",
+  //     NGOType: "NGO",
+  //     img_src: "",
+  //   },
+  //   {
+  //     meetDate: "2022-11-19",
+  //     meetTime: "02:30",
+  //     cropsGrowing: "paddy, wheat",
+  //     meetReason: "The reason is to discuss about jkcnsjs",
+  //     soilDetails: "red soil used to grow sbjkbsjkb",
+  //     NGOType: "NGO",
+  //     img_src: "",
+  //   },
+  // ];
   return (
     <div className="">
       <p className="total-req-count">You Have {listOfRequests.length} Request</p>
@@ -65,12 +87,13 @@ function AllRequest() {
         >
           <Request
                 reqId={index + 1}
-                meetDate={request.meetDate}
-                meetTime={request.meetTime}
-                meetReason={request.meetReason}
-                soilDetails={request.soilDetails}
-                cropsGrowing={request.cropsGrowing}
-                itemQuantity={1}
+                meetDate={request.date}
+                meetTime={request.time}
+                meetReason={request.reason}
+                soilDetails={request.details}
+                cropsGrowing={request.crops}
+                itemQuantity={request._id}
+                status={request.status}
           />
           </Container>
           <Container
@@ -102,7 +125,9 @@ function AllRequest() {
           </>
         );
       })}
-
+      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            Home Page
+          </Button>
     </div>
   );
 }

@@ -25,7 +25,10 @@ function BuyerRequest(props) {
         border: "2px solid #000000",
       }}
     >
-    <Button
+    {
+      props.status==='Waiting for NGO'?<></> :
+      <>
+      <Button
           style={{
             backgroundColor: "#1fe57a",
             color: "#000000",
@@ -62,6 +65,9 @@ function BuyerRequest(props) {
         >
           Cancel
         </Button>
+      </>
+    }
+    
       <CardContent
         style={{
           display: "flex",

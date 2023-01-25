@@ -126,32 +126,35 @@ const StyledAppointmentsAppointmentContent = styled(
 
 const appointments = [
   {
-    title: "Meeting with client",
     startDate: new Date(2023, 6, 23, 9, 30),
     endDate: new Date(2023, 6, 23, 11, 30),
+    title: "Meeting with client"
   },
   {
-    title: "Budget Planning",
     startDate: new Date(2023, 5, 28, 9, 30),
     endDate: new Date(2023, 5, 28, 11, 30),
+    title: "Budget Planning"
   },
   {
-    title: "Recruiting farmers",
     startDate: new Date(2023, 6, 9, 12, 0),
     endDate: new Date(2023, 6, 9, 13, 0),
+    title: "Recruiting farmers"
   },
   {
-    title: "Purchasing seeds",
     startDate: new Date(2023, 6, 18, 14, 30),
     endDate: new Date(2023, 6, 18, 15, 30),
+    title: "Purchasing seeds"
   },
   {
-    title: "NGO Meet",
     startDate: new Date(2023, 6, 9, 11, 0),
     endDate: new Date(2023, 6, 9, 12, 0),
+    title: "NGO Meet"
   }
 ];
-
+for (let index = 0; index < appointments.length; index++) {
+  const element = appointments[index];
+  element.title += " [ "+element.startDate.toLocaleTimeString() + " ]";
+}
 // #FOLD_BLOCK
 const CellBase = React.memo(
   ({

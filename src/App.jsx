@@ -65,7 +65,6 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M10" element={<PageM10 />} />
-            <Route path="/cal" element={<Calender />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />
@@ -91,6 +90,7 @@ function App() {
             <Route path="/N14" element={<PageN14 />} />
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
+            <Route path="/cal" element={<Calender />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

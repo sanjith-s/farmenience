@@ -48,10 +48,8 @@ import LogoutAllDevice from "./LogoutAllDevice";
 function App() {
   return (
     <div>
-      <Headroom>
         <Navbar />
-      </Headroom>
-      <main className="main-content">
+      <main className="main-content" style={{marginTop:"2%"}}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />

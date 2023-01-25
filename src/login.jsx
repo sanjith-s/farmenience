@@ -10,7 +10,7 @@ import Cookies from 'js-cookie';
 
 function Login() {
   const captchaRef = useRef(null);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [logindata, setLogindata] = useState({
     email: "",
     password: ""
@@ -37,37 +37,41 @@ function Login() {
   };
 
   const LogMeIn = (em, pass) => {
-    Axios.post('http://localhost:5000/login',{
-      email:em,
-      password:pass
+    Axios.post('http://localhost:5000/login', {
+      email: em,
+      password: pass
     }
     )
-    .then((response) => {
-      if (response.data.message == "Successful") {
-        alert('Login Successful');
-        Cookies.set('token', response.data.token,{ expires: 1 });
-        if(response.data.details[0].typeOfAcc=='Farmer')
-        {
-          navigate('/N9');
+      .then((response) => {
+        if (response.data.message == "Successful") {
+          alert('Login Successful');
+          Cookies.set('token', response.data.token, { expires: 1 });
+          if (response.data.details[0].typeOfAcc == 'Farmer') {
+            navigate('/N9');
+          }
+          else {
+            navigate('/homepage2');
+          }
         }
-        else
-        {
-          navigate('/homepage2');
+        else {
+          alert("Error");
         }
-      }
-      else
-      {
-        alert("Error");
-      }
-    }).
-    catch((response)=>{
-      alert(response.response.data.message);
-      if(response.response.data.message==="Error in login")
-      {
-        navigate("/logoutALL",{state:{email:em}});
-      }
-    });
+      }).
+      catch((response) => {
+        alert(response.response.data.message);
+        if (response.response.data.message === "Error in login") {
+          navigate("/logoutALL", { state: { email: em } });
+        }
+      });
 
+  }
+
+  const goToSignup = () => {
+    navigate('/signup');
+  }
+  
+  const goToHomepage = () => {
+    navigate('/signup');
   }
 
   return (
@@ -82,7 +86,7 @@ function Login() {
           <label>
             Email{" "}
             <input
-              type="text"
+              type="email"
               name="email"
               value={logindata.email}
               onChange={handleChange}
@@ -94,7 +98,7 @@ function Login() {
           <label>
             Password{" "}
             <input
-              type="text"
+              type="password"
               name="password"
               value={logindata.password}
               onChange={handleChange}
@@ -103,12 +107,25 @@ function Login() {
             <br />
           </label>
           <br />
+          <br />
           <button type="submit" class="button" onClick={() => LogMeIn(logindata.email, logindata.password)}>
             {/* <Link id="sign" to='/homepage2'>Login</Link> */}
             Login
           </button>
         </center>
       </form>
+
+      <br />
+      <br />
+      <button class="button" onClick={goToSignup()}>
+        Signup
+      </button>
+      <br />
+      <br />
+      <button class="button" onClick={goToHomepage()}>
+        Back to homepage
+      </button>
+
     </div>
   );
 }

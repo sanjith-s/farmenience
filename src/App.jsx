@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Calender from "./components/calender";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
@@ -66,6 +67,7 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M10" element={<PageM10 />} />
+            <Route path="/cal" element={<Calender />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />

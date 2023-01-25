@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Calender from "./components/calender";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
@@ -49,8 +48,10 @@ import LogoutAllDevice from "./LogoutAllDevice";
 function App() {
   return (
     <div>
+      <Headroom>
         <Navbar />
-      <main className="main-content" style={{marginTop:"5%"}}>
+      </Headroom>
+      <main className="main-content">
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
@@ -90,7 +91,6 @@ function App() {
             <Route path="/N14" element={<PageN14 />} />
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
-            <Route path="/cal" element={<Calender />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

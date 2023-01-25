@@ -56,7 +56,9 @@ function Signup() {
 
     if (
       signupdata.phone.length == 10 &&
-      signupdata.password === signupdata.confpass
+      signupdata.password === signupdata.confpass &&
+      signupdata.pincode.length == 6 &&
+      signupdata.aadhar.length == 12
     ) {
       Axios.post("http://localhost:5000/signup", {
         name: signupdata.name,
@@ -109,7 +111,7 @@ function Signup() {
           <label>
             Phone Number{" "}
             <input
-              type="text"
+              type="tel"
               name="phone"
               value={signupdata.phone}
               onChange={handleChange}
@@ -121,7 +123,7 @@ function Signup() {
           <label>
             Aadhaar Number{" "}
             <input
-              type="text"
+              type="number"
               name="aadhar"
               value={signupdata.aadhar}
               onChange={handleChange}
@@ -193,7 +195,7 @@ function Signup() {
           <label>
             Pincode{" "}
             <input
-              type="text"
+              type="number"
               name="pincode"
               value={signupdata.pincode}
               onChange={handleChange}
@@ -205,7 +207,7 @@ function Signup() {
           <label>
             Email{" "}
             <input
-              type="text"
+              type="email"
               name="email"
               value={signupdata.email}
               onChange={handleChange}

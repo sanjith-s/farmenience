@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/pageM4.css";
-import PriceTable from "./components/priceTable";
-import ProductDetails from "./components/productDetails";
+import PriceTable from "../components/priceTable";
+import ProductDetails from "../components/productDetails";
 import {
   Box,
   CssBaseline,

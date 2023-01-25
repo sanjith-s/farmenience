@@ -5,7 +5,6 @@ import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import Container from "@mui/material/Container";
-
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
 import { Button } from "@mui/material";
@@ -15,14 +14,15 @@ import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
-
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import ScheduleCard from "../components/scheduleCard";
+import { useNavigate } from "react-router-dom/dist";
 
-import SellItemCard from "./components/sellItemCard";
-const PageM6 = () => {
+const PageN4 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
+  const navigate=useNavigate();
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
@@ -32,7 +32,7 @@ const PageM6 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Sell Products</span>
+      <span className="title">Schedule a Meet with NGO</span>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -49,9 +49,10 @@ const PageM6 = () => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
+            padding: "200px 200px 200px 200px"
           }}
         >
-          <SellItemCard />
+          <ScheduleCard />
         </Container>
         <Container
           disableGutters={true}
@@ -109,13 +110,11 @@ const PageM6 = () => {
           )}
         </Container>
       </Stack>
-      <Box textAlign="center" padding={"20px"}>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-          Submit
-        </Button>
-      </Box>
+      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            Home Page
+          </Button>
     </div>
   );
 };
 
-export default PageM6;
+export default PageN4;

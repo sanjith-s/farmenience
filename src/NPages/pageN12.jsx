@@ -1,6 +1,5 @@
-import React from "react";
+import React from 'react'
 import { Link, useLocation } from "react-router-dom";
-import lineGraph from "./lineGraph.png";
 
 import {
     InputAdornment,
@@ -15,12 +14,12 @@ import {
     CardMedia,
 } from "@mui/material";
 import profilePhoto from "./face1.jpg";
-import Page10Nav from "./components/page10Nav";
-import Chart from "./components/chart";
+import Page10Nav from "../components/page10Nav";
+import Chart from "../components/chart";
 
-function PageM10() {
-    return (
-        <Container
+const PageN12 = () => {
+  return (
+    <Container
             style={{
                 padding: "15px 0px",
                 backgroundColor: "transparent",
@@ -31,7 +30,7 @@ function PageM10() {
         >
             <CssBaseline />
             <Box>
-                <Page10Nav title="buyer dashboard" />
+                <Page10Nav title="View Queries" />
             </Box>
             <Box
                 sx={{
@@ -66,7 +65,7 @@ function PageM10() {
                                     fontWeight: "600",
                                 }}
                             >
-                                Enter Appointment ID
+                                Enter Query ID
                             </Typography>
                         </InputLabel>
                         <FilledInput
@@ -94,7 +93,7 @@ function PageM10() {
                     }}
                 >
                     <Link
-                        to="/N14a"
+                        to="/N12a"
                         state={{
                             from: "market list",
                         }}
@@ -113,7 +112,7 @@ function PageM10() {
                 </Button>
             </Box>
         </Container>
-    );
+  );
 }
 
-export default PageM10;
+export default PageN12

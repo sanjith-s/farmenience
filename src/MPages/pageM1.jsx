@@ -1,5 +1,5 @@
 import React from "react";
-import RequestBox from "./components/requestBox";
+import RequestBox from "../components/requestBox";
 import { Container, Box, Grid } from "@mui/material";
 
 import "./css/pageM1.css";

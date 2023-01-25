@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProductCard from "../components/productCard";
+import ProductCard from "./components/productCard";
 import { Button, Box, Typography } from "@mui/material";
 
 const PageM18 = () => {

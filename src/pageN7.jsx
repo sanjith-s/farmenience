@@ -1,12 +1,14 @@
 import React from "react";
 
-import { useState, useRef } from "react";
+import {useRef } from "react";
 
 import CssBaseline from "@mui/material/CssBaseline";
 
 import Container from "@mui/material/Container";
+import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
+import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 
-import { Typography } from "@mui/material";
+import { Alert, Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
 import { Button } from "@mui/material";
 import { Box } from "@mui/material";
@@ -16,23 +18,56 @@ import { InputAdornment } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useEffect,useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom/dist";
 
-import SellItemCard from "../components/sellItemCard";
-const PageM6 = () => {
+const PageN7 = () => {
   const [file, setFile] = useState();
+  const navigate=useNavigate();
   const [isUploaded, setIsUploaded] = useState(false);
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
-
+  const [subject,setSubject]=useState("");
+  const [desc,setDesc]=useState("");
+  const postQuery = () => {
+    let token=Cookies.get('token') ;
+    Axios.post('http://localhost:5000/postquery',{subject:subject,
+    description: desc
+  },{headers: { tokenstring: token } }).
+    then((response)=>{
+      console.log(response);
+      if(response.data.message==='Query Added Successfully')
+      {
+        alert('Query Added Successfully');
+        navigate('../N1');
+      }
+    })
+    .catch((res)=>{
+      if(res.response.data.message==='Error in connection')
+      {
+        alert('Please Check Network');
+      }
+      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
+      {
+        alert('Login error');
+        navigate('../login')
+      }
+      else
+      {
+        alert(res.response.data.message);
+      }
+    })
+  }
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Sell Products</span>
+      <span className="title">Query Form</span>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -51,7 +86,42 @@ const PageM6 = () => {
             alignItems: "center",
           }}
         >
-          <SellItemCard />
+           <React.Fragment>
+      <TextField
+        id="filled-basic"
+        label="Query Subject"
+        variant="filled"
+        color="success"
+        sx={{
+          backgroundColor: "#C4E1C5",
+          borderBottomColor: "black",
+          width: "70%",
+        }}
+        onChange={(e)=>{setSubject(e.target.value)}}
+      />
+      <TextField
+        id="filled-basic"
+        label="Description"
+        variant="filled"
+        color="success"
+        InputProps={{
+          endAdornment: <InputAdornment position="end"></InputAdornment>,
+        }}
+        sx={{
+          backgroundColor: "#C4E1C5",
+          borderBottomColor: "black",
+          width: "70%",
+        }}
+        onChange={(e)=>{setDesc(e.target.value)}}
+      />
+      <Box textAlign="center" padding={"20px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postQuery}>
+          Submit
+        </Button>
+      </Box>
+    </React.Fragment>
+        
+
         </Container>
         <Container
           disableGutters={true}
@@ -109,13 +179,11 @@ const PageM6 = () => {
           )}
         </Container>
       </Stack>
-      <Box textAlign="center" padding={"20px"}>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-          Submit
-        </Button>
-      </Box>
+      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            Home Page
+          </Button>
     </div>
   );
 };
 
-export default PageM6;
+export default PageN7;

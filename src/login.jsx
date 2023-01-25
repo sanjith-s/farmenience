@@ -71,7 +71,7 @@ function Login() {
   }
   
   const goToHomepage = () => {
-    navigate('/homepage1');
+    navigate('/signup');
   }
 
   return (
@@ -117,7 +117,7 @@ function Login() {
 
       <br />
       <br />
-      <button type="button" class="button" onClick={goToSignup()}>
+      <button class="button" onClick={goToSignup()}>
         Signup
       </button>
       <br />

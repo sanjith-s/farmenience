@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Page10Nav from "../components/page10Nav";
+import Page10Nav from "./components/page10Nav";
 import PersonRoundIcon from "@mui/icons-material/PersonRounded";
 import {
   Card,

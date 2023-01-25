@@ -1,5 +1,5 @@
 import './css/pageN1.css'
-import QueryBox from '../components/queryBox';
+import QueryBox from './components/queryBox';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';

@@ -12,8 +12,8 @@ import {
   CardMedia,
 } from "@mui/material";
 import profilePhoto from "./face1.jpg";
-import Page10Nav from "../components/page10Nav";
-import Chart from "../components/chart";
+import Page10Nav from "./components/page10Nav";
+import Chart from "./components/chart";
 const data = [
   {
     market: "SABJI MANDI",

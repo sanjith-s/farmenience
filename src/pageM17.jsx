@@ -1,5 +1,5 @@
 import React from "react";
-import TransactionHistory from "../components/TransactionHistory";
+import TransactionHistory from "./components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
 
 function M17() {

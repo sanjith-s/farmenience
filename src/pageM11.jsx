@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MarketCard from "../components/marketCard";
+import MarketCard from "./components/marketCard";
 import {
   Card,
   Typography,

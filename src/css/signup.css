@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
-/* body{
-    background: linear-gradient(to right, #a8ff78, #78ffd6);
-} */
+body{
+    /*background: linear-gradient(to right, #a8ff78, #78ffd6); */
+}
 
 .title{
     font-size: 75px ;
@@ -11,13 +11,13 @@
     margin: 70px;
 }
 
-/* .label{
+.label{
    
 }
 
 .textbox{
 
-} */
+}
 
 .button{
     font-size: 30px;

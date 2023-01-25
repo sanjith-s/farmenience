@@ -95,7 +95,6 @@ const ScheduleCard = () => {
           width: "70%",
           }} />}  
         />
-        <br />
         <TimePicker
           label="Meet Time"
           value={value}
@@ -107,7 +106,6 @@ const ScheduleCard = () => {
           }} />}
         />
         </LocalizationProvider>
-        <br />
       <TextField
         id="filled-basic"
         label="Soil Details"
@@ -121,16 +119,15 @@ const ScheduleCard = () => {
         onChange={(e)=>{setDetails(e.target.value)}} 
         defaultValue={details}
       />
-      <br />
       <TextField
         id="filled-basic"
         label="Crops growing"
         variant="filled"
         color="success"
         onChange={(e)=>{setCrops(e.target.value)}} 
-        // InputProps={{
-        //   endAdornment: <InputAdornment position="end">₹</InputAdornment>,
-        // }}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+        }}
         sx={{
           backgroundColor: "#C4E1C5",
           borderBottomColor: "black",
@@ -138,12 +135,11 @@ const ScheduleCard = () => {
         }}
         defaultValue={crops}
       />
-      <br />
       <TextField
         id="filled-basic"
-        // InputProps={{
-        //   endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-        // }}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+        }}
         onChange={(e)=>{setReason(e.target.value)}} 
         label="Reason for meet"
         variant="filled"
@@ -155,7 +151,6 @@ const ScheduleCard = () => {
         }}
         defaultValue={reason}
       />
-      <br />
       <Box sx={{
           backgroundColor: "#C4E1C5",
           borderBottomColor: "black",

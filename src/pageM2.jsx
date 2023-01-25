@@ -1,5 +1,5 @@
 import React from "react";
-import SellerNegotiate from "../components/sellerNegotiate";
+import SellerNegotiate from "./components/sellerNegotiate";
 import { Box, Typography } from "@mui/material";
 
 const content = [

@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import Container from "@mui/material/Container";
+
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
 import { Button } from "@mui/material";
@@ -14,15 +15,14 @@ import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
+
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import ScheduleCard from "../components/scheduleCard";
-import { useNavigate } from "react-router-dom/dist";
 
-const PageN4 = () => {
+import SellItemCard from "./components/sellItemCard";
+const PageM6 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
-  const navigate=useNavigate();
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
@@ -32,7 +32,7 @@ const PageN4 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Schedule a Meet with NGO</span>
+      <span className="title">Sell Products</span>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -49,10 +49,9 @@ const PageN4 = () => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
-            padding: "200px 200px 200px 200px"
           }}
         >
-          <ScheduleCard />
+          <SellItemCard />
         </Container>
         <Container
           disableGutters={true}
@@ -110,11 +109,13 @@ const PageN4 = () => {
           )}
         </Container>
       </Stack>
-      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-            Home Page
-          </Button>
+      <Box textAlign="center" padding={"20px"}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+          Submit
+        </Button>
+      </Box>
     </div>
   );
 };
 
-export default PageN4;
+export default PageM6;

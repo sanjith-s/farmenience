@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import { useState, useRef } from "react";
 import "./css/pageN5.css";
 import Select from 'react-select'

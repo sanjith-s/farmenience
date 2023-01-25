@@ -1,5 +1,5 @@
 import React from "react";
-import ConfirmationTable from "../components/confirmationTable";
+import ConfirmationTable from "./components/confirmationTable";
 import {
   CardContent,
   Typography,

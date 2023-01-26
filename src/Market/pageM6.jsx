@@ -19,7 +19,7 @@ import Divider from "@mui/material/Divider";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
-import SellItemCard from "./components/sellItemCard";
+import SellItemCard from "../components/sellItemCard";
 const PageM6 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);

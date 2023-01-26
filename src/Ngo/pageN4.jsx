@@ -16,7 +16,7 @@ import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import ScheduleCard from "./components/scheduleCard";
+import ScheduleCard from "../components/scheduleCard";
 import { useNavigate } from "react-router-dom/dist";
 
 const PageN4 = () => {

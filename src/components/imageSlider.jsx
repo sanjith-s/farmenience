@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import farmLand from "../farm_land.jpg";
-import himalaya from "../himalaya.jpg";
-import sunset from "../sunset.jpg";
-import greenLand from "../green_land.jpg";
+import farmLand from "../images/farm_land.jpg";
+import himalaya from "../images/himalaya.jpg";
+import sunset from "../images/sunset.jpg";
+import greenLand from "../images/green_land.jpg";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CropCard from "./components/cropCard";
+import CropCard from "../components/cropCard";
 import { Button, Box, Typography } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 

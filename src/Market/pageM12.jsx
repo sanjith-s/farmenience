@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import "./css/pageM12.css";
+import "../css/pageM12.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-import UserDetails from "./components/userDetails";
-import PriceDetails from "./components/priceDetails";
-import ShowUserDetails from "./components/showUserDetails";
-import Page10Nav from "./components/page10Nav";
-import BasketBox1 from "./components/basketBox1";
-import BasketBox2 from "./components/basketBox2";
-import BasketBox3 from "./components/basketBox3";
+import UserDetails from "../components/userDetails";
+import PriceDetails from "../components/priceDetails";
+import ShowUserDetails from "../components/showUserDetails";
+import Page10Nav from "../components/page10Nav";
+import BasketBox1 from "../components/basketBox1";
+import BasketBox2 from "../components/basketBox2";
+import BasketBox3 from "../components/basketBox3";
 import ShareIcon from "@mui/icons-material/Share";
 
 import {

@@ -13,9 +13,9 @@ import {
     Card,
     CardMedia,
 } from "@mui/material";
-import profilePhoto from "./face1.jpg";
-import Page10Nav from "./components/page10Nav";
-import Chart from "./components/chart";
+import profilePhoto from "../images/face1.jpg";
+import Page10Nav from "../components/page10Nav";
+import Chart from "../components/chart";
 
 const PageN12 = () => {
   return (

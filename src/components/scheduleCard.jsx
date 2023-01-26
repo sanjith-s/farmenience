@@ -35,14 +35,14 @@ const ScheduleCard = () => {
   const handleChange2 = (event) => {
     setAge(event.target.value);
   };
-  const [details,setDetails]=useState("");
-  const [crops,setCrops]=useState("");
-  const [reason,setReason]=useState("");
-  const [ngo,setNgo]=useState("NGO");
+  const [details,setDetails]=React.useState("");
+  const [crops,setCrops]=React.useState("");
+  const [reason,setReason]=React.useState("");
+  const [ngo,setNgo]=useState("Select");
   const Reset = () => {
     setCrops("");
     setDetails("");
-    setNgo("NGO");
+    setNgo("Select");
     setReason("");
     setValue(dayjs('2022-12-20T21:11:54'));
   }
@@ -125,9 +125,9 @@ const ScheduleCard = () => {
         variant="filled"
         color="success"
         onChange={(e)=>{setCrops(e.target.value)}} 
-        InputProps={{
-          endAdornment: <InputAdornment position="end">₹</InputAdornment>,
-        }}
+        // InputProps={{
+        //   endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+        // }}
         sx={{
           backgroundColor: "#C4E1C5",
           borderBottomColor: "black",
@@ -137,9 +137,9 @@ const ScheduleCard = () => {
       />
       <TextField
         id="filled-basic"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-        }}
+        // InputProps={{
+        //   endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+        // }}
         onChange={(e)=>{setReason(e.target.value)}} 
         label="Reason for meet"
         variant="filled"
@@ -162,9 +162,10 @@ const ScheduleCard = () => {
           labelId="r1"
           id="r2"
           value={ngo}
-          label="Age"
+          label="Select"
           onChange={(e)=>{setNgo(e.target.value)}} 
         >
+          <MenuItem value={'Select'}>Select</MenuItem>
           <MenuItem value={'NGO'}>NGO</MenuItem>
           <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
         </Select>

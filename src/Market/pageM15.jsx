@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import NegotNav from "./components/negotNav";
-import UserDetails from "./components/userDetails";
-import ShowUserDetails from "./components/showUserDetails";
-import NegotiationBox1 from "./components/negotiationBox1";
-import NegotiationBox2 from "./components/negotiationBox2";
-import NegotiationBox3 from "./components/negotiationBox3";
+import NegotNav from "../components/negotNav";
+import UserDetails from "../components/userDetails";
+import ShowUserDetails from "../components/showUserDetails";
+import NegotiationBox1 from "../components/negotiationBox1";
+import NegotiationBox2 from "../components/negotiationBox2";
+import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
 import { Box, Button } from "@mui/material";
 import { CssBaseline } from "@mui/material";

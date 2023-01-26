@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import lineGraph from "./lineGraph.png";
+import lineGraph from "../images/lineGraph.png";
 
 import {
   Button,
@@ -11,9 +11,9 @@ import {
   Card,
   CardMedia,
 } from "@mui/material";
-import profilePhoto from "./face1.jpg";
-import Page10Nav from "./components/page10Nav";
-import Chart from "./components/chart";
+import profilePhoto from "../images/face1.jpg";
+import Page10Nav from "../components/page10Nav";
+import Chart from "../components/chart";
 const data = [
   {
     market: "SABJI MANDI",

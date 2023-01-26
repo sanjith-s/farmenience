@@ -12,7 +12,7 @@ import {
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import img from "../product8.jpg";
+import img from "../images/product8.jpg";
 
 function MarketCard(props) {
   return (

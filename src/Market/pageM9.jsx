@@ -1,6 +1,6 @@
 import React from "react";
-import Menubar from "./components/menubar";
-import ImageSlider from "./components/imageSlider";
+import Menubar from "../components/menubar";
+import ImageSlider from "../components/imageSlider";
 import Card from "@mui/material/Card";
 import {
   CardContent,

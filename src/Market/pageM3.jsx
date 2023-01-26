@@ -1,6 +1,6 @@
 import React from "react";
-import SalesCardsList from "./components/salesCardsList";
-import SalesItemsList from "./components/salesItemsList";
+import SalesCardsList from "../components/salesCardsList";
+import SalesItemsList from "../components/salesItemsList";
 import { CssBaseline, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";

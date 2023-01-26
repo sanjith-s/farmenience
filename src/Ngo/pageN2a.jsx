@@ -14,7 +14,7 @@ import Divider from "@mui/material/Divider";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
-import QueryDetails from "./components/queryDetails";
+import QueryDetails from "../components/queryDetails";
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

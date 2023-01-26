@@ -90,7 +90,7 @@ function Signup() {
       <form>
         <center>
           <span>
-            <label class="title">Signup</label>
+            <label className="title">Signup</label>
           </span>
           <br />
           <br />
@@ -258,7 +258,7 @@ function Signup() {
             ref={captchaRef}
           /> */}
           <br />
-          <button type="submit" class="button" onClick={submit}>
+          <button type="submit" className="button" onClick={submit}>
             {/* <Link id="sign" to='/'>Submit</Link> */}
             Submit
           </button>

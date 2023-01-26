@@ -56,12 +56,14 @@ function App() {
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/M1" element={<PageM1 />} />
-            <Route path="/M3" element={<PageM3 />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/M1" element={<PageM1 />} />
+            <Route path="/M2" element={<PageM2 />} />
+            <Route path="/M3" element={<PageM3 />} />
             <Route path="/M4" element={<PageM4 />} />
             <Route path="/M5" element={<PageM5 />} />
             <Route path="/M6" element={<PageM6 />} />
+            <Route path="/M7" element={<PageM7 />} />
             <Route path="/M9" element={<PageM9 />} />
             <Route path="/M10" element={<PageM10 />} />
             <Route path="/M10a" element={<PageM10a />} />
@@ -75,8 +77,6 @@ function App() {
             <Route path="/M17" element={<PageM17 />} />
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
-            <Route path="/M2" element={<PageM2 />} />
-            <Route path="/M7" element={<PageM7 />} />
             <Route path="/N1" element={<PageN1 />} />
             <Route path="/N2" element={<PageN2 />} />
             <Route path="/N4" element={<PageN4 />} />

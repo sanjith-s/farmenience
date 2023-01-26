@@ -10,73 +10,101 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const QueryBox = (props) =>{
+const QueryBox = (props) => {
     const [open, setOpen] = useState(false);
-    const navigate=useNavigate();
-    const [subject,setSubject]=useState(props.Subject);
-    const [desc,setDesc]=useState(props.Desc);
+    const [open1, setOpen1] = React.useState(false);
+    const [open1x, setOpen1x] = React.useState(false);
+    const navigate = useNavigate();
+    const [subject, setSubject] = useState(props.Subject);
+    const [desc, setDesc] = useState(props.Desc);
+    
     const handleClickOpen = () => {
         setOpen(true);
     };
+   
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleClickOpen1 = () => {
+        setOpen1(true);
+    };
+
+    const handleClickOpen1x = () => {
+        setOpen1x(true);
+        let token = Cookies.get('token');
+        let id = props.ID;
+        Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
+            then((response) => {
+                console.log(response);
+                if (response.data.message === 'Deleted Successfully') {
+                    alert('Deleted Successfully');
+                }
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    alert('Please Check Network');
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    alert(res.response.data.message);
+                    navigate('../login')
+                }
+            })
+    };
+
+    const handleClose1 = () => {
+        setOpen1(false);
+    };
+
     const editQuery = () => {
-        let token=Cookies.get('token') ;
-    Axios.put('http://localhost:5000/editquery',{subject:subject,
-    description: desc,
-    id:props.ID
-  },{headers: { tokenstring: token } }).
-    then((response)=>{
-      console.log(response);
-      if(response.data.message==='Edited Successfully')
-      {
-        alert('Edited Successfully');
-        navigate('../N1');
-      }
-    })
-    .catch((res)=>{
-      if(res.response.data.message==='Error in connection')
-      {
-        alert('Please Check Network');
-      }
-      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
-      {
-        alert('Login error');
-        navigate('../login')
-      }
-      else
-      {
-        alert(res.response.data.message);
-      }
-    })
+        let token = Cookies.get('token');
+        Axios.put('http://localhost:5000/editquery', {
+            subject: subject,
+            description: desc,
+            id: props.ID
+        }, { headers: { tokenstring: token } }).
+            then((response) => {
+                console.log(response);
+                if (response.data.message === 'Edited Successfully') {
+                    alert('Edited Successfully');
+                    navigate('../N1');
+                }
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    alert('Please Check Network');
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    alert('Login error');
+                    navigate('../login')
+                }
+                else {
+                    alert(res.response.data.message);
+                }
+            })
         setOpen(false);
     }
     const DeleteQuery = () => {
-        let token=Cookies.get('token') ;
-        let id=props.ID;
-        Axios.delete(`http://localhost:5000/deletequery/${id}`,{headers: { tokenstring: token } }).
-    then((response)=>{
-      console.log(response);
-      if(response.data.message==='Deleted Successfully')
-      {
-        alert('Deleted Successfully');
-      }
-    })
-    .catch((res)=>{
-      if(res.response.data.message==='Error in connection')
-      {
-        alert('Please Check Network');
-      }
-      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
-      {
-        alert(res.response.data.message);
-        navigate('../login')
-      }
-    })
+        <Dialog
+            open={open1}
+            onClose={handleClose1}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle id="alert-dialog-title">
+                {"Do you want to delete the query ?"}
+            </DialogTitle>
+            <DialogActions>
+                <Button onClick={handleClose1}>No</Button>
+                <Button onClick={handleClickOpen1x} autoFocus>
+                    {" "}
+                    Yes
+                </Button>
+            </DialogActions>
+        </Dialog>
     }
     return (
         <>
@@ -103,8 +131,8 @@ const QueryBox = (props) =>{
                 </table>
                 <div id="buttons-n1">
                     <Button variant="contained" color="success" id="button-n1" onClick={
-                        ()=>{
-                            navigate('../N2',{state:{id:props.ID,oldQuery:props.oldQuery}})
+                        () => {
+                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery } })
                         }
                     }>
                         Display
@@ -118,40 +146,40 @@ const QueryBox = (props) =>{
                     <Dialog open={open} onClose={handleClose}>
                         <DialogTitle>Edit Query</DialogTitle>
                         <DialogContent>
-                        <DialogContentText>
-                            Edit Query
-                        </DialogContentText>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Subject"
-                            type="Subject"
-                            fullWidth
-                            defaultValue={props.Subject}
-                            variant="standard"
-                            onChange={(e)=>{setSubject(e.target.value)}}
-                        />
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Description"
-                            type="Description"
-                            fullWidth
-                            defaultValue={props.Desc}
-                            variant="standard"
-                            onChange={(e)=>{setDesc(e.target.value)}}
-                        />
+                            <DialogContentText>
+                                Edit Query
+                            </DialogContentText>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Subject"
+                                type="Subject"
+                                fullWidth
+                                defaultValue={props.Subject}
+                                variant="standard"
+                                onChange={(e) => { setSubject(e.target.value) }}
+                            />
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                id="name"
+                                label="Description"
+                                type="Description"
+                                fullWidth
+                                defaultValue={props.Desc}
+                                variant="standard"
+                                onChange={(e) => { setDesc(e.target.value) }}
+                            />
                         </DialogContent>
                         <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={editQuery}>Edit</Button>
+                            <Button onClick={handleClose}>Cancel</Button>
+                            <Button onClick={editQuery}>Edit</Button>
                         </DialogActions>
                     </Dialog>
                 </div>
             </Card>
-        </>       
+        </>
     )
 }
 

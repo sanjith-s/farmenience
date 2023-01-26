@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom/dist";
 const PageN4 = () => {
   const [file, setFile] = useState();
   const [isUploaded, setIsUploaded] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
@@ -109,9 +109,12 @@ const PageN4 = () => {
           )}
         </Container>
       </Stack>
-      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-            Home Page
-          </Button>
+
+      <Box textAlign="center" padding={"20px"}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+          Home Page
+        </Button>
+      </Box>
     </div>
   );
 };

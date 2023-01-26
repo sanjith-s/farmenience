@@ -18,29 +18,27 @@ import Request from "../RequestsDetails";
 import Navbar from "../components/navbar";
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function AllRequest() {
-  const [listOfRequests,setListOfRequests]=useState([]);
-  const navigate=useNavigate();
+  const [listOfRequests, setListOfRequests] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
-      let token=Cookies.get('token') ;
-      Axios.get('http://localhost:5000/getmeet',{headers: { tokenstring: token } }).
-      then((response)=>{
+    let token = Cookies.get('token');
+    Axios.get('http://localhost:5000/getmeet', { headers: { tokenstring: token } }).
+      then((response) => {
         setListOfRequests(response.data.message);
       })
-      .catch((res)=>{
-          if(res.response.data.message==='Error in connection')
-          {
-            alert('Please Check Network');
-          }
-          else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
-          {
-            alert('Login error');
-            navigate('../login')
-          }
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          alert('Please Check Network');
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          alert('Login error');
+          navigate('../login')
+        }
       })
-    },[listOfRequests]);
+  }, [listOfRequests]);
   // const listOfRequests = [
   //   {
   //     meetDate: "2023-01-31",
@@ -63,71 +61,75 @@ function AllRequest() {
   // ];
   return (
     <div className="">
+      <br />
       <p className="total-req-count">You Have {listOfRequests.length} Request</p>
       {listOfRequests.map((request, index) => {
         return (
           <>
-          <Stack
-           direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={0}
-        sx={{ height: "70vh", width: "vw", marginTop: "20px" }}
-          >
-          <Container
-          sx={{
-            bgcolor: "#D9D9D9;",
-            height: "100%",
-            width: "60vw",
-            borderRadius: "50px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <Request
-                reqId={request._id}
-                meetDate={request.date}
-                meetTime={request.time}
-                meetReason={request.reason}
-                soilDetails={request.details}
-                cropsGrowing={request.crops}
-                itemQuantity={request._id}
-                status={request.status}
-          />
-          </Container>
-          <Container
-          disableGutters={true}
-          sx={{
-            bgcolor: "#ffff",
-            height: "80%",
-            width: "30vw",
-            borderRadius: "50px",
-            paddingLeft: "0px",
-            paddingRight: "0px",
-            display: "flex",
-            marginTop:"30px",
-            justifyItems: "center",
-          }}
-        >
-        <img
-              src={farmImg}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            />
-          </Container>
-          </Stack>
-          <hr />
+            <Stack
+              direction="row"
+              divider={<Divider orientation="vertical" flexItem />}
+              spacing={0}
+              sx={{ height: "70vh", width: "vw", marginTop: "20px" }}
+            >
+              <Container
+                sx={{
+                  bgcolor: "#D9D9D9;",
+                  height: "100%",
+                  width: "60vw",
+                  borderRadius: "50px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                }}
+              >
+                <Request
+                  reqId={request._id}
+                  meetDate={request.date}
+                  meetTime={request.time}
+                  meetReason={request.reason}
+                  soilDetails={request.details}
+                  cropsGrowing={request.crops}
+                  itemQuantity={request._id}
+                  status={request.status}
+                />
+              </Container>
+              <Container
+                disableGutters={true}
+                sx={{
+                  bgcolor: "#ffff",
+                  height: "80%",
+                  width: "30vw",
+                  borderRadius: "50px",
+                  paddingLeft: "0px",
+                  paddingRight: "0px",
+                  display: "flex",
+                  marginTop: "30px",
+                  justifyItems: "center",
+                }}
+              >
+                <img
+                  src={farmImg}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "fill",
+                    borderRadius: "50px",
+                  }}
+                />
+              </Container>
+            </Stack>
+            <hr />
           </>
         );
       })}
-      <Button onClick={()=>{navigate('../N9')}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-            Home Page
-          </Button>
+
+      <Box textAlign="center" padding={"20px"}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+          Home Page
+        </Button>
+      </Box>
     </div>
   );
 }

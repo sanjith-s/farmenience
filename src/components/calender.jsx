@@ -28,9 +28,8 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useReducer } from "react";
+import { Tune } from "@mui/icons-material";
 
 const classes = {
   cell: `table-cell`,
@@ -167,11 +166,30 @@ var appointments = [
     title: "NGO Meet"
   }
 ];
+// #FOLD_BLOCK
+function addTime() {
 for (let index = 0; index < appointments.length; index++) {
   const element = appointments[index];
   element.title += " [ "+element.startDate.toLocaleTimeString() + " ]";
 }
-// #FOLD_BLOCK
+}
+ addTime();
+function useTimeout(callback, delay) {
+  const timeoutRef = React.useRef(null);
+  const savedCallback = React.useRef(callback);
+  React.useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+  React.useEffect(() => {
+    const tick = () => savedCallback.current();
+    if (typeof delay === 'number') {
+      timeoutRef.current = window.setTimeout(tick, delay);
+      return () => window.clearTimeout(timeoutRef.current);
+    }
+  }, [delay]);
+  return timeoutRef;
+};
+
 const CellBase = React.memo(
   ({
     startDate,
@@ -232,37 +250,43 @@ const FlexibleSpace = ({ ...restProps }) => (
 export default function Demo(props) {
     const [datas, setData] = useState(appointments);
     const [open, setOpen] = React.useState(false);
-    const [ignored,forceUpdate] = useReducer(x => x+1,0);
-    var today = new Date();
+    const [load,setLoad] = useState(true);
+    var today = "";
+    var endDay = "";
     const [value, setValue] = React.useState(today);
-
+    const [value2, setValue2] = React.useState(endDay);
     const handleChange = (newValue) => {
       setValue(newValue);
     };
-  
+
+    const handleChange2 = (newValue) => {
+      setValue2(newValue);
+    };
+    
     const handleClickOpen = () => {
       setOpen(true);
     };
-    
     const handleClose = () => {
       setOpen(false);
     };
     const addEvent = () => {
+      const s = Object.values(value);
+      const e = Object.values(value2);
       const newEvent = {
-        startDate: new Date(2023, 6, 22, 14, 30),
-        endDate: new Date(2023, 6, 22, 15, 30),
+        startDate: new Date(s[4],s[5],s[6],s[8],s[9]),
+        endDate: new Date(e[4],e[5],e[6],e[8],e[9]),
         title: document.getElementById("e_name").value
-      }
-      appointments.pop();
+      };
+      newEvent.title += "  [ "+ newEvent.startDate.toLocaleTimeString()+" ]";
+      setLoad(!load);
+      appointments.push(newEvent);
       setData(appointments);
-      console.log(datas);
-      forceUpdate();
       handleClose();
     }
     return (
       <Paper>
         <div>
-        <Button variant="contained" onClick={handleClickOpen}>Add Event</Button>
+        {load ? (<Button variant="contained" onClick={handleClickOpen}>Add Event</Button>) : null}
         <Dialog open={open} onClose={handleClose}>
          <DialogTitle>Add New Event</DialogTitle>
          <DialogContent>
@@ -278,16 +302,29 @@ export default function Demo(props) {
             variant="standard"
           />
         <DesktopDatePicker
-          label="Date desktop"
+          label="Starting Day"
           inputFormat="MM/DD/YYYY"
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} />}
         />
         <TimePicker
-          label="Time"
+          label="Staring Time"
           value={value}
           onChange={handleChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        <DesktopDatePicker
+          label="Ending Day"
+          inputFormat="MM/DD/YYYY"
+          value={value2}
+          onChange={handleChange2}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        <TimePicker
+          label="Ending Time"
+          value={value2}
+          onChange={handleChange2}
           renderInput={(params) => <TextField {...params} />}
         />
         </Stack>  
@@ -299,9 +336,9 @@ export default function Demo(props) {
         </DialogActions>
       </Dialog>
     </div>
-        <Scheduler data={datas}>
+         {load ? (<Scheduler data={datas}>  
           <EditingState  />
-          <ViewState defaultCurrentDate="2023-06-17" />
+          <ViewState defaultCurrentDate="2023-01-26" />
           <MonthView
             timeTableCellComponent={TimeTableCell}
             dayScaleCellComponent={DayScaleCell}
@@ -315,7 +352,7 @@ export default function Demo(props) {
           <AppointmentTooltip showCloseButton showOpenButton />
           <AppointmentForm />
           <DragDropProvider />
-        </Scheduler>
+        </Scheduler> ) : (<Demo />)}
       </Paper>
     );
   };

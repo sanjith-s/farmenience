@@ -42,6 +42,7 @@ import PageN12a from "./Ngo/pageN12a";
 import PageN14 from "./Ngo/pageN14";
 import PageN14a from "./Ngo/pageN14a";
 import PageN14b from "./Ngo/pageN14b";
+import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
 import LogoutAllDevice from "./LogoutAllDevice";
 
@@ -87,6 +88,7 @@ function App() {
             <Route path="/N12" element={<PageN12 />} />
             <Route path="/N12a" element={<PageN12a />} />
             <Route path="/N14" element={<PageN14 />} />
+            <Route path="/cal" element={<Calender />} />
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />

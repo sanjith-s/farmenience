@@ -79,7 +79,7 @@ function Login() {
       <form onSubmit={submit} method="post">
         <center>
           <span>
-            <label class="title">Login</label>
+            <label className="title">Login</label>
           </span>
           <br />
           <br />
@@ -108,7 +108,7 @@ function Login() {
           </label>
           <br />
           <br />
-          <button type="submit" class="button" onClick={() => LogMeIn(logindata.email, logindata.password)}>
+          <button type="submit" className="button" onClick={() => LogMeIn(logindata.email, logindata.password)}>
             {/* <Link id="sign" to='/homepage2'>Login</Link> */}
             Login
           </button>
@@ -117,12 +117,12 @@ function Login() {
 
       <br />
       <br />
-      <button class="button" onClick={goToSignup()}>
+      <button className="button" onClick={goToSignup()}>
         Signup
       </button>
       <br />
       <br />
-      <button class="button" onClick={goToHomepage()}>
+      <button className="button" onClick={goToHomepage()}>
         Back to homepage
       </button>
 

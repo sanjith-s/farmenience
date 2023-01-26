@@ -16,6 +16,21 @@ import {
   AppointmentForm,
   DragDropProvider
 } from "@devexpress/dx-react-scheduler-material-ui";
+import { Button } from "@mui/material";
+
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useReducer } from "react";
 
 const classes = {
   cell: `table-cell`,
@@ -124,7 +139,7 @@ const StyledAppointmentsAppointmentContent = styled(
   }
 }));
 
-const appointments = [
+var appointments = [
   {
     startDate: new Date(2023, 6, 23, 9, 30),
     endDate: new Date(2023, 6, 23, 11, 30),
@@ -138,7 +153,8 @@ const appointments = [
   {
     startDate: new Date(2023, 6, 9, 12, 0),
     endDate: new Date(2023, 6, 9, 13, 0),
-    title: "Recruiting farmers"
+    title: "Recruiting farmers",
+    des:"checking 1 2 3"
   },
   {
     startDate: new Date(2023, 6, 18, 14, 30),
@@ -199,6 +215,8 @@ const AppointmentContent = ({ ...restProps }) => (
   />
 );
 
+
+
 const FlexibleSpace = ({ ...restProps }) => (
   <StyledToolbarFlexibleSpace {...restProps} className={classes.flexibleSpace}>
     <div className={classes.flexContainer}>
@@ -209,13 +227,81 @@ const FlexibleSpace = ({ ...restProps }) => (
   </StyledToolbarFlexibleSpace>
 );
 
+
+
 export default function Demo(props) {
-    const [data, setData] = useState(appointments);
+    const [datas, setData] = useState(appointments);
+    const [open, setOpen] = React.useState(false);
+    const [ignored,forceUpdate] = useReducer(x => x+1,0);
+    var today = new Date();
+    const [value, setValue] = React.useState(today);
+
+    const handleChange = (newValue) => {
+      setValue(newValue);
+    };
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+    
+    const handleClose = () => {
+      setOpen(false);
+    };
+    const addEvent = () => {
+      const newEvent = {
+        startDate: new Date(2023, 6, 22, 14, 30),
+        endDate: new Date(2023, 6, 22, 15, 30),
+        title: document.getElementById("e_name").value
+      }
+      appointments.pop();
+      setData(appointments);
+      console.log(datas);
+      forceUpdate();
+      handleClose();
+    }
     return (
       <Paper>
-        <Scheduler data={data}>
+        <div>
+        <Button variant="contained" onClick={handleClickOpen}>Add Event</Button>
+        <Dialog open={open} onClose={handleClose}>
+         <DialogTitle>Add New Event</DialogTitle>
+         <DialogContent>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <Stack spacing={3}>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="e_name"
+            label="Event Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+        <DesktopDatePicker
+          label="Date desktop"
+          inputFormat="MM/DD/YYYY"
+          value={value}
+          onChange={handleChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        <TimePicker
+          label="Time"
+          value={value}
+          onChange={handleChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
+        </Stack>  
+          </LocalizationProvider>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={addEvent}>Add Event</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+        <Scheduler data={datas}>
           <EditingState  />
-          <ViewState defaultCurrentDate="2023-07-17" />
+          <ViewState defaultCurrentDate="2023-06-17" />
           <MonthView
             timeTableCellComponent={TimeTableCell}
             dayScaleCellComponent={DayScaleCell}
@@ -226,7 +312,7 @@ export default function Demo(props) {
           />
           <Toolbar flexibleSpaceComponent={FlexibleSpace} />
           <DateNavigator />
-          <AppointmentTooltip showCloseButton  />
+          <AppointmentTooltip showCloseButton showOpenButton />
           <AppointmentForm />
           <DragDropProvider />
         </Scheduler>

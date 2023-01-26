@@ -10,8 +10,8 @@ const Homepage1 = () => {
         <span className="title">Homepage Before Login</span>
       </div>
       <br></br><br></br><br></br><br></br>
-      <center><button class="buttons"><Link id="sign" to='/signup'>Signup</Link></button></center>
-      <center><button class="buttons"><Link id="sign" to='/login'>Login</Link></button></center>
+      <center><button className="buttons"><Link id="sign" to='/signup'>Signup</Link></button></center>
+      <center><button classNam="buttons"><Link id="sign" to='/login'>Login</Link></button></center>
       <br></br><br></br>
     </div>
   );

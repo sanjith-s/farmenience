@@ -9,49 +9,49 @@ const PageN2 = () => {
     const navigate=useNavigate();
     const id=location.state.id;
   return (
-    <div class="ext-cont">
+    <div className="ext-cont">
         <div></div>
         <div></div>
-        <div class="cont-header">Query Details</div>
+        <div className="cont-header">Query Details</div>
         <div></div>
-        <div class="main-cont">
-            <div class="main-div-cont">
-                <div class="att-header">Query ID</div>
-                <div class="att-val">e599993424312</div>
+        <div className="main-cont">
+            <div className="main-div-cont">
+                <div className="att-header">Query ID</div>
+                <div className="att-val">e599993424312</div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Query Subject</div>
-                <div class="att-val">How to plant rice ?</div>
+            <div className="main-div-cont">
+                <div className="att-header">Query Subject</div>
+                <div className="att-val">How to plant rice ?</div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Description</div>
-                <div class="att-val">Pls Help me NGO's</div>
+            <div className="main-div-cont">
+                <div className="att-header">Description</div>
+                <div className="att-val">Pls Help me NGO's</div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Status</div>
-                <div class="att-val">None</div>
+            <div className="main-div-cont">
+                <div className="att-header">Status</div>
+                <div className="att-val">None</div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Response</div>
-                <div class="att-val">Nothing Yet</div>
+            <div className="main-div-cont">
+                <div className="att-header">Response</div>
+                <div className="att-val">Nothing Yet</div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Date of Submission</div>
-                <div class="att-val"><input type="date" class="inp"/></div>
+            <div className="main-div-cont">
+                <div className="att-header">Date of Submission</div>
+                <div className="att-val"><input type="date" className="inp"/></div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Date of response</div>
-                <div class="att-val"><input type="date" class="inp"/></div>
+            <div className="main-div-cont">
+                <div className="att-header">Date of response</div>
+                <div className="att-val"><input type="date" className="inp"/></div>
             </div>
-            <div class="main-div-cont">
-                <div class="att-header">Details</div>
-                <div class="att-val">Damn, Messi is Good.</div>
+            <div className="main-div-cont">
+                <div className="att-header">Details</div>
+                <div className="att-val">Damn, Messi is Good.</div>
             </div>
         </div>
         <div></div>
-        <div class="btn-container">
-            <button class="acpt-btn">Accept</button>
-            <a href='' class="link">Not happy with the reply?</a>
+        <div className="btn-container">
+            <button className="acpt-btn">Accept</button>
+            <a href='' className="link">Not happy with the reply?</a>
         </div>
         <div></div>
     </div>

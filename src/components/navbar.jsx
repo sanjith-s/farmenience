@@ -1,5 +1,5 @@
 import "./../css/navbar.css";
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Global } from "@emotion/react";
@@ -20,14 +20,12 @@ const Root = styled("div")(({ theme }) => ({
   backgroundColor:
     theme.palette.mode === "light"
       ? grey[100]
-      : theme.palette.background.default
+      : theme.palette.background.default,
 }));
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "light" ? "#fff" : grey[800]
+  backgroundColor: theme.palette.mode === "light" ? "#fff" : grey[800],
 }));
-
-
 
 const Puller = styled(Box)(({ theme }) => ({
   width: 30,
@@ -36,7 +34,7 @@ const Puller = styled(Box)(({ theme }) => ({
   borderRadius: 3,
   position: "absolute",
   top: 2,
-  left: "calc(50% - 15px)"
+  left: "calc(50% - 15px)",
 }));
 
 function SwipeableEdgeDrawer(props) {
@@ -58,20 +56,36 @@ function SwipeableEdgeDrawer(props) {
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
             height: `calc(100% - ${drawerBleeding}px)`,
-            overflow: "visible"
-          }
+            overflow: "visible",
+          },
         }}
       />
       <div className="navbar">
-        <div className="nav-items item1"><a href="" className="nav-links">
-            <img src="" className="cmp-logo" /></a>
-        </div> 
-       <div className="nav-items item2"><a href="" className="nav-links  nav-brand">FARMENiENCE</a></div>
-       <div className="nav-items item3"><a href="" className="nav-links">Home</a></div> 
-       <Button onClick={toggleDrawer(true)}>Show My schedules</Button>
-       <div className="nav-items item4"><a className="nav-links">About Us</a></div> 
-       <div className="nav-items item5"><a href="" className="nav-links"><AccountCircleRoundedIcon fontSize="large"/></a></div> 
-    </div>
+        <div className="nav-items item1">
+          <a href="" className="nav-links">
+            <img src="" className="cmp-logo" />
+          </a>
+        </div>
+        <div className="nav-items item2">
+          <a href="" className="nav-links  nav-brand">
+            FARMENiENCE
+          </a>
+        </div>
+        <div className="nav-items item3">
+          <a href="" className="nav-links">
+            Home
+          </a>
+        </div>
+        <Button onClick={toggleDrawer(true)}>Show My schedules</Button>
+        <div className="nav-items item4">
+          <a className="nav-links">About Us</a>
+        </div>
+        <div className="nav-items item5">
+          <a href="" className="nav-links">
+            <AccountCircleRoundedIcon fontSize="large" />
+          </a>
+        </div>
+      </div>
       <SwipeableDrawer
         container={container}
         anchor="bottom"
@@ -81,7 +95,7 @@ function SwipeableEdgeDrawer(props) {
         swipeAreaWidth={drawerBleeding}
         disableSwipeToOpen={false}
         ModalProps={{
-          keepMounted: true
+          keepMounted: true,
         }}
       >
         <StyledBox
@@ -92,7 +106,7 @@ function SwipeableEdgeDrawer(props) {
             borderTopRightRadius: 8,
             visibility: "visible",
             right: 0,
-            left: 0
+            left: 0,
           }}
         >
           <Puller />
@@ -102,7 +116,7 @@ function SwipeableEdgeDrawer(props) {
             px: 2,
             pb: 2,
             height: "100%",
-            overflow: "auto"
+            overflow: "auto",
           }}
         >
           <Skeleton variant="rectangular" height="100%" />
@@ -118,7 +132,7 @@ SwipeableEdgeDrawer.propTypes = {
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window: PropTypes.func
+  window: PropTypes.func,
 };
 
 export default SwipeableEdgeDrawer;

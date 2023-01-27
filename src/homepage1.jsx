@@ -1,19 +1,47 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-import "./css/pageM18.css";
+import { Link } from "react-router-dom";
+import { Box, Button, Typography } from "@mui/material";
 
 const Homepage1 = () => {
-
   return (
-    <div>
-      <div>
-        <span className="title">Homepage Before Login</span>
-      </div>
-      <br></br><br></br><br></br><br></br>
-      <center><button className="buttons"><Link id="sign" to='/signup'>Signup</Link></button></center>
-      <center><button classNam="buttons"><Link id="sign" to='/login'>Login</Link></button></center>
-      <br></br><br></br>
-    </div>
+    <Box
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        rowGap: "30px",
+      }}
+    >
+      <Box sx={{ marginTop: "30px", textAlign: "center" }}>
+        <Typography variant="h4" style={{ textTransform: "uppercase" }}>
+          Homepage Before Login
+        </Typography>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          rowGap: "30px",
+        }}
+      >
+        <Button variant="contained">
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            <Typography style={{ color: "white", fontWeight: "600" }}>
+              signup
+            </Typography>
+          </Link>
+        </Button>
+
+        <Button variant="contained">
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <Typography style={{ color: "white", fontWeight: "600" }}>
+              login
+            </Typography>
+          </Link>
+        </Button>
+      </Box>
+    </Box>
   );
 };
 

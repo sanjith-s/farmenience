@@ -24,7 +24,7 @@ import Axios from "axios";
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
  
-const ScheduleCard = () => {
+const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
   const navigate=useNavigate();
   const handleChange = (newValue) => {
@@ -42,9 +42,11 @@ const ScheduleCard = () => {
   const Reset = () => {
     setCrops("");
     setDetails("");
+    props.imageReset();
+    props.toggle(false);
     setNgo("Select");
     setReason("");
-    setValue(dayjs('2022-12-20T21:11:54'));
+    setValue();
   }
   const postMeet = () => {
     let token=Cookies.get('token') ;
@@ -117,7 +119,7 @@ const ScheduleCard = () => {
           width: "70%",
         }}
         onChange={(e)=>{setDetails(e.target.value)}} 
-        defaultValue={details}
+        value={details}
       />
       <TextField
         id="filled-basic"
@@ -133,7 +135,7 @@ const ScheduleCard = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
-        defaultValue={crops}
+        value={crops}
       />
       <TextField
         id="filled-basic"
@@ -149,7 +151,7 @@ const ScheduleCard = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
-        defaultValue={reason}
+        value={reason}
       />
       <Box sx={{
           backgroundColor: "#C4E1C5",

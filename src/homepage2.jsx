@@ -4,6 +4,7 @@ import "./css/pageM18.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
+import { Box, Button, Typography } from "@mui/material";
 
 const Homepage2 = () => {
   const navigate = useNavigate();
@@ -37,13 +38,25 @@ const Homepage2 = () => {
       });
   }
   return (
-    <div>
-      <div>
-        <span className="title">Homepage after Login</span>
-        <br></br>
-        <button onClick={logout}>LogOut</button>
-      </div>
-    </div>
+    <Box sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
+      <Box sx={{ marginTop: "30px", textAlign: "center" }}>
+        <Typography variant="h4" style={{ textTransform: "uppercase" }}>
+          Homepage after Login
+        </Typography>
+      </Box>
+
+      <Button
+        onClick={logout}
+        variant="contained"
+        style={{
+          alignSelf: "center",
+        }}
+      >
+        <Typography style={{ color: "white", fontWeight: "600" }}>
+          logout
+        </Typography>
+      </Button>
+    </Box>
   );
 };
 

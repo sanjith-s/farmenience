@@ -37,6 +37,7 @@ import PageN5 from "./Ngo/pageN5";
 import PageN6 from "./Ngo/pageN6";
 import PageN7 from "./Ngo/pageN7";
 import PageN9 from "./Ngo/pageN9";
+import PageN10 from "./Ngo/pageN10";
 import PageN12 from "./Ngo/pageN12";
 import PageN12a from "./Ngo/pageN12a";
 import PageN14 from "./Ngo/pageN14";
@@ -45,11 +46,13 @@ import PageN14b from "./Ngo/pageN14b";
 import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
 import LogoutAllDevice from "./LogoutAllDevice";
+import N10Navbar from "./components/n10Navbar";
 
 function App() {
   return (
     <div>
         <Navbar />
+        {/* <N10Navbar/> */}
       <main className="main-content" style={{marginTop:"2%"}}>
         <BrowserRouter>
           <Routes>
@@ -85,6 +88,7 @@ function App() {
             <Route path="/N6" element={<PageN6 />} />
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
+            <Route path="/N10" element={<PageN10 />} />
             <Route path="/N12" element={<PageN12 />} />
             <Route path="/N12a" element={<PageN12a />} />
             <Route path="/N14" element={<PageN14 />} />

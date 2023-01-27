@@ -1,5 +1,4 @@
 import * as React from "react";
-import { styled, darken, alpha, lighten } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import { Button } from "@mui/material";
@@ -15,55 +14,51 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-
 export default function Demo(props) {
   const [events,setEvents] = useState([
-  //   {
-  //   id: 1,
-  //   color: '#fd3153',
-  //   from: '2023-05-02T18:00:00+00:00',
-  //   to: '2023-05-05T19:00:00+00:00',
-  //   title: 'This is an event'
-  // }, {
-  //   id: 2,
-  //   color: '#1ccb9e',
-  //   from: '2023-05-01T13:00:00+00:00',
-  //   to: '2023-05-05T14:00:00+00:00',
-  //   title: 'This is another event'
-  // }, {
-  //   id: 3,
-  //   color: '#3694DF',
-  //   from: '2023-05-05T13:00:00+00:00',
-  //   to: '2023-05-05T20:00:00+00:00',
-  //   title: 'This is also another event'
-  // },
-  //  {
-  //    id:4,
-  //    color: 'blue',
-  //    from: '2023-01-05T13:00:00+00:00',
-  //    to: '2023-01-05T20:00:00+00:00',
-  //    title: 'This is also another event'
-  //  },
+    {
+    id: 1,
+    color: '#fd3153',
+    from: '2023-01-03T18:00:00+00:00',
+    to: '2023-01-03T19:00:00+00:00',
+    title: 'This is an event'
+  }, {
+    id: 2,
+    color: '#1ccb9e',
+    from: '2023-01-06T13:00:00+00:00',
+    to: '2023-01-07T14:00:00+00:00',
+    title: 'This is another event'
+  }, {
+    id: 3,
+    color: '#3694DF',
+    from: '2023-01-06T13:00:00+00:00',
+    to: '2023-01-06T20:00:00+00:00',
+    title: 'This is also another event'
+  },
+   {
+     id:4,
+     color: 'blue',
+     from: '2023-01-05T13:00:00+00:00',
+     to: '2023-01-05T20:00:00+00:00',
+     title: 'This is also another event'
+   },
    {
     id:4,
     color: 'blue',
-    from: "2023-01-18T21:45:00.000Z",
-    to: "2023-01-18T21:50:00.000Z",
+    from: "2023-01-18T01:45:00.000Z",
+    to: "2023-01-18T22:50:00.000Z",
     title: 'This is also another event'
   }
   ]);
     const [open, setOpen] = React.useState(false);
-    const [load,setLoad] = useState(true);
     const [value, setValue] = React.useState("");
     const [value2, setValue2] = React.useState("");
     const handleChange = (newValue) => {
       setValue(newValue);
     };
-  
     const handleChange2 = (newValue) => {
       setValue2(newValue);
     };
-    
     const handleClickOpen = () => {
       setOpen(true);
     };
@@ -71,21 +66,21 @@ export default function Demo(props) {
       setOpen(false);
     };
     const addEvent = () => {
+      const colors = ['blue','orange','red','green','yellow','blue']
+      let x = Math.floor((Math.random() * 5) + 1);;
       const s = Object.values(value);
       const e = Object.values(value2);
       const startDate = new Date(s[4],s[5],s[6],s[8],s[9]);
       const endDate = new Date(e[4],e[5],e[6],e[8],e[9]);
-      console.log(startDate.toISOString());
-      console.log(endDate.toISOString());
+      const timestring = startDate.toLocaleTimeString();
       const newEvent = [{
-         id: 77,
-         color:"blue",
+         id: x,
+         color:colors[x],
          from:startDate.toISOString(),
          to:endDate.toISOString(),
-         title:document.getElementById("e_name").value
+         title:document.getElementById("e_name").value+"  [ " + timestring + " ]"
       }, ...events]
       setEvents(newEvent);
-      console.log(events);
       handleClose();
     }
     return (
@@ -142,10 +137,8 @@ export default function Demo(props) {
       </Dialog>
     </div>
     <Button variant="contained" onClick={handleClickOpen}>Add Event</Button>
-    <Calendar
-    events={events} />
-      </Paper>
-      
+    <Calendar events={events} />
+       </Paper>
       </>
     );
   };

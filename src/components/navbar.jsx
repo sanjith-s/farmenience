@@ -64,7 +64,7 @@ function SwipeableEdgeDrawer(props) {
       />
       <div className="navbar">
         <div className="nav-items item1"><a href="" className="nav-links">
-        <img src="" className="cmp-logo" /></a>
+            <img src="" className="cmp-logo" /></a>
         </div> 
        <div className="nav-items item2"><a href="" className="nav-links  nav-brand">FARMENiENCE</a></div>
        <div className="nav-items item3"><a href="" className="nav-links">Home</a></div> 

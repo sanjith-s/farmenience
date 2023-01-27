@@ -57,7 +57,7 @@ function SwipeableEdgeDrawer(props) {
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
-            height: `calc(90% - ${drawerBleeding}px)`,
+            height: `calc(100% - ${drawerBleeding}px)`,
             overflow: "visible"
           }
         }}

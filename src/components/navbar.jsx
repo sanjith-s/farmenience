@@ -54,7 +54,7 @@ function SwipeableEdgeDrawer(props) {
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
-            height: `calc(110% - ${drawerBleeding}px)`,
+            height: `calc(100% - ${drawerBleeding}px)`,
             overflow: "visible",
           },
         }}
@@ -120,7 +120,7 @@ function SwipeableEdgeDrawer(props) {
         >
           <Skeleton variant="rectangular" height="100%" />
         </StyledBox>
-        <Calendar />
+        <Calendar closeToggle={setOpen}/>
       </SwipeableDrawer>
     </Root>
   );

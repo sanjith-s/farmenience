@@ -1,7 +1,9 @@
 import React, { useState, useCallback } from "react";
 import { createTheme, Pivot, PivotItem, ThemeProvider } from "@fluentui/react";
 import Calendar from "./Allviews";
+import Box from "@mui/material/Box";
 import List from "./List";
+import Grid from "@mui/material/Grid";
 import Dialog from '@mui/material/Dialog';
 import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -66,7 +68,7 @@ const myTheme = createTheme({
   }
 });
 
-export default function App() {
+export default function App(props) {
   const [datas, setData] = useState(data);
   const [open, setOpen] = React.useState(false);
   var today = "";
@@ -103,9 +105,22 @@ export default function App() {
     handleClose();
   }
   return (
+    <Box
+    sx={{
+      width: "100%",
+      height: 700,
+      overflow: "auto",
+      position:"absolute"
+    }}
+  >
     <ThemeProvider applyTo="body" theme={myTheme}>
-      <Button variant="contained" onClick={handleClickOpen}>Add Event</Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Stack sx={{width: "100%"}}>
+      <Grid sx={{width: "100%",margin: 1}}>
+            <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'green'}} variant="contained" onClick={handleClickOpen}>Add Event</Button>
+            <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'red'}} variant="contained" onClick={()=>{props.closeToggle(false)}}>Close</Button>
+      </Grid>
+      </Stack>
+            <Dialog open={open} onClose={handleClose}>
                <DialogTitle>Add New Event</DialogTitle>
                <DialogContent>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -153,6 +168,7 @@ export default function App() {
                 <Button onClick={addEvent}>Add Event</Button>
               </DialogActions>
       </Dialog>
+     
       <Pivot>
         <PivotItem headerText="Calendar">
           <Calendar data={datas} />
@@ -162,5 +178,6 @@ export default function App() {
         </PivotItem>
       </Pivot>
     </ThemeProvider>
+    </Box>
   );
 }

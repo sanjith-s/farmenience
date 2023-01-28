@@ -22,7 +22,7 @@ import {
 function Calendar(props) {
   const { data, onCurrentDateChange, onCommitChanges } = props;
 
-  const [currentViewName, setCurrentViewName] = useState("Week");
+  const [currentViewName, setCurrentViewName] = useState("Month");
 
   return (
     <Scheduler data={data}>

@@ -113,12 +113,12 @@ export default function App(props) {
       position:"absolute"
     }}
   >
-    <ThemeProvider applyTo="body" theme={myTheme}>
-      <Stack sx={{width: "100%"}}>
-      <Grid sx={{width: "100%",margin: 1}}>
+    <Grid sx={{width: "100%",margin: 1}}>
             <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'green'}} variant="contained" onClick={handleClickOpen}>Add Event</Button>
             <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'red'}} variant="contained" onClick={()=>{props.closeToggle(false)}}>Close</Button>
       </Grid>
+    <ThemeProvider applyTo="body" theme={myTheme}>
+      <Stack sx={{width: "100%"}}>
       </Stack>
             <Dialog open={open} onClose={handleClose}>
                <DialogTitle>Add New Event</DialogTitle>

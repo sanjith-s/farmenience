@@ -51,7 +51,7 @@ const PageN4 = () => {
             alignItems: "center",
           }}
         >
-          <ScheduleCard imageReset={setFile} toggle={setIsUploaded} />
+          <ScheduleCard imageReset={setFile} toggle={setIsUploaded} imgSrc={file} />
         </Container>
         <Container
           disableGutters={true}

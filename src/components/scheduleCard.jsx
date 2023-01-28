@@ -1,6 +1,6 @@
 import React from "react";
 import dayjs, { Dayjs } from 'dayjs';
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import { InputAdornment } from "@mui/material";
@@ -14,9 +14,24 @@ import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import Table from '@mui/material/Table';
+import Paper from '@mui/material/Paper';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Fab from "@mui/material/Fab";
+import Slide from '@mui/material/Slide';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
 
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Cookies from 'js-cookie';
@@ -25,10 +40,13 @@ import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
  
 const ScheduleCard = (props) => {
+  const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
   const navigate=useNavigate();
   const handleChange = (newValue) => {
   setValue(newValue);
+  console.log(newValue);
+  console.log(Object.values(newValue)[2]+"");
   };
   const [age, setAge] = React.useState('');
 
@@ -83,6 +101,10 @@ const ScheduleCard = (props) => {
       }
     })
   }
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  
   return (
     <React.Fragment>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
@@ -181,11 +203,61 @@ const ScheduleCard = (props) => {
         justifyContent="center"
       >
       </Stack>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={()=>{setOpen(false)}}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Are You sure?"}</DialogTitle>
+        <DialogContent>
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 200 }} aria-label="simple table">
+        <TableBody>
+          <TableRow>
+            <TableCell>Meet Date and TIme</TableCell>
+            <TableCell>{Object.values(value)[2]+""}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Soil Details</TableCell>
+            <TableCell>{details}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Reason</TableCell>
+            <TableCell>{reason}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>NGO</TableCell>
+            <TableCell>{ngo}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2} rowSpan={2}>
+          <img
+              src={props.imgSrc}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "fill",
+                borderRadius: "50px",
+              }}
+            /></TableCell>
+          </TableRow>
+           </TableBody>
+           </Table>
+          </TableContainer>
+            
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
+          <Button onClick={postMeet}>CONFIRM</Button>
+        </DialogActions>
+      </Dialog>
       <Box textAlign="center" padding={"20px"}>
         <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postMeet}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={()=>{setOpen(true)}}>
           Submit
         </Button>
       </Box>

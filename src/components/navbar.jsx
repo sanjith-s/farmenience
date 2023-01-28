@@ -40,7 +40,6 @@ const Puller = styled(Box)(({ theme }) => ({
 function SwipeableEdgeDrawer(props) {
   const { window } = props;
   const [open, setOpen] = React.useState(false);
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -55,7 +54,7 @@ function SwipeableEdgeDrawer(props) {
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
-            height: `calc(100% - ${drawerBleeding}px)`,
+            height: `calc(110% - ${drawerBleeding}px)`,
             overflow: "visible",
           },
         }}

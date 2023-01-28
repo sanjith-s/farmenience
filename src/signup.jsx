@@ -5,6 +5,15 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
+import {
+  Box,
+  Button,
+  Typography,
+  Input,
+  Select,
+  MenuItem,
+  FormControl,
+} from "@mui/material";
 
 function Signup() {
   const captchaRef = useRef(null);
@@ -85,186 +94,261 @@ function Signup() {
     }
   };
 
+  const [selection, setSelection] = useState("");
+  const selectionChange = (event) => {
+    setSelection(event.target.innerText);
+    console.log(event.target.innerText);
+  };
+
   return (
-    <div>
-      <form>
-        <center>
-          <span>
-            <label className="title">Signup</label>
-          </span>
-          <br />
-          <br />
-          <label>
-            Name{" "}
-            <input
-              type="text"
-              name="name"
-              value={signupdata.name}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Phone Number{" "}
-            <input
-              type="text"
-              name="phone"
-              value={signupdata.phone}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Aadhaar Number{" "}
-            <input
-              type="text"
-              name="aadhar"
-              value={signupdata.aadhar}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Address Line 1{" "}
-            <input
-              type="text"
-              name="addr1"
-              value={signupdata.addr1}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Address Line 2{" "}
-            <input
-              type="text"
-              name="addr2"
-              value={signupdata.addr2}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            City/Town{" "}
-            <input
-              type="text"
-              name="city"
-              value={signupdata.city}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            District{" "}
-            <input
-              type="text"
-              name="district"
-              value={signupdata.district}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            State{" "}
-            <input
-              type="text"
-              name="state"
-              value={signupdata.state}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Pincode{" "}
-            <input
-              type="text"
-              name="pincode"
-              value={signupdata.pincode}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Email{" "}
-            <input
-              type="text"
-              name="email"
-              value={signupdata.email}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Password{" "}
-            <input
-              type="password"
-              name="password"
-              value={signupdata.password}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label>
-            Confirm Password{" "}
-            <input
-              type="password"
-              name="confpass"
-              value={signupdata.confpass}
-              onChange={handleChange}
-            />
-            <br />
-            <br />
-          </label>
-          <br></br>
-          <label for="type">Account type </label>
-          <select
-            name="utype"
-            id="utype"
-            onClick={() => {
-              setType(value);
-            }}
+    <Box
+      sx={{
+        margin: "30px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        rowGap: "40px",
+      }}
+    >
+      <Box>
+        <Typography
+          variant="h4"
+          style={{ textTransform: "uppercase", textAlign: "center" }}
+        >
+          signup page
+        </Typography>
+      </Box>
+      <form style={{ width: "450px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
           >
-            <option value="farmer">Farmer</option>
-            <option value="volunteer">Volunteer</option>
-            <option value="retailer">Retailer</option>
-            <option value="jobseeker">Job seeker</option>
-          </select>
-          <br></br>
-          <br />
-          {/* <ReCAPTCHA
-            sitekey={process.env.REACT_APP_SITE_KEY}
-            ref={captchaRef}
-          /> */}
-          <br />
-          <button type="submit" className="button" onClick={submit}>
-            {/* <Link id="sign" to='/'>Submit</Link> */}
-            Submit
-          </button>
-        </center>
+            name
+          </Typography>
+          <Input
+            type="text"
+            name="name"
+            value={signupdata.name}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            phone number
+          </Typography>
+          <Input
+            type="tel"
+            name="phone"
+            value={signupdata.phone}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            adhaar number
+          </Typography>
+          <Input
+            type="text"
+            name="aadhar"
+            value={signupdata.aadhar}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            address line 1
+          </Typography>
+          <Input
+            type="text"
+            name="addr1"
+            value={signupdata.addr1}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            address line 2
+          </Typography>
+          <Input
+            type="text"
+            name="addr2"
+            value={signupdata.addr2}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            city / town
+          </Typography>
+          <Input
+            type="text"
+            name="city"
+            value={signupdata.city}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            district
+          </Typography>
+          <Input
+            type="text"
+            name="district"
+            value={signupdata.district}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            state
+          </Typography>
+          <Input
+            type="text"
+            name="state"
+            value={signupdata.state}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            pincode
+          </Typography>
+          <Input
+            type="text"
+            name="pincode"
+            value={signupdata.pincode}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            email
+          </Typography>
+          <Input
+            type="email"
+            name="email"
+            value={signupdata.email}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            password
+          </Typography>
+          <Input
+            type="password"
+            name="password"
+            value={signupdata.password}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            confirm password
+          </Typography>
+          <Input
+            type="password"
+            name="confpass"
+            value={signupdata.confpass}
+            onChange={handleChange}
+          />
+        </Box>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+          >
+            account type
+          </Typography>
+
+          <FormControl variant="standard" sx={{ width: "200px" }}>
+            <Select value={selection} onClick={selectionChange}>
+              <MenuItem value="Farmer">
+                <Typography style={{ textTransform: "capitalize" }}>
+                  farmer
+                </Typography>
+              </MenuItem>
+              <MenuItem value="Volunteer">
+                <Typography style={{ textTransform: "capitalize" }}>
+                  volunteer
+                </Typography>
+              </MenuItem>
+              <MenuItem value="Retailer">
+                <Typography style={{ textTransform: "capitalize" }}>
+                  retailer
+                </Typography>
+              </MenuItem>
+              <MenuItem value="Job Seeker">
+                <Typography style={{ textTransform: "capitalize" }}>
+                  job seeker
+                </Typography>
+              </MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       </form>
-    </div>
+      <Button
+        variant="contained"
+        type="submit"
+        onClick={submit}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Submit
+      </Button>
+    </Box>
   );
 }
 

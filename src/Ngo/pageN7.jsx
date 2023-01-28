@@ -7,7 +7,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-
+import Table from '@mui/material/Table';
+import Paper from '@mui/material/Paper';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Slide from '@mui/material/Slide';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { Alert, Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
 import { Button } from "@mui/material";
@@ -27,12 +39,16 @@ import { useNavigate } from "react-router-dom/dist";
 const PageN7 = () => {
   const [file, setFile] = useState();
   const navigate = useNavigate();
+  const [open,setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
   const postQuery = () => {
@@ -118,14 +134,55 @@ const PageN7 = () => {
               onChange={(e) => { setDesc(e.target.value) }}
             />
             <Box textAlign="center" padding={"20px"}>
-              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postQuery}>
+              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={()=>{setOpen(true)}}>
                 Submit
               </Button>
             </Box>
           </React.Fragment>
 
-
         </Container>
+        <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={()=>{setOpen(false)}}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>CONFIRM?</DialogTitle>
+        <DialogContent>
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 200 }} aria-label="simple table">
+        <TableBody>
+          <TableRow>
+            <TableCell>Query Subject</TableCell>
+            <TableCell>{subject}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Description</TableCell>
+            <TableCell>{desc}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2} rowSpan={2}>
+          <img
+              src={file}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "fill",
+                borderRadius: "50px",
+              }}
+            /></TableCell>
+          </TableRow>
+           </TableBody>
+           </Table>
+          </TableContainer>
+            
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
+          <Button onClick={postQuery}>CONFIRM</Button>
+        </DialogActions>
+      </Dialog>
         <Container
           disableGutters={true}
           sx={{

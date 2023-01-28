@@ -11,20 +11,17 @@ import { Box, Button, Typography, Input } from "@mui/material";
 function Login() {
   const captchaRef = useRef(null);
   const navigate = useNavigate();
-  const [logindata, setLogindata] = useState({
-    email: "",
-    password: "",
-  });
-
+  const [email,setEmail] = useState();
+  const [password,setPwd] = useState();
   const handleChange = (event) => {
-    setLogindata({ ...logindata, [event.target.name]: event.target.value });
+     setEmail(document.querySelector("#email").value);
+     setPwd(document.querySelector("#pwd").value);
   };
-
   const submit = (event) => {
     event.preventDefault();
     let emailChk = 0;
     let passChk = 1;
-    if (validator.isEmail(logindata.email)) emailChk = 1;
+    if (validator.isEmail(email)) emailChk = 1;
     if (!emailChk) {
       alert("Invalid Email Address");
       return;
@@ -108,7 +105,8 @@ function Login() {
             </Typography>
             <Input
               type="email"
-              value={logindata.email}
+              id="email"
+              value={email}
               onChange={handleChange}
               endAdornment="@gmail.com"
             />
@@ -124,7 +122,8 @@ function Login() {
             </Typography>
             <Input
               type="password"
-              value={logindata.password}
+              id="pwd"
+              value={password}
               onChange={handleChange}
             />
           </Box>
@@ -132,7 +131,7 @@ function Login() {
 
         <Button
           variant="contained"
-          onClick={() => LogMeIn(logindata.email, logindata.password)}
+          onClick={() => LogMeIn(email, password)}
         >
           login
         </Button>
@@ -141,7 +140,7 @@ function Login() {
       <Box sx={{ position: "absolute", bottom: "110px", left: "20px" }}>
         <Button
           variant="contained"
-          onClick={goToSignup()}
+          onClick={goToSignup}
           style={{ backgroundColor: "green" }}
         >
           <Link to="/signup" style={{ textDecoration: "none" }}>
@@ -153,7 +152,7 @@ function Login() {
       <Box sx={{ position: "absolute", bottom: "110px", right: "20px" }}>
         <Button
           variant="contained"
-          onClick={goToHomepage()}
+          onClick={goToHomepage}
           style={{ backgroundColor: "green" }}
         >
           <Link to="/" style={{ textDecoration: "none" }}>

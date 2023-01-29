@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -9,8 +10,6 @@ import {
 } from "@mui/material";
 
 function BuyerRequest(props) {
-  let navigate = useNavigate();
-
   const viewRequest = () => {
     const [buyerRequestDetails, setBuyerRequestDetails] = useState([]);
 
@@ -205,16 +204,30 @@ function BuyerRequest(props) {
       >
         <Button
           style={{
-            backgroundColor: "#1fe57a",
-            color: "#000000",
-            fontWeight: "600",
-            fontSize: "16px",
+            backgroundColor: "green",
             border: "2px solid #000000",
             marginTop: "15px",
           }}
           onClick={viewRequest}
         >
-          View Request
+          <Link
+            to="/M2"
+            state={{
+              from: "Request details",
+              data: props.data,
+            }}
+            style={{ textDecoration: "none" }}
+          >
+            <Typography
+              style={{
+                color: "#ffffff",
+                fontWeight: "600",
+                fontSize: "16px",
+              }}
+            >
+              view request
+            </Typography>
+          </Link>
         </Button>
       </CardActions>
     </Card>

@@ -1,29 +1,24 @@
 import React from "react";
 import SellerNegotiate from "../components/sellerNegotiate";
 import { Box, Typography } from "@mui/material";
-
-const content = [
-  {
-    name: "Consumer name",
-    phno: 2484930933,
-    address: "no 323 , some street,  town, chennai-23232",
-    itemName: "wheat",
-    itemQuantity: "3 ",
-    itemPrice: 250,
-    regNo: "23.42.424",
-  },
-  {
-    name: "Consumer name",
-    phno: 2484930933,
-    address: "no 323 , some street,  town, chennai-23232",
-    itemName: "wheat",
-    itemQuantity: 3,
-    itemPrice: 350,
-    regNo: "23.42.425",
-  },
-];
+import { useLocation } from "react-router-dom";
+import wheat from "../wheatimg.jpg";
+const data = {
+  name: "Consumer name",
+  phno: 1000000000,
+  address: "consumer address ",
+  itemName: "product",
+  itemQuantity: 0,
+  itemPrice: 0,
+  regNo: "xxx.yyy.zzz",
+  img: wheat,
+};
 
 const PageM2 = () => {
+  const location = useLocation();
+
+  const content = location.state ? location.state.data : data;
+
   return (
     <Box sx={{ margin: "35px" }}>
       <Typography
@@ -34,7 +29,7 @@ const PageM2 = () => {
           marginBottom: "20px",
         }}
       >
-        Seller dashboard
+        {location.state ? location.state.from : "seller"}
       </Typography>
       <Box
         sx={{
@@ -51,22 +46,18 @@ const PageM2 = () => {
             rowGap: "40px",
           }}
         >
-          {content.map((id, key) => {
-            return (
-              <Box>
-                <SellerNegotiate
-                  key={key}
-                  name={id.name}
-                  phno={id.phno}
-                  iquantity={id.itemQuantity}
-                  address={id.address}
-                  iname={id.itemName}
-                  iprice={id.itemPrice}
-                  regno={id.regNo}
-                />
-              </Box>
-            );
-          })}
+          <Box>
+            <SellerNegotiate
+              name={content.name}
+              phno={content.phno}
+              iquantity={content.itemQuantity}
+              address={content.address}
+              iname={content.itemName}
+              iprice={content.itemPrice}
+              regno={content.regNo}
+              img={content.img}
+            />
+          </Box>
         </Box>
       </Box>
     </Box>

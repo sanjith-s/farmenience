@@ -1,80 +1,49 @@
 import React from "react";
 import RequestBox from "../components/requestBox";
-import { Container, Box, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import wheat from "../wheatimg.jpg";
+import carrot from "../carrot.jpg";
 
-import "../css/pageM1.css";
-import { Typography } from "@material-ui/core";
-
-const AllRequests = [
+const content = [
   {
-    reqId: "XXXXXXX",
-    name: "YYYYYYY",
-    phoneNo: 9789656573,
-    itemName: "Mango",
-    itemQuantity: 10,
+    name: "Consumer name",
+    phno: 2484930933,
+    address: "no 323 , some street,  town, chennai-23232",
+    itemName: "wheat",
+    itemQuantity: "3 ",
+    itemPrice: 250,
+    regNo: "23.42.424",
+    img: wheat,
   },
   {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
+    name: "Consumer name",
+    phno: 134132414,
+    address: "no 323 , some street,  some town, mumbai-23232",
+    itemName: "carrot",
+    itemQuantity: 3,
+    itemPrice: 350,
+    regNo: "23.42.425",
+    img: carrot,
   },
   {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
+    name: "Consumer name",
+    phno: 2484930933,
+    address: "no 323 , some street,  town, chennai-23232",
+    itemName: "wheat",
+    itemQuantity: "3 ",
+    itemPrice: 250,
+    regNo: "23.42.424",
+    img: wheat,
   },
   {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
-  },
-  {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
-  },
-  {
-    reqId: "XXXXXXX",
-    name: "YYYYYYY",
-    phoneNo: 9789656573,
-    itemName: "Mango",
-    itemQuantity: 10,
-  },
-  {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
-  },
-  {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
-  },
-  {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
-  },
-  {
-    reqId: "JJKKKK",
-    name: "KHBKJBSK",
-    phoneNo: 8737628723,
-    itemName: "Tomato",
-    itemQuantity: 7,
+    name: "Consumer name",
+    phno: 134132414,
+    address: "no 323 , some street,  some town, mumbai-23232",
+    itemName: "carrot",
+    itemQuantity: 3,
+    itemPrice: 350,
+    regNo: "23.42.425",
+    img: carrot,
   },
 ];
 
@@ -94,7 +63,7 @@ function PageM1() {
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
         >
-          you have {AllRequests.length} requests{" "}
+          you have {content.length} requests{" "}
         </Typography>
       </Box>
       <Box
@@ -114,15 +83,16 @@ function PageM1() {
             rowGap: "50px",
           }}
         >
-          {AllRequests.map((req, index) => {
+          {content.map((req, index) => {
             return (
               <RequestBox
                 key={index + 1}
-                reqId={req.reqId}
+                reqId={req.regNo}
                 name={req.name}
-                phoneNo={req.phoneNo}
+                phoneNo={req.phno}
                 itemName={req.itemName}
                 itemQuantity={req.itemQuantity}
+                data={req}
               />
             );
           })}

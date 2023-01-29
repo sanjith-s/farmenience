@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
-import WheatImg from "../wheatimg.jpg";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
-import Snackbar from "@mui/material/Snackbar";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 import {
   Box,
@@ -19,6 +17,7 @@ import {
   Card,
   Stack,
   CardMedia,
+  Snackbar,
 } from "@mui/material";
 
 const itemsName = [
@@ -31,6 +30,15 @@ const itemsName = [
 ];
 
 const SellerNegotiate = (props) => {
+  const itemsValue = [
+    props.name,
+    props.phno,
+    props.address,
+    props.iname,
+    props.iquantity,
+    props.iprice,
+  ];
+
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
@@ -70,22 +78,13 @@ const SellerNegotiate = (props) => {
     }
   };
 
-  const itemsValue = [
-    props.name,
-    props.phno,
-    props.address,
-    props.iname,
-    props.iquantity,
-    props.iprice,
-  ];
-
   return (
     <Card
       style={{
         display: "flex",
         justifyContent: "center",
         padding: "30px 0px",
-        borderRadius: "12px",
+        borderRadius: "2px",
         columnGap: "50px",
         backgroundColor: "#fff",
         border: "3px solid",
@@ -171,7 +170,7 @@ const SellerNegotiate = (props) => {
       <CardActions style={{ display: "flex", flexDirection: "column" }}>
         <CardMedia>
           <img
-            src={WheatImg}
+            src={props.img}
             alt="wheat img"
             width="280px"
             style={{
@@ -180,6 +179,7 @@ const SellerNegotiate = (props) => {
             }}
           />
         </CardMedia>
+
         <CardActions>
           <Box
             sx={{
@@ -190,6 +190,10 @@ const SellerNegotiate = (props) => {
               alignItems: "center",
             }}
           >
+            <Typography variant="h6" style={{ textTransform: "uppercase" }}>
+              {" "}
+              negotiate price{" "}
+            </Typography>
             <FormControl style={{ position: "sticky" }}>
               <InputLabel htmlFor="outlined-adornment-quantity">
                 Quantity

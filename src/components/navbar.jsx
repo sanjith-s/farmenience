@@ -71,7 +71,7 @@ function SwipeableEdgeDrawer(props) {
           </a>
         </div>
         <div className="nav-items item3">
-          <a href="" className="nav-links">
+          <a href="/" className="nav-links">
             Home
           </a>
         </div>

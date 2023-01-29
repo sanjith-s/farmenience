@@ -1,17 +1,17 @@
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import PageN7 from "../Ngo/pageN7";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect,useState } from "react";
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -119,7 +119,29 @@ export default function BasicTabs() {
     time : "12:30 PM",
     venue: "Forum Mall, Chennai"  
   } ]
-
+  const buttons = [
+    <Button onClick={()=>{
+      navigate('../N1')
+    }}>
+      View Queries
+    </Button>,
+   <Button onClick={()=>{
+      navigate('../N6')
+    }}>
+      View Appoinments
+    </Button>,
+    <Button onClick={()=>{
+      navigate('../N7')
+    }}>
+      New Query
+    </Button>,
+    <Button onClick={()=>{
+      navigate('../N4')
+    }}>
+      New Appoinment
+    </Button>,
+    <Button onClick={logout}>LogOut</Button>
+  ]
   const characteristics = Object.entries(profile).map((key, i) => {
     return (
       <div key={i}>
@@ -131,47 +153,42 @@ export default function BasicTabs() {
 
   return (
     <>
-    <div>
-      <div>
-        <button onClick={logout}>
-          LogOut
-        </button>
-      </div>
-    </div>
-    <br></br>
-    <div>
-      <button onClick={()=>{
-        navigate('../N1')
-      }}>
-        View Queries
-      </button>
-    </div>
-    <br>
-    </br>
-    <div>
-      <button onClick={()=>{
-        navigate('../N6')
-      }}>
-        View Appoinments
-      </button>
-    </div>
-    <br></br>
-    <div>
-      <button onClick={()=>{
-        navigate('../N7')
-      }}>
-        New Query
-      </button>
-    </div>
-    <br></br>
-    <div>
-      <button onClick={()=>{
-        navigate('../N4')
-      }}>
-        New Appoinment
-      </button>
-    </div>
-    <h1>Profile</h1>
+     <Box
+      display="flex" 
+      alignItems="center"
+      justifyContent="center"
+      sx={{
+        display: 'flex',
+        '& > *': {
+          m: 1,
+        },
+      }}
+    >
+      <Stack direction="column" spacing={2}>
+        <Typography variant="h5" component="h1">Your Profile</Typography>
+        <Stack direction="row" spacing={3}>
+          <Stack direction="column" spacing={1}>
+      <Avatar
+        alt=""
+        src=""
+        sx={{ width: 134, height: 134 }}
+      />
+      <Stack>
+      <Typography variant='h6'>User name</Typography>
+      <Typography variant='h7'>Farmer</Typography>
+      </Stack>
+      </Stack>
+      <ButtonGroup
+        orientation="vertical"
+        aria-label="vertical outlined button group"
+        variant="text"
+      >
+        {buttons}
+      </ButtonGroup>
+      </Stack>
+    </Stack>
+
+      </Box>
     {
 
       characteristics

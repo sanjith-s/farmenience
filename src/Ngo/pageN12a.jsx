@@ -30,7 +30,7 @@ const itemsName2 = [
 ];
 
 const itemsValue1 = ["lorem ipsum", "lorem ipsum", "lorem ipsum", "29 November 2022"];
-const itemsValue2 = ["lorem ipsum", "", "", ""];
+const itemsValue2 = ["lorem ssss", "", "", ""];
 
 const PageN12a = () => {
 

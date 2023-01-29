@@ -16,7 +16,7 @@ import {
   TodayButton,
   ConfirmationDialog,
   CurrentTimeIndicator,
-  DragDropProvider
+  DragDropProvider,
 } from "@devexpress/dx-react-scheduler-material-ui";
 
 function Calendar(props) {
@@ -58,11 +58,11 @@ Calendar.propTypes = {
   data: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   onCurrentDateChange: PropTypes.func.isRequired,
-  onCommitChanges: PropTypes.func.isRequired
+  onCommitChanges: PropTypes.func.isRequired,
 };
 
 Calendar.defaultProps = {
-  data: []
+  data: [],
 };
 
 export default Calendar;

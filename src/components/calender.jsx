@@ -2,24 +2,24 @@ import React, { useState, useCallback } from "react";
 import { createTheme, Pivot, PivotItem, ThemeProvider } from "@fluentui/react";
 import Calendar from "./Allviews";
 import Box from "@mui/material/Box";
-import List from "./List";
+import List from "./list";
 import Grid from "@mui/material/Grid";
-import Dialog from '@mui/material/Dialog';
-import Stack from '@mui/material/Stack';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import DialogActions from '@mui/material/DialogActions';
-import TextField from '@mui/material/TextField';
+import Dialog from "@mui/material/Dialog";
+import Stack from "@mui/material/Stack";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import DialogActions from "@mui/material/DialogActions";
+import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 const data = [
   {
     title: "Gas Kugelspeicher",
     startDate: "2023-01-27T01:30:00",
-    endDate: "2023-01-28T02:00:00"
+    endDate: "2023-01-28T02:00:00",
   },
   {
     id: 27,
@@ -38,7 +38,7 @@ const data = [
     title: "80/40 Red.",
     startDate: "2021-10-05T22:00:00",
     endDate: "2021-10-07T21:00:00",
-  }
+  },
 ];
 
 const myTheme = createTheme({
@@ -64,8 +64,8 @@ const myTheme = createTheme({
     neutralPrimary: "#323130",
     neutralDark: "#201f1e",
     black: "#000000",
-    white: "#ffffff"
-  }
+    white: "#ffffff",
+  },
 });
 
 export default function App(props) {
@@ -82,7 +82,7 @@ export default function App(props) {
   const handleChange2 = (newValue) => {
     setValue2(newValue);
   };
-  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -92,39 +92,57 @@ export default function App(props) {
   const addEvent = () => {
     const s = Object.values(value);
     const e = Object.values(value2);
-    const sd = new Date(s[4],s[5],s[6],s[8],s[9]);
-    const ed = new Date(e[4],e[5],e[6],e[8],e[9]);
-    const newEvent = [{
-      startDate: sd.toISOString(),
-      endDate: ed.toISOString(),
-      title: document.getElementById("e_name").value
-    }, ...datas];
-    newEvent[0].title += "  [ "+ sd.toLocaleTimeString()+" ]";
+    const sd = new Date(s[4], s[5], s[6], s[8], s[9]);
+    const ed = new Date(e[4], e[5], e[6], e[8], e[9]);
+    const newEvent = [
+      {
+        startDate: sd.toISOString(),
+        endDate: ed.toISOString(),
+        title: document.getElementById("e_name").value,
+      },
+      ...datas,
+    ];
+    newEvent[0].title += "  [ " + sd.toLocaleTimeString() + " ]";
     setData(newEvent);
-    console.log(datas);
+    // console.log(datas);
     handleClose();
-  }
+  };
   return (
     <Box
-    sx={{
-      width: "100%",
-      height: 700,
-      overflow: "auto",
-      position:"absolute"
-    }}
-  >
-    <Grid sx={{width: "100%",margin: 1}}>
-            <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'green'}} variant="contained" onClick={handleClickOpen}>Add Event</Button>
-            <Button sx={{width: "48%",margin:1}} style={{backgroundColor: 'red'}} variant="contained" onClick={()=>{props.closeToggle(false)}}>Close</Button>
+      sx={{
+        width: "100%",
+        height: 700,
+        overflow: "auto",
+        position: "absolute",
+      }}
+    >
+      <Grid sx={{ width: "100%", margin: 1 }}>
+        <Button
+          sx={{ width: "48%", margin: 1 }}
+          style={{ backgroundColor: "green" }}
+          variant="contained"
+          onClick={handleClickOpen}
+        >
+          Add Event
+        </Button>
+        <Button
+          sx={{ width: "48%", margin: 1 }}
+          style={{ backgroundColor: "red" }}
+          variant="contained"
+          onClick={() => {
+            props.closeToggle(false);
+          }}
+        >
+          Close
+        </Button>
       </Grid>
-    <ThemeProvider applyTo="body" theme={myTheme}>
-      <Stack sx={{width: "100%"}}>
-      </Stack>
-            <Dialog open={open} onClose={handleClose}>
-               <DialogTitle>Add New Event</DialogTitle>
-               <DialogContent>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Stack spacing={3}>
+      <ThemeProvider applyTo="body" theme={myTheme}>
+        {/* <Stack sx={{ width: "100%" }}></Stack> */}
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Add New Event</DialogTitle>
+          <DialogContent>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Stack spacing={3}>
                 <TextField
                   autoFocus
                   margin="dense"
@@ -134,50 +152,50 @@ export default function App(props) {
                   fullWidth
                   variant="standard"
                 />
-              <DesktopDatePicker
-                label="Starting Day"
-                inputFormat="MM/DD/YYYY"
-                value={value}
-                onChange={handleChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
-              <TimePicker
-                label="Staring Time"
-                value={value}
-                onChange={handleChange}
-                renderInput={(params) => <TextField {...params} />}
-              />
-              <DesktopDatePicker
-                label="Ending Day"
-                inputFormat="MM/DD/YYYY"
-                value={value2}
-                onChange={handleChange2}
-                renderInput={(params) => <TextField {...params} />}
-              />
-              <TimePicker
-                label="Ending Time"
-                value={value2}
-                onChange={handleChange2}
-                renderInput={(params) => <TextField {...params} />}
-              />
-              </Stack>  
-                </LocalizationProvider>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={addEvent}>Add Event</Button>
-              </DialogActions>
-      </Dialog>
-     
-      <Pivot>
-        <PivotItem headerText="Calendar">
-          <Calendar data={datas} />
-        </PivotItem>
-        <PivotItem headerText="List">
-          <List data={datas} />
-        </PivotItem>
-      </Pivot>
-    </ThemeProvider>
+                <DesktopDatePicker
+                  label="Starting Day"
+                  inputFormat="MM/DD/YYYY"
+                  value={value}
+                  onChange={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+                <TimePicker
+                  label="Staring Time"
+                  value={value}
+                  onChange={handleChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+                <DesktopDatePicker
+                  label="Ending Day"
+                  inputFormat="MM/DD/YYYY"
+                  value={value2}
+                  onChange={handleChange2}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+                <TimePicker
+                  label="Ending Time"
+                  value={value2}
+                  onChange={handleChange2}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </Stack>
+            </LocalizationProvider>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={addEvent}>Add Event</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Pivot>
+          <PivotItem headerText="Calendar">
+            <Calendar data={datas} />
+          </PivotItem>
+          <PivotItem headerText="List">
+            <List data={datas} />
+          </PivotItem>
+        </Pivot>
+      </ThemeProvider>
     </Box>
   );
 }

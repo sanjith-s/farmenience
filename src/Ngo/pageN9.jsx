@@ -159,6 +159,7 @@ export default function BasicTabs() {
       justifyContent="center"
       sx={{
         display: 'flex',
+        marginTop:"2%",
         '& > *': {
           m: 1,
         },
@@ -187,13 +188,13 @@ export default function BasicTabs() {
       </ButtonGroup>
       </Stack>
     </Stack>
-
-      </Box>
     {
 
-      characteristics
+characteristics
 
-    }
+}
+      </Box>
+    
       {/* <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

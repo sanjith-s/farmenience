@@ -6,16 +6,20 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { Box, Button, Typography, Input } from "@mui/material";
+import { Box, Button, Typography, Input, InputAdornment, IconButton } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 function Login() {
   const captchaRef = useRef(null);
   const navigate = useNavigate();
-  const [email,setEmail] = useState();
-  const [password,setPwd] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPwd] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+  
   const handleChange = (event) => {
-     setEmail(document.querySelector("#email").value);
-     setPwd(document.querySelector("#pwd").value);
+    setEmail(document.querySelector("#email").value);
+    setPwd(document.querySelector("#pwd").value);
   };
   const submit = (event) => {
     event.preventDefault();
@@ -67,6 +71,8 @@ function Login() {
     navigate("/signup");
   };
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   return (
     <Box sx={{ margin: "30px" }}>
       <form
@@ -108,7 +114,6 @@ function Login() {
               id="email"
               value={email}
               onChange={handleChange}
-              endAdornment="@gmail.com"
             />
           </Box>
 
@@ -121,9 +126,20 @@ function Login() {
               password
             </Typography>
             <Input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               id="pwd"
               value={password}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
               onChange={handleChange}
             />
           </Box>

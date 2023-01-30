@@ -31,9 +31,9 @@ function SalesCardsList(props) {
             <SalesCard
               key={item.id}
               name={item.clientName}
-              date={item.orderDate}
+              ordDate={item.orderDate}
+              delDate={item.deliveryDate}
               items={item.items}
-              amount={item.amount}
               data={item}
             />
           </Grid>

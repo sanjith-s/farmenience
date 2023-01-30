@@ -38,12 +38,12 @@ function SalesCard(props) {
                 style={{
                   margin: "0px",
                   fontWeight: "600",
-                  fontSize: "20px",
+                  fontSize: "19px",
                   textTransform: "uppercase",
                   padding: "0px",
                 }}
               >
-                Name
+                consumer name
               </Typography>
               <Typography margin="0px" variant="h6">
                 {props.name}
@@ -69,14 +69,14 @@ function SalesCard(props) {
                 variant="h7"
                 style={{
                   fontWeight: "600",
-                  fontSize: "20px",
+                  fontSize: "19px",
                   textTransform: "uppercase",
                 }}
               >
-                Date
+                ordered date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.date}
+                {props.ordDate}
               </Typography>
             </Box>
             <Box
@@ -99,7 +99,37 @@ function SalesCard(props) {
                 variant="h7"
                 style={{
                   fontWeight: "600",
-                  fontSize: "20px",
+                  fontSize: "19px",
+                  textTransform: "uppercase",
+                }}
+              >
+                delivery date
+              </Typography>
+              <Typography margin="0px" variant="h6">
+                {props.delDate}
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                backgroundColor: "#C4E1C5",
+                borderBottomColor: "black",
+                width: "100%",
+                alignItems: "center",
+                height: "60px",
+                borderRadius: "4px ",
+                padding: "0px 10px",
+                margin: "2px 0px",
+              }}
+            >
+              <Typography
+                margin="0px"
+                paragraph
+                variant="h7"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "19px",
                   textTransform: "uppercase",
                 }}
               >
@@ -108,36 +138,6 @@ function SalesCard(props) {
               </Typography>
               <Typography margin="0px" variant="h6">
                 {props.items.toString()}
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                backgroundColor: "#C4E1C5",
-                borderBottomColor: "black",
-                width: "100%",
-                alignItems: "center",
-                height: "60px",
-                borderRadius: "4px ",
-                padding: "0px 10px",
-                margin: "2px 0px",
-              }}
-            >
-              <Typography
-                margin="0px"
-                paragraph
-                variant="h7"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "20px",
-                  textTransform: "uppercase",
-                }}
-              >
-                Amount
-              </Typography>
-              <Typography margin="0px" variant="h6">
-                {props.amount}
               </Typography>
             </Box>
           </Stack>

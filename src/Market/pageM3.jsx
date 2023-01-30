@@ -19,7 +19,8 @@ const salesDetails = [
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
     items: ["rice", "wheat", "carrot","apple"],
-    amount: 343,
+
+    quantity: [30,40,50,10],
     address : "Room No: 10 , Kurinji Hostel , CEG , Anna University",
   },
   {
@@ -33,7 +34,7 @@ const salesDetails = [
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
     items: ["rice", "wheat", "beans","carrot"],
-    amount: 343,
+    quantity: [30,40,50,10],
     address : "Room No: 20 , Kurinji Hostel , CEG , Anna University",
   },
   {
@@ -47,7 +48,7 @@ const salesDetails = [
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
     items: ["rice", "wheat", "fibre","apple"],
-    amount: 343,
+    quantity: [30,40,50,10],
     address : "Room No: 30 , Kurinji Hostel , CEG , Anna University",
   },
   {
@@ -61,7 +62,7 @@ const salesDetails = [
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
     items: ["rice", "wheat", "ragi","apple"],
-    amount: 343,
+    quantity: [30,40,50,10],
     address : "Room No: 40 , Kurinji Hostel , CEG , Anna University",
   },
 ];

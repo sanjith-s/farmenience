@@ -20,57 +20,57 @@ const itemsBought = [
   {
     sno: 1,
     item: "rice",
-    quantity: "20",
+    quantity: 0,
     eachPrice: "60",
-    price: "600",
+    price: 0,
     
   },
   {
     sno: 2,
     item: "wheat",
-    quantity: "20",
+    quantity: 0,
     eachPrice: "40",
-    price: "800",
+    price: 0,
     
   },
   {
     sno: 3,
     item: "ragi",
-    quantity: "7",
+    quantity: 0,
     eachPrice: "60",
-    price: "420",
+    price: 0,
     
   },
   {
     sno: 4,
     item: "fibre",
-    quantity: "10",
+    quantity: 0,
     eachPrice: "35",
-    price: "350",
+    price: 0,
     
   },
 
   {
     sno: 5,
     item: "beans",
-    quantity: "20",
+    quantity: 0,
     eachPrice: "42",
-    price: "840",
+    price: 0,
    
   },
   {
     sno: 6,
     item: "carrot",
-    quantity: "10",
+    quantity: 0,
     eachPrice: "24",
-    price: "240",
+    price: 0,
   },
   {
     sno: 7,
     item: "apple",
-    quantity: "20",
+    quantity: 0,
     eachPrice: "30",
-    price: "600",
+    price: 0,
   },
 ];
 
@@ -107,20 +107,25 @@ function PageM4() {
 
   const data = location.state ? location.state.data : item ;
 
-  // const [neededItems,setNeededItems] = useState(itemsBought); 
 
   let filterItems;
+  
   const handleChange = () => {
+
+    
+
      filterItems =     itemsBought.filter((value) => {
       if ( (data.items).includes(value.item))
       {
-        console.log(value.item);
-        console.log(value);
         return value;
 
       }
     });
-    console.log(filterItems);
+
+    filterItems.forEach((value,index)=>{ 
+      value.quantity = data.quantity[index] ;
+      value.price = value.quantity * value.eachPrice ;
+    });
   }
 
   handleChange();

@@ -30,10 +30,11 @@ function SalesCardsList(props) {
           <Grid item padding={2} key={item.id}>
             <SalesCard
               key={item.id}
-              name={item.name}
-              date={item.date}
+              name={item.clientName}
+              date={item.orderDate}
               items={item.items}
               amount={item.amount}
+              data={item}
             />
           </Grid>
         ))}

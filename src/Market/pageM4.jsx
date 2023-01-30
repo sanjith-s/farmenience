@@ -1,7 +1,7 @@
-import React from "react";
-import "../css/pageM4.css";
+import React, { useState } from "react";
 import PriceTable from "../components/priceTable";
 import ProductDetails from "../components/productDetails";
+import { useLocation } from "react-router-dom";
 import {
   Box,
   CssBaseline,
@@ -9,6 +9,11 @@ import {
   Card,
   CardContent,
   Button,
+  Dialog,
+  DialogTitle,
+  List,
+  ListItem,
+  ListItemButton,
 } from "@mui/material";
 
 const itemsBought = [
@@ -18,12 +23,7 @@ const itemsBought = [
     quantity: "20",
     eachPrice: "60",
     price: "600",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    
   },
   {
     sno: 2,
@@ -31,12 +31,7 @@ const itemsBought = [
     quantity: "20",
     eachPrice: "40",
     price: "800",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    
   },
   {
     sno: 3,
@@ -44,97 +39,119 @@ const itemsBought = [
     quantity: "7",
     eachPrice: "60",
     price: "420",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    
   },
   {
     sno: 4,
     item: "fibre",
-    quantity: "0",
-    eachPrice: "42",
-    price: "0",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    quantity: "10",
+    eachPrice: "35",
+    price: "350",
+    
   },
 
   {
     sno: 5,
     item: "beans",
-    quantity: "0",
+    quantity: "20",
     eachPrice: "42",
-    price: "0",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    price: "840",
+   
   },
   {
     sno: 6,
     item: "carrot",
-    quantity: "0",
-    eachPrice: "42",
-    price: "0",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    quantity: "10",
+    eachPrice: "24",
+    price: "240",
   },
   {
     sno: 7,
     item: "apple",
-    quantity: "0",
-    eachPrice: "42",
-    price: "0",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
-    clientName: "Person Z",
-    paymentMode: "Cash On Delivery",
-    transactionID: "---------",
-    remarks: "--------",
+    quantity: "20",
+    eachPrice: "30",
+    price: "600",
   },
 ];
 
 const item = {
-  sno: "1",
+  id: 1 ,
   orderDate: "21/12/2022",
   deliveryDate: "27/12/2022",
   clientName: "Person Z",
-  paymentMode: "Cash On Delivery",
-  transactionID: "---------",
-  remarks: "--------",
+  paymentMode: "Safe Payment",
+  transactionID: "xxxyyyzzz",
+  remarks: "xyz",
+  clientEmailId: "chumma@gmail.com",
+  clientPh: 1111111111,
+  items: ["rice", "wheat", "carrot"],
+  address : "Room No: 30 , Kurinji Hostel , CEG , Anna University",
 };
 
-let tot_amount = 0;
-itemsBought.map((item) => {
-  tot_amount += item.quantity * item.eachPrice;
-  return;
-});
+
 
 const billingAddress = "Room No: 30 , Kurinji Hostel , CEG , Anna University";
 
 function PageM4() {
+
+  const [open,setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClickClose = () => {
+    setOpen(false);
+
+  }
+
+  const location = useLocation();
+
+  const data = location.state ? location.state.data : item ;
+
+  // const [neededItems,setNeededItems] = useState(itemsBought); 
+
+  let filterItems;
+  const handleChange = () => {
+     filterItems =     itemsBought.filter((value) => {
+      if ( (data.items).includes(value.item))
+      {
+        console.log(value.item);
+        console.log(value);
+        return value;
+
+      }
+    });
+    console.log(filterItems);
+  }
+
+  handleChange();
+
+  let tot_amount = 0;
+  filterItems.map((item) => {
+    tot_amount += item.quantity * item.eachPrice;
+    return;
+  });
+
   return (
-    <Card
-      style={{
+    <Card>
+    <Box style={{padding:"15px 0px"}}>
+        <Typography
+          variant="h4"
+          style={{ fontWeight: "600", textTransform: "uppercase",textAlign:"center" }}
+        >
+          {location.state? location.state.from : "sales"}
+        </Typography>
+      </Box>
+   
+    <Box
+      sx={{
         display: "flex",
         columnGap: "20px",
         backgroundColor: "#fff",
-        padding: "20px",
+        padding: "0px 20px 20px 20px",
       }}
     >
       <CssBaseline />
+      
       <CardContent
         sx={{
           width: "40%",
@@ -162,13 +179,13 @@ function PageM4() {
         >
           <ProductDetails
             style={{ padding: "15px 0px" }}
-            key={item.sno}
-            orderDate={item.orderDate}
-            deliveryDate={item.deliveryDate}
-            clientName={item.clientName}
-            paymentMode={item.paymentMode}
-            transactionID={item.transactionID}
-            remarks={item.remarks}
+            key={data.id}
+            orderDate={data.orderDate}
+            deliveryDate={data.deliveryDate}
+            clientName={data.clientName}
+            paymentMode={data.paymentMode}
+            transactionID={data.transactionID}
+            remarks={data.remarks}
           />
         </Box>
         <Box
@@ -185,10 +202,22 @@ function PageM4() {
               fontSize: "17px",
               backgroundColor: "green",
             }}
+            onClick={handleClickOpen}
           >
             contact client
           </Button>
         </Box>
+        <Dialog open={open} onClick={handleClickClose} >
+          <DialogTitle style={{borderBottom:"5px solid green"}}> <Typography style={{textTransform:"uppercase",fontWeight:"600"}}>client contact details</Typography></DialogTitle>
+          <List>
+            <ListItem>
+              <ListItemButton ><Typography style={{textTransform:"lowercase"}}>{data.clientEmailId}</Typography></ListItemButton>
+            </ListItem>
+            <ListItem>
+              <ListItemButton><Typography>{data.clientPh}</Typography></ListItemButton>
+            </ListItem>
+          </List>
+        </Dialog>
       </CardContent>
 
       <CardContent
@@ -244,7 +273,7 @@ function PageM4() {
                 overflow: "auto",
               }}
             >
-              {billingAddress}
+              {data.address}
             </Typography>
           </Box>
 
@@ -256,7 +285,7 @@ function PageM4() {
               padding: "20px",
             }}
           >
-            <PriceTable rows={itemsBought} />
+            <PriceTable rows={filterItems} />
           </Box>
 
           <Box
@@ -292,6 +321,7 @@ function PageM4() {
             </Typography>
           </Box>
           <Button
+          // onClick={handleChange}
             variant="contained"
             style={{
               fontWeight: "600",
@@ -306,6 +336,7 @@ function PageM4() {
           </Button>
         </Box>
       </CardContent>
+    </Box>
     </Card>
   );
 }

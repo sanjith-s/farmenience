@@ -33,6 +33,7 @@
     "react-router-dom": "^6.4.3",
     "react-scroll": "^1.8.8",
     "react-select": "^5.6.1",
+    "react-to-print": "^2.14.11",
     "react-window": "^1.8.8",
     "recharts": "^2.2.0",
     "validator": "^13.7.0",

@@ -1,10 +1,9 @@
 import React from "react";
-import { CardContent, CardActions, Typography, Button } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+import { CardContent, CardActions, Typography, Button,Stack,Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function SalesCard(props) {
-  const date = props.date.toLocaleDateString();
+  // const date = props.date.toLocaleDateString();
 
   return (
     <React.Fragment>
@@ -77,7 +76,7 @@ function SalesCard(props) {
                 Date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {date}
+                {props.date}
               </Typography>
             </Box>
             <Box
@@ -162,14 +161,26 @@ function SalesCard(props) {
             <Button
               variant="contained"
               style={{
-                backgroundColor: "#1FE57A",
-                fontWeight: "600",
-                fontSize: "18px",
-                lineHeight: "0px",
-                padding: "25px 20px 20px 20px",
+                backgroundColor: "green",
               }}
             >
-              View Sale
+              <Link
+            to="/M4"
+            state={{
+              from: "sales details",
+              data: props.data,
+            }}
+            style={{ textDecoration: "none" }}
+          >
+            <Typography
+              style={{
+                color: "#ffffff",
+                fontWeight: "600",
+              }}
+            >
+              view sale
+            </Typography>
+          </Link>
             </Button>
           </Box>
         </CardActions>

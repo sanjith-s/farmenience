@@ -89,12 +89,12 @@ function App() {
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
             <Route path="/N10" element={<PageN10 />} />
-            <Route path="/N12" element={<PageN12 />} />
+            {/* <Route path="/N12" element={<PageN12 />} /> */}
             <Route path="/N12a" element={<PageN12a />} />
-            <Route path="/N14" element={<PageN14 />} />
-            <Route path="/cal" element={<Calender />} />
+            {/* <Route path="/N14" element={<PageN14 />} /> */}
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
+            <Route path="/cal" element={<Calender />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

@@ -104,6 +104,10 @@ const PageM6 = () => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        inputProps={{ 
+          minLength: 1,
+          maxLength: 12 
+        }}
       />
       <TextField
         id="price"
@@ -272,6 +276,9 @@ const PageM6 = () => {
       <Box textAlign="center" padding={"20px"}>
         <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Submit
+          {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
+          {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
+          {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
       </Box>
     </div>

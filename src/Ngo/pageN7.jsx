@@ -39,13 +39,20 @@ import { useNavigate } from "react-router-dom/dist";
 const PageN7 = () => {
   const [file, setFile] = useState();
   const navigate = useNavigate();
-  const [open,setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -53,29 +60,56 @@ const PageN7 = () => {
   const [desc, setDesc] = useState("");
   const postQuery = () => {
     let token = Cookies.get('token');
-    Axios.post('http://localhost:5000/postquery', {
-      subject: subject,
-      description: desc
-    }, { headers: { tokenstring: token } }).
-      then((response) => {
-        console.log(response);
-        if (response.data.message === 'Query Added Successfully') {
-          alert('Query Added Successfully');
-          navigate('../N1');
-        }
-      })
-      .catch((res) => {
-        if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert('Login error');
-          navigate('../login')
-        }
-        else {
-          alert(res.response.data.message);
-        }
-      })
+    if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
+      Axios.post('http://localhost:5000/postquery', {
+        subject: subject,
+        description: desc
+      }, { headers: { tokenstring: token } }).
+        then((response) => {
+          console.log(response);
+          if (response.data.message === 'Query Added Successfully') {
+            alert('Query Added Successfully');
+            navigate('../N1');
+          }
+        })
+        .catch((res) => {
+          if (res.response.data.message === 'Error in connection') {
+            alert('Please Check Network');
+          }
+          else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            alert('Login error');
+            navigate('../login')
+          }
+          else {
+            alert(res.response.data.message);
+          }
+        })
+    }
+    else {
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>
+            <Typography
+              style={{
+                color: "blue",
+                fontWeight: "600",
+                fontSize: "16px",
+              }}
+            >
+              Ok
+            </Typography>
+          </Button>
+        </DialogActions>
+      </Dialog>
+    }
   }
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -106,7 +140,7 @@ const PageN7 = () => {
               variant="filled"
               color="success"
               InputProps={{
-                maxLength: 500,
+                maxLength: 50,
                 minLength: 1
               }}
               sx={{
@@ -134,7 +168,7 @@ const PageN7 = () => {
               onChange={(e) => { setDesc(e.target.value) }}
             />
             <Box textAlign="center" padding={"20px"}>
-              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={()=>{setOpen(true)}}>
+              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => { setOpen(true) }}>
                 Submit
               </Button>
             </Box>
@@ -142,47 +176,47 @@ const PageN7 = () => {
 
         </Container>
         <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={()=>{setOpen(false)}}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>CONFIRM?</DialogTitle>
-        <DialogContent>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>Query Subject</TableCell>
-            <TableCell>{subject}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Description</TableCell>
-            <TableCell>{desc}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2} rowSpan={2}>
-          <img
-              src={file}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            /></TableCell>
-          </TableRow>
-           </TableBody>
-           </Table>
-          </TableContainer>
-            
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
-          <Button onClick={postQuery}>CONFIRM</Button>
-        </DialogActions>
-      </Dialog>
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={() => { setOpen(false) }}
+          aria-describedby="alert-dialog-slide-description"
+        >
+          <DialogTitle>CONFIRM?</DialogTitle>
+          <DialogContent>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 200 }} aria-label="simple table">
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Query Subject</TableCell>
+                    <TableCell>{subject}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Description</TableCell>
+                    <TableCell>{desc}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell colSpan={2} rowSpan={2}>
+                      <img
+                        src={file}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "fill",
+                          borderRadius: "50px",
+                        }}
+                      /></TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => { setOpen(false) }}>Cancel</Button>
+            <Button onClick={postQuery}>CONFIRM</Button>
+          </DialogActions>
+        </Dialog>
         <Container
           disableGutters={true}
           sx={{

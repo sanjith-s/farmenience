@@ -5,19 +5,31 @@ function UserDetails(props) {
   const [address, setAddress] = useState(props.userAddress);
   const addressHandler = (event) => {
     let newAddress = event.target.value;
-    setAddress(newAddress);
+    if(newAddress.length >=1)
+      setAddress(newAddress);
+    else {
+      alert('Address field is empty');
+    }
   };
 
   const [name, setName] = useState(props.userName);
   const nameHandler = (event) => {
     let newName = event.target.value;
-    setName(newName);
+    if(newName.length >= 1)
+      setName(newName);
+    else {
+      alert('Name field is empty');
+    }
   };
 
   const [number, setNumber] = useState(props.userNumber);
   const numberHandler = (event) => {
     let newNumber = event.target.value;
-    setNumber(newNumber);
+    if(newNumber.length >= 1)
+      setNumber(newNumber);
+    else {
+      alert('Number field is empty');
+    }
   };
 
   props.onDataHandler(name, address, number);

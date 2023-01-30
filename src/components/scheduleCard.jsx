@@ -36,27 +36,27 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
- 
+
 const ScheduleCard = (props) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleChange = (newValue) => {
-  setValue(newValue);
-  console.log(newValue);
-  console.log(Object.values(newValue)[2]+"");
+    setValue(newValue);
+    console.log(newValue);
+    console.log(Object.values(newValue)[2] + "");
   };
   const [age, setAge] = React.useState('');
 
   const handleChange2 = (event) => {
     setAge(event.target.value);
   };
-  const [details,setDetails]=React.useState("");
-  const [crops,setCrops]=React.useState("");
-  const [reason,setReason]=React.useState("");
-  const [ngo,setNgo]=useState("Select");
+  const [details, setDetails] = React.useState("");
+  const [crops, setCrops] = React.useState("");
+  const [reason, setReason] = React.useState("");
+  const [ngo, setNgo] = useState("Select");
   const Reset = () => {
     setCrops("");
     setDetails("");
@@ -67,69 +67,66 @@ const ScheduleCard = (props) => {
     setValue();
   }
   const postMeet = () => {
-    let token=Cookies.get('token') ;
-    let dateStr =new Date(value);
-    Axios.post('http://localhost:5000/postmeet',{
-      date:dateStr.toLocaleDateString(),
-      time:dateStr.toTimeString(),
-      details:details,
-      crops:crops,
-      reason:reason,
-      ngotype:ngo,
-  },{headers: { tokenstring: token } }).
-    then((response)=>{
-      console.log(response);
-      if(response.data.message==='Meet Added, Waiting for NGO Reply')
-      {
-        alert('Meet Added, Waiting for NGO Reply');
-        navigate('../N6');
-      }
-    })
-    .catch((res)=>{
-      if(res.response.data.message==='Error in connection')
-      {
-        alert('Please Check Network');
-      }
-      else if(res.response.data.message==='Token not found'||res.response.data.message==='Invalid token'||res.response.data.message==='Session Logged Out , Please Login Again')
-      {
-        alert('Login error');
-        navigate('../login')
-      }
-      else
-      {
-        alert(res.response.data.message);
-      }
-    })
+    let token = Cookies.get('token');
+    let dateStr = new Date(value);
+
+    Axios.post('http://localhost:5000/postmeet', {
+      date: dateStr.toLocaleDateString(),
+      time: dateStr.toTimeString(),
+      details: details,
+      crops: crops,
+      reason: reason,
+      ngotype: ngo,
+    }, { headers: { tokenstring: token } }).
+      then((response) => {
+        console.log(response);
+        if (response.data.message === 'Meet Added, Waiting for NGO Reply') {
+          alert('Meet Added, Waiting for NGO Reply');
+          navigate('../N6');
+        }
+      })
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          alert('Please Check Network');
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          alert('Login error');
+          navigate('../login')
+        }
+        else {
+          alert(res.response.data.message);
+        }
+      })
   }
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-  
+
   return (
     <React.Fragment>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
-      <DesktopDatePicker
+        <DesktopDatePicker
           label="Meet Date"
           inputFormat="DD/MM/YYYY"
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-          }} />}  
+            backgroundColor: "#C4E1C5",
+            borderBottomColor: "black",
+            width: "70%",
+          }} />}
         />
         <TimePicker
           label="Meet Time"
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
+            backgroundColor: "#C4E1C5",
+            borderBottomColor: "black",
+            width: "70%",
           }} />}
         />
-        </LocalizationProvider>
+      </LocalizationProvider>
       <TextField
         id="filled-basic"
         label="Soil Details"
@@ -140,7 +137,11 @@ const ScheduleCard = (props) => {
           borderBottomColor: "black",
           width: "70%",
         }}
-        onChange={(e)=>{setDetails(e.target.value)}} 
+        inputProps={{
+          maxLength: 100,
+          minLength: 1
+        }}
+        onChange={(e) => { setDetails(e.target.value) }}
         value={details}
       />
       <TextField
@@ -148,7 +149,7 @@ const ScheduleCard = (props) => {
         label="Crops growing"
         variant="filled"
         color="success"
-        onChange={(e)=>{setCrops(e.target.value)}} 
+        onChange={(e) => { setCrops(e.target.value) }}
         // InputProps={{
         //   endAdornment: <InputAdornment position="end">₹</InputAdornment>,
         // }}
@@ -157,6 +158,10 @@ const ScheduleCard = (props) => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        inputProps={{
+          maxLength: 100,
+          minLength: 1
+        }}
         value={crops}
       />
       <TextField
@@ -164,7 +169,7 @@ const ScheduleCard = (props) => {
         // InputProps={{
         //   endAdornment: <InputAdornment position="end">kg</InputAdornment>,
         // }}
-        onChange={(e)=>{setReason(e.target.value)}} 
+        onChange={(e) => { setReason(e.target.value) }}
         label="Reason for meet"
         variant="filled"
         color="success"
@@ -173,28 +178,32 @@ const ScheduleCard = (props) => {
           borderBottomColor: "black",
           width: "70%",
         }}
+        inputProps={{
+          maxLength: 80,
+          minLenght: 1
+        }}
         value={reason}
       />
       <Box sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-        }}>
-       <FormControl fullWidth>
-      <InputLabel id="r1">Type of NGO</InputLabel>
-        <Select
-          labelId="r1"
-          id="r2"
-          value={ngo}
-          label="Select"
-          onChange={(e)=>{setNgo(e.target.value)}} 
-        >
-          <MenuItem value={'Select'}>Select</MenuItem>
-          <MenuItem value={'NGO'}>NGO</MenuItem>
-          <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
-        </Select>
+        backgroundColor: "#C4E1C5",
+        borderBottomColor: "black",
+        width: "70%",
+      }}>
+        <FormControl fullWidth>
+          <InputLabel id="r1">Type of NGO</InputLabel>
+          <Select
+            labelId="r1"
+            id="r2"
+            value={ngo}
+            label="Select"
+            onChange={(e) => { setNgo(e.target.value) }}
+          >
+            <MenuItem value={'Select'}>Select</MenuItem>
+            <MenuItem value={'NGO'}>NGO</MenuItem>
+            <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
+          </Select>
         </FormControl>
-        </Box>
+      </Box>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -207,49 +216,49 @@ const ScheduleCard = (props) => {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={()=>{setOpen(false)}}
+        onClose={() => { setOpen(false) }}
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle>{"Are You sure?"}</DialogTitle>
         <DialogContent>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>Meet Date and TIme</TableCell>
-            <TableCell>{Object.values(value)[2]+""}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Soil Details</TableCell>
-            <TableCell>{details}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Reason</TableCell>
-            <TableCell>{reason}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>NGO</TableCell>
-            <TableCell>{ngo}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2} rowSpan={2}>
-          <img
-              src={props.imgSrc}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            /></TableCell>
-          </TableRow>
-           </TableBody>
-           </Table>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 200 }} aria-label="simple table">
+              <TableBody>
+                <TableRow>
+                  <TableCell>Meet Date and TIme</TableCell>
+                  <TableCell>{Object.values(value)[2] + ""}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Soil Details</TableCell>
+                  <TableCell>{details}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Reason</TableCell>
+                  <TableCell>{reason}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>NGO</TableCell>
+                  <TableCell>{ngo}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell colSpan={2} rowSpan={2}>
+                    <img
+                      src={props.imgSrc}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                        borderRadius: "50px",
+                      }}
+                    /></TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </TableContainer>
-            
+
         </DialogContent>
         <DialogActions>
-          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
+          <Button onClick={() => { setOpen(false) }}>Cancel</Button>
           <Button onClick={postMeet}>CONFIRM</Button>
         </DialogActions>
       </Dialog>
@@ -257,7 +266,7 @@ const ScheduleCard = (props) => {
         <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={()=>{setOpen(true)}}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => { setOpen(true) }}>
           Submit
         </Button>
       </Box>

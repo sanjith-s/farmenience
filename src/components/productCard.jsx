@@ -54,6 +54,10 @@ function ProductCard() {
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
               }}
+              inputProps={{ 
+                minLength: 1,
+                maxLength: 30 
+              }}
             />
           </FormControl>
         </Box>
@@ -78,7 +82,11 @@ function ProductCard() {
                 </InputAdornment>
               }
               onChange={(event) => {
-                setPrice(event.target.value);
+                if(event.target.value >= 1 && event.target.value <= 2000)
+                  setPrice(event.target.value);
+                else {
+                  alert('Invalid Price')
+                }
               }}
               style={{
                 borderRadius: "5px",
@@ -118,7 +126,11 @@ function ProductCard() {
                 </InputAdornment>
               }
               onChange={(event) => {
-                setQty(event.target.value);
+                if(event.target.value >= 1 && event.target.value <= 50)
+                  setQty(event.target.value);
+                else {
+                  alert('Invalid Quantity')
+                }  
               }}
               style={{
                 borderRadius: "5px",
@@ -145,7 +157,11 @@ function ProductCard() {
             <FilledInput
               type="text"
               onChange={(event) => {
-                setType(event.target.value);
+                if(event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
+                  setType(event.target.value);
+                else {
+                  alert('Invalid Type');
+                }
               }}
               style={{
                 borderRadius: "5px",
@@ -178,6 +194,10 @@ function ProductCard() {
                 borderRadius: "5px",
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
+              }}
+              inputProps={{ 
+                minLength: 1,
+                maxLength: 40 
               }}
             />
           </FormControl>

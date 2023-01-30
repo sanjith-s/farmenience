@@ -40,12 +40,19 @@ const PageN7 = () => {
   const [file, setFile] = useState();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -78,8 +85,30 @@ const PageN7 = () => {
           }
         })
     }
-    else{
-      alert("Please check subject and description\n1. Subject should be of minimum length 1 and maximum length 50\n2. Description should be of minimum length 1 and maximum length 500")
+    else {
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>
+            <Typography
+              style={{
+                color: "blue",
+                fontWeight: "600",
+                fontSize: "16px",
+              }}
+            >
+              Ok
+            </Typography>
+          </Button>
+        </DialogActions>
+      </Dialog>
     }
   }
   return (

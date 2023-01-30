@@ -38,7 +38,7 @@ function BasketBox3(props) {
           <RadioGroup>
             <FormControlLabel
               value="upi payment"
-              control={<Radio />}
+              control={<Radio required={true} />}
               label={
                 <Typography
                   style={{
@@ -53,7 +53,7 @@ function BasketBox3(props) {
             />
             <FormControlLabel
               value="net banking"
-              control={<Radio />}
+              control={<Radio required={true}/>}
               label={
                 <Typography
                   style={{
@@ -68,7 +68,7 @@ function BasketBox3(props) {
             />
             <FormControlLabel
               value="credit/debit card"
-              control={<Radio />}
+              control={<Radio required={true} />}
               label={
                 <Typography
                   style={{
@@ -83,7 +83,7 @@ function BasketBox3(props) {
             />
             <FormControlLabel
               value="postpaid"
-              control={<Radio />}
+              control={<Radio required={true} />}
               label={
                 <Typography
                   style={{
@@ -98,7 +98,7 @@ function BasketBox3(props) {
             />
             <FormControlLabel
               value="crypto payment"
-              control={<Radio />}
+              control={<Radio required={true} />}
               label={
                 <Typography
                   style={{
@@ -113,7 +113,7 @@ function BasketBox3(props) {
             />
             <FormControlLabel
               value="cash on delivery"
-              control={<Radio />}
+              control={<Radio required={true} />}
               label={
                 <Typography
                   style={{

@@ -58,9 +58,15 @@ const PageN7 = () => {
   });
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
+  const validate = () => {
+    if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
+    setOpen(true);
+    } else {
+      setOpen2(true);
+    }
+  }
   const postQuery = () => {
     let token = Cookies.get('token');
-    if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
       Axios.post('http://localhost:5000/postquery', {
         subject: subject,
         description: desc
@@ -84,32 +90,6 @@ const PageN7 = () => {
             alert(res.response.data.message);
           }
         })
-    }
-    else {
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>
-            <Typography
-              style={{
-                color: "blue",
-                fontWeight: "600",
-                fontSize: "16px",
-              }}
-            >
-              Ok
-            </Typography>
-          </Button>
-        </DialogActions>
-      </Dialog>
-    }
   }
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -168,13 +148,35 @@ const PageN7 = () => {
               onChange={(e) => { setDesc(e.target.value) }}
             />
             <Box textAlign="center" padding={"20px"}>
-              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => { setOpen(true) }}>
+              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={validate}>
                 Submit
               </Button>
             </Box>
           </React.Fragment>
-
         </Container>
+        <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>
+            <Typography
+              style={{
+                color: "blue",
+                fontWeight: "600",
+                fontSize: "16px",
+              }}
+            >
+              Ok
+            </Typography>
+          </Button>
+        </DialogActions>
+      </Dialog>
         <Dialog
           open={open}
           TransitionComponent={Transition}

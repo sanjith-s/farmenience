@@ -60,36 +60,36 @@ const PageN7 = () => {
   const [desc, setDesc] = useState("");
   const validate = () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
-    setOpen(true);
+      setOpen(true);
     } else {
       setOpen2(true);
     }
   }
   const postQuery = () => {
     let token = Cookies.get('token');
-      Axios.post('http://localhost:5000/postquery', {
-        subject: subject,
-        description: desc
-      }, { headers: { tokenstring: token } }).
-        then((response) => {
-          console.log(response);
-          if (response.data.message === 'Query Added Successfully') {
-            alert('Query Added Successfully');
-            navigate('../N1');
-          }
-        })
-        .catch((res) => {
-          if (res.response.data.message === 'Error in connection') {
-            alert('Please Check Network');
-          }
-          else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-            alert('Login error');
-            navigate('../login')
-          }
-          else {
-            alert(res.response.data.message);
-          }
-        })
+    Axios.post('http://localhost:5000/postquery', {
+      subject: subject,
+      description: desc
+    }, { headers: { tokenstring: token } }).
+      then((response) => {
+        console.log(response);
+        if (response.data.message === 'Query Added Successfully') {
+          alert('Query Added Successfully');
+          navigate('../N1');
+        }
+      })
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          alert('Please Check Network');
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          alert('Login error');
+          navigate('../login')
+        }
+        else {
+          alert(res.response.data.message);
+        }
+      })
   }
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -155,28 +155,34 @@ const PageN7 = () => {
           </React.Fragment>
         </Container>
         <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>
-            <Typography
-              style={{
-                color: "blue",
-                fontWeight: "600",
-                fontSize: "16px",
-              }}
-            >
-              Ok
-            </Typography>
-          </Button>
-        </DialogActions>
-      </Dialog>
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Please check subject and description"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              1. Subject should be of minimum length 1 and maximum length 50 <br></br>
+              2. Description should be of minimum length 1 and maximum length 500
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose2}>
+              <Typography
+                style={{
+                  color: "blue",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                }}
+              >
+                Ok
+              </Typography>
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Dialog
           open={open}
           TransitionComponent={Transition}

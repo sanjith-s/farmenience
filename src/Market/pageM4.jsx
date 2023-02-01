@@ -106,6 +106,8 @@ function PageM4() {
   const location = useLocation();
 
   const data = location.state ? location.state.data : item ;
+  const ordDate = location.state ? location.state.date[0] : item.orderDate;
+  const delDate = location.state ? location.state.date[1] : item.deliveryDate;
 
 
   let filterItems;
@@ -185,8 +187,8 @@ function PageM4() {
           <ProductDetails
             style={{ padding: "15px 0px" }}
             key={data.id}
-            orderDate={data.orderDate}
-            deliveryDate={data.deliveryDate}
+            orderDate={ordDate}
+            deliveryDate={delDate}
             clientName={data.clientName}
             paymentMode={data.paymentMode}
             transactionID={data.transactionID}

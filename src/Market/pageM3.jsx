@@ -1,11 +1,8 @@
-import React from "react";
+import React , {useState} from "react";
 import SalesCardsList from "../components/salesCardsList";
 import SalesItemsList from "../components/salesItemsList";
-import { CssBaseline, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
+import { CssBaseline, Typography,Box,Container,Stack,Divider } from "@mui/material";
+
 
 const salesDetails = [
   {
@@ -68,19 +65,25 @@ const salesDetails = [
 ];
 
 const salesItems = [
-  "Rice",
-  "Jute",
-  "Fibre",
-  "Wheat",
-  "Millet",
-  "Peanut",
-  "Cashew",
+  "rice",
+  "wheat",
+  "ragi",
+  "apple",
+  "fibre",
+  "beans",
+  "carrot"
 ];
 
 function PageM3(props) {
-  // SALES DATA :-----------------------------------------------------------------------
 
-  // ------------------------------------------------------------------------------------
+  const [selected,setSelected] = useState();
+
+  const selctedValueHandler = value => {
+    setSelected(value);
+  }
+
+  const productDetails = salesDetails.filter( product => product.items.includes(selected));
+ 
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
@@ -123,17 +126,7 @@ function PageM3(props) {
           </Typography>
           <Divider flexItem />
           <Box>
-            <Typography
-              style={{
-                textAlign: "center",
-                textTransform: "uppercase",
-                fontWeight: "600",
-                fontSize: "32px",
-              }}
-            >
-              items
-            </Typography>
-            <SalesItemsList cards={salesItems} items={salesDetails} />
+            <SalesItemsList itemsList={salesItems} onSelectedValue={selctedValueHandler} />
           </Box>
 
           <Box sx={{ paddingTop: "20px", width: "75%" }}>
@@ -142,7 +135,7 @@ function PageM3(props) {
                 textAlign: "center",
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "32px",
+                fontSize: "28px",
               }}
             >
               date
@@ -210,7 +203,7 @@ function PageM3(props) {
             Filtered details
           </Typography>
           <Divider flexItem />
-          <SalesCardsList cards={salesDetails} />
+          <SalesCardsList cards={productDetails} />
         </Box>
       </Stack>
     </Container>

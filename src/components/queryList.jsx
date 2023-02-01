@@ -53,7 +53,7 @@ function Query(props) {
             textTransform: "uppercase",
           }}
         >
-          Request ID
+          Query ID
         </Typography>
         <Typography
           style={{
@@ -63,7 +63,7 @@ function Query(props) {
             borderRadius: "3px",
           }}
         >
-          {props.reqId}
+          {props.queryID}
         </Typography>
       </CardContent>
       <CardContent
@@ -84,7 +84,7 @@ function Query(props) {
             textTransform: "uppercase",
           }}
         >
-          Name
+          Query Name
         </Typography>
         <Typography
           style={{
@@ -95,7 +95,7 @@ function Query(props) {
             borderRadius: "3px",
           }}
         >
-          {props.name}
+          {props.queryName}
         </Typography>
       </CardContent>
       <CardContent
@@ -116,7 +116,7 @@ function Query(props) {
             textTransform: "uppercase",
           }}
         >
-          Phone Number
+          Date
         </Typography>
         <Typography
           style={{
@@ -127,72 +127,7 @@ function Query(props) {
             borderRadius: "3px",
           }}
         >
-          {props.phoneNo}
-        </Typography>
-      </CardContent>
-      <CardContent
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
-        }}
-      >
-        <Typography
-          style={{
-            width: "45%",
-            padding: "5px 5px 5px 10px",
-            backgroundColor: "#16e575",
-            borderRadius: "3px",
-            fontWeight: "600",
-            textTransform: "uppercase",
-          }}
-        >
-          Item Name
-        </Typography>
-        <Typography
-          style={{
-            width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
-            backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
-          }}
-        >
-          {props.itemName}
-        </Typography>
-      </CardContent>
-      <CardContent
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          columnGap: "20px",
-          padding: "10px 5px",
-          borderBottom: "2px solid",
-        }}
-      >
-        <Typography
-          style={{
-            width: "45%",
-            backgroundColor: "#16e575",
-            padding: "5px 5px 5px 10px",
-            borderRadius: "3px",
-            fontWeight: "600",
-            textTransform: "uppercase",
-          }}
-        >
-          Quantity
-        </Typography>
-        <Typography
-          style={{
-            width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
-            backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
-          }}
-        >
-          {props.itemQuantity}
+          {props.date}
         </Typography>
       </CardContent>
       <CardActions

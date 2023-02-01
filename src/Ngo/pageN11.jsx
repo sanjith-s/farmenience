@@ -6,44 +6,29 @@ import carrot from "../carrot.jpg";
 
 const content = [
   {
-    name: "Consumer name",
-    phno: 2484930933,
-    address: "no 323 , some street,  town, chennai-23232",
-    itemName: "wheat",
-    itemQuantity: "3 ",
-    itemPrice: 250,
-    regNo: "23.42.424",
-    img: wheat,
+    queryID: 100,
+    queryName: "What is the right crop to grow this season ?",
+    date: "14 Jan 2023"
   },
   {
-    name: "Consumer name",
-    phno: 134132414,
-    address: "no 323 , some street,  some town, mumbai-23232",
-    itemName: "carrot",
-    itemQuantity: 3,
-    itemPrice: 350,
-    regNo: "23.42.425",
-    img: carrot,
+    queryID: 101,
+    queryName: "What is the irrigation pattern to follow this season ?",
+    date:"11 Jan 2023"
   },
   {
-    name: "Consumer name",
-    phno: 2484930933,
-    address: "no 323 , some street,  town, chennai-23232",
-    itemName: "wheat",
-    itemQuantity: "3 ",
-    itemPrice: 250,
-    regNo: "23.42.424",
-    img: wheat,
+    queryID: 102,
+    queryName: "How to grow crops without expensive chemical fertilizers ?",
+    date: "13 Jan 2023"
   },
   {
-    name: "Consumer name",
-    phno: 134132414,
-    address: "no 323 , some street,  some town, mumbai-23232",
-    itemName: "carrot",
-    itemQuantity: 3,
-    itemPrice: 350,
-    regNo: "23.42.425",
-    img: carrot,
+    queryID: 103,
+    queryName: "Anyone willing to provide warehouse facilities for the produce in the farm ?",
+    date: "14 Jan 2023"
+  },
+  {
+    queryID: 104,
+    queryName: "How to apply for crop insurance ?",
+    date: "12 Jan 2023"
   },
 ];
 
@@ -87,12 +72,9 @@ function PageN11() {
             return (
               <queryList
                 key={index + 1}
-                reqId={req.regNo}
-                name={req.name}
-                phoneNo={req.phno}
-                itemName={req.itemName}
-                itemQuantity={req.itemQuantity}
-                data={req}
+                queryId={req.queryID}
+                queryName={req.queryName}
+                date={req.date}
               />
             );
           })}

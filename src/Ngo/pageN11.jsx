@@ -1,5 +1,5 @@
 import React from "react";
-import queryList from "../components/queryList";
+import QueryList from "../components/queryList";
 import { Box, Typography } from "@mui/material";
 import wheat from "../wheatimg.jpg";
 import carrot from "../carrot.jpg";
@@ -70,9 +70,9 @@ function PageN11() {
         >
           {content.map((req, index) => {
             return (
-              <queryList
+              <QueryList
                 key={index + 1}
-                queryId={req.queryID}
+                queryID={req.queryID}
                 queryName={req.queryName}
                 date={req.date}
               />

@@ -146,7 +146,7 @@ function Query(props) {
           onClick={viewRequest}
         >
           <Link
-            to="/M2"
+            to="/N12"
             state={{
               from: "Request details",
               data: props.data,

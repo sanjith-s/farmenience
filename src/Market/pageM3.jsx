@@ -7,8 +7,8 @@ import { CssBaseline, Typography,Box,Container,Stack,Divider } from "@mui/materi
 const salesDetails = [
   {
     id: "1",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
+    orderDate: new Date(2021,5,12),
+    deliveryDate: new Date( 2022,1,27),
     clientName: "Metta1",
     paymentMode: "Safe Payment",
     transactionID: "xxxyyyzzz",
@@ -22,8 +22,8 @@ const salesDetails = [
   },
   {
     id: "2",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
+    orderDate: new Date(2022,6,12),
+    deliveryDate: new Date( 2022,7,27),
     clientName: "Metta2",
     paymentMode: "Safe Payment",
     transactionID: "xxxyyyzzz",
@@ -36,8 +36,8 @@ const salesDetails = [
   },
   {
     id: "3",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
+    orderDate: new Date(2022,7,12),
+    deliveryDate: new Date( 2022,8,27),
     clientName: "Metta3",
     paymentMode: "Safe Payment",
     transactionID: "xxxyyyzzz",
@@ -50,8 +50,8 @@ const salesDetails = [
   },
   {
     id: "4",
-    orderDate: "21/12/2022",
-    deliveryDate: "27/12/2022",
+    orderDate: new Date(2022,8,12),
+    deliveryDate: new Date( 2022,9,27),
     clientName: "Metta4",
     paymentMode: "Safe Payment",
     transactionID: "xxxyyyzzz",
@@ -77,12 +77,26 @@ const salesItems = [
 function PageM3(props) {
 
   const [selected,setSelected] = useState();
+  const [ordDate,setOrdDate] = useState();
+  const [delDate,setDelDate] = useState();
 
   const selctedValueHandler = value => {
     setSelected(value);
   }
+  const ordDateHandler = (event) => {
+    setOrdDate(event.target.value);
+  }
+  const delDateHandler = (event) => {
+    setDelDate(event.target.value);
+  }
 
-  const productDetails = salesDetails.filter( product => product.items.includes(selected));
+  // ordDate.substr(5,5).substr(0,2) -> month of ordDate ;
+  // ordDate.substr(0,4) -> year of ordDate ;
+  // delDate.substr(5,5).substr(0,2) -> month of delDate;
+  // delDate.substr(0,4) -> year of delDate;
+
+  let productDetails;
+  ordDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && ordDate.substr(0,4) == product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() ) : delDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) == product.deliveryDate.getMonth() ) : productDetails = salesDetails.filter( product => product.items.includes(selected) )  ;
  
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -129,7 +143,7 @@ function PageM3(props) {
             <SalesItemsList itemsList={salesItems} onSelectedValue={selctedValueHandler} />
           </Box>
 
-          <Box sx={{ paddingTop: "20px", width: "75%" }}>
+          <Box sx={{ width: "75%" }}>
             <Typography
               style={{
                 textAlign: "center",
@@ -140,18 +154,20 @@ function PageM3(props) {
             >
               date
             </Typography>
-            <Box component="div">
+            <Box component="div" style={{marginTop:"10px",display:"flex",flexDirection:"column",rowGap:"28px"}}>
               <Typography
                 variant="h6"
                 style={{
                   display: "flex",
-                  columnGap: "3px",
+                  flexDirection:"column",
+                  rowGap: "8px",
                   justifyContent: "space-between",
-                  padding: "20px 0px",
+                  
                   fontWeight: "600",
+                  textTransform:"uppercase"
                 }}
               >
-                From :
+                ordered date :
                 <input
                   style={{
                     width: "75%",
@@ -161,6 +177,7 @@ function PageM3(props) {
                     textTransform: "uppercase",
                   }}
                   type="date"
+                  onChange={ordDateHandler}
                 ></input>
               </Typography>
 
@@ -168,13 +185,15 @@ function PageM3(props) {
                 variant="h6"
                 style={{
                   display: "flex",
-                  columnGap: "3px",
+                  flexDirection:"column",
+                  rowGap: "8px",
                   justifyContent: "space-between",
-                  padding: "20px 0px",
+                  
                   fontWeight: "600",
+                  textTransform: "uppercase",
                 }}
               >
-                To :
+                delivery date :
                 <input
                   style={{
                     width: "75%",
@@ -184,6 +203,7 @@ function PageM3(props) {
                     textTransform: "uppercase",
                   }}
                   type="date"
+                  onChange={delDateHandler}
                 ></input>
               </Typography>
             </Box>

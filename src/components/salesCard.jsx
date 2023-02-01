@@ -76,7 +76,7 @@ function SalesCard(props) {
                 ordered date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.ordDate}
+                {props.ordDate.toLocaleDateString()}
               </Typography>
             </Box>
             <Box
@@ -106,7 +106,7 @@ function SalesCard(props) {
                 delivery date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.delDate}
+                {props.delDate.toLocaleDateString()}
               </Typography>
             </Box>
             <Box

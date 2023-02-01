@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import { Box } from "@mui/material";
 import { Link } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
@@ -31,29 +31,39 @@ const PageN2 = () => {
   const [humidity, setHumidity] = useState(0);
   const [ph, setPh] = useState(0);
   const [rainfall, setRainfall] = useState(0);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
 
   function CheckNitrogen() {
-    if(nitrogen > 0 && nitrogen <= 100) {
+    if (nitrogen > 0 && nitrogen <= 100) {
       CheckPhosphorous();
     }
 
     else {
-      alert("Nitrogen value is invalid !");
+      setOpen1(true);
     }
   }
 
   function CheckPhosphorous() {
-    if(phosphorous > 0 && phosphorous <= 100) {
+    if (phosphorous > 0 && phosphorous <= 100) {
       CheckPotassium();
     }
 
     else {
-      alert("Phosphorous value is invalid !");
+      setOpen2(true);
     }
   }
 
   function CheckPotassium() {
-    if(potassium > 0 && potassium <= 100) {
+    if (potassium > 0 && potassium <= 100) {
       CheckTemp();
     }
 
@@ -63,7 +73,7 @@ const PageN2 = () => {
   }
 
   function CheckTemp() {
-    if(temp > 0 && temp <= 50) {
+    if (temp > 0 && temp <= 50) {
       CheckHumidity();
     }
 
@@ -73,7 +83,7 @@ const PageN2 = () => {
   }
 
   function CheckHumidity() {
-    if(humidity > 0 && nitrogen <= 100) {
+    if (humidity > 0 && nitrogen <= 100) {
       CheckPH();
     }
 
@@ -83,7 +93,7 @@ const PageN2 = () => {
   }
 
   function CheckPH() {
-    if(ph > 0 && ph <= 14) {
+    if (ph > 0 && ph <= 14) {
       CheckRainfall();
     }
 
@@ -93,7 +103,7 @@ const PageN2 = () => {
   }
 
   function CheckRainfall() {
-    if(rainfall > 0 && rainfall <= 1000) {
+    if (rainfall > 0 && rainfall <= 1000) {
       PredictCrop();
     }
 
@@ -104,25 +114,25 @@ const PageN2 = () => {
 
   function PredictCrop() {
     Axios.post("http://localhost:5000/ml_model/crop_recomendation", {
-        N: nitrogen,
-        P: phosphorous,
-        K: potassium,
-        temperature: temp,
-        humidity: humidity,
-        ph: ph,
-        rainfall: rainfall,
+      N: nitrogen,
+      P: phosphorous,
+      K: potassium,
+      temperature: temp,
+      humidity: humidity,
+      ph: ph,
+      rainfall: rainfall,
+    })
+      .then((response) => {
+        // if (response.data.message == "Success") {
+        //   navigate("/login");
+        // }
+        // alert(1)
+        alert(response.data)
       })
-        .then((response) => {
-          // if (response.data.message == "Success") {
-          //   navigate("/login");
-          // }
-          // alert(1)
-          alert(response.data)
-        })
-        .catch((res, err) => {
-          alert(2)
-          alert(res.response.data.message);
-        });
+      .catch((res, err) => {
+        alert(2)
+        alert(res.response.data.message);
+      });
   }
 
   return (
@@ -270,6 +280,116 @@ const PageN2 = () => {
           Predict
         </Button>
       </Box>
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

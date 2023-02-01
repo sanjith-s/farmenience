@@ -69,7 +69,7 @@ function M17() {
             fontWeight: "600",
           }}
         >
-          View Transaction History
+          Transaction History
         </Typography>
       </Box>
       <br></br>

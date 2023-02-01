@@ -14,7 +14,7 @@ import {
   Button,
   Container,
 } from "@mui/material";
-
+import {TextField} from '@mui/material';
 const itemsName1 = [
   "Query ID",
   "Query Type",
@@ -35,6 +35,7 @@ const itemsValue2 = ["lorem ssss", "", "", ""];
 const PageN12a = () => {
 
   const [open1, setOpen1] = React.useState(false);
+  const [open,setOpen] = React.useState(false);
   const [open1x, setOpen1x] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
@@ -145,6 +146,32 @@ const PageN12a = () => {
               </Stack>
             </CardContent>
           </Grid>
+        <Dialog
+        open={open}
+        keepMounted
+        onClose={()=>{setOpen(false)}}
+        aria-describedby="alert-dialog-slide-description"
+        >
+        <DialogTitle>Response to Ramesh</DialogTitle>
+        <DialogContent>
+              <Stack spacing={3}>
+                 <TextField
+                 autoFocus
+                 margin="dense"
+                 id="message"
+                 label="Response message"
+                 multiline
+                 rows={4}
+                 defaultValue="Enter Reponse message here"
+                 />
+              </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
+          <Button onClick={()=>{setOpen(false)}}>Send</Button>
+        </DialogActions>
+      </Dialog>
+       
           <Grid container item xs={6} direction="column" >
             <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
               <Stack>
@@ -185,6 +212,27 @@ const PageN12a = () => {
         </Grid>
 
       </Box>
+      <Dialog
+        open={open2}
+        onClose={()=>{setOpen2(false)}}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle>
+          {"Sender Details"}
+        </DialogTitle>
+        <DialogContent>
+          <Stack direction="row" spacing={2}>
+          <Typography variant="h6">
+            {"Ramesh"}
+          </Typography>
+          <Button>Show Profile</Button>
+          </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={()=>{setOpen2(false)}}>Close</Button>
+        </DialogActions>
+      </Dialog>
       <Box sx={{ display: "flex", columnGap: "50px" }}>
         <Button onClick={handleClickOpen1}
           variant="contained"
@@ -277,7 +325,7 @@ const PageN12a = () => {
             </Button>
           </DialogActions>
         </Dialog> */}
-        <Button onClick={handleClickOpen3}
+        <Button onClick={()=>{setOpen(true)}}
           variant="contained"
           style={{
             backgroundColor: "green",
@@ -285,11 +333,7 @@ const PageN12a = () => {
             fontSize: "18px",
           }}
         >
-          <Link
-            to="/N12a"
-            style={{ textDecoration: "none" }}
-          >
-            <Typography
+                      <Typography
               style={{
                 color: "#ffffff",
                 fontWeight: "600",
@@ -298,7 +342,6 @@ const PageN12a = () => {
             >
               Respond
             </Typography>
-          </Link>
         </Button>
       </Box>
     </Box>

@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
-import { Button, Dialog, DialogTitle, DialogContent, DialogContentText,DialogActions } from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import { Box } from "@mui/material";
 import { Link } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
@@ -31,14 +31,15 @@ const PageN2 = () => {
   const [humidity, setHumidity] = useState(0);
   const [ph, setPh] = useState(0);
   const [rainfall, setRainfall] = useState(0);
-  const [open1, setOpen1] = React.useState(false);
-
-  const handleClickOpen1 = () => {
-    setOpen1(true);
-  };
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
 
   const handleClose1 = () => {
     setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
   };
 
   function CheckNitrogen() {
@@ -47,20 +48,7 @@ const PageN2 = () => {
     }
 
     else {
-      // alert("Nitrogen value is invalid !")
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
+      setOpen1(true);
     }
   }
 
@@ -70,7 +58,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("Phosphorous value is invalid !");
+      setOpen2(true);
     }
   }
 
@@ -292,6 +280,116 @@ const PageN2 = () => {
           Predict
         </Button>
       </Box>
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Nitrogen value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

@@ -1,34 +1,50 @@
 import React, { useState } from "react";
-import { Box, Card, TextField, Typography } from "@mui/material";
+import { Box, Card, TextField, Typography, Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 function UserDetails(props) {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+
   const [address, setAddress] = useState(props.userAddress);
   const addressHandler = (event) => {
     let newAddress = event.target.value;
-    if(newAddress.length >=1)
+    if (newAddress.length >= 1)
       setAddress(newAddress);
     else {
-      alert('Address field is empty');
+      setOpen1(true);
     }
   };
 
   const [name, setName] = useState(props.userName);
   const nameHandler = (event) => {
     let newName = event.target.value;
-    if(newName.length >= 1)
+    if (newName.length >= 1)
       setName(newName);
     else {
-      alert('Name field is empty');
+      setOpen2(true);
     }
   };
 
   const [number, setNumber] = useState(props.userNumber);
   const numberHandler = (event) => {
     let newNumber = event.target.value;
-    if(newNumber.length >= 1)
+    if (newNumber.length >= 1)
       setNumber(newNumber);
     else {
-      alert('Number field is empty');
+      setOpen3(true);
     }
   };
 
@@ -123,6 +139,49 @@ function UserDetails(props) {
           }
         />
       </Box>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Address field is empty
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Name field is empty
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Number field is empty
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose3}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
     </Card>
   );
 }

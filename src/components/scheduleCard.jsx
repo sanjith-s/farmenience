@@ -30,7 +30,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Cookies from 'js-cookie';
@@ -307,7 +306,7 @@ const ScheduleCard = (props) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Please check network
+          Please check network connection
         </DialogTitle>
         <DialogActions>
           <Button onClick={handleClose2}>Ok</Button>

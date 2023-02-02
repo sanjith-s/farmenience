@@ -10,7 +10,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -228,7 +227,7 @@ const QueryBox = (props) => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    Please Check Network
+                    Please Check network connection
                 </DialogTitle>
                 <DialogActions>
                     <Button onClick={handleClose3}>Ok</Button>
@@ -256,7 +255,7 @@ const QueryBox = (props) => {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    Please Check Network
+                    Please Check network connection
                 </DialogTitle>
                 <DialogActions>
                     <Button onClick={handleClose5}>Ok</Button>

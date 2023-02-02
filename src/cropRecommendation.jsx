@@ -22,7 +22,7 @@ import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
 //import Crop from "./components/cropML";
 
-const PageN2 = () => {
+const CropRec = () => {
 
   const [nitrogen, setNitrogen] = useState(0);
   const [phosphorous, setPhosphorous] = useState(0);
@@ -33,13 +33,38 @@ const PageN2 = () => {
   const [rainfall, setRainfall] = useState(0);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
-
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
+  const [open7, setOpen7] = useState(false);
+  
   const handleClose1 = () => {
     setOpen1(false);
   };
 
   const handleClose2 = () => {
     setOpen2(false);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+
+  const handleClose4 = () => {
+    setOpen4(false);
+  };
+
+  const handleClose5 = () => {
+    setOpen5(false);
+  };
+
+  const handleClose6 = () => {
+    setOpen6(false);
+  };
+
+  const handleClose7 = () => {
+    setOpen7(false);
   };
 
   function CheckNitrogen() {
@@ -68,7 +93,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("Potassium value is invalid !");
+      setOpen3(true);
     }
   }
 
@@ -78,7 +103,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("Temperature value is invalid !");
+      setOpen4(true);
     }
   }
 
@@ -88,7 +113,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("Humidity value is invalid !");
+      setOpen5(true);
     }
   }
 
@@ -98,7 +123,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("pH value is invalid !");
+      setOpen6(true);
     }
   }
 
@@ -108,7 +133,7 @@ const PageN2 = () => {
     }
 
     else {
-      alert("Rainfall value is invalid !");
+      setOpen7(true);
     }
   }
 
@@ -280,32 +305,6 @@ const PageN2 = () => {
           Predict
         </Button>
       </Box>
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
 
       <Dialog
         open={open1}
@@ -322,76 +321,90 @@ const PageN2 = () => {
       </Dialog>
 
       <Dialog
-        open={open1}
-        onClose={handleClose1}
+        open={open2}
+        onClose={handleClose2}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
+          Phosphorous value is invalid
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
+          <Button onClick={handleClose2}>Ok</Button>
         </DialogActions>
       </Dialog>
 
       <Dialog
-        open={open1}
-        onClose={handleClose1}
+        open={open3}
+        onClose={handleClose3}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
+          Potassium value is invalid
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
+          <Button onClick={handleClose3}>Ok</Button>
         </DialogActions>
       </Dialog>
 
       <Dialog
-        open={open1}
-        onClose={handleClose1}
+        open={open4}
+        onClose={handleClose4}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
+          Temperature value is invalid
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
+          <Button onClick={handleClose4}>Ok</Button>
         </DialogActions>
       </Dialog>
 
       <Dialog
-        open={open1}
-        onClose={handleClose1}
+        open={open5}
+        onClose={handleClose5}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
+          Humidity value is invalid
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
+          <Button onClick={handleClose5}>Ok</Button>
         </DialogActions>
       </Dialog>
 
       <Dialog
-        open={open1}
-        onClose={handleClose1}
+        open={open6}
+        onClose={handleClose6}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
+          pH value is invalid
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
+          <Button onClick={handleClose6}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open7}
+        onClose={handleClose7}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Rainfall value is invalid
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose7}>Ok</Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 };
 
-export default PageN2;
+export default CropRec;

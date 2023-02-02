@@ -30,8 +30,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
-
+import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Cookies from 'js-cookie';
@@ -57,6 +56,22 @@ const ScheduleCard = (props) => {
   const [crops, setCrops] = React.useState("");
   const [reason, setReason] = React.useState("");
   const [ngo, setNgo] = useState("Select");
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+
   const Reset = () => {
     setCrops("");
     setDetails("");
@@ -81,16 +96,16 @@ const ScheduleCard = (props) => {
       then((response) => {
         console.log(response);
         if (response.data.message === 'Meet Added, Waiting for NGO Reply') {
-          alert('Meet Added, Waiting for NGO Reply');
+          setOpen1(true);
           navigate('../N6');
         }
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
+          setOpen2(true);
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert('Login error');
+          setOpen3(true);
           navigate('../login')
         }
         else {
@@ -270,6 +285,48 @@ const ScheduleCard = (props) => {
           Submit
         </Button>
       </Box>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Meet added. Waiting for NGO reply
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Please check network
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Login Error
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose3}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </React.Fragment>
   );
 };

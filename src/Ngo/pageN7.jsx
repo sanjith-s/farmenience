@@ -58,6 +58,8 @@ const PageN7 = () => {
   });
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
+
+
   const validate = () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
     setOpen(true);
@@ -65,6 +67,7 @@ const PageN7 = () => {
       setOpen2(true);
     }
   }
+  
   const postQuery = () => {
     let token = Cookies.get('token');
       Axios.post('http://localhost:5000/postquery', {
@@ -169,6 +172,7 @@ const PageN7 = () => {
               style={{
                 color: "blue",
                 fontWeight: "600",
+
                 fontSize: "16px",
               }}
             >

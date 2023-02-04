@@ -93,7 +93,7 @@ function App() {
             {/* <Route path="/N12" element={<PageN12 />} /> */}
             <Route path="/N12a" element={<PageN12a />} />
             <Route path="/N13" element={<PageN13 />} />
-            {/* <Route path="/N14" element={<PageN14 />} /> */}
+            <Route path="/N14" element={<PageN14 />} />
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
             <Route path="/cal" element={<Calender />} />

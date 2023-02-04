@@ -41,18 +41,36 @@ const PageN7 = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
+
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+
   const handleClickOpen2 = () => {
     setOpen2(true);
   };
+
   const handleClose2 = () => {
     setOpen2(false);
   };
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+
+  const handleClose4 = () => {
+    setOpen4(false);
+  };
+
+  const handleClose5 = () => {
+    setOpen5(false);
+  };
+
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -62,7 +80,7 @@ const PageN7 = () => {
 
   const validate = () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
-    setOpen(true);
+      setOpen(true);
     } else {
       setOpen2(true);
     }
@@ -70,29 +88,29 @@ const PageN7 = () => {
   
   const postQuery = () => {
     let token = Cookies.get('token');
-      Axios.post('http://localhost:5000/postquery', {
-        subject: subject,
-        description: desc
-      }, { headers: { tokenstring: token } }).
-        then((response) => {
-          console.log(response);
-          if (response.data.message === 'Query Added Successfully') {
-            alert('Query Added Successfully');
-            navigate('../N1');
-          }
-        })
-        .catch((res) => {
-          if (res.response.data.message === 'Error in connection') {
-            alert('Please Check Network');
-          }
-          else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-            alert('Login error');
-            navigate('../login')
-          }
-          else {
-            alert(res.response.data.message);
-          }
-        })
+    Axios.post('http://localhost:5000/postquery', {
+      subject: subject,
+      description: desc
+    }, { headers: { tokenstring: token } }).
+      then((response) => {
+        console.log(response);
+        if (response.data.message === 'Query Added Successfully') {
+          setOpen1(true);
+          navigate('../N1');
+        }
+      })
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          setOpen2(true);
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          setOpen3(true);
+          navigate('../login')
+        }
+        else {
+          alert(res.response.data.message);
+        }
+      })
   }
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -158,29 +176,34 @@ const PageN7 = () => {
           </React.Fragment>
         </Container>
         <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Please check subject and description1. Subject should be of minimum length 1 and maximum length 502. Description should be of minimum length 1 and maximum length 500"}
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>
-            <Typography
-              style={{
-                color: "blue",
-                fontWeight: "600",
-
-                fontSize: "16px",
-              }}
-            >
-              Ok
-            </Typography>
-          </Button>
-        </DialogActions>
-      </Dialog>
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Please check subject and description"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              1. Subject should be of minimum length 1 and maximum length 50 <br></br>
+              2. Description should be of minimum length 1 and maximum length 500
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose2}>
+              <Typography
+                style={{
+                  color: "blue",
+                  fontWeight: "600",
+                  fontSize: "16px",
+                }}
+              >
+                Ok
+              </Typography>
+            </Button>
+          </DialogActions>
+        </Dialog>
         <Dialog
           open={open}
           TransitionComponent={Transition}
@@ -285,6 +308,49 @@ const PageN7 = () => {
           Home Page
         </Button>
       </Box>
+
+      <Dialog
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Query Added Successfully
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose3}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open4}
+        onClose={handleClose4}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Please check network connection
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose4}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open5}
+        onClose={handleClose5}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Login Error
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose5}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
     </div>
   );
 };

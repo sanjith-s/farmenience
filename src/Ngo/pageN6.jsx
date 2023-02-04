@@ -5,7 +5,7 @@ import farmImg from "../images/farm_land.jpg";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import { Box } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { TextField } from "@mui/material";
@@ -22,7 +22,18 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function AllRequest() {
   const [listOfRequests, setListOfRequests] = useState([]);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const navigate = useNavigate();
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
   useEffect(() => {
     let token = Cookies.get('token');
     Axios.get('http://localhost:5000/getmeet', { headers: { tokenstring: token } }).
@@ -31,10 +42,10 @@ function AllRequest() {
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
+          setOpen1(true);
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert('Login error');
+          setOpen2(true);
           navigate('../login')
         }
       })
@@ -130,6 +141,35 @@ function AllRequest() {
           Home Page
         </Button>
       </Box>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Please check network connection
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Login Error
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
     </div>
   );
 }

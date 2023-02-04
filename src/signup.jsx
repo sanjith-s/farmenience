@@ -13,6 +13,9 @@ import {
   Select,
   MenuItem,
   FormControl,
+  Dialog,
+  DialogTitle,
+  DialogActions
 } from "@mui/material";
 
 function Signup() {
@@ -21,6 +24,11 @@ function Signup() {
   const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
   const [type, setType] = useState("Farmer");
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+
   const [signupdata, setsignupdata] = useState({
     email: "",
     password: "",
@@ -41,6 +49,22 @@ function Signup() {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
 
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
+
+  const handleClose4 = () => {
+    setOpen4(false);
+  };
+
   const submit = (event) => {
     event.preventDefault();
     //const token = captchaRef.current.getValue();
@@ -53,15 +77,15 @@ function Signup() {
     if (signupdata.password === signupdata.confpass) passChk = 1;
 
     if (!emailChk) {
-      alert("Invalid Email Address");
+      setOpen1(true);
       return;
     }
     if (!passChk) {
-      alert("Passwords donot match");
+      setOpen2(true);
       return;
     }
 
-    alert("Validation successful");
+    setOpen3(true);
 
     if (
       signupdata.phone.length == 10 &&
@@ -90,7 +114,7 @@ function Signup() {
           alert(res.response.data.message);
         });
     } else {
-      alert("Signup not correct !");
+      setOpen4(true);
     }
   };
 
@@ -348,6 +372,62 @@ function Signup() {
       >
         Submit
       </Button>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Invalid email address
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Passwords do not match
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Validation successful
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose3}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open4}
+        onClose={handleClose4}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Signup not correct
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose4}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

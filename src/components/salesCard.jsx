@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 function SalesCard(props) {
   // const date = props.date.toLocaleDateString();
 
+  const ordDate = props.ordDate.toLocaleDateString();
+  const delDate = props.delDate.toLocaleDateString();
+
   return (
     <React.Fragment>
       <Box
@@ -76,7 +79,7 @@ function SalesCard(props) {
                 ordered date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.ordDate}
+                {ordDate}
               </Typography>
             </Box>
             <Box
@@ -106,7 +109,7 @@ function SalesCard(props) {
                 delivery date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.delDate}
+                {delDate}
               </Typography>
             </Box>
             <Box
@@ -164,11 +167,13 @@ function SalesCard(props) {
                 backgroundColor: "green",
               }}
             >
+              
               <Link
             to="/M4"
             state={{
               from: "sales details",
               data: props.data,
+              date:[ordDate,delDate]  
             }}
             style={{ textDecoration: "none" }}
           >

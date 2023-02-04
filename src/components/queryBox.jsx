@@ -16,15 +16,20 @@ import { useNavigate } from "react-router-dom";
 const QueryBox = (props) => {
     const [open, setOpen] = useState(false);
     const [open1, setOpen1] = React.useState(false);
+    const [open2, setOpen2] = useState(false);
+    const [open3, setOpen3] = useState(false);
+    const [open4, setOpen4] = useState(false);
+    const [open5, setOpen5] = useState(false);
+    const [open6, setOpen6] = useState(false);
     const [open1x, setOpen1x] = React.useState(false);
     const navigate = useNavigate();
     const [subject, setSubject] = useState(props.Subject);
     const [desc, setDesc] = useState(props.Desc);
-    
+
     const handleClickOpen = () => {
         setOpen(true);
     };
-   
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -41,12 +46,12 @@ const QueryBox = (props) => {
             then((response) => {
                 console.log(response);
                 if (response.data.message === 'Deleted Successfully') {
-                    alert('Deleted Successfully');
+                    setOpen2(true);
                 }
             })
             .catch((res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    alert('Please Check Network');
+                    setOpen3(true);
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
                     alert(res.response.data.message);
@@ -59,6 +64,26 @@ const QueryBox = (props) => {
         setOpen1(false);
     };
 
+    const handleClose2 = () => {
+        setOpen2(false);
+    };
+
+    const handleClose3 = () => {
+        setOpen3(false);
+    };
+
+    const handleClose4 = () => {
+        setOpen4(false);
+    };
+
+    const handleClose5 = () => {
+        setOpen5(false);
+    };
+
+    const handleClose6 = () => {
+        setOpen6(false);
+    };
+
     const editQuery = () => {
         let token = Cookies.get('token');
         Axios.put('http://localhost:5000/editquery', {
@@ -69,16 +94,16 @@ const QueryBox = (props) => {
             then((response) => {
                 console.log(response);
                 if (response.data.message === 'Edited Successfully') {
-                    alert('Edited Successfully');
+                    setOpen4(true);
                     navigate('../N1');
                 }
             })
             .catch((res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    alert('Please Check Network');
+                    setOpen5(true);
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    alert('Login error');
+                    setOpen6(true);
                     navigate('../login')
                 }
                 else {
@@ -87,6 +112,7 @@ const QueryBox = (props) => {
             })
         setOpen(false);
     }
+
     const DeleteQuery = () => {
         <Dialog
             open={open1}
@@ -106,6 +132,7 @@ const QueryBox = (props) => {
             </DialogActions>
         </Dialog>
     }
+
     return (
         <>
             <Card id="card-n1">
@@ -179,6 +206,75 @@ const QueryBox = (props) => {
                     </Dialog>
                 </div>
             </Card>
+            <Dialog
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Deleted Successfully
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose2}>Ok</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog
+                open={open3}
+                onClose={handleClose3}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Please Check network connection
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose3}>Ok</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog
+                open={open4}
+                onClose={handleClose4}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Edited Successfully
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose4}>Ok</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog
+                open={open5}
+                onClose={handleClose5}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Please Check network connection
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose5}>Ok</Button>
+                </DialogActions>
+            </Dialog>
+
+            <Dialog
+                open={open6}
+                onClose={handleClose6}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Login error
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose6}>Ok</Button>
+                </DialogActions>
+            </Dialog>
         </>
     )
 }

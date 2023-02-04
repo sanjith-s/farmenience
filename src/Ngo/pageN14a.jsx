@@ -17,20 +17,29 @@ import {
 
 const itemsName1 = [
   "Appointment ID",
-  "Appointment Type",
-  "Location",
-  "Purpose of Appointment",
+  "Appointment Name",
+  "Soil Details",
+  "Crop Details",
+  "Client Name", 
+  "Date", 
+  "Time", 
+  "Location"
 ];
 
-const itemsName2 = ["Client Name", "", "Date of Appointment", "Timing"];
+const itemsName2 = [];
 
 const itemsValue1 = [
-  "lorem ipsum",
-  "lorem ipsum",
-  "lorem ipsum",
-  "lorem ipsum",
+  1,
+  "To know pH level of soil",
+  "Alluvial Soil",
+  "Wheat, Sugarcane",
+  "Mohan", 
+  "29 November 2022" ,
+  "10:30 PM", 
+  "Chennai"
 ];
-const itemsValue2 = ["lorem ipsum", "", "29 November 2022", "12:30 PM IST"];
+
+const itemsValue2 = [];
 
 const PageM19 = () => {
   const [open1, setOpen1] = React.useState(false);
@@ -89,9 +98,9 @@ const PageM19 = () => {
           flexDirection: "column",
           border: "3px solid",
           justifyContent: "center",
-          alignItems: "center",
+          // alignItems: "center",
           rowGap: "20px",
-          padding: "30px 0px",
+          padding: "30px 30px",
           backgroundColor: "#7bff96",
           margin: "26px",
           borderRadius: "8px",
@@ -99,14 +108,14 @@ const PageM19 = () => {
       >
         <Box
           sx={{
-            width: "1000px",
+            width: "700px",
             borderRadius: "8px",
             border: "4px solid #000",
             backgroundColor: "#fff",
           }}
         >
           <Grid container spacing={2}>
-            <Grid container item xs={6} direction="column">
+            <Grid container item xs={12} direction="column">
               <CardContent
                 style={{ padding: "15px 25px", borderRadius: "8px" }}
               >
@@ -186,7 +195,7 @@ const PageM19 = () => {
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ display: "flex", columnGap: "50px" }}>
+        <Box sx={{ display: "flex", columnGap: "50px", padding: "0px 300px" }}>
           <Button
             onClick={handleClickOpen1}
             variant="contained"

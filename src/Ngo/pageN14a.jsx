@@ -17,20 +17,20 @@ import {
 
 const itemsName1 = [
   "Appointment ID",
-  "Appointment Type",
-  "Location",
-  "Purpose of Appointment",
+  "Appointment Name",
+  "Soil Details",
+  "Crop Details"
 ];
 
-const itemsName2 = ["Client Name", "", "Date of Appointment", "Timing"];
+const itemsName2 = ["Client Name", "Date", "Time", "Location"];
 
 const itemsValue1 = [
-  "lorem ipsum",
-  "lorem ipsum",
-  "lorem ipsum",
-  "lorem ipsum",
+  1,
+  "To know pH level of soil",
+  "Alluvial Soil",
+  "Wheat, Sugarcane"
 ];
-const itemsValue2 = ["lorem ipsum", "", "29 November 2022", "12:30 PM IST"];
+const itemsValue2 = ["Mohan", "29 November 2022" ,"10:30 PM", "Chennai"];
 
 const PageM19 = () => {
   const [open1, setOpen1] = React.useState(false);

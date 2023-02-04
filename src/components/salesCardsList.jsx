@@ -36,6 +36,7 @@ function SalesCardsList(props) {
               delDate={item.deliveryDate}
               items={item.items}
               data={item}
+              // onDeleteHandler={props.onDeleteHandler}
             />
           </Grid>
         ))}

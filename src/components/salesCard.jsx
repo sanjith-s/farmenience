@@ -173,7 +173,8 @@ function SalesCard(props) {
             state={{
               from: "sales details",
               data: props.data,
-              date:[ordDate,delDate]  
+              date:[ordDate,delDate],
+              // onDeleteHandler: [props.onDeleteHandler,] , 
             }}
             style={{ textDecoration: "none" }}
           >

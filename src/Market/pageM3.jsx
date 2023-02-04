@@ -1,17 +1,18 @@
-import React , {useState} from "react";
+import React , {useState,useRef} from "react";
 import SalesCardsList from "../components/salesCardsList";
 import SalesItemsList from "../components/salesItemsList";
 import { CssBaseline, Typography,Box,Container,Stack,Divider } from "@mui/material";
+import {useLocation } from "react-router-dom";
 
 
-const salesDetails = [
+const orders = [
   {
     id: "1",
     orderDate: new Date(2021,5,12),
     deliveryDate: new Date( 2022,1,27),
     clientName: "Metta1",
     paymentMode: "Safe Payment",
-    transactionID: "xxxyyyzzz",
+    transactionID: "111",
     remarks: "xyz",
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
@@ -26,7 +27,7 @@ const salesDetails = [
     deliveryDate: new Date( 2022,7,27),
     clientName: "Metta2",
     paymentMode: "Safe Payment",
-    transactionID: "xxxyyyzzz",
+    transactionID: "222",
     remarks: "xyz",
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
@@ -40,7 +41,7 @@ const salesDetails = [
     deliveryDate: new Date( 2022,8,27),
     clientName: "Metta3",
     paymentMode: "Safe Payment",
-    transactionID: "xxxyyyzzz",
+    transactionID: "333",
     remarks: "xyz",
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
@@ -54,7 +55,7 @@ const salesDetails = [
     deliveryDate: new Date( 2022,9,27),
     clientName: "Metta4",
     paymentMode: "Safe Payment",
-    transactionID: "xxxyyyzzz",
+    transactionID: "444",
     remarks: "xyz",
     clientEmailId: "chumma@gmail.com",
     clientPh: 1111111111,
@@ -79,24 +80,62 @@ function PageM3(props) {
   const [selected,setSelected] = useState();
   const [ordDate,setOrdDate] = useState();
   const [delDate,setDelDate] = useState();
+  // const [date, setDate] = useState({ordDate:"" , delDate:"" });
+  const [salesDetails,setSalesDetails] = useState(orders);
+  // let salesDetails;
 
   const selctedValueHandler = value => {
     setSelected(value);
   }
+  // let ordDate = useRef();
+  // let delDate = useRef();
+
   const ordDateHandler = (event) => {
+    // ordDate.current = event.target.value;
     setOrdDate(event.target.value);
+    // setDate({...date , ordDate: event.target.value })
+
   }
   const delDateHandler = (event) => {
+    // delDate.current = event.target.value;
     setDelDate(event.target.value);
+    // setDate({...date , delDate: event.target.value })
   }
 
+  // DELETETION :
+  
+  // const location = useLocation();
+
+  // if (location.state){
+  //   setSalesDetails (() => { return orders.filter( order => {
+  //     return order.transactionID != location.state.data ;
+  //   }) });
+  // }
+
+  // let temp = orders.filter( order => {
+  //   return order.transactionID != "" });
+  // setSalesDetails ( temp);
+   
+
+
+  // FILTER :
   // ordDate.substr(5,5).substr(0,2) -> month of ordDate ;
   // ordDate.substr(0,4) -> year of ordDate ;
   // delDate.substr(5,5).substr(0,2) -> month of delDate;
   // delDate.substr(0,4) -> year of delDate;
 
   let productDetails;
-  ordDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && ordDate.substr(0,4) == product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() ) : delDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) == product.deliveryDate.getMonth() ) : productDetails = salesDetails.filter( product => product.items.includes(selected) )  ;
+  ordDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && ordDate.substr(0,4) >= product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() ) : delDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) <= product.deliveryDate.getMonth() ) : productDetails = salesDetails.filter( product => product.items.includes(selected) )  ;
+
+  // if( ordDate){
+  //   productDetails = salesDetails.filter( product =>  {return product.items.includes(selected) && ordDate.substr(0,4) == product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() });
+  // }
+  // else if(delDate){
+  //   productDetails = salesDetails.filter( product =>  { return product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) == product.deliveryDate.getMonth()} );
+  // }
+  // else{
+  //   productDetails = salesDetails.filter( product => { return product.items.includes(selected) } );
+  // }
  
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
@@ -177,6 +216,7 @@ function PageM3(props) {
                     textTransform: "uppercase",
                   }}
                   type="date"
+                  // ref = {ordDate}
                   onChange={ordDateHandler}
                 ></input>
               </Typography>
@@ -203,6 +243,7 @@ function PageM3(props) {
                     textTransform: "uppercase",
                   }}
                   type="date"
+                  // ref={delDate}
                   onChange={delDateHandler}
                 ></input>
               </Typography>
@@ -223,7 +264,7 @@ function PageM3(props) {
             Filtered details
           </Typography>
           <Divider flexItem />
-          <SalesCardsList cards={productDetails} />
+          <SalesCardsList cards={productDetails}  />
         </Box>
       </Stack>
     </Container>

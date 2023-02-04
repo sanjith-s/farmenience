@@ -4,6 +4,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
+import {Link,useLocation } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -19,6 +20,7 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
+import { data } from "autoprefixer";
 
 const itemsName = [
   "name",
@@ -30,6 +32,9 @@ const itemsName = [
 ];
 
 const SellerNegotiate = (props) => {
+
+  let data = props.data;
+  
   const itemsValue = [
     props.name,
     props.phno,
@@ -242,12 +247,24 @@ const SellerNegotiate = (props) => {
           }}
         >
           <Box>
-            <IconButton>
+          <IconButton>
+            <Link
+              to="/M1"
+              state={{
+                data: data,
+                regNo : props.regNo,
+                quantity: quantity,
+                price: limit,
+                key:'accept',
+              }}
+              style={{ textDecoration: "none" }}  
+            >
               <ThumbUpIcon
                 variant="contained"
                 onClick={handleSubmit}
                 style={{ color: "green", fontSize: "30px" }}
               />
+            </Link>
             </IconButton>
             <Typography
               style={{
@@ -261,10 +278,19 @@ const SellerNegotiate = (props) => {
           </Box>
           <Box>
             <IconButton>
+            <Link
+              to="/M1"
+              state={{
+                data: props.data,
+              }}
+              style={{ textDecoration: "none" }}  
+            >
               <ThumbDownIcon
                 variant="contained"
                 style={{ color: "lightgreen", fontSize: "30px" }}
               />
+            </Link>
+              
             </IconButton>
             <Typography
               style={{

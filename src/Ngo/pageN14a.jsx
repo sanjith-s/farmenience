@@ -203,8 +203,8 @@ const PageM19 = () => {
         <img
               src={file}
               style={{
-                width: "80%",
-                height: "80%",
+                width: "90%",
+                height: "90%",
                 marginLeft:"2%",
                 objectFit: "fill",
                 borderRadius: "50px",
@@ -237,21 +237,14 @@ const PageM19 = () => {
                        onClick={handleClickOpen3}
                        variant="contained"
                        style={{
+                         color:"white",
                          backgroundColor: "green",
                          fontWeight: "600",
                          fontSize: "18px",
                        }}
                      >
-                       <Link to="/N14b" style={{ textDecoration: "none" }}>
-                         <Typography
-                           style={{
-                             color: "#ffffff",
-                             fontWeight: "600",
-                             fontSize: "16px",
-                           }}
-                         >
+                       <Link to="/N14b" style={{ textDecoration: "none",color:"white" }}>                         
                            Reschedule
-                         </Typography>
                        </Link>
                      </Button>
             </Stack>

@@ -113,16 +113,7 @@ function PageM10() {
                     </Link>
                 </Button>
             </Box>
-            <Typography variant="h5">Farmer's land</Typography>
-            <img
-              src={file}
-              style={{
-                width: "50%",
-                height: "50%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            />
+            
         </Container>
     );
 }

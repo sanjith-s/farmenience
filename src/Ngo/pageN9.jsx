@@ -12,38 +12,32 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 
+const handleClose1 = () => {
+  setOpen1(false);
+};
+
+const handleClose2 = () => {
+  setOpen2(false);
+};
+
+const handleClose3 = () => {
+  setOpen3(false);
+};
+
+const handleClose4 = () => {
+  setOpen4(false);
+};
+
+const handleClose5 = () => {
+  setOpen5(false);
+};
+
+const handleClose6 = () => {
+  setOpen6(false);
+};
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-
-  const handleClose6 = () => {
-    setOpen6(false);
-  };
 
   return (
     <div
@@ -175,6 +169,13 @@ export default function BasicTabs() {
       </div>
     );
   });
+
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
 
   return (
     <>

@@ -20,7 +20,7 @@ const PageM2 = () => {
   const content = location.state ? location.state.data : data;
 
   return (
-    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }}>
+    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen", width: "100%", display: "flex", flexDirection: "column" }}>
       <Typography
         style={{
           textTransform: "uppercase",
@@ -31,7 +31,7 @@ const PageM2 = () => {
           border: "3px solid",
           borderRadius: "20px",
           width: "10em",
-          backgroundColor: "lightskyblue"
+          backgroundColor: "lightskyblue",
         }}
       >
         {location.state ? location.state.from : "seller"}

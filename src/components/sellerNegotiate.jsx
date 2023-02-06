@@ -109,7 +109,8 @@ const SellerNegotiate = (props) => {
               marginBottom: "30px",
               width: "fit-content",
               padding: "0px 5px",
-              border: "3px solid"
+              border: "3px solid",
+              borderRadius: "20px",
             }}
           >
             <Typography
@@ -128,7 +129,7 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em" }}>
+          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -155,7 +156,7 @@ const SellerNegotiate = (props) => {
                       display: "flex",
                       width: "60%",
                       justifyContent: "flex-start",
-                      padding: "0px 50px"
+                      padding: "0px 50px",
                     }}
                   >
                     <Typography
@@ -179,7 +180,7 @@ const SellerNegotiate = (props) => {
           <img
             src={props.img}
             alt="wheat img"
-            width="280px"
+            width="300px"
             style={{
               border: "5px solid darkgreen",
               borderRadius: "16px",
@@ -195,7 +196,8 @@ const SellerNegotiate = (props) => {
               flexDirection: "column",
               rowGap: "20px",
               alignItems: "center",
-              border: "3px solid"
+              border: "3px solid",
+              borderRadius: "20px",
             }}
           >
             <Typography variant="h6" style={{ textTransform: "uppercase" }}>
@@ -260,7 +262,7 @@ const SellerNegotiate = (props) => {
                 price: limit,
                 key:'accept',
               }}
-              style={{ textDecoration: "none", border: "5px solid black", borderRadius: "30%" }}  
+              style={{ textDecoration: "none" }}  
             >
               <ThumbUpIcon
                 variant="contained"
@@ -286,7 +288,7 @@ const SellerNegotiate = (props) => {
               state={{
                 data: props.data,
               }}
-              style={{ textDecoration: "none", border: "5px solid black", borderRadius: "30%" }}  
+              style={{ textDecoration: "none" }}  
             >
               <ThumbDownIcon
                 variant="contained"

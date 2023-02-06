@@ -53,9 +53,9 @@ import N10Navbar from "./components/n10Navbar";
 function App() {
   return (
     <div>
-        <Navbar />
-        {/* <N10Navbar/> */}
-      <main className="main-content" style={{marginTop:"2%"}}>
+      <Navbar />
+      {/* <N10Navbar/> */}
+      <main className="main-content" style={{ marginTop: "2%" }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />

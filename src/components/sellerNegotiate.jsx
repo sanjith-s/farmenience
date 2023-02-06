@@ -111,6 +111,7 @@ const SellerNegotiate = (props) => {
               padding: "0px 5px",
               border: "3px solid",
               borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography
@@ -129,7 +130,7 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px" }}>
+          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -198,6 +199,7 @@ const SellerNegotiate = (props) => {
               alignItems: "center",
               border: "3px solid",
               borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography variant="h6" style={{ textTransform: "uppercase" }}>

@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import Signup from "./signup";
 import Chart from "./components/chart";
 import Login from "./login";
+import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
 import PageM3 from "./Market/pageM3";
@@ -53,9 +54,9 @@ import N10Navbar from "./components/n10Navbar";
 function App() {
   return (
     <div>
-        <Navbar />
-        {/* <N10Navbar/> */}
-      <main className="main-content" style={{marginTop:"2%"}}>
+      <Navbar />
+      {/* <N10Navbar/> */}
+      <main className="main-content" style={{ marginTop: "2%" }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
@@ -63,6 +64,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />
             <Route path="/M3" element={<PageM3 />} />

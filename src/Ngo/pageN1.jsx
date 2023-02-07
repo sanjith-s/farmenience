@@ -1,4 +1,5 @@
 import '../css/pageN1.css'
+import { useEffect, useState } from "react";
 import QueryBox from '../components/queryBox';
 import Typography from '@mui/material/Typography';
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
@@ -6,7 +7,6 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 

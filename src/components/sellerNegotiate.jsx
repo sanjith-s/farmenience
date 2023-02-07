@@ -89,7 +89,7 @@ const SellerNegotiate = (props) => {
         display: "flex",
         justifyContent: "center",
         padding: "30px 0px",
-        borderRadius: "2px",
+        borderRadius: "20px",
         columnGap: "50px",
         backgroundColor: "#fff",
         border: "3px solid",
@@ -109,6 +109,9 @@ const SellerNegotiate = (props) => {
               marginBottom: "30px",
               width: "fit-content",
               padding: "0px 5px",
+              border: "3px solid",
+              borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography
@@ -127,7 +130,7 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack>
+          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -135,7 +138,7 @@ const SellerNegotiate = (props) => {
                   sx={{
                     display: "flex",
                     columnGap: "20px",
-                    margin: "14px 0px",
+                    margin: "14px 10px",
                   }}
                 >
                   <Box style={{ width: "40%" }}>
@@ -154,6 +157,7 @@ const SellerNegotiate = (props) => {
                       display: "flex",
                       width: "60%",
                       justifyContent: "flex-start",
+                      padding: "0px 50px",
                     }}
                   >
                     <Typography
@@ -177,10 +181,10 @@ const SellerNegotiate = (props) => {
           <img
             src={props.img}
             alt="wheat img"
-            width="280px"
+            width="300px"
             style={{
               border: "5px solid darkgreen",
-              borderRadius: "3px",
+              borderRadius: "16px",
             }}
           />
         </CardMedia>
@@ -193,6 +197,9 @@ const SellerNegotiate = (props) => {
               flexDirection: "column",
               rowGap: "20px",
               alignItems: "center",
+              border: "3px solid",
+              borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography variant="h6" style={{ textTransform: "uppercase" }}>

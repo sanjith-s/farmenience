@@ -52,7 +52,7 @@ function ImageSlider() {
           textAlign: "center",
         }}
       >
-        for sales
+        CURRENT OFFERS
       </Typography>
       <CardMedia>
         <Box

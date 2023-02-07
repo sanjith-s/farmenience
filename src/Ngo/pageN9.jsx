@@ -14,37 +14,6 @@ import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-
-  const handleClose6 = () => {
-    setOpen6(false);
-  };
-
   return (
     <div
       role="tabpanel"
@@ -69,10 +38,43 @@ function a11yProps(index) {
   };
 }
 
-
-
 export default function BasicTabs() {
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
+
+const handleClose1 = () => {
+  setOpen1(false);
+};
+
+const handleClose2 = () => {
+  setOpen2(false);
+};
+
+const handleClose3 = () => {
+  setOpen3(false);
+};
+
+const handleClose4 = () => {
+  setOpen4(false);
+};
+
+const handleClose5 = () => {
+  setOpen5(false);
+};
+
+const handleClose6 = () => {
+  setOpen6(false);
+};
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
   const [value, setValue] = React.useState(0);
+  
   const history = useNavigate();
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
@@ -117,6 +119,7 @@ export default function BasicTabs() {
           navigate('../login');
         }
       });
+  
   }
   const handlePath = () => {
     history("/n7");
@@ -175,6 +178,13 @@ export default function BasicTabs() {
       </div>
     );
   });
+
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
 
   return (
     <>

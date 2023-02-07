@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import file from "../images/farm_land.jpg";
 import {
   Dialog,
   DialogActions,
@@ -98,26 +99,26 @@ const PageM19 = () => {
           flexDirection: "column",
           border: "3px solid",
           justifyContent: "center",
-          // alignItems: "center",
           rowGap: "20px",
           padding: "30px 30px",
+          paddingRight:"0",
           backgroundColor: "#7bff96",
           margin: "26px",
           borderRadius: "8px",
         }}
       >
+        <Stack direction={"row"}>
         <Box
           sx={{
-            width: "700px",
             borderRadius: "8px",
             border: "4px solid #000",
             backgroundColor: "#fff",
+            width:"100%"
           }}
         >
-          <Grid container spacing={2}>
             <Grid container item xs={12} direction="column">
               <CardContent
-                style={{ padding: "15px 25px", borderRadius: "8px" }}
+                style={{ padding: "15px", borderRadius: "8px" }}
               >
                 <Stack>
                   {itemsName1.map((value, index) => {
@@ -130,7 +131,7 @@ const PageM19 = () => {
                           justifyContent: "space-between",
                           height: "50px",
                           alignItems: "center",
-                          margin: "2px 0px",
+                          margin: "2px 0px 0 0 0",
                         }}
                       >
                         <Typography
@@ -153,60 +154,63 @@ const PageM19 = () => {
                   })}
                 </Stack>
               </CardContent>
-            </Grid>
-            <Grid container item xs={6} direction="column">
-              <CardContent
-                style={{ padding: "15px 25px", borderRadius: "8px" }}
-              >
-                <Stack>
-                  {itemsName2.map((value, index) => {
-                    return (
-                      <Box
-                        key={index}
-                        sx={{
-                          display: "flex",
-                          columnGap: "20px",
-                          justifyContent: "space-between",
-                          height: "50px",
-                          alignItems: "center",
-                          margin: "2px 0px",
-                        }}
-                      >
-                        <Typography
-                          style={{
-                            fontWeight: "600",
-                            fontSize: "20px",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {value}
-                        </Typography>
-                        <Typography
-                          variant="h6"
-                          style={{ textTransform: "capitalize" }}
-                        >
-                          {itemsValue2[index]}
-                        </Typography>
-                      </Box>
-                    );
-                  })}
-                </Stack>
-              </CardContent>
-            </Grid>
           </Grid>
         </Box>
+        <Box>
+        <Stack spacing={2} display="flex" justifyContent={"center"} alignContent="center" alignItems={"center"} >
+        <img
+              src={file}
+              style={{
+                width: "90%",
+                height: "90%",
+                marginLeft:"2%",
+                objectFit: "fill",
+                borderRadius: "50px",
+              }}
+            /><br />
+            <Stack direction={"column"} spacing={4}>
+                   <Button
+                   onClick={handleClickOpen1}
+                   variant="contained"
+                   style={{
+                     backgroundColor: "green",
+                     fontWeight: "600",
+                     fontSize: "18px",
+                   }}
+                 >
+                   DELETE
+                   </Button>
+                   <Button
+                    onClick={handleClickOpen2}
+                    variant="contained"
+                    style={{
+                      backgroundColor: "green",
+                      fontWeight: "600",
+                      fontSize: "18px",
+                    }}
+                  >
+                    ACCEPT
+                  </Button>
+                    <Button
+                       onClick={handleClickOpen3}
+                       variant="contained"
+                       style={{
+                         color:"white",
+                         backgroundColor: "green",
+                         fontWeight: "600",
+                         fontSize: "18px",
+                       }}
+                     >
+                       <Link to="/N14b" style={{ textDecoration: "none",color:"white" }}>                         
+                           Reschedule
+                       </Link>
+                     </Button>
+            </Stack>
+            </Stack>
+            </Box>
+        </Stack>
         <Box sx={{ display: "flex", columnGap: "50px", padding: "0px 300px" }}>
-          <Button
-            onClick={handleClickOpen1}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
-          >
-            DELETE
-          </Button>
+          
           <Dialog
             open={open1}
             onClose={handleClose1}
@@ -249,17 +253,6 @@ const PageM19 = () => {
               </Button>
             </DialogActions>
           </Dialog>
-          <Button
-            onClick={handleClickOpen2}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
-          >
-            ACCEPT
-          </Button>
           <Dialog
             open={open2}
             onClose={handleClose2}
@@ -285,27 +278,7 @@ const PageM19 = () => {
               </Button>
             </DialogActions>
           </Dialog>
-          <Button
-            onClick={handleClickOpen3}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
-          >
-            <Link to="/N14b" style={{ textDecoration: "none" }}>
-              <Typography
-                style={{
-                  color: "#ffffff",
-                  fontWeight: "600",
-                  fontSize: "16px",
-                }}
-              >
-                Reschedule
-              </Typography>
-            </Link>
-          </Button>
+          
         </Box>
       </Box>
     </Container>

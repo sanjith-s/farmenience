@@ -1,4 +1,5 @@
 import '../css/pageN1.css'
+import { useEffect, useState } from "react";
 import QueryBox from '../components/queryBox';
 import Typography from '@mui/material/Typography';
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
@@ -6,12 +7,19 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const PageN1 = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([
+        {
+            _id:23,
+            updatedAt:"22/2/2023",
+            status:"Viewed",
+            subject:"QUality Issue",
+            description:"Recently bought wheat which is in bad quality",
+        }
+    ]);
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const navigate = useNavigate();

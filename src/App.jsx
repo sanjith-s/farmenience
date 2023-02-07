@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import Signup from "./signup";
 import Chart from "./components/chart";
 import Login from "./login";
+import Login1 from "./login1";
 import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
@@ -63,6 +64,7 @@ function App() {
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/login1" element={<Login1 />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />

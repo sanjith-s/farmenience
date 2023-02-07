@@ -73,7 +73,7 @@ const handleClose6 = () => {
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  const [value, setValue] = React.useState(0);
+  // const [value, setValue] = React.useState(0);
   
   const history = useNavigate();
   const navigate = useNavigate();
@@ -369,4 +369,5 @@ function TabPanel(props) {
     </Box> */}
     </>
   );
+  }
 }

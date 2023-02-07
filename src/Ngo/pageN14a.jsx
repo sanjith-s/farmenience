@@ -99,7 +99,6 @@ const PageM19 = () => {
           flexDirection: "column",
           border: "3px solid",
           justifyContent: "center",
-          // alignItems: "center",
           rowGap: "20px",
           padding: "30px 30px",
           paddingRight:"0",
@@ -117,10 +116,9 @@ const PageM19 = () => {
             width:"100%"
           }}
         >
-          <Grid container spacing={2}>
             <Grid container item xs={12} direction="column">
               <CardContent
-                style={{ padding: "15px 15px", borderRadius: "8px" }}
+                style={{ padding: "15px", borderRadius: "8px" }}
               >
                 <Stack>
                   {itemsName1.map((value, index) => {
@@ -133,7 +131,7 @@ const PageM19 = () => {
                           justifyContent: "space-between",
                           height: "50px",
                           alignItems: "center",
-                          margin: "2px 0px",
+                          margin: "2px 0px 0 0 0",
                         }}
                       >
                         <Typography
@@ -156,46 +154,6 @@ const PageM19 = () => {
                   })}
                 </Stack>
               </CardContent>
-            </Grid>
-            <Grid container item xs={6} direction="column">
-              <CardContent
-                style={{ padding: "15px 25px", borderRadius: "8px" }}
-              >
-                <Stack>
-                  {itemsName2.map((value, index) => {
-                    return (
-                      <Box
-                        key={index}
-                        sx={{
-                          display: "flex",
-                          columnGap: "20px",
-                          justifyContent: "space-between",
-                          height: "50px",
-                          alignItems: "center",
-                          margin: "2px 0px",
-                        }}
-                      >
-                        <Typography
-                          style={{
-                            fontWeight: "600",
-                            fontSize: "20px",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {value}
-                        </Typography>
-                        <Typography
-                          variant="h6"
-                          style={{ textTransform: "capitalize" }}
-                        >
-                          {itemsValue2[index]}
-                        </Typography>
-                      </Box>
-                    );
-                  })}
-                </Stack>
-              </CardContent>
-            </Grid>
           </Grid>
         </Box>
         <Box>

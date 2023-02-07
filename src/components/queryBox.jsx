@@ -1,6 +1,7 @@
 import '../css/pageN1.css';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import React from 'react';
 import Typography from '@mui/material/Typography';
 import Cookies from 'js-cookie';
 import Axios from "axios";

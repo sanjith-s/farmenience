@@ -11,7 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const PageN1 = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([
+        {
+            _id:23,
+            updatedAt:"22/2/2023",
+            status:"Viewed",
+            subject:"QUality Issue",
+            description:"Recently bought wheat which is in bad quality",
+        }
+    ]);
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const navigate = useNavigate();

@@ -48,7 +48,7 @@ function PageN11() {
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
         >
-          you have {content.length} requests{" "}
+          you have {content.length} queries to view{" "}
         </Typography>
       </Box>
       <Box

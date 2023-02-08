@@ -30,6 +30,7 @@ import PageM16 from "./Market/pageM16";
 import PageM17 from "./Market/pageM17";
 import PageM18 from "./Market/pageM18";
 import PageM19 from "./Market/pageM19";
+import Graph from "./components/graph";
 //import AllQueries from "./N1";
 import PageN1 from "./Ngo/pageN1";
 import PageN2 from "./Ngo/pageN2a";
@@ -101,6 +102,7 @@ function App() {
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
             <Route path="/cal" element={<Calender />} />
+            <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

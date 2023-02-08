@@ -21,7 +21,17 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 function AllRequest() {
-  const [listOfRequests, setListOfRequests] = useState([]);
+  const [listOfRequests, setListOfRequests] = useState([
+    {
+      _id:34,
+      date:"22/2/2023",
+      time:"03:00AM",
+      reason:"Discuss about funding",
+      details:"Red Soil land",
+      crops:"rice,wheat",
+      status:"Good"
+    }
+  ]);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const navigate = useNavigate();

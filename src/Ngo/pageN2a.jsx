@@ -33,8 +33,14 @@ const PageN2 = () => {
   const [isUploaded, setIsUploaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const id = location.state.id;
-  const oldQuery = location.state.oldQuery;
+  const id = 3;
+  const oldQuery = [
+    {
+      subject:"Query 1",
+      description:"Query description here",
+      timedate:"22/2/2023"
+    }
+  ];
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);

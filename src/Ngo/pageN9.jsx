@@ -12,40 +12,6 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
-export default function BasicTabs() {
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-
 const handleClose1 = () => {
   setOpen1(false);
 };
@@ -73,8 +39,34 @@ const handleClose6 = () => {
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+
+
+export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  
   const history = useNavigate();
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
@@ -119,7 +111,6 @@ function TabPanel(props) {
           navigate('../login');
         }
       });
-  
   }
   const handlePath = () => {
     history("/n7");

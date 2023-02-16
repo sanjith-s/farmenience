@@ -40,7 +40,8 @@ const QueryBox = (props) => {
     };
 
     const handleClickOpen1x = () => {
-        setOpen1x(true);
+        setOpen1x(false);
+        props.deleteFunc(props.ID);
         let token = Cookies.get('token');
         let id = props.ID;
         Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
@@ -115,23 +116,7 @@ const QueryBox = (props) => {
     }
 
     const DeleteQuery = () => {
-        <Dialog
-            open={open1}
-            onClose={handleClose1}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-        >
-            <DialogTitle id="alert-dialog-title">
-                {"Do you want to delete the query ?"}
-            </DialogTitle>
-            <DialogActions>
-                <Button onClick={handleClose1}>No</Button>
-                <Button onClick={handleClickOpen1x} autoFocus>
-                    {" "}
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>
+       setOpen1(true);
     }
 
     return (
@@ -157,6 +142,23 @@ const QueryBox = (props) => {
                         <td id="right-column"><Typography>{props.Status}</Typography></td>
                     </tr>
                 </table>
+                <Dialog
+            open={open1}
+            onClose={handleClose1}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+            <DialogTitle id="alert-dialog-title">
+                {"Do you want to delete the query ?"}
+            </DialogTitle>
+            <DialogActions>
+                <Button onClick={handleClose1}>No</Button>
+                <Button onClick={handleClickOpen1x} autoFocus>
+                    {" "}
+                    Yes
+                </Button>
+            </DialogActions>
+        </Dialog>
                 <div id="buttons-n1">
                     <Button variant="contained" color="success" id="button-n1" onClick={
                         () => {

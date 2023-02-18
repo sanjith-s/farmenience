@@ -11,6 +11,7 @@ import {
     Button
 } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -195,7 +196,9 @@ function AppointmentList(props) {
                                             fontSize: "16px",
                                         }}
                                     >
+                                        <Link to="/n14a">
                                         View Details
+                                        </Link>
                                     </Button>
                                 </TableCell>
                             </TableRow>

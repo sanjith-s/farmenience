@@ -8,6 +8,10 @@ import {
   InputLabel,
   Typography,
   Box,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button,
 } from "@mui/material";
 
 function ProductCard() {
@@ -16,6 +20,21 @@ function ProductCard() {
   const [qty, setQty] = useState(0);
   const [type, setType] = useState("");
   const [location, setLocation] = useState("");
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleClose3 = () => {
+    setOpen3(false);
+  };
 
   return (
     <Box style={{ display: "flex", justifyContent: "center" }}>
@@ -85,7 +104,7 @@ function ProductCard() {
                 if(event.target.value >= 1 && event.target.value <= 2000)
                   setPrice(event.target.value);
                 else {
-                  alert('Invalid Price')
+                  setOpen1(true);
                 }
               }}
               style={{
@@ -129,7 +148,7 @@ function ProductCard() {
                 if(event.target.value >= 1 && event.target.value <= 50)
                   setQty(event.target.value);
                 else {
-                  alert('Invalid Quantity')
+                  setOpen2(true);
                 }  
               }}
               style={{
@@ -160,7 +179,7 @@ function ProductCard() {
                 if(event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
                   setType(event.target.value);
                 else {
-                  alert('Invalid Type');
+                  setOpen3(true);
                 }
               }}
               style={{
@@ -203,6 +222,49 @@ function ProductCard() {
           </FormControl>
         </Box>
       </Box>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Invalid Price
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Invalid Quantity
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose2}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={open3}
+        onClose={handleClose3}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          Invalid Type
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose3}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+
     </Box>
   );
 }

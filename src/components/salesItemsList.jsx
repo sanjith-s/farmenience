@@ -1,62 +1,34 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import { Typography } from "@material-ui/core";
+import React , {useState} from "react";
+
+import { FormControl,FormControlLabel,RadioGroup,Radio,Typography, FormLabel } from "@mui/material";
+
 
 function SalesItemsList(props) {
-  const onClickHandler = (event) => {
-    console.log(event.target.outerText);
+  
+  const valueChangeHandler = (event) => {
+    props.onSelectedValue(event.target.value);
   };
 
-  const cardList = props.cards;
+  const cardList = props.itemsList;
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: 200,
-        maxWidth: 270,
-        bgcolor: "#1FE57A",
-        marginTop: "20px",
-      }}
-    >
-      <List
-        sx={{
-          width: 270,
-          height: 200,
-          overflow: "auto",
-          position: "relative",
-          border: "3px solid ",
-          borderRadius: "5px",
-        }}
+    <>
+    <FormControl>
+    <FormLabel style={{display:"flex",justifyContent:"center"}}>
+      <Typography style={{textTransform:"uppercase",fontSize:"28px",fontWeight:"600",textAligh:"center"}}>items list</Typography>
+    </FormLabel>
+      <RadioGroup
+        onChange={valueChangeHandler}
       >
-        {cardList.map((card, index) => (
-          <ListItem
-            key={index}
-            value={card}
-            onClick={onClickHandler}
-            component="div"
-            disablePadding
-          >
-            <ListItemButton>
-              <ListItemText
-                primary={
-                  <Typography
-                    variant="h6"
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    {index + 1}. {card}
-                  </Typography>
-                }
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+
+        {cardList.map((item) =>{
+          return <FormControlLabel value={item} control={<Radio />} label={<Typography textTransform="uppercase">{item}</Typography>} />
+        })}
+      </RadioGroup>
+    </FormControl>
+    
+    </>
+    
   );
 }
 

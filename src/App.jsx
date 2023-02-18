@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import Signup from "./signup";
 import Chart from "./components/chart";
 import Login from "./login";
+import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
 import PageM3 from "./Market/pageM3";
@@ -29,6 +30,7 @@ import PageM16 from "./Market/pageM16";
 import PageM17 from "./Market/pageM17";
 import PageM18 from "./Market/pageM18";
 import PageM19 from "./Market/pageM19";
+import Graph from "./components/graph";
 //import AllQueries from "./N1";
 import PageN1 from "./Ngo/pageN1";
 import PageN2 from "./Ngo/pageN2a";
@@ -53,9 +55,9 @@ import N10Navbar from "./components/n10Navbar";
 function App() {
   return (
     <div>
-        <Navbar />
-        {/* <N10Navbar/> */}
-      <main className="main-content" style={{marginTop:"2%"}}>
+      <Navbar />
+      {/* <N10Navbar/> */}
+      <main className="main-content" style={{ marginTop: "2%" }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
@@ -63,6 +65,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />
             <Route path="/M3" element={<PageM3 />} />
@@ -84,7 +87,7 @@ function App() {
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
             <Route path="/N1" element={<PageN1 />} />
-            <Route path="/N2a" element={<PageN2 />} />
+            <Route path="/N2" element={<PageN2 />} />
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/N5" element={<PageN5 />} />
             <Route path="/N6" element={<PageN6 />} />
@@ -99,6 +102,7 @@ function App() {
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
             <Route path="/cal" element={<Calender />} />
+            <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"

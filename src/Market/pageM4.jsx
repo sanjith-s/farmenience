@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PriceTable from "../components/priceTable";
 import ProductDetails from "../components/productDetails";
-import { useLocation } from "react-router-dom";
+import {Link, useLocation } from "react-router-dom";
 import {
   Box,
   CssBaseline,
@@ -106,6 +106,8 @@ function PageM4() {
   const location = useLocation();
 
   const data = location.state ? location.state.data : item ;
+  const ordDate = location.state ? location.state.date[0] : item.orderDate;
+  const delDate = location.state ? location.state.date[1] : item.deliveryDate;
 
 
   let filterItems;
@@ -185,8 +187,8 @@ function PageM4() {
           <ProductDetails
             style={{ padding: "15px 0px" }}
             key={data.id}
-            orderDate={data.orderDate}
-            deliveryDate={data.deliveryDate}
+            orderDate={ordDate}
+            deliveryDate={delDate}
             clientName={data.clientName}
             paymentMode={data.paymentMode}
             transactionID={data.transactionID}
@@ -326,18 +328,30 @@ function PageM4() {
             </Typography>
           </Box>
           <Button
-          // onClick={handleChange}
             variant="contained"
             style={{
-              fontWeight: "600",
-              fontSize: "17px",
               backgroundColor: "green",
               position: "absolute",
               bottom: "20px",
               right: "20px",
             }}
           >
-            Delete Sale
+          <Link
+            to="/M3"
+            state={{
+              data: data.transactionID,
+            }}
+            style={{ textDecoration: "none" }} 
+            >
+              <Typography
+              style={{
+                color: "#ffffff",
+                fontWeight: "600",
+              }}
+            >
+              Delete Sale
+            </Typography> 
+          </Link>
           </Button>
         </Box>
       </CardContent>

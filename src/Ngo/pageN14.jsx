@@ -15,6 +15,7 @@ import {
     CardMedia,
 } from "@mui/material";
 import profilePhoto from "../images/face1.jpg";
+import file from "../images/farm_land.jpg";
 import Page10Nav from "../components/page10Nav";
 import Chart from "../components/chart";
 
@@ -112,6 +113,7 @@ function PageM10() {
                     </Link>
                 </Button>
             </Box>
+            
         </Container>
     );
 }

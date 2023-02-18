@@ -1,12 +1,13 @@
 // import PreviousMap from "postcss/lib/previous-map";
 import React from "react";
 import SalesCard from "./salesCard";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import {Box,Grid,Typography} from "@mui/material";
+
+
 
 function SalesCardsList(props) {
   if (props.cards.length === 0) {
-    return <h2> N0 Sales Cards </h2>;
+    return <Typography style={{textAlign:"center",marginTop:"30px",fontSize:"28px",textTransform:"uppercase"}}> select item from filter </Typography>;
   }
   return (
     <Box
@@ -35,6 +36,7 @@ function SalesCardsList(props) {
               delDate={item.deliveryDate}
               items={item.items}
               data={item}
+              // onDeleteHandler={props.onDeleteHandler}
             />
           </Grid>
         ))}

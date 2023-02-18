@@ -13,6 +13,10 @@ import {
   Typography,
   Card,
   Stack,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button,
 } from "@mui/material";
 
 const itemsName = [
@@ -25,8 +29,14 @@ const itemsName = [
 
 const Negotiate = (props) => {
   const [price, setPrice] = useState(0);
+  const [open1, setOpen1] = useState(false);
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
   const displayPrice = () => {
-    alert("The price is " + price);
+    setOpen1(true);
   };
 
   const itemsValue = [
@@ -194,6 +204,20 @@ const Negotiate = (props) => {
           </Box>
         </Box>
       </CardActions>
+
+      <Dialog
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          The price is {price}
+        </DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose1}>Ok</Button>
+        </DialogActions>
+      </Dialog>
     </Card>
   );
 };

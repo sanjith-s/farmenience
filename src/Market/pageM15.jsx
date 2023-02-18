@@ -163,7 +163,7 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
-                top: "10px",
+                top: "15px",
                 right: "10px",
                 fontWeight: "600",
               }}
@@ -186,7 +186,7 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
-                bottom: "10px",
+                bottom: "15px",
                 right: "10px",
                 fontWeight: "600",
               }}
@@ -225,7 +225,7 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "18px",
+                  bottom: "34px",
                   right: "14px",
                   fontWeight: "600",
                   fontSize: "15px",

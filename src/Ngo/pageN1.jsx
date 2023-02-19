@@ -18,8 +18,24 @@ const PageN1 = () => {
             status:"Viewed",
             subject:"QUality Issue",
             description:"Recently bought wheat which is in bad quality",
+        },{
+            _id:13,
+            updatedAt:"22/2/2023",
+            status:"Viewed",
+            subject:"Price Issue",
+            description:"Recently bought wheat which is high priced",
         }
     ]);
+    const deleteThis = (id) => {
+        var back = data;
+        for (var i = 0; i < back.length; i++) {
+            if (back[i]._id == id) {
+                back.splice(i,i+1);
+            }
+        }
+        console.log(back);
+        setData([...back]);
+    }
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const navigate = useNavigate();
@@ -62,7 +78,7 @@ const PageN1 = () => {
                         return (
                             <div>
                                 <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-                                } oldQuery={val.oldQuery} />
+                                } oldQuery={val.oldQuery} deleteFunc={deleteThis} />
                             </div>
                         )
                     })
@@ -78,19 +94,18 @@ const PageN1 = () => {
             </div>
 
             <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please check network connection !
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
+                  open={open1}
+                  onClose={handleClose1}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <DialogTitle id="alert-dialog-title">
+                    Please check network connection !
+                  </DialogTitle>
+                  <DialogActions>
+                    <Button onClick={handleClose1}>Ok</Button>
+                  </DialogActions>
+                </Dialog> 
       <Dialog
         open={open2}
         onClose={handleClose2}

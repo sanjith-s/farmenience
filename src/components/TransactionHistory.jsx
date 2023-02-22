@@ -70,6 +70,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 trans. id
@@ -80,6 +81,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 ifsc_code
@@ -90,6 +92,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 payment mode
@@ -100,6 +103,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 bank name
@@ -110,6 +114,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 amount
@@ -120,6 +125,7 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  borderRight: "3px solid",
                 }}
               >
                 sender
@@ -146,6 +152,8 @@ function TransactionHistory(props) {
                   style={{
                     fontWeight: "600",
                     fontSize: "18px",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.ifscCode}
@@ -156,6 +164,8 @@ function TransactionHistory(props) {
                     fontWeight: "600",
                     fontSize: "16px",
                     textTransform: "capitalize",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.transactionid}
@@ -165,6 +175,8 @@ function TransactionHistory(props) {
                   style={{
                     fontWeight: "600",
                     fontSize: "18px",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.paymentMode}
@@ -174,6 +186,8 @@ function TransactionHistory(props) {
                   style={{
                     fontWeight: "600",
                     fontSize: "18px",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.bankName}
@@ -183,6 +197,8 @@ function TransactionHistory(props) {
                   style={{
                     fontWeight: "600",
                     fontSize: "18px",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.amount}
@@ -193,6 +209,8 @@ function TransactionHistory(props) {
                     fontWeight: "600",
                     fontSize: "16px",
                     textTransform: "capitalize",
+                    borderRight: "3px solid",
+                    textAlign: "center"
                   }}
                 >
                   {row.sender}
@@ -203,6 +221,7 @@ function TransactionHistory(props) {
                     fontWeight: "600",
                     fontSize: "16px",
                     textTransform: "capitalize",
+                    textAlign: "center"
                   }}
                 >
                   {row.receiver}

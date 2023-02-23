@@ -9,6 +9,8 @@ import {
   Box,
   Paper,
 } from "@mui/material";
+// import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
+// import { TableColumnResizing } from '@devexpress/dx-react-grid-material-ui';
 
 function TransactionHistory(props) {
   const createData = (
@@ -51,9 +53,12 @@ function TransactionHistory(props) {
           border: "3px solid",
           width: "fit-content",
         }}
+        sx={{
+          height: "400px"    
+        }}
       >
         <Table
-          sx={{ width: "650px", overflow: "auto" }}
+          sx={{ width: "650px", overflow: "auto", height: "max-content" }}
           aria-label="prece table"
         >
           <TableHead
@@ -61,9 +66,15 @@ function TransactionHistory(props) {
               borderTop: "0px solid",
               borderBottom: "3px solid",
               backgroundColor: "#ccc",
+              position: "sticky",
+                  top: 0
             }}
           >
-            <TableRow>
+            <TableRow style={{
+              position: "sticky",
+              top: 0,
+              borderBottom: "3px solid",
+            }}>
               <TableCell
                 align="center"
                 style={{
@@ -71,6 +82,9 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0,
+                  borderBottom: "3px solid",
                 }}
               >
                 trans. id
@@ -82,6 +96,8 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 ifsc_code
@@ -93,6 +109,8 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 payment mode
@@ -104,6 +122,11 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0
+                }}
+                sx={{
+                  width: "100%"
                 }}
               >
                 bank name
@@ -115,6 +138,8 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 amount
@@ -126,6 +151,8 @@ function TransactionHistory(props) {
                   fontSize: "18px",
                   textTransform: "uppercase",
                   borderRight: "3px solid",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 sender
@@ -136,6 +163,8 @@ function TransactionHistory(props) {
                   fontWeight: "600",
                   fontSize: "18px",
                   textTransform: "uppercase",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 receiver

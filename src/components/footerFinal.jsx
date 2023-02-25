@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useLocation } from "react-router-dom";
+// import { Link, useLocation } from "react-router-dom";
+import Link from '@mui/material/Link';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -74,7 +75,7 @@ const Footer = () => {
 
     return (
         <Container style={{ padding: "30px 0px" }}>
-            <Box 
+            <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
@@ -94,37 +95,6 @@ const Footer = () => {
                     <Grid container item xs={5} direction="column" className="foot-body">
                         <CardContent style={{ borderRadius: "8px" }}>
                             <Stack>
-                                {/* {itemsName1.map((value, index) => {
-                                    return (
-                                        <Box
-                                            key={index}
-                                            sx={{
-                                                display: "flex",
-                                                columnGap: "20px",
-                                                justifyContent: "space-between",
-                                                height: "50px",
-                                                alignItems: "center",
-                                                margin: "2px 0px",
-                                            }}
-                                        >
-                                            <Typography
-                                                style={{
-                                                    fontWeight: "600",
-                                                    fontSize: "20px",
-                                                    textTransform: "uppercase",
-                                                }}
-                                            >
-                                                {value}
-                                            </Typography>
-                                            <Typography
-                                                variant="h6"
-                                                style={{ textTransform: "capitalize" }}
-                                            >
-                                                {itemsValue1[index]}
-                                            </Typography>
-                                        </Box>
-                                    );
-                                })} */}
                                 <Box className="foot-items" sx={{ display: "flex" }}>
                                     <LocationOnIcon className="foot-items-logo" />
                                     <Typography sx={{ fontSize: "18px" }}>
@@ -155,11 +125,14 @@ const Footer = () => {
                             <Stack>
                                 <Box sx={{ display: "flex", marginTop: "20px" }}>
                                     <Typography sx={{ fontSize: "18px" }}>
-                                        <b>ABOUT THE COMPANY</b><br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy. {<Link href="N1">{'CLick me to know more'}</Link>}
+                                        <b>ABOUT THE COMPANY</b><br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../Market/pageM17">{'Click me to know more'}</Link>}
                                     </Typography>
                                 </Box>
                                 <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px" }}>
-                                    <FacebookIcon /><TwitterIcon /><LinkedInIcon /><InstagramIcon />
+                                    <Link href="https://www.facebook.com/"><FacebookIcon /></Link>
+                                    <Link href="https://www.twitter.com/"><TwitterIcon /></Link>
+                                    <Link href="https://www.linkedin.com/"><LinkedInIcon /></Link>
+                                    <Link href="https://www.instagram.com/"><InstagramIcon /></Link>
                                 </Box>
                             </Stack>
                         </CardContent>

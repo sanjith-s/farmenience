@@ -57,7 +57,7 @@ import N10Navbar from "./components/n10Navbar";
 function App() {
   return (
     <div>
-      <NavbarBefore />
+      <Navbar />
       {/* <N10Navbar/> */}
       <main className="main-content" style={{ marginTop: "2%" }}>
         <BrowserRouter>

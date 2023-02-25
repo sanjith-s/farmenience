@@ -9,7 +9,6 @@
 
 .foot-body {
 	font-size: 1.1rem;
-	padding: 1%;
 }
 
 .foot-tail {
@@ -20,7 +19,6 @@
 
 .foot-items {
 	/*	flex:9;*/
-	padding-right: 2%;
 }
 
 .foot-links {

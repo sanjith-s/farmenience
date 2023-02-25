@@ -30,62 +30,17 @@ import "../css/footer.css";
 
 const Footer = () => {
 
-    const [open1, setOpen1] = React.useState(false);
-    const [open, setOpen] = React.useState(false);
-    const [open1x, setOpen1x] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-    const [open3, setOpen3] = React.useState(false);
-
-    const handleClickOpen1 = () => {
-        setOpen1(true);
-    };
-
-    const handleClickOpen1x = () => {
-        setOpen1x(true);
-    };
-
-    const handleClickOpen2 = () => {
-        setOpen2(true);
-    };
-
-    const handleClickOpen3 = () => {
-        setOpen3(true);
-    };
-
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleClose1x = () => {
-        setOpen1x(false);
-    };
-
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
-
-    const handleClose3 = () => {
-        setOpen3(false);
-    };
-
-    const handleClose11x = () => {
-        setOpen1(false);
-        setOpen1x(false);
-    };
-
     return (
-        <Container style={{ padding: "30px 0px" }}>
+        <Container maxWidth={false} disableGutters>
             <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    border: "3px solid",
+                    // border: "3px solid",
                     justifyContent: "center",
                     alignItems: "center",
-                    padding: "5px 0px",
                     backgroundColor: "#7bff96",
-                    margin: "0px",
-                    borderRadius: "8px",
+                    // borderRadius: "8px",
                     height: "100%",
                     width: "100%",
                     background: "rgba(22, 229, 117, 1)"

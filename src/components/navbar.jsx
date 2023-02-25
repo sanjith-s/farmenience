@@ -12,6 +12,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Calendar from "./calender";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { useState } from "react";
+import Link from '@mui/material/Link';
 
 const drawerBleeding = 70;
 
@@ -71,14 +72,25 @@ function SwipeableEdgeDrawer(props) {
           </a>
         </div>
         <div className="nav-items item3">
-          <a href="/" className="nav-links">
-            Home
+          <a href="/" className="nav-links" color="black">
+            HOME
           </a>
         </div>
-        <Button onClick={toggleDrawer(true)}>Show My schedules</Button>
-        <div className="nav-items item4">
-          <a className="nav-links">About Us</a>
+
+        <Button className="dropbtn" variant="text" sx={{ color: "black" }} onClick={toggleDrawer(true)}>Show My schedules</Button>
+        
+        <div class="dropdown">
+          <Button className="dropbtn">
+            OPTIONS
+          </Button>
+          <div class="dropdown-content">
+            <Link href='../N1'>View Queries</Link>
+            <Link href='../N13'>View Appointments</Link>
+            <Link href='../N7'>Create New Query</Link>
+            <Link href='../N4'>Create New Appointment</Link>
+          </div>
         </div>
+        
         <div className="nav-items item5">
           <a href="" className="nav-links">
             <AccountCircleRoundedIcon fontSize="large" />
@@ -120,7 +132,7 @@ function SwipeableEdgeDrawer(props) {
         >
           <Skeleton variant="rectangular" height="100%" />
         </StyledBox>
-        <Calendar closeToggle={setOpen}/>
+        <Calendar closeToggle={setOpen} />
       </SwipeableDrawer>
     </Root>
   );

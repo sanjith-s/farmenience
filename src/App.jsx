@@ -5,6 +5,7 @@ import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
+import NavbarBefore from "./components/navbarBefore";
 import Footer from "./components/footer";
 import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
@@ -56,7 +57,7 @@ import N10Navbar from "./components/n10Navbar";
 function App() {
   return (
     <div>
-      <Navbar />
+      <NavbarBefore />
       {/* <N10Navbar/> */}
       <main className="main-content" style={{ marginTop: "2%" }}>
         <BrowserRouter>

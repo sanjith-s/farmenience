@@ -80,7 +80,7 @@ const Footer = () => {
                             <Stack>
                                 <Box sx={{ display: "flex", marginTop: "20px" }}>
                                     <Typography sx={{ fontSize: "18px" }}>
-                                        <b>ABOUT THE COMPANY</b><br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../Market/pageM17">{'Click me to know more'}</Link>}
+                                        <b>ABOUT THE COMPANY</b><br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
                                     </Typography>
                                 </Box>
                                 <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px" }}>

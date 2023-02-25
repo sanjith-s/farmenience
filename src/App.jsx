@@ -6,6 +6,7 @@ import Homepage1 from "./homepage1";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
 import Chart from "./components/chart";
 import Login from "./login";
@@ -112,7 +113,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-      <Footer />
+      <Footer1 />
     </div>
   );
 }

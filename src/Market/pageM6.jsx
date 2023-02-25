@@ -35,6 +35,16 @@ const PageM6 = () => {
   const [file, setFile] = useState();
   const [open,setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
+  const [count,setCount] = useState([0]);
+  const addItem = ()=> {
+    var an = count;
+    setCount([...an,0]);
+  }
+  const delItem = () => {
+    var an = count;
+    an.pop();
+    setCount([...an]);
+  }
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
@@ -57,6 +67,8 @@ const PageM6 = () => {
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
       <span className="title">Sell Products</span>
+      {count.map(ele=>{
+              return ( 
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -76,95 +88,76 @@ const PageM6 = () => {
           }}
         >
           <React.Fragment>
-      <Stack
-        direction="row"
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Fab component="span">
-          <ArrowBackOutlinedIcon />
-        </Fab>
-        <Fab component="span">
-          <ArrowForwardOutlinedIcon />
-        </Fab>
-      </Stack>
-      <TextField
-        id="p-name"
-        label="Product Name"
-        variant="filled"
-        color="success"
-        value={name}
-        onChange={handleAllChange}
-        sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-        }}
-        inputProps={{ 
-          minLength: 1,
-          maxLength: 12 
-        }}
-      />
-      <TextField
-        id="price"
-        label="Price"
-        variant="filled"
-        color="success"
-        onChange={handleAllChange}
-        InputProps={{
-          endAdornment: <InputAdornment position="end">₹</InputAdornment>,
-        }}
-        sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-        }}
-      />
-      <TextField
-        id="quan"
-        onChange={handleAllChange}
-        InputProps={{
-          endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-        }}
-        label="Quantity"
-        variant="filled"
-        color="success"
-        sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-        }}
-      />
-      <TextField
-        id="type"
-        label="Type"
-        variant="filled"
-        onChange={handleAllChange}
-        color="success"
-        sx={{
-          backgroundColor: "#C4E1C5",
-          borderBottomColor: "black",
-          width: "70%",
-        }}
-      />
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        display="flex"
-        justifyContent="center"
-      >
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
-          Add Item
-        </Button>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
-          Delete Item
-        </Button>
-      </Stack>
+          {/* <Box
+            sx={{
+              overflow: "auto",
+              padding:"2%",
+              display:"flex",
+              flexDirection:"column",
+              justifyContent:"center",
+              alignContent:"center"
+            }}
+          > */}
+             <TextField
+             id="p-name"
+             label="Product Name"
+             variant="filled"
+             color="success"
+             value={name}
+             onChange={handleAllChange}
+             sx={{
+               backgroundColor: "#C4E1C5",
+               borderBottomColor: "black",
+               width: "70%",
+             }}
+             inputProps={{ 
+               minLength: 1,
+               maxLength: 12 
+             }}
+             />
+             <TextField
+             id="price"
+             label="Price"
+             variant="filled"
+             color="success"
+             onChange={handleAllChange}
+             InputProps={{
+               endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+             }}
+             sx={{
+               backgroundColor: "#C4E1C5",
+               borderBottomColor: "black",
+               width: "70%",
+             }}
+             />
+             <TextField
+             id="quan"
+             onChange={handleAllChange}
+             InputProps={{
+               endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+             }}
+             label="Quantity"
+             variant="filled"
+             color="success"
+             sx={{
+               backgroundColor: "#C4E1C5",
+               borderBottomColor: "black",
+               width: "70%",
+             }}
+             />
+             <TextField
+             id="type"
+             label="Type"
+             variant="filled"
+             onChange={handleAllChange}
+             color="success"
+             sx={{
+               backgroundColor: "#C4E1C5",
+               borderBottomColor: "black",
+               width: "70%",
+             }}
+             />
+      
     </React.Fragment>
         </Container>
         <Dialog
@@ -272,6 +265,23 @@ const PageM6 = () => {
             />
           )}
         </Container>
+      </Stack>
+      )})}
+      {/* {count.map(ele=>{
+              return (  */}
+      <Stack
+        direction="row"
+        divider={<Divider orientation="vertical" flexItem />}
+        spacing={2}
+        display="flex"
+        justifyContent="center"
+      >
+        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#1FE57A" }}>
+          Add Item
+        </Button>
+        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#1FE57A" }}>
+          Delete Item
+        </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
         <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>

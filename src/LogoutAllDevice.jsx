@@ -28,7 +28,7 @@ const LogoutAllDevice = () => {
     }
     return (
         <div>
-           <button onClick={fun}>
+           <button onClick={fun} >
             Logout from all device
            </button>
         </div>

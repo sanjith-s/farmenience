@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
@@ -9,8 +10,9 @@ import NavbarBefore from "./components/navbarBefore";
 import Footer from "./components/footer";
 import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
-import Chart from "./components/chart";
 import Login from "./login";
+import Logout from "./logout"
+import LogoutAllDevice from "./LogoutAllDevice";
 import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
@@ -49,23 +51,36 @@ import PageN13 from "./Ngo/pageN13";
 import PageN14 from "./Ngo/pageN14";
 import PageN14a from "./Ngo/pageN14a";
 import PageN14b from "./Ngo/pageN14b";
+import Chart from "./components/chart";
 import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
-import LogoutAllDevice from "./LogoutAllDevice";
 import N10Navbar from "./components/n10Navbar";
+import { display } from "@mui/system";
+
+function displayNavbar() {
+  const token = Cookies.get("token");
+
+  if (token != null)
+    return <Navbar />
+  else
+    return <NavbarBefore />
+}
 
 function App() {
+
   return (
     <div>
-      <Navbar />
       {/* <N10Navbar/> */}
+      {displayNavbar()}
       <main className="main-content" style={{ marginTop: "2%" }}>
+        
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />

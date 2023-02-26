@@ -190,7 +190,7 @@ function Signup() {
           <Typography
             style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
           >
-            adhaar number
+            aadhaar number
           </Typography>
           <Input
             type="text"

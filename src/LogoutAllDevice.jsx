@@ -1,6 +1,9 @@
 import React from 'react';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
+import { Button } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { Box } from '@mui/material';
 import Axios from "axios";
 
 const LogoutAllDevice = () => {
@@ -28,9 +31,22 @@ const LogoutAllDevice = () => {
     }
     return (
         <div padding="100px">
-           <button onClick={fun}>
+          
+          <Box
+          sx={{
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center"
+          }}
+          >
+           <Button onClick={fun} variant="contained" className="log-out-btn" endIcon={<LogoutIcon />} 
+           sx={{
+            backgroundColor:"#FF8787"
+           }}
+           >
             Logout from all device
-           </button>
+           </Button>
+           </Box>
         </div>
     );
 };

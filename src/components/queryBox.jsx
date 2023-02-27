@@ -162,7 +162,7 @@ const QueryBox = (props) => {
                 <div id="buttons-n1">
                     <Button variant="contained" color="success" id="button-n1" onClick={
                         () => {
-                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery } })
+                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data:props.fullData } })
                         }
                     }>
                         Display

@@ -78,7 +78,7 @@ const PageN1 = () => {
                         return (
                             <div>
                                 <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-                                } oldQuery={val.oldQuery} deleteFunc={deleteThis} />
+                                } oldQuery={val.oldQuery} deleteFunc={deleteThis} fullData={val} />
                             </div>
                         )
                     })

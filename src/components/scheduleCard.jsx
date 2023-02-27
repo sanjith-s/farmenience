@@ -55,6 +55,7 @@ const ScheduleCard = (props) => {
   const [crops, setCrops] = React.useState("");
   const [reason, setReason] = React.useState("");
   const [ngo, setNgo] = useState("Select");
+  const [location,setLocation] = useState("");
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -91,6 +92,7 @@ const ScheduleCard = (props) => {
       crops: crops,
       reason: reason,
       ngotype: ngo,
+      location:location
     }, { headers: { tokenstring: token } }).
       then((response) => {
         console.log(response);
@@ -197,6 +199,23 @@ const ScheduleCard = (props) => {
           minLenght: 1
         }}
         value={reason}
+      />
+      <TextField
+        id="filled-basic"
+        label="Location"
+        variant="filled"
+        color="success"
+        sx={{
+          backgroundColor: "#C4E1C5",
+          borderBottomColor: "black",
+          width: "70%",
+        }}
+        inputProps={{
+          maxLength: 100,
+          minLength: 1
+        }}
+        onChange={(e) => { setLocation(e.target.value) }}
+        value={location}
       />
       <Box sx={{
         backgroundColor: "#C4E1C5",

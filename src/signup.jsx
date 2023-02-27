@@ -86,7 +86,7 @@ function Signup() {
     }
 
     setOpen3(true);
-
+    alert(selection)
     if (
       signupdata.phone.length == 10 &&
       signupdata.password === signupdata.confpass
@@ -103,7 +103,7 @@ function Signup() {
         pincode: signupdata.pincode,
         email: signupdata.email,
         password: signupdata.password,
-        typeOfAcc: type,
+        typeOfAcc: selection,
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -345,9 +345,9 @@ function Signup() {
                   farmer
                 </Typography>
               </MenuItem>
-              <MenuItem value="Volunteer">
+              <MenuItem value="NGO">
                 <Typography style={{ textTransform: "capitalize" }}>
-                  volunteer
+                  NGO
                 </Typography>
               </MenuItem>
               <MenuItem value="Retailer">

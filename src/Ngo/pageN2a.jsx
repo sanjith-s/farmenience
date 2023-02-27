@@ -105,10 +105,10 @@ const PageN2 = () => {
   const [desc, setDesc] = useState(query.description);
   const DeleteQuery = () => {
     let token = Cookies.get('token');
-    Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
+    Axios.delete(`http://localhost:5000/acceptquery/${id}`, { headers: { tokenstring: token } }).
       then((response) => {
         console.log(response);
-        if (response.data.message === 'Deleted Successfully') {
+        if (response.data.message === 'Query You Accepted Successfully') {
           setOpen3(true);
           navigate('../N1');
         }

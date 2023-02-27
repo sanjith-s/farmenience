@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import QueryList from "../components/queryList";
 import { Box, Typography } from "@mui/material";
-import wheat from "../wheatimg.jpg";
-import carrot from "../carrot.jpg";
+import { useEffect } from "react";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const content = [
   {
@@ -33,6 +35,25 @@ const content = [
 ];
 
 function PageN11() {
+  const navigate = useNavigate();
+  const [data,setData]=useState([]);
+useEffect(() => {
+let token = Cookies.get('token');
+Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } }).
+    then((response) => {
+        setData(response.data.message);
+    })
+    .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+            setOpen1(true);
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            setOpen2(true);
+            navigate('../login')
+        }
+    })
+}, []);
+
   return (
     <Box
       style={{
@@ -68,13 +89,14 @@ function PageN11() {
             rowGap: "50px",
           }}
         >
-          {content.map((req, index) => {
+          {data.map((req, index) => {
             return (
               <QueryList
                 key={index + 1}
-                queryID={req.queryID}
-                queryName={req.queryName}
-                date={req.date}
+                queryID={req._id}
+                queryName={req.subject}
+                queryDesc={req.description}
+                date={req.updatedAt}
               />
             );
           })}

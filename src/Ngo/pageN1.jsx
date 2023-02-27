@@ -63,7 +63,7 @@ const PageN1 = () => {
                     navigate('../login')
                 }
             })
-    }, [data]);
+    }, []);
 
     return (
         <>

@@ -4,6 +4,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
+import {Link,useLocation } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -19,6 +20,7 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
+import { data } from "autoprefixer";
 
 const itemsName = [
   "name",
@@ -30,6 +32,9 @@ const itemsName = [
 ];
 
 const SellerNegotiate = (props) => {
+
+  let data = props.data;
+  
   const itemsValue = [
     props.name,
     props.phno,
@@ -84,7 +89,7 @@ const SellerNegotiate = (props) => {
         display: "flex",
         justifyContent: "center",
         padding: "30px 0px",
-        borderRadius: "2px",
+        borderRadius: "20px",
         columnGap: "50px",
         backgroundColor: "#fff",
         border: "3px solid",
@@ -104,6 +109,9 @@ const SellerNegotiate = (props) => {
               marginBottom: "30px",
               width: "fit-content",
               padding: "0px 5px",
+              border: "3px solid",
+              borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography
@@ -122,7 +130,7 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack>
+          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -130,7 +138,7 @@ const SellerNegotiate = (props) => {
                   sx={{
                     display: "flex",
                     columnGap: "20px",
-                    margin: "14px 0px",
+                    margin: "14px 10px",
                   }}
                 >
                   <Box style={{ width: "40%" }}>
@@ -149,6 +157,7 @@ const SellerNegotiate = (props) => {
                       display: "flex",
                       width: "60%",
                       justifyContent: "flex-start",
+                      padding: "0px 50px",
                     }}
                   >
                     <Typography
@@ -172,10 +181,10 @@ const SellerNegotiate = (props) => {
           <img
             src={props.img}
             alt="wheat img"
-            width="280px"
+            width="300px"
             style={{
               border: "5px solid darkgreen",
-              borderRadius: "3px",
+              borderRadius: "16px",
             }}
           />
         </CardMedia>
@@ -188,6 +197,9 @@ const SellerNegotiate = (props) => {
               flexDirection: "column",
               rowGap: "20px",
               alignItems: "center",
+              border: "3px solid",
+              borderRadius: "20px",
+              backgroundColor: "lightyellow"
             }}
           >
             <Typography variant="h6" style={{ textTransform: "uppercase" }}>
@@ -242,12 +254,24 @@ const SellerNegotiate = (props) => {
           }}
         >
           <Box>
-            <IconButton>
+          <IconButton>
+            <Link
+              to="/M1"
+              state={{
+                data: data,
+                regNo : props.regNo,
+                quantity: quantity,
+                price: limit,
+                key:'accept',
+              }}
+              style={{ textDecoration: "none" }}  
+            >
               <ThumbUpIcon
                 variant="contained"
                 onClick={handleSubmit}
                 style={{ color: "green", fontSize: "30px" }}
               />
+            </Link>
             </IconButton>
             <Typography
               style={{
@@ -261,10 +285,19 @@ const SellerNegotiate = (props) => {
           </Box>
           <Box>
             <IconButton>
+            <Link
+              to="/M1"
+              state={{
+                data: props.data,
+              }}
+              style={{ textDecoration: "none" }}  
+            >
               <ThumbDownIcon
                 variant="contained"
                 style={{ color: "lightgreen", fontSize: "30px" }}
               />
+            </Link>
+              
             </IconButton>
             <Typography
               style={{

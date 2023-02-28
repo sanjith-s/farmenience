@@ -13,6 +13,10 @@ import {
   Typography,
   Card,
   Stack,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  Button,
 } from "@mui/material";
 
 const itemsName = [

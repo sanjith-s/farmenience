@@ -73,7 +73,12 @@ function Login() {
           Cookies.set("token", response.data.token, { expires: 1 });
           if (response.data.details[0].typeOfAcc == "Farmer") {
             navigate("/N9");
-          } else {
+          }
+          else if(response.data.details[0].typeOfAcc == "NGO")
+          {
+            navigate("/N10");
+          } 
+          else {
             navigate("/homepage2");
           }
         } else {

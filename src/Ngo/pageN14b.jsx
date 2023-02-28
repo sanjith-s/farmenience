@@ -276,7 +276,7 @@ const PageM19 = () => {
                                     <DialogActions>
                                         <Button onClick={handleClose11x}>
                                             <Link
-                                                to="/N14"
+                                                to="/N9"
                                                 style={{ textDecoration: "none" }}
                                             >
                                                 <Typography

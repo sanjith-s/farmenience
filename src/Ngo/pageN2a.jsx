@@ -70,7 +70,7 @@ then((response)=>{
   console.log(response);
   if(response.data.message==='Deleted Successfully')
   {
-    alert('Deleted Successfully');
+    alert('Accepted Successfully');
     navigate('../N1');
   }
 })

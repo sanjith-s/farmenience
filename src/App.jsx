@@ -1,14 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
+import NavbarBefore from "./components/navbarBefore";
 import Footer from "./components/footer";
+import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
-import Chart from "./components/chart";
 import Login from "./login";
+import Logout from "./logout"
+import LogoutAllDevice from "./LogoutAllDevice";
+import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
 import PageM3 from "./Market/pageM3";
@@ -29,6 +34,7 @@ import PageM16 from "./Market/pageM16";
 import PageM17 from "./Market/pageM17";
 import PageM18 from "./Market/pageM18";
 import PageM19 from "./Market/pageM19";
+import Graph from "./components/graph";
 //import AllQueries from "./N1";
 import PageN1 from "./Ngo/pageN1";
 import PageN2 from "./Ngo/pageN2a";
@@ -45,24 +51,38 @@ import PageN13 from "./Ngo/pageN13";
 import PageN14 from "./Ngo/pageN14";
 import PageN14a from "./Ngo/pageN14a";
 import PageN14b from "./Ngo/pageN14b";
+import Chart from "./components/chart";
 import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
-import LogoutAllDevice from "./LogoutAllDevice";
 import N10Navbar from "./components/n10Navbar";
+import { display } from "@mui/system";
+
+function displayNavbar() {
+  const token = Cookies.get("token");
+
+  if (token != null)
+    return <Navbar />
+  else
+    return <NavbarBefore />
+}
 
 function App() {
+
   return (
     <div>
-        <Navbar />
-        {/* <N10Navbar/> */}
-      <main className="main-content" style={{marginTop:"2%"}}>
+      {/* <N10Navbar/> */}
+      {displayNavbar()}
+      <main className="main-content" style={{ marginTop: "2%" }}>
+        
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />
             <Route path="/M3" element={<PageM3 />} />
@@ -84,7 +104,7 @@ function App() {
             <Route path="/M18" element={<PageM18 />} />
             <Route path="/M19" element={<PageM19 />} />
             <Route path="/N1" element={<PageN1 />} />
-            <Route path="/N2a" element={<PageN2 />} />
+            <Route path="/N2" element={<PageN2 />} />
             <Route path="/N4" element={<PageN4 />} />
             <Route path="/N5" element={<PageN5 />} />
             <Route path="/N6" element={<PageN6 />} />
@@ -99,6 +119,7 @@ function App() {
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
             <Route path="/cal" element={<Calender />} />
+            <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route
               path="/cropRecommendation"
@@ -108,7 +129,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-      <Footer />
+      <Footer1 />
     </div>
   );
 }

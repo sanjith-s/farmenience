@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PriceTable from "../components/priceTable";
 import ProductDetails from "../components/productDetails";
-import { useLocation } from "react-router-dom";
+import {Link, useLocation } from "react-router-dom";
 import {
   Box,
   CssBaseline,
@@ -328,18 +328,30 @@ function PageM4() {
             </Typography>
           </Box>
           <Button
-          // onClick={handleChange}
             variant="contained"
             style={{
-              fontWeight: "600",
-              fontSize: "17px",
               backgroundColor: "green",
               position: "absolute",
               bottom: "20px",
               right: "20px",
             }}
           >
-            Delete Sale
+          <Link
+            to="/M3"
+            state={{
+              data: data.transactionID,
+            }}
+            style={{ textDecoration: "none" }} 
+            >
+              <Typography
+              style={{
+                color: "#ffffff",
+                fontWeight: "600",
+              }}
+            >
+              Delete Sale
+            </Typography> 
+          </Link>
           </Button>
         </Box>
       </CardContent>

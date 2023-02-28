@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import ProductCard from "../components/productCard";
+import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
+import DoneIcon from '@mui/icons-material/Done';
 import { Button, Box, Typography } from "@mui/material";
 
 const PageM18 = () => {
@@ -50,7 +53,7 @@ const PageM18 = () => {
                 <Box>
                   {val.ele}
                   <Box style={{ display: "flex", justifyContent: "center" }}>
-                    <Button
+                    <Button endIcon={<DeleteIcon />}
                       variant="contained"
                       style={{
                         backgroundColor: "green",
@@ -97,7 +100,7 @@ const PageM18 = () => {
             width: "800px",
           }}
         >
-          <Button
+          <Button endIcon={<AddIcon />}
             variant="contained"
             onClick={addProd}
             style={{
@@ -109,7 +112,7 @@ const PageM18 = () => {
           >
             Add Product
           </Button>
-          <Button
+          <Button endIcon={<DoneIcon />}
             variant="contained"
             style={{
               backgroundColor: "green",

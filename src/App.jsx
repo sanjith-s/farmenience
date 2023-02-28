@@ -93,7 +93,7 @@ function App() {
             <Route path="/N10" element={<PageN10 />} />
             <Route path="/N11" element={<PageN11 />} />
             {/* <Route path="/N12" element={<PageN12 />} /> */}
-            <Route path="/N12a" element={<PageN12a />} />
+            <Route path="/N12" element={<PageN12 />} />
             <Route path="/N13" element={<PageN13 />} />
             {/* <Route path="/N14" element={<PageN14 />} /> */}
             <Route path="/N14a" element={<PageN14a />} />

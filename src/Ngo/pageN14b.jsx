@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import {
     Dialog,
@@ -38,7 +39,23 @@ const PageM19 = () => {
     const [time, setTime] = React.useState(0);
 
     const handleClickOpen1 = () => {
-        setOpen1(true);
+        Swal.fire({
+            title: 'Do you want to reschedule the appointment?',
+            html: "<b>Date : </b> " + date + "<br /><br />" + "<b>Time: </b>" + time,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Appointment Rescheduled!',
+            })
+            }
+          })
+        };
     };
 
     const handleClickOpen1x = () => {

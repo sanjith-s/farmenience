@@ -1,5 +1,6 @@
 import '../css/pageN1.css'
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2'
 import QueryBox from '../components/queryBox';
 import Typography from '@mui/material/Typography';
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
@@ -13,24 +14,24 @@ import { Button } from "@mui/material";
 const PageN1 = () => {
     const [data, setData] = useState([
         {
-            _id:23,
-            updatedAt:"22/2/2023",
-            status:"Viewed",
-            subject:"QUality Issue",
-            description:"Recently bought wheat which is in bad quality",
-        },{
-            _id:13,
-            updatedAt:"22/2/2023",
-            status:"Viewed",
-            subject:"Price Issue",
-            description:"Recently bought wheat which is high priced",
+            _id: 23,
+            updatedAt: "22/2/2023",
+            status: "Viewed",
+            subject: "QUality Issue",
+            description: "Recently bought wheat which is in bad quality",
+        }, {
+            _id: 13,
+            updatedAt: "22/2/2023",
+            status: "Viewed",
+            subject: "Price Issue",
+            description: "Recently bought wheat which is high priced",
         }
     ]);
     const deleteThis = (id) => {
         var back = data;
         for (var i = 0; i < back.length; i++) {
             if (back[i]._id == id) {
-                back.splice(i,i+1);
+                back.splice(i, i + 1);
             }
         }
         console.log(back);
@@ -56,10 +57,18 @@ const PageN1 = () => {
             })
             .catch((res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    setOpen1(true);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    setOpen2(true);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
                     navigate('../login')
                 }
             })
@@ -94,31 +103,31 @@ const PageN1 = () => {
             </div>
 
             <Dialog
-                  open={open1}
-                  onClose={handleClose1}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">
+                open={open1}
+                onClose={handleClose1}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
                     Please check network connection !
-                  </DialogTitle>
-                  <DialogActions>
+                </DialogTitle>
+                <DialogActions>
                     <Button onClick={handleClose1}>Ok</Button>
-                  </DialogActions>
-                </Dialog> 
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Error
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
+                </DialogActions>
+            </Dialog>
+            <Dialog
+                open={open2}
+                onClose={handleClose2}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    Login Error
+                </DialogTitle>
+                <DialogActions>
+                    <Button onClick={handleClose2}>Ok</Button>
+                </DialogActions>
+            </Dialog>
 
         </>
     )

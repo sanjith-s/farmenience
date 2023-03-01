@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import file from "../images/farm_land.jpg";
 import {
@@ -49,7 +50,22 @@ const PageM19 = () => {
   const [open3, setOpen3] = React.useState(false);
 
   const handleClickOpen1 = () => {
-    setOpen1(true);
+    Swal.fire({
+      title: 'Do you want to delete the appointment?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Appointment Deleted!',
+      })
+      }
+    })
   };
 
   const handleClickOpen1x = () => {
@@ -57,7 +73,10 @@ const PageM19 = () => {
   };
 
   const handleClickOpen2 = () => {
-    setOpen2(true);
+    Swal.fire({
+      icon: 'success',
+      title: 'Appointment Accepted !!'
+    })
   };
 
   const handleClickOpen3 = () => {

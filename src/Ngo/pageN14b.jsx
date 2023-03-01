@@ -47,15 +47,14 @@ const PageM19 = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                icon: 'success',
-                title: 'Appointment Rescheduled!',
-            })
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Appointment Rescheduled!',
+                })
             }
-          })
-        };
+        })
     };
 
     const handleClickOpen1x = () => {

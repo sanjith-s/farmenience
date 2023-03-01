@@ -188,6 +188,10 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Subject}
                                 variant="standard"
+                                inputProps={{ 
+                                    maxLength: 40,
+                                    minLength: 1 
+                                }}
                                 onChange={(e) => { setSubject(e.target.value) }}
                             />
                             <TextField
@@ -199,6 +203,10 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Desc}
                                 variant="standard"
+                                inputProps={{ 
+                                    maxLength: 80,
+                                    minLength: 1
+                                }}
                                 onChange={(e) => { setDesc(e.target.value) }}
                             />
                         </DialogContent>

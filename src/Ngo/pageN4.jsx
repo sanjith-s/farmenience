@@ -1,9 +1,7 @@
 import React from "react";
-
 import { useState, useRef } from "react";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
+import { FilePond, registerPlugin } from 'react-filepond';
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import Fab from "@mui/material/Fab";
@@ -81,8 +79,19 @@ const PageN4 = () => {
                 type="file"
                 id="imgUp"
                 style={{ display: "none" }}
+                accept="image/png, image/jpeg, image/jpg"
+                maxsize="2"
+                minsize="1"
                 onChange={handleChange}
+
               />
+              {/* <FilePond
+                files={file}
+                allowFileSizeValidation={true}
+                maxFileSize={5}
+                labelMaxFileSizeExceeded={'File is too large'}
+                acceptedFileTypes={"png"}
+              /> */}
               <label
                 htmlFor="imgUp"
                 style={{ width: "fit-content", height: "fit-content" }}

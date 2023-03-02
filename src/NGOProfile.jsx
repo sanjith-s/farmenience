@@ -1,5 +1,5 @@
 import React from "react";
-import Negotiate from "../components/negotitate_price";
+import Details from "./components/NGOProfileComp";
 import { Box, Typography } from "@mui/material";
 
 const content = [
@@ -11,25 +11,9 @@ const content = [
     Address: "Chennai",
     Price: 1234,
   },
-  {
-    Name: "Product 2",
-    Quantity: 40,
-    Type: "Type 2",
-    Buyer: "Sanjith",
-    Address: "Chennai",
-    Price: 4254,
-  },
-  {
-    Name: "Product 3",
-    Quantity: 48,
-    Type: "Type 3",
-    Buyer: "Kumar",
-    Address: "madurai",
-    Price: 7890,
-  },
 ];
 
-const PageM16 = () => {
+const NGOProfile = () => {
   return (
     <Box
       sx={{
@@ -66,7 +50,7 @@ const PageM16 = () => {
         {content.map((id, key) => {
           return (
             <Box>
-              <Negotiate
+              <Details
                 key={key}
                 name={id.Name}
                 price={id.Price}
@@ -83,4 +67,4 @@ const PageM16 = () => {
   );
 };
 
-export default PageM16;
+export default NGOProfile;

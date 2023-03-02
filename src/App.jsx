@@ -13,6 +13,7 @@ import Signup from "./signup";
 import Login from "./login";
 import Logout from "./logout"
 import LogoutAllDevice from "./LogoutAllDevice";
+import NGOProfile from "./NGOProfile";
 import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
@@ -82,6 +83,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/NGOProfile" element={<NGOProfile />} />
             <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />

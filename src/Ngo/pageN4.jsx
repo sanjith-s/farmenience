@@ -83,7 +83,6 @@ const PageN4 = () => {
                 maxsize="2"
                 minsize="1"
                 onChange={handleChange}
-
               />
               {/* <FilePond
                 files={file}

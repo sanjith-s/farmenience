@@ -30,7 +30,7 @@ const itemsName = [
     "Email Address: "
 ];
 
-const NGOProfileComp = (props) => {
+const BuyerProfileComp = (props) => {
     const [price, setPrice] = useState(0);
     const [open1, setOpen1] = useState(false);
 
@@ -108,4 +108,4 @@ const NGOProfileComp = (props) => {
     );
 };
 
-export default NGOProfileComp;
+export default BuyerProfileComp;

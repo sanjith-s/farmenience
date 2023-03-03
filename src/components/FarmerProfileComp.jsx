@@ -27,10 +27,12 @@ const itemsName = [
     "District: ",
     "State: ",
     "Pincode: ",
-    "Email Address: "
+    "Email Address: ",
+    "Crops Grown: ",
+    "Skills: "
 ];
 
-const NGOProfileComp = (props) => {
+const FarmerProfileComp = (props) => {
     const [price, setPrice] = useState(0);
     const [open1, setOpen1] = useState(false);
 
@@ -45,6 +47,8 @@ const NGOProfileComp = (props) => {
         props.state,
         props.pincode,
         props.email,
+        props.cropsgrown,
+        props.skills
     ];
 
     return (
@@ -108,4 +112,4 @@ const NGOProfileComp = (props) => {
     );
 };
 
-export default NGOProfileComp;
+export default FarmerProfileComp;

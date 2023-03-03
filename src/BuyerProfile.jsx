@@ -1,5 +1,5 @@
 import React from "react";
-import Details from "./components/NGOProfileComp";
+import Details from "./components/BuyerProfileComp";
 import { Box, Typography, Avatar, Grid } from "@mui/material";
 
 const content = [
@@ -17,7 +17,7 @@ const content = [
   },
 ];
 
-const NGOProfile = () => {
+const BuyerProfile = () => {
   return (
     <Box
       sx={{
@@ -37,7 +37,7 @@ const NGOProfile = () => {
           justifyItems: "space-between"
         }}
       >
-        Welcome NGO
+        Welcome Buyer
       </Typography>
       <Grid container spacing={18} >
         <Grid container item xs={6} direction="column" >
@@ -73,4 +73,4 @@ const NGOProfile = () => {
   );
 };
 
-export default NGOProfile;
+export default BuyerProfile;

@@ -1,9 +1,7 @@
 .foot {
-	display: flex;
-	flex-direction: column;
+	/* display: flex; */
+	/* flex-direction: column; */
 	background: rgba(22, 229, 117, 1);
-	/* position: sticky;
-	bottom: 0; */
 	border-top: 1px solid darkgreen;
 }
 
@@ -17,9 +15,6 @@
 	align-items: center;
 }
 
-.foot-items {
-	/*	flex:9;*/
-}
 
 .foot-links {
 	text-decoration: none;

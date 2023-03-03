@@ -31,41 +31,40 @@ import "../css/footer.css";
 const Footer = () => {
 
     return (
-        <Container maxWidth={false} disableGutters>
+        <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"20px"}}>
             <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    // border: "3px solid",
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: "#7bff96",
-                    // borderRadius: "8px",
                     height: "100%",
                     width: "100%",
                     background: "rgba(22, 229, 117, 1)"
                 }}
+                
             >
-                <Grid container>
-                    <Grid container item xs={5} direction="column" className="foot-body">
+                <Grid container sx={{padding:"5px",paddingBottom:"0px"}} spacing={2}>
+                    <Grid item sm={5} md={5} xs={12} direction="column" className="foot-body">
                         <CardContent style={{ borderRadius: "8px" }}>
-                            <Stack>
+                            <Stack style={{display:"flex",flexDirection:"column",rowGap:"15px"}}>
                                 <Box className="foot-items" sx={{ display: "flex" }}>
-                                    <LocationOnIcon className="foot-items-logo" />
+                                    <LocationOnIcon className="foot-items-logo" style={{fill:"#333"}}  />
                                     <Typography sx={{ fontSize: "18px" }}>
                                         Sardar Patel Road, Guindy, Chennai<br />Tamilnadu, India<br />Pincode: 600025
                                     </Typography>
                                 </Box>
 
-                                <Box sx={{ display: "flex", marginTop: "20px" }}>
-                                    <PhoneIcon className="foot-items-logo" />
+                                <Box sx={{ display: "flex" }}>
+                                    <PhoneIcon className="foot-items-logo" style={{fill:"#333"}} />
                                     <Typography sx={{ fontSize: "18px" }}>
                                         +91 99999 99999
                                     </Typography>
                                 </Box>
 
-                                <Box sx={{ display: "flex", marginTop: "20px" }}>
-                                    <EmailIcon className="foot-items-logo" />
+                                <Box sx={{ display: "flex" }}>
+                                    <EmailIcon className="foot-items-logo" style={{fill:"#333"}} />
                                     <Typography sx={{ fontSize: "18px" }}>
                                         farmenience23@gmail.com
                                     </Typography>
@@ -75,19 +74,19 @@ const Footer = () => {
                         </CardContent>
                     </Grid>
 
-                    <Grid container item xs={7} direction="column" >
-                        <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+                    <Grid item sm={7} md={7} xs={12} direction="column" >
+                        <CardContent style={{  borderRadius: "8px" }}>
                             <Stack>
-                                <Box sx={{ display: "flex", marginTop: "20px" }}>
+                                <Box sx={{ display: "flex" }}>
                                     <Typography sx={{ fontSize: "18px" }}>
-                                        <b>ABOUT THE COMPANY</b><br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
+                                        <b><strong>ABOUT THE COMPANY </strong> </b> <br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
                                     </Typography>
                                 </Box>
-                                <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px" }}>
-                                    <Link href="https://www.facebook.com/"><FacebookIcon /></Link>
-                                    <Link href="https://www.twitter.com/"><TwitterIcon /></Link>
-                                    <Link href="https://www.linkedin.com/"><LinkedInIcon /></Link>
-                                    <Link href="https://www.instagram.com/"><InstagramIcon /></Link>
+                                <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px",justifyContent:"center",columnGap:"20px" }}>
+                                    <Link href="https://www.facebook.com/"><FacebookIcon style={{fill:"#333"}} /></Link>
+                                    <Link href="https://www.twitter.com/"><TwitterIcon style={{fill:"#333"}} /></Link>
+                                    <Link href="https://www.linkedin.com/"><LinkedInIcon style={{fill:"#333"}} /></Link>
+                                    <Link href="https://www.instagram.com/"><InstagramIcon style={{fill:"#333"}} /></Link>
                                 </Box>
                             </Stack>
                         </CardContent>

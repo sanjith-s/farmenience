@@ -15,8 +15,13 @@ import {
   FormControl,
   Dialog,
   DialogTitle,
-  DialogActions
+  DialogActions,
+  Stepper,
+  Step,
+  StepLabel,
+  Fab
 } from "@mui/material";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 
 function Signup() {
   const captchaRef = useRef(null);
@@ -28,6 +33,17 @@ function Signup() {
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const nextStep = () => {
+    if (activeStep < 2)
+      setActiveStep((currentStep) => currentStep + 1)
+  }
+
+  const prevStep = () => {
+    if (activeStep !== 0)
+      setActiveStep((currentStep) => currentStep - 1)
+  }
 
   const [signupdata, setsignupdata] = useState({
     email: "",
@@ -133,236 +149,337 @@ function Signup() {
         rowGap: "40px",
       }}
     >
-      <Box>
-        <Typography
-          variant="h4"
-          style={{ textTransform: "uppercase", textAlign: "center" }}
-        >
-          signup page
-        </Typography>
-      </Box>
-      <form style={{ width: "450px" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            name
-          </Typography>
-          <Input
-            type="text"
-            name="name"
-            value={signupdata.name}
-            onChange={handleChange}
-          />
-        </Box>
+      <Stepper activeStep={activeStep}>
+        <Step>
+          <StepLabel>Details</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Documents Upload</StepLabel>
+        </Step>
+      </Stepper>
+      {activeStep === 0 &&
+        <Box>
+          <Box>
+            <Typography
+              variant="h4"
+              style={{ textTransform: "uppercase", textAlign: "center" }}
+            >
+              signup page
+            </Typography>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            phone number
-          </Typography>
-          <Input
-            type="tel"
-            name="phone"
-            value={signupdata.phone}
-            onChange={handleChange}
-          />
-        </Box>
+          </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            aadhaar number
-          </Typography>
-          <Input
-            type="text"
-            name="aadhar"
-            value={signupdata.aadhar}
-            onChange={handleChange}
-          />
-        </Box>
+          <form style={{ width: "450px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                name
+              </Typography>
+              <Input
+                type="text"
+                name="name"
+                value={signupdata.name}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            address line 1
-          </Typography>
-          <Input
-            type="text"
-            name="addr1"
-            value={signupdata.addr1}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                phone number
+              </Typography>
+              <Input
+                type="tel"
+                name="phone"
+                value={signupdata.phone}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            address line 2
-          </Typography>
-          <Input
-            type="text"
-            name="addr2"
-            value={signupdata.addr2}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                aadhaar number
+              </Typography>
+              <Input
+                type="text"
+                name="aadhar"
+                value={signupdata.aadhar}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            city / town
-          </Typography>
-          <Input
-            type="text"
-            name="city"
-            value={signupdata.city}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                address line 1
+              </Typography>
+              <Input
+                type="text"
+                name="addr1"
+                value={signupdata.addr1}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            district
-          </Typography>
-          <Input
-            type="text"
-            name="district"
-            value={signupdata.district}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                address line 2
+              </Typography>
+              <Input
+                type="text"
+                name="addr2"
+                value={signupdata.addr2}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            state
-          </Typography>
-          <Input
-            type="text"
-            name="state"
-            value={signupdata.state}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                city / town
+              </Typography>
+              <Input
+                type="text"
+                name="city"
+                value={signupdata.city}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            pincode
-          </Typography>
-          <Input
-            type="text"
-            name="pincode"
-            value={signupdata.pincode}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                district
+              </Typography>
+              <Input
+                type="text"
+                name="district"
+                value={signupdata.district}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            email
-          </Typography>
-          <Input
-            type="email"
-            name="email"
-            value={signupdata.email}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                state
+              </Typography>
+              <Input
+                type="text"
+                name="state"
+                value={signupdata.state}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            password
-          </Typography>
-          <Input
-            type="password"
-            name="password"
-            value={signupdata.password}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                pincode
+              </Typography>
+              <Input
+                type="text"
+                name="pincode"
+                value={signupdata.pincode}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            confirm password
-          </Typography>
-          <Input
-            type="password"
-            name="confpass"
-            value={signupdata.confpass}
-            onChange={handleChange}
-          />
-        </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                email
+              </Typography>
+              <Input
+                type="email"
+                name="email"
+                value={signupdata.email}
+                onChange={handleChange}
+              />
+            </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-          >
-            account type
-          </Typography>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                password
+              </Typography>
+              <Input
+                type="password"
+                name="password"
+                value={signupdata.password}
+                onChange={handleChange}
+              />
+            </Box>
 
-          <FormControl variant="standard" sx={{ width: "200px" }}>
-            <Select value={selection} onClick={selectionChange}>
-              <MenuItem value="Farmer">
-                <Typography style={{ textTransform: "capitalize" }}>
-                  farmer
-                </Typography>
-              </MenuItem>
-              <MenuItem value="NGO">
-                <Typography style={{ textTransform: "capitalize" }}>
-                  NGO
-                </Typography>
-              </MenuItem>
-              <MenuItem value="Retailer">
-                <Typography style={{ textTransform: "capitalize" }}>
-                  retailer
-                </Typography>
-              </MenuItem>
-              <MenuItem value="Job Seeker">
-                <Typography style={{ textTransform: "capitalize" }}>
-                  job seeker
-                </Typography>
-              </MenuItem>
-            </Select>
-          </FormControl>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                confirm password
+              </Typography>
+              <Input
+                type="password"
+                name="confpass"
+                value={signupdata.confpass}
+                onChange={handleChange}
+              />
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                account type
+              </Typography>
+
+              <FormControl variant="standard" sx={{ width: "200px" }}>
+                <Select value={selection} onClick={selectionChange}>
+                  <MenuItem value="Farmer">
+                    <Typography style={{ textTransform: "capitalize" }}>
+                      farmer
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem value="NGO">
+                    <Typography style={{ textTransform: "capitalize" }}>
+                      NGO
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem value="Retailer">
+                    <Typography style={{ textTransform: "capitalize" }}>
+                      retailer
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem value="Job Seeker">
+                    <Typography style={{ textTransform: "capitalize" }}>
+                      job seeker
+                    </Typography>
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+          </form>
+
+          <Button
+        variant="contained"
+        type="submit"
+        onClick={nextStep}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Next Step
+      </Button>
         </Box>
-      </form>
+      }
+
+      {activeStep === 1 &&
+        <Box>
+          <Box>
+            <Typography
+              variant="h4"
+              style={{ textTransform: "uppercase", textAlign: "center" }}
+            >
+              signup page
+            </Typography>
+
+          </Box>
+
+          <form style={{ width: "450px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                Land Document
+              </Typography>
+
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                maxsize="2"
+                minsize="1"
+                onChange={handleChange}
+              />
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
+              >
+                Land Document
+                <br />
+                <br />
+              </label>
+
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+              >
+                Aadhaar Card
+              </Typography>
+              
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                maxsize="2"
+                minsize="1"
+                onChange={handleChange}
+              />
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
+              >
+                Aadhaar Card
+                <br />
+                <br />
+              </label>
+            </Box>
+          </form>
+
+          <Button
+        variant="contained"
+        type="submit"
+        onClick={prevStep}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Previous Step
+      </Button>
+
       <Button
         variant="contained"
         type="submit"
@@ -371,6 +488,36 @@ function Signup() {
       >
         Submit
       </Button>
+
+        </Box>
+      }
+
+      {/* <Button
+        variant="contained"
+        type="submit"
+        onClick={prevStep}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Previous Step
+      </Button>
+
+      <Button
+        variant="contained"
+        type="submit"
+        onClick={submit}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Submit
+      </Button>
+
+      <Button
+        variant="contained"
+        type="submit"
+        onClick={nextStep}
+        style={{ backgroundColor: "green", fontWeight: "600" }}
+      >
+        Next Step
+      </Button> */}
 
       <Dialog
         open={open1}

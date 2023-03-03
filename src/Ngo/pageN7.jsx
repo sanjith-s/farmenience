@@ -1,9 +1,7 @@
 import React from "react";
-
+import Swal from 'sweetalert2'
 import { useRef } from "react";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Container from "@mui/material/Container";
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
@@ -80,9 +78,17 @@ const PageN7 = () => {
 
   const validate = () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
-      setOpen(true);
+      Swal.fire({
+        icon: 'info',
+        title: 'Please confirm the details ...',
+        html: "<b>Query Subject: </b> " + subject + "<br /><br />" + "<b>Description: </b>" + desc,
+      })
     } else {
-      setOpen2(true);
+      Swal.fire({
+        icon: 'info',
+        title: 'Please Note ...',
+        html: "1. Subject should be of minimum length 1 and maximum length 50" + "<br></br>" + "2. Description should be of minimum length 1 and maximum length 500",
+    })
     }
   }
   
@@ -95,16 +101,27 @@ const PageN7 = () => {
       then((response) => {
         console.log(response);
         if (response.data.message === 'Query Added Successfully') {
-          setOpen1(true);
-          navigate('../N1');
+          setOpen3(true);
+          Swal.fire({
+            icon: 'success',
+            title: 'Query Added Successfully !!',
+          })
         }
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen2(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen3(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
         else {

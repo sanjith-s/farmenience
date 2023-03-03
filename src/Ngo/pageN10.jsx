@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Swal from 'sweetalert2'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -76,10 +77,18 @@ const PageN10 = () => {
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen1(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen2(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
       })

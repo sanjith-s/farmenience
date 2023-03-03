@@ -33,52 +33,10 @@ const PageN2 = () => {
   const [isUploaded, setIsUploaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const id = 3;
-  const oldQuery = [
-    {
-      subject:"Query 1",
-      description:"Query description here",
-      timedate:"22/2/2023"
-    }
-  ];
+  const id = location.state.id;
+  const oldQuery = location.state.oldQuery;
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-  const [open7, setOpen7] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-
-  const handleClose6 = () => {
-    setOpen6(false);
-  };
-
-  const handleClose7 = () => {
-    setOpen7(false);
-  };
-
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
@@ -92,10 +50,10 @@ const PageN2 = () => {
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen1(true);
+          alert('Please Check Network');
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen2(true);
+          alert('Login error');
           navigate('../login')
         }
       })
@@ -105,17 +63,17 @@ const PageN2 = () => {
   const [desc, setDesc] = useState(query.description);
   const DeleteQuery = () => {
     let token = Cookies.get('token');
-    Axios.delete(`http://localhost:5000/acceptquery/${id}`, { headers: { tokenstring: token } }).
+    Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
       then((response) => {
         console.log(response);
-        if (response.data.message === 'Query You Accepted Successfully') {
-          setOpen3(true);
+        if (response.data.message === 'Deleted Successfully') {
+          alert('Accepted Successfully');
           navigate('../N1');
         }
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen1(true);
+          alert('Please Check Network');
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
           alert(res.response.data.message);
@@ -139,16 +97,16 @@ const PageN2 = () => {
       then((response) => {
         console.log(response);
         if (response.data.message === 'Query Attached Successfully') {
-          setOpen4(true);
+          alert('Query Attached Successfully');
           navigate('../N1');
         }
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen1(true);
+          alert('Please Check Network');
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen2(true);
+          alert('Login error');
           navigate('../login')
         }
         else {
@@ -250,62 +208,6 @@ const PageN2 = () => {
           )
         })
       }
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please check network connection !
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Error
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Deleted Successfully
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Query Attached Successfully
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

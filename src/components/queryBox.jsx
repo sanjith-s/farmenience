@@ -124,21 +124,31 @@ const QueryBox = (props) => {
             <Card id="card-n1">
                 <table id="query-table" >
                     <tr>
-                        <td id="left-column"><Typography>Query ID <span id="semi-colon">:</span></Typography></td>
-                        <td id="right-column"><Typography>{props.ID}</Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Query ID <span id="semi-colon">:</span></Typography></td>
+                        <td id="right-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>{props.ID}</Typography></td>
                     </tr>
                     <tr>
-                        <td id="left-column"><Typography>Query Subject <span id="semi-colon"> :</span></Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Query Subject <span id="semi-colon"> :</span></Typography></td>
                         <td id="right-column"><Typography>{props.Subject}</Typography></td>
                     </tr>
                     <tr>
                         <td id="left-column">
-                            <Typography>Date of Query <span id="semi-colon"> :</span></Typography>
+                            <Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Date of Query <span id="semi-colon"> :</span></Typography>
                         </td>
                         <td id="right-column"><Typography>{props.Date}</Typography></td>
                     </tr>
                     <tr>
-                        <td id="left-column"><Typography>Status <span id="semi-colon">:</span></Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Status <span id="semi-colon">:</span></Typography></td>
                         <td id="right-column"><Typography>{props.Status}</Typography></td>
                     </tr>
                 </table>
@@ -162,7 +172,7 @@ const QueryBox = (props) => {
                 <div id="buttons-n1">
                     <Button variant="contained" color="success" id="button-n1" onClick={
                         () => {
-                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery } })
+                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data:props.fullData } })
                         }
                     }>
                         Display
@@ -188,6 +198,10 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Subject}
                                 variant="standard"
+                                inputProps={{ 
+                                    maxLength: 40,
+                                    minLength: 1 
+                                }}
                                 onChange={(e) => { setSubject(e.target.value) }}
                             />
                             <TextField
@@ -199,6 +213,10 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Desc}
                                 variant="standard"
+                                inputProps={{ 
+                                    maxLength: 80,
+                                    minLength: 1
+                                }}
                                 onChange={(e) => { setDesc(e.target.value) }}
                             />
                         </DialogContent>

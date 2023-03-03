@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import dayjs, { Dayjs } from 'dayjs';
 import { Grid, TextField } from "@mui/material";
 import Box from '@mui/material/Box';
@@ -51,10 +52,11 @@ const ScheduleCard = (props) => {
   const handleChange2 = (event) => {
     setAge(event.target.value);
   };
-  const [details, setDetails] = React.useState("");
-  const [crops, setCrops] = React.useState("");
-  const [reason, setReason] = React.useState("");
+  const [details, setDetails] = useState("");
+  const [crops, setCrops] = useState("");
+  const [reason, setReason] = useState("");
   const [ngo, setNgo] = useState("Select");
+  const [location, setLocation] = useState("");
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -91,20 +93,33 @@ const ScheduleCard = (props) => {
       crops: crops,
       reason: reason,
       ngotype: ngo,
+      location: location
     }, { headers: { tokenstring: token } }).
       then((response) => {
         console.log(response);
         if (response.data.message === 'Meet Added, Waiting for NGO Reply') {
-          setOpen1(true);
+          Swal.fire({
+            icon: 'success',
+            title: 'Meet Added !!',
+            text: 'Waiting for NGO Reply',
+          })
           navigate('../N6');
         }
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen2(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen3(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
         else {
@@ -198,6 +213,23 @@ const ScheduleCard = (props) => {
         }}
         value={reason}
       />
+      <TextField
+        id="filled-basic"
+        label="Location"
+        variant="filled"
+        color="success"
+        sx={{
+          backgroundColor: "#C4E1C5",
+          borderBottomColor: "black",
+          width: "70%",
+        }}
+        inputProps={{
+          maxLength: 100,
+          minLength: 1
+        }}
+        onChange={(e) => { setLocation(e.target.value) }}
+        value={location}
+      />
       <Box sx={{
         backgroundColor: "#C4E1C5",
         borderBottomColor: "black",
@@ -280,7 +312,13 @@ const ScheduleCard = (props) => {
         <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => { setOpen(true) }}>
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => {
+          Swal.fire({
+            icon: 'info',
+            title: 'Please confirm the details ...',
+            html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
+          })
+        }}>
           Submit
         </Button>
       </Box>

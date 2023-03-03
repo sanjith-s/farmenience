@@ -22,7 +22,6 @@
     width: 45%;
 }
 
-
 .in-text:hover {
     color:rgb(54, 79, 72);
 }
@@ -30,7 +29,32 @@
 .boxes {
     animation: floating 4s infinite ;
 }
+.texts-box {
+    animation: movingTopToBottom 5s linear infinite;
+    position: relative;
+    display: inline-block;
+    margin-top: 2%;
+}
 
+@keyframes movingTopToBottom {
+    0% {
+      top: -75px;
+    }
+    95% {
+      top: 150px;
+    }
+    100% {
+      top: 165px;
+    }
+}
+
+.shower {
+    overflow: hidden;
+}
+@keyframes scroller {
+    0% {margin-top: 0%;}
+    100% {margin-top:80%}
+}
 @keyframes floating {
     0% {width: 200px;}
     50% {width: 190px;}

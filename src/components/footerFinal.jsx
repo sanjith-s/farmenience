@@ -77,7 +77,7 @@ const Footer = () => {
                     <Grid item sm={7} md={7} xs={12} direction="column" >
                         <CardContent style={{  borderRadius: "8px" }}>
                             <Stack>
-                                <Box sx={{ display: "flex", marginTop: "20px" }}>
+                                <Box sx={{ display: "flex"}}>
                                     <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
                                         ABOUT THE COMPANY
                                     </Typography>

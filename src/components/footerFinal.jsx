@@ -77,9 +77,14 @@ const Footer = () => {
                     <Grid item sm={7} md={7} xs={12} direction="column" >
                         <CardContent style={{  borderRadius: "8px" }}>
                             <Stack>
-                                <Box sx={{ display: "flex" }}>
-                                    <Typography sx={{ fontSize: "18px" }}>
-                                        <b><strong>ABOUT THE COMPANY </strong> </b> <br />Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
+                                <Box sx={{ display: "flex", marginTop: "20px" }}>
+                                    <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
+                                        ABOUT THE COMPANY
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", marginTop: "20px" }}>
+                                    <Typography sx={{ fontSize: "16px", fontWeight: "light" }}>
+                                        Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
                                     </Typography>
                                 </Box>
                                 <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px",justifyContent:"center",columnGap:"20px" }}>

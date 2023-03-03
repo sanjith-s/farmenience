@@ -1,5 +1,5 @@
 import React from "react";
-import Details from "./components/NGOProfileComp";
+import Details from "./components/FarmerProfileComp";
 import { Box, Typography, Avatar, Grid } from "@mui/material";
 
 const content = [
@@ -14,10 +14,12 @@ const content = [
     State: "Tamilnadu",
     Pincode: "600000",
     Email: "tom@gmail.com",
+    CropsGrown: "Maize, Rice, Wheat",
+    Skills: "Ploughing, Harvesting"
   },
 ];
 
-const NGOProfile = () => {
+const FarmerProfile = () => {
   return (
     <Box
       sx={{
@@ -37,7 +39,7 @@ const NGOProfile = () => {
           justifyItems: "space-between"
         }}
       >
-        Welcome NGO
+        Welcome Farmer
       </Typography>
       <Grid container spacing={18} >
         <Grid container item xs={6} direction="column" >
@@ -56,6 +58,8 @@ const NGOProfile = () => {
                   state={id.State}
                   pincode={id.Pincode}
                   email={id.Email}
+                  cropsgrown={id.CropsGrown}
+                  skills={id.Skills}
                 />
               </Box>
             );
@@ -73,4 +77,4 @@ const NGOProfile = () => {
   );
 };
 
-export default NGOProfile;
+export default FarmerProfile;

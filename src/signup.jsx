@@ -88,7 +88,6 @@ function Signup() {
     setOpen3(true);
     alert(selection)
     if (
-      signupdata.phone.length == 10 &&
       signupdata.password === signupdata.confpass
     ) {
       Axios.post("http://localhost:5000/signup", {

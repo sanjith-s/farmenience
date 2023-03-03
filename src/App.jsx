@@ -14,6 +14,8 @@ import Login from "./login";
 import Logout from "./logout"
 import LogoutAllDevice from "./LogoutAllDevice";
 import NGOProfile from "./NGOProfile";
+import BuyerProfile from "./BuyerProfile";
+import FarmerProfile from "./FarmerProfile";
 import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
@@ -44,7 +46,7 @@ import PageN5 from "./Ngo/pageN5";
 import PageN6 from "./Ngo/pageN6";
 import PageN7 from "./Ngo/pageN7";
 import PageN9 from "./Ngo/pageN9";
-import PageN10 from "./Ngo/pageN10";
+import PageN10 from "./Ngo/checking";
 import PageN10a from "./Ngo/pageN10a";
 
 import PageN11 from "./Ngo/pageN11";
@@ -86,6 +88,8 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/NGOProfile" element={<NGOProfile />} />
+            <Route path="/BuyerProfile" element={<BuyerProfile />} />
+            <Route path="/FarmerProfile" element={<FarmerProfile />} />
             <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />

@@ -16,12 +16,25 @@
     font-weight: 900;
     font-size: 1.25rem;
     color:"#446A46";
+    display: inline-block;
+    position: relative;
     font-family: 'Roboto Slab', serif;
     width: 45%;
 }
+
+
 .in-text:hover {
     color:rgb(54, 79, 72);
-    animation: forming2 3s infinite;
+}
+
+.boxes {
+    animation: floating 4s infinite ;
+}
+
+@keyframes floating {
+    0% {width: 200px;}
+    50% {width: 190px;}
+    100% {width: 200px;}
 }
 
 @keyframes forming {

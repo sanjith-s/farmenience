@@ -19,20 +19,21 @@ function OneBox(props) {
                 background: "radial-gradient(#ADCF9F, #36AE7C)",
                 borderRadius: 'md',
                 textAlign:"center",
-                transition:"1s",
                 color:"#276548",
                 overflow: "hidden",
                 boxShadow:"5px 5px 2px 1px #ADCF9F",
                 "&:hover":{
                 background: "radial-gradient(#96e0db,#96e0db, #36AE7C)",
-                boxShadow:"5px 5px 2px 1px #36AE7C",
                 fontSize:"23px",
-                border:"2px solid #36AE7C",
-                width:210
+                border:"2px solid #44b68a",
+                borderBottom:"4px solid black",
+                borderTop:"4px solid black",
+                animationPlayState: "paused",
+                width:200
                 }
             }}
         >
-            <span className='in-text' >
+           <span className='in-text' >
                 {props.name}
             </span>
         </AspectRatio>

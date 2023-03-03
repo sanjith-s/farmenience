@@ -76,12 +76,14 @@ const PageN1 = () => {
 
     return (
         <>
-            <Card id="title-background">
-                <Typography variant="h5" id="n1-title">
-                    Queries
+          
+                <Typography variant="h2" id="n1-title">
+                    QUERIES
                 </Typography>
-            </Card>
-            <Box id="flex-cards">
+           
+            <Box id="flex-cards" sx={{
+                padding:'20px',
+            }}>
                 {
                     data.map((val) => {
                         return (

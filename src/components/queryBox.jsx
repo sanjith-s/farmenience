@@ -124,21 +124,31 @@ const QueryBox = (props) => {
             <Card id="card-n1">
                 <table id="query-table" >
                     <tr>
-                        <td id="left-column"><Typography>Query ID <span id="semi-colon">:</span></Typography></td>
-                        <td id="right-column"><Typography>{props.ID}</Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Query ID <span id="semi-colon">:</span></Typography></td>
+                        <td id="right-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>{props.ID}</Typography></td>
                     </tr>
                     <tr>
-                        <td id="left-column"><Typography>Query Subject <span id="semi-colon"> :</span></Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Query Subject <span id="semi-colon"> :</span></Typography></td>
                         <td id="right-column"><Typography>{props.Subject}</Typography></td>
                     </tr>
                     <tr>
                         <td id="left-column">
-                            <Typography>Date of Query <span id="semi-colon"> :</span></Typography>
+                            <Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Date of Query <span id="semi-colon"> :</span></Typography>
                         </td>
                         <td id="right-column"><Typography>{props.Date}</Typography></td>
                     </tr>
                     <tr>
-                        <td id="left-column"><Typography>Status <span id="semi-colon">:</span></Typography></td>
+                        <td id="left-column"><Typography sx={{
+                            fontWeight:"Bold",
+                        }}>Status <span id="semi-colon">:</span></Typography></td>
                         <td id="right-column"><Typography>{props.Status}</Typography></td>
                     </tr>
                 </table>

@@ -10,14 +10,14 @@
     justify-content: space-around;
 }
 #title-background{
-    background: #D9D9D9;
+    background: #c7fab2;
     border-radius: 20px;
     width: 10%;
     margin-left: 10%;
     margin-top: 10px;
 }
 #card-n1{
-    background: #D9D9D9;
+    background: #a7ff91;
     border-radius: 30px;
     margin: 20px;
     width: 90%;
@@ -25,12 +25,12 @@
 }
 #left-column{
     border: none;
-    background: #1FE57A;
+    /* background: #000000; */
     border-radius: 5px;
 }
 #right-column{
     border: none;
-    background: #C4E1C5;
+    /* background: #C4E1C5; */
     border-radius: 5px;
 }
 #semi-colon{

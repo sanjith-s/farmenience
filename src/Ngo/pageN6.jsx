@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2'
 import { useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import farmImg from "../images/farm_land.jpg";
@@ -23,13 +24,13 @@ import { useNavigate } from "react-router-dom";
 function AllRequest() {
   const [listOfRequests, setListOfRequests] = useState([
     {
-      _id:34,
-      date:"22/2/2023",
-      time:"03:00AM",
-      reason:"Discuss about funding",
-      details:"Red Soil land",
-      crops:"rice,wheat",
-      status:"Good"
+      _id: 34,
+      date: "22/2/2023",
+      time: "03:00AM",
+      reason: "Discuss about funding",
+      details: "Red Soil land",
+      crops: "rice,wheat",
+      status: "Good"
     }
   ]);
   const [open1, setOpen1] = useState(false);
@@ -52,14 +53,22 @@ function AllRequest() {
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-          setOpen1(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          setOpen2(true);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
       })
-  }, [listOfRequests]);
+  }, []);
   // const listOfRequests = [
   //   {
   //     meetDate: "2023-01-31",

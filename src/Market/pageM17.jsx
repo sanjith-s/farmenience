@@ -49,6 +49,15 @@ function M17() {
       sender: "A",
       receiver: "B",
     },
+    {
+      ifscCode: "1xxx",
+      transactionid: 5,
+      paymentMode: "UPI",
+      bankName: "State Bank of India",
+      amount: 10000.0,
+      sender: "A",
+      receiver: "B",
+    },
   ];
 
   return (
@@ -58,6 +67,9 @@ function M17() {
         margin: "30px 100px",
         borderRadius: "12px",
         border: "2px solid",
+      }}
+      sx={{
+        boxShadow: 20,
       }}
     >
       <Box>
@@ -74,7 +86,9 @@ function M17() {
       </Box>
       <br></br>
       <Box
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex", justifyContent: "center", alignItems: "center"
+        }}
       >
         <TransactionHistory rows={buyerHistory} />
       </Box>

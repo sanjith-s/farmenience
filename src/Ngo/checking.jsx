@@ -58,7 +58,11 @@ function TabPanel(props) {
     "Fund Request by Farmer jon ...",
     "Land Assistance by Farmer kesan ...",
     "Fund extension requestt by farmer..",
-    "","","","","",""
+  ]
+  const Appoinments = [
+    "Appointment at Kancheepuram ...",
+    "Meeting in Koyambedu market ...",
+    "Meeting regarding soil problem ...",
   ]
  function BasicTabs() {
     const [value, setValue] = React.useState(0);
@@ -77,6 +81,15 @@ function TabPanel(props) {
         <TabPanel value={value} index={0}>
             <div className='shower'>
             {queries.map(que=>{
+            return (<div className='texts-box'>
+            <span className='b-text'>{que}</span>
+            </div>)
+            })}
+            </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+            <div className='shower'>
+            {Appoinments.map(que=>{
             return (<div className='texts-box'>
             <span className='b-text'>{que}</span>
             </div>)

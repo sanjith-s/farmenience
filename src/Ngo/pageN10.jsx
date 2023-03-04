@@ -79,7 +79,7 @@ function BasicTabs() {
             </Box>
             <TabPanel value={value} index={0}>
                 <div className='shower'>
-                    {queries.map(que => {
+                    {queries.map((que,ind) => {
                         return (<div className='texts-box'>
                             <a className='links' href="/n11">
                                 <span className='b-text'>{que}</span>
@@ -327,11 +327,11 @@ const PageN10 = () => {
                         <Grid item xs={3} className="box2">
                             <OneBox name={"View Queries"} link={"/n11"} />
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={5}>
                             <AspectRatio
                                 ratio="3/1"
                                 sx={{
-                                    width: 700,
+                                    width: 600,
                                     padding: "1%",
                                     borderRadius: 'md',
                                     textAlign: "center",

@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import AspectRatio from '@mui/joy/AspectRatio';
 import "./Pagen10.css";
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -58,20 +58,21 @@ function BasicTabs() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
         <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Latest Queries" {...a11yProps(0)} />
-                    <Tab label="Upcoming Appointments" {...a11yProps(1)} />
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="tabs-head" >
+                <Tabs TabIndicatorProps={{style: {background:'#348467'}}} value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label={<span className='lab-text'>Latest Queries</span>} {...a11yProps(0)} />
+                    <Tab label={<span className='lab-text'>Upcoming Appointments</span>} {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
                 <div className='shower'>
                     {queries.map(que => {
                         return (<div className='texts-box'>
-                            <span className='b-text'>{que}</span>
+                            <a className='links' href="/n11">
+                                <span className='b-text'>{que}</span>
+                            </a>
                         </div>)
                     })}
                 </div>
@@ -80,7 +81,10 @@ function BasicTabs() {
                 <div className='shower'>
                     {Appoinments.map(que => {
                         return (<div className='texts-box'>
-                            <span className='b-text'>{que}</span>
+                            <a className='links' href="/n13">
+                                <span className='b-text'>{que}</span>
+                            </a>
+
                         </div>)
                     })}
                 </div>

@@ -25,9 +25,29 @@
 .in-text:hover {
     color:rgb(54, 79, 72);
 }
-
+.tabs-head {
+    color:red;
+}
+.MuiTabs-indicator {
+    color:green;
+    background-color:darkgreen;
+}
+.lab-text {
+    color:#308263;
+}
 .boxes {
     animation: floating 4s infinite ;
+}
+
+.links {
+    text-decoration: none;
+}
+
+.shower:hover .texts-box {
+    animation-play-state: paused;
+}
+.texts-box:hover {
+    text-decoration: underline;
 }
 .texts-box {
     animation: movingTopToBottom 5s linear infinite;
@@ -47,7 +67,6 @@
       top: 165px;
     }
 }
-
 .shower {
     overflow: hidden;
     text-align: left;

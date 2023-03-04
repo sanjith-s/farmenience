@@ -82,6 +82,12 @@ const PageN7 = () => {
         icon: 'info',
         title: 'Please confirm the details ...',
         html: "<b>Query Subject: </b> " + subject + "<br /><br />" + "<b>Description: </b>" + desc,
+        confirmButtonText: 'Confirm'
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          postQuery();
+        }
       })
     } else {
       Swal.fire({
@@ -90,8 +96,7 @@ const PageN7 = () => {
         html: "1. Subject should be of minimum length 1 and maximum length 50" + "<br></br>" + "2. Description should be of minimum length 1 and maximum length 500",
     })
     }
-  }
-  
+  }  
   const postQuery = () => {
     let token = Cookies.get('token');
     Axios.post('http://localhost:5000/postquery', {
@@ -256,7 +261,6 @@ const PageN7 = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-
           </DialogContent>
           <DialogActions>
             <Button onClick={() => { setOpen(false) }}>Cancel</Button>

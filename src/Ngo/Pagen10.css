@@ -20,6 +20,7 @@
     position: relative;
     font-family: 'Roboto Slab', serif;
     width: 45%;
+    transition: 2s;
 }
 
 .in-text:hover {
@@ -58,6 +59,14 @@
     margin-top: 2%;
 }
 
+ @keyframes Glowing {
+    0% {
+    background: radial-gradient(#36AE7C, #ADCF9F);
+    }
+    100% {
+    background: radial-gradient(#ADCF9F, #36AE7C);
+    }
+ }
 @keyframes movingTopToBottom {
     0% {
       top: -95px;

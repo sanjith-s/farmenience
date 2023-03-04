@@ -1,6 +1,6 @@
-import '../css/pageN1.css'
 import { useEffect, useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
 import Typography from '@mui/material/Typography';
 import { Dialog, DialogTitle, DialogActions } from "@mui/material";
@@ -17,7 +17,7 @@ const PageN1 = () => {
             _id: 23,
             updatedAt: "22/2/2023",
             status: "Viewed",
-            subject: "QUality Issue",
+            subject: "Quality Issue",
             description: "Recently bought wheat which is in bad quality",
         }, {
             _id: 13,
@@ -76,14 +76,8 @@ const PageN1 = () => {
 
     return (
         <>
-          
-                <Typography variant="h2" id="n1-title">
-                    QUERIES
-                </Typography>
-           
-            <Box id="flex-cards" sx={{
-                padding:'20px',
-            }}>
+            <Box className="query-list">
+            <h2 className="query-list__heading">All Queries</h2>
                 {
                     data.map((val) => {
                         return (
@@ -98,7 +92,7 @@ const PageN1 = () => {
             <div>
 
                 <Box textAlign="center" padding={"20px"}>
-                    <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+                    <Button onClick={() => { navigate('../N10') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
                         Home Page
                     </Button>
                 </Box>

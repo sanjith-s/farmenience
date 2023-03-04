@@ -1,4 +1,4 @@
-import '../css/pageN1.css';
+import "../css/queryBox.css";
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import React from 'react';
@@ -26,7 +26,6 @@ const QueryBox = (props) => {
     const navigate = useNavigate();
     const [subject, setSubject] = useState(props.Subject);
     const [desc, setDesc] = useState(props.Desc);
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -116,13 +115,13 @@ const QueryBox = (props) => {
     }
 
     const DeleteQuery = () => {
-       setOpen1(true);
+        setOpen1(true);
     }
 
     return (
         <>
             <Card id="card-n1">
-                <table id="query-table" >
+                {/* <table id="query-table" >
                     <tr>
                         <td id="left-column"><Typography sx={{
                             fontWeight:"Bold",
@@ -151,38 +150,63 @@ const QueryBox = (props) => {
                         }}>Status <span id="semi-colon">:</span></Typography></td>
                         <td id="right-column"><Typography>{props.Status}</Typography></td>
                     </tr>
-                </table>
+                </table> */}
+                <div className="query-card">
+                    <h3 className="query-card__title">{props.Subject}</h3>
+                    <div className="query-card__info">
+                        <p className="query-card__id">Query ID: {props.ID}</p>
+                        <p className="query-card__date">Date: {props.Date}</p>
+                        <p
+                            className={`query-card__status query-card__status--${props.Status.toLowerCase()}`}
+                        >
+                            Status: {props.Status}
+                        </p>
+                    </div>
+                    <div className="query-card__actions">
+                        <div>
+                        <button onClick={handleClickOpen} className="query-card__button query-card__button--edit">
+                            Edit
+                        </button>
+                        <button onClick={
+                            () => {
+                                navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data: props.fullData } })
+                            }
+                        } className="query-card__button query-card__button--display">
+                            Display
+                        </button>
+                        </div>
+                        <button  onClick={DeleteQuery}  className="query-card__button query-card__button--delete">
+                            Delete
+                        </button>
+                    </div>
+                </div>
                 <Dialog
-            open={open1}
-            onClose={handleClose1}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-        >
-            <DialogTitle id="alert-dialog-title">
-                {"Do you want to delete the query ?"}
-            </DialogTitle>
-            <DialogActions>
-                <Button onClick={handleClose1}>No</Button>
-                <Button onClick={handleClickOpen1x} autoFocus>
-                    {" "}
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>
+                    open={open1}
+                    onClose={handleClose1}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"Do you want to delete the query ?"}
+                    </DialogTitle>
+                    <DialogActions>
+                        <Button onClick={handleClose1}>No</Button>
+                        <Button onClick={handleClickOpen1x} autoFocus>
+                            {" "}
+                            Yes
+                        </Button>
+                    </DialogActions>
+                </Dialog>
                 <div id="buttons-n1">
-                    <Button variant="contained" color="success" id="button-n1" onClick={
-                        () => {
-                            navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data:props.fullData } })
-                        }
-                    }>
+                    {/* <Button variant="contained" color="success" id="button-n1">
                         Display
                     </Button>
-                    <Button onClick={handleClickOpen} variant="contained" color="success" id="button-n1">
+                    <Button variant="contained" color="success" id="button-n1">
                         Edit
                     </Button>
-                    <Button onClick={DeleteQuery} variant="contained" color="success" id="button-n1">
+                    <Button variant="contained" color="success" id="button-n1">
                         Delete
-                    </Button>
+                    </Button> */}
                     <Dialog open={open} onClose={handleClose}>
                         <DialogTitle>Edit Query</DialogTitle>
                         <DialogContent>
@@ -198,9 +222,9 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Subject}
                                 variant="standard"
-                                inputProps={{ 
+                                inputProps={{
                                     maxLength: 40,
-                                    minLength: 1 
+                                    minLength: 1
                                 }}
                                 onChange={(e) => { setSubject(e.target.value) }}
                             />
@@ -213,7 +237,7 @@ const QueryBox = (props) => {
                                 fullWidth
                                 defaultValue={props.Desc}
                                 variant="standard"
-                                inputProps={{ 
+                                inputProps={{
                                     maxLength: 80,
                                     minLength: 1
                                 }}

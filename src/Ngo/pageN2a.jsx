@@ -158,7 +158,7 @@ const PageN2 = () => {
             </Button>
             <br></br>
             <br></br>
-            <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+            <Button onClick={() => { navigate('../N10') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
               Home Page
             </Button>
           </Box>

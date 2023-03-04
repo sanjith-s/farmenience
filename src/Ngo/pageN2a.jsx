@@ -114,55 +114,13 @@ const PageN2 = () => {
         }
       })
   }
-
   return (
-    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
-      <CssBaseline />
-      <center><b><span className="title">Query Details</span></b></center>
-      <Stack
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
-      >
-        <Container
-          sx={{
-            bgcolor: "#D9D9D9;",
-            height: "auto",
-            width: "60vw",
-            borderRadius: "50px",
-            display: "flex",
-            flex: "100%",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-            padding: "55px"
-            // overflow: "auto"
-          }}
-        >
-          <QueryDetails query={query} />
+    <div style={{ boxSizing: "borderBox" }}>
+      <Stack>
+        <Container>
+          <QueryDetails query={query} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
         </Container>
       </Stack>
-      {
-        query.status === 'Pending' ?
-          <Box textAlign="center" padding={"350px 250px 50px 250px"}>
-            <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-              Home Page
-            </Button>
-          </Box>
-          :
-          <Box textAlign="center" padding={"350px 250px 50px 250px"}>
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }} onClick={DeleteQuery}>
-              Accept
-            </Button>
-            <br /><br />
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }} onClick={handleClickOpen}>
-              Not Happy with Reply?
-            </Button>
-            <br></br>
-            <br></br>
-            <Button onClick={() => { navigate('../N10') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-              Home Page
-            </Button>
-          </Box>
-      }
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Attach query</DialogTitle>
         <DialogContent>
@@ -195,19 +153,6 @@ const PageN2 = () => {
           <Button onClick={NotHappy}>Attach</Button>
         </DialogActions>
       </Dialog>
-      {
-        oldQuery.map((val) => {
-          return (
-            <>
-              {val.subject}
-              <br></br>
-              {val.description}
-              <br></br>
-              {val.timedate}
-            </>
-          )
-        })
-      }
     </div>
   );
 };

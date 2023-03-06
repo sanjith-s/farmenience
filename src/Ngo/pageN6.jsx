@@ -100,14 +100,14 @@ function AllRequest() {
               direction="row"
               divider={<Divider orientation="vertical" flexItem />}
               spacing={0}
-              sx={{ height: "70vh", width: "vw", marginTop: "20px" }}
+              sx={{ height: "70vh", width: "vw", marginTop: "1.25rem" }}
             >
               <Container
                 sx={{
                   bgcolor: "#D9D9D9;",
                   height: "100%",
                   width: "60vw",
-                  borderRadius: "50px",
+                  borderRadius: "3.125rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
@@ -131,11 +131,11 @@ function AllRequest() {
                   bgcolor: "#ffff",
                   height: "80%",
                   width: "30vw",
-                  borderRadius: "50px",
-                  paddingLeft: "0px",
-                  paddingRight: "0px",
+                  borderRadius: "3.125rem",
+                  paddingLeft: "0rem",
+                  paddingRight: "0rem",
                   display: "flex",
-                  marginTop: "30px",
+                  marginTop: "1.875rem",
                   justifyItems: "center",
                 }}
               >
@@ -145,7 +145,7 @@ function AllRequest() {
                     width: "100%",
                     height: "100%",
                     objectFit: "fill",
-                    borderRadius: "50px",
+                    borderRadius: "3.125rem",
                   }}
                 />
               </Container>
@@ -155,7 +155,7 @@ function AllRequest() {
         );
       })}
 
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
         <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Home Page
         </Button>

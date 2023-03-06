@@ -44,10 +44,10 @@ function N13() {
     return (
         <Card
             style={{
-                padding: "20px 0px 30px 0px",
-                margin: "30px 100px",
-                borderRadius: "12px",
-                border: "2px solid",
+                padding: "1.25rem 0rem 1.875rem 0rem",
+                margin: "1.875rem 6.25rem",
+                borderRadius: "0.75rem",
+                border: "0.125rem solid",
             }}
         >
             <Box>
@@ -55,7 +55,7 @@ function N13() {
                     style={{
                         textTransform: "uppercase",
                         textAlign: "center",
-                        fontSize: "38px",
+                        fontSize: "2.375rem",
                         fontWeight: "600",
                     }}
                 >

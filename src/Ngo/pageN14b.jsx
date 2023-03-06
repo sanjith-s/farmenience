@@ -91,7 +91,7 @@ const PageM19 = () => {
     };
 
     return (
-        <Container style={{ padding: "30px 0px" }}>
+        <Container style={{ padding: "1.875rem 0rem" }}>
             <Typography
                 variant="h3"
                 style={{ textTransform: "uppercase", textAlign: "center" }}
@@ -102,27 +102,27 @@ const PageM19 = () => {
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    border: "3px solid",
+                    border: "0.19rem solid",
                     justifyContent: "center",
                     alignItems: "center",
-                    rowGap: "20px",
-                    padding: "30px 0px",
+                    rowGap: "1.25rem",
+                    padding: "1.875rem 0rem",
                     backgroundColor: "#7bff96",
-                    margin: "26px",
-                    borderRadius: "8px",
+                    margin: "1.625rem",
+                    borderRadius: "0.5rem",
                 }}
             >
                 <Box
                     sx={{
-                        width: "1000px",
-                        borderRadius: "8px",
-                        border: "4px solid #000",
+                        width: "62.5rem",
+                        borderRadius: "0.5rem",
+                        border: "0.25rem solid #000",
                         backgroundColor: "#fff",
                     }}
                 >
                     <Grid container spacing={2} >
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName1.map((value, index) => {
                                         return (
@@ -130,18 +130,18 @@ const PageM19 = () => {
                                                 key={index}
                                                 sx={{
                                                     display: "grid",
-                                                    columnGap: "20px",
+                                                    columnGap: "1.25rem",
                                                     justifyContent: "space-between",
-                                                    height: "250px",
+                                                    height: "15.625rem",
                                                     alignItems: "center",
-                                                    margin: "2px 0px",
+                                                    margin: "0.125 0rem",
                                                 }}
                                             >
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <Typography
                                                         style={{
                                                             fontWeight: "600",
-                                                            fontSize: "20px",
+                                                            fontSize: "1.25rem",
                                                             textTransform: "uppercase",
                                                         }}
                                                     >
@@ -154,13 +154,13 @@ const PageM19 = () => {
                                                         {itemsValue1[index]}
                                                     </Typography>
                                                 </Box>
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <InputLabel>
                                                         <Typography
                                                             variant="h6"
                                                             style={{
                                                                 fontWeight: "600",
-                                                                fontSize: "20px",
+                                                                fontSize: "1.25rem",
                                                                 textTransform: "uppercase",
                                                                 color: "black",
                                                             }}
@@ -174,10 +174,10 @@ const PageM19 = () => {
                                                             setDate(event.target.value);
                                                         }}
                                                         style={{
-                                                            borderRadius: "5px",
-                                                            borderBottomLeftRadius: "0px",
-                                                            borderBottomRightRadius: "0px",
-                                                            height: "40px",
+                                                            borderRadius: "0.31rem",
+                                                            borderBottomLeftRadius: "0rem",
+                                                            borderBottomRightRadius: "0rem",
+                                                            height: "2.5rem",
                                                         }}
                                                     />
                                                 </Box>
@@ -189,7 +189,7 @@ const PageM19 = () => {
                         </Grid>
 
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName2.map((value, index) => {
                                         return (
@@ -197,18 +197,18 @@ const PageM19 = () => {
                                                 key={index}
                                                 sx={{
                                                     display: "grid",
-                                                    columnGap: "20px",
+                                                    columnGap: "1.25rem",
                                                     justifyContent: "space-between",
-                                                    height: "250px",
+                                                    height: "15.625",
                                                     alignItems: "center",
-                                                    margin: "2px 0px",
+                                                    margin: "0.125rem 0rem",
                                                 }}
                                             >
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <Typography
                                                         style={{
                                                             fontWeight: "600",
-                                                            fontSize: "20px",
+                                                            fontSize: "1.25rem",
                                                             textTransform: "uppercase",
                                                         }}
                                                     >
@@ -221,13 +221,13 @@ const PageM19 = () => {
                                                         {itemsValue1[index]}
                                                     </Typography>
                                                 </Box>
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <InputLabel>
                                                         <Typography
                                                             variant="h6"
                                                             style={{
                                                                 fontWeight: "600",
-                                                                fontSize: "20px",
+                                                                fontSize: "1.25rem",
                                                                 textTransform: "uppercase",
                                                                 color: "black",
                                                             }}
@@ -241,10 +241,10 @@ const PageM19 = () => {
                                                             setTime(event.target.value);
                                                         }}
                                                         style={{
-                                                            borderRadius: "5px",
-                                                            borderBottomLeftRadius: "0px",
-                                                            borderBottomRightRadius: "0px",
-                                                            height: "40px",
+                                                            borderRadius: "0.31rem",
+                                                            borderBottomLeftRadius: "0rem",
+                                                            borderBottomRightRadius: "0rem",
+                                                            height: "2.5rem",
                                                         }}
                                                     />
                                                 </Box>
@@ -256,13 +256,13 @@ const PageM19 = () => {
                         </Grid>
                     </Grid>
                 </Box>
-                <Box sx={{ display: "flex", columnGap: "50px", justify: "center" }}>
+                <Box sx={{ display: "flex", columnGap: "3.125rem", justify: "center" }}>
                     <Button onClick={handleClickOpen1}
                         variant="contained"
                         style={{
                             backgroundColor: "green",
                             fontWeight: "600",
-                            fontSize: "18px",
+                            fontSize: "1.125rem",
                             justify: "center",
                         }}
                     >
@@ -299,7 +299,7 @@ const PageM19 = () => {
                                                     style={{
                                                         color: "blue",
                                                         fontWeight: "600",
-                                                        fontSize: "16px",
+                                                        fontSize: "1rem",
                                                     }}
                                                 >
                                                     Ok

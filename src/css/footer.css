@@ -4,7 +4,7 @@
 	background: rgb(36, 164, 96);
 	/* position: sticky;
 	bottom: 0; */
-	border-top: 1px solid darkgreen;
+	border-top: 0.06rem solid darkgreen;
 }
 
 .foot-body {
@@ -31,14 +31,14 @@
 }
 
 .foot-logos {
-	width: 40px;
-	height: 40px;
+	width: 2.5rem;
+	height: 2.5rem;
 	font-size: larger;
 }
 
 .foot-links:hover {
 	color: white;
-	text-shadow: 1px 1px darkgreen;
+	text-shadow: 0.06rem 0.06rem darkgreen;
 }
 
 .iconFlex {

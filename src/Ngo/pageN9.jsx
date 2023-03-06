@@ -220,7 +220,7 @@ export default function BasicTabs() {
               <Avatar
                 alt=""
                 src=""
-                sx={{ width: 134, height: 134 }}
+                sx={{ width: "134px", height: "134px" }}
               />
               <Stack>
                 <Typography variant='h6'>User name</Typography>

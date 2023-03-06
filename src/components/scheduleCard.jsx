@@ -294,7 +294,7 @@ const ScheduleCard = (props) => {
                         width: "100%",
                         height: "100%",
                         objectFit: "fill",
-                        borderRadius: "50px",
+                        borderRadius: "3.125rem",
                       }}
                     /></TableCell>
                 </TableRow>
@@ -308,7 +308,7 @@ const ScheduleCard = (props) => {
           <Button onClick={postMeet}>CONFIRM</Button>
         </DialogActions>
       </Dialog>
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
         <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />

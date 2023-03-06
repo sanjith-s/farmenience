@@ -105,7 +105,7 @@ const PageM19 = () => {
   };
 
   return (
-    <Container style={{ padding: "30px 0px" }}>
+    <Container style={{ padding: "1.875rem 0rem" }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}
@@ -116,28 +116,28 @@ const PageM19 = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          border: "3px solid",
+          border: "0.19rem solid",
           justifyContent: "center",
-          rowGap: "20px",
-          padding: "30px 30px",
+          rowGap: "1.25rem",
+          padding: "1.875rem 1.875rem",
           paddingRight:"0",
           backgroundColor: "#7bff96",
-          margin: "26px",
-          borderRadius: "8px",
+          margin: "1.625rem",
+          borderRadius: "0.5rem",
         }}
       >
         <Stack direction={"row"}>
         <Box
           sx={{
-            borderRadius: "8px",
-            border: "4px solid #000",
+            borderRadius: "0.5rem",
+            border: "0.25rem solid #000",
             backgroundColor: "#fff",
             width:"100%"
           }}
         >
             <Grid container item xs={12} direction="column">
               <CardContent
-                style={{ padding: "15px", borderRadius: "8px" }}
+                style={{ padding: "0.94rem", borderRadius: "0.5rem" }}
               >
                 <Stack>
                   {itemsName1.map((value, index) => {
@@ -146,17 +146,17 @@ const PageM19 = () => {
                         key={index}
                         sx={{
                           display: "flex",
-                          columnGap: "20px",
+                          columnGap: "1.25rem",
                           justifyContent: "space-between",
-                          height: "50px",
+                          height: "3.125rem",
                           alignItems: "center",
-                          margin: "2px 0px 0 0 0",
+                          margin: "0.125rem 0rem 0 0 0",
                         }}
                       >
                         <Typography
                           style={{
                             fontWeight: "600",
-                            fontSize: "20px",
+                            fontSize: "1.25rem",
                             textTransform: "uppercase",
                           }}
                         >
@@ -184,7 +184,7 @@ const PageM19 = () => {
                 height: "90%",
                 marginLeft:"2%",
                 objectFit: "fill",
-                borderRadius: "50px",
+                borderRadius: "3.125rem",
               }}
             /><br />
             <Stack direction={"column"} spacing={4}>
@@ -194,7 +194,7 @@ const PageM19 = () => {
                    style={{
                      backgroundColor: "green",
                      fontWeight: "600",
-                     fontSize: "18px",
+                     fontSize: "1.25rem",
                    }}
                  >
                    DELETE
@@ -205,7 +205,7 @@ const PageM19 = () => {
                     style={{
                       backgroundColor: "green",
                       fontWeight: "600",
-                      fontSize: "18px",
+                      fontSize: "1.125rem",
                     }}
                   >
                     ACCEPT
@@ -217,7 +217,7 @@ const PageM19 = () => {
                          color:"white",
                          backgroundColor: "green",
                          fontWeight: "600",
-                         fontSize: "18px",
+                         fontSize: "1.125rem",
                        }}
                      >
                        <Link to="/N14b" style={{ textDecoration: "none",color:"white" }}>                         
@@ -228,7 +228,7 @@ const PageM19 = () => {
             </Stack>
             </Box>
         </Stack>
-        <Box sx={{ display: "flex", columnGap: "50px", padding: "0px 300px" }}>
+        <Box sx={{ display: "flex", columnGap: "3.125rem", padding: "0rem 18.75rem" }}>
           
           <Dialog
             open={open1}
@@ -260,7 +260,7 @@ const PageM19 = () => {
                           style={{
                             color: "blue",
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "1rem",
                           }}
                         >
                           Ok
@@ -288,7 +288,7 @@ const PageM19 = () => {
                     style={{
                       color: "blue",
                       fontWeight: "600",
-                      fontSize: "16px",
+                      fontSize: "1rem",
                     }}
                   >
                     Ok

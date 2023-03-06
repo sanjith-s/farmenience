@@ -55,10 +55,10 @@ function Query(props) {
     <div>
     <Card
       style={{
-        padding: "15px",
-        width: "450px",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+        padding: "0.94rem",
+        width: "28.125rem",
+        borderRadius: "0.31rem",
+        border: "0.125rem solid #000000",
       }}
     >
       <CardContent
@@ -66,17 +66,17 @@ function Query(props) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          borderTop: "0.125rem solid",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -86,9 +86,9 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.188",
           }}
         >
           {props.queryID}
@@ -98,16 +98,16 @@ function Query(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -117,10 +117,10 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.queryName}
@@ -130,16 +130,16 @@ function Query(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -149,10 +149,10 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.date}
@@ -168,8 +168,8 @@ function Query(props) {
         <Button
           style={{
             backgroundColor: "green",
-            border: "2px solid #000000",
-            marginTop: "15px",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
           }}
           onClick={handleClickOpen}
         >
@@ -177,7 +177,7 @@ function Query(props) {
               style={{
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "16px",
+                fontSize: "1rem",
               }}
             >
               Respond Query

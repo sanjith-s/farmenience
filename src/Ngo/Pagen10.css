@@ -69,13 +69,13 @@
  }
 @keyframes movingTopToBottom {
     0% {
-      top: -95px;
+      top: -5.938rem;
     }
     95% {
-      top: 150px;
+      top: 9.375rem;
     }
     100% {
-      top: 165px;
+      top: 10.31rem;
     }
 }
 .shower {
@@ -88,9 +88,9 @@
     100% {margin-top:80%}
 }
 @keyframes floating {
-    0% {width: 200px;}
-    50% {width: 190px;}
-    100% {width: 200px;}
+    0% {width: 12.5rem;}
+    50% {width: 11.875rem;}
+    100% {width: 12.5rem;}
 }
 
 @keyframes forming {
@@ -110,10 +110,10 @@
 } */
 
 @keyframes slidein {
-    0% { margin-left:-800px; }
-    20% { margin-left:-800px; }
-    35% { margin-left:0px; }
-    100% { margin-left:0px; }
+    0% { margin-left:-50rem; }
+    20% { margin-left:-50rem; }
+    35% { margin-left:0rem; }
+    100% { margin-left:0rem; }
 }
 
 @keyframes color-change {

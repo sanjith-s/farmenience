@@ -28,21 +28,21 @@ const PageN4 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+    <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
       <span className="title">Schedule a Meet with NGO</span>
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+        sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
       >
         <Container
           sx={{
             bgcolor: "#D9D9D9;",
             height: "100%",
             width: "60vw",
-            borderRadius: "50px",
+            borderRadius: "3.25rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
@@ -57,9 +57,9 @@ const PageN4 = () => {
             bgcolor: "#ffff",
             height: "100%",
             width: "40vw",
-            borderRadius: "50px",
-            paddingLeft: "0px",
-            paddingRight: "0px",
+            borderRadius: "3.125rem",
+            paddingLeft: "0rem",
+            paddingRight: "0rem",
             display: "flex",
             justifyItems: "center",
           }}
@@ -111,14 +111,14 @@ const PageN4 = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "fill",
-                borderRadius: "50px",
+                borderRadius: "3.125rem",
               }}
             />
           )}
         </Container>
       </Stack>
 
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
         <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Home Page
         </Button>

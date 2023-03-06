@@ -18,11 +18,11 @@ function BuyerRequest(props) {
   return (
     <Card
       style={{
-        padding: "15px",
+        padding: "0.94rem",
         width: "80%",
         marginLeft:"10%",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+        borderRadius: "0.31rem",
+        border: "0.125rem solid #000000",
       }}
     >
     {
@@ -33,9 +33,9 @@ function BuyerRequest(props) {
             backgroundColor: "#1fe57a",
             color: "#000000",
             fontWeight: "600",
-            fontSize: "16px",
-            border: "2px solid #000000",
-            marginTop: "15px",
+            fontSize: "1rem",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
           }} 
         >
           Accept
@@ -45,9 +45,9 @@ function BuyerRequest(props) {
             backgroundColor: "#1fe57a",
             color: "#000000",
             fontWeight: "600",
-            fontSize: "16px",
-            border: "2px solid #000000",
-            marginTop: "15px",
+            fontSize: "1rem",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
           }}
           onClick={viewRequest}
         >
@@ -58,9 +58,9 @@ function BuyerRequest(props) {
             backgroundColor: "#1fe57a",
             color: "#000000",
             fontWeight: "600",
-            fontSize: "16px",
-            border: "2px solid #000000",
-            marginTop: "15px",
+            fontSize: "1rem",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
           }}
         >
           Cancel
@@ -73,18 +73,18 @@ function BuyerRequest(props) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          borderTop: "0.125 solid",
+          columnGap: "1.25rem",
         }}
       >
       
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -94,9 +94,9 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.reqId}
@@ -106,16 +106,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -125,10 +125,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.meetReason}
@@ -139,16 +139,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -158,10 +158,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.meetDate}
@@ -172,16 +172,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -191,10 +191,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.meetTime}
@@ -204,16 +204,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -223,10 +223,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.soilDetails}
@@ -236,16 +236,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -255,10 +255,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.cropsGrowing}
@@ -268,17 +268,17 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          columnGap: "20px",
-          padding: "10px 5px",
-          borderBottom: "2px solid",
+          columnGap: "1.25rem",
+          padding: "0.625rem 0.31rem",
+          borderBottom: "0.125rem solid",
         }}
       >
         <Typography
           style={{
             width: "45%",
             backgroundColor: "#16e575",
-            padding: "5px 5px 5px 10px",
-            borderRadius: "3px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -288,10 +288,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.itemQuantity}

@@ -63,13 +63,13 @@ function Login() {
     setOpen3(true);
   };
 
-  const LogMeIn = (em, pass) => {
-    Axios.post(`${baseURL}/login`, {
-      email: em,
-      password: pass,
-    })
-      .then((response) => {
-        if (response.data.message == "Successful") {
+  const LogMeIn = async (em, pass) => {
+    try{
+      let response=await Axios.post(`${baseURL}/login`, {
+        email: em,
+        password: pass,
+      });
+      if (response.data.message == "Successful") {
           setOpen4(true);
           Cookies.set("token", response.data.token, { expires: 1 });
           if (response.data.details[0].typeOfAcc == "Farmer") {
@@ -85,13 +85,41 @@ function Login() {
         } else {
           setOpen5(true);
         }
-      })
-      .catch((response) => {
-        alert(response.response.data.message);
+    }
+    catch(response){
+      alert(response.response.data.message);
         if (response.response.data.message === "Error in login") {
           navigate("/logoutALL", { state: { email: em } });
         }
-      });
+    }
+    // Axios.post(`${baseURL}/login`, {
+    //   email: em,
+    //   password: pass,
+    // })
+    //   .then((response) => {
+    //     if (response.data.message == "Successful") {
+    //       setOpen4(true);
+    //       Cookies.set("token", response.data.token, { expires: 1 });
+    //       if (response.data.details[0].typeOfAcc == "Farmer") {
+    //         navigate("/N9");
+    //       }
+    //       else if(response.data.details[0].typeOfAcc == "NGO")
+    //       {
+    //         navigate("/N10");
+    //       } 
+    //       else {
+    //         navigate("/homepage2");
+    //       }
+    //     } else {
+    //       setOpen5(true);
+    //     }
+    //   })
+    //   .catch((response) => {
+    //     alert(response.response.data.message);
+    //     if (response.response.data.message === "Error in login") {
+    //       navigate("/logoutALL", { state: { email: em } });
+    //     }
+    //   });
   };
 
   const goToSignup = () => {

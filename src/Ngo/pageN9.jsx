@@ -96,7 +96,7 @@ export default function BasicTabs() {
         }
       })
   }, []);
-  function logout() {
+  const logout = async () =>  {
     let token = Cookies.get('token')
     Axios.get('http://localhost:5000/logout', { headers: { tokenstring: token } }
     )

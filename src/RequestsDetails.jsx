@@ -7,14 +7,66 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import Swal from 'sweetalert2'
 
 function BuyerRequest(props) {
   let navigate = useNavigate();
   
   const acceptMeet = ()=> {
-
+    let token = Cookies.get('token');
+    Axios.patch(`http://localhost:5000/acceptmeetbyfarmer/${props.reqId}`, {
+        }, { headers: { tokenstring: token } }).
+            then(async (response) => {
+                if (response.data.message === 'You Accepted the Meet') {
+                  await Swal.fire({
+                    icon: 'success',
+                    title: 'Appointment Accepted !!'
+                  })
+                    navigate('../N9');
+                }
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                  alert(res.response.data.message)
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                  alert(res.response.data.message)
+                    navigate('../login')
+                }
+                else {
+                    alert(res.response.data.message);
+                }
+            })
   }
-
+  const cancelMeet = ()=> {
+    let token = Cookies.get('token');
+    Axios.patch(`http://localhost:5000/notacceptmeetbyfarmer/${props.reqId}`, {
+        }, { headers: { tokenstring: token } }).
+            then(async (response) => {
+                if (response.data.message === 'Not Accepted New Schedule Meet') {
+                  await Swal.fire({
+                    icon: 'info',
+                    title: 'Appointment Not Accepted !!'
+                  })
+                    navigate('../N9');
+                }
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                  alert(res.response.data.message)
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                  alert(res.response.data.message)
+                    navigate('../login')
+                }
+                else {
+                    alert(res.response.data.message);
+                }
+            })
+  }
+  
 
   return (
     <Card
@@ -53,6 +105,9 @@ function BuyerRequest(props) {
             border: "0.125rem solid #000000",
             marginTop: "0.94rem",
           }}
+          onClick={()=>{
+          cancelMeet()
+        }}
         >
           Cancel
         </Button>
@@ -155,7 +210,7 @@ function BuyerRequest(props) {
             borderRadius: "0.19rem",
           }}
         >
-          {props.meetDate}
+        {props.status!=='Waiting for NGO' && props.status!=='Meet Accepted' ? props.newDate : props.meetDate}
         </Typography>
       </CardContent>
 
@@ -188,7 +243,7 @@ function BuyerRequest(props) {
             borderRadius: "0.19rem",
           }}
         >
-          {props.meetTime}
+          {props.status!=='Waiting for NGO' && props.status!=='Meet Accepted' ? props.newTime : props.meetTime}
         </Typography>
       </CardContent>
       <CardContent

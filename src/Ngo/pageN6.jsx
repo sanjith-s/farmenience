@@ -50,6 +50,7 @@ function AllRequest() {
     Axios.get('http://localhost:5000/getmeet', { headers: { tokenstring: token } }).
       then((response) => {
         setListOfRequests(response.data.message);
+        console.log(response.data.message)
       })
       .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -103,6 +104,8 @@ function AllRequest() {
                   cropsGrowing={request.crops}
                   itemQuantity={request._id}
                   status={request.status}
+                  newDate={request.requestdate}
+                  newTime={request.requesttime}
                 />
               </Container>
               <Container

@@ -6,7 +6,6 @@ import { Dialog, DialogTitle, DialogActions, Box, Button } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 
 const PageN1 = () => {
     const [data, setData] = useState([

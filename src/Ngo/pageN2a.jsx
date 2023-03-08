@@ -1,27 +1,6 @@
 import React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
-import { Link } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-
+import { Container, Button, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import QueryDetails from "../components/queryDetails";
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
 import { useEffect, useState, useRef } from "react";

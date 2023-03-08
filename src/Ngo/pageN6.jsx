@@ -1,27 +1,14 @@
 import React from "react";
 import '../css/pageN6.css';
 import Swal from 'sweetalert2'
-import { useRef } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import farmImg from "../images/farm_land.jpg";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
-import { Box } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { Container, Button, Dialog, DialogTitle, DialogActions, Box, Stack, Divider } from "@mui/material";
 import Request from "../RequestsDetails";
-import Navbar from "../components/navbar";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 function AllRequest() {
   const [listOfRequests, setListOfRequests] = useState([
     {

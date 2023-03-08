@@ -1,27 +1,14 @@
 import * as React from 'react';
 import '../css/pageN10.css';
-import Swal from 'sweetalert2'
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import Swal from 'sweetalert2';
 import AspectRatio from '@mui/joy/AspectRatio';
 import "./Pagen10.css";
-import { Link } from '@mui/material';
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Stack from '@mui/material/Stack';
-import PageN7 from "../Ngo/pageN7";
 import { useNavigate } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { Typography, Grid, Box, Tabs, Tab, Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

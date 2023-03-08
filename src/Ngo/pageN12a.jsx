@@ -13,8 +13,9 @@ import {
   Typography,
   Button,
   Container,
+  TextField
 } from "@mui/material";
-import {TextField} from '@mui/material';
+
 const itemsName1 = [
   "Query ID",
   "Query Type",

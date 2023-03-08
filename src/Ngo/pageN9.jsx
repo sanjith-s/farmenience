@@ -1,18 +1,11 @@
 import * as React from 'react';
 import '../css/pageN9.css';
-import Swal from 'sweetalert2'
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import PageN7 from "../Ngo/pageN7";
+import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { Dialog, DialogTitle, DialogActions } from "@mui/material";
+import {Typography, Box, Stack, Avatar, Button, ButtonGroup, Dialog, DialogTitle, DialogActions } from "@mui/material";
 
 const handleClose1 = () => {
   setOpen1(false);

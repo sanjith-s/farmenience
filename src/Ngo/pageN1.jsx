@@ -95,7 +95,7 @@ const PageN1 = () => {
             </div>
 
             <Stack spacing={2}>
-                <Pagination count={10} variant="outlined" shape="rounded" />
+                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
             </Stack>
 
             <Dialog

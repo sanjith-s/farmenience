@@ -1,38 +1,12 @@
 import React from "react";
 import '../css/pageN7.css';
-import Swal from 'sweetalert2'
-import { useRef } from "react";
+import Swal from 'sweetalert2';
 import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import Table from '@mui/material/Table';
-import Paper from '@mui/material/Paper';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Slide from '@mui/material/Slide';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Alert, Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
+import { Container, Table, Paper, TableBody, TableCell, TableContainer, TableRow, Slide, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, Button, Box, TextField, InputAdornment, Stack, Divider, Typography } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 
 const PageN7 = () => {

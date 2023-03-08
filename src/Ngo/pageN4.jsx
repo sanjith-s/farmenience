@@ -1,20 +1,8 @@
 import React from "react";
-import '../css/pageN2.css';
-import { useState, useRef } from "react";
+import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import { FilePond, registerPlugin } from 'react-filepond';
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
+import { Container, Typography, Fab, Button, Box, Stack, Divider } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 import ScheduleCard from "../components/scheduleCard";
 import { useNavigate } from "react-router-dom/dist";
 

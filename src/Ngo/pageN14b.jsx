@@ -54,9 +54,33 @@ const PageM19 = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                Swal.fire({
+                let token = Cookies.get('token');
+                Axios.put(`http://localhost:5000//changeofschedule/${id}`, {
+                    time:time,
+                    date:date
+                }, { headers: { tokenstring: token } }).
+                    then((response) => {
+                        console.log(response);
+                        if (response.data.message === 'Requested for Change the schedule for the Meet') {
+                            navigate('../N13');
+                        }
+                    })
+                    .catch((res) => {
+                        if (res.response.data.message === 'Error in connection') {
+                            alert(res.response.data.message)
+                        }
+                        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') 
+                        {
+                            alert(res.response.data.message)
+                            navigate('../login')
+                        }
+                        else {
+                            alert(res.response.data.message);
+                        }
+                    })
+                await Swal.fire({
                     icon: 'success',
                     title: 'Appointment Rescheduled!',
                 })

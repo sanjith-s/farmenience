@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../css/pageN10.css';
 import Swal from 'sweetalert2'
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';

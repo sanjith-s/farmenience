@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/pageN6.css';
 import Swal from 'sweetalert2'
 import { useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";

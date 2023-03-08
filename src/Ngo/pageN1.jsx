@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
-import { Dialog, DialogTitle, DialogActions, Box, Button } from "@mui/material";
+import { Dialog, DialogTitle, DialogActions, Box, Button, Pagination, Stack } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -73,7 +73,7 @@ const PageN1 = () => {
     return (
         <>
             <Box className="query-list">
-            <h2 className="query-list__heading">All Queries</h2>
+                <h2 className="query-list__heading">All Queries</h2>
                 {
                     data.map((val) => {
                         return (
@@ -93,6 +93,10 @@ const PageN1 = () => {
                     </Button>
                 </Box>
             </div>
+
+            <Stack spacing={2}>
+                <Pagination count={10} variant="outlined" shape="rounded" />
+            </Stack>
 
             <Dialog
                 open={open1}

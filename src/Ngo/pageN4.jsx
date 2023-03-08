@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/pageN2.css';
 import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { FilePond, registerPlugin } from 'react-filepond';

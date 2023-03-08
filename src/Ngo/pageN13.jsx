@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/pageN13.css';
 import AppointmentList from "../components/AppointmentList";
 import { Typography, Box, Card } from "@mui/material";
 import Cookies from 'js-cookie';

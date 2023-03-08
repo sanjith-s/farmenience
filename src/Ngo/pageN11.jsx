@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../css/pageN11.css';
 import QueryList from "../components/queryList";
 import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";

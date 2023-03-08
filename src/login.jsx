@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { Box, Button, Typography, Input, InputAdornment, IconButton, Dialog, DialogTitle, DialogActions } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { baseURL } from '../src/constants';
 
 function Login() {
   const captchaRef = useRef(null);
@@ -63,7 +64,7 @@ function Login() {
   };
 
   const LogMeIn = (em, pass) => {
-    Axios.post("http://localhost:5000/login", {
+    Axios.post(`${baseURL}/login`, {
       email: em,
       password: pass,
     })

@@ -10,11 +10,12 @@ import {
 
 function BuyerRequest(props) {
   let navigate = useNavigate();
-
-  const viewRequest = () => {
-    
-  };
   
+  const acceptMeet = ()=> {
+
+  }
+
+
   return (
     <Card
       style={{
@@ -26,7 +27,7 @@ function BuyerRequest(props) {
       }}
     >
     {
-      props.status==='Waiting for NGO'?<></> :
+      props.status==='Waiting for NGO' || props.status==='Meet Accepted'?<></> :
       <>
       <Button
           style={{
@@ -37,21 +38,11 @@ function BuyerRequest(props) {
             border: "0.125rem solid #000000",
             marginTop: "0.94rem",
           }} 
+        onClick={()=>{
+          acceptMeet()
+        }}
         >
           Accept
-        </Button>
-        <Button
-          style={{
-            backgroundColor: "#1fe57a",
-            color: "#000000",
-            fontWeight: "600",
-            fontSize: "1rem",
-            border: "0.125rem solid #000000",
-            marginTop: "0.94rem",
-          }}
-          onClick={viewRequest}
-        >
-          update
         </Button>
         <Button
           style={{

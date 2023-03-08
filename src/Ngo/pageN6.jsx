@@ -69,26 +69,6 @@ function AllRequest() {
         }
       })
   }, []);
-  // const listOfRequests = [
-  //   {
-  //     meetDate: "2023-01-31",
-  //     meetTime: "04:30",
-  //     cropsGrowing: "paddy, wheat",
-  //     meetReason: "To discuss ab cultivation",
-  //     soilDetails: "red soil used to grow sbjkbsjkb",
-  //     NGOType: "NGO",
-  //     img_src: "",
-  //   },
-  //   {
-  //     meetDate: "2022-11-19",
-  //     meetTime: "02:30",
-  //     cropsGrowing: "paddy, wheat",
-  //     meetReason: "The reason is to discuss about jkcnsjs",
-  //     soilDetails: "red soil used to grow sbjkbsjkb",
-  //     NGOType: "NGO",
-  //     img_src: "",
-  //   },
-  // ];
   return (
     <div className="">
       <br />

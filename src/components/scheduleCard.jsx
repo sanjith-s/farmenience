@@ -312,12 +312,13 @@ const ScheduleCard = (props) => {
         <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={() => {
-          Swal.fire({
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={async () => {
+          await Swal.fire({
             icon: 'info',
             title: 'Please confirm the details ...',
             html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
-          })
+          });
+          postMeet();
         }}>
           Submit
         </Button>

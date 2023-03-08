@@ -3,6 +3,8 @@ import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import file from "../images/farm_land.jpg";
 import { useNavigate } from "react-router-dom/dist";
+import Cookies from 'js-cookie';
+import Axios from "axios";
 import {
   Dialog,
   DialogActions,
@@ -74,10 +76,31 @@ const PageM19 = () => {
   };
 
   const handleClickOpen2 = () => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Appointment Accepted !!'
-    })
+    let token = Cookies.get('token');
+        Axios.patch(`http://localhost:5000/acceptmeetbyngo/${data.appID}`, {
+        }, { headers: { tokenstring: token } }).
+            then(async (response) => {
+                if (response.data.message === 'You Accepted the Meet') {
+                  await Swal.fire({
+                    icon: 'success',
+                    title: 'Appointment Accepted !!'
+                  })
+                    navigate('../N13');
+                }
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                  alert(res.response.data.message)
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                  alert(res.response.data.message)
+                    navigate('../login')
+                }
+                else {
+                    alert(res.response.data.message);
+                }
+            })
+
   };
 
   const handleClickOpen3 = () => {
@@ -212,7 +235,9 @@ const PageM19 = () => {
                     ACCEPT
                   </Button>
                     <Button
-                       onClick={handleClickOpen3}
+                       onClick={() => {
+                                navigate('../N14b', { state: { id:data.appID,name:data.appName } })
+                            }}
                        variant="contained"
                        style={{
                          color:"white",
@@ -220,10 +245,8 @@ const PageM19 = () => {
                          fontWeight: "600",
                          fontSize: "1.125rem",
                        }}
-                     >
-                       <Link to="/N14b" style={{ textDecoration: "none",color:"white" }}>                         
+                     >                        
                            Reschedule
-                       </Link>
                      </Button>
             </Stack>
             </Stack>

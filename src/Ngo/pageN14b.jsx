@@ -1,6 +1,9 @@
 import React from "react";
 import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom/dist";
+import Cookies from 'js-cookie';
+import Axios from "axios";
 import {
     Dialog,
     DialogActions,
@@ -18,16 +21,7 @@ import {
     FilledInput
 } from "@mui/material";
 
-const itemsName1 = [
-    "Appointment ID",
-];
 
-const itemsName2 = [
-    "Client Name",
-];
-
-const itemsValue1 = ["lorem ipsum"];
-const itemsValue2 = ["lorem ipsum"];
 
 const PageM19 = () => {
 
@@ -37,7 +31,20 @@ const PageM19 = () => {
     const [open3, setOpen3] = React.useState(false);
     const [date, setDate] = React.useState(0);
     const [time, setTime] = React.useState(0);
-
+    const location = useLocation();
+    const navigate = useNavigate();
+    const id=location.state.id;
+    const name=location.state.name;
+    const itemsName1 = [
+        "Appointment ID",
+    ];
+    
+    const itemsName2 = [
+        "Client Name",
+    ];
+    
+    const itemsValue1 = [id];
+    const itemsValue2 = [name];
     const handleClickOpen1 = () => {
         Swal.fire({
             title: 'Do you want to reschedule the appointment?',
@@ -218,7 +225,7 @@ const PageM19 = () => {
                                                         variant="h6"
                                                         style={{ textTransform: "capitalize" }}
                                                     >
-                                                        {itemsValue1[index]}
+                                                        {itemsValue2[index]}
                                                     </Typography>
                                                 </Box>
                                                 <Box padding="1.25rem">

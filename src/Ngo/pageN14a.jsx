@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/pageN14.css';
 import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import file from "../images/farm_land.jpg";
@@ -19,9 +20,6 @@ import {
   Button,
   Container,
 } from "@mui/material";
-
-
-
 
 const PageM19 = () => {
   const [open1, setOpen1] = React.useState(false);

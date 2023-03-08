@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/pageN14.css';
 import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom/dist";

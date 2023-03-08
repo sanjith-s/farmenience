@@ -28,7 +28,7 @@ import {
 import { TextField } from '@mui/material';
 import "../css/footer.css";
 
-const Footer = () => {
+const  Footer = () => {
 
     return (
         <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"20px"}}>
@@ -78,12 +78,12 @@ const Footer = () => {
                         <CardContent style={{  borderRadius: "8px" }}>
                             <Stack>
                                 <Box sx={{ display: "flex"}}>
-                                    <Typography sx={{ fontSize: "18px", fontWeight: "bold", fontFamily: "Roboto" }}>
+                                    <Typography sx={{ fontSize: "20px", fontWeight: "bold", fontFamily: "Roboto" }}>
                                         ABOUT THE COMPANY
                                     </Typography>
                                 </Box>
                                 <Box sx={{ display: "flex", marginTop: "20px" }}>
-                                    <Typography sx={{ fontSize: "16px", fontWeight: "light", fontFamily: "Roboto" }}>
+                                    <Typography sx={{ fontSize: "16px", fontFamily: "Roboto" } } >
                                         Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
                                     </Typography>
                                 </Box>

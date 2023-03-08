@@ -2,6 +2,7 @@ import React from "react";
 import Swal from 'sweetalert2'
 import { Link, useLocation } from "react-router-dom";
 import file from "../images/farm_land.jpg";
+import { useNavigate } from "react-router-dom/dist";
 import {
   Dialog,
   DialogActions,
@@ -17,37 +18,37 @@ import {
   Container,
 } from "@mui/material";
 
-const itemsName1 = [
-  "Appointment ID",
-  "Appointment Name",
-  "Soil Details",
-  "Crop Details",
-  "Client Name", 
-  "Date", 
-  "Time", 
-  "Location"
-];
 
-const itemsName2 = [];
 
-const itemsValue1 = [
-  1,
-  "To know pH level of soil",
-  "Alluvial Soil",
-  "Wheat, Sugarcane",
-  "Mohan", 
-  "29 November 2022" ,
-  "10:30 PM", 
-  "Chennai"
-];
-
-const itemsValue2 = [];
 
 const PageM19 = () => {
   const [open1, setOpen1] = React.useState(false);
   const [open1x, setOpen1x] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
+  const location = useLocation();
+    const navigate = useNavigate();
+    const data=location.state.data;
+    const itemsName1 = [
+      "Appointment ID",
+      "Appointment Name",
+      "Soil Details",
+      "Crop Details",
+      "Client Name", 
+      "Date", 
+      "Time", 
+      "Location"
+    ];
+    const itemsValue1 = [
+      data.appID,
+      data.appName,
+      data.reason,
+      data.crops,
+      data.clientName, 
+      data.dateTime ,
+      data.dateTime , 
+      data.location
+    ];
 
   const handleClickOpen1 = () => {
     Swal.fire({

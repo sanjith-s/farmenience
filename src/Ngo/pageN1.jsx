@@ -27,16 +27,16 @@ const PageN1 = () => {
             description: "Recently bought wheat which is high priced",
         }
     ]);
-    const deleteThis = (id) => {
-        var back = data;
-        for (var i = 0; i < back.length; i++) {
-            if (back[i]._id == id) {
-                back.splice(i, i + 1);
-            }
-        }
-        console.log(back);
-        setData([...back]);
-    }
+    // const deleteThis = (id) => {
+    //     var back = data;
+    //     for (var i = 0; i < back.length; i++) {
+    //         if (back[i]._id == id) {
+    //             back.splice(i, i + 1);
+    //         }
+    //     }
+    //     console.log(back);
+    //     setData([...back]);
+    // }
     const [open1, setOpen1] = useState(false);
     const [open2, setOpen2] = useState(false);
     const navigate = useNavigate();
@@ -83,7 +83,7 @@ const PageN1 = () => {
                         return (
                             <div>
                                 <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-                                } oldQuery={val.oldQuery} deleteFunc={deleteThis} fullData={val} />
+                                } oldQuery={val.oldQuery} fullData={val} />
                             </div>
                         )
                     })

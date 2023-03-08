@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -29,28 +30,35 @@ function AppointmentList(props) {
         appName,
         clientName,
         dateTime,
-        location
+        location,
+        crops,
+        reason
     ) => {
         return {
             appID,
             appName,
             clientName,
             dateTime,
-            location
+            location,
+            crops,
+            reason
         };
     };
 
-    const rows = props.rows.map((row) => {
+    const rows = props.data.map((row) => {
         return createData(
-            row.appID,
-            row.appName,
-            row.clientName,
-            row.dateTime,
-            row.location
+            row._id,
+            row.details,
+            row.farmername,
+            row.updatedAt,
+            row.location,
+            row.crops,
+            row.reason
         );
     });
 
     const classes = useStyles();
+    const navigate = useNavigate();
 
     return (
         <Box>
@@ -195,10 +203,11 @@ function AppointmentList(props) {
                                             fontWeight: "600",
                                             fontSize: "1rem",
                                         }}
+                                        onClick={() => {
+                                navigate('../N14a', { state: { data:row } })
+                            }}
                                     >
-                                        <Link to="/n14a">
                                         View Details
-                                        </Link>
                                     </Button>
                                 </TableCell>
                             </TableRow>

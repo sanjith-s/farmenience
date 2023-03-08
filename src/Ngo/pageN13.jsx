@@ -1,6 +1,10 @@
 import React from "react";
 import AppointmentList from "../components/AppointmentList";
 import { Typography, Box, Card } from "@mui/material";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function N13() {
     const appointmentList = [
@@ -40,6 +44,32 @@ function N13() {
             location: "Cochin"
         },
     ];
+    const [data,setData]=useState([]);
+
+    useEffect(() => {
+        let token = Cookies.get('token');
+        Axios.get('http://localhost:5000/getmeets', { headers: { tokenstring: token } }).
+            then((response) => {
+                setData(response.data.message);
+            })
+            .catch((res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            })
+    }, []);
 
     return (
         <Card
@@ -66,7 +96,7 @@ function N13() {
             <Box
                 sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
             >
-                <AppointmentList rows={appointmentList} />
+                <AppointmentList data={data} />
             </Box>
         </Card>
     );

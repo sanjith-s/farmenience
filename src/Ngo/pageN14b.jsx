@@ -8,8 +8,6 @@ import Axios from "axios";
 import {
     Dialog,
     DialogActions,
-    DialogContent,
-    DialogContentText,
     DialogTitle,
     Grid,
     Box,

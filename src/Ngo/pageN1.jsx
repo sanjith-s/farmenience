@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
-import Typography from '@mui/material/Typography';
-import { Dialog, DialogTitle, DialogActions } from "@mui/material";
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
+import { Dialog, DialogTitle, DialogActions, Box, Button } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";

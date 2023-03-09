@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
-import { Dialog, DialogTitle, DialogActions, Box, Button, Pagination, Stack } from "@mui/material";
+import { Box, Button, Pagination, Stack } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -23,27 +23,8 @@ const PageN1 = () => {
             description: "Recently bought wheat which is high priced",
         }
     ]);
-    // const deleteThis = (id) => {
-    //     var back = data;
-    //     for (var i = 0; i < back.length; i++) {
-    //         if (back[i]._id == id) {
-    //             back.splice(i, i + 1);
-    //         }
-    //     }
-    //     console.log(back);
-    //     setData([...back]);
-    // }
-    const [open1, setOpen1] = useState(false);
-    const [open2, setOpen2] = useState(false);
+
     const navigate = useNavigate();
-
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
 
     useEffect(() => {
         let token = Cookies.get('token');
@@ -51,16 +32,16 @@ const PageN1 = () => {
             then((response) => {
                 setData(response.data.message);
             })
-            .catch((res) => {
+            .catch(async (res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    Swal.fire({
+                    await Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Please Check Network Connection!',
                     })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    Swal.fire({
+                    await Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Login Error',
@@ -97,34 +78,6 @@ const PageN1 = () => {
             <Stack spacing={2}>
                 <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
             </Stack>
-
-            <Dialog
-                open={open1}
-                onClose={handleClose1}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Please check network connection !
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose1}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-            <Dialog
-                open={open2}
-                onClose={handleClose2}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Login Error
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose2}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-
         </>
     )
 }

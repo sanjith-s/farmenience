@@ -1,14 +1,11 @@
 import React from "react";
 import '../css/pageN14.css';
 import Swal from 'sweetalert2'
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom/dist";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import {
-    Dialog,
-    DialogActions,
-    DialogTitle,
     Grid,
     Box,
     CardContent,
@@ -20,30 +17,26 @@ import {
     FilledInput
 } from "@mui/material";
 
-const PageM19 = () => {
-
-    const [open1, setOpen1] = React.useState(false);
-    const [open1x, setOpen1x] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-    const [open3, setOpen3] = React.useState(false);
+const PageN14b = () => {
     const [date, setDate] = React.useState(0);
     const [time, setTime] = React.useState(0);
     const location = useLocation();
     const navigate = useNavigate();
-    const id=location.state.id;
-    const name=location.state.name;
+    const id = location.state.id;
+    const name = location.state.name;
     const itemsName1 = [
         "Appointment ID",
     ];
-    
+
     const itemsName2 = [
         "Client Name",
     ];
-    
+
     const itemsValue1 = [id];
     const itemsValue2 = [name];
-    const handleClickOpen1 = () => {
-        Swal.fire({
+
+    const RescheduleAppointment = async () => {
+        await Swal.fire({
             title: 'Do you want to reschedule the appointment?',
             html: "<b>Date : </b> " + date + "<br /><br />" + "<b>Time: </b>" + time,
             icon: 'warning',
@@ -55,8 +48,8 @@ const PageM19 = () => {
             if (result.isConfirmed) {
                 let token = Cookies.get('token');
                 Axios.put(`http://localhost:5000//changeofschedule/${id}`, {
-                    time:time,
-                    date:date
+                    time: time,
+                    date: date
                 }, { headers: { tokenstring: token } }).
                     then((response) => {
                         console.log(response);
@@ -64,17 +57,28 @@ const PageM19 = () => {
                             navigate('../N13');
                         }
                     })
-                    .catch((res) => {
+                    .catch(async (res) => {
                         if (res.response.data.message === 'Error in connection') {
-                            alert(res.response.data.message)
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Please Check Network Connection!',
+                            })
                         }
-                        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') 
-                        {
-                            alert(res.response.data.message)
+                        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Login Error!',
+                            })
                             navigate('../login')
                         }
                         else {
-                            alert(res.response.data.message);
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: res.response.data.message,
+                            })
                         }
                     })
                 await Swal.fire({
@@ -85,46 +89,13 @@ const PageM19 = () => {
         })
     };
 
-    const handleClickOpen1x = () => {
-        setOpen1x(true);
-    };
-
-    const handleClickOpen2 = () => {
-        setOpen2(true);
-    };
-
-    const handleClickOpen3 = () => {
-        setOpen3(true);
-    };
-
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleClose1x = () => {
-        setOpen1x(false);
-    };
-
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
-
-    const handleClose3 = () => {
-        setOpen3(false);
-    };
-
-    const handleClose11x = () => {
-        setOpen1(false);
-        setOpen1x(false);
-    };
-
     return (
         <Container style={{ padding: "1.875rem 0rem" }}>
             <Typography
                 variant="h3"
                 style={{ textTransform: "uppercase", textAlign: "center" }}
             >
-                VIEW APPOINTMENTS
+                RESCHEDULE APPOINTMENT
             </Typography>
             <Box
                 sx={{
@@ -285,7 +256,7 @@ const PageM19 = () => {
                     </Grid>
                 </Box>
                 <Box sx={{ display: "flex", columnGap: "3.125rem", justify: "center" }}>
-                    <Button onClick={handleClickOpen1}
+                    <Button onClick={RescheduleAppointment}
                         variant="contained"
                         style={{
                             backgroundColor: "green",
@@ -296,49 +267,6 @@ const PageM19 = () => {
                     >
                         RESCHEDULE
                     </Button>
-                    <Dialog
-                        open={open1}
-                        onClose={handleClose1}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                    >
-                        <DialogTitle id="alert-dialog-title">
-                            {"Do you want to reschedule to\n"} <br />{"Date: "}{date}<br />{"Time: "}{time} {"?"}
-                        </DialogTitle>
-                        <DialogActions>
-                            <Button onClick={handleClose1}>No</Button>
-                            <Button onClick={handleClickOpen1x} autoFocus> Yes
-                                <Dialog
-                                    open={open1x}
-                                    onClose={handleClose11x}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
-                                >
-                                    <DialogTitle id="alert-dialog-title">
-                                        {"Appointment Rescheduled"}
-                                    </DialogTitle>
-                                    <DialogActions>
-                                        <Button onClick={handleClose11x}>
-                                            <Link
-                                                to="/N9"
-                                                style={{ textDecoration: "none" }}
-                                            >
-                                                <Typography
-                                                    style={{
-                                                        color: "blue",
-                                                        fontWeight: "600",
-                                                        fontSize: "1rem",
-                                                    }}
-                                                >
-                                                    Ok
-                                                </Typography>
-                                            </Link>
-                                        </Button>
-                                    </DialogActions>
-                                </Dialog>
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
                 </Box>
             </Box>
         </Container >

@@ -2,7 +2,7 @@ import React from "react";
 import '../css/pageN7.css';
 import Swal from 'sweetalert2';
 import CssBaseline from "@mui/material/CssBaseline";
-import { Container, Table, Paper, TableBody, TableCell, TableContainer, TableRow, Slide, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Fab, Button, Box, TextField, InputAdornment, Stack, Divider, Typography } from "@mui/material";
+import { Container, Slide, Fab, Button, Box, TextField, InputAdornment, Stack, Divider, Typography } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import Cookies from 'js-cookie';
 import Axios from "axios";
@@ -12,11 +12,6 @@ import { useNavigate } from "react-router-dom/dist";
 const PageN7 = () => {
   const [file, setFile] = useState();
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
 
   function handleChange(e) {
@@ -25,79 +20,57 @@ const PageN7 = () => {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-  const handleClickOpen2 = () => {
-    setOpen2(true);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
 
-
-  const validate = () => {
+  const validate = async () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
-      Swal.fire({
+      await Swal.fire({
         icon: 'info',
         title: 'Please confirm the details ...',
         html: "<b>Query Subject: </b> " + subject + "<br /><br />" + "<b>Description: </b>" + desc,
+        imageUrl: file,
         confirmButtonText: 'Confirm'
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           postQuery();
         }
       })
     } else {
-      Swal.fire({
+      await Swal.fire({
         icon: 'info',
         title: 'Please Note ...',
         html: "1. Subject should be of minimum length 1 and maximum length 50" + "<br></br>" + "2. Description should be of minimum length 1 and maximum length 500",
-    })
+      })
     }
-  }  
+  }
+
   const postQuery = () => {
     let token = Cookies.get('token');
     Axios.post('http://localhost:5000/postquery', {
       subject: subject,
       description: desc
     }, { headers: { tokenstring: token } }).
-      then((response) => {
+      then(async (response) => {
         console.log(response);
         if (response.data.message === 'Query Added Successfully') {
           setOpen3(true);
-          Swal.fire({
+          await Swal.fire({
             icon: 'success',
             title: 'Query Added Successfully !!',
           })
         }
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Please Check Network Connection!',
           })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Login Error',
@@ -109,6 +82,7 @@ const PageN7 = () => {
         }
       })
   }
+
   return (
     <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
@@ -172,36 +146,8 @@ const PageN7 = () => {
             </Box>
           </React.Fragment>
         </Container>
-        <Dialog
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            {"Please check subject and description"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              1. Subject should be of minimum length 1 and maximum length 50 <br></br>
-              2. Description should be of minimum length 1 and maximum length 500
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose2}>
-              <Typography
-                style={{
-                  color: "blue",
-                  fontWeight: "600",
-                  fontSize: "1rem",
-                }}
-              >
-                Ok
-              </Typography>
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog
+
+        {/* <Dialog
           open={open}
           TransitionComponent={Transition}
           keepMounted
@@ -241,7 +187,8 @@ const PageN7 = () => {
             <Button onClick={() => { setOpen(false) }}>Cancel</Button>
             <Button onClick={postQuery}>CONFIRM</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
+
         <Container
           disableGutters={true}
           sx={{
@@ -304,49 +251,6 @@ const PageN7 = () => {
           Home Page
         </Button>
       </Box>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Query Added Successfully
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please check network connection
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open5}
-        onClose={handleClose5}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Error
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose5}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
     </div>
   );
 };

@@ -2,14 +2,14 @@ import React from "react";
 import '../css/pageN6.css';
 import Swal from 'sweetalert2'
 import farmImg from "../images/farm_land.jpg";
-import { Container, Button, Dialog, DialogTitle, DialogActions, Box, Stack, Divider } from "@mui/material";
+import { Container, Button, Box, Stack, Divider } from "@mui/material";
 import Request from "../RequestsDetails";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function AllRequest() {
+function PageN6() {
   const [listOfRequests, setListOfRequests] = useState([
     {
       _id: 34,
@@ -21,17 +21,7 @@ function AllRequest() {
       status: "Good"
     }
   ]);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
   const navigate = useNavigate();
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
 
   useEffect(() => {
     let token = Cookies.get('token');
@@ -40,16 +30,16 @@ function AllRequest() {
         setListOfRequests(response.data.message);
         console.log(response.data.message)
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Please Check Network Connection!',
           })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Login Error',
@@ -58,6 +48,7 @@ function AllRequest() {
         }
       })
   }, []);
+
   return (
     <div className="">
       <br />
@@ -131,36 +122,8 @@ function AllRequest() {
           Home Page
         </Button>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please check network connection
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Error
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
     </div>
   );
 }
-export default AllRequest;
+
+export default PageN6;

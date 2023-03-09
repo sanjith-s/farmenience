@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -11,109 +11,133 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2'
 
-function BuyerRequest(props) {
+function BuyerRequestDetails(props) {
   let navigate = useNavigate();
-  
-  const acceptMeet = ()=> {
+
+  const acceptMeet = () => {
     let token = Cookies.get('token');
     Axios.patch(`http://localhost:5000/acceptmeetbyfarmer/${props.reqId}`, {
-        }, { headers: { tokenstring: token } }).
-            then(async (response) => {
-                if (response.data.message === 'You Accepted the Meet') {
-                  await Swal.fire({
-                    icon: 'success',
-                    title: 'Appointment Accepted !!'
-                  })
-                    navigate('../N9');
-                }
-            })
-            .catch((res) => {
-                if (res.response.data.message === 'Error in connection') {
-                  alert(res.response.data.message)
-                }
-                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                  alert(res.response.data.message)
-                    navigate('../login')
-                }
-                else {
-                    alert(res.response.data.message);
-                }
-            })
+    }, { headers: { tokenstring: token } }).
+      then(async (response) => {
+        if (response.data.message === 'You Accepted the Meet') {
+          await Swal.fire({
+            icon: 'success',
+            title: 'Appointment Accepted !!'
+          })
+          navigate('../N9');
+        }
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error!',
+          })
+          navigate('../login')
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
+        }
+      })
   }
-  const cancelMeet = ()=> {
+
+  const cancelMeet = () => {
     let token = Cookies.get('token');
     Axios.patch(`http://localhost:5000/notacceptmeetbyfarmer/${props.reqId}`, {
-        }, { headers: { tokenstring: token } }).
-            then(async (response) => {
-                if (response.data.message === 'Not Accepted New Schedule Meet') {
-                  await Swal.fire({
-                    icon: 'info',
-                    title: 'Appointment Not Accepted !!'
-                  })
-                    navigate('../N9');
-                }
-            })
-            .catch((res) => {
-                if (res.response.data.message === 'Error in connection') {
-                  alert(res.response.data.message)
-                }
-                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                  alert(res.response.data.message)
-                    navigate('../login')
-                }
-                else {
-                    alert(res.response.data.message);
-                }
-            })
+    }, { headers: { tokenstring: token } }).
+      then(async (response) => {
+        if (response.data.message === 'Not Accepted New Schedule Meet') {
+          await Swal.fire({
+            icon: 'info',
+            title: 'Appointment Not Accepted !!'
+          })
+          navigate('../N9');
+        }
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error!',
+          })
+          navigate('../login')
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
+        }
+      })
   }
-  
 
   return (
     <Card
       style={{
         padding: "0.94rem",
         width: "80%",
-        marginLeft:"10%",
+        marginLeft: "10%",
         borderRadius: "0.31rem",
         border: "0.125rem solid #000000",
       }}
     >
-    {
-      props.status==='Waiting for NGO' || props.status==='Meet Accepted'?<></> :
-      <>
-      <Button
-          style={{
-            backgroundColor: "#1fe57a",
-            color: "#000000",
-            fontWeight: "600",
-            fontSize: "1rem",
-            border: "0.125rem solid #000000",
-            marginTop: "0.94rem",
-          }} 
-        onClick={()=>{
-          acceptMeet()
-        }}
-        >
-          Accept
-        </Button>
-        <Button
-          style={{
-            backgroundColor: "#1fe57a",
-            color: "#000000",
-            fontWeight: "600",
-            fontSize: "1rem",
-            border: "0.125rem solid #000000",
-            marginTop: "0.94rem",
-          }}
-          onClick={()=>{
-          cancelMeet()
-        }}
-        >
-          Cancel
-        </Button>
-      </>
-    }
-    
+      {
+        props.status === 'Waiting for NGO' || props.status === 'Meet Accepted' ? <></> :
+          <>
+            <Button
+              style={{
+                backgroundColor: "#1fe57a",
+                color: "#000000",
+                fontWeight: "600",
+                fontSize: "1rem",
+                border: "0.125rem solid #000000",
+                marginTop: "0.94rem",
+              }}
+              onClick={() => {
+                acceptMeet()
+              }}
+            >
+              Accept
+            </Button>
+            <Button
+              style={{
+                backgroundColor: "#1fe57a",
+                color: "#000000",
+                fontWeight: "600",
+                fontSize: "1rem",
+                border: "0.125rem solid #000000",
+                marginTop: "0.94rem",
+              }}
+              onClick={() => {
+                cancelMeet()
+              }}
+            >
+              Cancel
+            </Button>
+          </>
+      }
+
       <CardContent
         style={{
           display: "flex",
@@ -124,7 +148,7 @@ function BuyerRequest(props) {
           columnGap: "1.25rem",
         }}
       >
-      
+
         <Typography
           style={{
             width: "45%",
@@ -180,8 +204,8 @@ function BuyerRequest(props) {
           {props.meetReason}
         </Typography>
       </CardContent>
-        
-        <CardContent
+
+      <CardContent
         style={{
           display: "flex",
           flexDirection: "row",
@@ -210,11 +234,11 @@ function BuyerRequest(props) {
             borderRadius: "0.19rem",
           }}
         >
-        {props.status!=='Waiting for NGO' && props.status!=='Meet Accepted' ? props.newDate : props.meetDate}
+          {props.status !== 'Waiting for NGO' && props.status !== 'Meet Accepted' ? props.newDate : props.meetDate}
         </Typography>
       </CardContent>
 
-        <CardContent
+      <CardContent
         style={{
           display: "flex",
           flexDirection: "row",
@@ -243,7 +267,7 @@ function BuyerRequest(props) {
             borderRadius: "0.19rem",
           }}
         >
-          {props.status!=='Waiting for NGO' && props.status!=='Meet Accepted' ? props.newTime : props.meetTime}
+          {props.status !== 'Waiting for NGO' && props.status !== 'Meet Accepted' ? props.newTime : props.meetTime}
         </Typography>
       </CardContent>
       <CardContent
@@ -350,9 +374,9 @@ function BuyerRequest(props) {
           justifyContent: "center",
         }}
       >
-        
+
       </CardActions>
     </Card>
   );
 }
-export default BuyerRequest;
+export default BuyerRequestDetails;

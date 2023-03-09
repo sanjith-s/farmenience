@@ -11,7 +11,6 @@ import {
     Button
 } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -204,8 +203,8 @@ function AppointmentList(props) {
                                             fontSize: "1rem",
                                         }}
                                         onClick={() => {
-                                navigate('../N14a', { state: { data:row } })
-                            }}
+                                            navigate('../N14a', { state: { data: row } })
+                                        }}
                                     >
                                         View Details
                                     </Button>

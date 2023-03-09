@@ -4,48 +4,10 @@ import AppointmentList from "../components/AppointmentList";
 import { Typography, Box, Card } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function N13() {
-    const appointmentList = [
-        {
-            appID: 1,
-            appName: "Check Land",
-            clientName: "Ram",
-            dateTime: "02/02/2023 10:30",
-            location: "Chennai"
-        },
-        {
-            appID: 2,
-            appName: "pH Test",
-            clientName: "Mohan",
-            dateTime: "03/02/2023 16:45",
-            location: "Mumbai"
-        },
-        {
-            appID: 3,
-            appName: "Test of Soil Fertility",
-            clientName: "Shyam",
-            dateTime: "05/02/2023 11:00",
-            location: "Jaipur"
-        },
-        {
-            appID: 4,
-            appName: "Applying loan",
-            clientName: "Ganesh",
-            dateTime: "08/02/2023 08:15",
-            location: "Madurai"
-        },
-        {
-            appID: 5,
-            appName: "Choosing right irrigation pattern",
-            clientName: "Mukesh",
-            dateTime: "09/02/2023 13:30",
-            location: "Cochin"
-        },
-    ];
-    const [data,setData]=useState([]);
+function PageN13() {
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         let token = Cookies.get('token');
@@ -53,16 +15,16 @@ function N13() {
             then((response) => {
                 setData(response.data.message);
             })
-            .catch((res) => {
+            .catch(async (res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    Swal.fire({
+                    await Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Please Check Network Connection!',
                     })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    Swal.fire({
+                    await Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Login Error',
@@ -102,4 +64,5 @@ function N13() {
         </Card>
     );
 }
-export default N13;
+
+export default PageN13;

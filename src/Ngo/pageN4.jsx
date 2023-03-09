@@ -73,13 +73,6 @@ const PageN4 = () => {
                 minsize="1"
                 onChange={handleChange}
               />
-              {/* <FilePond
-                files={file}
-                allowFileSizeValidation={true}
-                maxFileSize={5}
-                labelMaxFileSizeExceeded={'File is too large'}
-                acceptedFileTypes={"png"}
-              /> */}
               <label
                 htmlFor="imgUp"
                 style={{ width: "fit-content", height: "fit-content" }}

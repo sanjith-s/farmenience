@@ -10,7 +10,7 @@ import {
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2';
-import { baseURL } from '../constants';
+import { baseURL } from '../src/constants';
 
 function BuyerRequestDetails(props) {
   let navigate = useNavigate();

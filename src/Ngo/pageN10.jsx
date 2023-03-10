@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { Typography, Grid, Box, Tabs, Tab } from "@mui/material";
+import { baseURL } from '../constants';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -135,9 +136,9 @@ const PageN10 = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
-  useEffect(() => {
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get('http://localhost:5000/profile', { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
       then((response) => {
         setProfile(response.data.message);
       })

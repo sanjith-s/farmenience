@@ -15,6 +15,7 @@ import {
   Button,
   Container,
 } from "@mui/material";
+import { baseURL } from '../constants';
 
 const PageN14a = () => {
   const location = useLocation();
@@ -61,9 +62,9 @@ const PageN14a = () => {
     })
   };
 
-  const AcceptAppointment = () => {
+  const AcceptAppointment = async () => {
     let token = Cookies.get('token');
-    Axios.patch(`http://localhost:5000/acceptmeetbyngo/${data.appID}`, {
+    await Axios.patch(`${baseURL}/acceptmeetbyngo/${data.appID}`, {
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         if (response.data.message === 'You Accepted the Meet') {

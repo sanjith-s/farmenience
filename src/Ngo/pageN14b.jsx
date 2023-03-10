@@ -16,6 +16,7 @@ import {
     InputLabel,
     FilledInput
 } from "@mui/material";
+import { baseURL } from '../constants';
 
 const PageN14b = () => {
     const [date, setDate] = React.useState(0);
@@ -47,7 +48,7 @@ const PageN14b = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 let token = Cookies.get('token');
-                Axios.put(`http://localhost:5000//changeofschedule/${id}`, {
+                await Axios.put(`${baseURL}//changeofschedule/${id}`, {
                     time: time,
                     date: date
                 }, { headers: { tokenstring: token } }).
@@ -273,4 +274,4 @@ const PageN14b = () => {
     );
 };
 
-export default PageM19;
+export default PageN14b;

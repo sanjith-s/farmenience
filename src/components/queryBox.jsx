@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from '../constants';
 
 const QueryBox = (props) => {
     const [open, setOpen] = useState(false);
@@ -21,10 +22,10 @@ const QueryBox = (props) => {
         setOpen(false);
     };
 
-    const handleClickOpen1x = () => {
+    const handleClickOpen1x = async () => {
         let token = Cookies.get('token');
         let id = props.ID;
-        Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
+        await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
             then(async (response) => {
                 console.log(response);
                 if (response.data.message === 'Deleted Successfully') {
@@ -53,9 +54,9 @@ const QueryBox = (props) => {
             })
     };
 
-    const EditQuery = () => {
+    const EditQuery = async () => {
         let token = Cookies.get('token');
-        Axios.put('http://localhost:5000/editquery', {
+        await Axios.put(`${baseURL}/editquery`, {
             subject: subject,
             description: desc,
             id: props.ID

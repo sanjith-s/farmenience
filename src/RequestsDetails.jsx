@@ -9,14 +9,15 @@ import {
 } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { baseURL } from '../constants';
 
 function BuyerRequestDetails(props) {
   let navigate = useNavigate();
 
-  const acceptMeet = () => {
+  const acceptMeet = async () => {
     let token = Cookies.get('token');
-    Axios.patch(`http://localhost:5000/acceptmeetbyfarmer/${props.reqId}`, {
+    await Axios.patch(`${baseURL}/acceptmeetbyfarmer/${props.reqId}`, {
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         if (response.data.message === 'You Accepted the Meet') {
@@ -53,9 +54,9 @@ function BuyerRequestDetails(props) {
       })
   }
 
-  const cancelMeet = () => {
+  const cancelMeet = async () => {
     let token = Cookies.get('token');
-    Axios.patch(`http://localhost:5000/notacceptmeetbyfarmer/${props.reqId}`, {
+    await Axios.patch(`${baseURL}/notacceptmeetbyfarmer/${props.reqId}`, {
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         if (response.data.message === 'Not Accepted New Schedule Meet') {

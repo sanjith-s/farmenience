@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom/dist";
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 import Axios from "axios";
+import { baseURL } from '../constants';
 
 const PageN2 = () => {
   const location = useLocation();
@@ -16,9 +17,9 @@ const PageN2 = () => {
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get(`http://localhost:5000/getquery/${id}`, { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
       then((response) => {
         setQuery(response.data.message);
       })
@@ -45,9 +46,9 @@ const PageN2 = () => {
   const [subject, setSubject] = useState(query.subject);
   const [desc, setDesc] = useState(query.description);
 
-  const DeleteQuery = () => {
+  const DeleteQuery = async () => {
     let token = Cookies.get('token');
-    Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
+    await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
         if (response.data.message === 'Deleted Successfully') {
@@ -86,9 +87,9 @@ const PageN2 = () => {
     setOpen(false);
   };
 
-  const NotHappy = () => {
+  const NotHappy = async () => {
     let token = Cookies.get('token');
-    Axios.put('http://localhost:5000/againpostquery', {
+    await Axios.put(`${baseURL}/againpostquery`, {
       subject: subject,
       description: desc,
       id: id

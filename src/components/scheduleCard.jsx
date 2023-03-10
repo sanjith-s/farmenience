@@ -10,6 +10,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
+import { baseURL } from '../constants';
 
 const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
@@ -36,11 +37,11 @@ const ScheduleCard = (props) => {
     setValue();
   }
 
-  const postMeet = () => {
+  const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
 
-    Axios.post('http://localhost:5000/postmeet', {
+    await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
       time: dateStr.toTimeString(),
       details: details,

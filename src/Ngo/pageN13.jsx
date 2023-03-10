@@ -5,13 +5,14 @@ import { Typography, Box, Card } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { baseURL } from '../constants';
 
 function PageN13() {
     const [data, setData] = useState([]);
 
-    useEffect(() => {
+    useEffect(async () => {
         let token = Cookies.get('token');
-        Axios.get('http://localhost:5000/getmeets', { headers: { tokenstring: token } }).
+        await Axios.get(`${baseURL}/getmeets`, { headers: { tokenstring: token } }).
             then((response) => {
                 setData(response.data.message);
             })

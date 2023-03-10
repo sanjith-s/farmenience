@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from '../constants';
 
 function PageN6() {
   const [listOfRequests, setListOfRequests] = useState([
@@ -23,9 +24,9 @@ function PageN6() {
   ]);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get('http://localhost:5000/getmeet', { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/getmeet`, { headers: { tokenstring: token } }).
       then((response) => {
         setListOfRequests(response.data.message);
         console.log(response.data.message)

@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
+import { baseURL } from '../constants';
 
 const PageN7 = () => {
   const [file, setFile] = useState();
@@ -45,9 +46,9 @@ const PageN7 = () => {
     }
   }
 
-  const postQuery = () => {
+  const postQuery = async () => {
     let token = Cookies.get('token');
-    Axios.post('http://localhost:5000/postquery', {
+    await Axios.post(`${baseURL}/postquery`, {
       subject: subject,
       description: desc
     }, { headers: { tokenstring: token } }).

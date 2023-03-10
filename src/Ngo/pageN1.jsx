@@ -6,6 +6,7 @@ import { Box, Button, Pagination, Stack } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from '../constants';
 
 const PageN1 = () => {
     const [data, setData] = useState([
@@ -26,9 +27,9 @@ const PageN1 = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(async () => {
         let token = Cookies.get('token');
-        Axios.get('http://localhost:5000/getquery', { headers: { tokenstring: token } }).
+        await Axios.get(`${baseURL}/getquery`, { headers: { tokenstring: token } }).
             then((response) => {
                 setData(response.data.message);
             })

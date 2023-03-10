@@ -6,14 +6,15 @@ import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { Typography, Box, Stack, Avatar, Button, ButtonGroup } from "@mui/material";
+import { baseURL } from '../constants';
 
 function PageN9() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
-  useEffect(() => {
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get('http://localhost:5000/profile', { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
       then((response) => {
         setProfile(response.data.message);
       })
@@ -38,7 +39,7 @@ function PageN9() {
 
   const logout = async () => {
     let token = Cookies.get('token')
-    Axios.get('http://localhost:5000/logout', { headers: { tokenstring: token } }
+    await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
     )
       .then(async (response) => {
         if (response.data.message == "Logout Successful") {

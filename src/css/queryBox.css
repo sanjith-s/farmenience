@@ -1,3 +1,129 @@
+<<<<<<< HEAD
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+.query-card {
+    background-color: #e6ffe6;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.query-card__title {
+    font-size: 24px;
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.query-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+  
+
+.query-card__info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.query-card__id,
+.query-card__date,
+.query-card__status {
+    margin: 0;
+    font-size: 14px;
+    margin-right: 16px;
+}
+
+.query-card__status {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.query-card__status--resolved {
+    color: green;
+}
+
+.query-card__status--inprogress {
+    color: yellow;
+}
+
+.query-card__status--pending {
+    color: red;
+}
+
+.query-card__actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.query-card__button {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.query-card__button--edit {
+    margin-right: 8px;
+}
+
+.query-card__button--delete {
+    background-color: #dc3545;
+}
+
+.query-card__button:hover {
+    opacity: 0.8;
+}
+
+.query-card__button--display {
+    background-color: #5e8c31;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.query-card__button--display:hover {
+    background-color: #8fbc58;
+    color: white;
+}
+
+.query-list {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2ffed;
+    border-radius: 10px;
+    margin-top: 3%;
+    box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.query-list__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 2px rgba(46, 78, 37, 0.2);
+    background-image: linear-gradient(45deg, #69b36c, #92d187);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+=======
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 .query-card {
@@ -122,3 +248,4 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 } 
+>>>>>>> 6c45c4c132144d50d8712ce5248f784a5efb2244

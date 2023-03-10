@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../css/pageN11.css';
 import QueryList from "../components/queryList";
 import { Box, Typography } from "@mui/material";
 import { useEffect } from "react";
@@ -60,11 +61,11 @@ Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } 
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        margin: "20px 0px",
-        marginBottom: "40px",
+        margin: "1.25rem 0rem",
+        marginBottom: "2.5rem",
       }}
     >
-      <Box sx={{ padding: "20px 0px" }}>
+      <Box sx={{ padding: "1.25rem 0rem" }}>
         <Typography
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
@@ -75,18 +76,18 @@ Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } 
       <Box
         sx={{
           width: "fit-content",
-          border: "5px solid",
-          borderRadius: "3px",
+          border: "0.31rem solid",
+          borderRadius: "0.188rem",
           backgroundColor: "#bdfbbf",
         }}
       >
         <Box
           sx={{
-            padding: "40px",
+            padding: "2.5rem",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            columnGap: "50px",
-            rowGap: "50px",
+            columnGap: "3.125rem",
+            rowGap: "3.125rem",
           }}
         >
           {data.map((req, index) => {

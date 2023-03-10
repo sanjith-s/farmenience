@@ -1,27 +1,16 @@
 import React from "react";
+import '../css/pageN6.css';
 import Swal from 'sweetalert2'
-import { useRef } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
 import farmImg from "../images/farm_land.jpg";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
-import { Box } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { Container, Button, Box, Stack, Divider } from "@mui/material";
 import Request from "../RequestsDetails";
-import Navbar from "../components/navbar";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-function AllRequest() {
+import { baseURL } from '../constants';
+
+function PageN6() {
   const [listOfRequests, setListOfRequests] = useState([
     {
       _id: 34,
@@ -33,34 +22,25 @@ function AllRequest() {
       status: "Good"
     }
   ]);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
   const navigate = useNavigate();
 
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  useEffect(() => {
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get('http://localhost:5000/getmeet', { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/getmeet`, { headers: { tokenstring: token } }).
       then((response) => {
         setListOfRequests(response.data.message);
+        console.log(response.data.message)
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Please Check Network Connection!',
           })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          Swal.fire({
+          await Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Login Error',
@@ -69,26 +49,7 @@ function AllRequest() {
         }
       })
   }, []);
-  // const listOfRequests = [
-  //   {
-  //     meetDate: "2023-01-31",
-  //     meetTime: "04:30",
-  //     cropsGrowing: "paddy, wheat",
-  //     meetReason: "To discuss ab cultivation",
-  //     soilDetails: "red soil used to grow sbjkbsjkb",
-  //     NGOType: "NGO",
-  //     img_src: "",
-  //   },
-  //   {
-  //     meetDate: "2022-11-19",
-  //     meetTime: "02:30",
-  //     cropsGrowing: "paddy, wheat",
-  //     meetReason: "The reason is to discuss about jkcnsjs",
-  //     soilDetails: "red soil used to grow sbjkbsjkb",
-  //     NGOType: "NGO",
-  //     img_src: "",
-  //   },
-  // ];
+
   return (
     <div className="">
       <br />
@@ -100,14 +61,14 @@ function AllRequest() {
               direction="row"
               divider={<Divider orientation="vertical" flexItem />}
               spacing={0}
-              sx={{ height: "70vh", width: "vw", marginTop: "20px" }}
+              sx={{ height: "70vh", width: "vw", marginTop: "1.25rem" }}
             >
               <Container
                 sx={{
                   bgcolor: "#D9D9D9;",
                   height: "100%",
                   width: "60vw",
-                  borderRadius: "50px",
+                  borderRadius: "3.125rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
@@ -123,6 +84,8 @@ function AllRequest() {
                   cropsGrowing={request.crops}
                   itemQuantity={request._id}
                   status={request.status}
+                  newDate={request.requestdate}
+                  newTime={request.requesttime}
                 />
               </Container>
               <Container
@@ -131,11 +94,11 @@ function AllRequest() {
                   bgcolor: "#ffff",
                   height: "80%",
                   width: "30vw",
-                  borderRadius: "50px",
-                  paddingLeft: "0px",
-                  paddingRight: "0px",
+                  borderRadius: "3.125rem",
+                  paddingLeft: "0rem",
+                  paddingRight: "0rem",
                   display: "flex",
-                  marginTop: "30px",
+                  marginTop: "1.875rem",
                   justifyItems: "center",
                 }}
               >
@@ -145,7 +108,7 @@ function AllRequest() {
                     width: "100%",
                     height: "100%",
                     objectFit: "fill",
-                    borderRadius: "50px",
+                    borderRadius: "3.125rem",
                   }}
                 />
               </Container>
@@ -155,41 +118,13 @@ function AllRequest() {
         );
       })}
 
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
         <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Home Page
         </Button>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please check network connection
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Error
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
     </div>
   );
 }
-export default AllRequest;
+
+export default PageN6;

@@ -1,12 +1,11 @@
 import React from "react";
+import '../css/pageN14.css';
 import Swal from 'sweetalert2'
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom/dist";
+import Cookies from 'js-cookie';
+import Axios from "axios";
 import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
     Grid,
     Box,
     CardContent,
@@ -17,29 +16,28 @@ import {
     InputLabel,
     FilledInput
 } from "@mui/material";
+import { baseURL } from '../constants';
 
-const itemsName1 = [
-    "Appointment ID",
-];
-
-const itemsName2 = [
-    "Client Name",
-];
-
-const itemsValue1 = ["lorem ipsum"];
-const itemsValue2 = ["lorem ipsum"];
-
-const PageM19 = () => {
-
-    const [open1, setOpen1] = React.useState(false);
-    const [open1x, setOpen1x] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-    const [open3, setOpen3] = React.useState(false);
+const PageN14b = () => {
     const [date, setDate] = React.useState(0);
     const [time, setTime] = React.useState(0);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const id = location.state.id;
+    const name = location.state.name;
+    const itemsName1 = [
+        "Appointment ID",
+    ];
 
-    const handleClickOpen1 = () => {
-        Swal.fire({
+    const itemsName2 = [
+        "Client Name",
+    ];
+
+    const itemsValue1 = [id];
+    const itemsValue2 = [name];
+
+    const RescheduleAppointment = async () => {
+        await Swal.fire({
             title: 'Do you want to reschedule the appointment?',
             html: "<b>Date : </b> " + date + "<br /><br />" + "<b>Time: </b>" + time,
             icon: 'warning',
@@ -47,9 +45,44 @@ const PageM19 = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes'
-        }).then((result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
-                Swal.fire({
+                let token = Cookies.get('token');
+                await Axios.put(`${baseURL}//changeofschedule/${id}`, {
+                    time: time,
+                    date: date
+                }, { headers: { tokenstring: token } }).
+                    then((response) => {
+                        console.log(response);
+                        if (response.data.message === 'Requested for Change the schedule for the Meet') {
+                            navigate('../N13');
+                        }
+                    })
+                    .catch(async (res) => {
+                        if (res.response.data.message === 'Error in connection') {
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Please Check Network Connection!',
+                            })
+                        }
+                        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Login Error!',
+                            })
+                            navigate('../login')
+                        }
+                        else {
+                            await Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: res.response.data.message,
+                            })
+                        }
+                    })
+                await Swal.fire({
                     icon: 'success',
                     title: 'Appointment Rescheduled!',
                 })
@@ -57,72 +90,39 @@ const PageM19 = () => {
         })
     };
 
-    const handleClickOpen1x = () => {
-        setOpen1x(true);
-    };
-
-    const handleClickOpen2 = () => {
-        setOpen2(true);
-    };
-
-    const handleClickOpen3 = () => {
-        setOpen3(true);
-    };
-
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleClose1x = () => {
-        setOpen1x(false);
-    };
-
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
-
-    const handleClose3 = () => {
-        setOpen3(false);
-    };
-
-    const handleClose11x = () => {
-        setOpen1(false);
-        setOpen1x(false);
-    };
-
     return (
-        <Container style={{ padding: "30px 0px" }}>
+        <Container style={{ padding: "1.875rem 0rem" }}>
             <Typography
                 variant="h3"
                 style={{ textTransform: "uppercase", textAlign: "center" }}
             >
-                VIEW APPOINTMENTS
+                RESCHEDULE APPOINTMENT
             </Typography>
             <Box
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    border: "3px solid",
+                    border: "0.19rem solid",
                     justifyContent: "center",
                     alignItems: "center",
-                    rowGap: "20px",
-                    padding: "30px 0px",
+                    rowGap: "1.25rem",
+                    padding: "1.875rem 0rem",
                     backgroundColor: "#7bff96",
-                    margin: "26px",
-                    borderRadius: "8px",
+                    margin: "1.625rem",
+                    borderRadius: "0.5rem",
                 }}
             >
                 <Box
                     sx={{
-                        width: "1000px",
-                        borderRadius: "8px",
-                        border: "4px solid #000",
+                        width: "62.5rem",
+                        borderRadius: "0.5rem",
+                        border: "0.25rem solid #000",
                         backgroundColor: "#fff",
                     }}
                 >
                     <Grid container spacing={2} >
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName1.map((value, index) => {
                                         return (
@@ -130,18 +130,18 @@ const PageM19 = () => {
                                                 key={index}
                                                 sx={{
                                                     display: "grid",
-                                                    columnGap: "20px",
+                                                    columnGap: "1.25rem",
                                                     justifyContent: "space-between",
-                                                    height: "250px",
+                                                    height: "15.625rem",
                                                     alignItems: "center",
-                                                    margin: "2px 0px",
+                                                    margin: "0.125 0rem",
                                                 }}
                                             >
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <Typography
                                                         style={{
                                                             fontWeight: "600",
-                                                            fontSize: "20px",
+                                                            fontSize: "1.25rem",
                                                             textTransform: "uppercase",
                                                         }}
                                                     >
@@ -154,13 +154,13 @@ const PageM19 = () => {
                                                         {itemsValue1[index]}
                                                     </Typography>
                                                 </Box>
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <InputLabel>
                                                         <Typography
                                                             variant="h6"
                                                             style={{
                                                                 fontWeight: "600",
-                                                                fontSize: "20px",
+                                                                fontSize: "1.25rem",
                                                                 textTransform: "uppercase",
                                                                 color: "black",
                                                             }}
@@ -174,10 +174,10 @@ const PageM19 = () => {
                                                             setDate(event.target.value);
                                                         }}
                                                         style={{
-                                                            borderRadius: "5px",
-                                                            borderBottomLeftRadius: "0px",
-                                                            borderBottomRightRadius: "0px",
-                                                            height: "40px",
+                                                            borderRadius: "0.31rem",
+                                                            borderBottomLeftRadius: "0rem",
+                                                            borderBottomRightRadius: "0rem",
+                                                            height: "2.5rem",
                                                         }}
                                                     />
                                                 </Box>
@@ -189,7 +189,7 @@ const PageM19 = () => {
                         </Grid>
 
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName2.map((value, index) => {
                                         return (
@@ -197,18 +197,18 @@ const PageM19 = () => {
                                                 key={index}
                                                 sx={{
                                                     display: "grid",
-                                                    columnGap: "20px",
+                                                    columnGap: "1.25rem",
                                                     justifyContent: "space-between",
-                                                    height: "250px",
+                                                    height: "15.625",
                                                     alignItems: "center",
-                                                    margin: "2px 0px",
+                                                    margin: "0.125rem 0rem",
                                                 }}
                                             >
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <Typography
                                                         style={{
                                                             fontWeight: "600",
-                                                            fontSize: "20px",
+                                                            fontSize: "1.25rem",
                                                             textTransform: "uppercase",
                                                         }}
                                                     >
@@ -218,16 +218,16 @@ const PageM19 = () => {
                                                         variant="h6"
                                                         style={{ textTransform: "capitalize" }}
                                                     >
-                                                        {itemsValue1[index]}
+                                                        {itemsValue2[index]}
                                                     </Typography>
                                                 </Box>
-                                                <Box padding="20px">
+                                                <Box padding="1.25rem">
                                                     <InputLabel>
                                                         <Typography
                                                             variant="h6"
                                                             style={{
                                                                 fontWeight: "600",
-                                                                fontSize: "20px",
+                                                                fontSize: "1.25rem",
                                                                 textTransform: "uppercase",
                                                                 color: "black",
                                                             }}
@@ -241,10 +241,10 @@ const PageM19 = () => {
                                                             setTime(event.target.value);
                                                         }}
                                                         style={{
-                                                            borderRadius: "5px",
-                                                            borderBottomLeftRadius: "0px",
-                                                            borderBottomRightRadius: "0px",
-                                                            height: "40px",
+                                                            borderRadius: "0.31rem",
+                                                            borderBottomLeftRadius: "0rem",
+                                                            borderBottomRightRadius: "0rem",
+                                                            height: "2.5rem",
                                                         }}
                                                     />
                                                 </Box>
@@ -256,65 +256,22 @@ const PageM19 = () => {
                         </Grid>
                     </Grid>
                 </Box>
-                <Box sx={{ display: "flex", columnGap: "50px", justify: "center" }}>
-                    <Button onClick={handleClickOpen1}
+                <Box sx={{ display: "flex", columnGap: "3.125rem", justify: "center" }}>
+                    <Button onClick={RescheduleAppointment}
                         variant="contained"
                         style={{
                             backgroundColor: "green",
                             fontWeight: "600",
-                            fontSize: "18px",
+                            fontSize: "1.125rem",
                             justify: "center",
                         }}
                     >
                         RESCHEDULE
                     </Button>
-                    <Dialog
-                        open={open1}
-                        onClose={handleClose1}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                    >
-                        <DialogTitle id="alert-dialog-title">
-                            {"Do you want to reschedule to\n"} <br />{"Date: "}{date}<br />{"Time: "}{time} {"?"}
-                        </DialogTitle>
-                        <DialogActions>
-                            <Button onClick={handleClose1}>No</Button>
-                            <Button onClick={handleClickOpen1x} autoFocus> Yes
-                                <Dialog
-                                    open={open1x}
-                                    onClose={handleClose11x}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
-                                >
-                                    <DialogTitle id="alert-dialog-title">
-                                        {"Appointment Rescheduled"}
-                                    </DialogTitle>
-                                    <DialogActions>
-                                        <Button onClick={handleClose11x}>
-                                            <Link
-                                                to="/N9"
-                                                style={{ textDecoration: "none" }}
-                                            >
-                                                <Typography
-                                                    style={{
-                                                        color: "blue",
-                                                        fontWeight: "600",
-                                                        fontSize: "16px",
-                                                    }}
-                                                >
-                                                    Ok
-                                                </Typography>
-                                            </Link>
-                                        </Button>
-                                    </DialogActions>
-                                </Dialog>
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
                 </Box>
             </Box>
         </Container >
     );
 };
 
-export default PageM19;
+export default PageN14b;

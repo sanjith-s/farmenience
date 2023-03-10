@@ -1,119 +1,136 @@
 import React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
-import { Link } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-
+import Swal from 'sweetalert2';
+import { Container, Button, Stack, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 import QueryDetails from "../components/queryDetails";
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Cookies from 'js-cookie';
 import Axios from "axios";
+import { baseURL } from '../constants';
 
 const PageN2 = () => {
-  const [file, setFile] = useState();
-  const [isUploaded, setIsUploaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const id = location.state.id;
   const oldQuery = location.state.oldQuery;
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
-  function handleChange(e) {
-    console.log(e.target.files);
-    setIsUploaded(true);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
-  useEffect(() => {
+
+  useEffect(async () => {
     let token = Cookies.get('token');
-    Axios.get(`http://localhost:5000/getquery/${id}`, { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
       then((response) => {
         setQuery(response.data.message);
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert('Login error');
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
       })
     console.log(query);
   }, []);
+
   const [subject, setSubject] = useState(query.subject);
   const [desc, setDesc] = useState(query.description);
-  const DeleteQuery = () => {
+
+  const DeleteQuery = async () => {
     let token = Cookies.get('token');
-    Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
-      then((response) => {
+    await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
+      then(async (response) => {
         console.log(response);
         if (response.data.message === 'Deleted Successfully') {
-          alert('Accepted Successfully');
+          await Swal.fire({
+            icon: 'success',
+            title: 'Oops...',
+            text: 'Accepted Successfully !',
+          })
           navigate('../N1');
         }
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
       })
   }
+
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
-  const NotHappy = () => {
+
+  const NotHappy = async () => {
     let token = Cookies.get('token');
-    Axios.put('http://localhost:5000/againpostquery', {
+    await Axios.put(`${baseURL}/againpostquery`, {
       subject: subject,
       description: desc,
       id: id
     }, { headers: { tokenstring: token } }).
-      then((response) => {
+      then(async (response) => {
         console.log(response);
         if (response.data.message === 'Query Attached Successfully') {
-          alert('Query Attached Successfully');
+          await Swal.fire({
+            icon: 'success',
+            title: 'Oops...',
+            text: 'Query attached successfully !',
+          })
           navigate('../N1');
         }
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert('Please Check Network');
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          alert('Login error');
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login')
         }
         else {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         }
       })
   }
+
   return (
     <div style={{ boxSizing: "borderBox" }}>
       <Stack>

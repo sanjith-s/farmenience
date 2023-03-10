@@ -1,31 +1,19 @@
-import "../css/queryBox.css";
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
 import React from 'react';
-import Typography from '@mui/material/Typography';
+import Swal from 'sweetalert2';
+import "../css/queryBox.css";
+import { Button, Card, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import Cookies from 'js-cookie';
 import Axios from "axios";
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { baseURL } from '../constants';
 
 const QueryBox = (props) => {
     const [open, setOpen] = useState(false);
-    const [open1, setOpen1] = React.useState(false);
-    const [open2, setOpen2] = useState(false);
-    const [open3, setOpen3] = useState(false);
-    const [open4, setOpen4] = useState(false);
-    const [open5, setOpen5] = useState(false);
-    const [open6, setOpen6] = useState(false);
-    const [open1x, setOpen1x] = React.useState(false);
     const navigate = useNavigate();
     const [subject, setSubject] = useState(props.Subject);
     const [desc, setDesc] = useState(props.Desc);
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -34,77 +22,69 @@ const QueryBox = (props) => {
         setOpen(false);
     };
 
-    const handleClickOpen1 = () => {
-        setOpen1(true);
-    };
-
-    const handleClickOpen1x = () => {
-        setOpen1x(false);
-        props.deleteFunc(props.ID);
+    const handleClickOpen1x = async () => {
         let token = Cookies.get('token');
         let id = props.ID;
-        Axios.delete(`http://localhost:5000/deletequery/${id}`, { headers: { tokenstring: token } }).
-            then((response) => {
+        await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
+            then(async (response) => {
                 console.log(response);
                 if (response.data.message === 'Deleted Successfully') {
-                    setOpen2(true);
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'Deleted Successfully !',
+                    })
                 }
             })
-            .catch((res) => {
+            .catch(async (res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    setOpen3(true);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    alert(res.response.data.message);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
                     navigate('../login')
                 }
             })
     };
 
-    const handleClose1 = () => {
-        setOpen1(false);
-    };
-
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
-
-    const handleClose3 = () => {
-        setOpen3(false);
-    };
-
-    const handleClose4 = () => {
-        setOpen4(false);
-    };
-
-    const handleClose5 = () => {
-        setOpen5(false);
-    };
-
-    const handleClose6 = () => {
-        setOpen6(false);
-    };
-
-    const editQuery = () => {
+    const EditQuery = async () => {
         let token = Cookies.get('token');
-        Axios.put('http://localhost:5000/editquery', {
+        await Axios.put(`${baseURL}/editquery`, {
             subject: subject,
             description: desc,
             id: props.ID
         }, { headers: { tokenstring: token } }).
-            then((response) => {
+            then(async (response) => {
                 console.log(response);
                 if (response.data.message === 'Edited Successfully') {
-                    setOpen4(true);
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'Edited Successfully !',
+                    })
                     navigate('../N1');
                 }
             })
-            .catch((res) => {
+            .catch(async (res) => {
                 if (res.response.data.message === 'Error in connection') {
-                    setOpen5(true);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    setOpen6(true);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
                     navigate('../login')
                 }
                 else {
@@ -114,43 +94,29 @@ const QueryBox = (props) => {
         setOpen(false);
     }
 
-    const DeleteQuery = () => {
-        setOpen1(true);
+    const DeleteQuery = async () => {
+        await Swal.fire({
+            title: 'Do you want to delete the appointment?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Appointment Deleted!',
+                })
+                handleClickOpen1x();
+            }
+        })
     }
 
     return (
         <>
             <Card id="card-n1">
-                {/* <table id="query-table" >
-                    <tr>
-                        <td id="left-column"><Typography sx={{
-                            fontWeight:"Bold",
-                        }}>Query ID <span id="semi-colon">:</span></Typography></td>
-                        <td id="right-column"><Typography sx={{
-                            fontWeight:"Bold",
-                        }}>{props.ID}</Typography></td>
-                    </tr>
-                    <tr>
-                        <td id="left-column"><Typography sx={{
-                            fontWeight:"Bold",
-                        }}>Query Subject <span id="semi-colon"> :</span></Typography></td>
-                        <td id="right-column"><Typography>{props.Subject}</Typography></td>
-                    </tr>
-                    <tr>
-                        <td id="left-column">
-                            <Typography sx={{
-                            fontWeight:"Bold",
-                        }}>Date of Query <span id="semi-colon"> :</span></Typography>
-                        </td>
-                        <td id="right-column"><Typography>{props.Date}</Typography></td>
-                    </tr>
-                    <tr>
-                        <td id="left-column"><Typography sx={{
-                            fontWeight:"Bold",
-                        }}>Status <span id="semi-colon">:</span></Typography></td>
-                        <td id="right-column"><Typography>{props.Status}</Typography></td>
-                    </tr>
-                </table> */}
                 <div className="query-card">
                     <h3 className="query-card__title">{props.Subject}</h3>
                     <div className="query-card__info">
@@ -164,55 +130,27 @@ const QueryBox = (props) => {
                     </div>
                     <div className="query-card__actions">
                         <div>
-                        <button onClick={handleClickOpen} className="query-card__button query-card__button--edit">
-                            Edit
-                        </button>
-                        <button onClick={
-                            () => {
-                                navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data: props.fullData } })
-                            }
-                        } className="query-card__button query-card__button--display">
-                            Display
-                        </button>
+                            <button onClick={handleClickOpen} className="query-card__button query-card__button--edit">
+                                Edit
+                            </button>
+                            <button onClick={
+                                () => {
+                                    navigate('../N2', { state: { id: props.ID, oldQuery: props.oldQuery, data: props.fullData } })
+                                }
+                            } className="query-card__button query-card__button--display">
+                                Display
+                            </button>
                         </div>
-                        <button  onClick={DeleteQuery}  className="query-card__button query-card__button--delete">
+                        <button onClick={DeleteQuery} className="query-card__button query-card__button--delete">
                             Delete
                         </button>
                     </div>
                 </div>
-                <Dialog
-                    open={open1}
-                    onClose={handleClose1}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                >
-                    <DialogTitle id="alert-dialog-title">
-                        {"Do you want to delete the query ?"}
-                    </DialogTitle>
-                    <DialogActions>
-                        <Button onClick={handleClose1}>No</Button>
-                        <Button onClick={handleClickOpen1x} autoFocus>
-                            {" "}
-                            Yes
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+
                 <div id="buttons-n1">
-                    {/* <Button variant="contained" color="success" id="button-n1">
-                        Display
-                    </Button>
-                    <Button variant="contained" color="success" id="button-n1">
-                        Edit
-                    </Button>
-                    <Button variant="contained" color="success" id="button-n1">
-                        Delete
-                    </Button> */}
                     <Dialog open={open} onClose={handleClose}>
                         <DialogTitle>Edit Query</DialogTitle>
                         <DialogContent>
-                            <DialogContentText>
-                                Edit Query
-                            </DialogContentText>
                             <TextField
                                 autoFocus
                                 margin="dense"
@@ -246,80 +184,11 @@ const QueryBox = (props) => {
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
-                            <Button onClick={editQuery}>Edit</Button>
+                            <Button onClick={EditQuery}>Edit</Button>
                         </DialogActions>
                     </Dialog>
                 </div>
             </Card>
-            <Dialog
-                open={open2}
-                onClose={handleClose2}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Deleted Successfully
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose2}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-
-            <Dialog
-                open={open3}
-                onClose={handleClose3}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Please Check network connection
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose3}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-
-            <Dialog
-                open={open4}
-                onClose={handleClose4}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Edited Successfully
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose4}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-
-            <Dialog
-                open={open5}
-                onClose={handleClose5}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Please Check network connection
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose5}>Ok</Button>
-                </DialogActions>
-            </Dialog>
-
-            <Dialog
-                open={open6}
-                onClose={handleClose6}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    Login error
-                </DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleClose6}>Ok</Button>
-                </DialogActions>
-            </Dialog>
         </>
     )
 }

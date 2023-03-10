@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Card,
   Typography,
   Button,
   Box,
@@ -13,16 +12,12 @@ import {
   FormControl,
   IconButton,
 } from "@mui/material";
-
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CallIcon from "@mui/icons-material/Call";
-import { fontSize } from "@mui/system";
 
 const PageN12 = () => {
-  const handleChange = (event) => {};
-
-  const handleSubmit = () => {};
+  const handleChange = (event) => { };
 
   const content = {
     id: "1",
@@ -260,22 +255,6 @@ const PageN12 = () => {
               >
                 Attachments:
               </Typography>
-              {/* <Select
-                labelId="attach-select"
-                id="attach"
-                label="Hello"
-                value=""
-                onChange={handleChange}
-                sx={{
-                    width: "50%",
-                    height: "20%",
-                    color: "black"
-                }}
-              >
-                {content.attachments.map((val) => {
-                  return <MenuItem value={val.toLowerCase}>{val}</MenuItem>
-                })}
-              </Select> */}
 
               <FormControl
                 variant="standard"

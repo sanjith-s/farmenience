@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         padding: theme.spacing(4),
         backgroundColor: '#f1faee',
-        // height: '100vh',
     },
     card: {
         backgroundColor: '#edf5e1',
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const QueryDetailsPage = (props) => {
+const QueryDetails = (props) => {
     const classes = useStyles();
 
     return (
@@ -67,15 +66,16 @@ const QueryDetailsPage = (props) => {
                         <Typography variant="body2" component="p">
                             Responder Name: {props.query.responser}
                         </Typography>
-                        <Typography variant="body2" component="p">
-                            Address : 
-                        </Typography>
                     </Box>
                 </CardContent>
                 <div className={classes.buttonGroup}>
                     {
                         props.query.status === 'Pending' ?
-                            <Button onClick={() => { navigate('../N10') }} className={classes.button}>Home Page</Button> :
+                            <>
+                                <Button onClick={() => { navigate('../N10') }} className={classes.button}>Home Page</Button>
+                                {props.query.responser = "No response till now"}
+                            </>
+                            :
                             <>
                                 <Button onClick={props.delQuery} className={classes.button}>Accept</Button>
                                 <Button onClick={props.handleNotHappy} className={classes.button}>Not Happy with Reply</Button>
@@ -102,4 +102,4 @@ const QueryDetailsPage = (props) => {
     );
 };
 
-export default QueryDetailsPage;
+export default QueryDetails;

@@ -2,7 +2,6 @@ import "./css/signup.css";
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import validator from "validator";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
@@ -12,7 +11,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 
 function Login() {
-  const captchaRef = useRef(null);
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPwd] = useState();
@@ -47,6 +45,7 @@ function Login() {
     setEmail(document.querySelector("#email").value);
     setPwd(document.querySelector("#pwd").value);
   };
+  
   const submit = (event) => {
     event.preventDefault();
     let emailChk = 0;
@@ -86,40 +85,13 @@ function Login() {
           setOpen5(true);
         }
     }
+    
     catch(response){
       alert(response.response.data.message);
         if (response.response.data.message === "Error in login") {
           navigate("/logoutALL", { state: { email: em } });
         }
     }
-    // Axios.post(`${baseURL}/login`, {
-    //   email: em,
-    //   password: pass,
-    // })
-    //   .then((response) => {
-    //     if (response.data.message == "Successful") {
-    //       setOpen4(true);
-    //       Cookies.set("token", response.data.token, { expires: 1 });
-    //       if (response.data.details[0].typeOfAcc == "Farmer") {
-    //         navigate("/N9");
-    //       }
-    //       else if(response.data.details[0].typeOfAcc == "NGO")
-    //       {
-    //         navigate("/N10");
-    //       } 
-    //       else {
-    //         navigate("/homepage2");
-    //       }
-    //     } else {
-    //       setOpen5(true);
-    //     }
-    //   })
-    //   .catch((response) => {
-    //     alert(response.response.data.message);
-    //     if (response.response.data.message === "Error in login") {
-    //       navigate("/logoutALL", { state: { email: em } });
-    //     }
-    //   });
   };
 
   const goToSignup = () => {

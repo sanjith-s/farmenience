@@ -4,38 +4,30 @@ import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import {
     Box,
-    Button,
     Typography,
-    Input,
-    Select,
-    MenuItem,
-    FormControl,
-    Dialog,
-    DialogTitle,
-    DialogActions
 } from "@mui/material";
 
 const LogoutAllDevice = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    function fun() {
-        Axios.post('http://localhost:5000/logoutAll', {
-            email: location.state.email,
-        }
-        )
-            .then((response) => {
-                if (response.data.message == "Successful") {
-                    alert('Logout Successful');
-                    navigate('../login');
-                }
-                else {
-                    alert("Error");
-                }
-            }).
-            catch((response) => {
-                alert(response.response.data.message);
-            });
-    }
+    // function fun() {
+    //     Axios.post('http://localhost:5000/logoutAll', {
+    //         email: location.state.email,
+    //     }
+    //     )
+    //         .then((response) => {
+    //             if (response.data.message == "Successful") {
+    //                 alert('Logout Successful');
+    //                 navigate('../login');
+    //             }
+    //             else {
+    //                 alert("Error");
+    //             }
+    //         }).
+    //         catch((response) => {
+    //             alert(response.response.data.message);
+    //         });
+    // }
     return (
         <Box>
             <Box

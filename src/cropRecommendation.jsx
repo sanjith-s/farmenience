@@ -1,26 +1,8 @@
 import React from "react";
 import Axios from "axios"
-import { useState, useRef } from "react";
-
-import CssBaseline from "@mui/material/CssBaseline";
-
-import Container from "@mui/material/Container";
-
-import { Typography } from "@mui/material";
-import Fab from "@mui/material/Fab";
-import { Button, Dialog, DialogTitle, DialogActions } from "@mui/material";
-import { Box } from "@mui/material";
-import { Link } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-
-import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-
-//import Crop from "./components/cropML";
+import { useState } from "react";
+import { CssBaseline, Container, Button, Dialog, DialogTitle, DialogActions, Box, TextField, Stack, Divider } from "@mui/material";
+import { baseURL } from '../src/constants';
 
 const CropRec = () => {
 
@@ -137,8 +119,8 @@ const CropRec = () => {
     }
   }
 
-  function PredictCrop() {
-    Axios.post("http://localhost:5000/ml_model/crop_recomendation", {
+  async function PredictCrop() {
+    await Axios.post(`${baseURL}/ml_model/crop_recomendation`, {
       N: nitrogen,
       P: phosphorous,
       K: potassium,
@@ -148,10 +130,6 @@ const CropRec = () => {
       rainfall: rainfall,
     })
       .then((response) => {
-        // if (response.data.message == "Success") {
-        //   navigate("/login");
-        // }
-        // alert(1)
         alert(response.data)
       })
       .catch((res, err) => {
@@ -179,7 +157,6 @@ const CropRec = () => {
             justifyContent: "space-evenly",
             alignItems: "center",
             padding: "25px"
-            //overflow: "auto"
           }}
         >
           <Stack

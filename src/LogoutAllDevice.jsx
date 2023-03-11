@@ -1,17 +1,17 @@
 import React from 'react';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Box } from '@mui/material';
 import Axios from "axios";
+import { baseURL } from '../src/constants';
 
 const LogoutAllDevice = () => {
     const location = useLocation();
     const navigate=useNavigate();
-    function fun()
+    async function fun()
     {
-        Axios.post('http://localhost:5000/logoutAll',{
+        await Axios.post(`${baseURL}/logoutAll`,{
             email:location.state.email,
           }
           )

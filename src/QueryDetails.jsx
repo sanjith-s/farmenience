@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './css/request.css';
+
 function Query(props) {
      var [updateReason,setUpdate] = useState(false);
      const GiveEdit = () => {

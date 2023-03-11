@@ -1,20 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
-    FormControl,
-    InputLabel,
-    OutlinedInput,
-    InputAdornment,
-    IconButton,
     CardActions,
     CardContent,
     Typography,
     Card,
     Stack,
-    Dialog,
-    DialogTitle,
-    DialogActions,
-    Button,
 } from "@mui/material";
 
 const itemsName = [
@@ -31,9 +22,6 @@ const itemsName = [
 ];
 
 const BuyerProfileComp = (props) => {
-    const [price, setPrice] = useState(0);
-    const [open1, setOpen1] = useState(false);
-
     const itemsValue = [
         props.name,
         props.aadhaar,

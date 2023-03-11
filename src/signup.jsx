@@ -1,9 +1,7 @@
 import "./css/signup.css";
 import { useState, useRef } from "react";
 import validator from "validator";
-import { Link } from "react-router-dom";
 import Axios from "axios";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,
@@ -19,16 +17,13 @@ import {
   Stepper,
   Step,
   StepLabel,
-  Fab
 } from "@mui/material";
-import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
+import { baseURL } from '../src/constants';
 
 function Signup() {
-  const captchaRef = useRef(null);
-  const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-  const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+  // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
-  const [type, setType] = useState("Farmer");
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
@@ -81,10 +76,8 @@ function Signup() {
     setOpen4(false);
   };
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
-    //const token = captchaRef.current.getValue();
-    //captchaRef.current.reset();
     let emailChk = 0;
     let passChk = 0;
 
@@ -106,7 +99,7 @@ function Signup() {
     if (
       signupdata.password === signupdata.confpass
     ) {
-      Axios.post("http://localhost:5000/signup", {
+      await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
         phoneno: signupdata.phone,
         aadhaarno: signupdata.aadhar,
@@ -491,33 +484,6 @@ function Signup() {
 
         </Box>
       }
-
-      {/* <Button
-        variant="contained"
-        type="submit"
-        onClick={prevStep}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Previous Step
-      </Button>
-
-      <Button
-        variant="contained"
-        type="submit"
-        onClick={submit}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Submit
-      </Button>
-
-      <Button
-        variant="contained"
-        type="submit"
-        onClick={nextStep}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Next Step
-      </Button> */}
 
       <Dialog
         open={open1}

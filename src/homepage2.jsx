@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./css/pageM18.css";
 import Cookies from "js-cookie";
+import Axios from "axios"
 import { useNavigate } from "react-router-dom/dist";
-import Axios from "axios";
 import { Box, Button, Typography, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { baseURL } from '../src/constants';
 
 const Homepage2 = () => {
   const navigate = useNavigate();
@@ -30,9 +30,9 @@ const Homepage2 = () => {
     setOpen4(false);
   };
 
-  function logout() {
+  async function logout() {
     let token = Cookies.get("token");
-    Axios.get("http://localhost:5000/logout", {
+    await Axios.get(`${baseURL}/logout`, {
       headers: { tokenstring: token },
     })
       .then((response) => {

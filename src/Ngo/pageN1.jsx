@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
-import { Box, Button, Pagination, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
+import { Pagination } from "@material-ui/lab";
+import usePagination from "./Pagination";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";

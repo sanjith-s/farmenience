@@ -1,11 +1,11 @@
 import React from "react";
-import Axios from "axios"
+import Axios from "axios";
 import { useState } from "react";
-import { CssBaseline, Container, Button, Dialog, DialogTitle, DialogActions, Box, TextField, Stack, Divider } from "@mui/material";
+import { CssBaseline, Container, Button, Box, TextField, Stack, Divider } from "@mui/material";
 import { baseURL } from '../src/constants';
+import Swal from 'sweetalert2';
 
 const CropRec = () => {
-
   const [nitrogen, setNitrogen] = useState(0);
   const [phosphorous, setPhosphorous] = useState(0);
   const [potassium, setPotassium] = useState(0);
@@ -13,109 +13,102 @@ const CropRec = () => {
   const [humidity, setHumidity] = useState(0);
   const [ph, setPh] = useState(0);
   const [rainfall, setRainfall] = useState(0);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
-  const [open6, setOpen6] = useState(false);
-  const [open7, setOpen7] = useState(false);
-  
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
 
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-
-  const handleClose6 = () => {
-    setOpen6(false);
-  };
-
-  const handleClose7 = () => {
-    setOpen7(false);
-  };
-
-  function CheckNitrogen() {
+  async function CheckNitrogen() {
     if (nitrogen > 0 && nitrogen <= 100) {
       CheckPhosphorous();
     }
 
     else {
-      setOpen1(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Nitrogen value is invalid!',
+      })
     }
   }
 
-  function CheckPhosphorous() {
+  async function CheckPhosphorous() {
     if (phosphorous > 0 && phosphorous <= 100) {
       CheckPotassium();
     }
 
     else {
-      setOpen2(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Phosphorous value is invalid!',
+      })
     }
   }
 
-  function CheckPotassium() {
+  async function CheckPotassium() {
     if (potassium > 0 && potassium <= 100) {
       CheckTemp();
     }
 
     else {
-      setOpen3(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Potassium value is invalid!',
+      })
     }
   }
 
-  function CheckTemp() {
+  async function CheckTemp() {
     if (temp > 0 && temp <= 50) {
       CheckHumidity();
     }
 
     else {
-      setOpen4(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Temperature value is invalid!',
+      })
     }
   }
 
-  function CheckHumidity() {
+  async function CheckHumidity() {
     if (humidity > 0 && nitrogen <= 100) {
       CheckPH();
     }
 
     else {
-      setOpen5(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Humidity value is invalid!',
+      })
     }
   }
 
-  function CheckPH() {
+  async function CheckPH() {
     if (ph > 0 && ph <= 14) {
       CheckRainfall();
     }
 
     else {
-      setOpen6(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'pH value is invalid!',
+      })
     }
   }
 
-  function CheckRainfall() {
+  async function CheckRainfall() {
     if (rainfall > 0 && rainfall <= 1000) {
       PredictCrop();
     }
 
     else {
-      setOpen7(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Rainfall value is invalid!',
+      })
     }
   }
 
@@ -129,12 +122,18 @@ const CropRec = () => {
       ph: ph,
       rainfall: rainfall,
     })
-      .then((response) => {
-        alert(response.data)
+      .then(async (response) => {
+        await Swal.fire({
+          icon: 'error',
+          title: response.data
+        })
       })
-      .catch((res, err) => {
-        alert(2)
-        alert(res.response.data.message);
+      .catch(async (res, err) => {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       });
   }
 
@@ -282,104 +281,6 @@ const CropRec = () => {
           Predict
         </Button>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Nitrogen value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Phosphorous value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Potassium value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Temperature value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open5}
-        onClose={handleClose5}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Humidity value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose5}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open6}
-        onClose={handleClose6}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          pH value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose6}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open7}
-        onClose={handleClose7}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Rainfall value is invalid
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose7}>Ok</Button>
-        </DialogActions>
-      </Dialog>
     </div>
   );
 };

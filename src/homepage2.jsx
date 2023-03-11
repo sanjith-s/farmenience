@@ -1,64 +1,60 @@
 import React from "react";
-import { useState } from "react";
 import "./css/pageM18.css";
 import Cookies from "js-cookie";
 import Axios from "axios"
 import { useNavigate } from "react-router-dom/dist";
-import { Box, Button, Typography, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { baseURL } from '../src/constants';
+import Swal from 'sweetalert2';
 
 const Homepage2 = () => {
   const navigate = useNavigate();
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
 
   async function logout() {
     let token = Cookies.get("token");
     await Axios.get(`${baseURL}/logout`, {
       headers: { tokenstring: token },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.data.message == "Logout Successful") {
-          setOpen1(true);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Logout Successful!',
+          })
           Cookies.remove("token");
           navigate("../login");
         } else {
-          setOpen2(true);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error in logging out!',
+          })
         }
         console.log(response);
       })
-      .catch((response) => {
+      .catch(async (response) => {
         if (
           response.response.data.message === "Token not found" ||
           response.response.data.message === "Logout Fail, Please Logout Again"
         ) {
-          setOpen3(true);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please login, before logout!',
+          })
           navigate("../login");
         }
         if (response.response.data.message === "Invalid token") {
-          setOpen4(true);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login expired, please login again!',
+          })
           navigate("../login");
         }
       });
   }
+  
   return (
     <Box sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
       <Box sx={{ marginTop: "30px", textAlign: "center" }}>
@@ -78,62 +74,6 @@ const Homepage2 = () => {
           logout
         </Typography>
       </Button>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Logout Successful
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Error in logging out
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Please login, before logout
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login expired, please login again
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };

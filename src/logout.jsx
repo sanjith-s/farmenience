@@ -1,15 +1,13 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
-import Axios from "axios";
 import {
     Box,
     Typography,
 } from "@mui/material";
 
-const LogoutAllDevice = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
+const Logout = () => {
+    // const navigate = useNavigate();
     // function fun() {
     //     Axios.post('http://localhost:5000/logoutAll', {
     //         email: location.state.email,
@@ -28,6 +26,7 @@ const LogoutAllDevice = () => {
     //             alert(response.response.data.message);
     //         });
     // }
+    
     return (
         <Box>
             <Box
@@ -67,5 +66,4 @@ const LogoutAllDevice = () => {
     );
 };
 
-
-export default LogoutAllDevice;
+export default Logout;

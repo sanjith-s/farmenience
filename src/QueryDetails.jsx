@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './css/request.css';
 
-function Query(props) {
+function QueryDetails(props) {
      var [updateReason,setUpdate] = useState(false);
      const GiveEdit = () => {
           setUpdate(true);
      }
+
 	return (
      <div className="request-box">
         <div className="container-2">
@@ -46,4 +47,4 @@ function Query(props) {
      </div>
 	)
 }
-export default Query;
+export default QueryDetails;

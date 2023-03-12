@@ -11,6 +11,7 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import { baseURL } from '../constants';
+import { PropaneSharp } from "@mui/icons-material";
 
 const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
@@ -40,6 +41,7 @@ const ScheduleCard = (props) => {
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
+    console.log(props.imgSrc);
 
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
@@ -48,7 +50,8 @@ const ScheduleCard = (props) => {
       crops: crops,
       reason: reason,
       ngotype: ngo,
-      location: location
+      location: location,
+      image: props.imgSrc
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);

@@ -83,9 +83,9 @@ function Login() {
       await Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: res.response.data.message,
+        text: response.response.data.message,
       })
-      if (res.response.data.message === "Error in login") {
+      if (response.response.data.message === "Error in login") {
         navigate("/logoutALL", { state: { email: em } });
       }
     }

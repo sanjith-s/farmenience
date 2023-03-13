@@ -81,7 +81,11 @@ const ScheduleCard = (props) => {
           navigate('../login')
         }
         else {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         }
       })
   }

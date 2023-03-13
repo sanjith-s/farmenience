@@ -18,7 +18,7 @@ const LogoutAllDevice = () => {
       .then(async (response) => {
         if (response.data.message == "Successful") {
           await Swal.fire({
-            icon: 'error',
+            icon: 'success',
             title: 'Logout Successful!',
           })
           navigate('../login');

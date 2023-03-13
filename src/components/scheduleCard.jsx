@@ -41,7 +41,7 @@ const ScheduleCard = (props) => {
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    console.log(props.imgSrc);
+    console.log(props.imgName.name);
 
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
@@ -51,7 +51,10 @@ const ScheduleCard = (props) => {
       reason: reason,
       ngotype: ngo,
       location: location,
-      image: props.imgSrc
+      image: {
+        data: props.imgSrc,
+        contentType: "jpg"
+      }
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);

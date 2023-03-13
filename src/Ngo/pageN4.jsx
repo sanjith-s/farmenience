@@ -8,12 +8,14 @@ import { useNavigate } from "react-router-dom/dist";
 
 const PageN4 = () => {
   const [file, setFile] = useState();
+  const [filename, setFilename] = useState()
   const [isUploaded, setIsUploaded] = useState(false);
   const navigate = useNavigate();
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFilename(e.target.files[0])
   }
 
   return (
@@ -38,7 +40,7 @@ const PageN4 = () => {
             alignItems: "center",
           }}
         >
-          <ScheduleCard imageReset={setFile} toggle={setIsUploaded} imgSrc={file} />
+          <ScheduleCard imageReset={setFile} toggle={setIsUploaded} imgSrc={file} imgName={filename} />
         </Container>
         <Container
           disableGutters={true}

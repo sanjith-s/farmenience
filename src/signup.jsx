@@ -17,12 +17,14 @@ import {
 } from "@mui/material";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
+import useGeoLocation from '../src/components/useGeoLocation';
 
 function Signup() {
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
+  const location = useGeoLocation();
 
   const nextStep = () => {
     if (activeStep < 2)
@@ -55,6 +57,7 @@ function Signup() {
   };
 
   const submit = async (event) => {
+    { location.loaded ? alert(JSON.stringify(location)) : "Location data not available yet" }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -81,11 +84,11 @@ function Signup() {
     }
 
     await Swal.fire({
-      icon: 'error',
+      icon: 'success',
       title: 'Validation Successful!',
     })
     await Swal.fire({
-      icon: 'error',
+      icon: 'success',
       title: selection,
     })
     if (

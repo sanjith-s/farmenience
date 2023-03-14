@@ -1,96 +1,93 @@
 import "./css/signup.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import validator from "validator";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { Box, Button, Typography, Input, InputAdornment, IconButton, Dialog, DialogTitle, DialogActions } from "@mui/material";
+import { Box, Button, Typography, Input, InputAdornment, IconButton } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
+import Swal from 'sweetalert2';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPwd] = useState();
   const [showPassword, setShowPassword] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
-  const [open5, setOpen5] = useState(false);
 
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
-
-  const handleClose5 = () => {
-    setOpen5(false);
-  };
-  
   const handleChange = (event) => {
     setEmail(document.querySelector("#email").value);
     setPwd(document.querySelector("#pwd").value);
   };
-  
-  const submit = (event) => {
+
+  const submit = async (event) => {
     event.preventDefault();
     let emailChk = 0;
     let passChk = 1;
     if (validator.isEmail(email)) emailChk = 1;
     if (!emailChk) {
-      setOpen1(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid email address!',
+      })
       return;
     }
     if (!passChk) {
-      setOpen2(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid password!',
+      })
       return;
     }
-    setOpen3(true);
+    await Swal.fire({
+      icon: 'success',
+      title: 'Validation Successful!',
+    })
   };
 
   const LogMeIn = async (em, pass) => {
-    try{
-      let response=await Axios.post(`${baseURL}/login`, {
+    try {
+      let response = await Axios.post(`${baseURL}/login`, {
         email: em,
         password: pass,
       });
       if (response.data.message == "Successful") {
-          setOpen4(true);
-          Cookies.set("token", response.data.token, { expires: 1 });
-          if (response.data.details[0].typeOfAcc == "Farmer") {
-            navigate("/N9");
-          }
-          else if(response.data.details[0].typeOfAcc == "NGO")
-          {
-            navigate("/N10");
-          } 
-          else {
-            navigate("/homepage2");
-          }
-        } else {
-          setOpen5(true);
+        await Swal.fire({
+          icon: 'success',
+          title: 'Login Successful!',
+        });
+        Cookies.set("token", response.data.token, { expires: 1 });
+        if (response.data.details[0].typeOfAcc == "Farmer") {
+          navigate("/N9");
         }
+        else if (response.data.details[0].typeOfAcc == "NGO") {
+          navigate("/N10");
+        }
+        else {
+          navigate("/homepage2");
+        }
+      } else {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Error in logging in!',
+        });
+      }
     }
-    
-    catch(response){
-      alert(response.response.data.message);
-        if (response.response.data.message === "Error in login") {
-          navigate("/logoutALL", { state: { email: em } });
-        }
+
+    catch (response) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: response.response.data.message,
+      })
+      if (response.response.data.message === "Error in login") {
+        navigate("/logoutALL", { state: { email: em } });
+      }
     }
   };
 
@@ -209,77 +206,6 @@ function Login() {
           </Link>
         </Button>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid email address
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid password
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Validation Successful
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Login Successful
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open5}
-        onClose={handleClose5}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Error in logging in
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose5}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
     </Box>
   );
 }

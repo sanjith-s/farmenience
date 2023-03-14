@@ -136,9 +136,9 @@ const PageN10 = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
-  useEffect(async () => {
+  useEffect(() => {
     let token = Cookies.get('token');
-    await Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
       then((response) => {
         setProfile(response.data.message);
       })

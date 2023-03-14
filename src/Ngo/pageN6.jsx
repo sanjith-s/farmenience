@@ -24,9 +24,9 @@ function PageN6() {
   ]);
   const navigate = useNavigate();
 
-  useEffect(async () => {
+  useEffect(() => {
     let token = Cookies.get('token');
-    await Axios.get(`${baseURL}/getmeet`, { headers: { tokenstring: token } }).
+    Axios.get(`${baseURL}/getmeet`, { headers: { tokenstring: token } }).
       then((response) => {
         setListOfRequests(response.data.message);
         console.log(response.data.message)

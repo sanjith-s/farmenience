@@ -5,50 +5,60 @@ import { Box, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Axios from "axios";
 import { baseURL } from '../src/constants';
+import Swal from 'sweetalert2';
 
 const LogoutAllDevice = () => {
-    const location = useLocation();
-    const navigate=useNavigate();
-    async function fun()
-    {
-        await Axios.post(`${baseURL}/logoutAll`,{
-            email:location.state.email,
-          }
-          )
-          .then((response) => {
-            if (response.data.message == "Successful") {
-              alert('Logout Successful');
-              navigate('../login');
-            }
-            else
-            {
-              alert("Error");
-            }
-          }).
-          catch((response)=>{
-            alert(response.response.data.message);
-          });
+  const location = useLocation();
+  const navigate = useNavigate();
+  async function fun() {
+    await Axios.post(`${baseURL}/logoutAll`, {
+      email: location.state.email,
     }
-    return (
-        <div padding="100px">
-          
-          <Box
+    )
+      .then(async (response) => {
+        if (response.data.message == "Successful") {
+          await Swal.fire({
+            icon: 'success',
+            title: 'Logout Successful!',
+          })
+          navigate('../login');
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error!',
+          })
+        }
+      }).
+      catch(async (response) => {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
+      });
+  }
+  return (
+    <div padding="100px">
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        <Button onClick={fun} variant="contained" className="log-out-btn" endIcon={<LogoutIcon />}
           sx={{
-            display:"flex",
-            justifyContent:"center",
-            alignItems:"center"
+            backgroundColor: "#FF8787"
           }}
-          >
-           <Button onClick={fun} variant="contained" className="log-out-btn" endIcon={<LogoutIcon />} 
-           sx={{
-            backgroundColor:"#FF8787"
-           }}
-           >
-            Logout from all device
-           </Button>
-           </Box>
-        </div>
-    );
+        >
+          Logout from all device
+        </Button>
+      </Box>
+    </div>
+  );
 };
 
 

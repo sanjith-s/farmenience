@@ -1,5 +1,5 @@
 import "./css/signup.css";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import validator from "validator";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
@@ -11,23 +11,17 @@ import {
   Select,
   MenuItem,
   FormControl,
-  Dialog,
-  DialogTitle,
-  DialogActions,
   Stepper,
   Step,
   StepLabel,
 } from "@mui/material";
 import { baseURL } from '../src/constants';
+import Swal from 'sweetalert2';
 
 function Signup() {
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-  const [open4, setOpen4] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
 
   const nextStep = () => {
@@ -56,24 +50,8 @@ function Signup() {
     utype: "",
   });
 
-  const handleChange = (event) => {
+  const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
-  };
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
-  const handleClose4 = () => {
-    setOpen4(false);
   };
 
   const submit = async (event) => {
@@ -86,16 +64,30 @@ function Signup() {
     if (signupdata.password === signupdata.confpass) passChk = 1;
 
     if (!emailChk) {
-      setOpen1(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid email address!',
+      })
       return;
     }
     if (!passChk) {
-      setOpen2(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Passwords do not match!',
+      })
       return;
     }
 
-    setOpen3(true);
-    alert(selection)
+    await Swal.fire({
+      icon: 'error',
+      title: 'Validation Successful!',
+    })
+    await Swal.fire({
+      icon: 'error',
+      title: selection,
+    })
     if (
       signupdata.password === signupdata.confpass
     ) {
@@ -118,11 +110,19 @@ function Signup() {
             navigate("/login");
           }
         })
-        .catch((res, err) => {
-          alert(res.response.data.message);
+        .catch(async (res, err) => {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         });
     } else {
-      setOpen4(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Signup not correct!',
+      })
     }
   };
 
@@ -178,7 +178,7 @@ function Signup() {
                 type="text"
                 name="name"
                 value={signupdata.name}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -197,7 +197,7 @@ function Signup() {
                 type="tel"
                 name="phone"
                 value={signupdata.phone}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -216,7 +216,7 @@ function Signup() {
                 type="text"
                 name="aadhar"
                 value={signupdata.aadhar}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -235,7 +235,7 @@ function Signup() {
                 type="text"
                 name="addr1"
                 value={signupdata.addr1}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -249,7 +249,7 @@ function Signup() {
                 type="text"
                 name="addr2"
                 value={signupdata.addr2}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -263,7 +263,7 @@ function Signup() {
                 type="text"
                 name="city"
                 value={signupdata.city}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -277,7 +277,7 @@ function Signup() {
                 type="text"
                 name="district"
                 value={signupdata.district}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -291,7 +291,7 @@ function Signup() {
                 type="text"
                 name="state"
                 value={signupdata.state}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -305,7 +305,7 @@ function Signup() {
                 type="text"
                 name="pincode"
                 value={signupdata.pincode}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -319,7 +319,7 @@ function Signup() {
                 type="email"
                 name="email"
                 value={signupdata.email}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -333,7 +333,7 @@ function Signup() {
                 type="password"
                 name="password"
                 value={signupdata.password}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -347,7 +347,7 @@ function Signup() {
                 type="password"
                 name="confpass"
                 value={signupdata.confpass}
-                onChange={handleChange}
+                onChange={addSignupData}
               />
             </Box>
 
@@ -386,13 +386,13 @@ function Signup() {
           </form>
 
           <Button
-        variant="contained"
-        type="submit"
-        onClick={nextStep}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Next Step
-      </Button>
+            variant="contained"
+            type="submit"
+            onClick={nextStep}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
+          >
+            Next Step
+          </Button>
         </Box>
       }
 
@@ -415,7 +415,7 @@ function Signup() {
                 justifyContent: "space-between",
               }}
             >
-              
+
               <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
@@ -428,7 +428,7 @@ function Signup() {
                 style={{ display: "none" }}
                 maxsize="2"
                 minsize="1"
-                onChange={handleChange}
+                onChange={addSignupData}
               />
               <label
                 htmlFor="imgUp"
@@ -444,14 +444,14 @@ function Signup() {
               >
                 Aadhaar Card
               </Typography>
-              
+
               <input
                 type="file"
                 id="imgUp"
                 style={{ display: "none" }}
                 maxsize="2"
                 minsize="1"
-                onChange={handleChange}
+                onChange={addSignupData}
               />
               <label
                 htmlFor="imgUp"
@@ -465,81 +465,25 @@ function Signup() {
           </form>
 
           <Button
-        variant="contained"
-        type="submit"
-        onClick={prevStep}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Previous Step
-      </Button>
+            variant="contained"
+            type="submit"
+            onClick={prevStep}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
+          >
+            Previous Step
+          </Button>
 
-      <Button
-        variant="contained"
-        type="submit"
-        onClick={submit}
-        style={{ backgroundColor: "green", fontWeight: "600" }}
-      >
-        Submit
-      </Button>
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={submit}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
+          >
+            Submit
+          </Button>
 
         </Box>
       }
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid email address
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Passwords do not match
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Validation successful
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open4}
-        onClose={handleClose4}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Signup not correct
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose4}>Ok</Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 }

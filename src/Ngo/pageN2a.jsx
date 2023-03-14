@@ -17,9 +17,9 @@ const PageN2 = () => {
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     let token = Cookies.get('token');
-    await Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
+    Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
       then((response) => {
         setQuery(response.data.message);
       })

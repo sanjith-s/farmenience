@@ -10,9 +10,9 @@ import { baseURL } from '../constants';
 function PageN13() {
     const [data, setData] = useState([]);
 
-    useEffect(async () => {
+    useEffect(() => {
         let token = Cookies.get('token');
-        await Axios.get(`${baseURL}/getmeets`, { headers: { tokenstring: token } }).
+        Axios.get(`${baseURL}/getmeets`, { headers: { tokenstring: token } }).
             then((response) => {
                 setData(response.data.message);
             })

@@ -16,7 +16,7 @@ const content = [
   {
     queryID: 101,
     queryName: "What is the irrigation pattern to follow this season ?",
-    date:"11 Jan 2023"
+    date: "11 Jan 2023"
   },
   {
     queryID: 102,
@@ -37,23 +37,23 @@ const content = [
 
 function PageN11() {
   const navigate = useNavigate();
-  const [data,setData]=useState([]);
-useEffect(() => {
-let token = Cookies.get('token');
-Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } }).
-    then((response) => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } }).
+      then((response) => {
         setData(response.data.message);
-    })
-    .catch((res) => {
+      })
+      .catch((res) => {
         if (res.response.data.message === 'Error in connection') {
-            setOpen1(true);
+          setOpen1(true);
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-            setOpen2(true);
-            navigate('../login')
+          setOpen2(true);
+          navigate('../login')
         }
-    })
-}, []);
+      })
+  }, []);
 
   return (
     <Box

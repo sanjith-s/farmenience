@@ -27,9 +27,9 @@ const PageN1 = () => {
 
     const navigate = useNavigate();
 
-    useEffect(async () => {
+    useEffect(() => {
         let token = Cookies.get('token');
-        await Axios.get(`${baseURL}/getquery`, { headers: { tokenstring: token } }).
+        Axios.get(`${baseURL}/getquery`, { headers: { tokenstring: token } }).
             then((response) => {
                 setData(response.data.message);
             })

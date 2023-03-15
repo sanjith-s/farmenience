@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import Swal from 'sweetalert2';
 import "../css/queryBox.css"
 import QueryBox from '../components/queryBox';
-import { Box, Button, Stack, Pagination } from "@mui/material";
+import Pagination from '../components/pagination';
+import { Box, Button, Stack } from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from '../constants';
 
 const PageN1 = () => {
+    // const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [count, setCount] = useState(0);
+
     const [data, setData] = useState([
         {
             _id: 23,
@@ -52,6 +57,11 @@ const PageN1 = () => {
             })
     }, []);
 
+    const indexOfLastPost = currentPage * 10;
+    const indexOfFirstPost = indexOfLastPost - 10;
+    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
     return (
         <>
             <Box className="query-list">
@@ -61,7 +71,7 @@ const PageN1 = () => {
                         return (
                             <div>
                                 <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-                                } oldQuery={val.oldQuery} fullData={val} />
+                                } oldQuery={val.oldQuery} fullData={val} count={currentPosts} />
                             </div>
                         )
                     })
@@ -77,7 +87,13 @@ const PageN1 = () => {
             </div>
 
             <Stack spacing={2}>
-                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
+                <Pagination
+                    postsPerPage={10}
+                    totalPosts={data.length}
+                    paginate={paginate}
+                    showFirstButton
+                    showLastButton
+                />
             </Stack>
         </>
     )

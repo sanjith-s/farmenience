@@ -11,7 +11,9 @@ import {
 } from '@devexpress/dx-react-chart-material-ui';
 
 import { ValueScale, Animation } from '@devexpress/dx-react-chart';
-
+import { Typography } from '@mui/material';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 const TitleText1 = props => <Title.Text1 {...props} text={"Days"} />;
 
 const titleStyle = { margin: 'auto' };
@@ -40,10 +42,13 @@ const sData = [
         PineApple:400
     }
 ];
-const lable = ()=> {
-    return 
-}
-export default function Chart1() { 
+export default function Chart1() {
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+ 
     return (
       <Paper style={{padding:"7%"}}>
         <Chart
@@ -70,14 +75,13 @@ export default function Chart1() {
             valueField="PineApple"
             argumentField="day"
           />
-
-          <ZoomAndPan
+           {checked && <ZoomAndPan
             interactionWithArguments={"both"}
             interactionWithValues={"both"}
-          />
+          />}
 
 
-          <Animation duration={4000} />  
+          <Animation duration={0} />  
           
           <Title
             text="Price and Time graph"
@@ -85,6 +89,7 @@ export default function Chart1() {
           />
           
         </Chart>
+        <FormControlLabel control={<Switch defaultChecked onChange={handleChange} />} label="Zoom" />
       </Paper>
     );
   }

@@ -102,7 +102,7 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M7" element={<PageM7 />} />
             <Route path="/M9" element={<PageM9 />} />
-            <Route path="/M10" element={<PageM10 />} />
+            <Route path="/M10" element={<Graph />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />

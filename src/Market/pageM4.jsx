@@ -113,9 +113,6 @@ function PageM4() {
   let filterItems;
   
   const handleChange = () => {
-
-    
-
      filterItems =     itemsBought.filter((value) => {
       if ( (data.items).includes(value.item))
       {

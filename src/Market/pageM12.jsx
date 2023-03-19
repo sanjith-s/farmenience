@@ -255,14 +255,11 @@ function PageM12() {
               }}
             >
               <Button color="success" variant="contained">
-                add <ShoppingCartIcon style={{ marginLeft: "8px" }} />
+                Go to cart <ShoppingCartIcon style={{ marginLeft: "8px" }} />
               </Button>
               <Button color="success" variant="contained">
                 share
                 <ShareIcon style={{ marginLeft: "8px" }} />
-              </Button>
-              <Button color="success" variant="contained">
-                delete <DeleteIcon style={{ marginLeft: "8px" }} />
               </Button>
             </Box>
             <Box

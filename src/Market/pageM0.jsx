@@ -1,113 +1,142 @@
-import { Stack, Grid, Container, Button } from '@mui/material'
-import { Typography } from '@material-ui/core'
-import React from 'react'
-import Notification from '../components/Notification';
-import { Link } from 'react-router-dom';
-import OrderTrack from '../components/OrderTrack';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
 
-const PageM0 = () => {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        padding: theme.spacing(2),
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        height: '100%',
+        color: theme.palette.text.secondary,
+        '&:hover': {
+            cursor: 'pointer',
+            boxShadow: '0px 0px 10px #777',
+            transform: 'scale(1.05)',
+        },
+        transition: 'all 0.3s ease-in-out',
+    },
+    orderDetails: {
+        backgroundColor: '#f4f4f4',
+    },
+    saleRequest: {
+        backgroundColor: '#f4f4f4',
+    },
+    notifications: {
+        backgroundColor: '#f4f4f4',
+    },
+    listItemIcon: {
+        minWidth: '40px',
+    },
+}));
 
-    const Notifications = [
-        {
-            notificationId: 1,
-            message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat turpis, venenatis at ipsum at, sodales porta libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. "
-        },
-        {
-            notificationId: 2,
-            message: "Duis euismod mi velit, eu congue libero dapibus id. Praesent vel hendrerit lectus, ut congue tellus. Etiam ante justo, pellentesque non odio in, finibus pulvinar risus. "
-        },
-        {
-            notificationId: 3,
-            message: " Praesent finibus pretium sollicitudin. Donec pharetra, sem et tristique sagittis, est sem egestas libero, at vulputate leo sem vestibulum urna. Donec pharetra ligula eu mi posuere, vitae ultrices tortor auctor."
-        },
-        {
-            notificationId: 4,
-            message: " Proin ultrices velit sit amet ex posuere, non pulvinar diam finibus. Quisque porttitor ultricies felis, at malesuada tellus. Quisque tincidunt odio non magna pulvinar tincidunt. Maecenas faucibus id massa vel suscipit."
-        },
-    ];
+const ordersData = [{ orderNo: '123456789', destination: 'New York', }, { orderNo: '987654321', destination: 'Los Angeles', }, { orderNo: '456123789', destination: 'Chicago', },];
 
-    const track = [
-        {
-            trackId: 1,
-            orderNum: 1,
-            destination: "Marley"
-        },
-        {
-            trackId: 2,
-            orderNum: 2,
-            destination: "Wall Rose"
-        },
-        {
-            trackId: 3,
-            orderNum: 3,
-            destination: "Paradis Island"
-        },
-        {
-            trackId: 4,
-            orderNum: 4,
-            destination: "Wall Maria"
-        }
-    ];
 
+const notificationsData = [{ message: 'You have a new sale request.', }, { message: 'Your item has been shipped.', }, { message: 'Your sale request has been accepted.', },];
+// ...
+
+const saleRequestsData = [
+    {
+      item: 'Item 1',
+      itemName: 'Apple iPhone 12 Pro Max',
+      quantity: 5,
+      requestSender: 'John Doe',
+    },
+    {
+      item: 'Item 2',
+      itemName: 'Samsung Galaxy S21 Ultra',
+      quantity: 10,
+      requestSender: 'Jane Doe',
+    },
+    {
+      item: 'Item 3',
+      itemName: 'Google Pixel 6 Pro',
+      quantity: 3,
+      requestSender: 'Bob Smith',
+    },
+  ];
+  
+  function SellerDashboard() {
+    const classes = useStyles();
+  
     return (
-    <div>
-        <Container>
-        <Stack>
-        Welcome To Page Design
-        Leave now.
-        <Grid container spacing={20}>
-            <Grid item xs = {5}>
-                <Stack>Track Order Components</Stack>
-                <Stack>
-                    {
-                        track.map((index) => {
-                            return(
-                                <OrderTrack
-                                key = {index +1}
-                                orderNum = {index.orderNum}
-                                destination = {index.destination}
-                                />
-                            );                                
-                        })
-                    }
-                </Stack>
-                </Grid>
-            <Grid item xs = {3}>
-                <Stack>Display Sale Requests</Stack>
-                <Stack>
-                <Button
-                style={{
-                    backgroundColor: "green",
-                    border: "2px solid #000000",
-                    marginTop: "15px",
-                  }}>
-                    <Link 
-                        to="/M1"
-                        style={{ textDecoration: "none" }}
-                        >
-                        <Typography>VIEW SALES</Typography>    
-                        </Link>
-                </Button>
-                </Stack>
-            </Grid>
-            <Grid item xs = {3}>Notifications
-                {
-                    Notifications.map((req, index) => {
-                        return(
-                            <Notification
-                            key = {index + 1}
-                            notificationId = {req.notificationId}
-                            message = {req.message}
-                            />
-                        );
-                    })
-                }
-            </Grid>
+      <div className={classes.root}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4}>
+            <Paper className={`${classes.paper} ${classes.orderDetails}`}>
+              <Typography variant="h5">Order Details</Typography>
+              <List>
+                {ordersData.map((order, index) => (
+                  <React.Fragment key={index}>
+                    <ListItem>
+                      <Room fontSize="small" />
+                      <ListItemText primary={`Order No: ${order.orderNo}`} />
+                    </ListItem>
+                    <ListItem>
+                      <Room fontSize="small" />
+                      <ListItemText primary={`Destination: ${order.destination}`} />
+                    </ListItem>
+                  </React.Fragment>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
+  
+          <Grid item xs={12} md={4}>
+            <Paper className={`${classes.paper} ${classes.saleRequest}`}>
+              <Typography variant="h5">Sale Requests</Typography>
+              <List>
+                {saleRequestsData.map((request, index) => (
+                  <ListItem key={index}>
+                    <ListItemIcon className={classes.listItemIcon}>
+                      <ShoppingCart fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={request.item}
+                      secondary={
+                        <React.Fragment>
+                          <Typography variant="subtitle2">
+                            Item: {request.itemName}
+                          </Typography>
+                          <Typography variant="subtitle2">
+                            Quantity: {request.quantity}
+                          </Typography>
+                          <Typography variant="subtitle2">
+                            Request Sender: {request.requestSender}
+                          </Typography>
+                        </React.Fragment>
+                      }
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
+  
+          <Grid item xs={12} md={4}>
+            <Paper className={`${classes.paper} ${classes.notifications}`}>
+              <Typography variant="h5">Notifications</Typography>
+              <List>
+                {notificationsData.map((notification, index) => (
+                  <ListItem key={index}>
+                    <ListItemIcon className={classes.listItemIcon}>
+                      <Notifications fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary={notification.message} />
+                  </ListItem>
+                ))}
+              </List>
+            </Paper>
+          </Grid>
         </Grid>
-        </Stack>
-        </Container>
-    </div>
-  )
-}
-
-export default PageM0
+      </div>
+    );
+  }
+  
+  export default SellerDashboard;
+  

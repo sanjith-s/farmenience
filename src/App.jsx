@@ -62,6 +62,9 @@ import CropRecommendation from "./cropRecommendation";
 import N10Navbar from "./components/n10Navbar";
 import { display } from "@mui/system";
 
+import Success from "./Market/success";
+import Cancel from "./Market/cancel";
+
 function displayNavbar() {
   const token = Cookies.get("token");
 
@@ -135,6 +138,8 @@ function App() {
               element={<CropRecommendation />}
             />
             <Route path="/ordersummary" />
+            <Route path="/payments/success" element={<Success />} />
+            <Route path="/payments/cancel" element={<Cancel />} />
           </Routes>
         </BrowserRouter>
       </main>

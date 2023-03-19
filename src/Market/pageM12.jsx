@@ -15,6 +15,8 @@ import BasketBox2 from "../components/basketBox2";
 import BasketBox3 from "../components/basketBox3";
 import ShareIcon from "@mui/icons-material/Share";
 
+import {baseURL} from "../constants";
+
 import {
   Card,
   Typography,
@@ -62,6 +64,9 @@ const salesItems = [
 ];
 
 const steps = ["address", "order summary", "payment"];
+
+
+
 
 function PageM12() {
   const userDataHandler = (userName, address, number) => {
@@ -140,6 +145,35 @@ function PageM12() {
     console.log(method);
     setPaymentMethod(method);
   };
+
+
+  const items = [
+    { pid: 1, quantity: 3 },
+    { pid: 2, quantity: 1 },
+  ]
+
+  const makePayment =() => {
+    fetch(`${baseURL}/createPayment`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: "test@farm.com",
+      cart: items,
+    }),
+  })
+    .then(res => {
+      if (res.ok) return res.json()
+      return res.json().then(json => Promise.reject(json))
+    })
+    .then(({ url }) => {
+      window.location = url
+    })
+    .catch(e => {
+      console.error(e.error)
+    })
+  }
 
   return (
     <Container style={{ padding: "20px 0px" }}>
@@ -471,7 +505,7 @@ function PageM12() {
             <Button
               variant="contained"
               color="success"
-              onClick={negotHandler}
+              onClick={makePayment}
               style={{
                 position: "absolute",
                 bottom: "12px",

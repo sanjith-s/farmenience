@@ -80,25 +80,52 @@ function PageN9() {
   const buttons = [
     <Button onClick={() => {
       navigate('../N1')
+    }}   sx ={{
+      "&:hover": { backgroundColor: "#a3ff75" } ,
+      backgroundColor:"#fcd38b",
+      color:"black"
     }}>
       View Queries
     </Button>,
     <Button onClick={() => {
-      navigate('../N6')
-    }}>
+      navigate('../N6') 
+    }} 
+    sx ={{
+      "&:hover": { backgroundColor: "#a3ff75" } ,
+      backgroundColor:"#fcd38b",
+      color:"black"
+    }}> 
       View Appoinments
     </Button>,
     <Button onClick={() => {
       navigate('../N7')
+    }}
+    sx ={{
+      "&:hover": { backgroundColor: "#a3ff75" } ,
+      backgroundColor:"#fcd38b",
+      color:"black"
     }}>
       New Query
     </Button>,
     <Button onClick={() => {
       navigate('../N4')
+    }}
+    sx ={{
+      "&:hover": { backgroundColor: "#a3ff75" } ,
+      backgroundColor:"#fcd38b",
+      color:"black"
     }}>
       New Appoinment
     </Button>,
-    <Button onClick={logout}>LogOut</Button>
+    <Button onClick={logout} sx={{
+
+      "&:hover": { backgroundColor: "#f52f1d" } ,
+      
+      backgroundColor:"#ff6b6b",
+
+      color:"white"
+      
+    }}>LogOut</Button>
   ]
 
   const characteristics = Object.entries(profile).map((key, i) => {
@@ -117,6 +144,7 @@ function PageN9() {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        
         sx={{
           display: 'flex',
           marginTop: "2%",
@@ -125,8 +153,12 @@ function PageN9() {
           },
         }}
       >
-        <Stack direction="column" spacing={2}>
-          <Typography variant="h5" component="h1">Your Profile</Typography>
+        <Stack direction="column" spacing={2} sx={{
+          backgroundColor:"#e4ccff",
+          padding:"40px",
+          borderRadius:"20px",
+        }}>
+          <Typography variant="h5" component="h1" fontWeight={700}>Your Profile</Typography>
           <Stack direction="row" spacing={3}>
             <Stack direction="column" spacing={1}>
               <Avatar
@@ -143,14 +175,15 @@ function PageN9() {
               orientation="vertical"
               aria-label="vertical outlined button group"
               variant="text"
+              borderRadius="100px"
             >
               {buttons}
             </ButtonGroup>
           </Stack>
         </Stack>
-        {
+        {/* 
           characteristics
-        }
+        } */}
       </Box>
     </>
   );

@@ -17,12 +17,13 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
-.query-card:hover {
+/* .query-card:hover {
     transform: translateY(-0.6rem);
     box-shadow: 0.13rem 0.13rem 1.3rem rgba(0, 0, 0, 0.2);
-}
+} */
   
 
 .query-card__info {
@@ -117,7 +118,7 @@
     text-align: center;
     color: #fff;
     text-shadow: 0.13rem 0.13rem 0.13rem rgba(46, 78, 37, 0.2);
-    background-image: linear-gradient(45deg, #69b36c, #92d187);
+    background-color: #5e8c31;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

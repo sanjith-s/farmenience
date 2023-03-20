@@ -31,22 +31,22 @@ const PageN4 = () => {
     await Axios.post(`${baseURL}/upload`, formData).
       then(async (response) => {
         console.log(response);
-  
+
       })
       .catch(async (res) => {
-          alert(res.response.data.message);
+        alert(res.response.data.message);
       })
   }
 
   const getImages = async () => {
     await Axios.get(`${baseURL}/files`).
-    then(async (response) => {
-      setData(response);
-      console.log(response);
-    })
-    .catch(async (res) => {
+      then(async (response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch(async (res) => {
         alert(res.response.data.message);
-    })
+      })
   }
 
   return (
@@ -152,15 +152,17 @@ const PageN4 = () => {
       </Box>
 
       {data.map((image) => {
-        <img
-        src={image}
-        style={{
-          width: "10%",
-          height: "10%",
-          // objectFit: "fill",
-          borderRadius: "3.125rem",
-        }}
-      />
+        return (
+          <img
+            src={image.name}
+            style={{
+              width: "10%",
+              height: "10%",
+              // objectFit: "fill",
+              borderRadius: "3.125rem",
+            }}
+          />
+        );
       })}
 
     </div>

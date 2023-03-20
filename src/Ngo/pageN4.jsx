@@ -9,12 +9,13 @@ import Axios from "axios";
 import { baseURL } from '../constants';
 import Cookies from 'js-cookie';
 
-
 const PageN4 = () => {
   const [file, setFile] = useState();
   const [filename, setFilename] = useState({})
   const [isUploaded, setIsUploaded] = useState(false);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
+
   function handleChange(e) {
     console.log(e.target.files[0]);
     setIsUploaded(true);
@@ -23,7 +24,6 @@ const PageN4 = () => {
   }
 
   const handleSubmit = async () => {
-
     let formData = new FormData();
     formData.append('caption', "hello");
     formData.append('file', filename);
@@ -36,6 +36,17 @@ const PageN4 = () => {
       .catch(async (res) => {
           alert(res.response.data.message);
       })
+  }
+
+  const getImages = async () => {
+    await Axios.get(`${baseURL}/files`).
+    then(async (response) => {
+      setData(response);
+      console.log(response);
+    })
+    .catch(async (res) => {
+        alert(res.response.data.message);
+    })
   }
 
   return (
@@ -133,6 +144,24 @@ const PageN4 = () => {
           Submit
         </Button>
       </Box>
+
+      <Box textAlign="center" padding={"1.25rem"}>
+        <Button onClick={getImages} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+          Get All Images
+        </Button>
+      </Box>
+
+      {data.map((image) => {
+        <img
+        src={image}
+        style={{
+          width: "10%",
+          height: "10%",
+          // objectFit: "fill",
+          borderRadius: "3.125rem",
+        }}
+      />
+      })}
 
     </div>
   );

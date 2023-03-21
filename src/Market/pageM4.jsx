@@ -113,6 +113,9 @@ function PageM4() {
   let filterItems;
   
   const handleChange = () => {
+
+    
+
      filterItems =     itemsBought.filter((value) => {
       if ( (data.items).includes(value.item))
       {
@@ -215,10 +218,10 @@ function PageM4() {
           <DialogTitle style={{borderBottom:"5px solid green"}}> <Typography style={{textTransform:"uppercase",fontWeight:"600"}}>client contact details</Typography></DialogTitle>
           <List>
             <ListItem>
-              <ListItemButton ><Typography style={{textTransform:"lowercase"}}>Email: {data.clientEmailId}</Typography></ListItemButton>
+              <ListItemButton ><Typography style={{textTransform:"lowercase"}}>{data.clientEmailId}</Typography></ListItemButton>
             </ListItem>
             <ListItem>
-              <ListItemButton><Typography>Mobile Number: {data.clientPh}</Typography></ListItemButton>
+              <ListItemButton><Typography>{data.clientPh}</Typography></ListItemButton>
             </ListItem>
           </List>
         </Dialog>

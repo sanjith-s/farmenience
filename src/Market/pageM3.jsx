@@ -76,6 +76,7 @@ const salesItems = [
 ];
 
 function PageM3(props) {
+
   const [selected,setSelected] = useState();
   const [ordDate,setOrdDate] = useState();
   const [delDate,setDelDate] = useState();
@@ -93,6 +94,7 @@ function PageM3(props) {
     // ordDate.current = event.target.value;
     setOrdDate(event.target.value);
     // setDate({...date , ordDate: event.target.value })
+
   }
   const delDateHandler = (event) => {
     // delDate.current = event.target.value;
@@ -122,8 +124,9 @@ function PageM3(props) {
   // delDate.substr(5,5).substr(0,2) -> month of delDate;
   // delDate.substr(0,4) -> year of delDate;
 
-  let productDetails = salesDetails;
+  let productDetails;
   ordDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && ordDate.substr(0,4) >= product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() ) : delDate ? productDetails = salesDetails.filter( product => product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) <= product.deliveryDate.getMonth() ) : productDetails = salesDetails.filter( product => product.items.includes(selected) )  ;
+
   // if( ordDate){
   //   productDetails = salesDetails.filter( product =>  {return product.items.includes(selected) && ordDate.substr(0,4) == product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() });
   // }

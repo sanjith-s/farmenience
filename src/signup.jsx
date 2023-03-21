@@ -412,173 +412,59 @@ function Signup() {
           </Box>
 
           <form style={{ width: "450px" }}>
-            {selection === "Farmer" &&
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
+                Land Document
+              </Typography>
 
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  Land Document
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  Land Document
-                  <br />
-                  <br />
-                </label>
-
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  Aadhaar Card
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  Aadhaar Card
-                  <br />
-                  <br />
-                </label>
-              </Box>
-            }
-
-            {selection === "NGO" &&
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                maxsize="2"
+                minsize="1"
+                onChange={addSignupData}
+              />
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
               >
+                Land Document
+                <br />
+                <br />
+              </label>
 
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  NGO License
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  NGO License
-                  <br />
-                  <br />
-                </label>
-
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  Aadhaar Card of Owner
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  Aadhaar Card of Owner
-                  <br />
-                  <br />
-                </label>
-              </Box>
-            }
-
-            {selection === "Retailer" &&
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
+                Aadhaar Card
+              </Typography>
 
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  Trading License
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  Trading License
-                  <br />
-                  <br />
-                </label>
-
-                <Typography
-                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-                >
-                  Aadhaar Card of Owner
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
-                >
-                  Aadhaar Card of Owner
-                  <br />
-                  <br />
-                </label>
-              </Box>
-            }
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                maxsize="2"
+                minsize="1"
+                onChange={addSignupData}
+              />
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
+              >
+                Aadhaar Card
+                <br />
+                <br />
+              </label>
+            </Box>
           </form>
 
           <Button

@@ -5,48 +5,17 @@ import { Container, Typography, Fab, Button, Box, Stack, Divider } from "@mui/ma
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ScheduleCard from "../components/scheduleCard";
 import { useNavigate } from "react-router-dom/dist";
-import Axios from "axios";
-import { baseURL } from '../constants';
-import Cookies from 'js-cookie';
 
 const PageN4 = () => {
   const [file, setFile] = useState();
-  const [filename, setFilename] = useState({})
+  const [filename, setFilename] = useState()
   const [isUploaded, setIsUploaded] = useState(false);
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
-
   function handleChange(e) {
-    console.log(e.target.files[0]);
+    console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
-    setFilename(e.target.files[0]);
-  }
-
-  const handleSubmit = async () => {
-    let formData = new FormData();
-    formData.append('caption', "hello");
-    formData.append('file', filename);
-    console.log(Array.from(formData.entries()))
-    await Axios.post(`${baseURL}/upload`, formData).
-      then(async (response) => {
-        console.log(response);
-
-      })
-      .catch(async (res) => {
-        alert(res.response.data.message);
-      })
-  }
-
-  const getImages = async () => {
-    await Axios.get(`${baseURL}/files`).
-      then(async (response) => {
-        setData(response.data);
-        console.log(response.data);
-      })
-      .catch(async (res) => {
-        alert(res.response.data.message);
-      })
+    setFilename(e.target.files[0])
   }
 
   return (
@@ -138,33 +107,6 @@ const PageN4 = () => {
           Home Page
         </Button>
       </Box>
-
-      <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={handleSubmit} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-          Submit
-        </Button>
-      </Box>
-
-      <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={getImages} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-          Get All Images
-        </Button>
-      </Box>
-
-      {data.map((image) => {
-        return (
-          <img
-            src={image.name}
-            style={{
-              width: "10%",
-              height: "10%",
-              // objectFit: "fill",
-              borderRadius: "3.125rem",
-            }}
-          />
-        );
-      })}
-
     </div>
   );
 };

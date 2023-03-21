@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -8,29 +6,59 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useNavigate } from "react-router-dom/dist";
 
 function Query(props) {
-  const viewRequest = () => {
-    const [buyerRequestDetails, setBuyerRequestDetails] = useState([]);
-
-    Axios.post("http://localhost:9091/api/admin/deleteitem", {
-      itemID: id,
-    }).then((response) => {
-      console.log(response);
-      if (response.data == "success") {
-        setBuyerRequestDetails(response.data);
-        navigate("/pageM3");
-      }
-    });
+  const navigate = useNavigate();
+  const submitResponse = () => {
+    let token = Cookies.get('token');
+    Axios.put('http://localhost:5000/respondquery', {
+      id: props.queryID,
+      response: response
+    }, { headers: { tokenstring: token } }).
+      then((response) => {
+        if (response.data.message === 'Reponse Submitted Successfully') {
+          navigate('../N10');
+        }
+      })
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          alert(res.response.data.message);
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          navigate('../login');
+        }
+        else {
+          alert(res.response.data.message);
+        }
+      })
+    setOpen(false);
   };
-
+  const [open, setOpen] = React.useState(false);
+  const [response,setResponse]=React.useState("");
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
   return (
+    <div>
     <Card
       style={{
-        padding: "15px",
-        width: "450px",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+        padding: "0.94rem",
+        width: "28.125rem",
+        borderRadius: "0.31rem",
+        border: "0.125rem solid #000000",
       }}
     >
       <CardContent
@@ -38,17 +66,17 @@ function Query(props) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          borderTop: "0.125rem solid",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -58,9 +86,9 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.188",
           }}
         >
           {props.queryID}
@@ -70,16 +98,16 @@ function Query(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -89,10 +117,10 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.queryName}
@@ -102,16 +130,16 @@ function Query(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: "0.625rem 0.31rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -121,10 +149,10 @@ function Query(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: "0.625rem",
+            padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: "0.19rem",
           }}
         >
           {props.date}
@@ -140,32 +168,43 @@ function Query(props) {
         <Button
           style={{
             backgroundColor: "green",
-            border: "2px solid #000000",
-            marginTop: "15px",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
           }}
-          onClick={viewRequest}
+          onClick={handleClickOpen}
         >
-          <Link
-            to="/N12a"
-            state={{
-              from: "Request details",
-              data: props.data,
-            }}
-            style={{ textDecoration: "none" }}
-          >
             <Typography
               style={{
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "16px",
+                fontSize: "1rem",
               }}
             >
-              view request
+              Respond Query
             </Typography>
-          </Link>
         </Button>
       </CardActions>
     </Card>
+    <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Response Submit</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+            onChange={(e)=>{setResponse(e.target.value)}}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={submitResponse}>Submit</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }
 export default Query;

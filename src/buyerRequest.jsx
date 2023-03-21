@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import './css/request2.css';
+
 function BuyerRequest(props) {
     const [price,setPrice] = useState(props.itemPrice);
     const [quantity,setQuantity] = useState(props.itemQuantity);

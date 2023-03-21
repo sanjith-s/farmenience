@@ -1,44 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 .foot {
 	display: flex;
 	flex-direction: column;
-	background: rgba(22, 229, 117, 1);
+	background: rgb(36, 164, 96);
 	/* position: sticky;
 	bottom: 0; */
-	border-top: 1px solid darkgreen;
+	border-top: 0.06rem solid darkgreen;
 }
+
 .foot-body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	font-size: 1.1rem;
-	padding: 1%;
 }
+
 .foot-tail {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.foot-items {
-/*	flex:9;*/
-padding-right: 2%;
-}
+
+
 .foot-links {
 	text-decoration: none;
 	font-weight: bolder;
-	color: inherit; 
- 	text-decoration: inherit;
-}
-.foot-items-logo {
-/*	flex:2;*/
-padding-right: 1%;
-}
-.foot-logos {
-	width: 40px;
-	height: 40px;
-	font-size: larger;
-}
-.foot-links:hover {
-	color: white;
-    text-shadow: 1px 1px darkgreen;
+	color: inherit;
+	text-decoration: inherit;
 }
 
+.foot-items-logo {
+	/*	flex:2;*/
+	padding-right: 1%;
+}
+
+.foot-logos {
+	width: 2.5rem;
+	height: 2.5rem;
+	font-size: larger;
+}
+
+.foot-links:hover {
+	color: white;
+	text-shadow: 0.06rem 0.06rem darkgreen;
+}
+
+.iconFlex {
+	display: flex;
+	justify-content: space-around;
+}
+
+.regular {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+}

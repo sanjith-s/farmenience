@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import '../css/pageN11.css';
 import QueryList from "../components/queryList";
 import { Box, Typography } from "@mui/material";
-import wheat from "../wheatimg.jpg";
-import carrot from "../carrot.jpg";
+import { useEffect } from "react";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const content = [
   {
@@ -13,7 +16,7 @@ const content = [
   {
     queryID: 101,
     queryName: "What is the irrigation pattern to follow this season ?",
-    date:"11 Jan 2023"
+    date: "11 Jan 2023"
   },
   {
     queryID: 102,
@@ -33,48 +36,68 @@ const content = [
 ];
 
 function PageN11() {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get('http://localhost:5000/getqueries', { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch((res) => {
+        if (res.response.data.message === 'Error in connection') {
+          setOpen1(true);
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          setOpen2(true);
+          navigate('../login')
+        }
+      })
+  }, []);
+
   return (
     <Box
       style={{
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        margin: "20px 0px",
-        marginBottom: "40px",
+        margin: "1.25rem 0rem",
+        marginBottom: "2.5rem",
       }}
     >
-      <Box sx={{ padding: "20px 0px" }}>
+      <Box sx={{ padding: "1.25rem 0rem" }}>
         <Typography
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
         >
-          you have {content.length} queries to view{" "}
+          you have {data.length} queries to view{" "}
         </Typography>
       </Box>
       <Box
         sx={{
           width: "fit-content",
-          border: "5px solid",
-          borderRadius: "3px",
+          border: "0.31rem solid",
+          borderRadius: "0.188rem",
           backgroundColor: "#bdfbbf",
         }}
       >
         <Box
           sx={{
-            padding: "40px",
+            padding: "2.5rem",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            columnGap: "50px",
-            rowGap: "50px",
+            columnGap: "3.125rem",
+            rowGap: "3.125rem",
           }}
         >
-          {content.map((req, index) => {
+          {data.map((req, index) => {
             return (
               <QueryList
                 key={index + 1}
-                queryID={req.queryID}
-                queryName={req.queryName}
-                date={req.date}
+                queryID={req._id}
+                queryName={req.subject}
+                queryDesc={req.description}
+                date={req.updatedAt}
               />
             );
           })}

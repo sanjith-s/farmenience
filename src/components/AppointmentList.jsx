@@ -11,7 +11,7 @@ import {
     Button
 } from "@mui/material";
 import { makeStyles } from '@material-ui/styles';
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {},
@@ -29,46 +29,53 @@ function AppointmentList(props) {
         appName,
         clientName,
         dateTime,
-        location
+        location,
+        crops,
+        reason
     ) => {
         return {
             appID,
             appName,
             clientName,
             dateTime,
-            location
+            location,
+            crops,
+            reason
         };
     };
 
-    const rows = props.rows.map((row) => {
+    const rows = props.data.map((row) => {
         return createData(
-            row.appID,
-            row.appName,
-            row.clientName,
-            row.dateTime,
-            row.location
+            row._id,
+            row.details,
+            row.farmername,
+            row.updatedAt,
+            row.location,
+            row.crops,
+            row.reason
         );
     });
 
     const classes = useStyles();
+    const navigate = useNavigate();
 
     return (
         <Box>
             <TableContainer
                 component={Paper}
                 style={{
-                    border: "3px solid",
+                    border: "0.19rem solid",
                     width: "fit-content",
                 }}
             >
                 <Table
-                    sx={{ width: "650px", overflow: "auto" }}
+                    sx={{ width: "40.625rem", overflow: "auto" }}
                     aria-label="prece table"
                 >
                     <TableHead
                         style={{
-                            borderTop: "0px solid",
-                            borderBottom: "3px solid",
+                            borderTop: "0rem solid",
+                            borderBottom: "0.19 solid",
                             backgroundColor: "#ccc",
                         }}
                     >
@@ -77,7 +84,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -87,7 +94,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -97,7 +104,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -107,7 +114,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -117,7 +124,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -127,7 +134,7 @@ function AppointmentList(props) {
                                 align="center"
                                 style={{
                                     fontWeight: "600",
-                                    fontSize: "18px",
+                                    fontSize: "1.125rem",
                                     textTransform: "uppercase",
                                 }}
                             >
@@ -136,14 +143,14 @@ function AppointmentList(props) {
                     </TableHead>
                     <TableBody style={{ backgroundColor: "#c8f1d9" }}>
                         {rows.map((row, index) => (
-                            <TableRow key={index} style={{ borderBottom: "2px solid #000" }}>
+                            <TableRow key={index} style={{ borderBottom: "0.125 solid #000" }}>
                                 <TableCell className={classes.tableRightBorder}
                                     component="th"
                                     scope="row"
                                     align="center"
                                     style={{
                                         fontWeight: "600",
-                                        fontSize: "18px",
+                                        fontSize: "1.125rem",
                                     }}
                                 >
                                     {row.appID}
@@ -152,7 +159,7 @@ function AppointmentList(props) {
                                     align="right"
                                     style={{
                                         fontWeight: "600",
-                                        fontSize: "16px",
+                                        fontSize: "1rem",
                                         textTransform: "capitalize",
                                     }}
                                 >
@@ -162,7 +169,7 @@ function AppointmentList(props) {
                                     align="right"
                                     style={{
                                         fontWeight: "600",
-                                        fontSize: "18px",
+                                        fontSize: "1.125rem",
                                     }}
                                 >
                                     {row.clientName}
@@ -171,7 +178,7 @@ function AppointmentList(props) {
                                     align="right"
                                     style={{
                                         fontWeight: "600",
-                                        fontSize: "18px",
+                                        fontSize: "1.125rem",
                                     }}
                                 >
                                     {row.dateTime}
@@ -180,7 +187,7 @@ function AppointmentList(props) {
                                     align="right"
                                     style={{
                                         fontWeight: "600",
-                                        fontSize: "18px",
+                                        fontSize: "1.125rem",
                                     }}
                                 >
                                     {row.location}
@@ -193,12 +200,13 @@ function AppointmentList(props) {
                                             backgroundColor: "green",
                                             color: "white",
                                             fontWeight: "600",
-                                            fontSize: "16px",
+                                            fontSize: "1rem",
+                                        }}
+                                        onClick={() => {
+                                            navigate('../N14a', { state: { data: row } })
                                         }}
                                     >
-                                        <Link to="/n14a">
                                         View Details
-                                        </Link>
                                     </Button>
                                 </TableCell>
                             </TableRow>

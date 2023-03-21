@@ -1,14 +1,21 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./css/app.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
+import NavbarBefore from "./components/navbarBefore";
 import Footer from "./components/footer";
+import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
-import Chart from "./components/chart";
 import Login from "./login";
+import Logout from "./logout"
+import LogoutAllDevice from "./LogoutAllDevice";
+import NGOProfile from "./NGOProfile";
+import BuyerProfile from "./BuyerProfile";
+import FarmerProfile from "./FarmerProfile";
 import PageM0 from "./Market/pageM0";
 import PageM1 from "./Market/pageM1";
 import PageM2 from "./Market/pageM2";
@@ -39,7 +46,9 @@ import PageN5 from "./Ngo/pageN5";
 import PageN6 from "./Ngo/pageN6";
 import PageN7 from "./Ngo/pageN7";
 import PageN9 from "./Ngo/pageN9";
+// import PageN10 from "./Ngo/checking";
 import PageN10 from "./Ngo/pageN10";
+import PageN10a from "./Ngo/pageN10a";
 import PageN11 from "./Ngo/pageN11";
 import PageN12 from "./Ngo/pageN12";
 import PageN12a from "./Ngo/pageN12a";
@@ -47,24 +56,43 @@ import PageN13 from "./Ngo/pageN13";
 import PageN14 from "./Ngo/pageN14";
 import PageN14a from "./Ngo/pageN14a";
 import PageN14b from "./Ngo/pageN14b";
+import Chart from "./components/chart";
 import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
-import LogoutAllDevice from "./LogoutAllDevice";
 import N10Navbar from "./components/n10Navbar";
+import { display } from "@mui/system";
+
+import Success from "./Market/success";
+import Cancel from "./Market/cancel";
+
+function displayNavbar() {
+  const token = Cookies.get("token");
+
+  if (token != null)
+    return <Navbar />
+  else
+    return <NavbarBefore />
+}
 
 function App() {
+
   return (
     <div>
-      <Navbar />
       {/* <N10Navbar/> */}
+      {displayNavbar()}
       <main className="main-content" style={{ marginTop: "2%" }}>
+        
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
+            <Route path="/NGOProfile" element={<NGOProfile />} />
+            <Route path="/BuyerProfile" element={<BuyerProfile />} />
+            <Route path="/FarmerProfile" element={<FarmerProfile />} />
             <Route path="/M0" element={<PageM0 />} />
             <Route path="/M1" element={<PageM1 />} />
             <Route path="/M2" element={<PageM2 />} />
@@ -74,7 +102,7 @@ function App() {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M7" element={<PageM7 />} />
             <Route path="/M9" element={<PageM9 />} />
-            <Route path="/M10" element={<PageM10 />} />
+            <Route path="/M10" element={<Graph />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />
@@ -94,9 +122,10 @@ function App() {
             <Route path="/N7" element={<PageN7 />} />
             <Route path="/N9" element={<PageN9 />} />
             <Route path="/N10" element={<PageN10 />} />
+            <Route path="/N10a" element={<PageN10a />} />
             <Route path="/N11" element={<PageN11 />} />
             {/* <Route path="/N12" element={<PageN12 />} /> */}
-            <Route path="/N12a" element={<PageN12a />} />
+            <Route path="/N12" element={<PageN12 />} />
             <Route path="/N13" element={<PageN13 />} />
             {/* <Route path="/N14" element={<PageN14 />} /> */}
             <Route path="/N14a" element={<PageN14a />} />
@@ -109,10 +138,12 @@ function App() {
               element={<CropRecommendation />}
             />
             <Route path="/ordersummary" />
+            <Route path="/payments/success" element={<Success />} />
+            <Route path="/payments/cancel" element={<Cancel />} />
           </Routes>
         </BrowserRouter>
       </main>
-      <Footer />
+      <Footer1 />
     </div>
   );
 }

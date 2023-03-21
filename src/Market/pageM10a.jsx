@@ -20,6 +20,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
+
 import Page10Nav from "../components/page10Nav";
 const data = [
   {
@@ -42,6 +43,7 @@ const marketData = [
 
 const PageM10a = () => {
   const location = useLocation();
+  
   return (
     <Container
       style={{

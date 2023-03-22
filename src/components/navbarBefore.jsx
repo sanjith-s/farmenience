@@ -23,7 +23,7 @@ function NavbarBeforeLogin() {
         </div>
         <div className="nav-items item2">
           <a href="" className="nav-links  nav-brand">
-            Farmenience
+            FARMENiENCE
           </a>
         </div>
         <div className="nav-items item3">

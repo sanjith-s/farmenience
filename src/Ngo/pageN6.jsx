@@ -2,14 +2,13 @@ import React from "react";
 import '../css/pageN6.css';
 import Swal from 'sweetalert2'
 import farmImg from "../images/farm_land.jpg";
-import { Container, Button, Box, Stack, Divider,Typography } from "@mui/material";
+import { Container, Button, Box, Stack, Divider } from "@mui/material";
 import Request from "../RequestsDetails";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from '../constants';
-
 
 function PageN6() {
   const [listOfRequests, setListOfRequests] = useState([
@@ -54,11 +53,7 @@ function PageN6() {
   return (
     <div className="">
       <br />
-      <Typography className="total-req-count" fontWeight="700" fontSize="40px" sx={{
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center",
-      }}> You Have {listOfRequests.length} Requests</Typography>
+      <p className="total-req-count">You Have {listOfRequests.length} Request</p>
       {listOfRequests.map((request, index) => {
         return (
           <>
@@ -66,7 +61,7 @@ function PageN6() {
               direction="row"
               divider={<Divider orientation="vertical" flexItem />}
               spacing={0}
-              sx={{ height: "70vh", width: "vw", }}
+              sx={{ height: "70vh", width: "vw", marginTop: "1.25rem" }}
             >
               <Container
                 sx={{

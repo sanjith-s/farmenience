@@ -6,9 +6,14 @@ import {Box,Grid,Typography} from "@mui/material";
 
 
 function SalesCardsList(props) {
-  if (props.cards.length === 0) {
-    return <Typography style={{textAlign:"center",marginTop:"30px",fontSize:"28px",textTransform:"uppercase"}}> select item from filter </Typography>;
+  var items = props.cards;
+  if (!props.isFilt) {
+    items = props.all;
   }
+  if (props.isFilt && props.cards.length === 0) {
+    return <Typography style={{textAlign:"center",marginTop:"30px",fontSize:"28px",textTransform:"uppercase"}}> No Items found </Typography>;
+  }
+
   return (
     <Box
       sx={{
@@ -27,7 +32,7 @@ function SalesCardsList(props) {
         spacing={5}
         style={{ padding: "0px" }}
       >
-        {props.cards.map((item) => (
+        {items.map((item) => (
           <Grid item padding={2} key={item.id}>
             <SalesCard
               key={item.id}

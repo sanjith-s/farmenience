@@ -76,15 +76,17 @@ const salesItems = [
 ];
 
 function PageM3(props) {
-  const [selected,setSelected] = useState();
-  const [ordDate,setOrdDate] = useState();
-  const [delDate,setDelDate] = useState();
+  const [selected,setSelected] = useState('');
+  const [ordDate,setOrdDate] = useState('');
+  const [delDate,setDelDate] = useState('');
   // const [date, setDate] = useState({ordDate:"" , delDate:"" });
   const [salesDetails,setSalesDetails] = useState(orders);
   // let salesDetails;
+  const [filt,setFilt] = useState(false);
 
   const selctedValueHandler = value => {
     setSelected(value);
+    setFilt(true);
   }
   // let ordDate = useRef();
   // let delDate = useRef();
@@ -92,11 +94,21 @@ function PageM3(props) {
   const ordDateHandler = (event) => {
     // ordDate.current = event.target.value;
     setOrdDate(event.target.value);
+    if (event.target.value == '' && selected == '' && delDate == '') {
+      setFilt(false);
+    } else {
+    setFilt(true);
+    }
     // setDate({...date , ordDate: event.target.value })
   }
   const delDateHandler = (event) => {
     // delDate.current = event.target.value;
     setDelDate(event.target.value);
+    if (event.target.value == '' && selected == '' && ordDate == '') {
+      setFilt(false);
+    } else {
+    setFilt(true);
+    }
     // setDate({...date , delDate: event.target.value })
   }
 
@@ -261,7 +273,7 @@ function PageM3(props) {
             Filtered details
           </Typography>
           <Divider flexItem />
-          <SalesCardsList cards={productDetails}  />
+          <SalesCardsList cards={productDetails} all={salesDetails} isFilt={filt}/>
         </Box>
       </Stack>
     </Container>

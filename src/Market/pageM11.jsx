@@ -14,93 +14,150 @@ import {
   Container,
   CssBaseline,
 } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import {Stack} from "@mui/material";
+import PropTypes from 'prop-types';
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import { padding } from "@mui/system";
+import { Label } from "recharts";
 
-const content = [
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-  {
-    product: "promegranate",
-    count: 4,
-    price: 232,
-    rate: 3,
-  },
-];
+
+
 
 const PageM11 = () => {
+  const [content,setContent] = useState([
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 32,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 132,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 732,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 332,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 432,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 230,
+      rate: 3,
+    },
+  ]);
+  const copy = content;
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
+  const [value, setValue] = React.useState(false);
+  const handleChange1 = (event) => {
+    setValue(event.target.value);
+    function compare2( a, b ) {
+      if ( a.price <= b.price ){
+        return -1;
+      }
+      return 0;
+    }
+    function compare1( a, b ) {
+      if ( a.price >= b.price ){
+        return -1;
+      }
+      return 0;
+    }
+    if (value == 'PriceI') {
+      setContent(content.sort( compare1 ));
+    } else {
+      setContent(content.sort( compare2 ));
+    }
+    setOpen(false);
+  };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const handleClose2 = () => {
+    setOpen2(false);
+  }
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const filterPrice = (a,min,max) => {
+    if (a.price >= min && a.price <= max) {
+      return true;
+    }
+    return false;
+  }
+  const ApplyChange = () => {
+    var min = document.getElementById("minPrice").value;
+    var max = document.getElementById("maxPrice").value;
+    console.log(min,max);
+    setContent(copy.filter(f=>filterPrice(f,min,max)));
+    handleClose2();
+  }
 
   const [ngoType, setNgoType] = useState([]);
   const handleNGOtype = (option) => {
@@ -173,7 +230,6 @@ const PageM11 = () => {
           />
         </FormControl>
       </CardActions>
-
       <CardActions
         style={{
           width: "100%",
@@ -191,6 +247,7 @@ const PageM11 = () => {
               width: "100%",
               alignItems: "center",
             }}
+            onClick={() => { setOpen(true) }}
           >
             <SortIcon />
             <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
@@ -198,6 +255,34 @@ const PageM11 = () => {
             </Typography>
           </Button>
         </CardActionArea>
+        <Dialog onClose={handleClose} open={open}>
+          <DialogTitle>Sort By</DialogTitle>
+          <Box>
+          <FormControl>
+            <RadioGroup
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={value}
+              onChange={handleChange1}
+            >
+              <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
+              <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
+            </RadioGroup>
+          </FormControl>
+          </Box>
+        </Dialog>
+        <Dialog onClose={handleClose2} open={open2}>
+          <DialogTitle>Filter By</DialogTitle>
+          <Box sx={{padding:"8%"}}>
+          <FormControl>
+            <Stack spacing={3}>
+          <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  id="minPrice" placeholder="Minimum price"/>
+          <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  id="maxPrice"   placeholder="Maximum price"/>
+          <Button onClick={ApplyChange}>Apply</Button>
+          </Stack>
+          </FormControl>
+          </Box>
+        </Dialog>
         <CardActionArea style={{ width: "100%" }}>
           <Button
             style={{
@@ -207,6 +292,7 @@ const PageM11 = () => {
               alignItems: "center",
               width: "100%",
             }}
+           onClick={()=>{setOpen2(true)}}
           >
             <FilterListIcon />
             <Typography style={{ fontSize: "18px", fontWeight: "600" }}>

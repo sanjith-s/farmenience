@@ -1,4 +1,4 @@
-    import React from 'react';
+import React from 'react';
 import '../css/pageN2.css';
 import {useLocation} from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";

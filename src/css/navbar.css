@@ -11,8 +11,8 @@
 .nav-brand {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
-  color: #060606;
+  font-weight: 400;
+  color: #e4e4e4;
   font-size: xx-large;
   -webkit-text-stroke: 1px #000000;
 }
@@ -92,11 +92,11 @@
   color: black;
 }
 
-/* .dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn {
   background-color: #f4c430;
   width: 100px;
   color: black
-} */
+}
 
 .dropdown-content {
   display: none;
@@ -117,8 +117,8 @@
 }
 
 .dropdown-content a:hover {
-  background-color: #90e797;
-  color: rgb(17, 16, 16);
+  background-color: #000f4d;
+  color: white;
   text-decoration: bold;
 }
 

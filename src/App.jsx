@@ -64,6 +64,7 @@ import { display } from "@mui/system";
 
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
+import PageMain from "./PageMain";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -84,7 +85,7 @@ function App() {
         
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Homepage1 />} />
+            <Route path="/" element={<PageMain />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />

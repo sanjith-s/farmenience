@@ -68,6 +68,7 @@ import { display } from "@mui/system";
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
+import Web1a from "./Web1a";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -151,6 +152,10 @@ function App() {
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}
+            />
+            <Route
+            path="web1"
+            element={<Web1a/>}
             />
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />

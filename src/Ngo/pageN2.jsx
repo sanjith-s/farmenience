@@ -8,6 +8,7 @@ const PageN2 = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const id=location.state.id;
+    
   return (
     <div className="ext-cont">
         <div></div>

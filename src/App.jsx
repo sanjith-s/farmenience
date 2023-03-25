@@ -2,8 +2,11 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./css/app.css";
+import styles from "./css/general.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
+import LandingPage from "./landingPage";
+import AboutUsPage from "./aboutUsPage";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
 import NavbarBefore from "./components/navbarBefore";
@@ -71,7 +74,16 @@ function displayNavbar() {
   if (token != null)
     return <Navbar />
   else
-    return <NavbarBefore />
+    return null
+}
+
+function displayFooter() {
+  const token = Cookies.get("token");
+
+  if (token != null)
+    return <Footer1 />
+  else
+    return null
 }
 
 function App() {
@@ -80,12 +92,14 @@ function App() {
     <div>
       {/* <N10Navbar/> */}
       {displayNavbar()}
-      <main className="main-content" style={{ marginTop: "2%" }}>
+      <main className="main-content">
         
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage1 />} />
             <Route path="/homepage2" element={<Homepage2 />} />
+            <Route path="/landingPage" element={<LandingPage />} />
+            <Route path="/aboutUsPage" element={<AboutUsPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
@@ -143,7 +157,10 @@ function App() {
           </Routes>
         </BrowserRouter>
       </main>
-      <Footer1 />
+
+      
+      {/* <Footer1 /> */}
+      {displayFooter()}
     </div>
   );
 }

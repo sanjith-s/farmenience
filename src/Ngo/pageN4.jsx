@@ -28,7 +28,7 @@ const PageN4 = () => {
     // formData.append('caption', "hello");
     // formData.append('file', filename);
     // console.log(Array.from(formData.entries()))
-    await Axios.post(`${baseURL}/uploadFile`, {
+    await Axios.post(`${baseURL}/uploadImage`, {
       fileData: file
     })
       .then(async (response) => {
@@ -41,7 +41,7 @@ const PageN4 = () => {
   }
 
   const getImages = async () => {
-    await Axios.get(`${baseURL}/getFiles`)
+    await Axios.get(`${baseURL}/getImages`)
       .then(async (response) => {
         setData(response.data.message);
         console.log(response.data.message);

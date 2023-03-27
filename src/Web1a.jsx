@@ -25,6 +25,12 @@ const Web1a = () =>{
             {JSON.stringify(data)}
             <br></br>
             {data['Avarai (1 Kg)']}
+            <br></br>
+            {data['Apple - Fuji(Pink) (1 Kg)']}
+            <br></br>
+            {data['Arakeerai (1 Bunch)']}
+            <br></br>
+            {data['Chenna Black ( 1kg )']}
         </>
     )
 }

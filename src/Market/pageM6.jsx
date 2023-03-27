@@ -112,17 +112,20 @@ const PageM6 = () => {
              }}
              inputProps={{ 
                minLength: 1,
-               maxLength: 12 
+               maxLength: 25
              }}
              />
              <TextField
              id="price"
+             type="number"
              label="Price"
              variant="filled"
              color="success"
              onChange={handleAllChange}
              InputProps={{
                endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+               min: 1,
+               max: 200
              }}
              sx={{
                backgroundColor: "#C4E1C5",
@@ -132,9 +135,12 @@ const PageM6 = () => {
              />
              <TextField
              id="quan"
+             type="number"
              onChange={handleAllChange}
              InputProps={{
                endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+               min: 1,
+               max: 10
              }}
              label="Quantity"
              variant="filled"
@@ -156,6 +162,10 @@ const PageM6 = () => {
                borderBottomColor: "black",
                width: "70%",
              }}
+             inputProps={{ 
+              minLength: 1,
+              maxLength: 20 
+            }}
              />
       
     </React.Fragment>

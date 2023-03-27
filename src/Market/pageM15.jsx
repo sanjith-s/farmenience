@@ -197,9 +197,9 @@ function PageM15() {
         )} */}
 
             <ShowUserDetails
-              userName={consumerName}
-              userAddress={consumerAddress}
-              userNumber={consumerNumber}
+              userName={userData.name}
+              userAddress={userData.address}
+              userNumber={userData.number}
             />
 
         {active === "negot1" && (

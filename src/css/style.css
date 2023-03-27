@@ -99,37 +99,74 @@
 /**************************/
 
 .about-hero{
-  background-color: #d9f5c0;
-  padding: 4.8rem 4rem ;
-}
-
-.about-img-box{
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(180, 255, 142, 0.35),
-    rgba(184, 255, 137, 0.35)
-  ),
-    url("../images/illustrations/abtImg-5.jpg");
-  background-size:auto;
-  background-position: center;
-  z-index: -100;
+  /* padding: 4.8rem 4rem ; */
+  position: relative; 
+  /* background-image: linear-gradient(to right bottom, #eb984e, #e67e22); */
 }
 
 .about-description{
-
-  text-align: center;
+  background-color: transparent;
+  text-align: justify;
   color: #000;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 26px;
+  font-weight: 500;
   line-height: 1.6;
-  margin-bottom: 4.8rem;
+  margin-bottom: 3rem;
+  
+}
+
+.indent{
+  text-indent: 200px;
+}
+
+.points{
+  margin:0 10rem 2rem;
+}
+
+
+.about-section{
+   position: absolute;
+   top: 20;
+   left: 0;
+   padding: 5rem 10rem;
+   
+   
+}
+
+.gradient{
+  background-image: linear-gradient(to right bottom, #6ae8ad, transparent,#6ae8ad);
 }
 
 
 
 .abt-img {
-  width: 100%;
+  left:25rem;
+  top:10rem;
+  z-index: -100;
+  position:absolute;
+  height: 120vh;
+  opacity: 0.45;
 }
+
+/**************************/
+/* TERMS AND CONDITION */
+/**************************/
+
+.tandc-gradient{
+  background-image: linear-gradient(to right bottom , #6ae8ad, transparent,transparent,#6ae8ad);
+}
+
+.tandc-description{
+  background-color: transparent;
+  text-align: justify;
+  color: #000;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  
+}
+
 
 /**************************/
 /* HERO SECTION */

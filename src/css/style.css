@@ -134,7 +134,7 @@
 }
 
 .gradient{
-  background-image: linear-gradient(to right bottom, #6ae8ad, transparent,#6ae8ad);
+  background-image: linear-gradient(to right top, #6ae8ad, transparent,#6ae8ad);
 }
 
 

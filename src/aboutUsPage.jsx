@@ -7,6 +7,8 @@ import abtImg2 from "./images/illustrations/abtImg-2.png";
 import abtImg3 from "./images/illustrations/abtImg-3.png";
 import abtImg4 from "./images/illustrations/abtImg-4.jpg";
 import abtImg5 from "./images/illustrations/abtImg-5.jpg";
+import farmsvg from "./images/farmenience.svg";
+import farmjpeg from "./images/farmenience.jpeg";
 
 
 const AboutUsPage = () => {
@@ -14,6 +16,8 @@ const AboutUsPage = () => {
     <div  className="about-hero  ">
       
     <img className="abt-img " src={abtImg5} alt="" />
+
+    <img src={farmsvg} alt="" style={{height:"180px",objectFit:"cover",position:"absolute",top:"-30px",left:"50px"}} />
 
     <main  className="about-section gradient">
       <section  >

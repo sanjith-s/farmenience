@@ -7,6 +7,7 @@ import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
 import LandingPage from "./landingPage";
 import AboutUsPage from "./aboutUsPage";
+import TermsAndCondition from "./termsAndCondition";
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
 import NavbarBefore from "./components/navbarBefore";
@@ -103,6 +104,7 @@ function App() {
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/aboutUsPage" element={<AboutUsPage />} />
+            <Route path="/termsAndCondition" element={<TermsAndCondition />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />

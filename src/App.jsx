@@ -69,6 +69,7 @@ import Success from "./Market/success";
 import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
 import Web1a from "./Web1a";
+import Voicetotext from "./Voicetotext";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -149,6 +150,7 @@ function App() {
             <Route path="/cal" element={<Calender />} />
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
+            <Route path="/vtt1" element={<Voicetotext/>} />
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}

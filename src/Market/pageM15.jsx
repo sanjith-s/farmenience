@@ -149,7 +149,7 @@ function PageM15() {
 
       <Box>
         <NegotNav />
-        {update === "editCard" && (
+        {/* {update === "editCard" && (
           <Box style={{ position: "relative " }}>
             <UserDetails
               userAddress={userData.address}
@@ -171,9 +171,9 @@ function PageM15() {
               update
             </Button>
           </Box>
-        )}
+        )} */}
 
-        {update === "updatedCard" && (
+        {/* {update === "updatedCard" && (
           <Box style={{ position: "relative " }}>
             <ShowUserDetails
               userName={consumerName}
@@ -194,7 +194,13 @@ function PageM15() {
               Back
             </Button>
           </Box>
-        )}
+        )} */}
+
+            <ShowUserDetails
+              userName={consumerName}
+              userAddress={consumerAddress}
+              userNumber={consumerNumber}
+            />
 
         {active === "negot1" && (
           <Box style={{ position: "relative " }}>

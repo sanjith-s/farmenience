@@ -17,16 +17,18 @@ const AboutUsPage = () => {
       
     <img className="abt-img " src={abtImg5} alt="" />
 
-    <img src={farmsvg} alt="" style={{height:"180px",objectFit:"cover",position:"absolute",top:"-30px",left:"50px"}} />
+    
 
     <main  className="about-section gradient">
       <section  >
         <div>
 
-          
-            <h1 className="heading-primary" style={{textAlign:"center" , color:"#000",fontWeight:"600"}}>
+          <div style={{position:"relative"}}>
+            <h1 className="heading-primary" style={{textAlign:"center" , color:"#000",fontWeight:"600",marginBottom:"80px"}}>
               About Farmenience
             </h1>
+            <img src={farmsvg} alt="" style={{height:"140px",objectFit:"cover",position:"absolute",left:"42%",top:"30px"}} />
+          </div>
 
             <p className="about-description indent">
               <span style={{fontSize:"40px"}}>A</span>griculture is the backbone of the Indian Economy’- Mahatma Gandhi. 54.6 of the total workforce is engaged in agriculture and allied sector activities (Census 2011) and accounts for 18.8% (First Advance Estimates) of country's Gross Value Added (GVA) for the year 2021-22 (at current prices).  The resource rich country is yet to be revolutionised by the modern technology. The Farmenience website aims to provide assistance to the farming community to make best use of their resources to grow in a sustainable manner. Farmenience aims to help India to remain an agriculturally dependent economy in the long run. The website makes use of efficient machine learning techniques to predict and provide the farmers the best profitable crop for specific terrain. It acts as a bridge between producers and clients and reduces the intermediate fee by a large factor which in turn benefits the farming community in profit. It acts as a portal which carries the queries of farmers to concerned NGO’s which provides them with guidance.

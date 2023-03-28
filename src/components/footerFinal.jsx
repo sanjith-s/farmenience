@@ -31,7 +31,7 @@ import "../css/footer.css";
 const Footer = () => {
 
     return (
-        <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"20px"}}>
+        <Container maxWidth={false} disableGutters style={{position:"sticky"}}>
             <Box
                 sx={{
                     display: "flex",

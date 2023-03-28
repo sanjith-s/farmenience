@@ -69,12 +69,12 @@ const PageM6 = () => {
       <span className="title">Sell Products</span>
       {count.map(ele=>{
               return ( 
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
-      >
+        <Stack
+          direction="row"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+        >
         <Container
           sx={{
             bgcolor: "#D9D9D9;",
@@ -168,51 +168,51 @@ const PageM6 = () => {
             }}
              />
       
-    </React.Fragment>
-        </Container>
-        <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={()=>{setOpen(false)}}
-        aria-describedby="alert-dialog-slide-description"
+        </React.Fragment>
+          </Container>
+          <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={()=>{setOpen(false)}}
+          aria-describedby="alert-dialog-slide-description"
         >
         <DialogTitle>CONFIRM?</DialogTitle>
         <DialogContent>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>Product Name</TableCell>
-            <TableCell>{name}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Price</TableCell>
-            <TableCell>{price}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Quantity</TableCell>
-            <TableCell>{quantity}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Type</TableCell>
-            <TableCell>{type}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2} rowSpan={2}>
-          <img
-              src={file}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            /></TableCell>
-          </TableRow>
-           </TableBody>
-           </Table>
-          </TableContainer>
+        <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 200 }} aria-label="simple table">
+          <TableBody>
+            <TableRow>
+              <TableCell>Product Name</TableCell>
+              <TableCell>{name}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Price</TableCell>
+              <TableCell>{price}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Quantity</TableCell>
+              <TableCell>{quantity}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Type</TableCell>
+              <TableCell>{type}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell colSpan={2} rowSpan={2}>
+            <img
+                src={file}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "fill",
+                  borderRadius: "50px",
+                }}
+              /></TableCell>
+            </TableRow>
+            </TableBody>
+            </Table>
+            </TableContainer>
             
         </DialogContent>
         <DialogActions>

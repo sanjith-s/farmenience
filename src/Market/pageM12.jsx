@@ -5,6 +5,8 @@ import "../css/pageM12.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import EditIcon from '@mui/icons-material/Edit';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 import UserDetails from "../components/userDetails";
 import PriceDetails from "../components/priceDetails";
@@ -75,7 +77,7 @@ function PageM12() {
     setConsumerNumber(number);
   };
 
-  const [update, setUpdate] = useState("editCard");
+  const [update, setUpdate] = useState("updatedCard");
   const updateHandler = () => {
     if (update === "editCard") {
       setUpdate("updatedCard");
@@ -108,9 +110,9 @@ function PageM12() {
 
   const [quantity1, setQuantity1] = useState(1);
   const [quantity2, setQuantity2] = useState(1);
-  const [consumerName, setConsumerName] = useState();
-  const [consumerAddress, setConsumerAddress] = useState();
-  const [consumerNumber, setConsumerNumber] = useState();
+  const [consumerName, setConsumerName] = useState(userData.name);
+  const [consumerAddress, setConsumerAddress] = useState(userData.address);
+  const [consumerNumber, setConsumerNumber] = useState(userData.number);
 
   const QuantityCounterHandler = (counter, index) => {
     if (index == 1) {
@@ -234,17 +236,20 @@ function PageM12() {
                   onDataHandler={userDataHandler}
                 />
                 <Button
-                  variant="contained"
+                  // variant="contained"
                   color="success"
                   onClick={updateHandler}
                   style={{
                     position: "absolute",
                     top: "10px",
                     right: "10px",
-                    fontWeight: "600",
+                    // fontWeight: "600",
+                    borderRadius:"50%",
+                    height:"60px",
+                    width:"10px",
                   }}
                 >
-                  update
+                <ThumbUpAltIcon style={{width:"30px",height:"30px"}} />
                 </Button>
               </Box>
             )}
@@ -258,17 +263,20 @@ function PageM12() {
                 />
                 {active === "negot1" && (
                   <Button
-                    variant="contained"
+                    // variant="contained"
                     color="success"
                     onClick={updateHandler}
                     style={{
                       position: "absolute",
                       top: "10px",
                       right: "10px",
-                      fontWeight: "600",
+                      // fontWeight: "600", 
+                      borderRadius:"50%",
+                      height:"60px",
+                      width:"10px",
                     }}
                   >
-                    change
+                    <EditIcon style={{width:"30px",height:"30px"}} /> 
                   </Button>
                 )}
               </Box>

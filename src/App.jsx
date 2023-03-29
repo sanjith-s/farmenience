@@ -8,6 +8,7 @@ import Homepage1 from "./homepage1";
 import LandingPage from "./landingPage";
 import AboutUsPage from "./aboutUsPage";
 import TermsAndCondition from "./termsAndCondition";
+import ReviewsForm from "./ReviewsForm"
 import Homepage2 from "./homepage2";
 import Navbar from "./components/navbar";
 import NavbarBefore from "./components/navbarBefore";
@@ -97,7 +98,7 @@ function App() {
       {/* <N10Navbar/> */}
       {displayNavbar()}
       <main className="main-content">
-        
+
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<PageMain />} />
@@ -105,6 +106,7 @@ function App() {
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/aboutUsPage" element={<AboutUsPage />} />
             <Route path="/termsAndCondition" element={<TermsAndCondition />} />
+            <Route path="/ReviewsForm" element={<ReviewsForm />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
@@ -152,14 +154,14 @@ function App() {
             <Route path="/cal" element={<Calender />} />
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
-            <Route path="/vtt1" element={<Voicetotext/>} />
+            <Route path="/vtt1" element={<Voicetotext />} />
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}
             />
             <Route
-            path="web"
-            element={<Web/>}
+              path="web"
+              element={<Web />}
             />
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />
@@ -168,7 +170,7 @@ function App() {
         </BrowserRouter>
       </main>
 
-      
+
       {/* <Footer1 /> */}
       {displayFooter()}
     </div>

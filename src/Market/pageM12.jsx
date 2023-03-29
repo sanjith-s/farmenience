@@ -70,7 +70,7 @@ function PageM12() {
     setConsumerNumber(number);
   };
 
-  const [update, setUpdate] = useState("editCard");
+  const [update, setUpdate] = useState("editcard");
   const updateHandler = () => {
     if (update === "editCard") {
       setUpdate("updatedCard");

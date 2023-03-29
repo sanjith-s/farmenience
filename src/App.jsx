@@ -69,7 +69,7 @@ import { display } from "@mui/system";
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
-import Web1a from "./Web1a";
+import Web from "./Web";
 import Voicetotext from "./Voicetotext";
 
 function displayNavbar() {
@@ -158,8 +158,8 @@ function App() {
               element={<CropRecommendation />}
             />
             <Route
-            path="web1"
-            element={<Web1a/>}
+            path="web"
+            element={<Web/>}
             />
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />

@@ -24,13 +24,11 @@ const PageN4 = () => {
   }
 
   const handleSubmit = async () => {
-    // let formData = new FormData();
-    // formData.append('caption', "hello");
-    // formData.append('file', filename);
-    // console.log(Array.from(formData.entries()))
-    await Axios.post(`${baseURL}/uploadFile`, {
-      fileData: file
-    })
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', filename);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
         console.log(response);
 
@@ -41,10 +39,10 @@ const PageN4 = () => {
   }
 
   const getImages = async () => {
-    await Axios.get(`${baseURL}/getFiles`)
+    await Axios.get(`${baseURL}/files`)
       .then(async (response) => {
-        setData(response.data.message);
-        console.log(response.data.message);
+        setData(response.data);
+        console.log(response.data);
       })
       .catch(async (res) => {
         alert(res.response.data.message);
@@ -153,21 +151,16 @@ const PageN4 = () => {
         </Button>
       </Box>
 
-      {Object.values(data).map((image, index) => {
+      {data && data.map((img, index) => {
         return (
-          <img
-            src={image.fileData}
-            style={{
-              width: "10%",
-              height: "10%",
-              // objectFit: "fill",
-              borderRadius: "3.125rem",
-            }}
-          />
+          <div>
+            <img src={img.url} alt={img.name} height="80px" />
+            <br></br>
+          </div>
         );
       })}
 
-    </div>
+    </div >
   );
 };
 

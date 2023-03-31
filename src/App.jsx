@@ -72,6 +72,7 @@ import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
 import Web from "./Web";
 import Voicetotext from "./Voicetotext";
+import PdfPrint from "./pdfPrint";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -166,6 +167,7 @@ function App() {
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />
             <Route path="/payments/cancel" element={<Cancel />} />
+            <Route path="/pdfprint" element={<PdfPrint/>}/>
           </Routes>
         </BrowserRouter>
       </main>

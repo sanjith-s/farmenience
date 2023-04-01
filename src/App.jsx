@@ -77,7 +77,7 @@ function App() {
     <div>
       {/* <N10Navbar/> */}
       {displayNavbar()}
-      <main className="main-content" style={{ marginTop: "2%" }}>
+      <main className="main-content" style={{ marginTop: "0%" }}>
         
         <BrowserRouter>
           <Routes>

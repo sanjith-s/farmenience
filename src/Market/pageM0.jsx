@@ -1,75 +1,23 @@
-import React from 'react';
+// import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
-import MailIcon from '@mui/icons-material/Mail';
-import PlaceIcon from '@mui/icons-material/Place';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import {  ShoppingCart, Room } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { Stack, Box, Avatar, Button, Tab, Tabs } from '@mui/material';
-import AspectRatio from '@mui/joy/AspectRatio';
 
 import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        padding: theme.spacing(2),
-        backgroundColor: "#E5FDD1"
-    },
-    paper: {
-        textAlign: 'center',
-        height: '100%',
-        color: theme.palette.text.secondary,
-        '&:hover': {
-            cursor: 'pointer',
-            boxShadow: '0px 0px 10px #777',
-            transform: 'scale(1.05)',
-        },
-        transition: 'all 0.3s ease-in-out',
-    },
-    orderDetails: {
-        backgroundColor: '#B5F1CC',
-    },
-    saleRequest: {
-        backgroundColor: '#B5F1CC',
-    },
-    notifications: {
-        backgroundColor: '#B5F1CC',
-    },
     listItemIcon: {
         minWidth: '40px',
-    },
-    title: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: '3rem',
-        letterSpacing: '0.2rem',
-        marginBottom: theme.spacing(3),
-        '& span': {
-            display: 'block',
-            fontSize: '1rem',
-            fontWeight: 'normal',
-            letterSpacing: '0.1rem',
-        },
-        '& hr': {
-            border: 0,
-            height: '1px',
-            backgroundImage: 'linear-gradient(to right, transparent, #ccc, transparent)',
-        },
-    },
+    }
 }));
 
 const ordersData = [{ orderNo: '123456789', destination: 'Chennai', },
 { orderNo: '987654321', destination: 'Koyambedu', },
 { orderNo: '456123789', destination: 'THiruchi', },];
 
-
-const notificationsData = [{ message: 'You have a new sale request.', },
-{ message: 'Your have a new sale request.', }]
-// ...
 
 const saleRequestsData = [
     {
@@ -131,154 +79,100 @@ function BasicTabs() {
 
     return (
         <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="tabs-head" >
-                <Tabs TabIndicatorProps={{ style: { background: '#C0B236' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label={<span className='lab-text'> Orders</span>} {...N10Props(0)} />
-                    <Tab label={<span className='lab-text'>Sale Requests</span>} {...N10Props(1)} />
+            <Box sx={{ borderBottom: 2, borderColor: 'divider' }} className="tabs-head" >
+                <Tabs TabIndicatorProps={{ style: { background: 'darkgreen' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label={<span className='lab-text1'> Orders</span>} {...N10Props(0)} />
+                    <Tab label={<span className='lab-text1'>Sale Requests</span>} {...N10Props(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                        <List>
-                            {ordersData.map((order, index) => (
-                                <React.Fragment key={index}>
-                                    <ListItem>
-                                        <Room fontSize="small" />
-                                        <ListItemText primary={`Order No: ${order.orderNo}`} />
-                                    </ListItem>
-                                    <ListItem>
-                                        <Room fontSize="small" />
-                                        <ListItemText primary={`Destination: ${order.destination}`} />
-                                    </ListItem>
-                                    {index !== ordersData.length - 1 && (
-                                        <Divider variant="middle" />
-                                    )}
-                                </React.Fragment>
-                            ))}
-                        </List>
+                <List>
+                    <marquee direction="down">
+                    {ordersData.map((order, index) => (
+                        <React.Fragment key={index}>
+                            <ListItem>
+                                <Room fontSize="small" />
+                                <ListItemText primary={`Order No: ${order.orderNo}`} />
+                            </ListItem>
+                            <ListItem>
+                                <Room fontSize="small" />
+                                <ListItemText primary={`Destination: ${order.destination}`} />
+                            </ListItem>
+                            {index !== ordersData.length - 1 && (
+                                <Divider variant="middle" />
+                            )}
+                        </React.Fragment>
+                    ))}
+                    </marquee>
+                </List>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                        <List>
-                            {saleRequestsData.map((request, index) => (
-                                <ListItem key={index}>
-                                    <ListItemIcon className={useStyles.listItemIcon}>
-                                        <ShoppingCart fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={request.item}
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography variant="subtitle2">
-                                                    Item: {request.itemName}
-                                                </Typography>
-                                                <Typography variant="subtitle2">
-                                                    Quantity: {request.quantity}
-                                                </Typography>
-                                                <Typography variant="subtitle2">
-                                                    Request Sender: {request.requestSender}
-                                                </Typography>
+                <List>
+                    <marquee direction="down">
+                    {saleRequestsData.map((request, index) => (
+                        <ListItem key={index}>
+                            <ListItemIcon className={useStyles.listItemIcon}>
+                                <ShoppingCart fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={request.item}
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography variant="subtitle2">
+                                            Item: {request.itemName}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Quantity: {request.quantity}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Request Sender: {request.requestSender}
+                                        </Typography>
 
-                                            </React.Fragment>
-                                        }
-                                    />
-                                </ListItem>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
 
-                            ))}
-                        </List>
+                    ))}
+                    </marquee>
+                </List>
             </TabPanel>
         </Box>
     );
 }
 
-
-function SellerDashboard() {
-    const classes = useStyles();
-
+import React from 'react'
+import BackImg from "../components/homepageBackground.png";
+import "../css/pageM0.css"
+function pageM0() {
     return (
-        <div className={classes.root}>
-            <Stack container spacing={2}>
-                <Grid item xs={12}>
-                    <div className={classes.title}>
-                        <span>SELLER DASHBOARD</span>
-                        <hr />
+        <div style={{ backgroundColor: "#E5FDD1" }}>
+            <img src={BackImg} style={{ objectFit: "cover", height: "370px", width:"100%" }} className='back-img' />
+            <div className='contents'>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sale"}</span>
                     </div>
-                </Grid>
-                <Box  sx={{display:"flex",alignContent:"center",justifyContent:"center"}}>
-                <Stack direction={"row"} spacing={2}
-                    divider={<Divider orientation="vertical" flexItem />}
-                >
-                    <Stack direction="column" spacing={2} sx={{ border: "1px solid #FEF778", padding: "2%", borderRadius: "10px 15px", backgroundColor: "#B5F1CC",height:"min-content" }} >
-                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}><Avatar
-                            alt=""
-                            src=""
-                            sx={{ width: "134px", height: "134px" }}
-                        /></Box>
-                        <Stack spacing={1}>
-                            <Typography variant='h6'>Seller name</Typography>
-                            <Typography>Seller Account</Typography>
-                            <Stack direction={"row"} spacing={1}>
-                                <MailIcon />
-                                <Typography>selleremail@gmail.com</Typography>
-                            </Stack>
-                            <Stack direction={"row"} spacing={1}>
-                                <PhoneIphoneIcon />
-                                <Typography>+913423874928</Typography>
-                            </Stack>
-                            <Stack direction={"row"} spacing={1}>
-                                <PlaceIcon />
-                                <Typography>Chennai</Typography>
-                            </Stack>
-                            <Stack direction={"row"} spacing={1}>
-                                <Button color="error" startIcon={<LogoutIcon />} >Logout</Button>
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                    <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-around" }}>
-                        <Box
-                            sx={{ width: '100%', border: "" }}
-                        >
-                            {/* <Grid container rowSpacing={2} columnSpacing={3}>
-                <Grid item xs={3} className="box2">
-                  <OneBox name={"View Appointments"} link={"/n13"} />
-                </Grid>
-                <Grid item xs={3} className="box2">
-                  <OneBox name={"View Queries"} link={"/n11"} />
-                </Grid>
-                <Grid item xs={5}>  */}
-                            <Stack direction={"column"} spacing={2}
-                            >
-                                <Stack direction={"row"} spacing={1}>
-                                    <Button variant='contained' color="success" onClick={() => navigate("../n13")}>
-                                        Create new sale
-                                    </Button>
-                                    <Button variant='contained' color="success" onClick={() => navigate("../n11")}>
-                                        View Sale requests
-                                    </Button>
-                                    <Button variant='contained' color="success" onClick={() => navigate("../n11")}>
-                                        View Sale history
-                                    </Button>
-                                </Stack>
-                                <AspectRatio
-                                    ratio="4/3"
-                                    sx={{
-                                        width: 600,
-                                        borderRadius: 'md',
-                                        textAlign: "center",
-                                        color: "#276548",
-                                        overflow: "hidden",
-                                    }}
-                                >
-                                    <BasicTabs />
-                                </AspectRatio>
-                            </Stack>
-                            {/* </Grid>
-              </Grid> */}
-                        </Box>
+                    <div className="box-body">
+                        <p className="box-description">{"Create a New Sale"}</p>
+                        <button className="box-button">{"Create Now"}</button>
                     </div>
-                </Stack>
-                </Box>
-            </Stack>
+                </div>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sale Request"}</span>
+                    </div>
+                    <div className="box-body">
+                        <p className="box-description">{"See a list of sale requests"}</p>
+                        <button className="box-button">{"View"}</button>
+                    </div>
+                </div>
+                <div className="roller box1">                    
+                        <BasicTabs />
+                </div>
+            </div>
         </div>
-    );
+    )
 }
 
-export default SellerDashboard;
+export default pageM0

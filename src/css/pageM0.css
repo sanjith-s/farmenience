@@ -1,0 +1,82 @@
+.box1 {
+    --title-font: 'Bungee', cursive;
+    --body-font: 'Montserrat', sans-serif;
+    background-color: #78c093;
+    border-radius: 0.625rem;
+    box-shadow: 0rem 0.125rem 0.625rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    max-width: 66.5rem;
+    margin: 1.25rem;
+    position: relative;
+  }
+  
+  .box-header {
+    background-color: #78c093;
+    padding: 1.5rem;
+    display: flex;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .box-title {
+    color: rgb(72, 69, 69);
+    font-size: 2.5rem;
+    font-family: var(--title-font);
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+  }
+  
+  .box-body {
+    padding: 1.5rem;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .box-description {
+    font-size: 1.5rem;
+    font-family: var(--body-font);
+    margin: 0 0 1.5rem;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .box-button {
+    background-color: rgba(96, 247, 164, 0.756);
+    border: none;
+    border-radius: 99em;
+    color: white;
+    cursor: pointer;
+    font-size: 1.125rem;
+    font-family: var(--body-font);
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  
+  .box-button:hover {
+    background-color: var(--button-hover-color);
+  }
+
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contents > .box1 {
+    flex: 1;
+    align-self: start;
+  }
+  .contents > .roller {
+    flex: 2;
+  }
+  .lab-text1 {
+    color: rgb(72, 69, 69);
+    font-size: 1.2rem;
+    font-family: var(--title-font);
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+  }

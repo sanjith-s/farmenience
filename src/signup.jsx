@@ -14,7 +14,11 @@ import {
   Stepper,
   Step,
   StepLabel,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
@@ -23,8 +27,13 @@ function Signup() {
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
+
+  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const nextStep = () => {
     if (activeStep < 2)
@@ -333,9 +342,20 @@ function Signup() {
                 password
               </Typography>
               <Input
-                type="password"
+                type={showPassword1 ? 'text' : 'password'}
                 name="password"
                 value={signupdata.password}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword1}
+                      edge="end"
+                    >
+                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -347,9 +367,20 @@ function Signup() {
                 confirm password
               </Typography>
               <Input
-                type="password"
+                type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
                 value={signupdata.confpass}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword2}
+                      edge="end"
+                    >
+                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>

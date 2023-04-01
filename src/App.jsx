@@ -72,7 +72,7 @@ import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
 import Web from "./Web";
 import Voicetotext from "./Voicetotext";
-import PdfPrint from "./pdfPrint";
+import PdfPrint from "./PdfPrint";
 
 function displayNavbar() {
   const token = Cookies.get("token");

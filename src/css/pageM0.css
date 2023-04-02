@@ -69,10 +69,10 @@
   }
   .contents > .box1 {
     flex: 1;
-    align-self: start;
   }
   .contents > .roller {
     flex: 2;
+    aspect-ratio: 3/1;
   }
   .lab-text1 {
     color: rgb(72, 69, 69);
@@ -80,3 +80,4 @@
     font-family: var(--title-font);
     text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
   }
+  

@@ -1,11 +1,14 @@
-// import React from 'react';
+import React from 'react'
+import BackImg from "../components/homepageBackground.png";
+import "../css/pageM0.css"
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import {  ShoppingCart, Room } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { Stack, Box, Avatar, Button, Tab, Tabs } from '@mui/material';
-
+import { AspectRatio } from "@mui/icons-material";
 import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -86,13 +89,12 @@ function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <List>
-                    <marquee direction="down">
+                    <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={()=>{document.getElementById("roller1").stop()}} onMouseOut={()=>{document.getElementById("roller1").start()}} >
                     {ordersData.map((order, index) => (
                         <React.Fragment key={index}>
                             <ListItem>
                                 <Room fontSize="small" />
-                                <ListItemText primary={`Order No: ${order.orderNo}`} />
+                                <ListItemText primary={`Order No: ${order.orderNo}`} /> 
                             </ListItem>
                             <ListItem>
                                 <Room fontSize="small" />
@@ -104,11 +106,10 @@ function BasicTabs() {
                         </React.Fragment>
                     ))}
                     </marquee>
-                </List>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <List>
-                    <marquee direction="down">
+                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
                     {saleRequestsData.map((request, index) => (
                         <ListItem key={index}>
                             <ListItemIcon className={useStyles.listItemIcon}>
@@ -141,9 +142,6 @@ function BasicTabs() {
     );
 }
 
-import React from 'react'
-import BackImg from "../components/homepageBackground.png";
-import "../css/pageM0.css"
 function pageM0() {
     return (
         <div style={{ backgroundColor: "#E5FDD1" }}>
@@ -175,4 +173,4 @@ function pageM0() {
     )
 }
 
-export default pageM0
+export default pageM0;

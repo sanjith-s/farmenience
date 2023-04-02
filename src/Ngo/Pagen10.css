@@ -1,17 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
 
-.head-text {
-    font-weight: 600;
-    font-size: 3.125rem;
-    margin-bottom: 3%;
-    background-image: conic-gradient(#C0B236, #00c2cb, #C0B236);
-    color: transparent;
-    background-clip: text;
-    font-family: 'Tilt Neon', cursive;
-    -webkit-background-clip: text;
-    /* animation: forming 5s 1; */
-}
+
 
 .in-text {
     font-weight: 900;
@@ -24,101 +14,26 @@
     transition: 2s;
 }
 
-.in-text:hover {
-    color:rgb(54, 79, 72);
-}
-.tabs-head {
-    color:red;
-}
-.MuiTabs-indicator {
-    color:green;
-    background-color:darkgreen;
-}
-.lab-text {
-    color:#654062;
-}
-.boxes {
-    /* animation: floating 4s infinite ; */
-}
 
 .links {
-    color:gray;
+    color:black;
     font-weight: 500;
     text-decoration: none;
 }
 
-.shower:hover .texts-box {
-    animation-play-state: paused;
-}
-.texts-box:hover {
-    text-decoration: underline;
-}
 .texts-box {
-    /* animation: movingTopToBottom 5s linear infinite; */
     position: relative;
     display: inline-block;
     margin-top: 2%;
 }
 
- @keyframes Glowing {
-    0% {
-    background: radial-gradient(#36AE7C, #ADCF9F);
-    }
-    100% {
-    background: radial-gradient(#ADCF9F, #36AE7C);
-    }
- }
-@keyframes movingTopToBottom {
-    0% {
-      top: -5.938rem;
-    }
-    95% {
-      top: 9.375rem;
-    }
-    100% {
-      top: 10.31rem;
-    }
-}
 .shower {
     overflow: hidden;
     text-align: left;
     width: 50%;
 }
-@keyframes scroller {
-    0% {margin-top: 0%;}
-    100% {margin-top:80%}
-}
-@keyframes floating {
-    0% {width: 12.5rem;}
-    50% {width: 11.875rem;}
-    100% {width: 12.5rem;}
-}
 
-@keyframes forming {
-    10% {font-size: 1.25rem;}
-    40% { font-size: 3.125rem; }
-    80% { font-size: 2.3rem; }
-    100% {font-size: 3.125rem;}    
-}
-@keyframes forming2 {
-    0% { font-size: 1.25rem; }
-    50% { font-size: 0.9rem;}
-    100% {font-size: 1.25rem;}    
-}
 /* @keyframes reveal {
     0% {}
     100% {font-weight: 600;}
 } */
-
-@keyframes slidein {
-    0% { margin-left:-50rem; }
-    20% { margin-left:-50rem; }
-    35% { margin-left:0rem; }
-    100% { margin-left:0rem; }
-}
-
-@keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: red; }
-}

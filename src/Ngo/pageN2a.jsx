@@ -14,34 +14,11 @@ const PageN2 = () => {
   const navigate = useNavigate();
   const id = location.state.id;
   const oldQuery = location.state.oldQuery;
+  const data=location.state.data;
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setQuery(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-    console.log(query);
-  }, []);
+  
 
   const [subject, setSubject] = useState(query.subject);
   const [desc, setDesc] = useState(query.description);
@@ -135,7 +112,7 @@ const PageN2 = () => {
     <div style={{ boxSizing: "borderBox" }}>
       <Stack>
         <Container>
-          <QueryDetails query={query} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
+          <QueryDetails query={data} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
         </Container>
       </Stack>
       <Dialog open={open} onClose={handleClose}>

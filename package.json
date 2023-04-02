@@ -28,7 +28,9 @@
     "express": "^4.18.2",
     "filepond": "^4.30.4",
     "filepond-plugin-file-validate-type": "^1.2.8",
+    "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.1",
+    "jspdf": "^2.5.1",
     "material-react-table": "^1.8.1",
     "moment": "^2.29.4",
     "mongoose": "^6.7.2",
@@ -49,7 +51,7 @@
     "react-to-print": "^2.14.11",
     "react-window": "^1.8.8",
     "recharts": "^2.2.0",
-    "sweetalert2": "^11.7.3",
+    "sweetalert2": "^11.4.8",
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },

@@ -88,12 +88,12 @@ const PageM6 = () => {
       <span className="title">Sell Products</span>
       {count.map(ele=>{
               return ( 
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
-      >
+        <Stack
+          direction="row"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+        >
         <Container
           sx={{
             bgcolor: "#D9D9D9;",
@@ -131,17 +131,20 @@ const PageM6 = () => {
              }}
              inputProps={{ 
                minLength: 1,
-               maxLength: 12 
+               maxLength: 25
              }}
              />
              <TextField
              id="price"
+             type="number"
              label="Price"
              variant="filled"
              color="success"
              onChange={handleAllChange}
              InputProps={{
                endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+               min: 1,
+               max: 200
              }}
              sx={{
                backgroundColor: "#C4E1C5",
@@ -151,9 +154,12 @@ const PageM6 = () => {
              />
              <TextField
              id="quan"
+             type="number"
              onChange={handleAllChange}
              InputProps={{
                endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+               min: 1,
+               max: 10
              }}
              label="Quantity"
              variant="filled"
@@ -175,53 +181,57 @@ const PageM6 = () => {
                borderBottomColor: "black",
                width: "70%",
              }}
+             inputProps={{ 
+              minLength: 1,
+              maxLength: 20 
+            }}
              />
       
-    </React.Fragment>
-        </Container>
-        <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={()=>{setOpen(false)}}
-        aria-describedby="alert-dialog-slide-description"
+        </React.Fragment>
+          </Container>
+          <Dialog
+          open={open}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={()=>{setOpen(false)}}
+          aria-describedby="alert-dialog-slide-description"
         >
         <DialogTitle>CONFIRM?</DialogTitle>
         <DialogContent>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>Product Name</TableCell>
-            <TableCell>{name}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Price</TableCell>
-            <TableCell>{price}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Quantity</TableCell>
-            <TableCell>{quantity}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Type</TableCell>
-            <TableCell>{type}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2} rowSpan={2}>
-          <img
-              src={file}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            /></TableCell>
-          </TableRow>
-           </TableBody>
-           </Table>
-          </TableContainer>
+        <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 200 }} aria-label="simple table">
+          <TableBody>
+            <TableRow>
+              <TableCell>Product Name</TableCell>
+              <TableCell>{name}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Price</TableCell>
+              <TableCell>{price}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Quantity</TableCell>
+              <TableCell>{quantity}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Type</TableCell>
+              <TableCell>{type}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell colSpan={2} rowSpan={2}>
+            <img
+                src={file}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "fill",
+                  borderRadius: "50px",
+                }}
+              /></TableCell>
+            </TableRow>
+            </TableBody>
+            </Table>
+            </TableContainer>
             
         </DialogContent>
         <DialogActions>

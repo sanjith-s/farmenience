@@ -22,6 +22,10 @@ import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
 import Page10Nav from "../components/page10Nav";
+import Axios from "axios";
+import { baseURL } from "../constants";
+import { useEffect, useState } from "react";
+
 const data = [
   {
     market: "Market name",
@@ -30,6 +34,7 @@ const data = [
     rate: 3,
   },
 ];
+
 const marketData = [
   {
     sellerName: "full name",
@@ -44,6 +49,33 @@ const marketData = [
 const PageM10a = () => {
   const location = useLocation();
   
+  const [market, setMarket] = useState([]);
+
+  const handleGetMarkets = () => {
+    Axios.get("http://localhost:5000/buyer/getmarkets")
+    .then((res) => {
+      const hell = res.data.message;
+      setMarket(hell);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+useEffect(()=> {
+  handleGetMarkets();
+}, []);
+
+const list_of_markets = market.map((val) => {
+    return(
+      <div>
+        <br/>
+        <span>{val.name}</span>
+        <span>{val.location}</span>
+        <button> View Market </button>
+      </div>
+    );
+})
+
   return (
     <Container
       style={{
@@ -246,6 +278,7 @@ const PageM10a = () => {
           );
         })}
       </Card>
+      {list_of_markets}
     </Container>
   );
 };

@@ -165,6 +165,15 @@ function pageM0() {
                         <button className="box-button">{"View"}</button>
                     </div>
                 </div>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sales"}</span>
+                    </div>
+                    <div className="box-body">
+                        <p className="box-description">{"See a list of sales you have done"}</p>
+                        <button className="box-button">{"View"}</button>
+                    </div>
+                </div>
                 <div className="roller box1">                    
                         <BasicTabs />
                 </div>

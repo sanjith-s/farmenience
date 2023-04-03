@@ -114,7 +114,7 @@ function PageM4() {
       (imgProperties.height * pdfWidth) / imgProperties.width;
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('print.pdf');
+    pdf.save('Receipt.pdf');
   };
 
   const [open, setOpen] = useState(false);

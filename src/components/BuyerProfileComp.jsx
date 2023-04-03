@@ -10,7 +10,7 @@ import {
 
 const itemsName = [
     "Name: ",
-    "Aadhaar Card Number: ",
+    "Aadhaar Number: ",
     "Phone Number: ",
     "Address Line 1: ",
     "Address Line 2: ",

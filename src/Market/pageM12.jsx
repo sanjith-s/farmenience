@@ -17,7 +17,7 @@ import BasketBox2 from "../components/basketBox2";
 import BasketBox3 from "../components/basketBox3";
 import ShareIcon from "@mui/icons-material/Share";
 
-import {baseURL} from "../constants";
+import { baseURL } from "../constants";
 
 import {
   Card,
@@ -66,9 +66,6 @@ const salesItems = [
 ];
 
 const steps = ["address", "order summary", "payment"];
-
-
-
 
 function PageM12() {
   const userDataHandler = (userName, address, number) => {
@@ -148,33 +145,32 @@ function PageM12() {
     setPaymentMethod(method);
   };
 
-
   const items = [
     { pid: 1, quantity: 3 },
     { pid: 2, quantity: 1 },
   ]
 
-  const makePayment =() => {
+  const makePayment = () => {
     fetch(`${baseURL}/createPayment`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: "test@farm.com",
-      cart: items,
-    }),
-  })
-    .then(res => {
-      if (res.ok) return res.json()
-      return res.json().then(json => Promise.reject(json))
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "test@farm.com",
+        cart: items,
+      }),
     })
-    .then(({ url }) => {
-      window.location = url
-    })
-    .catch(e => {
-      console.error(e.error)
-    })
+      .then(res => {
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      })
+      .then(({ url }) => {
+        window.location = url
+      })
+      .catch(e => {
+        console.error(e.error)
+      })
   }
 
   return (
@@ -244,12 +240,12 @@ function PageM12() {
                     top: "10px",
                     right: "10px",
                     // fontWeight: "600",
-                    borderRadius:"50%",
-                    height:"60px",
-                    width:"10px",
+                    borderRadius: "50%",
+                    height: "60px",
+                    width: "10px",
                   }}
                 >
-                <ThumbUpAltIcon style={{width:"30px",height:"30px"}} />
+                  <ThumbUpAltIcon style={{ width: "30px", height: "30px" }} />
                 </Button>
               </Box>
             )}
@@ -271,12 +267,12 @@ function PageM12() {
                       top: "10px",
                       right: "10px",
                       // fontWeight: "600", 
-                      borderRadius:"50%",
-                      height:"60px",
-                      width:"10px",
+                      borderRadius: "50%",
+                      height: "60px",
+                      width: "10px",
                     }}
                   >
-                    <EditIcon style={{width:"30px",height:"30px"}} /> 
+                    <EditIcon style={{ width: "30px", height: "30px" }} />
                   </Button>
                 )}
               </Box>

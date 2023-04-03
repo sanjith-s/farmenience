@@ -403,7 +403,7 @@ function BuyerRequestDetails(props) {
             fontWeight: "600",
             fontSize: "17px",
             backgroundColor: "green",
-            position: "absolute",
+            // position: "absolute",
             top: "20px",
             left: "20px",
           }}

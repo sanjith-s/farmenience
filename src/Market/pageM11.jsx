@@ -13,6 +13,8 @@ import {
   Box,
   Container,
   CssBaseline,
+  Divider,
+  TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
@@ -100,7 +102,7 @@ const PageM11 = () => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
 
   const [ngoType, setNgoType] = useState([]);
   const handleNGOtype = (option) => {
@@ -117,113 +119,110 @@ const PageM11 = () => {
   });
 
   return (
-    <Container
-      style={{
-        padding: "15px 0px",
-        backgroundColor: "transparent",
-        display: "flex",
-        flexDirection: "column",
-        rowGap: "15px",
-      }}
-    >
-      <CssBaseline />
-      <Typography
-        variant="h3"
-        style={{
-          textAlign: "center",
-          textTransform: "uppercase",
-        }}
-      >
-        market place
-      </Typography>
-      <CardActions
-        style={{
+    <div style={{
+    }}>
+      <Container
+        className="check"
+        sx={{
+          padding: "15px 0px",
+          display: "flex",
           width: "100%",
-          backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          border: "2px solid #555555",
+          flexDirection: "column",
+          rowGap: "15px",
         }}
       >
-        <FormControl
+        <CssBaseline />
+        <Typography
+          variant="h3"
           style={{
-            width: "100%",
-            height: "48px",
+            textAlign: "center",
+            textTransform: "uppercase",
           }}
         >
-          <Input
-            style={{ height: "40px", fontSize: "25px" }}
-            id="input-with-icon-adornment"
-            startAdornment={
-              <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
-              </InputAdornment>
-            }
-            endAdornment={
-              <InputAdornment position="start">
-                <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
-                </IconButton>
-                <IconButton>
-                  <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
-                  />
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-      </CardActions>
-
-      <CardActions
-        style={{
-          width: "100%",
-          backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          padding: "0px",
-        }}
-      >
-        <CardActionArea style={{ width: "100%" }}>
-          <Button
+          market place
+        </Typography>
+        <CardActions
+          style={{
+            width: "100%",
+          }}
+        >
+          <FormControl
             style={{
-              display: "flex",
-              columnGap: "20px",
-              color: "green",
               width: "100%",
-              alignItems: "center",
+              height: "3rem",
             }}
           >
-            <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
-              sort
-            </Typography>
-          </Button>
-        </CardActionArea>
-        <CardActionArea style={{ width: "100%" }}>
-          <Button
-            style={{
-              display: "flex",
-              columnGap: "20px",
-              color: "green",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
-              filter
-            </Typography>
-          </Button>
-        </CardActionArea>
-      </CardActions>
+            <Input
+              style={{
+                height: "2.5rem",
+                fontSize: "1.5625rem",
+              }}
+              id="input-with-icon-adornment"
+              placeholder="Search here"
+              startAdornment={
+                <InputAdornment position="start">
+                  <SearchIcon style={{ color: "green", fontSize: "2.1875rem" }} />
+                </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment position="start">
+                  <IconButton>
+                    <MicIcon style={{ color: "green", fontSize: "2.1875rem" }} />
+                  </IconButton>
+                  <IconButton>
+                    <PhotoCameraIcon
+                      style={{ color: "green", fontSize: "2.1875rem" }}
+                    />
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </CardActions>
 
-      <Card
-        style={{
-          border: "5px solid darkgreen",
-          borderRadius: "3px",
-          backgroundColor: "#86fe9ede",
-          margin: "16px 0px",
-        }}
-      >
+        <CardActions
+          style={{
+            width: "100%",
+            borderRadius: "8px",
+            padding: "0px",
+          }}
+        >
+          <CardActionArea style={{ width: "100%" }}>
+            <Button
+              style={{
+                display: "flex",
+                columnGap: "20px",
+                color: "green",
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              <SortIcon />
+              <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+                sort
+              </Typography>
+            </Button>
+          </CardActionArea>
+          <Divider orientation="vertical" />
+          <CardActionArea style={{ width: "100%" }}>
+            <Button
+              style={{
+                display: "flex",
+                columnGap: "20px",
+                color: "green",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <FilterListIcon />
+              <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+                filter
+              </Typography>
+            </Button>
+          </CardActionArea>
+        </CardActions>
+        <Divider orientation="horizontal" />
+
         <Box
           sx={{
             padding: "40px",
@@ -246,8 +245,8 @@ const PageM11 = () => {
             );
           })}
         </Box>
-      </Card>
-    </Container>
+      </Container>
+    </div>
   );
 };
 

@@ -1,9 +1,11 @@
-import React , {useState,useRef} from "react";
+import React , {useState,useRef, useEffect} from "react";
 import SalesCardsList from "../components/salesCardsList";
 import SalesItemsList from "../components/salesItemsList";
 import { CssBaseline, Typography,Box,Container,Stack,Divider } from "@mui/material";
 import {useLocation } from "react-router-dom";
-
+import Cookies from "js-cookie";
+import Axios from "axios";
+import { baseURL } from '../constants';
 
 const orders = [
   {
@@ -145,7 +147,47 @@ function PageM3(props) {
   // else{
   //   productDetails = salesDetails.filter( product => { return product.items.includes(selected) } );
   // }
- 
+  
+  const [hello, setHello] = useState([]);
+
+  const someThing = () => {
+    // let token = Cookies.get()
+    Axios.get("http://localhost:5000/seller/getsales").then((response) => {
+        const hell = response.data.message;
+        // const hell = response.data.message;
+        console.log(typeof(hell));
+        setHello(hell);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+  
+  useEffect(() => {
+    someThing();
+  }, []);
+
+  const listOfSales = hello.map((val) => {
+    return (
+      <div>
+        <br></br>
+        <span>Consumer Name : {val.clientName} </span>
+        <br/>
+        <span>Order Date : {val.orderDate} </span>
+        <br/>
+        <span>Delivery Date : {val.deliveryDate} </span>
+        <br/>
+        <span>Items : {val.items.map((v) => {
+            return(
+            <>
+              <span>{v.name}</span>
+              <span></span>
+            </>
+            );
+        })} </span>
+      </div>
+    );
+  })
+
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
@@ -153,10 +195,10 @@ function PageM3(props) {
         textAlign="center"
         variant="h3"
         sx={{ display: "block", padding: "10px", fontWeight: "600" }}
-      >
+        >
         SALES DETAILS
       </Typography>
-
+            
       <Stack
         spacing={4}
         direction="row"
@@ -276,6 +318,7 @@ function PageM3(props) {
           <SalesCardsList cards={productDetails} all={salesDetails} isFilt={filt}/>
         </Box>
       </Stack>
+      {listOfSales}
     </Container>
   );
 }

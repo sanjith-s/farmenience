@@ -354,7 +354,7 @@ function BuyerRequestDetails(props) {
             textTransform: "uppercase",
           }}
         >
-          Quantity
+          Status
         </Typography>
         <Typography
           style={{
@@ -365,7 +365,7 @@ function BuyerRequestDetails(props) {
             borderRadius: "0.19rem",
           }}
         >
-          {props.itemQuantity}
+          {props.status}
         </Typography>
       </CardContent>
       <CardActions

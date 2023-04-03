@@ -30,6 +30,8 @@ import Divider from "@mui/material/Divider";
 
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { baseURL } from "../constants";
+import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
@@ -53,16 +55,33 @@ const PageM6 = () => {
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-  const [name,setName] = useState();
-  const [price,setPrice] = useState();
-  const [quantity,setQuantity] = useState();
-  const [type,setType] = useState();
+  const [name,setName] = useState('');
+  const [price,setPrice] = useState('');
+  const [quantity,setQuantity] = useState('');
+  const [type,setType] = useState('');
   const handleAllChange = ()=>{
       setName(document.querySelector("#p-name").value);
       setPrice(document.querySelector("#price").value);
       setQuantity(document.querySelector("#quan").value);
       setType(document.querySelector("#type").value);
   }
+
+  const handleSubmit = async() => {
+      // alert(name + price + quantity + type);
+      await Axios.post(`${baseURL}/seller/postsellerproducts`, {
+        productName: name,
+        price: price,
+        quantity: quantity,
+        type: type
+      }).then(async (res) => {
+          alert("SUCCESS");
+          console.log("Successfully added seller's products", res);
+      }).catch((err) => {
+        alert("FAILURE");
+        console.log(err);
+      })
+  }
+
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
@@ -294,7 +313,8 @@ const PageM6 = () => {
         </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
-        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        {/* <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}> */}
+        <Button onClick={handleSubmit} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}

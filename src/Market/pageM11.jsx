@@ -15,7 +15,7 @@ import {
   CssBaseline,
 } from "@mui/material";
 import TextField from '@mui/material/TextField';
-import {Stack} from "@mui/material";
+import { Stack } from "@mui/material";
 import PropTypes from 'prop-types';
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
@@ -31,11 +31,8 @@ import FormLabel from '@mui/material/FormLabel';
 import { padding } from "@mui/system";
 import { Label } from "recharts";
 
-
-
-
 const PageM11 = () => {
-  const [content,setContent] = useState([
+  const [content, setContent] = useState([
     {
       product: "promegranate",
       count: 4,
@@ -116,22 +113,22 @@ const PageM11 = () => {
   const [value, setValue] = React.useState(false);
   const handleChange1 = (event) => {
     setValue(event.target.value);
-    function compare2( a, b ) {
-      if ( a.price <= b.price ){
+    function compare2(a, b) {
+      if (a.price <= b.price) {
         return -1;
       }
       return 0;
     }
-    function compare1( a, b ) {
-      if ( a.price >= b.price ){
+    function compare1(a, b) {
+      if (a.price >= b.price) {
         return -1;
       }
       return 0;
     }
     if (value == 'PriceI') {
-      setContent(content.sort( compare1 ));
+      setContent(content.sort(compare1));
     } else {
-      setContent(content.sort( compare2 ));
+      setContent(content.sort(compare2));
     }
     setOpen(false);
   };
@@ -145,7 +142,7 @@ const PageM11 = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const filterPrice = (a,min,max) => {
+  const filterPrice = (a, min, max) => {
     if (a.price >= min && a.price <= max) {
       return true;
     }
@@ -154,8 +151,8 @@ const PageM11 = () => {
   const ApplyChange = () => {
     var min = document.getElementById("minPrice").value;
     var max = document.getElementById("maxPrice").value;
-    console.log(min,max);
-    setContent(copy.filter(f=>filterPrice(f,min,max)));
+    console.log(min, max);
+    setContent(copy.filter(f => filterPrice(f, min, max)));
     handleClose2();
   }
 
@@ -258,29 +255,29 @@ const PageM11 = () => {
         <Dialog onClose={handleClose} open={open}>
           <DialogTitle>Sort By</DialogTitle>
           <Box>
-          <FormControl>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={value}
-              onChange={handleChange1}
-            >
-              <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
-              <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
-            </RadioGroup>
-          </FormControl>
+            <FormControl>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={handleChange1}
+              >
+                <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
+                <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
+              </RadioGroup>
+            </FormControl>
           </Box>
         </Dialog>
         <Dialog onClose={handleClose2} open={open2}>
           <DialogTitle>Filter By</DialogTitle>
-          <Box sx={{padding:"8%"}}>
-          <FormControl>
-            <Stack spacing={3}>
-          <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  id="minPrice" placeholder="Minimum price"/>
-          <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}  id="maxPrice"   placeholder="Maximum price"/>
-          <Button onClick={ApplyChange}>Apply</Button>
-          </Stack>
-          </FormControl>
+          <Box sx={{ padding: "8%" }}>
+            <FormControl>
+              <Stack spacing={3}>
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
+                <Button onClick={ApplyChange}>Apply</Button>
+              </Stack>
+            </FormControl>
           </Box>
         </Dialog>
         <CardActionArea style={{ width: "100%" }}>
@@ -292,7 +289,7 @@ const PageM11 = () => {
               alignItems: "center",
               width: "100%",
             }}
-           onClick={()=>{setOpen2(true)}}
+            onClick={() => { setOpen2(true) }}
           >
             <FilterListIcon />
             <Typography style={{ fontSize: "18px", fontWeight: "600" }}>

@@ -57,10 +57,10 @@ function ProductDetails(props) {
                   padding: "0px",
                 }}
               >
-                sale name
+                ID
               </Typography>
               <Typography margin="0px" variant="h6">
-                xxxyyyzzz
+                {props.key}
               </Typography>
             </Box>
             {itemsName.map((value, index) => {

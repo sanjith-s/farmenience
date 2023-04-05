@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from "axios"
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
 import { Divider } from '@material-ui/core';
+import { baseURL } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -86,6 +90,83 @@ const saleRequestsData = [
 function SellerDashboard() {
     const classes = useStyles();
 
+    const [orders, setOrders] = useState([]);
+    const [requests, setRequests] = useState([]);
+    const [notifications, setNotifications] = useState([]);
+
+    const AxiosSet = () => {
+        let token = Cookies.get('token');
+        Axios.get(`${baseURL}/loadorders`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setOrders(response.data.message);
+            })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            });
+
+        Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setRequests(response.data.message);
+            })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            });
+
+        Axios.get(`${baseURL}/loadnotifications`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setNotifications(response.data.message);
+            })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            })
+    }
+
+    useEffect(() => {
+        AxiosSet();
+    }, []);
+
     return (
         <div className={classes.root}>
             <Grid container spacing={2}>
@@ -96,35 +177,34 @@ function SellerDashboard() {
                     </div>
                 </Grid>
                 {/* Order Details section */}
-<Grid item xs={12} md={4}>
-  <Paper className={`${classes.paper} ${classes.orderDetails}`}>
-    <Typography variant="h5">Order Details</Typography>
-    <List>
-      {ordersData.map((order, index) => (
-        <React.Fragment key={index}>
-          <ListItem>
-            <Room fontSize="small" />
-            <ListItemText primary={`Order No: ${order.orderNo}`} />
-          </ListItem>
-          <ListItem>
-            <Room fontSize="small" />
-            <ListItemText primary={`Destination: ${order.destination}`} />
-          </ListItem>
-          {index !== ordersData.length - 1 && (
-            <Divider variant="middle" />
-          )}
-        </React.Fragment>
-      ))}
-    </List>
-  </Paper>
-</Grid>
-
+                <Grid item xs={12} md={4}>
+                    <Paper className={`${classes.paper} ${classes.orderDetails}`}>
+                        <Typography variant="h5">Order Details</Typography>
+                        <List>
+                            {orders.map((order, index) => (
+                                <React.Fragment key={index}>
+                                    <ListItem>
+                                        <Room fontSize="small" />
+                                        <ListItemText primary={`Order No: ${order.orderNo}`} />
+                                    </ListItem>
+                                    <ListItem>
+                                        <Room fontSize="small" />
+                                        <ListItemText primary={`Destination: ${order.destination}`} />
+                                    </ListItem>
+                                    {index !== ordersData.length - 1 && (
+                                        <Divider variant="middle" />
+                                    )}
+                                </React.Fragment>
+                            ))}
+                        </List>
+                    </Paper>
+                </Grid>
 
                 <Grid item xs={12} md={4}>
                     <Paper className={`${classes.paper} ${classes.saleRequest}`}>
                         <Typography variant="h5">Sale Requests</Typography>
                         <List>
-                            {saleRequestsData.map((request, index) => (
+                            {requests.map((request, index) => (
                                 <ListItem key={index}>
                                     <ListItemIcon className={classes.listItemIcon}>
                                         <ShoppingCart fontSize="small" />
@@ -142,12 +222,12 @@ function SellerDashboard() {
                                                 <Typography variant="subtitle2">
                                                     Request Sender: {request.requestSender}
                                                 </Typography>
-                                                
+
                                             </React.Fragment>
                                         }
                                     />
                                 </ListItem>
-                                
+
                             ))}
                         </List>
                     </Paper>
@@ -157,7 +237,7 @@ function SellerDashboard() {
                     <Paper className={`${classes.paper} ${classes.notifications}`}>
                         <Typography variant="h5">Notifications</Typography>
                         <List>
-                            {notificationsData.map((notification, index) => (
+                            {notifications.map((notification, index) => (
                                 <ListItem key={index}>
                                     <ListItemIcon className={classes.listItemIcon}>
                                         <Notifications fontSize="small" />

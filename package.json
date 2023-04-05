@@ -28,6 +28,7 @@
     "express": "^4.18.2",
     "filepond": "^4.30.4",
     "filepond-plugin-file-validate-type": "^1.2.8",
+    "google-maps-react": "^2.0.6",
     "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.1",
     "jspdf": "^2.5.1",

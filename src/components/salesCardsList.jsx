@@ -6,7 +6,8 @@ import {Box,Grid,Typography} from "@mui/material";
 
 
 function SalesCardsList(props) {
-  var items = props.cards;
+  var items = props.all;
+  console.log(items);
   if (!props.isFilt) {
     items = props.all;
   }
@@ -33,9 +34,9 @@ function SalesCardsList(props) {
         style={{ padding: "0px" }}
       >
         {items.map((item) => (
-          <Grid item padding={2} key={item.id}>
+          <Grid item padding={2} key={item._id}>
             <SalesCard
-              key={item.id}
+              key={item._id}
               name={item.clientName}
               ordDate={item.orderDate}
               delDate={item.deliveryDate}

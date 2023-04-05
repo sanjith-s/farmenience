@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TransactionHistory from "../components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
+import Axios from "axios";
 
 function M17() {
   const buyerHistory = [
@@ -60,6 +61,35 @@ function M17() {
     },
   ];
 
+  let buyTransaction = [];
+
+  const [transaction, setTransaction] = useState([]);
+  const getTransactions = () => {
+      Axios.get("http://localhost:5000/buyer/gettransactions").then((res)=> {
+        const dat = res.data.message;
+        // setTransaction(dat);
+        dat.map((val) => {
+          buyTransaction.push(
+            {
+              ifscCode: val.IFSC,
+              transactionid:val.transactionTd,
+              paymentMethod: val.paymentMode,
+              bankName: val.bankName,
+              amount: val.amount,
+              sender: val.senderName,
+              receiver: val.recvName
+            }
+          )
+        })
+        setTransaction(buyTransaction)
+        alert(transaction[0].ifscCode);
+      }).catch((err)=> {console.log(err)});
+  }
+
+  useEffect(()=>{
+    getTransactions();
+  }, []); 
+
   return (
     <Card
       style={{
@@ -90,7 +120,7 @@ function M17() {
           display: "flex", justifyContent: "center", alignItems: "center"
         }}
       >
-        <TransactionHistory rows={buyerHistory} />
+        <TransactionHistory rows={transaction} />
       </Box>
     </Card>
   );

@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Details from "./components/FarmerProfileComp";
 import { Box, Typography, Avatar, Grid } from "@mui/material";
+import { baseURL } from '../src/constants';
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import Swal from 'sweetalert2';
 
 const content = [
   {
@@ -20,6 +24,33 @@ const content = [
 ];
 
 const FarmerProfile = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
   return (
     <Box
       sx={{
@@ -43,27 +74,22 @@ const FarmerProfile = () => {
       </Typography>
       <Grid container spacing={18} >
         <Grid container item xs={6} direction="column" >
-          {content.map((id, key) => {
-            return (
-              <Box>
-                <Details
-                  key={key}
-                  name={id.Name}
-                  aadhaar={id.Aadhaar}
-                  phone={id.Phone}
-                  address1={id.Address1}
-                  address2={id.Address2}
-                  citytown={id.Citytown}
-                  district={id.District}
-                  state={id.State}
-                  pincode={id.Pincode}
-                  email={id.Email}
-                  cropsgrown={id.CropsGrown}
-                  skills={id.Skills}
-                />
-              </Box>
-            );
-          })}
+
+          <Box>
+            <Details
+              name={data.name}
+              aadhaar={data.aadhaarno}
+              phone={data.phoneno}
+              address1={data.addline1}
+              address2={data.addline2}
+              citytown={data.city}
+              district={data.district}
+              state={data.state}
+              pincode={data.pincode}
+              email={data.email}
+            />
+          </Box>
+
         </Grid>
         <Grid container item xs={6} direction="column" >
           <Avatar

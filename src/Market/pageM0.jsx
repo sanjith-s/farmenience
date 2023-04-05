@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios"
+import { useNavigate } from "react-router-dom/dist";
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import { makeStyles } from '@material-ui/core/styles';
@@ -88,6 +89,7 @@ const saleRequestsData = [
 ];
 
 function SellerDashboard() {
+    const navigate = useNavigate();
     const classes = useStyles();
 
     const [orders, setOrders] = useState([]);

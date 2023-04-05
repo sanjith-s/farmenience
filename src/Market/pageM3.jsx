@@ -315,7 +315,7 @@ function PageM3(props) {
             Filtered details
           </Typography>
           <Divider flexItem />
-          <SalesCardsList cards={productDetails} all={salesDetails} isFilt={filt}/>
+          <SalesCardsList cards={productDetails} all={hello} isFilt={filt}/>
         </Box>
       </Stack>
       {listOfSales}

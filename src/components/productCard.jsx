@@ -14,7 +14,7 @@ import {
   Button,
 } from "@mui/material";
 
-function ProductCard() {
+function ProductCard(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);

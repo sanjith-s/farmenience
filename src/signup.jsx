@@ -66,7 +66,7 @@ function Signup() {
   };
 
   const submit = async (event) => {
-    { location.loaded ? alert(JSON.stringify(location)) : "Location data not available yet" }
+    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;

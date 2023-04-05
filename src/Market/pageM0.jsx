@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Axios from "axios"
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
@@ -88,9 +91,10 @@ function SellerDashboard() {
     const classes = useStyles();
 
     const [orders, setOrders] = useState([]);
+    const [requests, setRequests] = useState([]);
     const [notifications, setNotifications] = useState([]);
 
-    useEffect(() => {
+    const AxiosSet = () => {
         let token = Cookies.get('token');
         Axios.get(`${baseURL}/loadorders`, { headers: { tokenstring: token } }).
             then((response) => {
@@ -112,7 +116,29 @@ function SellerDashboard() {
                     })
                     navigate('../login')
                 }
+            });
+
+        Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setRequests(response.data.message);
             })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            });
 
         Axios.get(`${baseURL}/loadnotifications`, { headers: { tokenstring: token } }).
             then((response) => {
@@ -135,6 +161,10 @@ function SellerDashboard() {
                     navigate('../login')
                 }
             })
+    }
+
+    useEffect(() => {
+        AxiosSet();
     }, []);
 
     return (
@@ -174,7 +204,7 @@ function SellerDashboard() {
                     <Paper className={`${classes.paper} ${classes.saleRequest}`}>
                         <Typography variant="h5">Sale Requests</Typography>
                         <List>
-                            {saleRequestsData.map((request, index) => (
+                            {requests.map((request, index) => (
                                 <ListItem key={index}>
                                     <ListItemIcon className={classes.listItemIcon}>
                                         <ShoppingCart fontSize="small" />

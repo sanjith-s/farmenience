@@ -165,7 +165,7 @@ function PageM3(props) {
   useEffect(() => {
     someThing();
   }, []);
-
+/*
   const listOfSales = hello.map((val) => {
     return (
       <div>
@@ -187,7 +187,7 @@ function PageM3(props) {
       </div>
     );
   })
-
+*/
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
@@ -318,7 +318,6 @@ function PageM3(props) {
           <SalesCardsList cards={productDetails} all={hello} isFilt={filt}/>
         </Box>
       </Stack>
-      {listOfSales}
     </Container>
   );
 }

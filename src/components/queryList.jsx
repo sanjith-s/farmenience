@@ -192,8 +192,7 @@ function Query(props) {
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
-            type="email"
+            label="Response"
             fullWidth
             variant="standard"
             onChange={(e)=>{setResponse(e.target.value)}}

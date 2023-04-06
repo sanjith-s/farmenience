@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "../css/pageM12.css";
@@ -67,6 +67,12 @@ const salesItems = [
 
 const steps = ["address", "order summary", "payment"];
 
+const ConsumerName = createContext();
+const ConsumerAddress = createContext();
+const ConsumerNumber = createContext();
+const Quantities = createContext();
+const PaymentMethod = createContext();
+
 function PageM12() {
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
@@ -118,6 +124,13 @@ function PageM12() {
       setQuantity2(counter);
     }
   };
+
+  const [quantities, setQuantities] = useState([]);
+  useEffect(() => {
+    setQuantities(quantities => [...quantities, quantity1]);
+    setQuantities(quantities => [...quantities, quantity2]);
+  })
+
 
   let total = 0;
 
@@ -587,8 +600,21 @@ function PageM12() {
           )}
         </Card>
       </Box>
+
+      <ConsumerName.Provider value={consumerName}>
+        <ConsumerAddress.Provider value={consumerNumber}>
+          <ConsumerNumber.Provider value={consumerAddress}>
+            <Quantities.Provider value={quantities}>
+              <PaymentMethod.Provider value={paymentMethod}>
+              </PaymentMethod.Provider>
+            </Quantities.Provider>
+          </ConsumerNumber.Provider>
+        </ConsumerAddress.Provider>
+      </ConsumerName.Provider>
+
     </Container>
   );
 }
 
+export { ConsumerName, ConsumerAddress, ConsumerNumber, Quantities, PaymentMethod }
 export default PageM12;

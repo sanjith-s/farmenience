@@ -60,7 +60,7 @@ function M17() {
       receiver: "B",
     },
   ];
-
+  
   let buyTransaction = [];
 
   const [transaction, setTransaction] = useState([]);

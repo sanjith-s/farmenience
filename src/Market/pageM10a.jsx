@@ -65,6 +65,7 @@ useEffect(()=> {
   handleGetMarkets();
 }, []);
 
+/*
 const list_of_markets = market.map((val) => {
     return(
       <div>
@@ -75,7 +76,7 @@ const list_of_markets = market.map((val) => {
       </div>
     );
 })
-
+*/
   return (
     <Container
       style={{
@@ -182,7 +183,7 @@ const list_of_markets = market.map((val) => {
           border: "3px solid #000000",
         }}
       >
-        {(location.state ? location.state.dataList : data).map((val, index) => {
+        {(location.state ? location.state.dataList : market).map((val, index) => {
           return (
             <CardContent
               key={index}
@@ -211,13 +212,13 @@ const list_of_markets = market.map((val) => {
                     fontSize: "22px",
                   }}
                 >
-                  {val.market}
+                  {val.name}
                 </Typography>
                 <Typography
                   variant="boby1"
                   style={{ fontSize: "20px", fontWeight: "400" }}
                 >
-                  {val.distance}
+                  {val.distance.miles} Kilometers
                 </Typography>
               </Box>
               <Box
@@ -235,7 +236,7 @@ const list_of_markets = market.map((val) => {
                     fontSize: "22px",
                   }}
                 >
-                  {val.city}
+                  {val.location}
                 </Typography>
               </Box>
 
@@ -254,11 +255,7 @@ const list_of_markets = market.map((val) => {
                   <Link
                     to="/M10b"
                     state={{
-                      from: val.market,
-                      rate: val.rate,
-                      marketData: location.state
-                        ? location.state.marketData
-                        : marketData,
+                      market : val
                     }}
                     style={{ textDecoration: "none" }}
                   >
@@ -278,7 +275,7 @@ const list_of_markets = market.map((val) => {
           );
         })}
       </Card>
-      {list_of_markets}
+      {/* {list_of_markets} */}
     </Container>
   );
 };

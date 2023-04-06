@@ -14,8 +14,9 @@ import {
   Divider,
 } from "@mui/material";
 
-const PageM10c = () => {
+const PageM10c = (props) => {
   const location = useLocation();
+  const data = location.state?.data;
   return (
     <Container
       style={{
@@ -29,7 +30,7 @@ const PageM10c = () => {
       <CssBaseline />
       <Box>
         <Page10Nav
-          title={location.state ? location.state.store : "Store Name"}
+          title={data.name}
         />
       </Box>
       <Card style={{ padding: "18px", display: "flex", columnGap: "24px" }}>
@@ -50,7 +51,8 @@ const PageM10c = () => {
                 color: "#333",
               }}
             >
-              {location.state ? location.state.from : "Seller Name"}
+              {/* {location.state ? location.state.from : "Seller Name"} */}
+              {data.name}
             </Typography>
             <Typography
               style={{
@@ -60,9 +62,10 @@ const PageM10c = () => {
                 color: "#444",
               }}
             >
-              {location.state
+              {/* {location.state
                 ? location.state.branches.toString()
-                : "branch places"}
+                : "branch places"} */}
+                {data.location}
             </Typography>
           </Box>
           <Divider style={{ width: "98%" }} flexItem />
@@ -75,7 +78,7 @@ const PageM10c = () => {
                 color: "#555",
               }}
             >
-              {location.state ? location.state.content : "seller description"}
+              {data.sellerDesc}
             </Typography>
           </Box>
         </CardContent>

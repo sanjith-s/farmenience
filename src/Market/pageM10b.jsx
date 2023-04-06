@@ -23,20 +23,22 @@ import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Page10Nav from "../components/page10Nav";
 
-const data = [
-  {
-    sellerName: "full name",
-    storeName: "some store",
-    places: ["place1", "place2"],
-    rate: 2.5,
-    profile: "",
-    content: "sellers description",
-  },
-];
+// const data = [
+//   {
+//     sellerName: "full name",
+//     storeName: "some store",
+//     places: ["place1", "place2"],
+//     rate: 2.5,
+//     profile: "",
+//     content: "sellers description",
+//   },
+// ];
 
-const PageM10b = () => {
+const PageM10b = (props) => {
   const location = useLocation();
-
+  // const location = props.location.state
+  const data = location.state?.market;
+  console.log(data);
   return (
     <Container
       style={{
@@ -50,7 +52,7 @@ const PageM10b = () => {
       <CssBaseline />
       <Box>
         <Page10Nav
-          title={location.state ? location.state.from : "Market Name"}
+          title={data.name}
         />
       </Box>
       <CardActions
@@ -145,11 +147,11 @@ const PageM10b = () => {
           border: "3px solid #000000",
         }}
       >
-        {(location.state ? location.state.marketData : data).map(
+        {/* {(location.state ? location.state.marketData : data).map(
           (val, index) => {
-            return (
+            return ( */}
               <CardContent
-                key={index}
+                // key={index}
                 style={{
                   width: "100%",
                   backgroundColor: "#ffffff",
@@ -187,7 +189,7 @@ const PageM10b = () => {
                           paddingLeft: "20px",
                         }}
                       >
-                        {val.sellerName}
+                        {data.owner}
                       </Typography>
                     }
                   </Box>
@@ -211,7 +213,7 @@ const PageM10b = () => {
                         paddingLeft: "28px",
                       }}
                     >
-                      {val.storeName}
+                      {data.name}
                     </Typography>
                   </Box>
                 </Box>
@@ -223,7 +225,7 @@ const PageM10b = () => {
                     padding: "0px 20px",
                   }}
                 >
-                  <Rating value={val.rate} max={5} precision={0.5} readOnly />
+                  <Rating value={data.rating} max={5} precision={0.5} readOnly />
                 </Box>
 
                 <Box
@@ -241,11 +243,7 @@ const PageM10b = () => {
                     <Link
                       to="/M10c"
                       state={{
-                        from: val.sellerName,
-                        branches: val.places,
-                        store: val.storeName,
-                        profile: val.profile,
-                        content: val.content,
+                        data: data
                       }}
                       style={{ textDecoration: "none" }}
                     >
@@ -262,9 +260,9 @@ const PageM10b = () => {
                   </Button>
                 </Box>
               </CardContent>
-            );
+            {/* );
           }
-        )}
+        )} */}
       </Card>
     </Container>
   );

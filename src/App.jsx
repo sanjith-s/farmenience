@@ -74,6 +74,7 @@ import Web from "./Web";
 import Voicetotext from "./Voicetotext";
 import PdfPrint from "./PdfPrint";
 import LangTranslate from "./LangTranslate";
+import Vtt from "./Vtt";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -157,7 +158,8 @@ function App() {
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route path="/vtt1" element={<Voicetotext />} />
-            <Route path="/langtrans" element={<LangTranslate/>}/>
+            <Route path="/vtt" element={<Vtt/>} />
+            <Route path="/langtrans" element={<LangTranslate/>}/> 
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}

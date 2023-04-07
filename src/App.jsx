@@ -98,7 +98,7 @@ function App() {
   return (
     <div>
       {/* <N10Navbar/> */}
-      {displayNavbar()}
+      {/* {displayNavbar()} */}
       <main className="main-content">
 
         <BrowserRouter>

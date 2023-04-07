@@ -32,7 +32,8 @@ import { padding } from "@mui/system";
 import { Label } from "recharts";
 
 const PageM11 = () => {
-  const [content, setContent] = useState([
+
+  const defaultData  = [
     {
       product: "promegranate",
       count: 4,
@@ -40,37 +41,37 @@ const PageM11 = () => {
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "apple",
       count: 4,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "orange",
       count: 4,
       price: 32,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "banana",
       count: 4,
       price: 132,
       rate: 3,
     },
     {
-      product: "promegranate",
-      count: 4,
+      product: "banana",
+      count: 10,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
-      count: 4,
+      product: "apple",
+      count: 100,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "mango",
       count: 4,
       price: 732,
       rate: 3,
@@ -105,11 +106,30 @@ const PageM11 = () => {
       price: 230,
       rate: 3,
     },
-  ]);
+  ]
+
+  const [content, setContent] = useState(defaultData);
   const copy = content;
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
+
+
+  const handleSearch = (event) => {
+
+    let searchTerm = event.target.value.toLowerCase().trim()
+
+    console.log(searchTerm)
+
+    if(searchTerm.length==0) {
+      setContent(defaultData)
+    } else {
+      setContent(defaultData.filter((item)=> item.product.toLowerCase().includes(searchTerm)))
+    }
+    
+
+  };
+
   const [value, setValue] = React.useState(false);
   const handleChange1 = (event) => {
     setValue(event.target.value);
@@ -207,6 +227,7 @@ const PageM11 = () => {
           <Input
             style={{ height: "40px", fontSize: "25px" }}
             id="input-with-icon-adornment"
+            onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon style={{ color: "green", fontSize: "35px" }} />

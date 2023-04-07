@@ -6,7 +6,7 @@ function Page10Nav(props) {
   return (
     <Box
       sx={{
-        bgcolor: "#41d93e",
+        bgcolor: "#74e81c",
         padding: "5px",
         borderRadius: "5px",
         display: "flex",

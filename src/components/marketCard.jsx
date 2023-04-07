@@ -149,7 +149,7 @@ export default function MediaCard(props) {
         maxWidth: 345,
         borderRadius: "10px 15px",
         boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
-        backgroundColor:"whitesmoke"
+        background:"linear-gradient(white,#74e81c)"
       }}>
       <CardMedia
         sx={{ height: "200px" }}

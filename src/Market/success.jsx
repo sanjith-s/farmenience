@@ -22,6 +22,8 @@ const Success = () => {
   const conNumber = useContext(ConsumerNumber);
   const quantities = useContext(Quantities);
   const paymentMethod = useContext(PaymentMethod);
+  
+  console.log(conName);
 
   const navigate = useNavigate();
 

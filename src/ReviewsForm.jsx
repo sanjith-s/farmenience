@@ -40,10 +40,10 @@ const ReviewsForm = () => {
         return <Slide direction="up" ref={ref} {...props} />;
     });
 
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [mobno, setMobno] = useState();
-    const [review, setReview] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobno, setMobno] = useState("");
+    const [review, setReview] = useState("");
 
     const handleAllChange = () => {
         setName(document.querySelector("#p-name").value);
@@ -55,7 +55,7 @@ const ReviewsForm = () => {
 
     const postReview = async () => {
         let token = Cookies.get('token');
-
+        alert(review);
         await Axios.post(`${baseURL}/review`, {
           name: name,
           email: email,
@@ -64,7 +64,7 @@ const ReviewsForm = () => {
         }, { headers: { tokenstring: token } }).
           then(async (response) => {
             console.log(response);
-            if (response.data.message === 'Review Added !!') {
+            if (response.data.message === 'Review added !!') {
               await Swal.fire({
                 icon: 'success',
                 title: 'Meet Added !!',
@@ -74,7 +74,8 @@ const ReviewsForm = () => {
             }
           })
           .catch(async (res) => {
-            if (res.response.data.message === 'Error in connection') {
+            console.log(res);
+            if (res.response.data.message === 'Error in Connection') {
               await Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -225,7 +226,7 @@ const ReviewsForm = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={() => { setOpen(false); }}>Cancel</Button>
-                        <Button onClick={async () => { postReview(); }}>CONFIRM</Button>
+                        <Button onClick={async () => { setOpen(false);postReview(); }}>CONFIRM</Button>
                     </DialogActions>
                 </Dialog>
             </Stack>

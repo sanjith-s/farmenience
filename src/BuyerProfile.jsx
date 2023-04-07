@@ -44,13 +44,16 @@ function ProfilePage({ name, email, phoneNumber, location, homeAddress, city, st
               display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%",height:"max-content"
             }}>
             <Stack sx={{
-              display: "flex", alignItems: "center", justifyContent: "center", width: "15%"
+              display: "flex", alignItems: "center", justifyContent: "center", width: "25%"
             }}>
               <Typography variant='h6'>16</Typography>
               <Typography variant='subtitle1'>Products Purchased</Typography>
             </Stack>
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
-            <Button color="error" variant="contained" sx={{ width: "15%" }}>Logout</Button>
+            <Stack direction={"row"}  sx={{ width: "25%" }} spacing={1}>
+            <Button color="success" variant="contained">Edit Profile</Button>
+            <Button color="error" variant="contained">Logout</Button>
+            </Stack>
           </Box>
           <Typography variant='h4'>{name}</Typography>
           <Box sx={{boxShadow:"0px 0px 10px lightgrey",margin:"20%",padding:"2%",borderRadius:"10px 15px",marginBottom:"5%"}}>

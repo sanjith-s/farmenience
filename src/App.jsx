@@ -75,6 +75,7 @@ import Voicetotext from "./Voicetotext";
 import PdfPrint from "./PdfPrint";
 import LangTranslate from "./LangTranslate";
 import Vtt from "./Vtt";
+import Voice from "./Voice";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -160,6 +161,7 @@ function App() {
             <Route path="/vtt1" element={<Voicetotext />} />
             <Route path="/vtt" element={<Vtt/>} />
             <Route path="/langtrans" element={<LangTranslate/>}/> 
+            <Route path="/voice" element={<Voice/>}/>
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}

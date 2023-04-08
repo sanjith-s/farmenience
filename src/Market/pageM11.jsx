@@ -109,7 +109,7 @@ const PageM11 = () => {
   ]
 
   const [content, setContent] = useState(defaultData);
-  const copy = content;
+  //const copy = content;
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
@@ -118,8 +118,6 @@ const PageM11 = () => {
   const handleSearch = (event) => {
 
     let searchTerm = event.target.value.toLowerCase().trim()
-
-    console.log(searchTerm)
 
     if(searchTerm.length==0) {
       setContent(defaultData)
@@ -153,6 +151,10 @@ const PageM11 = () => {
     setOpen(false);
   };
 
+  const resetSort = () => {
+    setContent(defaultData);
+    setOpen(false);
+  }
   const handleSubmit = () => { };
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -172,7 +174,13 @@ const PageM11 = () => {
     var min = document.getElementById("minPrice").value;
     var max = document.getElementById("maxPrice").value;
     console.log(min, max);
-    setContent(copy.filter(f => filterPrice(f, min, max)));
+    setContent(defaultData.filter(f => filterPrice(f, min, max)));
+    handleClose2();
+  }
+
+  const resetFilter = () => {
+
+    setContent(defaultData);
     handleClose2();
   }
 
@@ -286,6 +294,7 @@ const PageM11 = () => {
                 <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
                 <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
               </RadioGroup>
+              <Button onClick={resetSort}>Reset Filter</Button>
             </FormControl>
           </Box>
         </Dialog>
@@ -294,9 +303,10 @@ const PageM11 = () => {
           <Box sx={{ padding: "8%" }}>
             <FormControl>
               <Stack spacing={3}>
-                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" value={100}/>
                 <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
                 <Button onClick={ApplyChange}>Apply</Button>
+                <Button onClick={resetFilter}>Reset Filter</Button>
               </Stack>
             </FormControl>
           </Box>

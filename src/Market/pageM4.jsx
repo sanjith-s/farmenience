@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import PriceTable from "../components/priceTable";
@@ -101,6 +101,27 @@ const billingAddress = "Room No: 30 , Kurinji Hostel , CEG , Anna University";
 
 function PageM4() {
 
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const printRef = useRef();
   const handleDownloadPdf = async () => {
     const element = printRef.current;
@@ -159,8 +180,10 @@ function PageM4() {
 
   return (
     <>
-      <Card>
-        <Box style={{ padding: "15px 0px" }}>
+      <Card id="google_translate_element">
+        <Box className="gx-d-flex justify-content-center" style={{ padding: "15px 0px" }} onClick={(e) => {
+            fullAnotherSpeak(e.target.innerText)
+          }}>
           <Typography
             variant="h4"
             style={{ fontWeight: "600", textTransform: "uppercase", textAlign: "center" }}

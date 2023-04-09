@@ -4,6 +4,28 @@ import { Typography, Box, Card } from "@mui/material";
 import Axios from "axios";
 
 function M17() {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const buyerHistory = [
     {
       ifscCode: "1xxx",
@@ -91,7 +113,9 @@ function M17() {
   }, []); 
 
   return (
-    <Card
+    <Card id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "20px 0px 30px 0px",
         margin: "30px 100px",
@@ -102,7 +126,7 @@ function M17() {
         boxShadow: 20,
       }}
     >
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Typography
           style={{
             textTransform: "uppercase",

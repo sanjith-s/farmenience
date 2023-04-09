@@ -66,7 +66,6 @@ import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
 import N10Navbar from "./components/n10Navbar";
 import { display } from "@mui/system";
-
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
 import PageMain from "./PageMain";
@@ -180,7 +179,7 @@ function App() {
 
 
       {/* <Footer1 /> */}
-      {displayFooter()}
+      {/* {displayFooter()} */}
     </div>
   );
 }

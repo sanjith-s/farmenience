@@ -12,7 +12,6 @@ function Voicetotext() {
             speakData.text = 'Hello I am Navaneeth';
             speakData.lang = 'en-US';
             speechSynthesis.speak(speakData);
-
         }
         else
         {

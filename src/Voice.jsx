@@ -1,24 +1,24 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 const Voice = () => {
-    const [value, setValue] = useState('');
+  const [value, setValue] = useState('');
   const { speak } = useSpeechSynthesis();
   const [isRecording, setisRecording] = useState(false);
-const [note, setNote] = useState(null);
-const [notesStore, setnotesStore] = useState([]);
-const storeNote = () => {
+  const [note, setNote] = useState(null);
+  const [notesStore, setnotesStore] = useState([]);
+  const storeNote = () => {
     setnotesStore([...notesStore, note]);
     setNote("");
   };
-const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-const microphone = new SpeechRecognition();
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+  const microphone = new SpeechRecognition();
 
-microphone.continuous = true;
-microphone.interimResults = true;
-microphone.lang = "en-US";
-useEffect(() => {
+  microphone.continuous = true;
+  microphone.interimResults = true;
+  microphone.lang = "en-US";
+  useEffect(() => {
     startRecordController();
   }, [isRecording]);
   const startRecordController = () => {
@@ -37,7 +37,7 @@ useEffect(() => {
     microphone.onstart = () => {
       console.log("microphones on");
     };
-  
+
     microphone.onresult = (event) => {
       const recordingResult = Array.from(event.results)
         .map((result) => result[0])
@@ -50,8 +50,8 @@ useEffect(() => {
       };
     };
   };
-    return (
-        <div>
+  return (
+    <div>
       <textarea
         value={value}
         onChange={(event) => setValue(event.target.value)}
@@ -78,7 +78,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Voice;

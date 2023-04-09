@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../css/pageN14.css';
 import Swal from 'sweetalert2'
 import { useLocation } from "react-router-dom";
@@ -18,6 +18,28 @@ import {
 import { baseURL } from '../constants';
 
 const PageN14a = () => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
@@ -103,14 +125,16 @@ const PageN14a = () => {
   };
 
   return (
-    <Container style={{ padding: "1.875rem 0rem" }}>
+    <Container style={{ padding: "1.875rem 0rem" }} id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}
       >
         VIEW APPOINTMENT
       </Typography>
-      <Box
+      <Box className="gx-d-flex justify-content-center"
         sx={{
           display: "flex",
           flexDirection: "column",

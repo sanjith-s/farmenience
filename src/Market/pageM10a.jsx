@@ -47,38 +47,62 @@ const marketData = [
 ];
 
 const PageM10a = () => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const location = useLocation();
-  
+
   const [market, setMarket] = useState([]);
 
   const handleGetMarkets = () => {
     Axios.get("http://localhost:5000/buyer/getmarkets")
-    .then((res) => {
-      const hell = res.data.message;
-      setMarket(hell);
-    }).catch((err) => {
-      console.log(err);
-    })
+      .then((res) => {
+        const hell = res.data.message;
+        setMarket(hell);
+      }).catch((err) => {
+        console.log(err);
+      })
   }
 
-useEffect(()=> {
-  handleGetMarkets();
-}, []);
+  useEffect(() => {
+    handleGetMarkets();
+  }, []);
 
-/*
-const list_of_markets = market.map((val) => {
-    return(
-      <div>
-        <br/>
-        <span>{val.name}</span>
-        <span>{val.location}</span>
-        <button> View Market </button>
-      </div>
-    );
-})
-*/
+  /*
+  const list_of_markets = market.map((val) => {
+      return(
+        <div>
+          <br/>
+          <span>{val.name}</span>
+          <span>{val.location}</span>
+          <button> View Market </button>
+        </div>
+      );
+  })
+  */
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "15px 0px",
         backgroundColor: "transparent",
@@ -88,7 +112,7 @@ const list_of_markets = market.map((val) => {
       }}
     >
       <CssBaseline />
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Page10Nav title={location.state ? location.state.from : "List"} />
       </Box>
       <CardActions
@@ -255,7 +279,7 @@ const list_of_markets = market.map((val) => {
                   <Link
                     to="/M10b"
                     state={{
-                      market : val
+                      market: val
                     }}
                     style={{ textDecoration: "none" }}
                   >

@@ -115,27 +115,29 @@ function Login() {
       >
         <Box>
           <Typography
-            variant="h4"
+            fontWeight={500}
+            fontSize={"35px"}
             style={{ textTransform: "uppercase", textAlign: "center" }}
           >
             login page
           </Typography>
         </Box>
 
-        <Box
+        <Box className="gradient"
           sx={{
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
             rowGap: "30px",
             width: "fit-content",
+            padding:"50px",
+            borderRadius:"20px"
+            
           }}
         >
           <Box sx={{ display: "flex", columnGap: "30px" }}>
-            <Typography
-              style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-            >
-              email
+            <Typography fontWeight={500} fontSize={"20px"}            >
+              Email
             </Typography>
             <Input
               type="email"
@@ -148,10 +150,10 @@ function Login() {
           <Box
             sx={{ display: "flex", columnGap: "30px", alignSelf: "flex-start" }}
           >
-            <Typography
-              style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+            <Typography fontWeight={500} fontSize={"20px"}
+             
             >
-              password
+              Password
             </Typography>
             <Input
               type={showPassword ? 'text' : 'password'}

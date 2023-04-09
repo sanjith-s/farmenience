@@ -24,6 +24,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
+    "cdbreact": "^1.5.11",
     "dayjs": "^1.11.7",
     "express": "^4.18.2",
     "filepond": "^4.30.4",

@@ -1,9 +1,6 @@
 import React from "react";
-
 import { useState, useRef } from "react";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Container from "@mui/material/Container";
 import Table from '@mui/material/Table';
 import Paper from '@mui/material/Paper';
@@ -66,24 +63,27 @@ const PageM6 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Sell Products</span>
+      <Typography fontWeight={700} fontSize={50} sx={{
+        alignItems:"center",
+        marginLeft:"600px"
+      }}>Sell Products</Typography>
       {count.map(ele=>{
               return ( 
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+        sx={{ height: "auto", width: "auto", marginTop: "30px",padding:"50px" }}
       >
         <Container
           sx={{
-            bgcolor: "#D9D9D9;",
+            // bgcolor: "#D9D9D9;",
             height: "100%",
             width: "60vw",
             borderRadius: "50px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-evenly",
+            // justifyContent: "space-evenly",
             alignItems: "center",
           }}
         >
@@ -106,9 +106,10 @@ const PageM6 = () => {
              value={name}
              onChange={handleAllChange}
              sx={{
-               backgroundColor: "#C4E1C5",
+               backgroundColor: "#a8f781",
                borderBottomColor: "black",
                width: "70%",
+               marginBottom:"20px"
              }}
              inputProps={{ 
                minLength: 1,
@@ -124,10 +125,12 @@ const PageM6 = () => {
              InputProps={{
                endAdornment: <InputAdornment position="end">₹</InputAdornment>,
              }}
+             
              sx={{
-               backgroundColor: "#C4E1C5",
+               backgroundColor: "#a8f781",
                borderBottomColor: "black",
                width: "70%",
+               marginBottom:"20px"
              }}
              />
              <TextField
@@ -140,9 +143,10 @@ const PageM6 = () => {
              variant="filled"
              color="success"
              sx={{
-               backgroundColor: "#C4E1C5",
+               backgroundColor: "#a8f781",
                borderBottomColor: "black",
                width: "70%",
+               marginBottom:"20px"
              }}
              />
              <TextField
@@ -152,9 +156,10 @@ const PageM6 = () => {
              onChange={handleAllChange}
              color="success"
              sx={{
-               backgroundColor: "#C4E1C5",
+               backgroundColor: "#a8f781",
                borderBottomColor: "black",
                width: "70%",
+               marginBottom:"20px"
              }}
              />
       
@@ -232,6 +237,7 @@ const PageM6 = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
+                marginTop:"90px"
               }}
             >
               <input
@@ -276,15 +282,15 @@ const PageM6 = () => {
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#1FE57A" }}>
+        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": {backgroundColor: "#78beff", }}}>
           Add Item
         </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#1FE57A" }}>
+        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f","&:hover": {backgroundColor: "#fa552f", } }}>
           Delete Item
         </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
-        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}

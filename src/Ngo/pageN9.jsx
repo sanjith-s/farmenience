@@ -157,6 +157,7 @@ function PageN9() {
           backgroundColor:"#e4ccff",
           padding:"40px",
           borderRadius:"20px",
+          boxShadow:20
         }}>
           <Typography variant="h5" component="h1" fontWeight={700}>Your Profile</Typography>
           <Stack direction="row" spacing={3}>

@@ -31,7 +31,7 @@ import "../css/footer.css";
 const Footer = () => {
 
     return (
-        <Container maxWidth={false} disableGutters style={{position:"sticky"}}>
+        <Container maxWidth={false} disableGutters style={{position:""}}>
             <Box
                 sx={{
                     display: "flex",
@@ -102,4 +102,4 @@ const Footer = () => {
     );
 };
 
-export default Footer
+export default Footer;

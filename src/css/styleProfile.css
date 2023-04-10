@@ -7,7 +7,7 @@
             paleturquoise 50%,
             paleturquoise 100%);
     display: flex;
-    align-items: center;
+    padding-top: 10%;
     justify-content: center;
 }
 
@@ -18,4 +18,12 @@
             white 40%,
             white 100%);
     box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.flex1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fitem1 {
+    width:"25%"
 }

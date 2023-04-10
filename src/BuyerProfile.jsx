@@ -1,16 +1,16 @@
-import { Avatar, Typography, Box, Grid, Paper, TextField } from '@material-ui/core';
+import { Avatar, Typography, Box, Grid, Paper, TextField,Divider } from '@material-ui/core';
 import { Button } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
-import { Email, Phone, LocationOn, Home, PinDrop, PermIdentity,Fingerprint } from '@material-ui/icons';
+import { Email, Phone, LocationOn, Home, PinDrop, PermIdentity,Fingerprint,AccountBalance } from '@material-ui/icons';
 import "./css/styleProfile.css";
 import { Stack } from '@mui/material';
 const c = {
   Name: "Yuvaraj Vetrivel",
   Aadhaar: "123456789000",
   Phone: "9129942399",
-  Address1: "Hostel",
-  Address2: "CEG",
-  Citytown: "Chennai",
+  Address1: "78/9 Nehru Street",
+  Address2: "West Tambaram",
+  Citytown: "Tambaram",
   District: "Chennai",
   State: "Tamilnadu",
   Pincode: "600000",
@@ -26,17 +26,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function ProfilePage({ name, email, phoneNumber, location, homeAddress, city, state, pincode, aadharNumber, profilePicture }) {
+function ProfilePage({ name, email, phoneNumber,line1,line2,district, homeAddress, city, state, pincode, aadharNumber, profilePicture }) {
   const classes = useStyles();
   return (
     <div className='backProfile'>
       <div className='profileBox' style={{
         width: "70%",
-        height:"57%",
+        height:"90%"
       }}>
         <Stack direction={"column"} spacing={1}
           sx={{
-            display: "flex", alignItems: "center", justifyContent: "center", position: "relative", bottom: "10%"
+            display: "flex", alignItems: "center", justifyContent: "center", position: "relative", bottom: "7%"
           }}
         >
           <Box
@@ -51,12 +51,11 @@ function ProfilePage({ name, email, phoneNumber, location, homeAddress, city, st
             </Stack>
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
             <Stack direction={"row"}  sx={{ width: "25%" }} spacing={1}>
-            <Button color="success" variant="contained">Edit Profile</Button>
             <Button color="error" variant="contained">Logout</Button>
             </Stack>
           </Box>
           <Typography variant='h4'>{name}</Typography>
-          <Box sx={{boxShadow:"0px 0px 10px lightgrey",margin:"20%",padding:"2%",borderRadius:"10px 15px",marginBottom:"5%"}}>
+          <Box sx={{boxShadow:"0px 0px 10px lightgrey",margin:"20%",padding:"2%",borderRadius:"10px 15px",marginBottom:"5%",width: "22%"}}>
           <Stack spacing={2}>
             <Stack direction={"row"} spacing={2}>
               <Email />
@@ -76,6 +75,18 @@ function ProfilePage({ name, email, phoneNumber, location, homeAddress, city, st
             </Stack>
           </Stack>
           </Box>
+          <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "22%" }}>
+                <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
+                  <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
+                  <Stack sx={{ padding: "1%" }} spacing={1}>
+                    <Typography>{line1}</Typography>
+                    <Typography>{line2}</Typography>
+                    <Typography>{city}</Typography>
+                    <Typography>{district} - {pincode}</Typography>
+                    <Typography>{state}</Typography>
+                  </Stack>
+                </Stack>
+              </Box>
         </Stack>
       </div>
     </div>
@@ -86,7 +97,7 @@ function ProfilePage({ name, email, phoneNumber, location, homeAddress, city, st
 export default function () {
   return (
     <>
-      <ProfilePage name={c.Name} email={c.Email} phoneNumber={c.Phone} city={c.Citytown} homeAddress={c.Address1} state={c.State} pincode={c.Pincode} aadharNumber={c.Aadhaar} profilePicture={c.src} />
+      <ProfilePage name={c.Name} email={c.Email} phoneNumber={c.Phone} city={c.Citytown} line1={c.Address1} line2={c.Address2} district={c.District} state={c.State} pincode={c.Pincode} aadharNumber={c.Aadhaar} profilePicture={c.src} />
     </>
   )
 }

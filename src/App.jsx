@@ -68,7 +68,7 @@ import N10Navbar from "./components/n10Navbar";
 import { display } from "@mui/system";
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
-import PageMain from "./PageMain";
+// import PageMain from "./PageMain";
 import Web from "./Web";
 import Voicetotext from "./Voicetotext";
 import PdfPrint from "./PdfPrint";
@@ -104,7 +104,7 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<PageMain />} />
+            {/* <Route path="/" element={<PageMain />} /> */}
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/aboutUsPage" element={<AboutUsPage />} />
@@ -172,7 +172,7 @@ function App() {
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />
             <Route path="/payments/cancel" element={<Cancel />} />
-            <Route path="/pdfprint" element={<PdfPrint/>}/>
+            <Route path="/pdfprint" element={<PdfPrint/>} />
           </Routes>
         </BrowserRouter>
       </main>

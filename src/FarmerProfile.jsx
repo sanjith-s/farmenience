@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Details from "./components/FarmerProfileComp";
 import { Box, Typography, Avatar, Grid } from "@mui/material";
 import { baseURL } from '../src/constants';
@@ -24,6 +24,28 @@ const content = [
 ];
 
 const FarmerProfile = () => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -52,7 +74,9 @@ const FarmerProfile = () => {
   }, []);
 
   return (
-    <Box
+    <Box id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -72,7 +96,7 @@ const FarmerProfile = () => {
       >
         Welcome Farmer
       </Typography>
-      <Grid container spacing={18} >
+      <Grid className="gx-d-flex justify-content-center" container spacing={18} >
         <Grid container item xs={6} direction="column" >
 
           <Box>

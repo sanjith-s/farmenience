@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
+import Axios from "axios"
+import Cookies from 'js-cookie';
 import MarketCard from "../components/marketCard";
 import {
   Card,
@@ -27,11 +30,43 @@ import Dialog from '@mui/material/Dialog';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { baseURL } from '../constants';
 import FormLabel from '@mui/material/FormLabel';
 import { padding } from "@mui/system";
 import { Label } from "recharts";
 
 const PageM11 = () => {
+
+  const [defaultData, setDefaultData] = useState([]);
+
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/buyer/loadproducts`, {
+      productName: ""
+    }, { headers: { tokenstring: token } })
+      .then((response) => {
+        setDefaultData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
+  const [content, setContent] = useState(defaultData);
 
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
@@ -54,82 +89,81 @@ const PageM11 = () => {
     document.body.appendChild(addScript);
   }, []);
 
-  const defaultData  = [
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "apple",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "orange",
-      count: 4,
-      price: 32,
-      rate: 3,
-    },
-    {
-      product: "banana",
-      count: 4,
-      price: 132,
-      rate: 3,
-    },
-    {
-      product: "banana",
-      count: 10,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "apple",
-      count: 100,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "mango",
-      count: 4,
-      price: 732,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 332,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 432,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 230,
-      rate: 3,
-    },
-  ]
+  // const defaultData = [
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "apple",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "orange",
+  //     count: 4,
+  //     price: 32,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "banana",
+  //     count: 4,
+  //     price: 132,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "banana",
+  //     count: 10,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "apple",
+  //     count: 100,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "mango",
+  //     count: 4,
+  //     price: 732,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 332,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 432,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 230,
+  //     rate: 3,
+  //   },
+  // ]
 
-  const [content, setContent] = useState(defaultData);
   //const copy = content;
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
@@ -140,12 +174,12 @@ const PageM11 = () => {
 
     let searchTerm = event.target.value.toLowerCase().trim()
 
-    if(searchTerm.length==0) {
+    if (searchTerm.length == 0) {
       setContent(defaultData)
     } else {
-      setContent(defaultData.filter((item)=> item.product.toLowerCase().includes(searchTerm)))
+      setContent(defaultData.filter((item) => item.product.toLowerCase().includes(searchTerm)))
     }
-    
+
 
   };
 
@@ -326,7 +360,7 @@ const PageM11 = () => {
           <Box sx={{ padding: "8%" }}>
             <FormControl>
               <Stack spacing={3}>
-                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" value={100}/>
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" value={100} />
                 <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
                 <Button onClick={ApplyChange}>Apply</Button>
                 <Button onClick={resetFilter}>Reset Filter</Button>

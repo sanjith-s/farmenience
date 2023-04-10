@@ -50,6 +50,7 @@ function Login() {
   };
 
   const LogMeIn = async (em, pass) => {
+
     try {
       let response = await Axios.post(`${baseURL}/login`, {
         email: em,
@@ -123,60 +124,9 @@ function Login() {
             login page
           </Typography>
         </Box>
-        <TextField id="filled-basic" label="Email" variant="filled" sx={{width:"400px"}} value={email} />
-        <TextField id="filled-basic" label="Password" variant="filled" type="password"sx={{width:"400px"}} value={password} />
-        <Box className="gradient"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            rowGap: "30px",
-            width: "fit-content",
-            padding:"50px",
-            borderRadius:"20px"
-            
-          }}
-        >
-          <Box sx={{ display: "flex", columnGap: "30px" }}>
-            <Typography fontWeight={500} fontSize={"20px"}            >
-              Email
-            </Typography>
-            <Input
-              type="email"
-              id="email"
-              value={email}
-              onChange={handleChange}
-            />
-          </Box>
-
-          <Box
-            sx={{ display: "flex", columnGap: "30px", alignSelf: "flex-start" }}
-          >
-            <Typography fontWeight={500} fontSize={"20px"}
-             
-            >
-              Password
-            </Typography>
-            <Input
-              type={showPassword ? 'text' : 'password'}
-              id="pwd"
-              value={password}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              onChange={handleChange}
-            />
-          </Box>
-        </Box>
-
+        <TextField onChange={(e)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" sx={{width:"400px"}} value={email} />
+        <TextField onChange={(e)=>{setPwd(e.target.value)}} id="filled-basic" label="Password" variant="filled" type="password"sx={{width:"400px"}} value={password} />
+       
         <Button
           variant="contained"
           onClick={() => LogMeIn(email, password)}

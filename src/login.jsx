@@ -5,7 +5,7 @@ import validator from "validator";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { Box, Button, Typography, Input, InputAdornment, IconButton } from "@mui/material";
+import { Box, Button, Typography, Input, InputAdornment, IconButton, Card ,TextField} from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
@@ -102,7 +102,7 @@ function Login() {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Box sx={{ margin: "30px" }}>
+    <Card sx={{ margin: "30px",padding:"20px",width:"665px", boxShadow:20, marginLeft:"420px" }}>
       <form
         onSubmit={submit}
         method="post"
@@ -119,10 +119,12 @@ function Login() {
             fontSize={"35px"}
             style={{ textTransform: "uppercase", textAlign: "center" }}
           >
+
             login page
           </Typography>
         </Box>
-
+        <TextField id="filled-basic" label="Email" variant="filled" sx={{width:"400px"}} value={email} />
+        <TextField id="filled-basic" label="Password" variant="filled" type="password"sx={{width:"400px"}} value={password} />
         <Box className="gradient"
           sx={{
             display: "flex",
@@ -182,33 +184,22 @@ function Login() {
           login
         </Button>
       </form>
-
-      <Box sx={{ position: "absolute", bottom: "110px", left: "20px" }}>
         <Button
           variant="contained"
           onClick={goToSignup}
           style={{ backgroundColor: "green" }}
+        sx={{
+          marginLeft:"663px",
+          marginTop:"20px"
+        }}
         >
           <Link to="/signup" style={{ textDecoration: "none" }}>
             <Typography style={{ color: "white" }}>signup</Typography>
           </Link>
         </Button>
-      </Box>
+      
 
-      <Box sx={{ position: "absolute", bottom: "110px", right: "20px" }}>
-        <Button
-          variant="contained"
-          onClick={goToHomepage}
-          style={{ backgroundColor: "green" }}
-        >
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Typography style={{ color: "white", fontWeight: "600" }}>
-              back to homepage
-            </Typography>
-          </Link>
-        </Button>
-      </Box>
-    </Box>
+    </Card>
   );
 }
 

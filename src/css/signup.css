@@ -31,9 +31,3 @@ body{
 .button:hover{
     background-color: white;
 }
-
-.gradient{
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #65efaa 0%, #6effdd 100%);
-
-}

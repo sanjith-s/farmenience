@@ -5,6 +5,7 @@ import PriceTable from "../components/priceTable";
 import ProductDetails from "../components/productDetails";
 import { Link, useLocation } from "react-router-dom";
 import { Col, Divider, Row, Table } from 'antd';
+import logo from "../images/logo_for_invoice.jpg";
 import Paper from '@mui/material/Paper';
 import {
   Box,
@@ -23,9 +24,8 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  TableHead
+  TableHead,
 } from "@mui/material";
-
 const itemsBought = [
   {
     sno: 1,
@@ -168,7 +168,6 @@ function PageM4() {
     filterItems = itemsBought.filter((value) => {
       if ((data.items).includes(value.item)) {
         return value;
-
       }
     });
 
@@ -201,7 +200,6 @@ function PageM4() {
             {location.state ? location.state.from : "sales"}
           </Typography>
         </Box>
-        <iframe id="ifmcontentstoprint" style={{height: "0px", width: "0px", position: "absolute"}}></iframe>
         <Box
           sx={{
             display: "flex",
@@ -410,29 +408,28 @@ function PageM4() {
             </Box>
           </CardContent>
         </Box>
-      </Card>{/* //ref={printRef} */}
-      <div style={{ padding: 20 }}>
-      <Row style={{display:"inline"}}>
-        <Col>
-          <Divider>Invoice</Divider>
-        </Col>
-      </Row>
-
-      <Row gutter={24} style={{marginTop: 32 }}>
+      </Card>
+      <div style={{ padding: 20,width:"80%",margin:"auto" }} ref={printRef}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <img src={logo} style={{width:"200px",objectFit:"cover",height:"50px",position:"relative",right:"2%"}} />
+      <span style={{width:"200px",fontWeight:"bolder",fontSize:"30px"}} >Invoice</span> 
+      <span style={{width:"200px"}} ></span> 
+      </div>
+      <Row gutter={39} style={{marginTop: 32 }}>
         <Col span={8}>
-        <table>
-            <tr>
+        <table style={{width:"60%"}}>
+            <tr style={{width:"40%"}}>
               <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Client Name </strong></th>
               <td>{data.clientName}</td>
             </tr>
-            <tr>
+            <tr style={{width:"40%"}}>
               <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Payment Mode </strong></th>
               <td>{data.paymentMode}</td>
             </tr>
           </table>
         </Col>
         <Col span={8} offset={8}>
-          <table>
+          <table style={{width:"60%"}}>
             <tr>
               <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Invoice # </strong></th>
               <td>1</td>
@@ -455,32 +452,28 @@ function PageM4() {
 
 
       <Row style={{ marginTop: 48,display:"block" }}>
-        <Table dataSource={[{
-            id: 1,
-            name: 'Accommodation (Single Occupancy)',
-            description: 'Accommodation',
-            price: 1599,
-            quantity: 1
-        }]}
+        <Table dataSource={filterItems}
         pagination={false}
         >
-          <Table.Column title="S. No" dataIndex='name' />
-          <Table.Column title="Item" dataIndex='description' />
+          <Table.Column title="S. No" dataIndex='sno' />
+          <Table.Column title="Item" dataIndex='item' />
           <Table.Column title="Quantity" dataIndex='quantity' />
-          <Table.Column title="Price / kg" dataIndex='price' />
-          <Table.Column title="Total Price" />
+          <Table.Column title="Price / kg" dataIndex='eachPrice' />
+          <Table.Column title="Total Price (In Rs.)" dataIndex='price' />
         </Table>
-      </Row>
-
-      <Row style={{ marginTop: 48 }}>
-        <Col span={10} offset={16}>
+        <Col span={12} offset={17} style={{marginTop:"2%"}} >
           <table>
             <tr>
               <th style={{textAlign:"left"}}>Net Total - &nbsp;</th>
-              <th><span style={{textAlign:"right"}} >₹ {tot_amount}</span></th>
+              <th><span style={{textAlign:"right",fontWeight:"bolder"}} >₹ {tot_amount}</span></th>
             </tr>
           </table>
         </Col>
+        <Divider></Divider>
+      </Row>
+
+      <Row style={{ marginTop: 48 }}>
+        
       </Row>
       <Row style={{display:"block" , marginTop: 48, textAlign: 'center' }}>
         

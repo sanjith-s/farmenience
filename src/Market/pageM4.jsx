@@ -412,7 +412,7 @@ function PageM4() {
       <div style={{ padding: 20,width:"80%",margin:"auto" }} ref={printRef}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
       <img src={logo} style={{width:"200px",objectFit:"cover",height:"50px",position:"relative",right:"2%"}} />
-      <span style={{width:"200px",fontWeight:"bolder",fontSize:"30px"}} >Invoice</span> 
+      <span style={{width:"200px",fontWeight:"bolder",fontSize:"30px"}} >INVOICE</span> 
       <span style={{width:"200px"}} ></span> 
       </div>
       <Row gutter={39} style={{marginTop: 32 }}>
@@ -463,20 +463,17 @@ function PageM4() {
         </Table>
         <Col span={12} offset={17} style={{marginTop:"2%"}} >
           <table>
+            <div style={{borderBottom: "1px solid",borderTop: "1px solid",paddingTop:"3%",paddingBottom:"3%"}}>
             <tr>
               <th style={{textAlign:"left"}}>Net Total - &nbsp;</th>
-              <th><span style={{textAlign:"right",fontWeight:"bolder"}} >₹ {tot_amount}</span></th>
+              <th>
+                <span style={{textAlign:"right",fontWeight:"bolder"}} >₹ {tot_amount}</span>
+              </th>
             </tr>
+            </div>
           </table>
         </Col>
         <Divider></Divider>
-      </Row>
-
-      <Row style={{ marginTop: 48 }}>
-        
-      </Row>
-      <Row style={{display:"block" , marginTop: 48, textAlign: 'center' }}>
-        
       </Row>
     </div>
     </>

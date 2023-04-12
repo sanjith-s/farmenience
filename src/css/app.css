@@ -15,3 +15,18 @@ body > #root > div {
 .main-content {
     flex: 1 0 auto;
 }
+
+::-webkit-scrollbar {
+  width: 1.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(24, 24, 29);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border: 5px solid transparent;
+  border-radius: 9px;
+  background-clip: content-box;
+}

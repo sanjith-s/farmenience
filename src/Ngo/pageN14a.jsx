@@ -21,6 +21,7 @@ const PageN14a = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
+  console.log(data);
   const itemsName1 = [
     "Appointment ID",
     "Appointment Name",
@@ -176,7 +177,7 @@ const PageN14a = () => {
           <Box>
             <Stack spacing={2} display="flex" justifyContent={"center"} alignContent="center" alignItems={"center"} >
               <img
-                src={file}
+                src={data.filename}
                 style={{
                   width: "90%",
                   height: "90%",

@@ -720,3 +720,280 @@ function PageM4() {
   );
 }
 export default PageM4;
+{/*
+<Typography
+          variant="h1"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          INVOICE
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          ID :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {data.id}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          Name :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {conName}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          Address :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {conAddress}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          Payment Method :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          Transaction ID :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {data.transactionID}
+        </Typography>
+
+        <Typography
+          variant="h6"
+          sx={{
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "27%",
+          }}
+        >
+          Remarks :
+        </Typography>
+        <Typography
+          sx={{
+            textTransform: "uppercase",
+            fontSize: "18px",
+            overflow: "auto",
+          }}
+        >
+          {data.remarks}
+        </Typography>
+
+        <TableContainer
+          component={Paper}
+          style={{
+            border: "3px solid",
+            width: "fit-content",
+            overflow: "auto",
+            height: "300px",
+          }}
+        >
+          <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  sno
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  item
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  quantity
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  price per kg
+                </TableCell>
+                <TableCell
+                  align="center"
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "18px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  total price
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {filterItems.map((row) => (
+                <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    align="center"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {row.sno}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "16px",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {row.item}{" "}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {row.quantity}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {row.eachPrice}
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    style={{
+                      fontWeight: "600",
+                      fontSize: "18px",
+                    }}
+                  >
+                    {row.price}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <Typography
+          style={{
+            display: "flex",
+            alignItems: "center",
+            textTransform: "uppercase",
+            fontWeight: "600",
+            width: "100%",
+            justifyContent: "flex-end",
+          }}
+        >
+          Total amount to be paid :
+          <Typography
+            variant="h6"
+            style={{
+              fontWeight: "600",
+              paddingLeft: "15px",
+              width: "30%",
+            }}
+          >
+            ₹ {tot_amount}
+          </Typography>
+        </Typography>
+    
+*/}

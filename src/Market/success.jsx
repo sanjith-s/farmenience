@@ -17,11 +17,17 @@ import {
 import { ConsumerName, ConsumerAddress, ConsumerNumber, Quantities, PaymentMethod } from "./pageM12"
 
 const Success = () => {
-  const conName = useContext(ConsumerName);
-  const conAddress = useContext(ConsumerAddress);
-  const conNumber = useContext(ConsumerNumber);
-  const quantities = useContext(Quantities);
-  const paymentMethod = useContext(PaymentMethod);
+  // const conName = useContext(ConsumerName);
+  // const conAddress = useContext(ConsumerAddress);
+  // const conNumber = useContext(ConsumerNumber);
+  // const quantities = useContext(Quantities);
+  // const paymentMethod = useContext(PaymentMethod);
+
+  const conName = localStorage.getItem('ConsumerName');
+  const conAddress = localStorage.getItem('ConsumerAddress');
+  const conNumber = localStorage.getItem('ConsumerNumber');
+  const quantities = JSON.parse(localStorage.getItem('Quantities'));
+  const paymentMethod = localStorage.getItem('PaymentMethod');
   
   console.log(conName);
 

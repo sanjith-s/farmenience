@@ -34,9 +34,9 @@ function SalesCardsList(props) {
         style={{ padding: "0px" }}
       >
         {items.map((item) => (
-          <Grid item padding={2} key={item._id}>
+          <Grid item padding={2} key={item.saleID}>
             <SalesCard
-              key={item._id}
+              key={item.saleID}
               name={item.clientName}
               ordDate={item.orderDate}
               delDate={item.deliveryDate}

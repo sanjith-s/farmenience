@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom/dist";
+import 'regenerator-runtime/runtime'
 import Swal from 'sweetalert2';
 import Axios from "axios"
 import Cookies from 'js-cookie';
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 import MarketCard from "../components/marketCard";
 import {
   Card,
@@ -36,37 +39,55 @@ import { padding } from "@mui/system";
 import { Label } from "recharts";
 
 const PageM11 = () => {
+  const navigate = useNavigate();
 
-  const [defaultData, setDefaultData] = useState([]);
+  const controlMic = () => {
+    if(listening === 'off')
+      SpeechRecognition.startListening;
+    else
+      SpeechRecognition.stopListening;
+  }
 
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/buyer/loadproducts`, {
-      productName: ""
-    }, { headers: { tokenstring: token } })
-      .then((response) => {
-        setDefaultData(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-  }, []);
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition()
 
-  const [content, setContent] = useState(defaultData);
+  if(!browserSupportsSpeechRecognition) {
+    alert("Your Browser doesn't support speech to text !!")
+  }
+
+  // const [defaultData, setDefaultData] = useState([]);
+
+  // useEffect(() => {
+  //   let token = Cookies.get('token');
+  //   Axios.get(`${baseURL}/buyer/loadproducts`, {
+  //     productName: ""
+  //   }, { headers: { tokenstring: token } })
+  //     .then((response) => {
+  //       setDefaultData(response.data.message);
+  //     })
+  //     .catch(async (res) => {
+  //       if (res.response.data.message === 'Error in connection') {
+  //         await Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Please Check Network Connection!',
+  //         })
+  //       }
+  //       else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+  //         await Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Login Error',
+  //         })
+  //         navigate('../login')
+  //       }
+  //     })
+  // }, []);
+
 
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
@@ -89,80 +110,82 @@ const PageM11 = () => {
     document.body.appendChild(addScript);
   }, []);
 
-  // const defaultData = [
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "orange",
-  //     count: 4,
-  //     price: 32,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 4,
-  //     price: 132,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 10,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 100,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "mango",
-  //     count: 4,
-  //     price: 732,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 332,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 432,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 230,
-  //     rate: 3,
-  //   },
-  // ]
+  const defaultData = [
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "apple",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "orange",
+      count: 4,
+      price: 32,
+      rate: 3,
+    },
+    {
+      product: "banana",
+      count: 4,
+      price: 132,
+      rate: 3,
+    },
+    {
+      product: "banana",
+      count: 10,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "apple",
+      count: 100,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "mango",
+      count: 4,
+      price: 732,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 332,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 432,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 232,
+      rate: 3,
+    },
+    {
+      product: "promegranate",
+      count: 4,
+      price: 230,
+      rate: 3,
+    },
+  ]
+
+  const [content, setContent] = useState(defaultData);
 
   //const copy = content;
   const handleChange = (event) => {
@@ -179,8 +202,6 @@ const PageM11 = () => {
     } else {
       setContent(defaultData.filter((item) => item.product.toLowerCase().includes(searchTerm)))
     }
-
-
   };
 
   const [value, setValue] = React.useState(false);
@@ -301,7 +322,7 @@ const PageM11 = () => {
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                  <MicIcon style={{ color: "green", fontSize: "35px" }} onClick={controlMic}/>
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
@@ -418,6 +439,7 @@ const PageM11 = () => {
           })}
         </Box>
       </Card>
+      {transcript}
     </Container>
   );
 };

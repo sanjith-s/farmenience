@@ -5,6 +5,7 @@ import { CssBaseline, Typography,Box,Container,Stack,Divider } from "@mui/materi
 import {useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import Axios from "axios";
+import Swal from 'sweetalert2';
 import { baseURL } from '../constants';
 
 const orders = [
@@ -151,14 +152,29 @@ function PageM3(props) {
   const [hello, setHello] = useState([]);
 
   const someThing = () => {
-    // let token = Cookies.get()
-    Axios.get("http://localhost:5000/seller/getsales").then((response) => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/seller/getsales`, {
+      headers: {tokenstring: token}
+    }).then((response) => {
         const hell = response.data.message;
-        // const hell = response.data.message;
         console.log(typeof(hell));
         setHello(hell);
-    }).catch((err) => {
-      console.log(err);
+    }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Check Network Connection!',
+            })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Login Error',
+            })
+            navigate('../login')
+        }
     })
   }
   

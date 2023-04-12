@@ -20,7 +20,7 @@ import MicIcon from "@mui/icons-material/Mic";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
-
+import Swal from 'sweetalert2';
 import Page10Nav from "../components/page10Nav";
 import Axios from "axios";
 import { baseURL } from "../constants";
@@ -52,13 +52,28 @@ const PageM10a = () => {
   const [market, setMarket] = useState([]);
 
   const handleGetMarkets = () => {
-    Axios.get("http://localhost:5000/buyer/getmarkets")
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/buyer/getmarkets`, { headers: { tokenstring: token } })
     .then((res) => {
       const hell = res.data.message;
       setMarket(hell);
-    }).catch((err) => {
-      console.log(err);
-    })
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Check Network Connection!',
+          })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Login Error',
+          })
+          navigate('../login')
+      }
+  })
   }
 
 useEffect(()=> {

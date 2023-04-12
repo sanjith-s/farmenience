@@ -67,7 +67,6 @@ const PageM6 = () => {
   }
 
   const handleSubmit = async() => {
-      // alert(name + price + quantity + type);
       await Axios.post(`${baseURL}/seller/postsellerproducts`, {
         productName: name,
         price: price,

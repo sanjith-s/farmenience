@@ -2,36 +2,35 @@ import { useEffect, React, useRef, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { Col, Divider, Row, Table } from 'antd';
 import Paper from '@mui/material/Paper';
-import {
-  Typography,
-  Container,
-  Button,
-  Table,
-  TableContainer,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableHead
-} from "@mui/material";
+import logo from "../images/logo_for_invoice.jpg";
+import { Container, Typography, Button } from "@mui/material";
 import { ConsumerName, ConsumerAddress, ConsumerNumber, Quantities, PaymentMethod } from "./pageM12"
+import { PhoneIcon } from '@mui/icons-material/Phone';
 
 const Success = () => {
-  const conName = useContext(ConsumerName);
-  const conAddress = useContext(ConsumerAddress);
-  const conNumber = useContext(ConsumerNumber);
-  const quantities = useContext(Quantities);
-  const paymentMethod = useContext(PaymentMethod);
+  // const conName = useContext(ConsumerName);
+  // const conAddress = useContext(ConsumerAddress);
+  // const conNumber = useContext(ConsumerNumber);
+  // const quantities = useContext(Quantities);
+  // const paymentMethod = useContext(PaymentMethod);
+
+  const conName = localStorage.getItem('ConsumerName');
+  const conAddress = localStorage.getItem('ConsumerAddress');
+  const conNumber = localStorage.getItem('ConsumerNumber');
+  const quantities = JSON.parse(localStorage.getItem('Quantities'));
+  const paymentMethod = localStorage.getItem('PaymentMethod');
   
   console.log(conName);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => {
-      navigate('/M12', { replace: true });
-    }, 30000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     navigate('/M12', { replace: true });
+  //   }, 30000000);
+  // }, []);
 
   const printRef = useRef();
   const handleDownloadPdf = async () => {
@@ -50,209 +49,84 @@ const Success = () => {
   };
 
   return (
-    <Container style={{ padding: "30px 0px" }}>
+    <Container style={{ display: "flex", flexDirection: "column",height:"100vh", justifyContent: "center", justifyContent:"space-evenly",alignContent:"center" }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}
       >
         Success. <Link to='/M12'>Click Here</Link> to redirect.
       </Typography>
-
-      <Button
-        variant="contained"
-        color="success"
-        onClick={handleDownloadPdf}
-        style={{
-          position: "absolute",
-          fontSize: "16px",
-          fontWeight: "600",
-        }}
-      >
-        Print Invoice
-      </Button>
-
-      {<div ref={printRef}>
-        <Typography
-          variant="h1"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          INVOICE
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Name :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {conName}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Mobile Number :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {conNumber}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Address :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {conAddress}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Payment Method :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {paymentMethod}
-        </Typography>
-
-        <TableContainer
-          component={Paper}
-          style={{
-            border: "3px solid",
-            width: "fit-content",
-            overflow: "auto",
-            height: "300px",
-          }}
-        >
-          <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  qty
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  qty
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {quantities && quantities.map((row) => (
-                <TableRow key={row.quantity} style={{ borderBottom: "2px solid #000" }}>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    align="center"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {row.quantity}
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {row.quantity}{" "}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        {/* <Typography
-          style={{
-            display: "flex",
-            alignItems: "center",
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "100%",
-            justifyContent: "flex-end",
-          }}
-        >
-          Total amount to be paid :
-          <Typography
-            variant="h6"
-            style={{
-              fontWeight: "600",
-              paddingLeft: "15px",
-              width: "30%",
-            }}
+      <div style={{width: "80%",marginLeft:"auto",marginRight:"auto"}} ref={printRef}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <img src={logo} style={{ width: "200px", objectFit: "cover", height: "50px", position: "relative", right: "2%" }} />
+          <span style={{ width: "200px", fontWeight: "bolder", fontSize: "30px" }} >INVOICE</span>
+          <span style={{ width: "200px" }} ></span>
+        </div>
+        <Row gutter={39} style={{ marginTop: 32 }}>
+          <Col span={8}>
+            <table style={{ width: "60%" }}>
+              <tr style={{ width: "40%" }}>
+                <th style={{ textAlign: "left" }}><strong style={{ paddingLeft: "1%" }}>Name </strong></th>
+                <td>{conName}</td>
+              </tr>
+              <tr style={{ width: "40%" }}>
+                <th style={{ textAlign: "left" }}><strong style={{ paddingLeft: "1%" }}>Payment Method </strong></th>
+                <td>{paymentMethod}</td>
+              </tr>
+            </table>
+          </Col>
+          <Col span={8} offset={8}>
+            <table style={{ width: "60%" }}>
+              <tr>
+                <th style={{ textAlign: "left" }}><strong style={{ paddingLeft: "1%" }}>Invoice Id </strong></th>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th style={{ textAlign: "left" }}><strong style={{ paddingLeft: "1%" }}>Phone Number </strong></th>
+                <td>{conNumber}</td>
+              </tr>
+            </table>
+          </Col>
+        </Row>
+        <Row style={{ marginTop: 48, display: "block" }}>
+          <Table dataSource={quantities}
+            pagination={false}
           >
-            ₹ {tot_amount}
-          </Typography>
-        </Typography> */}
-      </div>}
-
+            <Table.Column title="Item" dataIndex='quantity' />
+            <Table.Column title="Quantity" dataIndex='quantity' />
+          </Table>
+          <Col span={12} offset={17} style={{ marginTop: "2%" }} >
+            <table>
+              <div style={{ borderBottom: "1px solid", borderTop: "1px solid", paddingTop: "3%", paddingBottom: "3%" }}>
+                <tr>
+                  <th style={{ textAlign: "left" }}>Net Total - &nbsp;</th>
+                  <th>
+                    <span style={{ textAlign: "right", fontWeight: "bolder" }} >₹ {1000}</span>
+                  </th>
+                </tr>
+              </div>
+            </table>
+          </Col>
+          <Divider></Divider>
+        </Row>
+      </div>
+      <div style={{ display: "flex",justifyContent:"flex-end" }}>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={handleDownloadPdf}
+          style={{
+            fontSize: "16px",
+            fontWeight: "600",
+          }}
+        >
+          Print Invoice
+        </Button>
+      </div>
     </Container>
   );
 };
 
 export default Success;
+
+

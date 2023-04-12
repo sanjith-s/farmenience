@@ -40,87 +40,91 @@ const ReviewsForm = () => {
         return <Slide direction="up" ref={ref} {...props} />;
     });
 
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [mobno, setMobno] = useState();
-    const [review, setReview] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobno, setMobno] = useState("");
+    const [review, setReview] = useState("");
 
     const handleAllChange = () => {
         setName(document.querySelector("#p-name").value);
         setEmail(document.querySelector("#emailadd").value);
-        if(document.querySelector("#mobno").value.length == 10)
+        if (document.querySelector("#mobno").value.length == 10)
             setMobno(document.querySelector("#mobno").value);
         setReview(document.querySelector("#review").value);
     }
 
     const postReview = async () => {
         let token = Cookies.get('token');
-
+        alert(review);
         await Axios.post(`${baseURL}/review`, {
-          name: name,
-          email: email,
-          phonenum: mobno,
-          review: review,
+            name: name,
+            email: email,
+            phonenum: mobno,
+            review: review,
         }, { headers: { tokenstring: token } }).
-          then(async (response) => {
-            console.log(response);
-            if (response.data.message === 'Review Added !!') {
-              await Swal.fire({
-                icon: 'success',
-                title: 'Meet Added !!',
-                text: 'Waiting for NGO Reply',
-              })
-              navigate('../homepage1');
-            }
-          })
-          .catch(async (res) => {
-            if (res.response.data.message === 'Error in connection') {
-              await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please Check Network Connection!',
-              })
-            }
-            else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-              await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Login Error',
-              })
-              navigate('../login')
-            }
-            else {
-              await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: res.response.data.message,
-              })
-            }
-          })
-      }
+            then(async (response) => {
+                console.log(response);
+                if (response.data.message === 'Review added !!') {
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'Meet Added !!',
+                        text: 'Waiting for NGO Reply',
+                    })
+                    navigate('../homepage1');
+                }
+            })
+            .catch(async (res) => {
+                console.log(res);
+                if (res.response.data.message === 'Error in Connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+                else {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.response.data.message,
+                    })
+                }
+            })
+    }
 
     return (
         <div style={{ boxSizing: "borderBox", padding: "20px" }}>
-            <CssBaseline />
-            <span className="title">Review</span>
-            <Stack
-                direction="row"
-                divider={<Divider orientation="vertical" flexItem />}
+            <Container
                 spacing={2}
-                sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+                sx={{ 
+                    display: "flex",
+                    height:"100vh",
+                    flexDirection: "column",
+                    justifyContent:"space-evenly",
+                    alignItems:"center",
+                    }}
             >
-                <Container
+                <Stack
                     sx={{
                         bgcolor: "#D9D9D9;",
-                        height: "100%",
-                        width: "60vw",
-                        borderRadius: "50px",
+                        borderRadius: "3.125rem",
+                        padding: "2%",
+                        width: "60%",
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-evenly",
                         alignItems: "center",
                     }}
+                    spacing={2}
                 >
+                <Typography variant="h2">Review</Typography>
                     <React.Fragment>
                         <TextField
                             id="p-name"
@@ -189,56 +193,56 @@ const ReviewsForm = () => {
                         />
 
                     </React.Fragment>
-                </Container>
-                <Dialog
-                    open={open}
-                    TransitionComponent={Transition}
-                    keepMounted
-                    onClose={() => { setOpen(false) }}
-                    aria-describedby="alert-dialog-slide-description"
-                >
-                    <DialogTitle>CONFIRM?</DialogTitle>
-                    <DialogContent>
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 200 }} aria-label="simple table">
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>Name</TableCell>
-                                        <TableCell>{name}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>Email Address</TableCell>
-                                        <TableCell>{email}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>Mobile Number</TableCell>
-                                        <TableCell>{mobno}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>Review</TableCell>
-                                        <TableCell>{review}</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
-
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={() => { setOpen(false); }}>Cancel</Button>
-                        <Button onClick={async () => { postReview(); }}>CONFIRM</Button>
-                    </DialogActions>
-                </Dialog>
-            </Stack>
+                    <Button onClick={() => { setOpen(true) }} variant="contained" sx={{ bgcolor: "#1FE57A",width:"1.875rem" }}>
+                        Submit
+                        {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
+                        {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
+                        {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
+                    </Button>
+                </Stack>
+                    
+            </Container>
             {/* {count.map(ele=>{
               return (  */}
-            <Box textAlign="center" padding={"20px"}>
-                <Button onClick={() => { setOpen(true) }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-                    Submit
-                    {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
-                    {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
-                    {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
-                </Button>
-            </Box>
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={() => { setOpen(false) }}
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle>CONFIRM?</DialogTitle>
+                <DialogContent>
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 200 }} aria-label="simple table">
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell>Name</TableCell>
+                                    <TableCell>{name}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Email Address</TableCell>
+                                    <TableCell>{email}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Mobile Number</TableCell>
+                                    <TableCell>{mobno}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell>Review</TableCell>
+                                    <TableCell>{review}</TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => { setOpen(false); }}>Cancel</Button>
+                    <Button onClick={async () => { setOpen(false); postReview(); }}>CONFIRM</Button>
+                </DialogActions>
+            </Dialog>
+
         </div>
     );
 };

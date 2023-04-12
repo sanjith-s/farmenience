@@ -66,13 +66,15 @@ import Calender from "./components/calender";
 import CropRecommendation from "./cropRecommendation";
 import N10Navbar from "./components/n10Navbar";
 import { display } from "@mui/system";
-
 import Success from "./Market/success";
 import Cancel from "./Market/cancel";
-import PageMain from "./PageMain";
+// import PageMain from "./PageMain";
 import Web from "./Web";
 import Voicetotext from "./Voicetotext";
 import PdfPrint from "./PdfPrint";
+import LangTranslate from "./LangTranslate";
+import Vtt from "./Vtt";
+import Voice from "./Voice";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -97,12 +99,12 @@ function App() {
   return (
     <div>
       {/* <N10Navbar/> */}
-      {displayNavbar()}
+      {/* {displayNavbar()} */}
       <main className="main-content">
 
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<PageMain />} />
+            {/* <Route path="/" element={<PageMain />} /> */}
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/aboutUsPage" element={<AboutUsPage />} />
@@ -156,6 +158,9 @@ function App() {
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />
             <Route path="/vtt1" element={<Voicetotext />} />
+            <Route path="/vtt" element={<Vtt/>} />
+            <Route path="/langtrans" element={<LangTranslate/>}/> 
+            <Route path="/voice" element={<Voice/>}/>
             <Route
               path="/cropRecommendation"
               element={<CropRecommendation />}
@@ -167,14 +172,14 @@ function App() {
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />
             <Route path="/payments/cancel" element={<Cancel />} />
-            <Route path="/pdfprint" element={<PdfPrint/>}/>
+            <Route path="/pdfprint" element={<PdfPrint/>} />
           </Routes>
         </BrowserRouter>
       </main>
 
 
       {/* <Footer1 /> */}
-      {displayFooter()}
+      {/* {displayFooter()} */}
     </div>
   );
 }

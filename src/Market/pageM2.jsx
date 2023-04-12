@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SellerNegotiate from "../components/sellerNegotiate";
 import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
@@ -15,12 +15,34 @@ const data = {
 };
 
 const PageM2 = () => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const location = useLocation();
 
   const content = location.state ? location.state.data : data;
 
   return (
-    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }}>
+    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }} id="google_translate_element">
       <Typography
         style={{
           textTransform: "uppercase",
@@ -36,14 +58,16 @@ const PageM2 = () => {
       >
         {location.state ? location.state.from : "seller"}
       </Typography>
-      <Box
+      <Box className="gx-d-flex justify-content-center"
         sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Box
+        <Box onClick={(e) => {
+            fullAnotherSpeak(e.target.innerText)
+          }}
           sx={{
             width: "95%",
             display: "flex",

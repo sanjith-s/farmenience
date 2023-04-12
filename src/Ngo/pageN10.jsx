@@ -133,6 +133,28 @@ function OneBox(props) {
 }
 
 const PageN10 = () => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
@@ -190,7 +212,9 @@ const PageN10 = () => {
 
   return (
     <>
-      <Box
+      <Box id="google_translate_element" onClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }}
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -203,7 +227,7 @@ const PageN10 = () => {
         }}
       >
 
-        <div style={{ padding: "0 4% 0 4%" }}>
+        <div className="gx-d-flex justify-content-center" style={{ padding: "0 4% 0 4%" }}>
           <div style={{ textAlign: "center" }}>
             <h1 className='head-text'>Welcome back, NGO</h1>
           </div>

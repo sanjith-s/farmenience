@@ -14,14 +14,33 @@ const PageN2 = () => {
   const navigate = useNavigate();
   const id = location.state.id;
   const oldQuery = location.state.oldQuery;
-  const data=location.state.data;
+  const data = location.state.data;
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
 
-  
-
   const [subject, setSubject] = useState(query.subject);
   const [desc, setDesc] = useState(query.description);
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
 
   const DeleteQuery = async () => {
     let token = Cookies.get('token');
@@ -109,8 +128,10 @@ const PageN2 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox" }}>
-      <Stack>
+    <div id="google_translate_element" style={{ boxSizing: "borderBox" }} onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
+      <Stack className="gx-d-flex justify-content-center">
         <Container>
           <QueryDetails query={data} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
         </Container>

@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom/dist";
+import 'regenerator-runtime/runtime'
+import Swal from 'sweetalert2';
+import Axios from "axios"
+import Cookies from 'js-cookie';
+import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
 import MarketCard from "../components/marketCard";
 import {
   Card,
@@ -27,12 +33,84 @@ import Dialog from '@mui/material/Dialog';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { baseURL } from '../constants';
 import FormLabel from '@mui/material/FormLabel';
 import { padding } from "@mui/system";
 import { Label } from "recharts";
 
 const PageM11 = () => {
-  const [content, setContent] = useState([
+  const navigate = useNavigate();
+
+  const controlMic = () => {
+    if(listening === 'off')
+      SpeechRecognition.startListening;
+    else
+      SpeechRecognition.stopListening;
+  }
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+  } = useSpeechRecognition()
+
+  if(!browserSupportsSpeechRecognition) {
+    alert("Your Browser doesn't support speech to text !!")
+  }
+
+  // const [defaultData, setDefaultData] = useState([]);
+
+  // useEffect(() => {
+  //   let token = Cookies.get('token');
+  //   Axios.get(`${baseURL}/buyer/loadproducts`, {
+  //     productName: ""
+  //   }, { headers: { tokenstring: token } })
+  //     .then((response) => {
+  //       setDefaultData(response.data.message);
+  //     })
+  //     .catch(async (res) => {
+  //       if (res.response.data.message === 'Error in connection') {
+  //         await Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Please Check Network Connection!',
+  //         })
+  //       }
+  //       else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+  //         await Swal.fire({
+  //           icon: 'error',
+  //           title: 'Oops...',
+  //           text: 'Login Error',
+  //         })
+  //         navigate('../login')
+  //       }
+  //     })
+  // }, []);
+
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
+  const defaultData = [
     {
       product: "promegranate",
       count: 4,
@@ -40,37 +118,37 @@ const PageM11 = () => {
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "apple",
       count: 4,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "orange",
       count: 4,
       price: 32,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "banana",
       count: 4,
       price: 132,
       rate: 3,
     },
     {
-      product: "promegranate",
-      count: 4,
+      product: "banana",
+      count: 10,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
-      count: 4,
+      product: "apple",
+      count: 100,
       price: 232,
       rate: 3,
     },
     {
-      product: "promegranate",
+      product: "mango",
       count: 4,
       price: 732,
       rate: 3,
@@ -105,11 +183,27 @@ const PageM11 = () => {
       price: 230,
       rate: 3,
     },
-  ]);
-  const copy = content;
+  ]
+
+  const [content, setContent] = useState(defaultData);
+
+  //const copy = content;
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
+
+
+  const handleSearch = (event) => {
+
+    let searchTerm = event.target.value.toLowerCase().trim()
+
+    if (searchTerm.length == 0) {
+      setContent(defaultData)
+    } else {
+      setContent(defaultData.filter((item) => item.product.toLowerCase().includes(searchTerm)))
+    }
+  };
+
   const [value, setValue] = React.useState(false);
   const handleChange1 = (event) => {
     setValue(event.target.value);
@@ -133,6 +227,10 @@ const PageM11 = () => {
     setOpen(false);
   };
 
+  const resetSort = () => {
+    setContent(defaultData);
+    setOpen(false);
+  }
   const handleSubmit = () => { };
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -152,7 +250,13 @@ const PageM11 = () => {
     var min = document.getElementById("minPrice").value;
     var max = document.getElementById("maxPrice").value;
     console.log(min, max);
-    setContent(copy.filter(f => filterPrice(f, min, max)));
+    setContent(defaultData.filter(f => filterPrice(f, min, max)));
+    handleClose2();
+  }
+
+  const resetFilter = () => {
+
+    setContent(defaultData);
     handleClose2();
   }
 
@@ -171,7 +275,9 @@ const PageM11 = () => {
   });
 
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "15px 0px",
         backgroundColor: "transparent",
@@ -181,7 +287,7 @@ const PageM11 = () => {
       }}
     >
       <CssBaseline />
-      <Typography
+      <Typography className="gx-d-flex justify-content-center"
         variant="h3"
         style={{
           textAlign: "center",
@@ -207,6 +313,7 @@ const PageM11 = () => {
           <Input
             style={{ height: "40px", fontSize: "25px" }}
             id="input-with-icon-adornment"
+            onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon style={{ color: "green", fontSize: "35px" }} />
@@ -215,7 +322,7 @@ const PageM11 = () => {
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                  <MicIcon style={{ color: "green", fontSize: "35px" }} onClick={controlMic}/>
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
@@ -265,6 +372,7 @@ const PageM11 = () => {
                 <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
                 <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
               </RadioGroup>
+              <Button onClick={resetSort}>Reset Filter</Button>
             </FormControl>
           </Box>
         </Dialog>
@@ -273,9 +381,10 @@ const PageM11 = () => {
           <Box sx={{ padding: "8%" }}>
             <FormControl>
               <Stack spacing={3}>
-                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" value={100} />
                 <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
                 <Button onClick={ApplyChange}>Apply</Button>
+                <Button onClick={resetFilter}>Reset Filter</Button>
               </Stack>
             </FormControl>
           </Box>
@@ -330,6 +439,7 @@ const PageM11 = () => {
           })}
         </Box>
       </Card>
+      {transcript}
     </Container>
   );
 };

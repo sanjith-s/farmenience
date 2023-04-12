@@ -12,13 +12,16 @@ import { baseURL } from '../constants';
 
 const PageN7 = () => {
   const [file, setFile] = useState();
+  const [filename, setFilename] = useState({})
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
   const [isUploaded, setIsUploaded] = useState(false);
 
   function handleChange(e) {
-    console.log(e.target.files);
+    console.log(e.target.files[0]);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFilename(e.target.files[0]);
   }
 
   const [subject, setSubject] = useState("");
@@ -50,7 +53,11 @@ const PageN7 = () => {
     let token = Cookies.get('token');
     await Axios.post(`${baseURL}/postquery`, {
       subject: subject,
-      description: desc
+      description: desc,
+      image: {
+        data: file,
+        contentType: "jpg"
+      }
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
@@ -81,6 +88,17 @@ const PageN7 = () => {
         else {
           alert(res.response.data.message);
         }
+      })
+  }
+
+  const getQueries = async () => {
+    await Axios.get(`${baseURL}/files`)
+      .then(async (response) => {
+        setData(response.data);
+        console.log(response.data);
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
       })
   }
 
@@ -252,6 +270,16 @@ const PageN7 = () => {
           Home Page
         </Button>
       </Box>
+
+      {data && data.map((img, index) => {
+        return (
+          <div>
+            <img src={img.url} alt={img.name} height="80px" />
+            <br></br>
+          </div>
+        );
+      })}
+
     </div>
   );
 };

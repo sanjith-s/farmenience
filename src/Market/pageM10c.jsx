@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import Page10Nav from "../components/page10Nav";
 import PersonRoundIcon from "@mui/icons-material/PersonRounded";
@@ -15,10 +15,35 @@ import {
 } from "@mui/material";
 
 const PageM10c = (props) => {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   const location = useLocation();
   const data = location.state?.data;
+
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "30px 0px",
         backgroundColor: "transparent",
@@ -28,7 +53,7 @@ const PageM10c = (props) => {
       }}
     >
       <CssBaseline />
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Page10Nav
           title={data.name}
         />

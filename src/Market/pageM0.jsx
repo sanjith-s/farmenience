@@ -89,6 +89,28 @@ const saleRequestsData = [
 ];
 
 function SellerDashboard() {
+
+    const googleTranslateElementInit = () => {
+        new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+    }
+
+    const fullAnotherSpeak = (text) => {
+        responsiveVoice.speak(text, "Tamil Male");
+    }
+
+    useEffect(() => {
+        var addScript = document.createElement('script');
+        addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+        document.body.appendChild(addScript);
+        window.googleTranslateElementInit = googleTranslateElementInit;
+    }, []);
+
+    useEffect(() => {
+        var addScript = document.createElement('script');
+        addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+        document.body.appendChild(addScript);
+    }, []);
+
     const navigate = useNavigate();
     const classes = useStyles();
 
@@ -170,9 +192,11 @@ function SellerDashboard() {
     }, []);
 
     return (
-        <div className={classes.root}>
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
+        <div className={classes.root} onClick={(e) => {
+            fullAnotherSpeak(e.target.innerText)
+          }}>
+            <Grid id="google_translate_element" container spacing={2}>
+                <Grid item xs={12} className="gx-d-flex justify-content-center">
                     <div className={classes.title}>
                         <span>SELLER DASHBOARD</span>
                         <hr />

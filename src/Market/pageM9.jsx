@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Menubar from "../components/menubar";
 import ImageSlider from "../components/imageSlider";
 import Card from "@mui/material/Card";
@@ -39,11 +39,35 @@ const orders = [
 ];
 
 function PageM9() {
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   return (
-    <Box style={{ boxSizing: "borderBox" }}>
+    <Box id="google_translate_element" style={{ boxSizing: "borderBox" }} onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
       <CssBaseline />
       <Menubar />
-      <Card
+      <Card className="gx-d-flex justify-content-center"
         sx={{
           display: "flex",
           padding: "30px",

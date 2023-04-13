@@ -13,7 +13,6 @@ import farmsvg from "./images/farmenience.svg";
 import farmjpeg from "./images/farmenience.jpeg";
 
 const AboutUsPage = () => {
-
   const googleTranslateElementInit = () => {
     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
   }
@@ -36,8 +35,7 @@ const AboutUsPage = () => {
   }, []);
 
   return (
-    <div className="about-hero  ">
-
+    <div className="about-hero ">
       <img className="abt-img " src={abtImg5} alt="" />
 
       <main className="about-section gradient" onClick={(e) => {

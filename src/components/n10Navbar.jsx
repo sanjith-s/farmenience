@@ -1,7 +1,9 @@
 import { AppBar } from '@material-ui/core'
 import { Toolbar, Typography } from '@mui/material'
+import { useEffect } from 'react'
 import { Box } from '@mui/system'
 import React from 'react'
+import "./navbar.css";
 import { Button, Menu, MenuItem, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -14,10 +16,33 @@ const N10Navbar = () => {
     const handleClose = () => {  
       setAnchorEl(null);
 };
+const googleTranslateElementInit = () => {
+  new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+}
+
+const fullAnotherSpeak = (text) => {
+  responsiveVoice.speak(text, "Tamil Male");
+}
+
+useEffect(() => {
+  var addScript = document.createElement('script');
+  var par = document.getElementById("unit1");
+  addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  par.appendChild(addScript);
+  window.googleTranslateElementInit = googleTranslateElementInit;
+}, []);
+
+useEffect(() => {
+  var addScript = document.createElement('script');
+  var par = document.getElementById("unit1");
+  addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  par.appendChild(addScript);
+}, []);
 
     return (
+      <ul id="unit1">
     <Box sx ={{ flexGrow: 1}}>
-        <AppBar position='static' color='transparent' sx={{
+        <AppBar position='static' className='navbartemp' color='transparent' sx={{
             backgroundColor: 'green'
         }}>
             <Toolbar>
@@ -36,8 +61,9 @@ const N10Navbar = () => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{color:"white",fontSize:"20px"}}
       >
-        <MenuIcon />
+        <MenuIcon fontSize='large' />
       </Button>
       <Menu
         id="basic-menu"
@@ -53,19 +79,19 @@ const N10Navbar = () => {
         <MenuItem onClick={handleClose}>APPOINTMENTS</MenuItem>
         <MenuItem onClick={handleClose}>LOGOUT</MenuItem>
       </Menu>
-                    </div>
-                <Typography>
+                    </div >
+                <Typography sx={{fontSize:"20px !important",marginLeft:"10px"}} >
                         NGO
                     </Typography>
-                    
-                    <Button>HOME</Button>
-                    <Button>ABOUT</Button>
-                    <Button>CONTACT US</Button>
-                    <Button>DONATE</Button>
-                    <Button>BLOG</Button>
+                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >HOME</Button>
+                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >ABOUT</Button>
+                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >CONTACT US</Button>
+                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >DONATE</Button>
+                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >BLOG</Button>
             </Toolbar>
         </AppBar>
     </Box>
+    </ul>
   )
 }
 

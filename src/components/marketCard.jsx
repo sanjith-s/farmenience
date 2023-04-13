@@ -9,7 +9,6 @@ import {
   Box,
   Badge,
 } from "@mui/material";
-
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import img from "../images/product8.jpg";

@@ -95,12 +95,18 @@ function displayFooter() {
 }
 
 function App() {
+  
+const fullAnotherSpeak = (text) => {
+  responsiveVoice.speak(text, "Tamil Male");
+}
 
   return (
     <div>
-      {/* <N10Navbar/> */}
+      <N10Navbar/>
       {/* {displayNavbar()} */}
-      <main className="main-content">
+      <main className="main-content" onClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }} >
 
         <BrowserRouter>
           <Routes>

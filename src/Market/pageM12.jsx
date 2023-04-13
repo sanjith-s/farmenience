@@ -186,6 +186,12 @@ function PageM12() {
   ]
 
   const makePayment = () => {
+    localStorage.setItem('ConsumerName', consumerName);
+    localStorage.setItem('ConsumerAddress', consumerAddress);
+    localStorage.setItem('ConsumerNumber', consumerNumber);
+    localStorage.setItem('Quantities', JSON.stringify(quantities));
+    localStorage.setItem('PaymentMethod', paymentMethod);
+
     fetch(`${baseURL}/createPayment`, {
       method: "POST",
       headers: {

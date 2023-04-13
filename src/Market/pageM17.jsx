@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import TransactionHistory from "../components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
 import Axios from "axios";
+import { baseURL } from "../constants";
+import Swal from "sweetalert2";
 
 function M17() {
 
@@ -87,7 +89,8 @@ function M17() {
 
   const [transaction, setTransaction] = useState([]);
   const getTransactions = () => {
-      Axios.get("http://localhost:5000/buyer/gettransactions").then((res)=> {
+    let token = Cookies.get('token');
+      Axios.get(`${baseURL}/buyer/gettransactions`, { headers: { tokenstring: token } }).then((res)=> {
         const dat = res.data.message;
         // setTransaction(dat);
         dat.map((val) => {
@@ -105,7 +108,23 @@ function M17() {
         })
         setTransaction(buyTransaction)
         alert(transaction[0].ifscCode);
-      }).catch((err)=> {console.log(err)});
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Check Network Connection!',
+            })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Login Error',
+            })
+            navigate('../login')
+        }
+    })
   }
 
   useEffect(()=>{

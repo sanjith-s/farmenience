@@ -284,3 +284,8 @@
 .time-sl > div {
 	padding: 5px;
 }
+.goog-te-gadget {
+	position: absolute;
+	top:2%;
+	right: 2%;
+}

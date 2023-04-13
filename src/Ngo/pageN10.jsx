@@ -63,6 +63,61 @@ function BasicTabs() {
     setValue(newValue);
   };
 
+  const [queries, setQueries] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+
+  const AxiosSet = () => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/getqueriesN10`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setQueries(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      });
+
+    Axios.get(`${baseURL}/getmeetsN10`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setAppointments(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      });
+  }
+
+  useEffect(() => {
+    AxiosSet();
+  }, []);
+
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="tabs-head" >
@@ -76,7 +131,7 @@ function BasicTabs() {
           {queries.map((que, ind) => {
             return (<div className='texts-box'>
               <a className='links' href="/n11">
-                <span className='b-text'>{que}</span>
+                <span className='b-text'>{que.description}</span>
               </a>
             </div>)
           })}
@@ -84,10 +139,10 @@ function BasicTabs() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className='shower'>
-          {Appointments.map(que => {
+          {appointments.map(que => {
             return (<div className='texts-box'>
               <a className='links' href="/n13">
-                <span className='b-text'>{que}</span>
+                <span className='b-text'>{que.requestdate}</span>
               </a>
 
             </div>)

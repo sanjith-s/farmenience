@@ -16,6 +16,9 @@ import Footer from "./components/footer";
 import Footer1 from "./components/footerFinal";
 import Signup from "./signup";
 import Login from "./login";
+import ForgetPasswordGetEmail from "./forgetPasswordgetEmail"
+import VerifyOTP from "./verifyOTP"
+import ForgetEnterNewPassword from "./forgetEnterNewPassword"
 import Logout from "./logout"
 import LogoutAllDevice from "./LogoutAllDevice";
 import NGOProfile from "./NGOProfile";
@@ -75,6 +78,7 @@ import PdfPrint from "./PdfPrint";
 import LangTranslate from "./LangTranslate";
 import Vtt from "./Vtt";
 import Voice from "./Voice";
+import ImageDetection from "./Market/imageDetection"
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -104,7 +108,7 @@ function App() {
 
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<PageMain />} /> */}
+            <Route path="/" element={<LandingPage />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
             <Route path="/aboutUsPage" element={<AboutUsPage />} />
@@ -112,6 +116,9 @@ function App() {
             <Route path="/ReviewsForm" element={<ReviewsForm />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
+            <Route path="/verifyOTP" element={<VerifyOTP />} />
+            <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/NGOProfile" element={<NGOProfile />} />
@@ -161,14 +168,9 @@ function App() {
             <Route path="/vtt" element={<Vtt/>} />
             <Route path="/langtrans" element={<LangTranslate/>}/> 
             <Route path="/voice" element={<Voice/>}/>
-            <Route
-              path="/cropRecommendation"
-              element={<CropRecommendation />}
-            />
-            <Route
-              path="web"
-              element={<Web />}
-            />
+            <Route path="/cropRecommendation" element={<CropRecommendation />}/>
+            <Route path="/imageDetection" element={<ImageDetection />}/>
+            <Route path="web" element={<Web />}/>
             <Route path="/ordersummary" />
             <Route path="/payments/success" element={<Success />} />
             <Route path="/payments/cancel" element={<Cancel />} />

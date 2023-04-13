@@ -27,6 +27,11 @@ const PageN7 = () => {
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
 
+  const Reset = () => {
+    setSubject("");
+    setDesc("");
+  }
+
   const validate = async () => {
     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
       await Swal.fire({
@@ -128,6 +133,7 @@ const PageN7 = () => {
             <TextField
               id="filled-basic"
               label="Query Subject"
+              value={subject}
               variant="filled"
               color="success"
               InputProps={{
@@ -145,6 +151,7 @@ const PageN7 = () => {
               id="filled-basic"
               label="Description"
               variant="filled"
+              value={desc}
               color="success"
               InputProps={{
                 endAdornment: <InputAdornment position="end"></InputAdornment>,
@@ -264,6 +271,10 @@ const PageN7 = () => {
           )}
         </Container>
       </Stack>
+
+      <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+        Reset To Old Values
+      </Button>
 
       <Box textAlign="center" padding={"1.25rem"}>
         <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>

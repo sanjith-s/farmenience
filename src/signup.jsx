@@ -2,6 +2,8 @@ import "./css/signup.css";
 import { useState } from "react";
 import validator from "validator";
 import Axios from "axios";
+import Fab from "@mui/material/Fab";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,
@@ -14,6 +16,7 @@ import {
   Stepper,
   Step,
   StepLabel,
+  Container
 } from "@mui/material";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
@@ -25,6 +28,33 @@ function Signup() {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
+  const [file, setFile] = useState();
+  const [filename, setFilename] = useState({})
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [file1, setFile1] = useState();
+  const [filename1, setFilename1] = useState({})
+  const [isUploaded1, setIsUploaded1] = useState(false);
+  const [file2, setFile2] = useState();
+  const [filename2, setFilename2] = useState({})
+  const [isUploaded2, setIsUploaded2] = useState(false);
+
+  function handleChange(e) {
+    console.log(e.target.files);
+    setIsUploaded(true);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  function handleChange1(e) {
+    console.log(e.target.files);
+    setIsUploaded1(true);
+    e.target.files[0] ? setFile1(URL.createObjectURL(e.target.files[0])) : "";
+  }
+
+  function handleChange2(e) {
+    console.log(e.target.files);
+    setIsUploaded2(true);
+    e.target.files[0] ? setFile2(URL.createObjectURL(e.target.files[0])) : "";
+  }
 
   const nextStep = () => {
     if (activeStep < 2)
@@ -107,6 +137,18 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
+        image: {
+          data: file,
+          contentType: "jpg"
+        },
+        doc1: {
+          data: file1,
+          contentType: "pdf"
+        },
+        doc2: {
+          data: file2,
+          contentType: "pdf"
+        }
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -378,11 +420,6 @@ function Signup() {
                       retailer
                     </Typography>
                   </MenuItem>
-                  <MenuItem value="Job Seeker">
-                    <Typography style={{ textTransform: "capitalize" }}>
-                      job seeker
-                    </Typography>
-                  </MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -411,6 +448,66 @@ function Signup() {
 
           </Box>
 
+          <Container
+          disableGutters={true}
+          sx={{
+            bgcolor: "#ffff",
+            height: "100%",
+            width: "40vw",
+            borderRadius: "3.125rem",
+            paddingLeft: "0rem",
+            paddingRight: "0rem",
+            display: "flex",
+            justifyItems: "center",
+            border: "1rem solid black",
+          }}
+        >
+          {!isUploaded && (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <input
+                type="file"
+                id="imgUp"
+                style={{ display: "none" }}
+                accept="image/png, image/jpeg, image/jpg"
+                maxsize="2"
+                minsize="1"
+                onChange={handleChange}
+              />
+              <label
+                htmlFor="imgUp"
+                style={{ width: "fit-content", height: "fit-content" }}
+              >
+                <Fab component="span">
+                  <FileUploadOutlinedIcon />
+                </Fab>
+                <br />
+                <br />
+              </label>
+              <Typography>Upload Image</Typography>
+            </div>
+          )}
+          {isUploaded && (
+            <img
+              src={file}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "fill",
+                borderRadius: "3.125rem",
+              }}
+            />
+          )}
+        </Container>
+
           <form style={{ width: "450px" }}>
             {selection === "Farmer" &&
               <Box
@@ -432,7 +529,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange1}
                 />
                 <label
                   htmlFor="imgUp"
@@ -455,7 +552,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange2}
                 />
                 <label
                   htmlFor="imgUp"
@@ -488,7 +585,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange1}
                 />
                 <label
                   htmlFor="imgUp"
@@ -511,7 +608,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange2}
                 />
                 <label
                   htmlFor="imgUp"
@@ -544,7 +641,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange1}
                 />
                 <label
                   htmlFor="imgUp"
@@ -567,7 +664,7 @@ function Signup() {
                   style={{ display: "none" }}
                   maxsize="2"
                   minsize="1"
-                  onChange={addSignupData}
+                  onChange={handleChange2}
                 />
                 <label
                   htmlFor="imgUp"

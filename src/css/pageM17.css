@@ -16,8 +16,8 @@
     border-bottom: 1px solid rgb(99, 103, 102) !important;
 }
 th.ant-table-cell::before {
-    background-color: black !important;
-    width: 2px !important;
+    background-color: rgb(99, 103, 102) !important;
+    width: 1px !important;
 }
 #header {
 	font-size: 2.5em;

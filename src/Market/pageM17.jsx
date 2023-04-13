@@ -1,7 +1,7 @@
 import React from "react";
 import TransactionHistory from "../components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
-
+import { Col, Divider, Row, Table } from 'antd';
 function M17() {
   const buyerHistory = [
     {
@@ -66,7 +66,7 @@ function M17() {
         padding: "20px 0px 30px 0px",
         margin: "30px 100px",
         borderRadius: "12px",
-        border: "2px solid",
+        border: "1px solid whitesmoke",
       }}
       sx={{
         boxShadow: 20,
@@ -77,7 +77,7 @@ function M17() {
           style={{
             textTransform: "uppercase",
             textAlign: "center",
-            fontSize: "38px",
+            fontSize: "1.875rem",
             fontWeight: "600",
           }}
         >
@@ -90,7 +90,18 @@ function M17() {
           display: "flex", justifyContent: "center", alignItems: "center"
         }}
       >
-        <TransactionHistory rows={buyerHistory} />
+        {/* <TransactionHistory rows={buyerHistory} /> */}
+        <Table dataSource={buyerHistory}
+        pagination={false}
+        >
+          <Table.Column title="Trans Id" dataIndex='transactionid' />
+          <Table.Column title="IFSC Code" dataIndex='ifscCode' />
+          <Table.Column title="Payment Mode" dataIndex='paymentMode' />
+          <Table.Column title="Bank Name" dataIndex='bankName' />
+          <Table.Column title="Amount" dataIndex='amount' />
+          <Table.Column title="Sender" dataIndex='sender' />
+          <Table.Column title="Receiver" dataIndex='receiver' />
+        </Table>
       </Box>
     </Card>
   );

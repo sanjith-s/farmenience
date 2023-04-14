@@ -246,7 +246,7 @@ function SellerDashboard() {
                                                     Quantity: {request.quantity}
                                                 </Typography>
                                                 <Typography variant="subtitle2">
-                                                    Request Sender: {request.requestSender}
+                                                    Request Sender: {request.name}
                                                 </Typography>
 
                                             </React.Fragment>

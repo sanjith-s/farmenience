@@ -20,12 +20,12 @@ function NegotNav({ handleClick }) {
       <CssBaseline />
       <Box sx={{ position: "absolute", left: "20px ", top: "7px" }}>
         <Tooltip title="Negotiate Price">
-          <IconButton color="success" onClick={handleClick(2)}>
+          <IconButton color="success" onClick={()=>handleClick(2)}>
             <MonetizationOnIcon style={{ color: "#ffffff" }} />
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit Quantity">
-          <IconButton color="success" onClick={handleClick(3)}>
+          <IconButton color="success" onClick={()=>handleClick(3)}>
             <ShoppingBasketIcon style={{ color: "#ffffff" }} />
           </IconButton>
         </Tooltip>

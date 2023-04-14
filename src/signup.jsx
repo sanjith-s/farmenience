@@ -1,5 +1,5 @@
 import "./css/signup.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
@@ -60,12 +60,34 @@ function Signup() {
     pincode: "",
     utype: "",
   });
+  const [lat,setLat]=useState(null);
+  const [lng,setLng]=useState(null);
+  const [status,setStatus]=useState(null);
+
 
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
 
   const submit = async (event) => {
+    if(!navigator.geolocation)
+    {
+      setStatus("Geolocation is not supported by browser");
+    }
+    else
+    {
+      setStatus("Locating..");
+      navigator.geolocation.getCurrentPosition((postion)=>{
+        setStatus(null);
+        setLat(postion.coords.latitude);
+        setLng(postion.coords.longitude);
+        console.log(postion.coords.latitude,2);
+      },
+      ()=>{
+        setStatus("Unable to retrieve your location");
+      })
+    }
+    alert(signupdata.email)
     { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
@@ -116,6 +138,8 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
+        latitude: lat,
+        longitude:lng
       })
         .then((response) => {
           if (response.data.message == "Success") {

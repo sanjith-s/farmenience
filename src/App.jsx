@@ -118,7 +118,7 @@ const fullAnotherSpeak = (text) => {
             <Route path="/" element={<LandingPage />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
-            <Route path="/aboutUsPage" element={<AboutUsPage />} />
+            <Route path="/aboutUs" element={<AboutUsPage />} />
             <Route path="/termsAndCondition" element={<TermsAndCondition />} />
             <Route path="/ReviewsForm" element={<ReviewsForm />} />
             <Route path="/signup" element={<Signup />} />

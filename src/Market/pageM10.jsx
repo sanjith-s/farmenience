@@ -14,6 +14,7 @@ import {
 import profilePhoto from "../images/face1.jpg";
 import Page10Nav from "../components/page10Nav";
 import Chart from "../components/chart";
+
 const data = [
   {
     market: "SABJI MANDI",
@@ -105,6 +106,7 @@ const marketData = [
 ];
 
 function PageM10() {
+
   return (
     <Container
       style={{

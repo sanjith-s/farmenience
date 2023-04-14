@@ -60,6 +60,7 @@ const PageM11 = () => {
   }
 
   const [defaultData, setDefaultData] = useState([]);
+  const [cart, setcart] = useState([]);
 
   useEffect(() => {
     let token = Cookies.get('token');
@@ -187,6 +188,32 @@ const PageM11 = () => {
   //     rate: 3,
   //   },
   // ]
+
+  async function confirmCart() {
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/buyer/postcart`, {
+        cartItems: cart
+    }, {headers: {tokenstring: token}})
+    .then((response) => {
+      // setCart(response.data.message);
+    }).catch(async (res) => {
+    if (res.response.data.message === 'Error in connection') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Check Network Connection!',
+      })
+    }
+    else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Login Error',
+      })
+      navigate('../login')
+      }
+    });
+  }
 
   const [content, setContent] = useState(defaultData);
   console.log(defaultData);
@@ -446,6 +473,9 @@ const PageM11 = () => {
                         sellerCount={v.quantity}
                         price={v.price}
                         stars={v.rating}
+                        type = {v.type}
+                        cartArray={setcart}
+                        array={cart}
                       />
                     // );
                   // }
@@ -454,9 +484,14 @@ const PageM11 = () => {
               // </>
             );
           })}
+          
         </Box>
       </Card>
       {transcript}
+      <Button
+       onClick={confirmCart}>
+        Confirm Cart
+      </Button>
     </Container>
   );
 };

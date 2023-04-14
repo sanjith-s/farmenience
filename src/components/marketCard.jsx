@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -12,8 +12,28 @@ import {
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import img from "../images/product8.jpg";
+import Axios from "axios";
+import Cookies from "js-cookie";
+import { baseURL } from "../constants";
 
 function MarketCard(props) {
+  
+  function addCart() {
+    // alert("fsnk")
+    const items = {
+      productName: props.productName,
+      quantity: props.sellerCount,
+      price: props.price,
+      rating: props.stars,
+      type: props.type
+    } 
+    // console.log(props.array);
+    let dummy=props.array;
+    dummy.push(items);
+    props.cartArray(dummy);
+
+  }
+
   return (
     <Card
       style={{
@@ -124,8 +144,9 @@ function MarketCard(props) {
             columnGap: "10px",
             fontWeight: "600",
           }}
+          onClick={addCart}
         >
-          <ShoppingCartIcon /> buy
+          <ShoppingCartIcon /> add
         </Button>
       </CardActions>
     </Card>

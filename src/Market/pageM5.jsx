@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CropCard from "../components/cropCard";
 import { Button, Box, Typography } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import "../css/button.css"
 
 function PageM5() {
   let [prod, setProd] = useState([{ ele: <CropCard />, delStatus: 0, num: 0 }]);
@@ -64,11 +65,8 @@ function PageM5() {
                         >
                           <Button
                             variant="contained"
+                            className="mbtn"
                             style={{
-                              backgroundColor: "green",
-                              color: "white",
-                              fontWeight: "600",
-                              fontSize: "16px",
                               margin: "30px 30px 10px 30px",
                             }}
                             onClick={() => {
@@ -116,24 +114,14 @@ function PageM5() {
           <Button
             variant="contained"
             onClick={addProd}
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
+            className="mbtn"
           >
             Add Product
           </Button>
 
           <Button
             variant="contained"
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
+            className="mbtn"
           >
             <ThumbUpIcon style={{ marginRight: "15px" }} />
             post deal

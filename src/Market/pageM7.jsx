@@ -191,21 +191,13 @@ const PageM7 = () => {
           >
             <Button
               variant="contained"
-              style={{
-                fontWeight: "600",
-                fontSize: "17px",
-                backgroundColor: "green",
-              }}
+              color="success"
             >
               confirm
             </Button>
             <Button
               variant="contained"
-              style={{
-                fontWeight: "600",
-                fontSize: "17px",
-                backgroundColor: "green",
-              }}
+              color="success"
             >
               cancel
             </Button>

@@ -438,23 +438,20 @@ const PageM18 = () => {
 
       </Box>
 
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
       <Button endIcon={<DoneIcon />}
         variant="contained"
-        style={{
-          backgroundColor: "green",
-          color: "white",
-          fontWeight: "600",
-          fontSize: "16px",
-          margin: "auto"
-        }}
+        color="success"
         onClick={handleSubmit}
       >
         submit request
       </Button>
 
-      <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+      <Button variant="contained"
+            color="success" onClick={Reset} >
         Reset To Old Values
-      </Button><br /><br />
+      </Button>
+      </div>
     </Box>
   );
 };

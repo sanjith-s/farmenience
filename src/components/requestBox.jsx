@@ -206,7 +206,7 @@ function BuyerRequest(props) {
       >
         <Button
           variant="contained"
-          className="mbtn"
+          color="success"
           onClick={viewRequest}
         >
           <Link

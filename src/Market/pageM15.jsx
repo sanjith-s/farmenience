@@ -209,8 +209,7 @@ function PageM15() {
                   position: "absolute",
                   bottom: "34px",
                   right: "14px",
-                  fontWeight: "600",
-                  fontSize: "15px",
+                  
                 }}
               >
                 Negotiation price

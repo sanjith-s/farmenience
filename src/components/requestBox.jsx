@@ -9,6 +9,7 @@ import {
   Button,
 } from "@mui/material";
 import Axios from "axios"
+import "../css/button.css"
 
 function BuyerRequest(props) {
   const viewRequest = () => {
@@ -204,11 +205,8 @@ function BuyerRequest(props) {
         }}
       >
         <Button
-          style={{
-            backgroundColor: "green",
-            border: "2px solid #000000",
-            marginTop: "15px",
-          }}
+          variant="contained"
+          color="success"
           onClick={viewRequest}
         >
           <Link
@@ -220,13 +218,7 @@ function BuyerRequest(props) {
             }}
             style={{ textDecoration: "none" }}
           >
-            <Typography
-              style={{
-                color: "#ffffff",
-                fontWeight: "600",
-                fontSize: "16px",
-              }}
-            >
+            <Typography>
               view request
             </Typography>
           </Link>

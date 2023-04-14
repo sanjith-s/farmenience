@@ -1,5 +1,5 @@
 import "./css/signup.css";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
@@ -60,12 +60,51 @@ function Signup() {
     pincode: "",
     utype: "",
   });
+  const [lat,setLat]=useState(null);
+  const [lng,setLng]=useState(null);
+  const [status,setStatus]=useState(null);
+  const [file1, setFile1] = useState();
+  const [filename1, setFilename1] = useState({});
+  const [isUploaded1, setIsUploaded1] = useState(false);
+  const [file2, setFile2] = useState();
+  const [filename2, setFilename2] = useState({});
+  const [isUploaded2, setIsUploaded2] = useState(false);
+  function handleChange1(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded1(true);
+    setFile1(URL.createObjectURL(e.target.files[0]));
+    setFilename1(e.target.files[0]);
+  }
+  function handleChange2(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded2(true);
+    setFile2(URL.createObjectURL(e.target.files[0]));
+    setFilename2(e.target.files[0]);
+  }
 
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
 
   const submit = async (event) => {
+    if(!navigator.geolocation)
+    {
+      setStatus("Geolocation is not supported by browser");
+    }
+    else
+    {
+      setStatus("Locating..");
+      navigator.geolocation.getCurrentPosition((postion)=>{
+        setStatus(null);
+        setLat(postion.coords.latitude);
+        setLng(postion.coords.longitude);
+        console.log(postion.coords.latitude,2);
+      },
+      ()=>{
+        setStatus("Unable to retrieve your location");
+      })
+    }
+    alert(signupdata.email)
     { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
@@ -103,6 +142,33 @@ function Signup() {
     if (
       signupdata.password === signupdata.confpass
     ) {
+      let FILE1='';
+      let formData1 = new FormData();
+      formData1.append('caption', "hello");
+      formData1.append('file', filename1);
+      console.log(Array.from(formData1.entries()))
+      await Axios.post(`${baseURL}/upload`, formData1)
+        .then(async (response) => {
+          console.log(response);
+          FILE1=response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+        let FILE2='';
+        let formData2 = new FormData();
+        formData2.append('caption', "hello");
+        formData2.append('file', filename2);
+        console.log(Array.from(formData2.entries()))
+        await Axios.post(`${baseURL}/upload`, formData2)
+          .then(async (response) => {
+            console.log(response);
+            FILE2=response.data.message;
+          })
+          .catch(async (res) => {
+            alert(res.response.data.message);
+          })
+      alert(FILE1+" "+FILE2);
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
         phoneno: signupdata.phone,
@@ -116,6 +182,10 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
+        latitude: lat,
+        longitude:lng,
+        doc1:FILE1,
+        doc2:FILE2,
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -445,10 +515,6 @@ function Signup() {
           <form style={{ width: "450px" }}>
             {selection === "Farmer" &&
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
               >
 
                 <Typography
@@ -457,17 +523,10 @@ function Signup() {
                   Land Document
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
+                <br></br>
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Land Document
                   <br />
@@ -480,17 +539,10 @@ function Signup() {
                   Aadhaar Card
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
+                <br></br>
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Aadhaar Card
                   <br />
@@ -501,10 +553,7 @@ function Signup() {
 
             {selection === "NGO" &&
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+
               >
 
                 <Typography
@@ -513,17 +562,9 @@ function Signup() {
                   NGO License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   NGO License
                   <br />
@@ -536,17 +577,9 @@ function Signup() {
                   Aadhaar Card of Owner
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Aadhaar Card of Owner
                   <br />

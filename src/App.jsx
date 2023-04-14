@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./css/app.css";
+import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";
@@ -80,6 +81,8 @@ import LangTranslate from "./LangTranslate";
 import Vtt from "./Vtt";
 import Voice from "./Voice";
 import ImageDetection from "./Market/imageDetection"
+import Map from "./Ngo/Map";
+import MainMap from "./MainMap";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -118,7 +121,7 @@ const fullAnotherSpeak = (text) => {
             <Route path="/" element={<LandingPage />} />
             <Route path="/homepage2" element={<Homepage2 />} />
             <Route path="/landingPage" element={<LandingPage />} />
-            <Route path="/aboutUsPage" element={<AboutUsPage />} />
+            <Route path="/aboutUs" element={<AboutUsPage />} />
             <Route path="/termsAndCondition" element={<TermsAndCondition />} />
             <Route path="/ReviewsForm" element={<ReviewsForm />} />
             <Route path="/signup" element={<Signup />} />
@@ -169,6 +172,8 @@ const fullAnotherSpeak = (text) => {
             {/* <Route path="/N14" element={<PageN14 />} /> */}
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
+            {/* <Route path="/mapngo" element={<Map/>} /> */}
+            <Route path="/mapngo" element={<MainMap/>}/>
             <Route path="/cal" element={<Calender />} />
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />

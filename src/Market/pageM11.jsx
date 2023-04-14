@@ -40,13 +40,7 @@ import { Label } from "recharts";
 
 const PageM11 = () => {
   const navigate = useNavigate();
-
-  const controlMic = () => {
-    if(listening === 'off')
-      SpeechRecognition.startListening;
-    else
-      SpeechRecognition.stopListening;
-  }
+  let count=0;
 
   const {
     transcript,
@@ -55,11 +49,27 @@ const PageM11 = () => {
     browserSupportsSpeechRecognition
   } = useSpeechRecognition()
 
+  const controlMic = () => {
+    alert('1');
+    
+    if(count == 0)
+    {
+    SpeechRecognition.startListening;
+    count=1;
+    }
+    else
+    {
+      SpeechRecognition.stopListening;
+      count=0;
+    }
+  }
+
   if(!browserSupportsSpeechRecognition) {
     alert("Your Browser doesn't support speech to text !!")
   }
 
   const [defaultData, setDefaultData] = useState([]);
+  const [cart, setcart] = useState([]);
 
   useEffect(() => {
     let token = Cookies.get('token');
@@ -92,26 +102,26 @@ const PageM11 = () => {
   }, []);
 
 
-  // const googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-  // }
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
 
-  // const fullAnotherSpeak = (text) => {
-  //   responsiveVoice.speak(text, "Tamil Male");
-  // }
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-  //   document.body.appendChild(addScript);
-  //   window.googleTranslateElementInit = googleTranslateElementInit;
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-  //   document.body.appendChild(addScript);
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
 
   // const defaultData = [
   //   {
@@ -188,6 +198,32 @@ const PageM11 = () => {
   //   },
   // ]
 
+  async function confirmCart() {
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/buyer/postcart`, {
+        cartItems: cart
+    }, {headers: {tokenstring: token}})
+    .then((response) => {
+      // setCart(response.data.message);
+    }).catch(async (res) => {
+    if (res.response.data.message === 'Error in connection') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Check Network Connection!',
+      })
+    }
+    else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Login Error',
+      })
+      navigate('../login')
+      }
+    });
+  }
+
   const [content, setContent] = useState(defaultData);
   console.log(defaultData);
   console.log(content);
@@ -196,7 +232,6 @@ const PageM11 = () => {
   const handleChange = (event) => {
     setappntdata({ ...appntdata, [event.target.name]: event.target.value });
   };
-
 
   const handleSearch = (event) => {
 
@@ -318,22 +353,22 @@ const PageM11 = () => {
           }}
         >
           <Input
-            style={{ height: "40px", fontSize: "25px" }}
+            style={{ height: "40px" }}
             id="input-with-icon-adornment"
             onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+                <SearchIcon style={{ color: "green"}} />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} onClick={controlMic}/>
+                  <MicIcon style={{ color: "green"}} onClick={controlMic}/>
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
+                    style={{ color: "green"}}
                   />
                 </IconButton>
               </InputAdornment>
@@ -361,7 +396,7 @@ const PageM11 = () => {
             onClick={() => { setOpen(true) }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -408,7 +443,7 @@ const PageM11 = () => {
             onClick={() => { setOpen2(true) }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>
@@ -446,6 +481,9 @@ const PageM11 = () => {
                         sellerCount={v.quantity}
                         price={v.price}
                         stars={v.rating}
+                        type = {v.type}
+                        cartArray={setcart}
+                        array={cart}
                       />
                     // );
                   // }
@@ -454,9 +492,14 @@ const PageM11 = () => {
               // </>
             );
           })}
+          
         </Box>
       </Card>
       {transcript}
+      <Button
+       onClick={confirmCart}>
+        Confirm Cart
+      </Button>
     </Container>
   );
 };

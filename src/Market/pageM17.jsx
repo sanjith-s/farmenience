@@ -98,7 +98,7 @@ function M17() {
           buyTransaction.push(
             {
               ifscCode: val.IFSC,
-              transactionid:val.transactionTd,
+              transactionid: val.transactionId,
               paymentMethod: val.paymentMode,
               bankName: val.bankName,
               amount: val.amount,

@@ -84,7 +84,7 @@ function PageM9() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            height: "400px",
+            height: "550px",
             overflow: "auto",
             position: "relative",
           }}

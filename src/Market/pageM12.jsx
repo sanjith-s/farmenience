@@ -16,7 +16,7 @@ import BasketBox1 from "../components/basketBox1";
 import BasketBox2 from "../components/basketBox2";
 import BasketBox3 from "../components/basketBox3";
 import ShareIcon from "@mui/icons-material/Share";
-
+import Axios from "axios";
 import { baseURL } from "../constants";
 
 import {
@@ -31,6 +31,7 @@ import {
   Step,
   StepLabel,
 } from "@mui/material";
+import Cookies from "js-cookie";
 
 const salesItems = [
   {
@@ -74,6 +75,7 @@ const Quantities = createContext();
 const PaymentMethod = createContext();
 
 function PageM12() {
+  const [cartDeatils, setcartDeatils] = useState([]);
 
   // const googleTranslateElementInit = () => {
   //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
@@ -95,6 +97,66 @@ function PageM12() {
   //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
   //   document.body.appendChild(addScript);
   // }, []);
+
+  const discount = 0.23;
+  const [profile, setProfile] = useState({});
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+
+    const fun = async () => {
+      let token = Cookies.get('token');
+    await Axios.get(`${baseURL}/profile`, {
+      headers: {tokenstring: token}
+    }).then((res)=> {
+      console.log(res);
+        setProfile(res.data.message);
+    })
+    .catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+
+    await Axios.get(`${baseURL}/buyer/getcart`, {
+      headers: {tokenstring: token}
+    }).then((res) => {
+        setCart(res.data.message);
+        // console.log(res.data.message.items);
+        console.log(cart.items);
+        setcartDeatils(res.data.message.items);
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+    }
+    fun();
+  }, []);
 
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
@@ -273,10 +335,10 @@ function PageM12() {
             {update === "editCard" && active === "negot1" && (
               <Box style={{ position: "relative " }}>
                 <UserDetails
-                  userAddress={userData.address}
-                  userName={userData.name}
-                  userNumber={userData.number}
-                  onDataHandler={userDataHandler}
+                  userAddress= {profile.address}
+                  userName= {profile.name}
+                  userNumber= {userData.number}
+                  onDataHandler= {userDataHandler}
                 />
                 <Button
                   // variant="contained"
@@ -300,9 +362,10 @@ function PageM12() {
             {(update === "updatedCard" || active === "negot2") && (
               <Box style={{ position: "relative " }}>
                 <ShowUserDetails
-                  userName={consumerName}
-                  userAddress={consumerAddress}
-                  userNumber={consumerNumber}
+                  userName={profile.name}
+                  userAddressLine1={profile.addline1}
+                  userAddressLine2={profile.addline2}
+                  userNumber={profile.phoneno}
                 />
                 {active === "negot1" && (
                   <Button
@@ -328,25 +391,7 @@ function PageM12() {
         )}
 
         {active === "negot1" && (
-          <Box sx={{ marginTop: "10px" }}>
-            <Box
-              sx={{
-                backgroundColor: "#fff",
-                padding: "15px",
-                borderRadius: "5px",
-                display: "flex",
-                columnGap: "40px",
-                justifyContent: "center",
-              }}
-            >
-              <Button color="success" variant="contained">
-                Go to cart <ShoppingCartIcon style={{ marginLeft: "8px" }} />
-              </Button>
-              <Button color="success" variant="contained">
-                share
-                <ShareIcon style={{ marginLeft: "8px" }} />
-              </Button>
-            </Box>
+          <Box >
             <Box
               style={{
                 height: "400px",
@@ -354,7 +399,24 @@ function PageM12() {
                 borderRadius: "8px",
               }}
             >
-              {salesItems.map((item, index) => {
+              {cartDeatils.map((item, index) => {
+                // const qcounter = item.index == 1 ? quantity1 : quantity2;
+                return (
+                  <Box key={index++}>
+                    <BasketBox1
+                      iName={item.productName}
+                      quantity={item.quantity}
+                      actualPrice={item.price}
+                      discountAmount={(item.price * discount).toPrecision(2)}
+                      discountPrice={item.price - (item.price * discount).toPrecision(2)}
+                      index={item.index}
+                      // userQuantity={qcounter}
+                      onCounterHandler={QuantityCounterHandler}
+                    />
+                  </Box>
+                );
+              })}
+              {/* {salesItems.map((item, index) => {
                 const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
                   <Box key={index}>
@@ -370,7 +432,7 @@ function PageM12() {
                     />
                   </Box>
                 );
-              })}
+              })} */}
             </Box>
           </Box>
         )}
@@ -561,8 +623,7 @@ function PageM12() {
                 position: "absolute",
                 bottom: "12px",
                 right: "12px",
-                fontSize: "16px",
-                fontWeight: "600",
+                
               }}
             >
               place order

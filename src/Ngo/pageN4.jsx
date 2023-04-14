@@ -134,19 +134,19 @@ const PageN4 = () => {
       </Stack>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" color="success">
           Home Page
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={handleSubmit} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={handleSubmit} variant="contained" color="success">
           Submit
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={getImages} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={getImages} variant="contained" color="success">
           Get All Images
         </Button>
       </Box>
@@ -160,7 +160,7 @@ const PageN4 = () => {
         );
       })}
 
-    </div >
+    </div>
   );
 };
 

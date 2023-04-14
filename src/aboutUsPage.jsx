@@ -48,7 +48,7 @@ const AboutUsPage = () => {
               <h1 className="heading-primary" style={{ textAlign: "center", color: "#000", fontWeight: "600", marginBottom: "80px" }}>
                 About Farmenience
               </h1>
-              <img src={farmsvg} alt="" style={{ height: "140px", objectFit: "cover", position: "absolute", left: "42%", top: "30px" }} />
+              {/* <img src={farmsvg} alt="" style={{ height: "140px", objectFit: "cover", position: "absolute", left: "42%", top: "30px" }} /> */}
             </div>
 
             <p className="about-description indent">
@@ -72,9 +72,7 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
-          Submit
-        </Button>
+       
 
       </main>
 

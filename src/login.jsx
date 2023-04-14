@@ -28,7 +28,7 @@ function Login() {
     let passChk = 1;
     if (validator.isEmail(email)) emailChk = 1;
     if (!emailChk) {
-      await Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Invalid email address!',
@@ -36,14 +36,14 @@ function Login() {
       return;
     }
     if (!passChk) {
-      await Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Invalid password!',
       })
       return;
     }
-    await Swal.fire({
+    Swal.fire({
       icon: 'success',
       title: 'Validation Successful!',
     })
@@ -56,7 +56,7 @@ function Login() {
         password: pass,
       });
       if (response.data.message == "Successful") {
-        await Swal.fire({
+        Swal.fire({
           icon: 'success',
           title: 'Login Successful!',
         });
@@ -71,7 +71,7 @@ function Login() {
           navigate("/homepage2");
         }
       } else {
-        await Swal.fire({
+        Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Error in logging in!',

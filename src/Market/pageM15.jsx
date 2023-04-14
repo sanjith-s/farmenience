@@ -172,11 +172,11 @@ function PageM15() {
           </Box>
         )} */}
 
-            <ShowUserDetails
-              userName={userData.name}
-              userAddress={userData.address}
-              userNumber={userData.number}
-            />
+        <ShowUserDetails
+          userName={userData.name}
+          userAddress={userData.address}
+          userNumber={userData.number}
+        />
 
         {active === "negot1" && (
           <Box style={{ position: "relative " }}>

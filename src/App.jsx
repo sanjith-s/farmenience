@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./css/app.css";
+import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
 import Homepage1 from "./homepage1";

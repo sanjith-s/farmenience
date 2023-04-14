@@ -4,6 +4,8 @@ import { jsPDF } from 'jspdf';
 import PriceTable from "../components/priceTable";
 import ProductDetails from "../components/productDetails";
 import { Link, useLocation } from "react-router-dom";
+import { Col, Divider, Row, Table } from 'antd';
+import logo from "../images/logo_for_invoice.jpg";
 import Paper from '@mui/material/Paper';
 import {
   Box,
@@ -17,14 +19,13 @@ import {
   List,
   ListItem,
   ListItemButton,
-  Table,
+  // Table,
   TableContainer,
   TableBody,
   TableRow,
   TableCell,
-  TableHead
+  TableHead,
 } from "@mui/material";
-
 const itemsBought = [
   {
     sno: 1,
@@ -155,12 +156,18 @@ function PageM4() {
 
 
   let filterItems;
-
+      var count = 1;
+      let tot_amount = 0;
+      data.items.forEach(i=>{
+        i.sno = count;
+        i.total = i.unitPrice * i.quantity;
+        tot_amount += i.total;
+        count++;
+      })
   const handleChange = () => {
     filterItems = itemsBought.filter((value) => {
       if ((data.items).includes(value.item)) {
         return value;
-
       }
     });
 
@@ -172,11 +179,7 @@ function PageM4() {
 
   handleChange();
 
-  let tot_amount = 0;
-  filterItems.map((item) => {
-    tot_amount += item.quantity * item.eachPrice;
-    return;
-  });
+  
 
   return (
     <>
@@ -401,322 +404,73 @@ function PageM4() {
         </Box>
       </Card>
 
-      <div ref={printRef}>
-        <Typography
-          variant="h1"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          INVOICE
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          ID :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.id}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Order Date :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {ordDate}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Delivery Date :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {delDate}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Client Name :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.clientName}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          billing address :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.address}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Payment Mode :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.paymentMode}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Transaction ID :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.transactionID}
-        </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "27%",
-          }}
-        >
-          Remarks :
-        </Typography>
-        <Typography
-          sx={{
-            textTransform: "uppercase",
-            fontSize: "18px",
-            overflow: "auto",
-          }}
-        >
-          {data.remarks}
-        </Typography>
-
-        <TableContainer
-          component={Paper}
-          style={{
-            border: "3px solid",
-            width: "fit-content",
-            overflow: "auto",
-            height: "300px",
-          }}
-        >
-          <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  sno
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  item
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  quantity
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  price per kg
-                </TableCell>
-                <TableCell
-                  align="center"
-                  style={{
-                    fontWeight: "600",
-                    fontSize: "18px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  total price
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.items.map((row) => (
-                <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    align="center"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {row.sno}
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "16px",
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {row.name}{" "}
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {row.quantity}
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {row.unitPrice}
-                  </TableCell>
-                  <TableCell
-                    align="right"
-                    style={{
-                      fontWeight: "600",
-                      fontSize: "18px",
-                    }}
-                  >
-                    {row.totalPrice}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
-        <Typography
-          style={{
-            display: "flex",
-            alignItems: "center",
-            textTransform: "uppercase",
-            fontWeight: "600",
-            width: "100%",
-            justifyContent: "flex-end",
-          }}
-        >
-          Total amount to be paid :
-          <Typography
-            variant="h6"
-            style={{
-              fontWeight: "600",
-              paddingLeft: "15px",
-              width: "30%",
-            }}
-          >
-            ₹ {tot_amount}
-          </Typography>
-        </Typography>
+      <div style={{ padding: 20,width:"80%",margin:"auto" }} ref={printRef}>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+      <img src={logo} style={{width:"200px",objectFit:"cover",height:"50px",position:"relative",right:"2%"}} />
+      <span style={{width:"200px",fontWeight:"bolder",fontSize:"30px"}} >INVOICE</span> 
+      <span style={{width:"200px"}} ></span> 
       </div>
+      <Row gutter={39} style={{marginTop: 32 }}>
+        <Col span={8}>
+        <table style={{width:"60%"}}>
+            <tr style={{width:"40%"}}>
+              <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Client Name </strong></th>
+              <td>{data.clientName}</td>
+            </tr>
+            <tr style={{width:"40%"}}>
+              <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Payment Mode </strong></th>
+              <td>{data.paymentMode}</td>
+            </tr>
+          </table>
+        </Col>
+        <Col span={8} offset={8}>
+          <table style={{width:"60%"}}>
+            <tr>
+              <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Invoice # </strong></th>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Order Date </strong></th>
+              <td>{ordDate}</td>
+            </tr>
+            <tr>
+              <th style={{textAlign:"left"}}><strong style={{paddingLeft:"1%"}}>Delivery Date </strong></th>
+              <td>{delDate}</td>
+            </tr>
+          </table>
+        </Col>
+      </Row>
+
+      <Row style={{display:"block" , marginTop: 48 }}>
+        <div>Bill To: <strong style={{paddingLeft:"1%"}}>{data.clientName}</strong><br />{data.address}</div>
+      </Row>
+
+
+      <Row style={{ marginTop: 48,display:"block" }}>
+        <Table dataSource={data.items}
+        pagination={false}
+        >
+          <Table.Column title="S. No" dataIndex='sno' />
+          <Table.Column title="Item" dataIndex='name' />
+          <Table.Column title="Quantity" dataIndex='quantity' />
+          <Table.Column title="Price / kg" dataIndex='unitPrice' />
+          <Table.Column title="Total Price (In Rs.)" dataIndex='total' />
+        </Table>
+        <Col span={12} offset={17} style={{marginTop:"2%"}} >
+          <table>
+            <div style={{borderBottom: "1px solid",borderTop: "1px solid",paddingTop:"3%",paddingBottom:"3%"}}>
+            <tr>
+              <th style={{textAlign:"left"}}>Net Total - &nbsp;</th>
+              <th>
+                <span style={{textAlign:"right",fontWeight:"bolder"}} >₹ {tot_amount}</span>
+              </th>
+            </tr>
+            </div>
+          </table>
+        </Col>
+        <Divider></Divider>
+      </Row>
+    </div>
     </>
   );
 }

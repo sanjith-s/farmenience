@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Table,
   TableBody,
   TableCell,
   TableContainer,
@@ -8,6 +7,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { Col, Divider, Row, Table } from 'antd';
 
 function PriceTable(props) {
   let count = 0;
@@ -33,126 +33,17 @@ function PriceTable(props) {
         border: "3px solid",
         width: "fit-content",
         overflow: "auto",
-        height: "300px",
       }}
     >
-      <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
-        <TableHead
-          style={{
-            borderTop: "0px solid",
-            borderBottom: "3px solid",
-            backgroundColor: "#ccc",
-          }}
+      <Table dataSource={props.rows}
+        pagination={false}
         >
-          <TableRow>
-            <TableCell
-              align="center"
-              style={{
-                fontWeight: "600",
-                fontSize: "18px",
-                textTransform: "uppercase",
-              }}
-            >
-              sno
-            </TableCell>
-            <TableCell
-              align="center"
-              style={{
-                fontWeight: "600",
-                fontSize: "18px",
-                textTransform: "uppercase",
-              }}
-            >
-              item
-            </TableCell>
-            <TableCell
-              align="center"
-              style={{
-                fontWeight: "600",
-                fontSize: "18px",
-                textTransform: "uppercase",
-              }}
-            >
-              quantity
-            </TableCell>
-            <TableCell
-              align="center"
-              style={{
-                fontWeight: "600",
-                fontSize: "18px",
-                textTransform: "uppercase",
-              }}
-            >
-              price per kg
-            </TableCell>
-            <TableCell
-              align="center"
-              style={{
-                fontWeight: "600",
-                fontSize: "18px",
-                textTransform: "uppercase",
-              }}
-            >
-              total price
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody style={{ backgroundColor: "#c8f1d9" }}>
-          {rows.map((row) => (
-            <TableRow key={count+1} style={{ borderBottom: "2px solid #000" }}>
-              {count = count + 1}
-              <TableCell
-                component="th"
-                scope="row"
-                align="center"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "18px",
-                }}
-              >
-                {count}
-              </TableCell>
-              <TableCell
-                align="right"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "16px",
-                  textTransform: "capitalize",
-                }}
-              >
-                {row.item}{" "}
-              </TableCell>
-              <TableCell
-                align="right"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "18px",
-                }}
-              >
-                {row.quantity}
-              </TableCell>
-              <TableCell
-                align="right"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "18px",
-                }}
-              >
-                {row.eachprice}
-              </TableCell>
-              <TableCell
-                align="right"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "18px",
-                }}
-              >
-                {row.price}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          <Table.Column title="S. No" dataIndex='sno' />
+          <Table.Column title="Item" dataIndex='name' />
+          <Table.Column title="Quantity" dataIndex='quantity' />
+          <Table.Column title="Price / kg" dataIndex='unitPrice' />
+          <Table.Column title="Total Price (In Rs.)" dataIndex='total' />
+        </Table>
     </TableContainer>
   );
 }

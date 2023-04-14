@@ -63,11 +63,14 @@ const PageM11 = () => {
 
   useEffect(() => {
     let token = Cookies.get('token');
-    Axios.get(`${baseURL}/buyer/loadproducts`, {
+    Axios.post(`${baseURL}/buyer/loadproducts`, {
       productName: ""
     }, { headers: { tokenstring: token } })
       .then((response) => {
         setDefaultData(response.data.message);
+        setContent(response.data.message);
+        // ACCESS FORMAT
+        // alert(defaultData[0].records[0].productName);
       })
       .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -186,6 +189,8 @@ const PageM11 = () => {
   // ]
 
   const [content, setContent] = useState(defaultData);
+  console.log(defaultData);
+  console.log(content);
 
   //const copy = content;
   const handleChange = (event) => {
@@ -196,17 +201,19 @@ const PageM11 = () => {
   const handleSearch = (event) => {
 
     let searchTerm = event.target.value.toLowerCase().trim()
-
+    console.log(searchTerm);
     if (searchTerm.length == 0) {
       setContent(defaultData)
     } else {
-      setContent(defaultData.filter((item) => item.product.toLowerCase().includes(searchTerm)))
+      setContent(defaultData.filter((item) => item.productName.toLowerCase().includes(searchTerm)))
     }
   };
 
   const [value, setValue] = React.useState(false);
   const handleChange1 = (event) => {
+    console.log(event.target.value);
     setValue(event.target.value);
+    console.log(value);
     function compare2(a, b) {
       if (a.price <= b.price) {
         return -1;
@@ -381,7 +388,7 @@ const PageM11 = () => {
           <Box sx={{ padding: "8%" }}>
             <FormControl>
               <Stack spacing={3}>
-                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" value={100} />
+                <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
                 <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
                 <Button onClick={ApplyChange}>Apply</Button>
                 <Button onClick={resetFilter}>Reset Filter</Button>
@@ -425,16 +432,26 @@ const PageM11 = () => {
             rowGap: "38px",
           }}
         >
-          {content.map((val, index) => {
+          {console.log(defaultData)}
+
+    {content.map((v, i) => {
             return (
-              <MarketCard
-                key={index + 1}
-                image={val.image}
-                productName={val.product}
-                sellerCount={val.count}
-                price={val.price}
-                stars={val.rate}
-              />
+              // <>
+              //     {val.records.map((v, i)=>{
+                    // return (
+                      <MarketCard
+                        key={i+ 1}
+                        image={v.image}
+                        productName={v.productName}
+                        sellerCount={v.quantity}
+                        price={v.price}
+                        stars={v.rating}
+                      />
+                    // );
+                  // }
+                // )
+              //   }
+              // </>
             );
           })}
         </Box>

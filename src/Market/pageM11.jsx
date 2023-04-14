@@ -59,34 +59,34 @@ const PageM11 = () => {
     alert("Your Browser doesn't support speech to text !!")
   }
 
-  // const [defaultData, setDefaultData] = useState([]);
+  const [defaultData, setDefaultData] = useState([]);
 
-  // useEffect(() => {
-  //   let token = Cookies.get('token');
-  //   Axios.get(`${baseURL}/buyer/loadproducts`, {
-  //     productName: ""
-  //   }, { headers: { tokenstring: token } })
-  //     .then((response) => {
-  //       setDefaultData(response.data.message);
-  //     })
-  //     .catch(async (res) => {
-  //       if (res.response.data.message === 'Error in connection') {
-  //         await Swal.fire({
-  //           icon: 'error',
-  //           title: 'Oops...',
-  //           text: 'Please Check Network Connection!',
-  //         })
-  //       }
-  //       else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-  //         await Swal.fire({
-  //           icon: 'error',
-  //           title: 'Oops...',
-  //           text: 'Login Error',
-  //         })
-  //         navigate('../login')
-  //       }
-  //     })
-  // }, []);
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/buyer/loadproducts`, {
+      productName: ""
+    }, { headers: { tokenstring: token } })
+      .then((response) => {
+        setDefaultData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
 
 
   const googleTranslateElementInit = () => {
@@ -110,80 +110,80 @@ const PageM11 = () => {
     document.body.appendChild(addScript);
   }, []);
 
-  const defaultData = [
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "apple",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "orange",
-      count: 4,
-      price: 32,
-      rate: 3,
-    },
-    {
-      product: "banana",
-      count: 4,
-      price: 132,
-      rate: 3,
-    },
-    {
-      product: "banana",
-      count: 10,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "apple",
-      count: 100,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "mango",
-      count: 4,
-      price: 732,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 332,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 432,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 232,
-      rate: 3,
-    },
-    {
-      product: "promegranate",
-      count: 4,
-      price: 230,
-      rate: 3,
-    },
-  ]
+  // const defaultData = [
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "apple",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "orange",
+  //     count: 4,
+  //     price: 32,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "banana",
+  //     count: 4,
+  //     price: 132,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "banana",
+  //     count: 10,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "apple",
+  //     count: 100,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "mango",
+  //     count: 4,
+  //     price: 732,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 332,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 432,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 232,
+  //     rate: 3,
+  //   },
+  //   {
+  //     product: "promegranate",
+  //     count: 4,
+  //     price: 230,
+  //     rate: 3,
+  //   },
+  // ]
 
   const [content, setContent] = useState(defaultData);
 

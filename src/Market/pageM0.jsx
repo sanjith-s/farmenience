@@ -164,27 +164,27 @@ function SellerDashboard() {
                 }
             });
 
-        Axios.get(`${baseURL}/loadnotifications`, { headers: { tokenstring: token } }).
-            then((response) => {
-                setNotifications(response.data.message);
-            })
-            .catch(async (res) => {
-                if (res.response.data.message === 'Error in connection') {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please Check Network Connection!',
-                    })
-                }
-                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Login Error',
-                    })
-                    navigate('../login')
-                }
-            })
+        // Axios.get(`${baseURL}/loadnotifications`, { headers: { tokenstring: token } }).
+        //     then((response) => {
+        //         setNotifications(response.data.message);
+        //     })
+        //     .catch(async (res) => {
+        //         if (res.response.data.message === 'Error in connection') {
+        //             await Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Oops...',
+        //                 text: 'Please Check Network Connection!',
+        //             })
+        //         }
+        //         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        //             await Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Oops...',
+        //                 text: 'Login Error',
+        //             })
+        //             navigate('../login')
+        //         }
+        //     })
     }
 
     useEffect(() => {

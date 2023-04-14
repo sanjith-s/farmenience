@@ -229,7 +229,7 @@ function PageM4() {
             >
               <ProductDetails
                 style={{ padding: "15px 0px" }}
-                key={data.id}
+                key={data.key}
                 orderDate={ordDate}
                 deliveryDate={delDate}
                 clientName={data.clientName}

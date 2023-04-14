@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from 'js-cookie';
 import ProductCard from "../components/productCard";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -57,14 +58,24 @@ const PageM18 = () => {
     setOpen3(false);
   };
 
-  const handleSubmit = async() => {
-      await Axios.post(`${baseURL}/buyer/postrequest`, {
-        name: name,
-        price: price,
-        quantity: qty,
-        specificType: type,
-        location: location
-      }).then(async (res) => {
+  const Reset = () => {
+    setName('');
+    setPrice('');
+    setQty('');
+    setType('');
+    setLocation('');
+  }
+
+  const handleSubmit = async () => {
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/buyer/postrequest`, {
+      name: name,
+      price: price,
+      quantity: qty,
+      specificType: type,
+      location: location
+    }, { headers: { tokenstring: token } })
+      .then(async (res) => {
         alert("SUCCESS");
         console.log("Successfully added request");
       }).catch((err) => {
@@ -73,7 +84,7 @@ const PageM18 = () => {
       })
   }
 
-return (
+  return (
     <Box
       sx={{
         margin: "50px",
@@ -180,260 +191,270 @@ return (
       {/* </Box> */}
 
       <Box style={{ display: "flex", justifyContent: "center" }}>
-      <Box
-        style={{
-          width: "700px",
-          border: "8px solid green",
-          padding: "30px",
-          borderRadius: "5px",
-          borderTopRightRadius: "50px",
-          borderBottomLeftRadius: "50px",
-          backgroundColor: "lightgreen",
-        }}
-      >
-        <Box style={{ position: "sticky" }}>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
-                style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
+        <Box
+          style={{
+            width: "700px",
+            border: "8px solid green",
+            padding: "30px",
+            borderRadius: "5px",
+            borderTopRightRadius: "50px",
+            borderBottomLeftRadius: "50px",
+            backgroundColor: "lightgreen",
+          }}
+        >
+          <Box style={{ position: "sticky" }}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>
+                <Typography
+                  variant="h6"
+                  style={{
+                    textTransform: "uppercase",
+                    color: "darkgreen",
+                    fontWeight: "600",
+                  }}
+                >
+                  name of the product
+                </Typography>
+              </InputLabel>
+              <FilledInput
+                type="text"
+                value={name}
+                onChange={(event) => {
+                  setName(event.target.value);
                 }}
-              >
-                name of the product
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              type="text"
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-              style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
-              }}
-              inputProps={{ 
-                minLength: 1,
-                maxLength: 30 
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box style={{ position: "sticky" }}>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
                 style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
+                  borderRadius: "5px",
+                  borderBottomLeftRadius: "0px",
+                  borderBottomRightRadius: "0px",
                 }}
-              >
-                price
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              endAdornment={
-                <InputAdornment position="end">
-                  <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
-                </InputAdornment>
-              }
-              onChange={(event) => {
-                if(event.target.value >= 1 && event.target.value <= 2000)
-                  setPrice(event.target.value);
-                else {
-                  setOpen1(true);
+                inputProps={{
+                  minLength: 1,
+                  maxLength: 30
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box style={{ position: "sticky" }}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>
+                <Typography
+                  variant="h6"
+
+                  style={{
+                    textTransform: "uppercase",
+                    color: "darkgreen",
+                    fontWeight: "600",
+                  }}
+                >
+                  price
+                </Typography>
+              </InputLabel>
+              <FilledInput
+                value={price}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
+                  </InputAdornment>
                 }
-              }}
-              style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
-              }}
-              inputProps={{ 
-                min: 1,
-                max: 200 
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box style={{ position: "sticky" }}>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
-                style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
+                onChange={(event) => {
+                  if (event.target.value >= 0 && event.target.value <= 2000)
+                    setPrice(event.target.value);
+                  else {
+                    setOpen1(true);
+                  }
                 }}
-              >
-                quantity required
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              endAdornment={
-                <InputAdornment position="end">
-                  <Typography
-                    variant="h6"
-                    style={{
-                      textTransform: "uppercase",
-                      color: "darkgreen",
-                      fontWeight: "600",
-                    }}
-                  >
-                    kg
-                  </Typography>
-                </InputAdornment>
-              }
-              onChange={(event) => {
-                if(event.target.value >= 1 && event.target.value <= 50)
-                  setQty(event.target.value);
-                else {
-                  setOpen2(true);
-                }  
-              }}
-              style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
-              }}
-              inputProps={{ 
-                min: 1,
-                max: 20 
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box style={{ position: "sticky" }}>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
                 style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
+                  borderRadius: "5px",
+                  borderBottomLeftRadius: "0px",
+                  borderBottomRightRadius: "0px",
                 }}
-              >
-                specific type
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              type="text"
-              onChange={(event) => {
-                if(event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
+                inputProps={{
+                  min: 1,
+                  max: 200
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box style={{ position: "sticky" }}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>
+                <Typography
+                  variant="h6"
+                  style={{
+                    textTransform: "uppercase",
+                    color: "darkgreen",
+                    fontWeight: "600",
+                  }}
+                >
+                  quantity required
+                </Typography>
+              </InputLabel>
+              <FilledInput
+                value={qty}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <Typography
+                      variant="h6"
+                      style={{
+                        textTransform: "uppercase",
+                        color: "darkgreen",
+                        fontWeight: "600",
+                      }}
+                    >
+                      kg
+                    </Typography>
+                  </InputAdornment>
+                }
+                onChange={(event) => {
+                  if (event.target.value >= 0 && event.target.value <= 50)
+                    setQty(event.target.value);
+                  else {
+                    setOpen2(true);
+                  }
+                }}
+                style={{
+                  borderRadius: "5px",
+                  borderBottomLeftRadius: "0px",
+                  borderBottomRightRadius: "0px",
+                }}
+                inputProps={{
+                  min: 1,
+                  max: 20
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box style={{ position: "sticky" }}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>
+                <Typography
+                  variant="h6"
+                  style={{
+                    textTransform: "uppercase",
+                    color: "darkgreen",
+                    fontWeight: "600",
+                  }}
+                >
+                  specific type
+                </Typography>
+              </InputLabel>
+              <FilledInput
+                value={type}
+                type="text"
+                onChange={(event) => {
+                  // if (event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
                   setType(event.target.value);
-                else {
-                  setOpen3(true);
-                }
-              }}
-              style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
-              }}
-              inputProps={{ 
-                minLength: 1,
-                maxLength: 20 
-              }}
-            />
-          </FormControl>
-        </Box>
-        <Box style={{ position: "sticky" }}>
-          <FormControl fullWidth variant="filled">
-            <InputLabel>
-              <Typography
-                variant="h6"
-                style={{
-                  textTransform: "uppercase",
-                  color: "darkgreen",
-                  fontWeight: "600",
+                  // else {
+                  // setOpen3(true);
+                  // }
                 }}
-              >
-                location
-              </Typography>
-            </InputLabel>
-            <FilledInput
-              type="text"
-              onChange={(event) => {
-                setLocation(event.target.value);
-              }}
-              style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
-              }}
-              inputProps={{ 
-                minLength: 1,
-                maxLength: 40 
-              }}
-            />
-          </FormControl>
+                style={{
+                  borderRadius: "5px",
+                  borderBottomLeftRadius: "0px",
+                  borderBottomRightRadius: "0px",
+                }}
+                inputProps={{
+                  minLength: 1,
+                  maxLength: 20
+                }}
+              />
+            </FormControl>
+          </Box>
+          <Box style={{ position: "sticky" }}>
+            <FormControl fullWidth variant="filled">
+              <InputLabel>
+                <Typography
+                  variant="h6"
+                  style={{
+                    textTransform: "uppercase",
+                    color: "darkgreen",
+                    fontWeight: "600",
+                  }}
+                >
+                  location
+                </Typography>
+              </InputLabel>
+              <FilledInput
+                value={location}
+                type="text"
+                onChange={(event) => {
+                  setLocation(event.target.value);
+                }}
+                style={{
+                  borderRadius: "5px",
+                  borderBottomLeftRadius: "0px",
+                  borderBottomRightRadius: "0px",
+                }}
+                inputProps={{
+                  minLength: 1,
+                  maxLength: 40
+                }}
+              />
+            </FormControl>
+          </Box>
         </Box>
+
+        <Dialog
+          open={open1}
+          onClose={handleClose1}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Invalid Price
+          </DialogTitle>
+          <DialogActions>
+            <Button onClick={handleClose1}>Ok</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={open2}
+          onClose={handleClose2}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Invalid Quantity
+          </DialogTitle>
+          <DialogActions>
+            <Button onClick={handleClose2}>Ok</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={open3}
+          onClose={handleClose3}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Invalid Type
+          </DialogTitle>
+          <DialogActions>
+            <Button onClick={handleClose3}>Ok</Button>
+          </DialogActions>
+        </Dialog>
+
       </Box>
 
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+      <Button endIcon={<DoneIcon />}
+        variant="contained"
+        style={{
+          backgroundColor: "green",
+          color: "white",
+          fontWeight: "600",
+          fontSize: "16px",
+          margin: "auto"
+        }}
+        onClick={handleSubmit}
       >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Price
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
+        submit request
+      </Button>
 
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Quantity
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Type
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-    </Box>
-
-           <Button endIcon={<DoneIcon />}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-              margin:"auto"
-            }}
-            onClick={handleSubmit}
-          >
-            submit request
-          </Button>
+      <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+        Reset To Old Values
+      </Button><br /><br />
     </Box>
   );
 };

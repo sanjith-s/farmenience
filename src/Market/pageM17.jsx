@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 import TransactionHistory from "../components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
 import Axios from "axios";
@@ -93,7 +94,7 @@ function M17() {
       Axios.get(`${baseURL}/buyer/gettransactions`, { headers: { tokenstring: token } }).then((res)=> {
         const dat = res.data.message;
         // setTransaction(dat);
-        dat.map((val) => {
+        dat && dat.map((val) => {
           buyTransaction.push(
             {
               ifscCode: val.IFSC,

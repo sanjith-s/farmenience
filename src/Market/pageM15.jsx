@@ -106,7 +106,21 @@ function PageM15() {
     }
   };
 
+
+
   const [active, setActive] = useState("negot1");
+
+
+  const handleClick = (opt) => {
+    if(opt==2) {
+      setActive("negot2");
+    } else if(opt==3) {
+      setActive("negot3");
+    } else {
+      alert("Illegal Event");
+    }
+ }
+
   const negotHandler = () => {
     if (active === "negot1") {
       setActive("negot2");
@@ -124,7 +138,7 @@ function PageM15() {
       <CssBaseline />
 
       <Box className="gx-d-flex justify-content-center">
-        <NegotNav />
+        <NegotNav handleClick={handleClick}/>
         {/* {update === "editCard" && (
           <Box style={{ position: "relative " }}>
             <UserDetails

@@ -19,6 +19,7 @@ import Login from "./login";
 import ForgetPasswordGetEmail from "./forgetPasswordgetEmail"
 import VerifyOTP from "./verifyOTP"
 import ForgetEnterNewPassword from "./forgetEnterNewPassword"
+import ResetEnterNewPassword from "./resetEnterNewPassword"
 import Logout from "./logout"
 import LogoutAllDevice from "./LogoutAllDevice";
 import NGOProfile from "./NGOProfile";
@@ -125,6 +126,7 @@ const fullAnotherSpeak = (text) => {
             <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
             <Route path="/verifyOTP" element={<VerifyOTP />} />
             <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
+            <Route path="/resetpass" element={<ResetEnterNewPassword/>} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/NGOProfile" element={<NGOProfile />} />

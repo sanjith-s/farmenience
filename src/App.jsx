@@ -20,6 +20,7 @@ import Login from "./login";
 import ForgetPasswordGetEmail from "./forgetPasswordgetEmail"
 import VerifyOTP from "./verifyOTP"
 import ForgetEnterNewPassword from "./forgetEnterNewPassword"
+import ResetEnterNewPassword from "./resetEnterNewPassword"
 import Logout from "./logout"
 import LogoutAllDevice from "./LogoutAllDevice";
 import NGOProfile from "./NGOProfile";
@@ -128,6 +129,7 @@ const fullAnotherSpeak = (text) => {
             <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
             <Route path="/verifyOTP" element={<VerifyOTP />} />
             <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
+            <Route path="/resetpass" element={<ResetEnterNewPassword/>} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/chart" element={<Chart />} />
             <Route path="/NGOProfile" element={<NGOProfile />} />
@@ -142,7 +144,7 @@ const fullAnotherSpeak = (text) => {
             <Route path="/M6" element={<PageM6 />} />
             <Route path="/M7" element={<PageM7 />} />
             <Route path="/M9" element={<PageM9 />} />
-            <Route path="/M10" element={<Graph />} />
+            <Route path="/M10" element={<PageM10 />} />
             <Route path="/M10a" element={<PageM10a />} />
             <Route path="/M10b" element={<PageM10b />} />
             <Route path="/M10c" element={<PageM10c />} />

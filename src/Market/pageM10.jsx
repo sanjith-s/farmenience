@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import lineGraph from "../images/lineGraph.png";
 
@@ -105,7 +105,59 @@ const marketData = [
   },
 ];
 
+ function createData(time, amount) {
+    return { time, amount };
+}
+
+
+const fetchData = async () => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/fetchprice`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setChartData(response.data.priceHistory);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+}
+
 function PageM10() {
+
+  [chartData, setChartData] = useState(null);
+
+  const data = [
+    createData("00:00", 0),
+    createData("03:00", 300),
+    createData("06:00", 600),
+    createData("09:00", 800),
+    createData("12:00", 1500),
+    createData("15:00", 2000),
+    createData("18:00", 2400),
+    createData("21:00", 2400),
+    createData("24:00", undefined),
+  ];
+
+  useEffect(() => {
+    fetchData();
+    setInterval(this.loadData, 30000);
+  });
+
+
+  
 
   return (
     <Container
@@ -143,13 +195,13 @@ function PageM10() {
             alignItems: "center",
           }}
         >
-          {/* <Chart /> */}
-          <img
+          <Chart />
+          {/* <img
             src={lineGraph}
             width={800}
             height={350}
             style={{ border: "2px solid #000", borderRadius: "4px" }}
-          />
+          /> */}
         </Box>
         <Button
           variant="contained"

@@ -10,12 +10,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import { baseURL } from './constants';
 
-const resetEnterNewPassword = () => {
+const ResetEnterNewPassword = () => {
     const navigate = useNavigate();
 
     const [pass, setPass] = useState("");
     const [confpass, setConfpass] = useState("");
+    const [enableButton, setEnableButton] = useState(false)
+    const [color, setColor] = useState('primary')
 
+    const handlePasswordChange = (e) => {
+        let password = e.target.value
+
+        if(password == pass) {
+            setColor('success')
+            setEnableButton(true);
+        } else {
+            setColor('error')
+        }
+
+        setConfpass(password)
+    }
     //   const validate = async () => {
     //     if (subject.length >= 1 && subject.length <= 50 && desc.length >= 1 && desc.length <= 500) {
     //       await Swal.fire({
@@ -47,6 +61,7 @@ const resetEnterNewPassword = () => {
         // localStorage.set('Email', email);
         if (pass === confpass) {
             await Axios.post(`${baseURL}/resetpass`, {
+                email: "",
                 password: pass,
             }, { headers: { tokenstring: token } }).
                 then(async (response) => {
@@ -109,7 +124,8 @@ const resetEnterNewPassword = () => {
                             id="pass"
                             label="New Password"
                             variant="filled"
-                            color="success"
+                            type="password"
+                            color={color}
                             InputProps={{
                                 maxLength: 6,
                                 minLength: 1
@@ -126,7 +142,8 @@ const resetEnterNewPassword = () => {
                             id="confpass"
                             label="Reenter New Password"
                             variant="filled"
-                            color="success"
+                            color={color}
+                            type="password"
                             InputProps={{
                                 maxLength: 6,
                                 minLength: 1
@@ -136,11 +153,11 @@ const resetEnterNewPassword = () => {
                                 borderBottomColor: "black",
                                 width: "70%",
                             }}
-                            onChange={(e) => { setConfpass(e.target.value) }}
+                            onChange={handlePasswordChange}
                         />
 
                         <Box textAlign="center" padding={"1.25rem"}>
-                            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postPass}>
+                            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postPass} disabled={!enableButton}>
                                 Submit
                             </Button>
                         </Box>
@@ -200,4 +217,4 @@ const resetEnterNewPassword = () => {
     );
 };
 
-export default resetEnterNewPassword;
+export default ResetEnterNewPassword;

@@ -80,6 +80,8 @@ import Vtt from "./Vtt";
 import Voice from "./Voice";
 import ImageDetection from "./Market/imageDetection"
 import Map from "./Ngo/Map";
+import MainMap from './MainMap'
+import GMap from './GMap'
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -183,6 +185,8 @@ const fullAnotherSpeak = (text) => {
             <Route path="/payments/success" element={<Success />} />
             <Route path="/payments/cancel" element={<Cancel />} />
             <Route path="/pdfprint" element={<PdfPrint/>} />
+            <Route path="/mainmap" element={<MainMap/>} />
+            <Route path="/gmap" element={<GMap/>} />
           </Routes>
         </BrowserRouter>
       </main>

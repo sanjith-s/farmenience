@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 
 function PriceTable(props) {
+  let count = 0;
+
   const createData = (sno, item, quantity, eachprice, price) => {
     return { sno, item, quantity, eachprice, price };
   };
@@ -17,10 +19,10 @@ function PriceTable(props) {
   const rows = props.rows.map((row) => {
     return createData(
       row.sno,
-      row.item,
+      row.name,
       row.quantity,
-      row.eachPrice,
-      row.quantity * row.eachPrice
+      row.unitPrice,
+      row.quantity * row.unitPrice
     );
   });
 
@@ -97,7 +99,8 @@ function PriceTable(props) {
         </TableHead>
         <TableBody style={{ backgroundColor: "#c8f1d9" }}>
           {rows.map((row) => (
-            <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
+            <TableRow key={count+1} style={{ borderBottom: "2px solid #000" }}>
+              {count = count + 1}
               <TableCell
                 component="th"
                 scope="row"
@@ -107,7 +110,7 @@ function PriceTable(props) {
                   fontSize: "18px",
                 }}
               >
-                {row.sno}
+                {count}
               </TableCell>
               <TableCell
                 align="right"

@@ -101,26 +101,26 @@ const billingAddress = "Room No: 30 , Kurinji Hostel , CEG , Anna University";
 
 function PageM4() {
 
-  // const googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-  // }
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
 
-  // const fullAnotherSpeak = (text) => {
-  //   responsiveVoice.speak(text, "Tamil Male");
-  // }
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-  //   document.body.appendChild(addScript);
-  //   window.googleTranslateElementInit = googleTranslateElementInit;
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-  //   document.body.appendChild(addScript);
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
 
   const printRef = useRef();
   const handleDownloadPdf = async () => {
@@ -182,8 +182,8 @@ function PageM4() {
     <>
       <Card id="google_translate_element">
         <Box className="gx-d-flex justify-content-center" style={{ padding: "15px 0px" }} onClick={(e) => {
-            fullAnotherSpeak(e.target.innerText)
-          }}>
+          fullAnotherSpeak(e.target.innerText)
+        }}>
           <Typography
             variant="h4"
             style={{ fontWeight: "600", textTransform: "uppercase", textAlign: "center" }}
@@ -229,7 +229,7 @@ function PageM4() {
             >
               <ProductDetails
                 style={{ padding: "15px 0px" }}
-                key={data.key}
+                key={data.id}
                 orderDate={ordDate}
                 deliveryDate={delDate}
                 clientName={data.clientName}
@@ -323,7 +323,7 @@ function PageM4() {
                     overflow: "auto",
                   }}
                 >
-                  {data.address}
+                  {data.billingAddress}
                 </Typography>
               </Box>
 
@@ -335,7 +335,7 @@ function PageM4() {
                   padding: "20px",
                 }}
               >
-                <PriceTable rows={filterItems} />
+                <PriceTable rows={data.items} />
               </Box>
 
               <Box
@@ -400,6 +400,7 @@ function PageM4() {
           </CardContent>
         </Box>
       </Card>
+
       <div ref={printRef}>
         <Typography
           variant="h1"
@@ -637,7 +638,7 @@ function PageM4() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filterItems.map((row) => (
+              {data.items.map((row) => (
                 <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
                   <TableCell
                     component="th"
@@ -658,7 +659,7 @@ function PageM4() {
                       textTransform: "capitalize",
                     }}
                   >
-                    {row.item}{" "}
+                    {row.name}{" "}
                   </TableCell>
                   <TableCell
                     align="right"
@@ -676,7 +677,7 @@ function PageM4() {
                       fontSize: "18px",
                     }}
                   >
-                    {row.eachPrice}
+                    {row.unitPrice}
                   </TableCell>
                   <TableCell
                     align="right"
@@ -685,7 +686,7 @@ function PageM4() {
                       fontSize: "18px",
                     }}
                   >
-                    {row.price}
+                    {row.totalPrice}
                   </TableCell>
                 </TableRow>
               ))}

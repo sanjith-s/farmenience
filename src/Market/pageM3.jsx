@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom/dist";
 import SalesCardsList from "../components/salesCardsList";
 import SalesItemsList from "../components/salesItemsList";
 import { CssBaseline, Typography, Box, Container, Stack, Divider } from "@mui/material";
@@ -79,131 +80,70 @@ const salesItems = [
 ];
 
 function PageM3(props) {
-  const [selected, setSelected] = useState('');
-  const [ordDate, setOrdDate] = useState('');
-  const [delDate, setDelDate] = useState('');
-  // const [date, setDate] = useState({ordDate:"" , delDate:"" });
-  const [salesDetails, setSalesDetails] = useState(orders);
-  // let salesDetails;
-  const [filt, setFilt] = useState(false);
+  const navigate = useNavigate();
 
-  const selctedValueHandler = value => {
-    setSelected(value);
-    setFilt(true);
-  }
-  // let ordDate = useRef();
-  // let delDate = useRef();
-
-  const ordDateHandler = (event) => {
-    // ordDate.current = event.target.value;
-    setOrdDate(event.target.value);
-    if (event.target.value == '' && selected == '' && delDate == '') {
-      setFilt(false);
-    } else {
-      setFilt(true);
-    }
-    // setDate({...date , ordDate: event.target.value })
-  }
-  const delDateHandler = (event) => {
-    // delDate.current = event.target.value;
-    setDelDate(event.target.value);
-    if (event.target.value == '' && selected == '' && ordDate == '') {
-      setFilt(false);
-    } else {
-      setFilt(true);
-    }
-    // setDate({...date , delDate: event.target.value })
-  }
-
-  // DELETETION :
-
-  // const location = useLocation();
-
-  // if (location.state){
-  //   setSalesDetails (() => { return orders.filter( order => {
-  //     return order.transactionID != location.state.data ;
-  //   }) });
-  // }
-
-  // let temp = orders.filter( order => {
-  //   return order.transactionID != "" });
-  // setSalesDetails ( temp);
-
-
-
-  // FILTER :
-  // ordDate.substr(5,5).substr(0,2) -> month of ordDate ;
-  // ordDate.substr(0,4) -> year of ordDate ;
-  // delDate.substr(5,5).substr(0,2) -> month of delDate;
-  // delDate.substr(0,4) -> year of delDate;
-
-  let productDetails = salesDetails;
-  ordDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && ordDate.substr(0, 4) >= product.orderDate.getFullYear() && ordDate.substr(5, 5).substr(0, 2) == product.orderDate.getMonth()) : delDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && delDate.substr(0, 4) == product.deliveryDate.getFullYear() && delDate.substr(5, 5).substr(0, 2) <= product.deliveryDate.getMonth()) : productDetails = salesDetails.filter(product => product.items.includes(selected));
-  // if( ordDate){
-  //   productDetails = salesDetails.filter( product =>  {return product.items.includes(selected) && ordDate.substr(0,4) == product.orderDate.getFullYear() && ordDate.substr(5,5).substr(0,2) == product.orderDate.getMonth() });
-  // }
-  // else if(delDate){
-  //   productDetails = salesDetails.filter( product =>  { return product.items.includes(selected) && delDate.substr(0,4) == product.deliveryDate.getFullYear() && delDate.substr(5,5).substr(0,2) == product.deliveryDate.getMonth()} );
-  // }
-  // else{
-  //   productDetails = salesDetails.filter( product => { return product.items.includes(selected) } );
-  // }
-
-  const [hello, setHello] = useState([]);
+  const [data, setData] = useState([]);
 
   const someThing = () => {
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/seller/getsales`, {
-      headers: {tokenstring: token}
+      headers: { tokenstring: token }
     }).then((response) => {
-        const hell = response.data.message;
-        console.log(typeof(hell));
-        setHello(hell);
+      setData(response.data.message);
     }).catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Please Check Network Connection!',
-            })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-            await Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Login Error',
-            })
-            navigate('../login')
-        }
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
     })
   }
 
   useEffect(() => {
     someThing();
   }, []);
-  /*
-    const listOfSales = hello.map((val) => {
-      return (
-        <div>
-          <br></br>
-          <span>Consumer Name : {val.clientName} </span>
-          <br/>
-          <span>Order Date : {val.orderDate} </span>
-          <br/>
-          <span>Delivery Date : {val.deliveryDate} </span>
-          <br/>
-          <span>Items : {val.items.map((v) => {
-              return(
-              <>
-                <span>{v.name}</span>
-                <span></span>
-              </>
-              );
-          })} </span>
-        </div>
-      );
-    })
-  */
+
+  const [selected, setSelected] = useState('');
+  const [ordDate, setOrdDate] = useState('');
+  const [delDate, setDelDate] = useState('');
+  const [salesDetails, setSalesDetails] = useState(data);
+  const [filt, setFilt] = useState(false);
+
+  const selctedValueHandler = value => {
+    setSelected(value);
+    setFilt(true);
+  };
+
+  const ordDateHandler = (event) => {
+    setOrdDate(event.target.value);
+    if (event.target.value == '' && selected == '' && delDate == '') {
+      setFilt(false);
+    } else {
+      setFilt(true);
+    }
+  }
+  const delDateHandler = (event) => {
+    setDelDate(event.target.value);
+    if (event.target.value == '' && selected == '' && ordDate == '') {
+      setFilt(false);
+    } else {
+      setFilt(true);
+    }
+  }
+
+  let productDetails = salesDetails;
+  ordDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && ordDate.substr(0, 4) >= product.orderDate.getFullYear() && ordDate.substr(5, 5).substr(0, 2) == product.orderDate.getMonth()) : delDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && delDate.substr(0, 4) == product.deliveryDate.getFullYear() && delDate.substr(5, 5).substr(0, 2) <= product.deliveryDate.getMonth()) : productDetails = salesDetails.filter(product => product.items.includes(selected));
+
   return (
     <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
@@ -328,10 +268,10 @@ function PageM3(props) {
           }}
         >
           <Typography variant="h5" sx={{ padding: "0px 20px" }}>
-            Filtered details
+            Sales List
           </Typography>
           <Divider flexItem />
-          <SalesCardsList cards={productDetails} all={hello} isFilt={filt} />
+          <SalesCardsList cards={productDetails} all={data} isFilt={filt} />
         </Box>
       </Stack>
     </Container>

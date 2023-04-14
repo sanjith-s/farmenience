@@ -1,5 +1,5 @@
 import React from "react";
-import { CardContent, CardActions, Typography, Button,Stack,Box } from "@mui/material";
+import { CardContent, CardActions, Typography, Button, Stack, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function SalesCard(props) {
@@ -140,11 +140,11 @@ function SalesCard(props) {
                 Items
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.items.map((val)=>{
-                  return(
+                {props.items.map((val) => {
+                  return (
                     <>
-                    {val.name}
-                    <br/>
+                      {val.name}
+                      <br />
                     </>
                   )
                 })}
@@ -174,26 +174,26 @@ function SalesCard(props) {
                 backgroundColor: "green",
               }}
             >
-              
+
               <Link
-            to="/M4"
-            state={{
-              from: "sales details",
-              data: props.data,
-              date:[props.ordDate,props.delDate],
-              // onDeleteHandler: [props.onDeleteHandler,] , 
-            }}
-            style={{ textDecoration: "none" }}
-          >
-            <Typography
-              style={{
-                color: "#ffffff",
-                fontWeight: "600",
-              }}
-            >
-              view sale
-            </Typography>
-          </Link>
+                to="/M4"
+                state={{
+                  from: "sales details",
+                  data: props.data,
+                  date: [props.ordDate, props.delDate],
+                  // onDeleteHandler: [props.onDeleteHandler,] , 
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  style={{
+                    color: "#ffffff",
+                    fontWeight: "600",
+                  }}
+                >
+                  view sale
+                </Typography>
+              </Link>
             </Button>
           </Box>
         </CardActions>

@@ -63,7 +63,24 @@ function Signup() {
   const [lat,setLat]=useState(null);
   const [lng,setLng]=useState(null);
   const [status,setStatus]=useState(null);
-
+  const [file1, setFile1] = useState();
+  const [filename1, setFilename1] = useState({});
+  const [isUploaded1, setIsUploaded1] = useState(false);
+  const [file2, setFile2] = useState();
+  const [filename2, setFilename2] = useState({});
+  const [isUploaded2, setIsUploaded2] = useState(false);
+  function handleChange1(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded1(true);
+    setFile1(URL.createObjectURL(e.target.files[0]));
+    setFilename1(e.target.files[0]);
+  }
+  function handleChange2(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded2(true);
+    setFile2(URL.createObjectURL(e.target.files[0]));
+    setFilename2(e.target.files[0]);
+  }
 
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });

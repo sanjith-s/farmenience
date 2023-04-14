@@ -10,55 +10,13 @@ import { baseURL } from '../constants';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 
-// const values = [
-//   {
-//     cname: "Consumer name",
-//     phno: 2484930933,
-//     address: "no 323 , some street,  town, chennai-23232",
-//     itemName: "wheat",
-//     itemQuantity: "3 ",
-//     itemPrice: 250,
-//     regNo: "23.42.424",
-//     img: wheat,
-//   },
-//   {
-//     cname: "Consumer name",
-//     phno: 134132414,
-//     address: "no 323 , some street,  some town, mumbai-23232",
-//     itemName: "carrot",
-//     itemQuantity: 3,
-//     itemPrice: 350,
-//     regNo: "23.42.425",
-//     img: carrot,
-//   },
-//   {
-//     cname: "Consumer name",
-//     phno: 2484930933,
-//     address: "no 323 , some street,  town, chennai-23232",
-//     itemName: "wheat",
-//     itemQuantity: "3 ",
-//     itemPrice: 250,
-//     regNo: "23.42.426",
-//     img: wheat,
-//   },
-//   {
-//     cname: "Consumer name",
-//     phno: 134132414,
-//     address: "no 323 , some street,  some town, mumbai-23232",
-//     itemName: "carrot",
-//     itemQuantity: 3,
-//     itemPrice: 350,
-//     regNo: "23.42.427",
-//     img: carrot,
-//   },
-// ];
-
 function PageM1() {
 
   const navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
-
+  const [prof, setProf] = useState([]);
+  
   useEffect(() => {
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
@@ -82,6 +40,27 @@ function PageM1() {
           navigate('../login')
         }
       });
+
+      Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } })
+    .then((response) => {
+      setProf(response.data.message);
+    }).catch(async (res) => {
+    if (res.response.data.message === 'Error in connection') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please Check Network Connection!',
+      })
+    }
+    else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Login Error',
+      })
+      navigate('../login')
+      }
+    });
   }, []);
 
   let location = useLocation();
@@ -148,7 +127,7 @@ function PageM1() {
             return (
               <RequestBox
                 key={index + 1}
-                reqId={req.reqID}
+                reqId={req._id}
                 name={req.name}
                 phoneNo={req.phoneNumber}
                 itemName={req.itemName}

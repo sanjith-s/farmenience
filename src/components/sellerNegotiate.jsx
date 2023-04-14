@@ -38,11 +38,13 @@ const SellerNegotiate = (props) => {
   const itemsValue = [
     props.name,
     props.phno,
-    props.address,
+    props.address.addline1 + " ," + props.address.addline2,
     props.iname,
     props.iquantity,
     props.iprice,
   ];
+
+  console.log(props.address);
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {

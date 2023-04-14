@@ -216,6 +216,7 @@ function BuyerRequest(props) {
             state={{
               from: "Request details",
               data: props.data,
+              reg: props.reqId
             }}
             style={{ textDecoration: "none" }}
           >

@@ -95,7 +95,7 @@ const GMap = () => {
   // initialize the google map
   const initGoogleMap = () => {
     return new window.google.maps.Map(googleMapRef.current, {
-      center: { lat: -34.397, lng: 150.644 },
+      center: { lat: 13.0213, lng: 80.2231 },
       zoom: 8
     });
   }

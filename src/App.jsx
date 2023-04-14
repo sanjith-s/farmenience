@@ -111,7 +111,7 @@ const fullAnotherSpeak = (text) => {
     <div>
       <N10Navbar/>
       {/* {displayNavbar()} */}
-      <main className="main-content" id="google_translate_element" onClick={(e) => {
+      <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }} >
 

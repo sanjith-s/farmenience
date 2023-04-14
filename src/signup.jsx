@@ -142,6 +142,33 @@ function Signup() {
     if (
       signupdata.password === signupdata.confpass
     ) {
+      let FILE1='';
+      let formData1 = new FormData();
+      formData1.append('caption', "hello");
+      formData1.append('file', filename1);
+      console.log(Array.from(formData1.entries()))
+      await Axios.post(`${baseURL}/upload`, formData1)
+        .then(async (response) => {
+          console.log(response);
+          FILE1=response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+        let FILE2='';
+        let formData2 = new FormData();
+        formData2.append('caption', "hello");
+        formData2.append('file', filename2);
+        console.log(Array.from(formData2.entries()))
+        await Axios.post(`${baseURL}/upload`, formData2)
+          .then(async (response) => {
+            console.log(response);
+            FILE2=response.data.message;
+          })
+          .catch(async (res) => {
+            alert(res.response.data.message);
+          })
+      alert(FILE1+" "+FILE2);
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
         phoneno: signupdata.phone,
@@ -156,7 +183,9 @@ function Signup() {
         password: signupdata.password,
         typeOfAcc: selection,
         latitude: lat,
-        longitude:lng
+        longitude:lng,
+        doc1:FILE1,
+        doc2:FILE2,
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -486,10 +515,6 @@ function Signup() {
           <form style={{ width: "450px" }}>
             {selection === "Farmer" &&
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
               >
 
                 <Typography
@@ -498,17 +523,10 @@ function Signup() {
                   Land Document
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
+                <br></br>
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Land Document
                   <br />
@@ -521,17 +539,10 @@ function Signup() {
                   Aadhaar Card
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
+                <br></br>
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Aadhaar Card
                   <br />
@@ -542,10 +553,7 @@ function Signup() {
 
             {selection === "NGO" &&
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+
               >
 
                 <Typography
@@ -554,17 +562,9 @@ function Signup() {
                   NGO License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   NGO License
                   <br />
@@ -577,17 +577,9 @@ function Signup() {
                   Aadhaar Card of Owner
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   Aadhaar Card of Owner
                   <br />

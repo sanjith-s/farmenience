@@ -326,22 +326,22 @@ const PageM11 = () => {
           }}
         >
           <Input
-            style={{ height: "40px", fontSize: "25px" }}
+            style={{ height: "40px" }}
             id="input-with-icon-adornment"
             onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+                <SearchIcon style={{ color: "green"}} />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} onClick={controlMic}/>
+                  <MicIcon style={{ color: "green"}} onClick={controlMic}/>
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
+                    style={{ color: "green"}}
                   />
                 </IconButton>
               </InputAdornment>
@@ -369,7 +369,7 @@ const PageM11 = () => {
             onClick={() => { setOpen(true) }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -416,7 +416,7 @@ const PageM11 = () => {
             onClick={() => { setOpen2(true) }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>

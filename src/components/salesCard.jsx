@@ -170,9 +170,7 @@ function SalesCard(props) {
           >
             <Button
               variant="contained"
-              style={{
-                backgroundColor: "green",
-              }}
+              color="success"
             >
 
               <Link

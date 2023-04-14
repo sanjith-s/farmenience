@@ -65,7 +65,7 @@ function PageM5() {
                         >
                           <Button
                             variant="contained"
-                            className="mbtn"
+                            color="success"
                             style={{
                               margin: "30px 30px 10px 30px",
                             }}
@@ -113,15 +113,16 @@ function PageM5() {
         >
           <Button
             variant="contained"
+            color="success"
             onClick={addProd}
-            className="mbtn"
           >
             Add Product
           </Button>
 
           <Button
             variant="contained"
-            className="mbtn"
+            color="success"
+            // className="mbtn"
           >
             <ThumbUpIcon style={{ marginRight: "15px" }} />
             post deal

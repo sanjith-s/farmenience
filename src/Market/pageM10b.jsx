@@ -263,7 +263,7 @@ const PageM10b = (props) => {
           >
             <Button
               variant="contained"
-              style={{ backgroundColor: "green", padding: "12px" }}
+              color="success"
             >
               <Link
                 to="/M10c"
@@ -272,13 +272,7 @@ const PageM10b = (props) => {
                 }}
                 style={{ textDecoration: "none" }}
               >
-                <Typography
-                  style={{
-                    color: "#ffffff",
-                    fontWeight: "600",
-                    fontSize: "16px",
-                  }}
-                >
+                <Typography>
                   view details
                 </Typography>
               </Link>

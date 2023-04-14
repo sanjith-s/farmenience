@@ -108,22 +108,13 @@ function MarketCard(props) {
       >
         <Button
           variant="contained"
-          style={{
-            backgroundColor: "grey",
-            color: "white",
-            columnGap: "10px",
-            fontWeight: "600",
-          }}
+          color="secondary"
         >
           view
         </Button>
         <Button
-          style={{
-            backgroundColor: "green",
-            color: "white",
-            columnGap: "10px",
-            fontWeight: "600",
-          }}
+          variant="contained"
+          color="success"
         >
           <ShoppingCartIcon /> buy
         </Button>

@@ -81,6 +81,7 @@ import Vtt from "./Vtt";
 import Voice from "./Voice";
 import ImageDetection from "./Market/imageDetection"
 import Map from "./Ngo/Map";
+import MainMap from "./MainMap";
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -169,7 +170,8 @@ const fullAnotherSpeak = (text) => {
             {/* <Route path="/N14" element={<PageN14 />} /> */}
             <Route path="/N14a" element={<PageN14a />} />
             <Route path="/N14b" element={<PageN14b />} />
-            <Route path="/mapngo" element={<Map/>} />
+            {/* <Route path="/mapngo" element={<Map/>} /> */}
+            <Route path="/mapngo" element={<MainMap/>}/>
             <Route path="/cal" element={<Calender />} />
             <Route path="/graph" element={<Graph />} />
             <Route path="/logoutAll" element={<LogoutAllDevice />} />

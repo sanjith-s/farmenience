@@ -278,7 +278,7 @@ const PageM6 = () => {
 
               </DialogContent>
               <DialogActions>
-                <Button onClick={() => { setOpen(false) }}>Cancel</Button>
+                <Button  onClick={() => { setOpen(false) }}>Cancel</Button>
                 <Button >CONFIRM</Button>
               </DialogActions>
             </Dialog>
@@ -349,22 +349,26 @@ const PageM6 = () => {
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#1FE57A" }}>
+        <Button variant="contained"
+            color="success" onClick={addItem} >
           Add Item
         </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#1FE57A" }}>
+        <Button variant="contained"
+            color="success" onClick={delItem} >
           Delete Item
         </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
         {/* <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}> */}
-        <Button onClick={handleSubmit} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={handleSubmit} variant="contained"
+            color="success">
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+        <Button variant="contained"
+            color="success"onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
       </Box>

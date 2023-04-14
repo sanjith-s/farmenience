@@ -172,11 +172,11 @@ function PageM15() {
           </Box>
         )} */}
 
-            <ShowUserDetails
-              userName={userData.name}
-              userAddress={userData.address}
-              userNumber={userData.number}
-            />
+        <ShowUserDetails
+          userName={userData.name}
+          userAddress={userData.address}
+          userNumber={userData.number}
+        />
 
         {active === "negot1" && (
           <Box style={{ position: "relative " }}>
@@ -209,8 +209,7 @@ function PageM15() {
                   position: "absolute",
                   bottom: "34px",
                   right: "14px",
-                  fontWeight: "600",
-                  fontSize: "15px",
+                  
                 }}
               >
                 Negotiation price

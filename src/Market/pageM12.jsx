@@ -391,25 +391,7 @@ function PageM12() {
         )}
 
         {active === "negot1" && (
-          <Box sx={{ marginTop: "10px" }}>
-            <Box
-              sx={{
-                backgroundColor: "#fff",
-                padding: "15px",
-                borderRadius: "5px",
-                display: "flex",
-                columnGap: "40px",
-                justifyContent: "center",
-              }}
-            >
-              <Button color="success" variant="contained">
-                Go to cart <ShoppingCartIcon style={{ marginLeft: "8px" }} />
-              </Button>
-              <Button color="success" variant="contained">
-                share
-                <ShareIcon style={{ marginLeft: "8px" }} />
-              </Button>
-            </Box>
+          <Box >
             <Box
               style={{
                 height: "400px",
@@ -641,8 +623,7 @@ function PageM12() {
                 position: "absolute",
                 bottom: "12px",
                 right: "12px",
-                fontSize: "16px",
-                fontWeight: "600",
+                
               }}
             >
               place order

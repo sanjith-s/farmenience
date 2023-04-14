@@ -128,12 +128,7 @@ function MarketCard(props) {
       >
         <Button
           variant="contained"
-          style={{
-            backgroundColor: "grey",
-            color: "white",
-            columnGap: "10px",
-            fontWeight: "600",
-          }}
+          color="secondary"
         >
           view
         </Button>
@@ -145,6 +140,8 @@ function MarketCard(props) {
             fontWeight: "600",
           }}
           onClick={addCart}
+          variant="contained"
+          color="success"
         >
           <ShoppingCartIcon /> add
         </Button>

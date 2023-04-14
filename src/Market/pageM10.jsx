@@ -156,8 +156,6 @@ function PageM10() {
             position: "absolute",
             bottom: "10px",
             right: "10px",
-            fontWeight: "600",
-            fontSize: "15px",
           }}
         >
           <Link

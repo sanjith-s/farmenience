@@ -21,7 +21,7 @@ function ShowUserDetails(props) {
           alignSelf: "center",
         }}
       >
-        consumer details
+        Receiver Details
       </Typography>
 
       <CardContent

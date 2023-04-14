@@ -146,21 +146,21 @@ const PageM10a = () => {
           }}
         >
           <Input
-            style={{ height: "40px", fontSize: "25px" }}
+            style={{ height: "40px"}}
             id="input-with-icon-adornment"
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+                <SearchIcon style={{ color: "green"}} />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                  <MicIcon style={{ color: "green" }} />
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
+                    style={{ color: "green"}}
                   />
                 </IconButton>
               </InputAdornment>
@@ -188,7 +188,7 @@ const PageM10a = () => {
             }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -204,7 +204,7 @@ const PageM10a = () => {
             }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>
@@ -290,7 +290,7 @@ const PageM10a = () => {
               >
                 <Button
                   variant="contained"
-                  style={{ backgroundColor: "green", padding: "12px" }}
+                  color="success"
                 >
                   <Link
                     to="/M10b"
@@ -299,13 +299,7 @@ const PageM10a = () => {
                     }}
                     style={{ textDecoration: "none" }}
                   >
-                    <Typography
-                      style={{
-                        color: "#ffffff",
-                        fontWeight: "600",
-                        fontSize: "16px",
-                      }}
-                    >
+                    <Typography>
                       view market
                     </Typography>
                   </Link>

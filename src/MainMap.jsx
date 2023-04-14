@@ -32,7 +32,8 @@ const MainMap = () => {
 
   return (
     <div className="App">
-      <a href="https://www.cluemediator.com">Clue Mediator</a><br /><br />
+      {/* <a href="https://www.cluemediator.com">Clue Mediator</a> */}
+      <br /><br />
       {!loadMap ? <div>Loading...</div> : <GMap />}
       <br/><br/>
       {/* <small><b>Note:</b> In order to make it work, you have to set the YOUR_GOOGLE_MAP_API_KEY in App.js file. </small> */}

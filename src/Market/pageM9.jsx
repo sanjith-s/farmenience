@@ -9,7 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { ShoppingCart, Room } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { Stack, Box, Avatar, Button, Tab, Tabs, CardContent, CSSBaseline, IconButton } from '@mui/material';
+import { Stack, Box, Avatar, Button, Tab, Tabs, CardContent, IconButton } from '@mui/material';
+import CssBaseline from "@mui/material/CssBaseline";
 import { AspectRatio } from "@mui/icons-material";
 import { Divider } from '@material-ui/core';
 

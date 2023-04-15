@@ -347,24 +347,25 @@ const PageM11 = () => {
             width: "100%",
           }}
         >
-          <FormControl>
+          <FormControl style={{width:"100%" , height: "3rem",}} onClick={() => { setOpen2(true) }}>
             <Input
               style={{ height: "40px" }}
               id="input-with-icon-adornment"
               onChange={handleSearch}
+              placeholder="Search here"
               startAdornment={
                 <InputAdornment position="start">
-                  <SearchIcon style={{ color: "green"}} />
+                  <SearchIcon style={{ color: "green" , fontSize: "2.1875rem"}} />
                 </InputAdornment>
               }
               endAdornment={
                 <InputAdornment position="start">
                   <IconButton>
-                    <MicIcon style={{ color: "green"}} onClick={controlMic}/>
+                    <MicIcon style={{ color: "green" , fontSize: "2.1875rem"}} onClick={controlMic}/>
                   </IconButton>
                   <IconButton>
                     <PhotoCameraIcon
-                      style={{ color: "green"}}
+                      style={{ color: "green" , fontSize: "2.1875rem"}}
                     />
                   </IconButton>
                 </InputAdornment>
@@ -372,6 +373,7 @@ const PageM11 = () => {
             />
           </FormControl>
         </CardActions>
+
         <CardActions
           style={{
             width: "100%",
@@ -380,89 +382,6 @@ const PageM11 = () => {
             padding: "0px",
           }}
         >
-          <CardActionArea style={{ width: "100%" }}>
-            <Button
-              style={{
-                display: "flex",
-                columnGap: "20px",
-                color: "green",
-                width: "100%",
-                alignItems: "center",
-              }}
-              onClick={() => { setOpen(true) }}
-            >
-              <SortIcon />
-              <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
-                sort
-              </Typography>
-            </Button>
-          </CardActionArea>
-          <Dialog onClose={handleClose} open={open}>
-            <DialogTitle>Sort By</DialogTitle>
-            <Box>
-              <FormControl>
-                <RadioGroup
-                  aria-labelledby="demo-controlled-radio-buttons-group"
-                  name="controlled-radio-buttons-group"
-                  value={value}
-                  onChange={handleChange1}
-                >
-                  <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
-                  <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
-                </RadioGroup>
-                <Button onClick={resetSort}>Reset Filter</Button>
-              </FormControl>
-            </Box>
-          </Dialog>
-          <Dialog onClose={handleClose2} open={open2}>
-            <DialogTitle>Filter By</DialogTitle>
-            <Box sx={{ padding: "8%" }}>
-              <FormControl>
-                <Stack spacing={3}>
-                  <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
-                  <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
-                  <Button onClick={ApplyChange}>Apply</Button>
-                  <Button onClick={resetFilter}>Reset Filter</Button>
-                </Stack>
-              </FormControl>
-            </Box>
-          </Dialog>
-          <CardActions style={{ width: "100%" }}>
-            <FormControl
-              style={{
-                width: "100%",
-                height: "3rem",
-              }}
-              onClick={() => { setOpen2(true) }}
-            >
-              
-              <Input
-                style={{
-                  height: "2.5rem",
-                  fontSize: "1.5625rem",
-                }}
-                id="input-with-icon-adornment"
-                placeholder="Search here"
-                startAdornment={
-                  <InputAdornment position="start">
-                    <SearchIcon style={{ color: "green", fontSize: "2.1875rem" }} />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <InputAdornment position="start">
-                    <IconButton>
-                      <MicIcon style={{ color: "green", fontSize: "2.1875rem" }} />
-                    </IconButton>
-                    <IconButton>
-                      <PhotoCameraIcon
-                        style={{ color: "green", fontSize: "2.1875rem" }}
-                      />
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </CardActions>
 
           <CardActions
             style={{
@@ -480,6 +399,7 @@ const PageM11 = () => {
                   width: "100%",
                   alignItems: "center",
                 }}
+                onClick={() => { setOpen(true) }}
               >
                 <SortIcon />
                 <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
@@ -488,6 +408,7 @@ const PageM11 = () => {
               </Button>
             </CardActionArea>
             <Divider orientation="vertical" />
+            
             <CardActionArea style={{ width: "100%" }}>
               <Button
                 style={{
@@ -497,6 +418,7 @@ const PageM11 = () => {
                   alignItems: "center",
                   width: "100%"
                 }}
+                onClick={() => { setOpen2(true) }}
               >
                 <FilterListIcon />
                 <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
@@ -507,44 +429,78 @@ const PageM11 = () => {
           </CardActions>
           <Divider orientation="horizontal" />
 
-          <Box
-            sx={{
-              padding: "40px",
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
-              columnGap: "35px",
-              rowGap: "38px",
-            }}
-          >
-            {console.log(defaultData)}
-
-            {content.map((v, i) => {
-              return (
-                // <>
-                //     {val.records.map((v, i)=>{
-                      // return (
-                        <MarketCard
-                          key={i+ 1}
-                          image={v.image}
-                          productName={v.productName}
-                          sellerCount={v.quantity}
-                          price={v.price}
-                          stars={v.rating}
-                          type = {v.type}
-                          cartArray={setcart}
-                          array={cart}
-                        />
-                      // );
-                    // }
-                  // )
-                //   }
-                // </>
-              );
-            })}
-            
-          </Box>
-
+          <div>
+              <Dialog onClose={handleClose} open={open}>
+                <DialogTitle>Sort By</DialogTitle>
+                  <Box>
+                    <FormControl>
+                      <RadioGroup
+                        aria-labelledby="demo-controlled-radio-buttons-group"
+                        name="controlled-radio-buttons-group"
+                        value={value}
+                        onChange={handleChange1}
+                      >
+                        <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
+                        <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
+                      </RadioGroup>
+                      <Button onClick={resetSort}>Reset Filter</Button>
+                    </FormControl>
+                  </Box>
+              </Dialog>
+              <Dialog onClose={handleClose2} open={open2}>
+                <DialogTitle>Filter By</DialogTitle>
+                <Box sx={{ padding: "8%" }}>
+                  <FormControl>
+                    <Stack spacing={3}>
+                      <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
+                      <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
+                      <Button onClick={ApplyChange}>Apply</Button>
+                      <Button onClick={resetFilter}>Reset Filter</Button>
+                    </Stack>
+                  </FormControl>
+                </Box>
+              </Dialog>
+            </div>
         </CardActions>
+
+        <Box
+          sx={{
+            padding: "40px",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            columnGap: "35px",
+            rowGap: "38px",
+          }}
+        >
+          {console.log(defaultData)}
+
+          {content.map((v, i) => {
+            return (
+              // <>
+              //     {val.records.map((v, i)=>{
+                    // return (
+                      <MarketCard
+                        key={i+ 1}
+                        image={v.image}
+                        productName={v.productName}
+                        sellerCount={v.quantity}
+                        price={v.price}
+                        stars={v.rating}
+                        type = {v.type}
+                        cartArray={setcart}
+                        array={cart}
+                      />
+                    // );
+                  // }
+                // )
+              //   }
+              // </>
+            );
+          })}
+          
+        </Box>
+
+        
         {transcript}
         <div style={{display:"flex" , justifyContent:"center"}}>
         <Button

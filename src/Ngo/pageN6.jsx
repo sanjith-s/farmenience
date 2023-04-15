@@ -115,6 +115,7 @@ function PageN6() {
                   status={request.status}
                   newDate={request.requestdate}
                   newTime={request.requesttime}
+                  imageLink={request.filename}
                 />
               </Container>
               <Container
@@ -132,7 +133,7 @@ function PageN6() {
                 }}
               >
                 <img
-                  src={farmImg}
+                  src={request.filename}
                   style={{
                     width: "100%",
                     height: "100%",

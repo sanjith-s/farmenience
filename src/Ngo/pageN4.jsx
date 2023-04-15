@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -61,7 +62,7 @@ const PageN4 = () => {
       >
         <Container
           sx={{
-            bgcolor: "#D9D9D9;",
+           padding:"20px",
             height: "100%",
             width: "60vw",
             borderRadius: "3.25rem",
@@ -142,17 +143,21 @@ const PageN4 = () => {
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
+
         <Button onClick={handleSubmit} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
                     backgroundColor:"#ffff00",
                   } }}>
+
           Submit
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
+
         <Button onClick={getImages} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
                     backgroundColor:"#ffff00",
                   } }}>
+
           Get All Images
         </Button>
       </Box>

@@ -96,7 +96,7 @@ const PageM18 = () => {
     >
       <Box sx={{ marginBottom: "30px" }}>
         <Typography
-          variant="h4"
+          fontWeight={700} fontSize={"45px"}
           style={{ textTransform: "uppercase", textAlign: "center" }}
         >
           {" "}

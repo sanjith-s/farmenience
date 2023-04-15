@@ -69,12 +69,9 @@ const PageN1 = () => {
             </Box>
            
 
-            <Stack spacing={2} alignItems="center" padding={5}>
-                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
-            </Stack>
              <div>
 
-                <Box textAlign="center" padding={"1.25rem"}>
+                <Box textAlign="center" padding={"50px"}>
                     <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#18c431", margin: "auto" }}>
                         Home Page
                     </Button>

@@ -2,6 +2,10 @@ import "./css/signup.css";
 import { useState, useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
+import Geocode from "react-geocode";
+Geocode.setLanguage("en");
+Geocode.setApiKey("AIzaSyD-79BSbusu8q97EMXY2Ewy16Xtlhi4UFA");
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,
@@ -24,6 +28,7 @@ import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
 
 function Signup() {
+
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
@@ -98,6 +103,16 @@ function Signup() {
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
+
+  Geocode.fromAddress("Eiffel Tower").then(
+    (response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      console.log(lat, lng);
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
 
   const submit = async (event) => {
     if (!navigator.geolocation) {

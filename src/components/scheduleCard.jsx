@@ -41,8 +41,19 @@ const ScheduleCard = (props) => {
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    console.log(props.imgName.name);
-
+    let filename='';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', props.imgName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename=response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
       time: dateStr.toTimeString(),
@@ -51,10 +62,7 @@ const ScheduleCard = (props) => {
       reason: reason,
       ngotype: ngo,
       location: location,
-      image: {
-        data: props.imgSrc,
-        contentType: "jpg"
-      }
+      filename: filename
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
@@ -215,10 +223,14 @@ const ScheduleCard = (props) => {
       >
       </Stack>
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button variant="contained" color="success" onClick={Reset}>
+        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" color="success" onClick={async () => {
+        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={async () => {
           await Swal.fire({
             icon: 'info',
             title: 'Please confirm the details ...',

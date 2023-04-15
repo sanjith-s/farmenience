@@ -323,9 +323,9 @@ const PageN12 = () => {
               }}
             >
               <Button
-                variant="contained"
-                sx={{
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" ,
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "red",
                   },
                 }}
@@ -334,9 +334,9 @@ const PageN12 = () => {
                 Delete
               </Button>
               <Button
-                variant="contained"
-                sx={{
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" ,
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "green",
                   },
                 }}
@@ -345,9 +345,9 @@ const PageN12 = () => {
                 Respond
               </Button>
               <Button
-                variant="contained"
-                sx={{
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , 
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "#f7a900",
                   },  
                 }}

@@ -282,11 +282,10 @@ const PageN14b = () => {
                 </Box>
                 <Box sx={{ display: "flex", columnGap: "3.125rem", justify: "center" }}>
                     <Button onClick={RescheduleAppointment}
-                        variant="contained"
+                        variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                            backgroundColor:"#ffff00",
+                          } }}
                         style={{
-                            backgroundColor: "green",
-                            fontWeight: "600",
-                            fontSize: "1.125rem",
                             justify: "center",
                         }}
                     >

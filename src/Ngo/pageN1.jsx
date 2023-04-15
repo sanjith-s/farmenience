@@ -67,18 +67,16 @@ const PageN1 = () => {
                     })
                 }
             </Box>
-            <div>
+           
 
-                <Box textAlign="center" padding={"1.25rem"}>
-                    <Button onClick={() => { navigate('../N9') }} variant="contained" color="success">
+             <div>
+
+                <Box textAlign="center" padding={"50px"}>
+                    <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#18c431", margin: "auto" }}>
                         Home Page
                     </Button>
                 </Box>
             </div>
-
-            <Stack spacing={2}>
-                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
-            </Stack>
         </>
     )
 }

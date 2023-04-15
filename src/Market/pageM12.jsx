@@ -341,11 +341,11 @@ function PageM12() {
                   onDataHandler= {userDataHandler}
                 />
                 <Button
-                  // variant="contained"
-                  color="success"
+                  variant="contained"
                   onClick={updateHandler}
                   style={{
                     position: "absolute",
+                    backgroundColor:"#74e81c",
                     top: "10px",
                     right: "10px",
                     // fontWeight: "600",
@@ -369,11 +369,11 @@ function PageM12() {
                 />
                 {active === "negot1" && (
                   <Button
-                    // variant="contained"
-                    color="success"
+                    variant="contained"
                     onClick={updateHandler}
                     style={{
                       position: "absolute",
+                      backgroundColor:"#74e81c",
                       top: "10px",
                       right: "10px",
                       // fontWeight: "600", 
@@ -391,7 +391,41 @@ function PageM12() {
         )}
 
         {active === "negot1" && (
-          <Box >
+
+          <Box sx={{ marginTop: "10px" }}>
+            <Box
+              sx={{
+                backgroundColor: "#fff",
+                padding: "15px",
+                borderRadius: "5px",
+                display: "flex",
+                columnGap: "40px",
+                justifyContent: "center",
+              }}
+            >
+              <Button 
+              style={{
+                backgroundColor:"#74e81c",
+              }}
+              variant="contained">
+                add <ShoppingCartIcon style={{ marginLeft: "8px" }} />
+              </Button>
+              <Button
+              style={{
+                backgroundColor:"#74e81c",
+              }}
+       variant="contained">
+                share
+                <ShareIcon style={{ marginLeft: "8px" }} />
+              </Button>
+              <Button 
+              style={{
+                backgroundColor:"#74e81c",
+              }} variant="contained">
+                delete <DeleteIcon style={{ marginLeft: "8px" }} />
+              </Button>
+            </Box>
+
             <Box
               style={{
                 height: "400px",
@@ -621,6 +655,7 @@ function PageM12() {
               onClick={makePayment}
               style={{
                 position: "absolute",
+                backgroundColor:"#74e81c",
                 bottom: "12px",
                 right: "12px",
                 
@@ -632,11 +667,12 @@ function PageM12() {
           {active === "negot2" && (
             <Button
               variant="contained"
-              color="success"
+      
               onClick={negotHandler}
               style={{
                 position: "absolute",
                 bottom: "12px",
+                backgroundColor:"#74e81c",
                 right: "12px",
                 fontSize: "18px",
                 fontWeight: "600",
@@ -650,7 +686,7 @@ function PageM12() {
             <Box style={{ padding: "15px" }}>
               <Button
                 variant="contained"
-                color="success"
+                color="error"
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
@@ -664,10 +700,11 @@ function PageM12() {
               </Button>
               <Button
                 variant="contained"
-                color="success"
+        
                 style={{
                   position: "absolute",
                   bottom: "12px",
+                  backgroundColor:"#74e81c",
                   right: "12px",
                   fontSize: "16px",
                   fontWeight: "600",

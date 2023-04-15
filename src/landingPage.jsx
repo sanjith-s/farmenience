@@ -350,7 +350,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="feature">
-              <ion-icon className="feature-icon" name="pause-outline"></ion-icon>
+              <ion-icon className="feature-icon" name="pause-outline" ></ion-icon>
               <p className="feature-title">
                 NGO Representative
               </p>

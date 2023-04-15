@@ -1,9 +1,7 @@
 import React from "react";
 import Cookies from 'js-cookie';
 import { useState, useRef } from "react";
-
 import CssBaseline from "@mui/material/CssBaseline";
-
 import Container from "@mui/material/Container";
 import Table from '@mui/material/Table';
 import Paper from '@mui/material/Paper';
@@ -107,29 +105,34 @@ const PageM6 = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
-      <span className="title">Sell Products</span>
-      {count.map(ele => {
-        return (
-          <Stack
-            direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
-            spacing={2}
-            sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
-          >
-            <Container
-              sx={{
-                bgcolor: "#D9D9D9;",
-                height: "100%",
-                width: "60vw",
-                borderRadius: "50px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                alignItems: "center",
-              }}
-            >
-              <React.Fragment>
-                {/* <Box
+
+      <Typography fontWeight={700} fontSize={50} sx={{
+        alignItems:"center",
+        marginLeft:"600px"
+      }}>Sell Products</Typography>
+      {count.map(ele=>{
+              return ( 
+      <Stack
+        direction="row"
+        divider={<Divider orientation="vertical" flexItem />}
+        spacing={2}
+        sx={{ height: "auto", width: "auto", marginTop: "30px",padding:"50px" }}
+      >
+        <Container
+          sx={{
+            // bgcolor: "#D9D9D9;",
+            height: "100%",
+            width: "60vw",
+            borderRadius: "50px",
+            display: "flex",
+            flexDirection: "column",
+            // justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          <React.Fragment>
+          {/* <Box
+
             sx={{
               overflow: "auto",
               padding:"2%",
@@ -139,6 +142,7 @@ const PageM6 = () => {
               alignContent:"center"
             }}
           > */}
+          
                 <TextField
                   id="p-name"
                   label="Product Name"
@@ -286,13 +290,18 @@ const PageM6 = () => {
               disableGutters={true}
               sx={{
                 bgcolor: "#ffff",
+
                 height: "100%",
                 width: "40vw",
                 borderRadius: "50px",
                 paddingLeft: "0px",
                 paddingRight: "0px",
                 display: "flex",
-                justifyItems: "center",
+
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                marginTop:"90px"
               }}
             >
               {!isUploaded && (
@@ -349,19 +358,16 @@ const PageM6 = () => {
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained"
-            color="success" onClick={addItem} >
+        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": {backgroundColor: "#78beff", }}}>
           Add Item
         </Button>
-        <Button variant="contained"
-            color="success" onClick={delItem} >
+        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f","&:hover": {backgroundColor: "#fa552f", } }}>
           Delete Item
         </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
-        {/* <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}> */}
-        <Button onClick={handleSubmit} variant="contained"
-            color="success">
+
+        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}

@@ -43,6 +43,7 @@ const PageN14a = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const data = location.state.data;
+  console.log(data);
   const itemsName1 = [
     "Appointment ID",
     "Appointment Name",
@@ -200,7 +201,7 @@ const PageN14a = () => {
           <Box>
             <Stack spacing={2} display="flex" justifyContent={"center"} alignContent="center" alignItems={"center"} >
               <img
-                src={file}
+                src={data.filename}
                 style={{
                   width: "90%",
                   height: "90%",
@@ -212,27 +213,24 @@ const PageN14a = () => {
               <Stack direction={"column"} spacing={4}>
                 <Button
                   onClick={DeleteAppointment}
-                  variant="contained"
-                  style={{
-                    backgroundColor: "green",
-                    fontWeight: "600",
-                    fontSize: "1.25rem",
-                  }}
+                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}
                 >
                   DELETE
                 </Button>
                 <Button
                   onClick={AcceptAppointment}
-                  variant="contained"
-                  style={{
-                    backgroundColor: "green",
-                    fontWeight: "600",
-                    fontSize: "1.125rem",
-                  }}
+                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}
                 >
                   ACCEPT
                 </Button>
                 <Button
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                  backgroundColor:"#ffff00",
+                } }}
                   onClick={() => {
                     navigate('../N14b', { state: { id: data.appID, name: data.appName } })
                   }}

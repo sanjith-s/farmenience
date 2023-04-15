@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import '../css/pageN2.css';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
@@ -58,7 +58,9 @@ const PageN2 = () => {
             </div>
             <div></div>
 
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
+            <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
                 Submit
             </Button>
         </div>

@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 .query-card {
-    background-color: #e6ffe6;
+    background-color: #c4fbc4;
     border: 0.06rem solid #ccc;
     border-radius: 0.3rem;
     padding: 1rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,12 +17,13 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
-.query-card:hover {
+/* .query-card:hover {
     transform: translateY(-0.6rem);
     box-shadow: 0.13rem 0.13rem 1.3rem rgba(0, 0, 0, 0.2);
-}
+} */
   
 
 .query-card__info {
@@ -103,7 +104,7 @@
     max-width: 50rem;
     margin: 0 auto;
     padding: 1.3rem;
-    background-color: #f2ffed;
+    background-color: #a9e293;
     border-radius: 0.6rem;
     margin-top: 3%;
     box-shadow: 0.4rem 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.1);
@@ -117,7 +118,7 @@
     text-align: center;
     color: #fff;
     text-shadow: 0.13rem 0.13rem 0.13rem rgba(46, 78, 37, 0.2);
-    background-image: linear-gradient(45deg, #69b36c, #92d187);
+    background-color: #2f5b04;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

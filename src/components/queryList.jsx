@@ -166,20 +166,12 @@ function Query(props) {
         }}
       >
         <Button
-          style={{
-            backgroundColor: "green",
-            border: "0.125rem solid #000000",
-            marginTop: "0.94rem",
-          }}
+          variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+            backgroundColor:"#ffff00",
+          } }}
           onClick={handleClickOpen}
         >
-            <Typography
-              style={{
-                color: "#ffffff",
-                fontWeight: "600",
-                fontSize: "1rem",
-              }}
-            >
+            <Typography>
               Respond Query
             </Typography>
         </Button>
@@ -199,8 +191,12 @@ function Query(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={submitResponse}>Submit</Button>
+          <Button onClick={handleClose} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} >Cancel</Button>
+          <Button onClick={submitResponse} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} >Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

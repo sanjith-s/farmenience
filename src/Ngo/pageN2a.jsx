@@ -164,8 +164,12 @@ const PageN2 = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={NotHappy}>Attach</Button>
+          <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={handleClose}>Cancel</Button>
+          <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={NotHappy}>Attach</Button>
         </DialogActions>
       </Dialog>
     </div>

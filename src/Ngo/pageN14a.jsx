@@ -212,27 +212,24 @@ const PageN14a = () => {
               <Stack direction={"column"} spacing={4}>
                 <Button
                   onClick={DeleteAppointment}
-                  variant="contained"
-                  style={{
-                    backgroundColor: "green",
-                    fontWeight: "600",
-                    fontSize: "1.25rem",
-                  }}
+                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}
                 >
                   DELETE
                 </Button>
                 <Button
                   onClick={AcceptAppointment}
-                  variant="contained"
-                  style={{
-                    backgroundColor: "green",
-                    fontWeight: "600",
-                    fontSize: "1.125rem",
-                  }}
+                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}
                 >
                   ACCEPT
                 </Button>
                 <Button
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                  backgroundColor:"#ffff00",
+                } }}
                   onClick={() => {
                     navigate('../N14b', { state: { id: data.appID, name: data.appName } })
                   }}

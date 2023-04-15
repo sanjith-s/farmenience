@@ -58,7 +58,9 @@ const PageN2 = () => {
             </div>
             <div></div>
 
-            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }}>
+            <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
                 Submit
             </Button>
         </div>

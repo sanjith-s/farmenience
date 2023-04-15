@@ -143,7 +143,9 @@ function PageN6() {
       })}
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" color="success">
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Home Page
         </Button>
       </Box>

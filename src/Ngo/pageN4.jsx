@@ -134,19 +134,25 @@ const PageN4 = () => {
       </Stack>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" color="success">
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Home Page
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={handleSubmit} variant="contained" color="success">
+        <Button onClick={handleSubmit} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Submit
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={getImages} variant="contained" color="success">
+        <Button onClick={getImages} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Get All Images
         </Button>
       </Box>

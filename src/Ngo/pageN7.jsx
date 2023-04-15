@@ -166,7 +166,9 @@ const PageN7 = () => {
               onChange={(e) => { setDesc(e.target.value) }}
             />
             <Box textAlign="center" padding={"1.25rem"}>
-              <Button variant="contained" color="success" onClick={validate}>
+              <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={validate}>
                 Submit
               </Button>
             </Box>
@@ -272,12 +274,16 @@ const PageN7 = () => {
         </Container>
       </Stack>
 
-      <Button variant="contained" color="success" onClick={Reset}>
+      <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={Reset}>
         Reset To Old Values
       </Button>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" color="success">
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} >
           Home Page
         </Button>
       </Box>

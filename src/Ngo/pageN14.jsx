@@ -84,14 +84,13 @@ function PageM10() {
                     </FormControl>
                 </Box>
                 <Button
-                    variant="contained"
-                    color="success"
+                    variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                        backgroundColor:"#ffff00",
+                      } }}
                     style={{
                         position: "absolute",
                         bottom: "10px",
                         right: "10px",
-                        fontWeight: "600",
-                        fontSize: "15px",
                     }}
                 >
                     <Link

@@ -153,6 +153,28 @@ function BasicTabs() {
 
 
 function PageN9() {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
 
@@ -273,7 +295,9 @@ function PageN9() {
   // ]
 
   return (
-    <div style={{ backgroundColor: "#E5FDD1" }}>
+    <div style={{ backgroundColor: "#E5FDD1" }} id="google_translate_element" onClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }}>
       <img src={BackImg} style={{ objectFit: "cover", height: "370px", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">

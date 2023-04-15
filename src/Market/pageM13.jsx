@@ -22,7 +22,7 @@ function PageM13() {
               textAlign: "center",
               color: "white",
               fontWeight: 600,
-              fontSize: "32px",
+              fontSize: "25px",
               textTransform: "uppercase",
               padding: "6px 0px",
             }}

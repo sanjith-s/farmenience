@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import Axios from "axios"
 import BackImg from "../components/homepageBackground.png";
 import "../css/pageM0.css"
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import {  ShoppingCart, Room } from '@material-ui/icons';
+import { Typography, List, ListItem, ListItemIcon, ListItemText, Grid, Paper } from '@material-ui/core';
+import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import { Stack, Box, Avatar, Button, Tab, Tabs } from '@mui/material';
 import { AspectRatio } from "@mui/icons-material";
 import { Divider } from '@material-ui/core';
+import Cookies from 'js-cookie';
+import Swal from 'sweetalert2';
+import { baseURL } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
     listItemIcon: {
@@ -21,7 +25,8 @@ const ordersData = [{ orderNo: '123456789', destination: 'Chennai', },
 { orderNo: '987654321', destination: 'Koyambedu', },
 { orderNo: '456123789', destination: 'THiruchi', },];
 
-
+const navigate = useNavigate();
+    
 const saleRequestsData = [
     {
         item: 'Item 1',
@@ -75,13 +80,95 @@ function N10Props(index) {
     };
 }
 function BasicTabs() {
+
+    const classes = useStyles();
+
+    const [orders, setOrders] = useState([]);
+    const [requests, setRequests] = useState([]);
+    const [notifications, setNotifications] = useState([]);
+
+    const AxiosSet = () => {
+        let token = Cookies.get('token');
+        Axios.get(`${baseURL}/loadorders`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setOrders(response.data.message);
+            })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            });
+
+        Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
+            then((response) => {
+                setRequests(response.data.message);
+            })
+            .catch(async (res) => {
+                if (res.response.data.message === 'Error in connection') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Please Check Network Connection!',
+                    })
+                }
+                else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Login Error',
+                    })
+                    navigate('../login')
+                }
+            });
+
+        // Axios.get(`${baseURL}/loadnotifications`, { headers: { tokenstring: token } }).
+        //     then((response) => {
+        //         setNotifications(response.data.message);
+        //     })
+        //     .catch(async (res) => {
+        //         if (res.response.data.message === 'Error in connection') {
+        //             await Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Oops...',
+        //                 text: 'Please Check Network Connection!',
+        //             })
+        //         }
+        //         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        //             await Swal.fire({
+        //                 icon: 'error',
+        //                 title: 'Oops...',
+        //                 text: 'Login Error',
+        //             })
+        //             navigate('../login')
+        //         }
+        //     })
+    }
+
+    useEffect(() => {
+        AxiosSet();
+    }, []);
+  
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box id="google_translate_element" sx={{ width: "100%" }} onClick={(e) => {
+            fullAnotherSpeak(e.target.innerText)
+          }}>
             <Box sx={{ borderBottom: 2, borderColor: 'divider' }} className="tabs-head" >
                 <Tabs TabIndicatorProps={{ style: { background: 'darkgreen' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label={<span className='lab-text1'> Orders</span>} {...N10Props(0)} />
@@ -143,6 +230,28 @@ function BasicTabs() {
 }
 
 function pageM0() {
+
+// const googleTranslateElementInit = () => {
+    //     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+    // }
+
+    // const fullAnotherSpeak = (text) => {
+    //     responsiveVoice.speak(text, "Tamil Male");
+    // }
+
+    // useEffect(() => {
+    //     var addScript = document.createElement('script');
+    //     addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    //     document.body.appendChild(addScript);
+    //     window.googleTranslateElementInit = googleTranslateElementInit;
+    // }, []);
+
+    // useEffect(() => {
+    //     var addScript = document.createElement('script');
+    //     addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    //     document.body.appendChild(addScript);
+    // }, []);
+    
     return (
         <div style={{ backgroundColor: "#E5FDD1" }}>
             <img src={BackImg} style={{ objectFit: "cover", height: "370px", width:"100%" }} className='back-img' />

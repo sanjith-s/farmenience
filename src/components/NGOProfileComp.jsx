@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Box,
     CardActions,
@@ -6,11 +6,13 @@ import {
     Typography,
     Card,
     Stack,
+    TextField,
+    Button
 } from "@mui/material";
 
 const itemsName = [
     "Name: ",
-    "Aadhaar Card Number: ",
+    "Aadhaar Number: ",
     "Phone Number: ",
     "Address Line 1: ",
     "Address Line 2: ",
@@ -35,7 +37,18 @@ const NGOProfileComp = (props) => {
         props.email,
     ];
 
+    const [type, setType] = useState();
+
+    const handleAllChange = () => {
+        setType(document.querySelector("#type").value);
+    }
+
+    const handleSubmit = () => {
+        alert("Hi")
+    }
+
     return (
+
         <Card
             sx={{
                 justifyItems: "center"
@@ -50,7 +63,7 @@ const NGOProfileComp = (props) => {
                 }}
             >
                 <CardContent style={{ padding: "15px 25px", alignItems: "center", justifyContent: "center" }}>
-                    <Stack sx={{  }}>
+                    <Stack sx={{}}>
                         {itemsName.map((value, index) => {
                             return (
                                 <Box
@@ -78,9 +91,62 @@ const NGOProfileComp = (props) => {
                                 </Box>
                             );
                         })}
+
+                        <Box
+                            sx={{
+                                display: "flex",
+                                columnGap: "20px",
+                                justifyContent: "space-between",
+                                height: "50px",
+                                alignItems: "center",
+                                margin: "2px 0px",
+                            }}
+                        >
+                            <Typography
+                                style={{
+                                    fontWeight: "600",
+                                    fontSize: "20px",
+                                    textTransform: "uppercase",
+                                    color: "#000",
+                                }}
+                            >
+                                NGO Type:
+                            </Typography>
+                            <TextField
+                                id="type"
+                                variant="filled"
+                                color="success"
+                                value={type}
+                                onChange={handleAllChange}
+                                sx={{
+                                    backgroundColor: "white",
+                                    borderBottomColor: "black",
+                                    width: "50%",
+                                }}
+                                inputProps={{
+                                    minLength: 1,
+                                    maxLength: 25
+                                }}
+                            />
+                        </Box>
+
                     </Stack>
                 </CardContent>
             </Box>
+
+            <Button
+                variant="contained"
+                color="success"
+                onClick={handleSubmit}
+                style={{
+                    position: "absolute",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                }}
+            >
+                Update Details
+            </Button>
+
             <CardActions
                 style={{
                     display: "flex",

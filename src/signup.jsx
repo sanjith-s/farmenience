@@ -1,5 +1,5 @@
 import "./css/signup.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
@@ -14,7 +14,11 @@ import {
   Stepper,
   Step,
   StepLabel,
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
@@ -23,8 +27,13 @@ function Signup() {
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
+
+  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const nextStep = () => {
     if (activeStep < 2)
@@ -52,12 +61,64 @@ function Signup() {
     utype: "",
   });
 
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [file, setFile] = useState();
+  const [filename, setFilename] = useState({})
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [file1, setFile1] = useState();
+  const [filename1, setFilename1] = useState({});
+  const [isUploaded1, setIsUploaded1] = useState(false);
+  const [file2, setFile2] = useState();
+  const [filename2, setFilename2] = useState({});
+  const [isUploaded2, setIsUploaded2] = useState(false);
+
+  function handleChange(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded(true);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setFilename(e.target.files[0]);
+  }
+
+  function handleChange1(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded1(true);
+    setFile1(URL.createObjectURL(e.target.files[0]));
+    setFilename1(e.target.files[0]);
+  }
+
+  function handleChange2(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded2(true);
+    setFile2(URL.createObjectURL(e.target.files[0]));
+    setFilename2(e.target.files[0]);
+  }
+
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
 
   const submit = async (event) => {
-    { location.loaded ? alert(JSON.stringify(location)) : "Location data not available yet" }
+    if (!navigator.geolocation) {
+      setStatus("Geolocation is not supported by browser");
+    }
+
+    else {
+      setStatus("Locating..");
+      navigator.geolocation.getCurrentPosition((postion) => {
+        setStatus(null);
+        setLat(postion.coords.latitude);
+        setLng(postion.coords.longitude);
+        console.log(postion.coords.latitude, 2);
+      },
+        () => {
+          setStatus("Unable to retrieve your location");
+        })
+    }
+
+    alert(signupdata.email)
+    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -74,6 +135,7 @@ function Signup() {
       })
       return;
     }
+
     if (!passChk) {
       await Swal.fire({
         icon: 'error',
@@ -87,13 +149,45 @@ function Signup() {
       icon: 'success',
       title: 'Validation Successful!',
     })
+
     await Swal.fire({
       icon: 'success',
       title: selection,
     })
+
     if (
       signupdata.password === signupdata.confpass
     ) {
+      let FILE1 = '';
+      let formData1 = new FormData();
+      formData1.append('caption', "hello");
+      formData1.append('file', filename1);
+      console.log(Array.from(formData1.entries()))
+      await Axios.post(`${baseURL}/upload`, formData1)
+        .then(async (response) => {
+          console.log(response);
+          FILE1 = response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+
+      let FILE2 = '';
+      let formData2 = new FormData();
+      formData2.append('caption', "hello");
+      formData2.append('file', filename2);
+      console.log(Array.from(formData2.entries()))
+
+      await Axios.post(`${baseURL}/upload`, formData2)
+        .then(async (response) => {
+          console.log(response);
+          FILE2 = response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+      alert(FILE1 + " " + FILE2);
+
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
         phoneno: signupdata.phone,
@@ -107,6 +201,10 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
+        latitude: lat,
+        longitude: lng,
+        doc1: FILE1,
+        doc2: FILE2,
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -120,7 +218,9 @@ function Signup() {
             text: res.response.data.message,
           })
         });
-    } else {
+    }
+
+    else {
       await Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -333,9 +433,20 @@ function Signup() {
                 password
               </Typography>
               <Input
-                type="password"
+                type={showPassword1 ? 'text' : 'password'}
                 name="password"
                 value={signupdata.password}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword1}
+                      edge="end"
+                    >
+                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -347,9 +458,20 @@ function Signup() {
                 confirm password
               </Typography>
               <Input
-                type="password"
+                type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
                 value={signupdata.confpass}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword2}
+                      edge="end"
+                    >
+                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -412,59 +534,191 @@ function Signup() {
           </Box>
 
           <form style={{ width: "450px" }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
+            {selection === "Farmer" &&
+              <>
+                <Container
+                  disableGutters={true}
+                  sx={{
+                    bgcolor: "#ffff",
+                    height: "100%",
+                    width: "40vw",
+                    borderRadius: "3.125rem",
+                    paddingLeft: "0rem",
+                    paddingRight: "0rem",
+                    display: "flex",
+                    justifyItems: "center",
+                  }}
+                >
+                  {!isUploaded && (
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <input
+                        type="file"
+                        id="imgUp"
+                        style={{ display: "none" }}
+                        accept="image/png, image/jpeg, image/jpg"
+                        maxsize="2"
+                        minsize="1"
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor="imgUp"
+                        style={{ width: "fit-content", height: "fit-content" }}
+                      >
+                        <Fab component="span">
+                          <FileUploadOutlinedIcon />
+                        </Fab>
+                        <br />
+                        <br />
+                      </label>
+                      <Typography>Upload Image</Typography>
+                    </div>
+                  )}
+                  {isUploaded && (
+                    <img
+                      src={file}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                        borderRadius: "3.125rem",
+                      }}
+                    />
+                  )}
+                </Container>
 
-              <Typography
-                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-              >
-                Land Document
-              </Typography>
+                <Box
+                >
 
-              <input
-                type="file"
-                id="imgUp"
-                style={{ display: "none" }}
-                maxsize="2"
-                minsize="1"
-                onChange={addSignupData}
-              />
-              <label
-                htmlFor="imgUp"
-                style={{ width: "fit-content", height: "fit-content" }}
-              >
-                Land Document
-                <br />
-                <br />
-              </label>
+                  <Typography
+                    style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                  >
+                    Land Document
+                  </Typography>
 
-              <Typography
-                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
-              >
-                Aadhaar Card
-              </Typography>
+                  <input type="file" onChange={handleChange1} />
+                  <br></br>
+                  <label
+                    htmlFor="imgUp"
+                  >
+                    <br />
+                    <br />
+                  </label>
 
-              <input
-                type="file"
-                id="imgUp"
-                style={{ display: "none" }}
-                maxsize="2"
-                minsize="1"
-                onChange={addSignupData}
-              />
-              <label
-                htmlFor="imgUp"
-                style={{ width: "fit-content", height: "fit-content" }}
+                  <Typography
+                    style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                  >
+                    Aadhaar Card
+                  </Typography>
+
+                  <input type="file" onChange={handleChange2} />
+                  <br></br>
+                  <label
+                    htmlFor="imgUp"
+                  >
+                    <br />
+                    <br />
+                  </label>
+                </Box>
+              </>
+            }
+
+            {selection === "NGO" &&
+              <Box
+
               >
-                Aadhaar Card
-                <br />
-                <br />
-              </label>
-            </Box>
+
+                <Typography
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                >
+                  NGO License
+                </Typography>
+
+                <input type="file" onChange={handleChange1} />
+                <label
+                  htmlFor="imgUp"
+                >
+                  <br />
+                  <br />
+                </label>
+
+                <Typography
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                >
+                  Aadhaar Card of Owner
+                </Typography>
+
+                <input type="file" onChange={handleChange2} />
+                <label
+                  htmlFor="imgUp"
+                >
+                  <br />
+                  <br />
+                </label>
+              </Box>
+            }
+
+            {selection === "Retailer" &&
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+
+                <Typography
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                >
+                  Trading License
+                </Typography>
+
+                <input
+                  type="file"
+                  id="imgUp"
+                  style={{ display: "none" }}
+                  maxsize="2"
+                  minsize="1"
+                  onChange={addSignupData}
+                />
+                <label
+                  htmlFor="imgUp"
+                  style={{ width: "fit-content", height: "fit-content" }}
+                >
+                  <br />
+                  <br />
+                </label>
+
+                <Typography
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                >
+                  Aadhaar Card of Owner
+                </Typography>
+
+                <input
+                  type="file"
+                  id="imgUp"
+                  style={{ display: "none" }}
+                  maxsize="2"
+                  minsize="1"
+                  onChange={addSignupData}
+                />
+                <label
+                  htmlFor="imgUp"
+                  style={{ width: "fit-content", height: "fit-content" }}
+                >
+                  <br />
+                  <br />
+                </label>
+              </Box>
+            }
           </form>
 
           <Button

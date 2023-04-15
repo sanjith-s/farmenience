@@ -79,11 +79,12 @@ function SwipeableEdgeDrawer(props) {
 
         <a className="dropdown" variant="text" sx={{ color: "black" }} onClick={toggleDrawer(true)}>Show My schedules</a>
         
-        <div class="dropdown">
-          <a className="dropbtn">
+        <div className="dropdown">
+          <Button className="dropbtn">
             OPTIONS
-          </a>
-          <div class="dropdown-content">
+          </Button>
+          <div className="dropdown-content">
+          
             <Link href='../N1'>View Queries</Link>
             <Link href='../N13'>View Appointments</Link>
             <Link href='../N7'>Create New Query</Link>

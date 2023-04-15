@@ -284,3 +284,17 @@
 .time-sl > div {
 	padding: 5px;
 }
+.goog-te-gadget {
+	position: absolute;
+	top:2%;
+	right: 3%;
+	background-color: #41d93e;
+	padding: 3px;
+	padding-left: 6px;
+	padding-right: 6px;
+	border-radius: 99em;
+}
+.goog-te-combo {
+	border-radius: 99em;
+	background-color: #41d93e;
+}

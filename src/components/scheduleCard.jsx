@@ -215,10 +215,14 @@ const ScheduleCard = (props) => {
       >
       </Stack>
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={Reset}>
+        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={async () => {
+        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={async () => {
           await Swal.fire({
             icon: 'info',
             title: 'Please confirm the details ...',

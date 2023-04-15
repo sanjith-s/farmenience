@@ -1,12 +1,12 @@
 import React from "react";
-import { CardContent, CardActions, Typography, Button,Stack,Box } from "@mui/material";
+import { CardContent, CardActions, Typography, Button, Stack, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function SalesCard(props) {
   // const date = props.date.toLocaleDateString();
 
-  const ordDate = props.ordDate.toLocaleDateString();
-  const delDate = props.delDate.toLocaleDateString();
+  // const ordDate = props.ordDate.toLocaleDateString();
+  // const delDate = props.delDate.toLocaleDateString();
 
   return (
     <React.Fragment>
@@ -79,7 +79,7 @@ function SalesCard(props) {
                 ordered date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {ordDate}
+                {props.ordDate}
               </Typography>
             </Box>
             <Box
@@ -109,7 +109,7 @@ function SalesCard(props) {
                 delivery date
               </Typography>
               <Typography margin="0px" variant="h6">
-                {delDate}
+                {props.delDate}
               </Typography>
             </Box>
             <Box
@@ -140,7 +140,14 @@ function SalesCard(props) {
                 Items
               </Typography>
               <Typography margin="0px" variant="h6">
-                {props.items.toString()}
+                {props.items.map((val) => {
+                  return (
+                    <>
+                      {val.name}
+                      <br />
+                    </>
+                  )
+                })}
               </Typography>
             </Box>
           </Stack>
@@ -163,30 +170,28 @@ function SalesCard(props) {
           >
             <Button
               variant="contained"
-              style={{
-                backgroundColor: "green",
-              }}
+              color="success"
             >
-              
+
               <Link
-            to="/M4"
-            state={{
-              from: "sales details",
-              data: props.data,
-              date:[ordDate,delDate],
-              // onDeleteHandler: [props.onDeleteHandler,] , 
-            }}
-            style={{ textDecoration: "none" }}
-          >
-            <Typography
-              style={{
-                color: "#ffffff",
-                fontWeight: "600",
-              }}
-            >
-              view sale
-            </Typography>
-          </Link>
+                to="/M4"
+                state={{
+                  from: "sales details",
+                  data: props.data,
+                  date: [props.ordDate, props.delDate],
+                  // onDeleteHandler: [props.onDeleteHandler,] , 
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <Typography
+                  style={{
+                    color: "#ffffff",
+                    fontWeight: "600",
+                  }}
+                >
+                  view sale
+                </Typography>
+              </Link>
             </Button>
           </Box>
         </CardActions>

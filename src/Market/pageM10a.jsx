@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie';
 import { Link, useLocation } from "react-router-dom";
 import {
   Card,
@@ -20,8 +21,12 @@ import MicIcon from "@mui/icons-material/Mic";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import SortIcon from "@mui/icons-material/Sort";
 import FilterListIcon from "@mui/icons-material/FilterList";
-
+import Swal from 'sweetalert2';
 import Page10Nav from "../components/page10Nav";
+import Axios from "axios";
+import { baseURL } from "../constants";
+import { useEffect, useState } from "react";
+
 const data = [
   {
     market: "Market name",
@@ -30,6 +35,7 @@ const data = [
     rate: 3,
   },
 ];
+
 const marketData = [
   {
     sellerName: "full name",
@@ -42,10 +48,77 @@ const marketData = [
 ];
 
 const PageM10a = () => {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const location = useLocation();
-  
+
+  const [market, setMarket] = useState([]);
+
+  const handleGetMarkets = () => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/buyer/getmarkets`, { headers: { tokenstring: token } })
+    .then((res) => {
+      const hell = res.data.message;
+      setMarket(hell);
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Check Network Connection!',
+          })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Login Error',
+          })
+          navigate('../login')
+      }
+  })
+  }
+
+  useEffect(() => {
+    handleGetMarkets();
+  }, []);
+
+  /*
+  const list_of_markets = market.map((val) => {
+      return(
+        <div>
+          <br/>
+          <span>{val.name}</span>
+          <span>{val.location}</span>
+          <button> View Market </button>
+        </div>
+      );
+  })
+  */
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "15px 0px",
         backgroundColor: "transparent",
@@ -55,7 +128,7 @@ const PageM10a = () => {
       }}
     >
       <CssBaseline />
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Page10Nav title={location.state ? location.state.from : "List"} />
       </Box>
       <CardActions
@@ -73,21 +146,21 @@ const PageM10a = () => {
           }}
         >
           <Input
-            style={{ height: "40px", fontSize: "25px" }}
+            style={{ height: "40px"}}
             id="input-with-icon-adornment"
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+                <SearchIcon style={{ color: "green"}} />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                  <MicIcon style={{ color: "green" }} />
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
+                    style={{ color: "green"}}
                   />
                 </IconButton>
               </InputAdornment>
@@ -115,7 +188,7 @@ const PageM10a = () => {
             }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -131,7 +204,7 @@ const PageM10a = () => {
             }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>
@@ -150,7 +223,7 @@ const PageM10a = () => {
           border: "3px solid #000000",
         }}
       >
-        {(location.state ? location.state.dataList : data).map((val, index) => {
+        {(location.state ? location.state.dataList : market).map((val, index) => {
           return (
             <CardContent
               key={index}
@@ -179,13 +252,13 @@ const PageM10a = () => {
                     fontSize: "22px",
                   }}
                 >
-                  {val.market}
+                  {val.name}
                 </Typography>
                 <Typography
                   variant="boby1"
                   style={{ fontSize: "20px", fontWeight: "400" }}
                 >
-                  {val.distance}
+                  {val.distance.miles} Kilometers
                 </Typography>
               </Box>
               <Box
@@ -203,7 +276,7 @@ const PageM10a = () => {
                     fontSize: "22px",
                   }}
                 >
-                  {val.city}
+                  {val.location}
                 </Typography>
               </Box>
 
@@ -217,26 +290,16 @@ const PageM10a = () => {
               >
                 <Button
                   variant="contained"
-                  style={{ backgroundColor: "green", padding: "12px" }}
+                  color="success"
                 >
                   <Link
                     to="/M10b"
                     state={{
-                      from: val.market,
-                      rate: val.rate,
-                      marketData: location.state
-                        ? location.state.marketData
-                        : marketData,
+                      market: val
                     }}
                     style={{ textDecoration: "none" }}
                   >
-                    <Typography
-                      style={{
-                        color: "#ffffff",
-                        fontWeight: "600",
-                        fontSize: "16px",
-                      }}
-                    >
+                    <Typography>
                       view market
                     </Typography>
                   </Link>
@@ -246,6 +309,7 @@ const PageM10a = () => {
           );
         })}
       </Card>
+      {/* {list_of_markets} */}
     </Container>
   );
 };

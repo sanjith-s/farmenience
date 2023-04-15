@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import Details from "./components/FarmerProfileComp";
 import { Avatar, Typography, Box, Paper, TextField, IconButton } from '@material-ui/core';
 import { Button } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +11,11 @@ import { Card, CardContent, CardHeader, Divider, Grid } from "@mui/material";
 import "./css/styleProfile.css";
 import { Stack } from '@mui/material';
 import { useState } from 'react';
+import { baseURL } from '../src/constants';
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import Swal from 'sweetalert2';
+
 const c = {
   Name: "Yuvaraj Vetrivel",
   Aadhaar: "123456789000",
@@ -20,8 +27,37 @@ const c = {
   State: "Tamilnadu",
   Pincode: "600000",
   Email: "yuviexample@gmail.com",
-  src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s"
 };
+
+const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
+
+const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
 const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
@@ -32,6 +68,27 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, district, state, pincode, aadharNumber, profilePicture }) {
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+  
   const classes = useStyles();
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
@@ -60,6 +117,8 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   return (
     <div className='backProfile' style={{
       background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)"
+    }} id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
     }}>
       <div className='profileBox' style={{
         width: "70%",
@@ -196,7 +255,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 export default function () {
   return (
     <div>
-      <ProfilePage name={c.Name} email={c.Email} phoneNumber={c.Phone} city={c.Citytown} district={c.District} line1={c.Address1} line2={c.Address2} state={c.State} pincode={c.Pincode} aadharNumber={c.Aadhaar} profilePicture={c.src} />
+      <ProfilePage name={data.name} email={data.email} phoneNumber={data.phoneno} city={data.city} district={data.district} line1={data.addline1} line2={data.addline2} state={data.state} pincode={data.pincode} aadharNumber={data.aadhaarno} profilePicture={src} />
     </div>
   )
 }

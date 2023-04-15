@@ -1,15 +1,14 @@
-// import React from "react";
-// import {
-//   Card,
-//   CardContent,
-//   CardActions,
-//   Typography,
-//   Button,
-//   CardMedia,
-//   Box,
-//   Badge,
-// } from "@mui/material";
-
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+  CardMedia,
+  Box,
+  Badge,
+} from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
@@ -141,8 +140,28 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import img from "../images/product8.jpg";
 import Typography from '@mui/material/Typography';
+import Axios from "axios";
+import Cookies from "js-cookie";
+import { baseURL } from "../constants";
 
 export default function MediaCard(props) {
+  
+  function addCart() {
+    // alert("fsnk")
+    const items = {
+      productName: props.productName,
+      quantity: props.sellerCount,
+      price: props.price,
+      rating: props.stars,
+      type: props.type
+    } 
+    // console.log(props.array);
+    let dummy=props.array;
+    dummy.push(items);
+    props.cartArray(dummy);
+
+  }
+
   return (
     <Card
       sx={{
@@ -170,14 +189,18 @@ export default function MediaCard(props) {
         <Typography variant="h6" color="text.success">
           ₹ {props.price}
         </Typography>
+
         <Button
           size="small"
           style={{
             backgroundColor: "green",
             color: "white",
           }}
+          onClick={addCart}
+          variant="contained"
+          color="success"
         >
-          <ShoppingCartIcon /> buy
+          <ShoppingCartIcon /> add
         </Button>
       </CardActions>
     </Card>

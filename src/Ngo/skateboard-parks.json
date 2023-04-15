@@ -1,0 +1,295 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Guindy NGO",
+        "DESCRIPTIO": "Chennai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.2157, 13.0102]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Mylapore NGO",
+        "DESCRIPTIO": "Chennai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [80.2676, 13.0368]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Bengaluru NGO",
+        "DESCRIPTIO": "Bengaluru"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.5806, 12.9724]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.468561642270757, 45.23032561834377]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.926651366520872, 45.260659774950561]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Legacy Skateboard Park",
+        "DESCRIPTIO": "Large concrete bowl, many street and vertical components, 17,000 sq ft"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.760933332842754, 45.345566668964558]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Greenboro Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.625996131485707, 45.375401587496128]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Bridlewood Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.857009812435976, 45.290758029776626]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.206087708136721, 45.470459866077654]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.760235255689508, 45.280622216516925]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.60118478829267, 45.147641950106689]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Charlie Bowins Skateboard Park",
+        "DESCRIPTIO": "Flat concrete surface, 10 plus components (large half pipe), City run learn to skateboard programs, City run skateboard camps in summer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.703622500360268, 45.408488357092367]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Diamond Jubilee Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.609516309730921, 45.314086718258636]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Blackburn Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.562796920677627, 45.429643413219814]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Goulbourn Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 6 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.907108695123526, 45.26222860981953]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Constance Bay Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-76.09244957349965, 45.499050061534312]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.695392300925718, 45.315355581248873]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Trillium Park Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.601158413850058, 45.436441777242031]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Lansdowne Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.681193500335723, 45.400372622455215]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Greely Village Skateboard Park",
+        "DESCRIPTIO": "Flat concrete surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.553065849890629, 45.265433081236672]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Manotick Skateboard Park",
+        "DESCRIPTIO": "Flat asphalt surface, 8 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.686746214582783, 45.22266136322127]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Roving Skateboard Park Location",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.556978502821494, 45.261353985880973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Berrigan Skateboard Park",
+        "DESCRIPTIO": "Flat concrete surface, 10 plus components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.747348794023239, 45.275696004260205]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Eugène Martineau Skateboard Park",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.632030968141081, 45.450696284941976]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Vista Skateboard Park",
+        "DESCRIPTIO": "Flat surface, 5 components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.471003922143311, 45.450391044010431]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Innovation Skateboard Park",
+        "DESCRIPTIO": "Large concrete bowl, 10 plus components, many street and vertical components"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.931122879767898, 45.34125624499935]
+      }
+    }
+  ]
+}

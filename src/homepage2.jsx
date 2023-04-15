@@ -18,7 +18,7 @@ const Homepage2 = () => {
       .then(async (response) => {
         if (response.data.message == "Logout Successful") {
           await Swal.fire({
-            icon: 'error',
+            icon: 'success',
             title: 'Logout Successful!',
           })
           Cookies.remove("token");

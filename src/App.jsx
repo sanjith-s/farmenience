@@ -182,8 +182,8 @@ function App() {
 
   return (
     <div>
-      {/* <N10Navbar /> */}
-      {displayNavbar()}
+      <N10Navbar />
+      {/* {displayNavbar()} */}
       <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }} >
@@ -256,7 +256,7 @@ function App() {
               <Route path="/voice" element={<Voice />} />
               <Route path="/cropRecommendation" element={<CropRecommendation />} />
               <Route path="/imageDetection" element={<ImageDetection />} />
-              <Route path="web" element={<Web />} />
+              <Route path="/web" element={<Web />} />
               <Route path="/ordersummary" />
               <Route path="/payments/success" element={<Success />} />
               <Route path="/payments/cancel" element={<Cancel />} />

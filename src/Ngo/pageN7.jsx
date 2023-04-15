@@ -59,10 +59,6 @@ const PageN7 = () => {
     await Axios.post(`${baseURL}/postquery`, {
       subject: subject,
       description: desc,
-      image: {
-        data: file,
-        contentType: "jpg"
-      }
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
@@ -217,7 +213,7 @@ const PageN7 = () => {
           </DialogActions>
         </Dialog> */}
 
-        <Container
+        {/* <Container
           disableGutters={true}
           sx={{
             bgcolor: "#ffff",
@@ -271,7 +267,7 @@ const PageN7 = () => {
               }}
             />
           )}
-        </Container>
+        </Container> */}
       </Stack>
 
       <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {

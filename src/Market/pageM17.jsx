@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
 import TransactionHistory from "../components/TransactionHistory";
 import { Typography, Box, Card } from "@mui/material";
+import { Col, Divider, Row, Table } from 'antd';
+import "../css/pageM17.css";
+import Axios from "axios";
+import { baseURL } from "../constants";
+import Swal from "sweetalert2";
 
 function M17() {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const buyerHistory = [
     {
       ifscCode: "1xxx",
@@ -59,38 +87,97 @@ function M17() {
       receiver: "B",
     },
   ];
+  
+  let buyTransaction = [];
+
+  const [transaction, setTransaction] = useState([]);
+  const getTransactions = () => {
+    let token = Cookies.get('token');
+      Axios.get(`${baseURL}/buyer/gettransactions`, { headers: { tokenstring: token } }).then((res)=> {
+        const dat = res.data.message;
+        // setTransaction(dat);
+        dat && dat.map((val) => {
+          buyTransaction.push(
+            {
+              ifscCode: val.IFSC,
+              transactionid: val.transactionId,
+              paymentMethod: val.paymentMode,
+              bankName: val.bankName,
+              amount: val.amount,
+              sender: val.senderName,
+              receiver: val.recvName
+            }
+          )
+        })
+        setTransaction(buyTransaction)
+        alert(transaction[0].ifscCode);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Check Network Connection!',
+            })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Login Error',
+            })
+            navigate('../login')
+        }
+    })
+  }
+
+  useEffect(()=>{
+    getTransactions();
+  }, []); 
 
   return (
-    <Card
+    <Card id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
-        padding: "20px 0px 30px 0px",
         margin: "30px 100px",
         borderRadius: "12px",
-        border: "2px solid",
+        border: "1px solid whitesmoke",
       }}
       sx={{
         boxShadow: 20,
       }}
     >
-      <Box>
-        <Typography
+      
+      <Box className="gx-d-flex justify-content-center"
+        sx={{
+    display: "flex", justifyContent: "center", alignItems: "center",backgroundColor:"rgb(153, 237, 184)",
+    flexDirection:"column",padding:"2%"
+        }}
+      >
+         <Typography
           style={{
             textTransform: "uppercase",
             textAlign: "center",
-            fontSize: "38px",
+            fontSize: "1.875rem",
             fontWeight: "600",
           }}
         >
           Transaction History
         </Typography>
-      </Box>
-      <br></br>
-      <Box
-        sx={{
-          display: "flex", justifyContent: "center", alignItems: "center"
-        }}
-      >
-        <TransactionHistory rows={buyerHistory} />
+
+        {/* <TransactionHistory rows={buyerHistory} /> */}
+        <Table dataSource={buyerHistory}
+        pagination={false}
+        rowClassName={"row-ant"}
+        >
+          <Table.Column title="Trans Id" dataIndex='transactionid' />
+          <Table.Column title="IFSC Code" dataIndex='ifscCode' />
+          <Table.Column title="Payment Mode" dataIndex='paymentMode' />
+          <Table.Column title="Bank Name" dataIndex='bankName' />
+          <Table.Column title="Amount" dataIndex='amount' />
+          <Table.Column title="Sender" dataIndex='sender' />
+          <Table.Column title="Receiver" dataIndex='receiver' />
+        </Table>
       </Box>
     </Card>
   );

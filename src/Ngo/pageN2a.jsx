@@ -14,37 +14,33 @@ const PageN2 = () => {
   const navigate = useNavigate();
   const id = location.state.id;
   const oldQuery = location.state.oldQuery;
+  const data = location.state.data;
   const [query, setQuery] = useState({});
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/getquery/${id}`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setQuery(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-    console.log(query);
-  }, []);
-
   const [subject, setSubject] = useState(query.subject);
   const [desc, setDesc] = useState(query.description);
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
 
   const DeleteQuery = async () => {
     let token = Cookies.get('token');
@@ -132,10 +128,12 @@ const PageN2 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox" }}>
-      <Stack>
+    <div id="google_translate_element" style={{ boxSizing: "borderBox" }} onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
+      <Stack className="gx-d-flex justify-content-center">
         <Container>
-          <QueryDetails query={query} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
+          <QueryDetails query={data} prev={oldQuery} delQuery={DeleteQuery} handleNotHappy={handleClickOpen} />
         </Container>
       </Stack>
       <Dialog open={open} onClose={handleClose}>
@@ -166,8 +164,12 @@ const PageN2 = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={NotHappy}>Attach</Button>
+          <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={handleClose}>Cancel</Button>
+          <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }} onClick={NotHappy}>Attach</Button>
         </DialogActions>
       </Dialog>
     </div>

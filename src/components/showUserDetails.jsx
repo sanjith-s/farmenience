@@ -21,7 +21,7 @@ function ShowUserDetails(props) {
           alignSelf: "center",
         }}
       >
-        consumer details
+        Receiver Details
       </Typography>
 
       <CardContent
@@ -96,7 +96,7 @@ function ShowUserDetails(props) {
               width: "80%",
             }}
           >
-            {props.userAddress}
+            {props.userAddressLine1}, {props.userAddressLine2}
           </Typography>
         </Box>
       </CardContent>

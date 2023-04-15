@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie';
 import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
@@ -27,42 +28,84 @@ import Divider from "@mui/material/Divider";
 
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import { baseURL } from "../constants";
+import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
-  const [open,setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
-  const [count,setCount] = useState([0]);
-  const addItem = ()=> {
+  const [count, setCount] = useState([0]);
+
+  const addItem = () => {
     var an = count;
-    setCount([...an,0]);
+    setCount([...an, 0]);
   }
+
   const delItem = () => {
     var an = count;
     an.pop();
     setCount([...an]);
   }
+
   function handleChange(e) {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
+
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-  const [name,setName] = useState();
-  const [price,setPrice] = useState();
-  const [quantity,setQuantity] = useState();
-  const [type,setType] = useState();
-  const handleAllChange = ()=>{
-      setName(document.querySelector("#p-name").value);
-      setPrice(document.querySelector("#price").value);
-      setQuantity(document.querySelector("#quan").value);
-      setType(document.querySelector("#type").value);
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [type, setType] = useState('');
+  const [rating, setRating] = useState('');
+
+  const handleAllChange = () => {
+    setName(document.querySelector("#p-name").value);
+    setPrice(document.querySelector("#price").value);
+    setQuantity(document.querySelector("#quan").value);
+    setType(document.querySelector("#type").value);
+    setRating(document.querySelector("#rating").value);
   }
+
+  const Reset = () => {
+    setName("");
+    setPrice("");
+    setQuantity("");
+    setType("");
+    setRating("");
+    setFile();
+  }
+
+  const handleSubmit = async () => {
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/seller/postsellerproducts`, {
+      productName: name,
+      price: price,
+      quantity: quantity,
+      type: type,
+      rating: rating,
+      image: {
+        data: file,
+        contentType: "jpg"
+      }
+    }, { headers: { tokenstring: token } })
+      .then(async (res) => {
+        alert("SUCCESS");
+        console.log("Successfully added seller's products", res);
+      }).catch((err) => {
+        alert("FAILURE");
+        console.log(err);
+      })
+  }
+
   return (
     <div style={{ boxSizing: "borderBox", padding: "20px" }}>
       <CssBaseline />
+
       <Typography fontWeight={700} fontSize={50} sx={{
         alignItems:"center",
         marginLeft:"600px"
@@ -89,6 +132,7 @@ const PageM6 = () => {
         >
           <React.Fragment>
           {/* <Box
+
             sx={{
               overflow: "auto",
               padding:"2%",
@@ -98,181 +142,213 @@ const PageM6 = () => {
               alignContent:"center"
             }}
           > */}
-             <TextField
-             id="p-name"
-             label="Product Name"
-             variant="filled"
-             color="success"
-             value={name}
-             onChange={handleAllChange}
-             sx={{
-               backgroundColor: "#a8f781",
-               borderBottomColor: "black",
-               width: "70%",
-               marginBottom:"20px"
-             }}
-             inputProps={{ 
-               minLength: 1,
-               maxLength: 12 
-             }}
-             />
-             <TextField
-             id="price"
-             label="Price"
-             variant="filled"
-             color="success"
-             onChange={handleAllChange}
-             InputProps={{
-               endAdornment: <InputAdornment position="end">₹</InputAdornment>,
-             }}
-             
-             sx={{
-               backgroundColor: "#a8f781",
-               borderBottomColor: "black",
-               width: "70%",
-               marginBottom:"20px"
-             }}
-             />
-             <TextField
-             id="quan"
-             onChange={handleAllChange}
-             InputProps={{
-               endAdornment: <InputAdornment position="end">kg</InputAdornment>,
-             }}
-             label="Quantity"
-             variant="filled"
-             color="success"
-             sx={{
-               backgroundColor: "#a8f781",
-               borderBottomColor: "black",
-               width: "70%",
-               marginBottom:"20px"
-             }}
-             />
-             <TextField
-             id="type"
-             label="Type"
-             variant="filled"
-             onChange={handleAllChange}
-             color="success"
-             sx={{
-               backgroundColor: "#a8f781",
-               borderBottomColor: "black",
-               width: "70%",
-               marginBottom:"20px"
-             }}
-             />
-      
-    </React.Fragment>
-        </Container>
-        <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={()=>{setOpen(false)}}
-        aria-describedby="alert-dialog-slide-description"
-        >
-        <DialogTitle>CONFIRM?</DialogTitle>
-        <DialogContent>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 200 }} aria-label="simple table">
-        <TableBody>
-          <TableRow>
-            <TableCell>Product Name</TableCell>
-            <TableCell>{name}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Price</TableCell>
-            <TableCell>{price}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Quantity</TableCell>
-            <TableCell>{quantity}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>Type</TableCell>
-            <TableCell>{type}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell colSpan={2} rowSpan={2}>
-          <img
-              src={file}
-              style={{
-                width: "100%",
+          
+                <TextField
+                  id="p-name"
+                  label="Product Name"
+                  variant="filled"
+                  color="success"
+                  value={name}
+                  onChange={handleAllChange}
+                  sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                  }}
+                  inputProps={{
+                    minLength: 1,
+                    maxLength: 25
+                  }}
+                />
+                <TextField
+                  id="price"
+                  type="number"
+                  label="Price"
+                  value={price}
+                  variant="filled"
+                  color="success"
+                  onChange={handleAllChange}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">₹</InputAdornment>,
+                    min: 1,
+                    max: 200
+                  }}
+                  sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                  }}
+                />
+                <TextField
+                  id="quan"
+                  type="number"
+                  onChange={handleAllChange}
+                  value={quantity}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">kg</InputAdornment>,
+                    min: 1,
+                    max: 10
+                  }}
+                  label="Quantity"
+                  variant="filled"
+                  color="success"
+                  sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                  }}
+                />
+                <TextField
+                  id="type"
+                  label="Type"
+                  variant="filled"
+                  value={type}
+                  onChange={handleAllChange}
+                  color="success"
+                  sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                  }}
+                  inputProps={{
+                    minLength: 1,
+                    maxLength: 20
+                  }}
+                />
+                <TextField
+                  id="rating"
+                  label="Rating"
+                  variant="filled"
+                  type="number"
+                  value={rating}
+                  onChange={handleAllChange}
+                  color="success"
+                  sx={{
+                    backgroundColor: "#C4E1C5",
+                    borderBottomColor: "black",
+                    width: "70%",
+                  }}
+                  inputProps={{
+                    minLength: 1,
+                    maxLength: 5
+                  }}
+                />
+
+              </React.Fragment>
+            </Container>
+            <Dialog
+              open={open}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={() => { setOpen(false) }}
+              aria-describedby="alert-dialog-slide-description"
+            >
+              <DialogTitle>CONFIRM?</DialogTitle>
+              <DialogContent>
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 200 }} aria-label="simple table">
+                    <TableBody>
+                      <TableRow>
+                        <TableCell>Product Name</TableCell>
+                        <TableCell>{name}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Price</TableCell>
+                        <TableCell>{price}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Quantity</TableCell>
+                        <TableCell>{quantity}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Type</TableCell>
+                        <TableCell>{type}</TableCell>
+                      </TableRow>
+                      <TableRow>
+                        <TableCell colSpan={2} rowSpan={2}>
+                          <img
+                            src={file}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "fill",
+                              borderRadius: "50px",
+                            }}
+                          /></TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+
+              </DialogContent>
+              <DialogActions>
+                <Button  onClick={() => { setOpen(false) }}>Cancel</Button>
+                <Button >CONFIRM</Button>
+              </DialogActions>
+            </Dialog>
+            <Container
+              disableGutters={true}
+              sx={{
+                bgcolor: "#ffff",
+
                 height: "100%",
-                objectFit: "fill",
+                width: "40vw",
                 borderRadius: "50px",
-              }}
-            /></TableCell>
-          </TableRow>
-           </TableBody>
-           </Table>
-          </TableContainer>
-            
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={()=>{setOpen(false)}}>Cancel</Button>
-          <Button >CONFIRM</Button>
-        </DialogActions>
-      </Dialog>
-        <Container
-          disableGutters={true}
-          sx={{
-            bgcolor: "#ffff",
-            height: "100%",
-            width: "40vw",
-            borderRadius: "50px",
-            paddingLeft: "0px",
-            paddingRight: "0px",
-            display: "flex",
-            justifyItems: "center",
-          }}
-        >
-          {!isUploaded && (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
+                paddingLeft: "0px",
+                paddingRight: "0px",
                 display: "flex",
+
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
                 marginTop:"90px"
               }}
             >
-              <input
-                type="file"
-                id="imgUp"
-                style={{ display: "none" }}
-                onChange={handleChange}
-              />
-              <label
-                htmlFor="imgUp"
-                style={{ width: "fit-content", height: "fit-content" }}
-              >
-                <Fab component="span">
-                  <FileUploadOutlinedIcon />
-                </Fab>
-                <br />
-                <br />
-              </label>
-              <Typography>Upload Image</Typography>
-            </div>
-          )}
-          {isUploaded && (
-            <img
-              src={file}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                borderRadius: "50px",
-              }}
-            />
-          )}
-        </Container>
-      </Stack>
-      )})}
+              {!isUploaded && (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <input
+                    type="file"
+                    id="imgUp"
+                    style={{ display: "none" }}
+                    onChange={handleChange}
+                  />
+                  <label
+                    htmlFor="imgUp"
+                    style={{ width: "fit-content", height: "fit-content" }}
+                  >
+                    <Fab component="span">
+                      <FileUploadOutlinedIcon />
+                    </Fab>
+                    <br />
+                    <br />
+                  </label>
+                  <Typography>Upload Image</Typography>
+                </div>
+              )}
+              {isUploaded && (
+                <img
+                  src={file}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "fill",
+                    borderRadius: "50px",
+                  }}
+                />
+              )}
+            </Container>
+          </Stack>
+        )
+      })}
       {/* {count.map(ele=>{
               return (  */}
       <Stack
@@ -290,12 +366,17 @@ const PageM6 = () => {
         </Button>
       </Stack>
       <Box textAlign="center" padding={"20px"}>
+
         <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
+        <Button variant="contained"
+            color="success"onClick={Reset}>
+          Reset To Old Values
+        </Button><br /><br />
       </Box>
     </div>
   );

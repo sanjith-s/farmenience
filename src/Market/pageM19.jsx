@@ -88,24 +88,16 @@ const PageM19 = () => {
             </Stack>
           </CardContent>
         </Box>
-        <Box sx={{ display: "flex", columnGap: "50px" }}>
+        <Box sx={{ display: "flex", columnGap: "70px" }}>
           <Button
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
+             variant="contained"
+             color="success"
           >
             edit
           </Button>
           <Button
             variant="contained"
-            style={{
-              backgroundColor: "green",
-              fontWeight: "600",
-              fontSize: "18px",
-            }}
+            color="success"
           >
             publish
           </Button>

@@ -14,7 +14,7 @@ import {
   Button,
 } from "@mui/material";
 
-function ProductCard() {
+function ProductCard(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
@@ -112,6 +112,10 @@ function ProductCard() {
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
               }}
+              inputProps={{ 
+                min: 1,
+                max: 200 
+              }}
             />
           </FormControl>
         </Box>
@@ -156,6 +160,10 @@ function ProductCard() {
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
               }}
+              inputProps={{ 
+                min: 1,
+                max: 20 
+              }}
             />
           </FormControl>
         </Box>
@@ -186,6 +194,10 @@ function ProductCard() {
                 borderRadius: "5px",
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
+              }}
+              inputProps={{ 
+                minLength: 1,
+                maxLength: 20 
               }}
             />
           </FormControl>

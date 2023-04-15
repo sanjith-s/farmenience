@@ -208,7 +208,7 @@ function TransactionHistory(props) {
                     textAlign: "center"
                   }}
                 >
-                  {row.paymentMode}
+                  {row.paymentMethod}
                 </TableCell>
                 <TableCell
                   align="right"

@@ -5,7 +5,7 @@ import validator from "validator";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { Box, Button, Typography, Input, InputAdornment, IconButton, Card ,TextField} from "@mui/material";
+import { Box, Button, Typography, Input, InputAdornment, IconButton, Card, TextField } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
@@ -28,7 +28,7 @@ function Login() {
     let passChk = 1;
     if (validator.isEmail(email)) emailChk = 1;
     if (!emailChk) {
-      await Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Invalid email address!',
@@ -36,14 +36,14 @@ function Login() {
       return;
     }
     if (!passChk) {
-      await Swal.fire({
+      Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Invalid password!',
       })
       return;
     }
-    await Swal.fire({
+    Swal.fire({
       icon: 'success',
       title: 'Validation Successful!',
     })
@@ -57,7 +57,7 @@ function Login() {
         password: pass,
       });
       if (response.data.message == "Successful") {
-        await Swal.fire({
+        Swal.fire({
           icon: 'success',
           title: 'Login Successful!',
         });
@@ -72,7 +72,7 @@ function Login() {
           navigate("/homepage2");
         }
       } else {
-        await Swal.fire({
+        Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Error in logging in!',

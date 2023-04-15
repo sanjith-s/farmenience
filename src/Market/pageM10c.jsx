@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import Page10Nav from "../components/page10Nav";
 import PersonRoundIcon from "@mui/icons-material/PersonRounded";
@@ -14,10 +14,36 @@ import {
   Divider,
 } from "@mui/material";
 
-const PageM10c = () => {
+const PageM10c = (props) => {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const location = useLocation();
+  const data = location.state?.data;
+
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
         padding: "30px 0px",
         backgroundColor: "transparent",
@@ -27,9 +53,9 @@ const PageM10c = () => {
       }}
     >
       <CssBaseline />
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Page10Nav
-          title={location.state ? location.state.store : "Store Name"}
+          title={data.name}
         />
       </Box>
       <Card style={{ padding: "18px", display: "flex", columnGap: "24px" }}>
@@ -50,7 +76,8 @@ const PageM10c = () => {
                 color: "#333",
               }}
             >
-              {location.state ? location.state.from : "Seller Name"}
+              {/* {location.state ? location.state.from : "Seller Name"} */}
+              {data.name}
             </Typography>
             <Typography
               style={{
@@ -60,9 +87,10 @@ const PageM10c = () => {
                 color: "#444",
               }}
             >
-              {location.state
+              {/* {location.state
                 ? location.state.branches.toString()
-                : "branch places"}
+                : "branch places"} */}
+                {data.location}
             </Typography>
           </Box>
           <Divider style={{ width: "98%" }} flexItem />
@@ -75,7 +103,7 @@ const PageM10c = () => {
                 color: "#555",
               }}
             >
-              {location.state ? location.state.content : "seller description"}
+              {data.sellerDesc}
             </Typography>
           </Box>
         </CardContent>

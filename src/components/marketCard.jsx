@@ -132,14 +132,14 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 // }
 
 // export default MarketCard;
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+// import * as React from 'react';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import Button from '@mui/material/Button';
 import img from "../images/product8.jpg";
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Axios from "axios";
 import Cookies from "js-cookie";
 import { baseURL } from "../constants";

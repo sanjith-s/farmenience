@@ -67,8 +67,8 @@ function SwipeableEdgeDrawer(props) {
           </a>
         </div>
         <div className="nav-items item2">
-          <a href="" className="nav-links  nav-brand">
-            FARMENiENCE
+          <a href="/" className="nav-links  nav-brand">
+            Farmenience
           </a>
         </div>
         <div className="nav-items item3">
@@ -77,13 +77,14 @@ function SwipeableEdgeDrawer(props) {
           </a>
         </div>
 
-        <Button className="dropbtn" variant="text" sx={{ color: "black" }} onClick={toggleDrawer(true)}>Show My schedules</Button>
+        <a className="dropdown" variant="text" sx={{ color: "black" }} onClick={toggleDrawer(true)}>Show My schedules</a>
         
         <div className="dropdown">
           <Button className="dropbtn">
             OPTIONS
           </Button>
           <div className="dropdown-content">
+          
             <Link href='../N1'>View Queries</Link>
             <Link href='../N13'>View Appointments</Link>
             <Link href='../N7'>Create New Query</Link>
@@ -92,7 +93,7 @@ function SwipeableEdgeDrawer(props) {
         </div>
         
         <div className="nav-items item5">
-          <a href="" className="nav-links">
+          <a href="../N9" className="nav-links">
             <AccountCircleRoundedIcon fontSize="large" />
           </a>
         </div>

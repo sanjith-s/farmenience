@@ -137,7 +137,6 @@ function PageM4() {
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('Receipt.pdf');
-  };
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -164,6 +163,7 @@ function PageM4() {
         tot_amount += i.total;
         count++;
       })
+    
   const handleChange = () => {
     filterItems = itemsBought.filter((value) => {
       if ((data.items).includes(value.item)) {
@@ -179,7 +179,13 @@ function PageM4() {
 
   handleChange();
 
-  
+  let tot_amount = 0;
+  filterItems.map((item) => {
+    tot_amount += item.quantity * item.eachPrice;
+    return;
+  });
+  console.log("hello");
+  console.log(filterItems);
 
   return (
     <>
@@ -300,6 +306,7 @@ function PageM4() {
                 Print PDF
               </Button>
               <Box
+                id="print-part"
                 sx={{
                   display: "flex",
                   columnGap: "20px",
@@ -326,7 +333,9 @@ function PageM4() {
                     overflow: "auto",
                   }}
                 >
+                 
                   {data.billingAddress}
+
                 </Typography>
               </Box>
 
@@ -447,6 +456,7 @@ function PageM4() {
 
 
       <Row style={{ marginTop: 48,display:"block" }}>
+        
         <Table dataSource={data.items}
         pagination={false}
         >

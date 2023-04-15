@@ -67,20 +67,19 @@ const PageN1 = () => {
                     })
                 }
             </Box>
-            <div>
+           
+
+            <Stack spacing={2} alignItems="center" padding={5}>
+                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
+            </Stack>
+             <div>
 
                 <Box textAlign="center" padding={"1.25rem"}>
-                    <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}>
+                    <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#18c431", margin: "auto" }}>
                         Home Page
                     </Button>
                 </Box>
             </div>
-
-            <Stack spacing={2}>
-                <Pagination count={10} variant="outlined" shape="rounded" showFirstButton showLastButton />
-            </Stack>
         </>
     )
 }

@@ -1,72 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios"
-import { useNavigate } from "react-router-dom/dist";
+import BackImg from "../components/homepageBackground.png";
+import "../css/pageM0.css"
+import { eventWrapper } from "@testing-library/user-event/dist/utils";
+import { useNavigate } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography, List, ListItem, ListItemIcon, ListItemText, Grid, Paper } from '@material-ui/core';
+import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
+import PropTypes from 'prop-types';
+import { Stack, Box, Avatar, Button, Tab, Tabs } from '@mui/material';
+import { AspectRatio } from "@mui/icons-material";
+import { Divider } from '@material-ui/core';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { Notifications, ShoppingCart, Room } from '@material-ui/icons';
-import { Divider } from '@material-ui/core';
 import { baseURL } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-        padding: theme.spacing(2),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        height: '100%',
-        color: theme.palette.text.secondary,
-        '&:hover': {
-            cursor: 'pointer',
-            boxShadow: '0px 0px 10px #777',
-            transform: 'scale(1.05)',
-        },
-        transition: 'all 0.3s ease-in-out',
-    },
-    orderDetails: {
-        backgroundColor: '#f4f4f4',
-    },
-    saleRequest: {
-        backgroundColor: '#f4f4f4',
-    },
-    notifications: {
-        backgroundColor: '#f4f4f4',
-    },
     listItemIcon: {
         minWidth: '40px',
-    },
-    title: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        fontSize: '3rem',
-        letterSpacing: '0.2rem',
-        marginBottom: theme.spacing(3),
-        '& span': {
-            display: 'block',
-            fontSize: '1rem',
-            fontWeight: 'normal',
-            letterSpacing: '0.1rem',
-        },
-        '& hr': {
-            border: 0,
-            height: '1px',
-            backgroundImage: 'linear-gradient(to right, transparent, #ccc, transparent)',
-        },
-    },
+    }
 }));
 
 const ordersData = [{ orderNo: '123456789', destination: 'Chennai', },
 { orderNo: '987654321', destination: 'Koyambedu', },
 { orderNo: '456123789', destination: 'THiruchi', },];
 
-
-const notificationsData = [{ message: 'You have a new sale request.', },
-{ message: 'Your have a new sale request.', }]
-// ...
-
+const navigate = useNavigate();
+    
 const saleRequestsData = [
     {
         item: 'Item 1',
@@ -88,30 +48,39 @@ const saleRequestsData = [
     },
 ];
 
-function SellerDashboard() {
-
-    // const googleTranslateElementInit = () => {
-    //     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-    // }
-
-    // const fullAnotherSpeak = (text) => {
-    //     responsiveVoice.speak(text, "Tamil Male");
-    // }
-
-    // useEffect(() => {
-    //     var addScript = document.createElement('script');
-    //     addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-    //     document.body.appendChild(addScript);
-    //     window.googleTranslateElementInit = googleTranslateElementInit;
-    // }, []);
-
-    // useEffect(() => {
-    //     var addScript = document.createElement('script');
-    //     addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-    //     document.body.appendChild(addScript);
-    // }, []);
-
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
     const navigate = useNavigate();
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+function N10Props(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+function BasicTabs() {
+
     const classes = useStyles();
 
     const [orders, setOrders] = useState([]);
@@ -190,93 +159,136 @@ function SellerDashboard() {
     useEffect(() => {
         AxiosSet();
     }, []);
+  
+    const [value, setValue] = React.useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     return (
-        <div className={classes.root} onClick={(e) => {
+        <Box id="google_translate_element" sx={{ width: "100%" }} onClick={(e) => {
             fullAnotherSpeak(e.target.innerText)
           }}>
-            <Grid id="google_translate_element" container spacing={2}>
-                <Grid item xs={12} className="gx-d-flex justify-content-center">
-                    <div className={classes.title}>
-                        <span>SELLER DASHBOARD</span>
-                        <hr />
-                    </div>
-                </Grid>
-                {/* Order Details section */}
-                <Grid item xs={12} md={4}>
-                    <Paper className={`${classes.paper} ${classes.orderDetails}`}>
-                        <Typography variant="h5">Order Details</Typography>
-                        <List>
-                            {orders.map((order, index) => (
-                                <React.Fragment key={index}>
-                                    <ListItem>
-                                        <Room fontSize="small" />
-                                        <ListItemText primary={`Order No: ${order.orderNo}`} />
-                                    </ListItem>
-                                    <ListItem>
-                                        <Room fontSize="small" />
-                                        <ListItemText primary={`Destination: ${order.destination}`} />
-                                    </ListItem>
-                                    {index !== ordersData.length - 1 && (
-                                        <Divider variant="middle" />
-                                    )}
-                                </React.Fragment>
-                            ))}
-                        </List>
-                    </Paper>
-                </Grid>
+            <Box sx={{ borderBottom: 2, borderColor: 'divider' }} className="tabs-head" >
+                <Tabs TabIndicatorProps={{ style: { background: 'darkgreen' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label={<span className='lab-text1'> Orders</span>} {...N10Props(0)} />
+                    <Tab label={<span className='lab-text1'>Sale Requests</span>} {...N10Props(1)} />
+                </Tabs>
+            </Box>
+            <TabPanel value={value} index={0}>
+                    <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={()=>{document.getElementById("roller1").stop()}} onMouseOut={()=>{document.getElementById("roller1").start()}} >
+                    {ordersData.map((order, index) => (
+                        <React.Fragment key={index}>
+                            <ListItem>
+                                <Room fontSize="small" />
+                                <ListItemText primary={`Order No: ${order.orderNo}`} /> 
+                            </ListItem>
+                            <ListItem>
+                                <Room fontSize="small" />
+                                <ListItemText primary={`Destination: ${order.destination}`} />
+                            </ListItem>
+                            {index !== ordersData.length - 1 && (
+                                <Divider variant="middle" />
+                            )}
+                        </React.Fragment>
+                    ))}
+                    </marquee>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <List>
+                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
+                    {saleRequestsData.map((request, index) => (
+                        <ListItem key={index}>
+                            <ListItemIcon className={useStyles.listItemIcon}>
+                                <ShoppingCart fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={request.item}
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography variant="subtitle2">
+                                            Item: {request.itemName}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Quantity: {request.quantity}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Request Sender: {request.requestSender}
+                                        </Typography>
 
-                <Grid item xs={12} md={4}>
-                    <Paper className={`${classes.paper} ${classes.saleRequest}`}>
-                        <Typography variant="h5">Sale Requests</Typography>
-                        <List>
-                            {requests.map((request, index) => (
-                                <ListItem key={index}>
-                                    <ListItemIcon className={classes.listItemIcon}>
-                                        <ShoppingCart fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={request.item}
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography variant="subtitle2">
-                                                    Item: {request.itemName}
-                                                </Typography>
-                                                <Typography variant="subtitle2">
-                                                    Quantity: {request.quantity}
-                                                </Typography>
-                                                <Typography variant="subtitle2">
-                                                    Request Sender: {request.name}
-                                                </Typography>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
 
-                                            </React.Fragment>
-                                        }
-                                    />
-                                </ListItem>
-
-                            ))}
-                        </List>
-                    </Paper>
-                </Grid>
-
-                <Grid item xs={12} md={4}>
-                    <Paper className={`${classes.paper} ${classes.notifications}`}>
-                        <Typography variant="h5">Notifications</Typography>
-                        <List>
-                            {notifications.map((notification, index) => (
-                                <ListItem key={index}>
-                                    <ListItemIcon className={classes.listItemIcon}>
-                                        <Notifications fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText primary={notification.message} />
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </div>
+                    ))}
+                    </marquee>
+                </List>
+            </TabPanel>
+        </Box>
     );
 }
 
-export default SellerDashboard;
+function pageM0() {
+
+// const googleTranslateElementInit = () => {
+    //     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+    // }
+
+    // const fullAnotherSpeak = (text) => {
+    //     responsiveVoice.speak(text, "Tamil Male");
+    // }
+
+    // useEffect(() => {
+    //     var addScript = document.createElement('script');
+    //     addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    //     document.body.appendChild(addScript);
+    //     window.googleTranslateElementInit = googleTranslateElementInit;
+    // }, []);
+
+    // useEffect(() => {
+    //     var addScript = document.createElement('script');
+    //     addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    //     document.body.appendChild(addScript);
+    // }, []);
+    
+    return (
+        <div style={{ backgroundColor: "#E5FDD1" }}>
+            <img src={BackImg} style={{ objectFit: "cover", height: "370px", width:"100%" }} className='back-img' />
+            <div className='contents'>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sale"}</span>
+                    </div>
+                    <div className="box-body">
+                        <p className="box-description">{"Create a New Sale"}</p>
+                        <button className="box-button">{"Create Now"}</button>
+                    </div>
+                </div>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sale Request"}</span>
+                    </div>
+                    <div className="box-body">
+                        <p className="box-description">{"See a list of sale requests"}</p>
+                        <button className="box-button">{"View"}</button>
+                    </div>
+                </div>
+                <div className="box1">
+                    <div className="box-header">
+                        <span className="box-title">{"Sales"}</span>
+                    </div>
+                    <div className="box-body">
+                        <p className="box-description">{"See a list of sales you have done"}</p>
+                        <button className="box-button">{"View"}</button>
+                    </div>
+                </div>
+                <div className="roller box1">                    
+                        <BasicTabs />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default pageM0;

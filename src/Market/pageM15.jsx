@@ -153,6 +153,7 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
+                backgroundColor:"#74e81c",
                 top: "15px",
                 right: "10px",
                 fontWeight: "600",
@@ -176,6 +177,7 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
+                backgroundColor:"#74e81c",
                 bottom: "15px",
                 right: "10px",
                 fontWeight: "600",
@@ -221,6 +223,7 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
+                  backgroundColor:"#74e81c",
                   bottom: "34px",
                   right: "14px",
                   
@@ -265,6 +268,7 @@ function PageM15() {
                 style={{
                   position: "absolute",
                   bottom: "18px",
+                  backgroundColor:"#74e81c",
                   right: "14px",
                   fontWeight: "600",
                   fontSize: "15px",
@@ -304,7 +308,7 @@ function PageM15() {
               })}
               <Button
                 variant="contained"
-                color="success"
+                color="error"
                 onClick={negotHandler}
                 style={{
                   position: "absolute",

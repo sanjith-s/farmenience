@@ -41,8 +41,19 @@ const ScheduleCard = (props) => {
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    console.log(props.imgName.name);
-
+    let filename='';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', props.imgName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename=response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
       time: dateStr.toTimeString(),
@@ -51,10 +62,7 @@ const ScheduleCard = (props) => {
       reason: reason,
       ngotype: ngo,
       location: location,
-      image: {
-        data: props.imgSrc,
-        contentType: "jpg"
-      }
+      filename: filename
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
 .query-card {
     background-color: #e6ffe6;
@@ -118,6 +118,137 @@
     color: #fff;
     text-shadow: 0.13rem 0.13rem 0.13rem rgba(46, 78, 37, 0.2);
     background-image: linear-gradient(45deg, #69b36c, #92d187);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+.query-card {
+    background-color: #c4fbc4;
+    border: 0.06rem solid #ccc;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    /* margin-bottom: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.query-card__title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* .query-card:hover {
+    transform: translateY(-0.6rem);
+    box-shadow: 0.13rem 0.13rem 1.3rem rgba(0, 0, 0, 0.2);
+} */
+  
+
+.query-card__info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.query-card__id,
+.query-card__date,
+.query-card__status {
+    margin: 0;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+.query-card__status {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.query-card__status--resolved {
+    color: green;
+}
+
+.query-card__status--inprogress {
+    color: yellow;
+}
+
+.query-card__status--pending {
+    color: red;
+}
+
+.query-card__actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.query-card__button {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.query-card__button--edit {
+    margin-right: 0.5rem;
+}
+
+.query-card__button--delete {
+    background-color: #dc3545;
+}
+
+.query-card__button:hover {
+    opacity: 0.8;
+}
+
+.query-card__button--display {
+    background-color: #5e8c31;
+    color: white;
+    border: none;
+    border-radius: 0.19rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.query-card__button--display:hover {
+    background-color: #8fbc58;
+    color: white;
+}
+
+.query-card__button--respond {
+    margin-left: 37rem;
+    background-color: #5e8c31;
+    color: white;
+}
+.query-list {
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1.3rem;
+    background-color: #a9e293;
+    border-radius: 0.6rem;
+    margin-top: 3%;
+    box-shadow: 0.4rem 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.1);
+}
+
+.query-list__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.3rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0.13rem 0.13rem 0.13rem rgba(46, 78, 37, 0.2);
+    background-color: #2f5b04;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -61,7 +61,7 @@ const PageN4 = () => {
       >
         <Container
           sx={{
-            bgcolor: "#D9D9D9;",
+           padding:"20px",
             height: "100%",
             width: "60vw",
             borderRadius: "3.25rem",

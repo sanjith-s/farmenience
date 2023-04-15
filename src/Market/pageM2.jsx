@@ -20,16 +20,17 @@ const PageM2 = () => {
   const content = location.state ? location.state.data : data;
 
   return (
-    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }}>
+    <Box sx={{ margin: "40px", justifyContent: "center",
+     alignItems: "center", backgroundColor: "white" }}>
       <Typography
         style={{
           textTransform: "uppercase",
           textAlign: "center",
           fontSize: "36px",
-          marginBottom: "20px",
+          margin: "20px",
           fontFamily: "Satoshi",
-          border: "3px solid",
-          borderRadius: "20px",
+          /* border: "3px solid", */
+          borderRadius: "5px",
           width: "10em",
           backgroundColor: "lightskyblue"
         }}

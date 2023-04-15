@@ -78,8 +78,32 @@ function PageM1() {
 
 
   return (
-    <Box
+    <>
+    <Box className="query-list">
+        <h2 className="query-list__heading">You have {content.length} requests</h2>
+        {
+            content.map((req,index) => {
+                return (
+                    <div>
+                        <RequestBox
+                        key={index + 1}
+                       reqId={req.regNo}
+                       name={req.cname}
+                       phoneNo={req.phno}
+                       itemName={req.itemName}
+                       itemQuantity={req.itemQuantity}
+                       data={req}
+                />
+                    </div>
+                )
+            })
+        }
+    </Box>
+        
+      </>
+/*     <Box
       style={{
+        boxShadow:15,
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
@@ -127,7 +151,7 @@ function PageM1() {
           })}
         </Box>
       </Box>
-    </Box>
+    </Box> */
   );
 }
 export default PageM1;

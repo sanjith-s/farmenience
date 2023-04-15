@@ -56,24 +56,29 @@ function PageN11() {
       })
   }, []);
 return(
-/*   <>
+  <>
   <Box className="query-list">
       <h2 className="query-list__heading">You have {data.length} queries</h2>
       {
-          data.map((val) => {
+          data.map((req,index) => {
               return (
                   <div>
-                      <QueryBox ID={val._id} Date={val.updatedAt} Status={val.status} Subject={val.subject} Desc={val.description
-                      } oldQuery={val.oldQuery} fullData={val} />
+                      <QueryList
+                key={index + 1} 
+                queryID={req._id}
+                queryName={req.subject}
+                queryDesc={req.description}
+                date={req.updatedAt}
+              />
                   </div>
               )
           })
       }
   </Box>
       
-    </> */
+    </>
      
-    <Box
+    /* <Box
       style={{
         display: "flex",
         alignItems: "center",
@@ -122,7 +127,7 @@ return(
           })}
         </Box>
       </Box>
-    </Box>
+    </Box> */
   );
 }
 export default PageN11;

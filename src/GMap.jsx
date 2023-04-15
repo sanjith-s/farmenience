@@ -1,18 +1,19 @@
-import React, { useEffect, useRef,useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from './constants';
-
+import Swal from 'sweetalert2';
 
 const GMap = () => {
-    
+
+  const navigate = useNavigate();
   const googleMapRef = useRef(null);
   let googleMap = null;
-  const [data,setData]=useState([]);
-    const [lat,setLat]=useState(null);
-    const [lng,setLng]=useState(null);
-    const [status,setStatus]=useState(null);
+  const [data, setData] = useState([]);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
 
   // list of icons
   const iconList = {
@@ -23,7 +24,7 @@ const GMap = () => {
   }
 
   // list of the marker object along with icon
-  const [markerList,setMarkerList] = useState([
+  const [markerList, setMarkerList] = useState([
     { latitude: 59.2967322, longitude: 18.0009393, icon: iconList.icon1 },
     { latitude: 59.2980245, longitude: 17.9971503, icon: iconList.icon2 },
     { latitude: 59.2981078, longitude: 17.9980875, icon: iconList.icon3 },
@@ -32,53 +33,51 @@ const GMap = () => {
 
   useEffect(() => {
     const getN = async () => {
-        let token = Cookies.get('token');
-    await Axios.get(`${baseURL}/getNGO`, { headers: { tokenstring: token } }).
+      let token = Cookies.get('token');
+      await Axios.get(`${baseURL}/getNGO`, { headers: { tokenstring: token } }).
         then((response) => {
-            setData(response.data.message);
-            console.log(response.data.message);
-            setMarkerList(response.data.message);
+          setData(response.data.message);
+          console.log(response.data.message);
+          setMarkerList(response.data.message);
         })
         .catch(async (res) => {
-            if (res.response.data.message === 'Error in connection') {
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please Check Network Connection!',
-                })
-            }
-            else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Login Error',
-                })
-                navigate('../login')
-            }
+          if (res.response.data.message === 'Error in connection') {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Check Network Connection!',
+            })
+          }
+          else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Login Error',
+            })
+            navigate('../login')
+          }
         })
     }
-    if(!navigator.geolocation)
-    {
-    setStatus("Geolocation is not supported by browser");
+    if (!navigator.geolocation) {
+      setStatus("Geolocation is not supported by browser");
     }
-    else
-    {
-    setStatus("Locating..");
-    navigator.geolocation.getCurrentPosition((postion)=>{
+    else {
+      setStatus("Locating..");
+      navigator.geolocation.getCurrentPosition((postion) => {
         setStatus(null);
         setLat(postion.coords.latitude);
         setLng(postion.coords.longitude);
         setViewport({
-            latitude: postion.coords.latitude,
-            longitude: postion.coords.longitude,
-            width: "50vw",
-            height: "50vh",
-            zoom: 10
+          latitude: postion.coords.latitude,
+          longitude: postion.coords.longitude,
+          width: "50vw",
+          height: "50vh",
+          zoom: 10
         })
-    },
-    ()=>{
-        setStatus("Unable to retrieve your location");
-    })
+      },
+        () => {
+          setStatus("Unable to retrieve your location");
+        })
     }
     console.log(markerList)
     getN();
@@ -112,9 +111,9 @@ const GMap = () => {
   });
 
   return <div
-  ref={googleMapRef}
-  style={{ width: 600, height: 500 }}
-/>
+    ref={googleMapRef}
+    style={{ width: 600, height: 500 }}
+  />
 
 };
 

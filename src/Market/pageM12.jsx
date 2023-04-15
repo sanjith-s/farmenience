@@ -154,10 +154,80 @@ function PageM12() {
         navigate('../login')
       }
     })
+
     }
     fun();
   }, []);
+  let quantityArr = [];
+  let priceArr = [];
+  async function addToOrder() {
+      // deleteCart();
+      alert('hell');
+      let cartOld=cartDeatils;
+      for(let i=0;i<cartOld.length;i++)
+      {
+        cartOld[i].price=priceArr[i];
+        cartOld[i].quantity=""+quantityArr[i]
+      }
+      setcartDeatils(cartOld);
+      console.log(cartOld);
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/buyer/postOrder`, {
+      items: cartDeatils
+    }, {headers: {tokenstring: token}})
+    .then(() => {
+      // alert("fromfk");
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+  }
 
+  async function deleteCart() {
+    let token = Cookies.get('token');
+    await Axios.delete(`${baseURL}/buyer/deletecart`, {
+      headers: {tokenstring: token}
+    }).then(()=> {
+        console.log("Woriking Properly");
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    });
+  }
+
+  const summer = () => {
+      let total = 0;
+      priceArr.forEach((x) => {
+         total += x;
+      })
+      setTotal(total);
+  }
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
     setConsumerAddress(address);
@@ -188,6 +258,7 @@ function PageM12() {
     }
   };
 
+  // console.log(cartDeatils);
   const userData = {
     name: "Rakesh k",
     address:
@@ -201,13 +272,19 @@ function PageM12() {
   const [consumerAddress, setConsumerAddress] = useState(userData.address);
   const [consumerNumber, setConsumerNumber] = useState(userData.number);
 
+  
   const QuantityCounterHandler = (counter, index) => {
-    if (index == 1) {
-      setQuantity1(counter);
-    } else if (index == 2) {
-      setQuantity2(counter);
-    }
+    // if (index == 1) {
+    //   setQuantity1(counter);
+    // } else if (index == 2) {
+    //   setQuantity2(counter);
+    // }
+    quantityArr.push(counter);
   };
+
+  const PriceHandler = (pr) => {
+    priceArr.push(pr);
+  }
 
   const [quantities, setQuantities] = useState([]);
   useEffect(() => {
@@ -216,16 +293,9 @@ function PageM12() {
   })
 
 
-  let total = 0;
+  const [total, setTotal] = useState(0);
 
-  salesItems.map((item) => {
-    total += item.actualPrice;
-    total = total * quantity1;
-    total = total * quantity2;
-    return;
-  });
-
-  let delivery = total * (5 / 100);
+  let delivery = 0;
   let save = 0;
 
   salesItems.map((item) => {
@@ -246,6 +316,9 @@ function PageM12() {
     { pid: 1, quantity: 3 },
     { pid: 2, quantity: 1 },
   ]
+
+  // console.log(quantityArr);
+  // console.log(priceArr);
 
   const makePayment = () => {
     localStorage.setItem('ConsumerName', consumerName);
@@ -400,7 +473,7 @@ function PageM12() {
               }}
             >
               {cartDeatils.map((item, index) => {
-                // const qcounter = item.index == 1 ? quantity1 : quantity2;
+                const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
                   <Box key={index++}>
                     <BasketBox1
@@ -410,7 +483,7 @@ function PageM12() {
                       discountAmount={(item.price * discount).toPrecision(2)}
                       discountPrice={item.price - (item.price * discount).toPrecision(2)}
                       index={item.index}
-                      // userQuantity={qcounter}
+                      userQuantity={qcounter}
                       onCounterHandler={QuantityCounterHandler}
                     />
                   </Box>
@@ -498,15 +571,17 @@ function PageM12() {
 
           {(active === "negot1" || active === "negot2") && (
             <Box>
-              {salesItems.map((item, index) => {
-                const qcounter = item.index == 1 ? quantity1 : quantity2;
+              {cartDeatils.map((item, index) => {
+                const qcounter = item.index == 4 ? quantity1 : quantity2;
                 return (
                   <Box key={index}>
                     <PriceDetails
-                      userQuantity={qcounter}
-                      mrp={item.actualPrice}
+                      index={index}
+                      userQuantity={quantityArr}
+                      mrp={item.price}
                       discount={item.discountAmount}
-                      productName={item.itemName}
+                      productName={item.productName}
+                      priceHandler={PriceHandler}
                     />
 
                     <Divider
@@ -595,7 +670,7 @@ function PageM12() {
                     overflow: "auto",
                   }}
                 >
-                  {totalAmount}
+                  {total}
                 </Typography>
               </Box>
               {active === "negot1" && (
@@ -615,10 +690,18 @@ function PageM12() {
             </Box>
           </Box>
           {active === "negot1" && (
+            // <Button
+            //   variant="contained"
+            //   color="success"
+            //   onClick={makePayment}
+            //   style={{
+            //     position: "absolute",
+            //     bottom: "12px",
+            //     right: "12px",}}>
             <Button
               variant="contained"
               color="success"
-              onClick={makePayment}
+              onClick={addToOrder}
               style={{
                 position: "absolute",
                 bottom: "12px",

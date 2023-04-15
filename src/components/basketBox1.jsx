@@ -16,10 +16,10 @@ import {
 function BasketBox1(props) {
   let [counter, setcounter] = useState(1);
   let increment = () => {
-    setcounter(counter + 1);
+    if(counter <= Number(props.quantity) - 1) setcounter(counter + 1);
   };
   const decrement = () => {
-    setcounter(counter >= 2 ? counter - 1 : (counter = 1));
+    if(counter > 0) setcounter(counter >= 2 ? counter - 1 : (counter = 1));
   };
 
   props.onCounterHandler(counter, props.index);

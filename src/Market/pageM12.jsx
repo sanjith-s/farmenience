@@ -161,7 +161,7 @@ function PageM12() {
   let quantityArr = [];
   let priceArr = [];
   async function addToOrder() {
-      // deleteCart();
+      deleteCart();
       alert('hell');
       let cartOld=cartDeatils;
       for(let i=0;i<cartOld.length;i++)

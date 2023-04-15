@@ -199,6 +199,8 @@ const PageM11 = () => {
   // ]
 
   async function confirmCart() {
+    navigate('../M12');
+    alert("Items added to Cart: goto M12");
     let token = Cookies.get('token');
     await Axios.post(`${baseURL}/buyer/postcart`, {
         cartItems: cart

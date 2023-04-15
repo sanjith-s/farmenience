@@ -109,8 +109,35 @@ function PageM3(props) {
     })
   }
 
+  const [orderData, setOrderData] = useState([]);
+  async function getOrders() {
+    let token = Cookies.get('token');
+    await Axios.get(`${baseURL}/seller/getOrders`, {
+      headers: { tokenstring: token}
+    }).then((res) => {
+      setOrderData(res.data.message);
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+  } 
+
   useEffect(() => {
     someThing();
+    getOrders();
   }, []);
 
   const [selected, setSelected] = useState('');
@@ -272,6 +299,7 @@ function PageM3(props) {
           </Typography>
           <Divider flexItem />
           <SalesCardsList cards={productDetails} all={data} isFilt={filt} />
+          {/* <SalesCardsList all={orderData} /> */}
         </Box>
       </Stack>
     </Container>

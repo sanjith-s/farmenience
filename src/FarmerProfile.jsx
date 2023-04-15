@@ -10,7 +10,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Card, CardContent, CardHeader, Divider, Grid } from "@mui/material";
 import "./css/styleProfile.css";
 import { Stack } from '@mui/material';
-import { useState } from 'react';
 import { baseURL } from '../src/constants';
 import Cookies from 'js-cookie';
 import Axios from "axios";

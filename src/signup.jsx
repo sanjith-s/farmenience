@@ -5,7 +5,6 @@ import Axios from "axios";
 import Geocode from "react-geocode";
 Geocode.setLanguage("en");
 Geocode.setApiKey("AIzaSyD-79BSbusu8q97EMXY2Ewy16Xtlhi4UFA");
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,

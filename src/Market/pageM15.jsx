@@ -115,7 +115,7 @@ function PageM15() {
     if(opt==2) {
       setActive("negot2");
     } else if(opt==3) {
-      setActive("negot3");
+      setActive("negot1");
     } else {
       alert("Illegal Event");
     }

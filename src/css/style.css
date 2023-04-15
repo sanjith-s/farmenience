@@ -9,8 +9,8 @@
   background-color: #fdf2e9;
 
   /* Because we want header to be sticky later */
-  height: 9.6rem;
-  padding: 0 4.8rem;
+  height: 4.6rem;
+  padding: 0 1rem;
   position: relative;
 }
 
@@ -26,7 +26,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 4.8rem;
+  gap: 2rem;
 }
 
 .main-nav-link:link,
@@ -35,7 +35,7 @@
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 20px;
   transition: all 0.3s;
 }
 
@@ -46,7 +46,7 @@
 
 .main-nav-link.nav-cta:link,
 .main-nav-link.nav-cta:visited {
-  padding: 1.2rem 2.4rem;
+  padding: 10px 12px ;
   border-radius: 9px;
   color: #fff;
   background-color: #e67e22;
@@ -179,7 +179,7 @@
 
 .section-hero {
   background-color: #fdf2e9;
-  padding: 4.8rem 0 9.6rem 0;
+  padding: 2.8rem 0 5.6rem 0;
 }
 
 
@@ -194,13 +194,13 @@
 }
 
 .hero-description {
-  font-size: 2rem;
+  font-size: 24px;
   line-height: 1.6;
   margin-bottom: 4.8rem;
 }
 
 .hero-img {
-  width: 30%;
+  width: 100%;
 }
 
 .delivered-meals {
@@ -227,7 +227,7 @@
 }
 
 .delivered-text {
-  font-size: 1.8rem;
+  font-size: 24px;
   font-weight: 600;
 }
 
@@ -245,7 +245,7 @@
 }
 
 .heading-featured-in {
-  font-size: 1.4rem;
+  font-size: 24px;
   text-transform: uppercase;
   letter-spacing: 0.75px;
   font-weight: 500;
@@ -256,11 +256,11 @@
 
 .logos {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .logos img {
-  height: 5rem;
+  height: 65px;
   filter: brightness(0);
   opacity: 50%;
 }
@@ -270,19 +270,19 @@
 /**************************/
 
 .section-how {
-  padding: 9.6rem 0;
+  padding: 3.6rem 0;
 }
 
 .step-number {
-  font-size: 8.6rem;
+  font-size: 52px;
   font-weight: 600;
   color: #ddd;
   margin-bottom: 1.2rem;
 }
 
 .step-description {
-  font-size: 1.8rem;
-  line-height: 1.8;
+  font-size: 24px;
+  line-height: 1.6;
 }
 
 .step-img-box {
@@ -423,33 +423,35 @@
   display: grid;
   grid-template-columns: 55fr 45fr;
   align-items: center;
+  margin-top: 5.5rem;
+  padding: 14px;
 }
 
 .testimonials-container {
-  padding: 9.6rem;
+  padding: 5.6rem;
 }
 
 .testimonials {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 4.8rem;
-  column-gap: 8rem;
+  row-gap: 2.8rem;
+  column-gap: 4rem;
 }
 
 .testimonial-img {
-  width: 6.4rem;
+  width: 75px;
   border-radius: 50%;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.4rem;
 }
 
 .testimonial-text {
-  font-size: 1.8rem;
+  font-size: 22px;
   line-height: 1.8;
   margin-bottom: 1.6rem;
 }
 
 .testimonial-name {
-  font-size: 1.6rem;
+  font-size: 20px;
   color: #6f6f6f;
 }
 
@@ -457,7 +459,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.0rem;
-  padding: 1.6rem;
+  padding: 0.8rem;
 }
 
 .gallery-item {
@@ -484,13 +486,12 @@
 /**************************/
 
 .section-pricing {
-  padding: 9.6rem 0;
+  padding: 4.6rem 0;
 }
 
 .pricing-plan {
   border-radius: 11px;
-
-  width: 75%;
+  width: 55%;
 }
 
 .pricing-plan--starter {
@@ -565,25 +566,25 @@
   text-align: center;
 }
 
-.feature-icon {
-  color: #e67e22;
-  height: 3.2rem;
-  width: 3.2rem;
-  background-color: #fdf2e9;
-  margin-bottom: 3.2rem;
-  padding: 1.6rem;
-  border-radius: 50%;
+/* features */
+
+
+
+.feature ion-icon {
+  font-size: 3rem;
+  color:orange;
+  margin-bottom: 25px;
 }
 
 .feature-title {
-  font-size: 2.4rem;
+  font-size: 34px;
   color: #333;
-  font-weight: 700;
-  margin-bottom: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .feature-text {
-  font-size: 1.8rem;
+  font-size: 22px;
   line-height: 1.8;
 }
 
@@ -596,7 +597,7 @@
   /* padding: 9.6rem 0 12.8rem 0; */
 
   /* top / horizontal / left */
-  padding: 4.8rem 0 12.8rem;
+  padding: 0.8rem 9rem 2.8rem;
 }
 
 .cta {
@@ -604,7 +605,7 @@
   /* 2/3 = 66.6% + 1/3 = 33.3% */
   grid-template-columns: 2fr 1fr;
   /* background-color: #e67e22; */
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2.4rem 2.8rem rgba(0, 0, 0, 0.15);
   border-radius: 11px;
 
   background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
@@ -612,7 +613,7 @@
 }
 
 .cta-text-box {
-  padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+  padding: 1.8rem 3.4rem 3.4rem 3.4rem;
   color: #45260a;
 }
 
@@ -623,9 +624,9 @@
 }
 
 .cta-text {
-  font-size: 1.8rem;
+  font-size: 24px;
   line-height: 1.8;
-  margin-bottom: 4.8rem;
+  margin-bottom: 1.8rem;
 }
 
 .cta-img-box {
@@ -642,22 +643,22 @@
 .cta-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 3.2rem;
-  row-gap: 2.4rem;
+  column-gap: 10rem;
+  row-gap: 0rem;
 }
 
 .cta-form label {
   display: block;
-  font-size: 1.6rem;
+  font-size: 24px;
   font-weight: 500;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0rem;
 }
 
 .cta-form input,
 .cta-form select {
   width: 100%;
   padding: 1.2rem;
-  font-size: 1.8rem;
+  font-size: 24px;
   font-family: inherit;
   color: inherit;
   border: none;
@@ -672,7 +673,7 @@
 
 .cta *:focus {
   outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(253, 242, 233, 0.5);
 }
 
 .sign-link{
@@ -684,12 +685,13 @@
 /**************************/
 
 .footer {
-  padding: 12.8rem 0;
+  padding: 2.8rem 4rem;
   border-top: 1px solid #eee;
 }
 
 .grid--footer {
-  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+  column-gap: 20px;
 }
 
 .logo-col {
@@ -699,7 +701,7 @@
 
 .footer-logo {
   display: block;
-  margin-bottom: 3.2rem;
+  margin-bottom: 1.2rem;
   text-decoration: none;
   color:#333;
   font-size: 12px;
@@ -708,48 +710,48 @@
 .social-links {
   list-style: none;
   display: flex;
-  gap: 2.4rem;
+  gap: 0.8rem;
 }
 
 .social-icon {
-  height: 2.4rem;
-  width: 2.4rem;
+  height: 0.2rem;
+  width: 0.2rem;
 }
 
 .copyright {
-  font-size: 1.4rem;
+  font-size: 18px;
   line-height: 1.6;
   color: #767676;
   margin-top: auto;
 }
 
 .footer-heading {
-  font-size: 1.8rem;
+  font-size: 24px;
   font-weight: 500;
-  margin-bottom: 4rem;
+  margin-bottom: 20px;
 }
 
 .contacts {
   font-style: normal;
-  font-size: 1.6rem;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.4;
 }
 
 .address {
-  margin-bottom: 2.4rem;
+  margin-bottom: 0.8rem;
 }
 
 .footer-nav {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.2rem;
 }
 
 .footer-link:link,
 .footer-link:visited {
   text-decoration: none;
-  font-size: 1.6rem;
+  font-size: 18px;
   color: #767676;
   transition: all 0.3s;
 }

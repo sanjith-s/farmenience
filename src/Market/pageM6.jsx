@@ -35,6 +35,7 @@ import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState({});
   const [open, setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [count, setCount] = useState([0]);
@@ -54,8 +55,9 @@ const PageM6 = () => {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFileName(e.target.files[0]);  
   }
-
+  
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });

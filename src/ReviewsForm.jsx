@@ -101,7 +101,7 @@ const ReviewsForm = () => {
     }
 
     return (
-        <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+        <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
             <Container
                 spacing={2}
                 sx={{

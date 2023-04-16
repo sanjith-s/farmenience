@@ -287,7 +287,7 @@ const PageN7 = () => {
       {data && data.map((img, index) => {
         return (
           <div>
-            <img src={img.url} alt={img.name} height="80px" />
+            <img src={img.url} alt={img.name} height="5rem" />
             <br></br>
           </div>
         );

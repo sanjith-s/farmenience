@@ -194,9 +194,9 @@ function PageM4() {
           <Box
             sx={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               backgroundColor: "#fff",
-              padding: "0px 20px 20px 20px",
+              padding: "0rem 1.25rem 1.25rem 1.25rem",
             }}
           >
             <CssBaseline />
@@ -205,15 +205,15 @@ function PageM4() {
               sx={{
                 width: "40%",
                 bgcolor: "#ddd",
-                padding: "20px 0px",
-                borderRadius: "8px",
-                border: "4px solid",
+                padding: "1.25rem 0rem",
+                borderRadius: ".5rem",
+                border: ".25rem solid",
               }}
             >
               <Typography
                 variant="h5"
                 sx={{
-                  padding: "0px 20px",
+                  padding: "0rem 1.25rem",
                   textTransform: "capitalize",
                 }}
               >
@@ -221,20 +221,20 @@ function PageM4() {
               </Typography>
               <Box
                 sx={{
-                  padding: "15px 0px",
+                  padding: ".9375rem 0rem",
                   display: "flex",
                   justifyContent: "center",
                 }}
               >
                 <ProductDetails
-                  style={{ padding: "15px 0px" }}
+                  style={{ padding: ".9375rem 0rem" }}
                   key={data.id}
                   orderDate={ordDate}
                   deliveryDate={delDate}
                   clientName={data.clientName}
                   paymentMode={data.paymentMode}
                   transactionID={data.transactionID}
-                  remarks={data.remarks}
+                  remarks={dataNaNpxarks}
                 />
               </Box>
               <Box
@@ -248,7 +248,7 @@ function PageM4() {
                   variant="contained"
                   style={{
                     fontWeight: "600",
-                    fontSize: "17px",
+                    fontSize: "1.0625rem",
                     backgroundColor: "green",
                   }}
                   onClick={handleClickOpen}
@@ -257,7 +257,7 @@ function PageM4() {
                 </Button>
               </Box>
               <Dialog open={open} onClick={handleClickClose} >
-                <DialogTitle style={{ borderBottom: "5px solid green" }}> <Typography style={{ textTransform: "uppercase", fontWeight: "600" }}>client contact details</Typography></DialogTitle>
+                <DialogTitle style={{ borderBottom: ".3125rem solid green" }}> <Typography style={{ textTransform: "uppercase", fontWeight: "600" }}>client contact details</Typography></DialogTitle>
                 <List>
                   <ListItem>
                     <ListItemButton ><Typography style={{ textTransform: "lowercase" }}>Email: {data.clientEmailId}</Typography></ListItemButton>
@@ -273,9 +273,9 @@ function PageM4() {
               style={{
                 width: "60%",
                 position: "relative",
-                paddingTop: "80px",
-                border: "4px solid",
-                borderRadius: "10px",
+                paddingTop: "5rem",
+                border: ".25rem solid",
+                borderRadius: ".625rem",
                 backgroundColor: "#eee",
               }}
             >
@@ -286,11 +286,11 @@ function PageM4() {
                   variant="contained"
                   style={{
                     fontWeight: "600",
-                    fontSize: "17px",
+                    fontSize: "1.0625rem",
                     backgroundColor: "green",
                     position: "absolute",
-                    top: "20px",
-                    left: "20px",
+                    top: "1.25rem",
+                    left: "1.25rem",
                   }}
                 >
                   Print PDF
@@ -299,11 +299,11 @@ function PageM4() {
                   id="print-part"
                   sx={{
                     display: "flex",
-                    columnGap: "20px",
-                    margin: "5px 0px",
+                    columnGap: "1.25rem",
+                    margin: ".3125rem 0rem",
                     width: "100%",
                     alignItems: "center",
-                    padding: "12px",
+                    padding: ".75rem",
                   }}
                 >
                   <Typography
@@ -319,7 +319,7 @@ function PageM4() {
                   <Typography
                     sx={{
                       textTransform: "uppercase",
-                      fontSize: "18px",
+                      fontSize: "1.125rem",
                       overflow: "auto",
                     }}
                   >
@@ -334,7 +334,7 @@ function PageM4() {
                     display: "flex",
                     justifyContent: "center",
                     width: "100%",
-                    padding: "20px",
+                    padding: "1.25rem",
                   }}
                 >
                   <PriceTable rows={data.items} />
@@ -343,10 +343,10 @@ function PageM4() {
                 <Box
                   sx={{
                     display: "flex",
-                    columnGap: "20px",
-                    margin: "5px 0px",
+                    columnGap: "1.25rem",
+                    margin: ".3125rem 0rem",
                     width: "100%",
-                    padding: "12px",
+                    padding: ".75rem",
                   }}
                 >
                   <Typography
@@ -364,7 +364,7 @@ function PageM4() {
                       variant="h6"
                       style={{
                         fontWeight: "600",
-                        paddingLeft: "15px",
+                        paddingLeft: ".9375rem",
                         width: "30%",
                       }}
                     >
@@ -377,8 +377,8 @@ function PageM4() {
                   style={{
                     backgroundColor: "green",
                     position: "absolute",
-                    bottom: "20px",
-                    right: "20px",
+                    bottom: "1.25rem",
+                    right: "1.25rem",
                   }}
                 >
                   <Link
@@ -405,9 +405,9 @@ function PageM4() {
 
         <div style={{ padding: 20, width: "80%", margin: "auto" }} ref={printRef}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <img src={logo} style={{ width: "200px", objectFit: "cover", height: "50px", position: "relative", right: "2%" }} />
-            <span style={{ width: "200px", fontWeight: "bolder", fontSize: "30px" }} >INVOICE</span>
-            <span style={{ width: "200px" }} ></span>
+            <img src={logo} style={{ width: "12.5rem", objectFit: "cover", height: "3.125rem", position: "relative", right: "2%" }} />
+            <span style={{ width: "12.5rem", fontWeight: "bolder", fontSize: "1.875rem" }} >INVOICE</span>
+            <span style={{ width: "12.5rem" }} ></span>
           </div>
           <Row gutter={39} style={{ marginTop: 32 }}>
             <Col span={8}>
@@ -458,7 +458,7 @@ function PageM4() {
             </Table>
             <Col span={12} offset={17} style={{ marginTop: "2%" }} >
               <table>
-                <div style={{ borderBottom: "1px solid", borderTop: "1px solid", paddingTop: "3%", paddingBottom: "3%" }}>
+                <div style={{ borderBottom: ".0625rem solid", borderTop: ".0625rem solid", paddingTop: "3%", paddingBottom: "3%" }}>
                   <tr>
                     <th style={{ textAlign: "left" }}>Net Total - &nbsp;</th>
                     <th>

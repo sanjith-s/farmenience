@@ -87,16 +87,16 @@ const PageM18 = () => {
   return (
     <Box
       sx={{
-        margin: "50px",
+        margin: "3.125rem",
         backgroundColor: "white",
-        padding: "30px",
-        borderRadius: "30px",
-        border: "6px solid",
+        padding: "1.875rem",
+        borderRadius: "1.875rem",
+        border: ".375rem solid",
       }}
     >
-      <Box sx={{ marginBottom: "30px" }}>
+      <Box sx={{ marginBottom: "1.875rem" }}>
         <Typography
-          fontWeight={700} fontSize={"45px"}
+          fontWeight={700} fontSize={"2.8125rem"}
           style={{ textTransform: "uppercase", textAlign: "center" }}
         >
           {" "}
@@ -105,9 +105,9 @@ const PageM18 = () => {
       </Box>
       {/* <Box
         style={{
-          margin: "0px 200px",
-          paddingTop: "30px",
-          borderRadius: "10px",
+          margin: "0rem 12.5rem",
+          paddingTop: "1.875rem",
+          borderRadius: ".625rem",
         }}
       >
         {prod.map((val) => {
@@ -123,8 +123,8 @@ const PageM18 = () => {
                         backgroundColor: "green",
                         color: "white",
                         fontWeight: "600",
-                        fontSize: "16px",
-                        margin: "30px",
+                        fontSize: "1rem",
+                        margin: "1.875rem",
                       }}
                       onClick={() => {
                         let temp = prod.map((id) => {
@@ -153,15 +153,15 @@ const PageM18 = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          paddingTop: "20px",
-          paddingBottom: "10px",
+          paddingTop: "1.25rem",
+          paddingBottom: ".625rem",
         }}
       >
         <Box
           style={{
             display: "flex",
             justifyContent: "space-between",
-            width: "800px",
+            width: "50rem",
           }}
         >
           <Button endIcon={<AddIcon />}
@@ -171,7 +171,7 @@ const PageM18 = () => {
               backgroundColor: "green",
               color: "white",
               fontWeight: "600",
-              fontSize: "16px",
+              fontSize: "1rem",
             }}
           >
             Add Product
@@ -182,7 +182,7 @@ const PageM18 = () => {
               backgroundColor: "green",
               color: "white",
               fontWeight: "600",
-              fontSize: "16px",
+              fontSize: "1rem",
             }}
           >
             submit request
@@ -193,12 +193,12 @@ const PageM18 = () => {
       <Box style={{ display: "flex", justifyContent: "center" }}>
         <Box
           style={{
-            width: "700px",
-            border: "8px solid green",
-            padding: "30px",
-            borderRadius: "5px",
-            borderTopRightRadius: "50px",
-            borderBottomLeftRadius: "50px",
+            width: "43.75rem",
+            border: ".5rem solid green",
+            padding: "1.875rem",
+            borderRadius: ".3125rem",
+            borderTopRightRadius: "3.125rem",
+            borderBottomLeftRadius: "3.125rem",
             backgroundColor: "lightgreen",
           }}
         >
@@ -223,9 +223,9 @@ const PageM18 = () => {
                   setName(event.target.value);
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,
@@ -264,9 +264,9 @@ const PageM18 = () => {
                   }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   min: 1,
@@ -313,9 +313,9 @@ const PageM18 = () => {
                   }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   min: 1,
@@ -349,9 +349,9 @@ const PageM18 = () => {
                   // }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,
@@ -381,9 +381,9 @@ const PageM18 = () => {
                   setLocation(event.target.value);
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,

@@ -40,7 +40,7 @@ const LogoutAllDevice = () => {
       });
   }
   return (
-    <div padding="100px">
+    <div padding="6.25rem">
 
       <Box
         sx={{

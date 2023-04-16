@@ -94,11 +94,11 @@ function PageM1() {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
-        margin: "20px 0px",
-        marginBottom: "40px",
+        margin: "1.25rem 0rem",
+        marginBottom: "2.5rem",
       }}
     >
-      <Box sx={{ padding: "20px 0px" }}>
+      <Box sx={{ padding: "1.25rem 0rem" }}>
         <Typography
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
@@ -109,18 +109,18 @@ function PageM1() {
       <Box
         sx={{
           width: "fit-content",
-          border: "5px solid",
-          borderRadius: "3px",
+          border: ".3125rem solid",
+          borderRadius: ".1875rem",
           backgroundColor: "#bdfbbf",
         }}
       >
         <Box
           sx={{
-            padding: "40px",
+            padding: "2.5rem",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            columnGap: "50px",
-            rowGap: "50px",
+            columnGap: "3.125rem",
+            rowGap: "3.125rem",
           }}
         >
           {orders.map((req, index) => {

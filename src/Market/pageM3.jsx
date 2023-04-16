@@ -152,12 +152,12 @@ function PageM3(props) {
   ordDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && ordDate.substr(0, 4) >= product.orderDate.getFullYear() && ordDate.substr(5, 5).substr(0, 2) == product.orderDate.getMonth()) : delDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && delDate.substr(0, 4) == product.deliveryDate.getFullYear() && delDate.substr(5, 5).substr(0, 2) <= product.deliveryDate.getMonth()) : productDetails = salesDetails.filter(product => product.items.includes(selected));
 
   return (
-    <Container style={{ boxSizing: "borderBox", padding: "20px" }}>
+    <Container style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
       <Typography
         textAlign="center"
         variant="h3"
-        sx={{ display: "block", padding: "10px", fontWeight: "600" }}
+        sx={{ display: "block", padding: ".625rem", fontWeight: "600" }}
       >
         SALES DETAILS
       </Typography>
@@ -172,12 +172,12 @@ function PageM3(props) {
           sx={{
             width: "40%",
             bgcolor: "#cccccc",
-            padding: "20px",
-            borderRadius: "8px",
+            padding: "1.25rem",
+            borderRadius: ".5rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            rowGap: "20px",
+            rowGap: "1.25rem",
             alignItems: "center",
           }}
         >
@@ -185,8 +185,8 @@ function PageM3(props) {
             variant="h5"
             sx={{
               alignSelf: "flex-start",
-              marginTop: "15px",
-              lineHeight: "0px",
+              marginTop: ".9375rem",
+              lineHeight: "0rem",
             }}
           >
             Filter by
@@ -202,18 +202,18 @@ function PageM3(props) {
                 textAlign: "center",
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "28px",
+                fontSize: "1.75rem",
               }}
             >
               date
             </Typography>
-            <Box component="div" style={{ marginTop: "10px", display: "flex", flexDirection: "column", rowGap: "28px" }}>
+            <Box component="div" style={{ marginTop: ".625rem", display: "flex", flexDirection: "column", rowGap: "1.75rem" }}>
               <Typography
                 variant="h6"
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  rowGap: "8px",
+                  rowGap: ".5rem",
                   justifyContent: "space-between",
 
                   fontWeight: "600",
@@ -224,8 +224,8 @@ function PageM3(props) {
                 <input
                   style={{
                     width: "75%",
-                    border: "2px solid ",
-                    borderRadius: "4px",
+                    border: ".125rem solid ",
+                    borderRadius: ".25rem",
                     cursor: "pointer",
                     textTransform: "uppercase",
                   }}
@@ -240,7 +240,7 @@ function PageM3(props) {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  rowGap: "8px",
+                  rowGap: ".5rem",
                   justifyContent: "space-between",
 
                   fontWeight: "600",
@@ -252,8 +252,8 @@ function PageM3(props) {
                   style={{
                     width: "75%",
                     cursor: "pointer",
-                    border: "2px solid ",
-                    borderRadius: "4px",
+                    border: ".125rem solid ",
+                    borderRadius: ".25rem",
                     textTransform: "uppercase",
                   }}
                   type="date"
@@ -262,7 +262,7 @@ function PageM3(props) {
                 ></input>
               </Typography>
             </Box>
-            <Button variant="contained" onClick={clearFilter} sx={{margin: "20px"}}>Clear Filters</Button>
+            <Button variant="contained" onClick={clearFilter} sx={{margin: "1.25rem"}}>Clear Filters</Button>
           </Box>
         </Box>
 
@@ -271,11 +271,11 @@ function PageM3(props) {
           sx={{
             width: "60%",
             bgcolor: "#aaaaaa",
-            padding: "20px 0px",
-            borderRadius: "8px",
+            padding: "1.25rem 0rem",
+            borderRadius: ".5rem",
           }}
         >
-          <Typography variant="h5" sx={{ padding: "0px 20px" }}>
+          <Typography variant="h5" sx={{ padding: "0rem 1.25rem" }}>
             Sales List
           </Typography>
           <Divider flexItem />

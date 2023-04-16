@@ -138,24 +138,24 @@ const CropRec = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+    <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
       <b><span text-align="center" className="title">Find out the most suitable crop to grow in your farm</span></b>
       <Stack
-        sx={{ height: "70vh", width: "vw", marginTop: "30px" }}
+        sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
       >
         <Container
           sx={{
             // bgcolor: "#D9D9D9;",
             height: "auto",
             width: "60vw",
-            borderRadius: "50px",
+            borderRadius: "3.125rem",
             display: "flex",
             flex: "100%",
             flexDirection: "column",
             justifyContent: "space-evenly",
             alignItems: "center",
-            padding: "25px",
+            padding: "1.563rem",
           }}
         >
           <Stack
@@ -279,7 +279,7 @@ const CropRec = () => {
           </Stack>
         </Container>
       </Stack>
-      <Box textAlign="center" padding={"80px 250px 50px 250px"}>
+      <Box textAlign="center" padding={"5rem 15.625rem 3.125rem 15.625rem"}>
         <Button variant="contained" onClick={CheckNitrogen} sx={{ bgcolor: "#e8c113",color:"white", margin: "auto" ,"&:hover": {backgroundColor: "#67d111", }}}>
           Predict
         </Button>

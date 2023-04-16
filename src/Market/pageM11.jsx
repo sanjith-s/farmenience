@@ -325,11 +325,11 @@ const PageM11 = () => {
       <Container
         className="check"
         sx={{
-          padding: "15px 0px",
+          padding: ".9375rem 0rem",
           display: "flex",
           width: "100%",
           flexDirection: "column",
-          rowGap: "15px",
+          rowGap: ".9375rem",
         }}
       >
         <CssBaseline />
@@ -349,7 +349,7 @@ const PageM11 = () => {
         >
           <FormControl style={{width:"100%" , height: "3rem",}} onClick={() => { setOpen2(true) }}>
             <Input
-              style={{ height: "40px" }}
+              style={{ height: "2.5rem" }}
               id="input-with-icon-adornment"
               onChange={handleSearch}
               placeholder="Search here"
@@ -378,23 +378,23 @@ const PageM11 = () => {
           style={{
             width: "100%",
             backgroundColor: "#ffffff",
-            borderRadius: "8px",
-            padding: "0px",
+            borderRadius: ".5rem",
+            padding: "0rem",
           }}
         >
 
           <CardActions
             style={{
               width: "100%",
-              borderRadius: "8px",
-              padding: "0px",
+              borderRadius: ".5rem",
+              padding: "0rem",
             }}
           >
             <CardActionArea style={{ width: "100%" }}>
               <Button
                 style={{
                   display: "flex",
-                  columnGap: "20px",
+                  columnGap: "1.25rem",
                   color: "green",
                   width: "100%",
                   alignItems: "center",
@@ -402,7 +402,7 @@ const PageM11 = () => {
                 onClick={() => { setOpen(true) }}
               >
                 <SortIcon />
-                <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+                <Typography style={{ fontSize: "1.125rem", fontWeight: "600" }}>
                   sort
                 </Typography>
               </Button>
@@ -413,7 +413,7 @@ const PageM11 = () => {
               <Button
                 style={{
                   display: "flex",
-                  columnGap: "20px",
+                  columnGap: "1.25rem",
                   color: "green",
                   alignItems: "center",
                   width: "100%"
@@ -421,7 +421,7 @@ const PageM11 = () => {
                 onClick={() => { setOpen2(true) }}
               >
                 <FilterListIcon />
-                <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+                <Typography style={{ fontSize: "1.125rem", fontWeight: "600" }}>
                   filter
                 </Typography>
               </Button>
@@ -465,11 +465,11 @@ const PageM11 = () => {
 
         <Box
           sx={{
-            padding: "40px",
+            padding: "2.5rem",
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
-            columnGap: "35px",
-            rowGap: "38px",
+            columnGap: "2.1875rem",
+            rowGap: "2.375rem",
           }}
         >
           {console.log(defaultData)}

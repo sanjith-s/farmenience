@@ -1,6 +1,6 @@
 li {
-  border-radius: 10px;
-  padding: 0.4rem;
+  border-radius: .625rem;
+  padding: .4rem;
 }
 
 .salesCard {
@@ -25,9 +25,9 @@ li {
 .value {
   text-align: center;
   width: 8.6rem;
-  padding: 6.4px;
-  margin: 0.8rem;
-  border-radius: 5px;
+  padding: .4rem;
+  margin: .8rem;
+  border-radius: .3125rem;
 }
 
 .card-button {

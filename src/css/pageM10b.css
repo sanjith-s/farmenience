@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
 #icon-style1{
     color: #76E741;
-    padding: 5px;
+    padding: .3125rem;
 }
 #icon-style2{
     color: #76E741;
 }
 #search-bar{
     background: #FFFEFE;
-    border-radius: 15px;
+    border-radius: .9375rem;
     margin: auto;
-    margin-top: 7px;
-    margin-bottom: 10px;
+    margin-top: .4375rem;
+    margin-bottom: .625rem;
     width: 90%;
     display: grid;
     grid-template-columns: auto auto;
@@ -30,7 +30,7 @@
     background: transparent;
 }
 #right-icons{
-    margin: 20px;
+    margin: 1.25rem;
 }
 input::placeholder {
     font-weight: bold;
@@ -39,15 +39,15 @@ input::placeholder {
 }
 #card-display{
     background: #FFFEFE;
-    border-radius: 15px;
+    border-radius: .9375rem;
     margin: auto;
-    margin-top: 7px;
-    margin-bottom: 10px;
+    margin-top: .4375rem;
+    margin-bottom: .625rem;
     width: 88%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 10px;
+    padding: .625rem;
 }
 #text-in-card{
     font-size: small;
@@ -57,7 +57,7 @@ input::placeholder {
     font-weight: 800;
     text-align: center;
     color: #76E741;
-    width: 200px;
+    width: 12.5rem;
     white-space: nowrap ;
 }
 #button-style-market{
@@ -67,21 +67,21 @@ input::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: larger;
-    width: 140px;
-    line-height: 59px;
+    width: 8.75rem;
+    line-height: 3.6875rem;
     text-align: center;
     color: #FFFEFE;
-    border-radius: 50px;
+    border-radius: 3.125rem;
     margin: auto;
-    margin-top: 10px;
-    width: 150px;
+    margin-top: .625rem;
+    width: 9.375rem;
 }
 #sort-filter-card{
     background: #FFFEFE;
-    border-radius: 15px;
+    border-radius: .9375rem;
     margin: auto;
-    margin-top: 7px;
-    margin-bottom: 10px;
+    margin-top: .4375rem;
+    margin-bottom: .625rem;
     width: 90%;
     display: grid;
     grid-template-columns: auto auto;
@@ -90,7 +90,7 @@ input::placeholder {
     font-family: 'Montserrat';
     font-style: italic;
     font-weight: 800;
-    line-height: 44px;
+    line-height: 2.75rem;
     font-size: larger;
     text-align: center;
 }

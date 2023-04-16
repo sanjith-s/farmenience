@@ -18,7 +18,7 @@ import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
-    minWidth: '40px',
+    minWidth: '2.5rem',
   }
 }));
 
@@ -180,7 +180,7 @@ function pageN10() {
   //     .then((response) => {
   //       if (response.data.message == "Logout Successful") {
   //         setOpen3(true);
-  //         Cookies.remove('token')
+  //         CookiesNaNpxove('token')
   //         navigate('../login');
   //       }
   //       else {

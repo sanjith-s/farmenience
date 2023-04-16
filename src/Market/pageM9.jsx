@@ -16,7 +16,7 @@ import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
-    minWidth: '40px',
+    minWidth: '2.5rem',
   }
 }));
 
@@ -171,7 +171,7 @@ function pageM9() {
     <div id="google_translate_element" style={{ backgroundColor: "#E5FDD1" }} onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
-      <img src={BackImg} style={{ objectFit: "cover", height: "370px", width: "100%" }} className='back-img' />
+      <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">
           <div className="box-header">

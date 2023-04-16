@@ -253,11 +253,11 @@ function Signup() {
   return (
     <Box
       sx={{
-        margin: "30px",
+        margin: "1.875rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        rowGap: "40px",
+        rowGap: "2.5rem",
         
       }}
     >
@@ -281,7 +281,7 @@ function Signup() {
 
           </Box>
 
-          <form style={{ width: "450px" }}>
+          <form style={{ width: "28.125rem" }}>
             <Box
               sx={{
                 display: "flex",
@@ -499,7 +499,7 @@ function Signup() {
                 account type
               </Typography>
 
-              <FormControl variant="standard" sx={{ width: "200px" }}>
+              <FormControl variant="standard" sx={{ width: "12.5rem" }}>
                 <Select value={selection} onClick={selectionChange}>
                   <MenuItem value="Farmer">
                     <Typography style={{ textTransform: "capitalize" }}>
@@ -549,7 +549,7 @@ function Signup() {
 
           </Box>
 
-          <form style={{ width: "450px" }}>
+          <form style={{ width: "28.125rem" }}>
             {selection === "Farmer" &&
               <>
                 {/* <Container

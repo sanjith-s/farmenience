@@ -132,7 +132,7 @@ function PageM15() {
   };
 
   return (
-    <Container style={{ padding: "10px 0px" }} id="google_translate_element" onClick={(e) => {
+    <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
       <CssBaseline />
@@ -154,8 +154,8 @@ function PageM15() {
               style={{
                 position: "absolute",
                 backgroundColor:"#74e81c",
-                top: "15px",
-                right: "10px",
+                top: ".9375rem",
+                right: ".625rem",
                 fontWeight: "600",
               }}
             >
@@ -178,8 +178,8 @@ function PageM15() {
               style={{
                 position: "absolute",
                 backgroundColor:"#74e81c",
-                bottom: "15px",
-                right: "10px",
+                bottom: ".9375rem",
+                right: ".625rem",
                 fontWeight: "600",
               }}
             >
@@ -198,7 +198,7 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
+                margin: "1.25rem 0rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -224,8 +224,8 @@ function PageM15() {
                 style={{
                   position: "absolute",
                   backgroundColor:"#74e81c",
-                  bottom: "34px",
-                  right: "14px",
+                  bottom: "2.125rem",
+                  right: ".875rem",
                   
                 }}
               >
@@ -239,8 +239,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -267,11 +267,11 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "18px",
+                  bottom: "1.125rem",
                   backgroundColor:"#74e81c",
-                  right: "14px",
+                  right: ".875rem",
                   fontWeight: "600",
-                  fontSize: "15px",
+                  fontSize: ".9375rem",
                 }}
               >
                 Submit Deal{" "}
@@ -284,8 +284,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -312,10 +312,10 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "18px",
-                  right: "14px",
+                  bottom: "1.125rem",
+                  right: ".875rem",
                   fontWeight: "600",
-                  fontSize: "15px",
+                  fontSize: ".9375rem",
                 }}
               >
                 Cancel Deal{" "}

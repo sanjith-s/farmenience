@@ -29,24 +29,24 @@ function NegotiationBox1(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "6px 0px",
+        padding: "1.25rem",
+        margin: "0.375rem 0rem",
       }}
     >
       <CardMedia
         component="img"
-        height="140px"
+        height="8.75rem"
         image={WheatImg}
         sx={{
-          width: "190px",
-          border: "4px solid #285430",
-          borderRadius: "3px",
+          width: "11.875rem",
+          border: "0.25rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",
@@ -64,7 +64,7 @@ function NegotiationBox1(props) {
         <Typography
           variant="overline"
           lineHeight={2.5}
-          sx={{ fontSize: "15px", paddingLeft: "5px" }}
+          sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
           {props.quantity}kg
         </Typography>
@@ -72,9 +72,9 @@ function NegotiationBox1(props) {
           <Typography
             variant="overline"
             lineHeight={0.2}
-            sx={{ fontSize: "18px", fontWeight: "600" }}
+            sx={{ fontSize: "1.125rem", fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "16px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1rem" }} />
             {props.discountPrice}
           </Typography>
           <Typography
@@ -82,11 +82,11 @@ function NegotiationBox1(props) {
             lineHeight={0.2}
             sx={{
               textDecoration: "line-through",
-              fontSize: "13px",
-              paddingLeft: "10px",
+              fontSize: "0.813rem",
+              paddingLeft: "0.625rem",
             }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "13px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "0.813rem" }} />
             {props.actualPrice}
           </Typography>
         </Box>
@@ -98,7 +98,7 @@ function NegotiationBox1(props) {
             lineHeight={2.5}
             sx={{ fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
             {props.discountAmount} off
           </Typography>
         </Box>
@@ -109,7 +109,7 @@ function NegotiationBox1(props) {
           width: "20%",
           display: "flex",
           flexDirection: "column",
-          rowGap: "30px",
+          rowGap: "1.875rem",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -137,7 +137,7 @@ function NegotiationBox1(props) {
           >
             <AddIcon />
           </IconButton>
-          <Box sx={{ padding: "10px" }}>
+          <Box sx={{ padding: "0.625rem" }}>
             <Typography variant="h6">{counter}</Typography>
           </Box>
           <IconButton

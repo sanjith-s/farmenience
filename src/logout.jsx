@@ -31,11 +31,11 @@ const Logout = () => {
         <Box>
             <Box
                 sx={{
-                    margin: "30px",
+                    margin: "1.875rem",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    rowGap: "40px",
+                    rowGap: "2.5rem",
                 }}
             >
                 <Typography
@@ -48,11 +48,11 @@ const Logout = () => {
 
             <Box
                 sx={{
-                    margin: "30px",
+                    margin: "1.875rem",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    rowGap: "40px",
+                    rowGap: "2.5rem",
                 }}
             >
                 <Typography

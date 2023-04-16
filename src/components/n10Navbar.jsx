@@ -61,7 +61,7 @@ useEffect(() => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{color:"white",fontSize:"20px"}}
+        sx={{color:"white",fontSize:"1.25rem"}}
       >
         <MenuIcon fontSize='large' />
       </Button>
@@ -80,14 +80,14 @@ useEffect(() => {
         <MenuItem onClick={handleClose}>LOGOUT</MenuItem>
       </Menu>
                     </div >
-                <Typography sx={{fontSize:"20px !important",marginLeft:"10px"}} >
+                <Typography sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem"}} >
                         NGO
                     </Typography>
-                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >HOME</Button>
-                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >ABOUT</Button>
-                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >CONTACT US</Button>
-                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >DONATE</Button>
-                    <Button sx={{fontSize:"20px !important",marginLeft:"10px", color:"whitesmoke"}}  >BLOG</Button>
+                    <Button sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem", color:"whitesmoke"}}  >HOME</Button>
+                    <Button sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem", color:"whitesmoke"}}  >ABOUT</Button>
+                    <Button sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem", color:"whitesmoke"}}  >CONTACT US</Button>
+                    <Button sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem", color:"whitesmoke"}}  >DONATE</Button>
+                    <Button sx={{fontSize:"1.25rem !important",marginLeft:"0.625rem", color:"whitesmoke"}}  >BLOG</Button>
             </Toolbar>
         </AppBar>
     </Box>

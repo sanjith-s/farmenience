@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     },
     "&::-webkit-scrollbar-track": {
       background:"#000000",
-      boxShadow: `inset 0 0 6px rgba(0, 0, 0, 0.3)`,
+      boxShadow: `inset 0 0 0.375rem rgba(0, 0, 0, 0.3)`,
     },
     "&::-webkit-scrollbar-thumb": {
       backgroundColor: "#000000",
-      outline: `1px solid slategrey`,
+      outline: `0.063rem solid slategrey`,
     },
   },
 }));
@@ -23,7 +23,7 @@ const Customscroll= (props) => {
   const classes = useStyles();
 
   return (
-    <Box sx={{height:"50px",overflow:"auto"}}  className={classes.root}>
+    <Box sx={{height:"3.125rem",overflow:"auto"}}  className={classes.root}>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde quibusdam voluptatem eligendi accusamus. Corporis unde magni molestiae voluptas, iusto, dolorum voluptates alias nostrum corrupti id, sequi tempora. Laborum, itaque eos!
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, unde quidem. Sed ratione et rerum ducimus quae deserunt laboriosam quaerat dignissimos harum ipsa nostrum nulla, consequatur dolorem eum est unde!localhost
       lorem

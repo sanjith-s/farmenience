@@ -75,7 +75,7 @@ function PageN6() {
   return (
     <div id="google_translate_element">
       <br />
-      <Typography className="total-req-count" fontWeight="700" fontSize="40px" sx={{
+      <Typography className="total-req-count" fontWeight="700" fontSize="2.5rem" sx={{
         display:"flex",
         alignItems:"center",
         justifyContent:"center",

@@ -47,7 +47,7 @@ const PageN5 = () => {
             <div className="r3i"><input type="text" name="soil" value={appntdata.soil} onChange={handleChange} /></div>
 
             <div className="r4c"><span className="input-txt">Crops cultivated</span></div>
-            <div className="r4i"><MultipleValueTextInput style={{padding: "0px"}} onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
+            <div className="r4i"><MultipleValueTextInput style={{padding: "0rem"}} onItemAdded={(item, allItems) => console.log(`Item added: ${item}`)}
 	onItemDeleted={(item, allItems) => console.log(`Item removed: ${item}`)} name="crop-input" placeholder="Enter the crops cultivated (Separate multiple crops by comma)" values={[]}
 /></div>
             

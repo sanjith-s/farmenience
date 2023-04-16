@@ -103,7 +103,7 @@ function Login() {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Card sx={{ margin: "30px", padding: "20px", width: "665px", boxShadow: 20, marginLeft: "420px" }}>
+    <Card sx={{ margin: "1.875rem", padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: "26.25" }}>
       <form
         onSubmit={submit}
         method="post"
@@ -111,21 +111,21 @@ function Login() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          rowGap: "30px",
+          rowGap: "1.875rem",
         }}
       >
         <Box>
           <Typography
             fontWeight={500}
-            fontSize={"35px"}
+            fontSize={"2.188rem"}
             style={{ textTransform: "uppercase", textAlign: "center" }}
           >
 
             login page
           </Typography>
         </Box>
-        <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email" variant="filled" sx={{ width: "400px" }} value={email} />
-        <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic" label="Password" variant="filled" type="password" sx={{ width: "400px" }} value={password} />
+        <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email" variant="filled" sx={{ width: "25rem" }} value={email} />
+        <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic" label="Password" variant="filled" type="password" sx={{ width: "25rem" }} value={password} />
 
         <Button
           variant="contained"
@@ -140,8 +140,8 @@ function Login() {
         onClick={goToSignup}
         style={{ backgroundColor: "green" }}
         sx={{
-          marginLeft: "663px",
-          marginTop: "20px"
+          marginLeft: "41.438rem",
+          marginTop: "1.25rem"
         }}
       >
         <Link to="/signup" style={{ textDecoration: "none" }}>

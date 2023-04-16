@@ -9,8 +9,8 @@ function NegotNav({ handleClick }) {
     <Box
       sx={{
         bgcolor: "green",
-        padding: "5px",
-        borderRadius: "5px",
+        padding: ".3125rem",
+        borderRadius: ".3125rem",
         display: "flex",
         justifyContent: "center",
 
@@ -18,7 +18,7 @@ function NegotNav({ handleClick }) {
       }}
     >
       <CssBaseline />
-      <Box sx={{ position: "absolute", left: "20px ", top: "7px" }}>
+      <Box sx={{ position: "absolute", left: "1.25rem ", top: ".4375rem" }}>
         <Tooltip title="Negotiate Price">
           <IconButton color="success" onClick={()=>handleClick(2)}>
             <MonetizationOnIcon style={{ color: "#ffffff" }} />
@@ -42,7 +42,7 @@ function NegotNav({ handleClick }) {
           style={{
             textTransform: "uppercase",
             fontWeight: "500",
-            fontSize: "28px",
+            fontSize: "1.75rem",
           }}
         >
           My negotiation

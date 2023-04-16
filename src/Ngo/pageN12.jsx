@@ -53,11 +53,11 @@ const PageN12 = () => {
   return (
     <Container id="google_translate_element"
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
         width: "100%",
         height: "100%",
       }}
@@ -78,7 +78,7 @@ const PageN12 = () => {
           >
             <ArrowBackIcon
               sx={{
-                fontSize: "2.5rem",
+                fontSize: "40px",
               }}
             />
           </IconButton>
@@ -98,16 +98,16 @@ const PageN12 = () => {
 
       <Box
         sx={{
-          padding: "10px",
+          padding: ".625rem",
           backgroundColor: "#86fe9ede",
           height: "100%",
-          borderRadius: "20px",
+          borderRadius: "1.25rem",
         }}
       >
         <Grid
           container
           sx={{
-            padding: "10px",
+            padding: ".625rem",
             height: "100%",
           }}
           columnSpacing={2}
@@ -122,19 +122,19 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                 }}
               >
                 Query ID:
               </Typography>
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                   background: "white",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -152,19 +152,19 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                 }}
               >
                 Query Type:
               </Typography>
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                   background: "white",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -182,19 +182,19 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                 }}
               >
                 Query Name:
               </Typography>
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                   background: "white",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -213,19 +213,19 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                 }}
               >
                 Description:
               </Typography>
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "7px",
+                  fontSize: "16px",
+                  padding: ".4375rem",
                   background: "white",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "100%",
                 }}
               >
@@ -243,19 +243,19 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "10px",
+                  fontSize: "16px",
+                  padding: ".625rem",
                 }}
               >
                 Date:
               </Typography>
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "10px",
+                  fontSize: "16px",
+                  padding: ".625rem",
                   background: "white",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -273,8 +273,8 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  fontSize: "1rem",
-                  padding: "10px",
+                  fontSize: "16px",
+                  padding: ".625rem",
                 }}
               >
                 Attachments:
@@ -284,7 +284,7 @@ const PageN12 = () => {
                 variant="standard"
                 sx={{
                   width: "50%",
-                  borderRadius: "4px",
+                  borderRadius: ".25rem",
                   color: "black",
                   background: "white",
                   height: "20%",
@@ -292,7 +292,7 @@ const PageN12 = () => {
               >
                 <InputLabel
                   id="select-attachments"
-                  sx={{ paddingLeft: "10px" }}
+                  sx={{ paddingLeft: ".625rem" }}
                 >
                   Open
                 </InputLabel>
@@ -319,7 +319,7 @@ const PageN12 = () => {
                 backgroundColor: "#86fe9ede",
                 display: "flex",
                 justifyContent: "space-evenly",
-                padding: "7px",
+                padding: ".4375rem",
               }}
             >
               <Button

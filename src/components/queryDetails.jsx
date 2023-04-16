@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
     },
     fontsize:{
-        fontSize:"40px",
+        fontSize:"2.5rem",
         fontWeight:500
     },
     querycontent:{

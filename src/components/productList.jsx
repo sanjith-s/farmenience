@@ -10,9 +10,9 @@ function ProductList(props) {
     <Box
       sx={{
         width: "100%",
-        height: "550px",
+        height: "34.375rem",
         flexGrow: 1,
-        padding: "20px 0px",
+        padding: "1.25rem 0rem",
         overflow: "auto",
         position: "relative",
       }}
@@ -22,7 +22,7 @@ function ProductList(props) {
         direction="column"
         alignItems="center"
         spacing={5}
-        style={{ padding: "0px" }}
+        style={{ padding: "0rem" }}
       >
         {props.cards.map((item) => (
           <Grid item padding={2} key={item.sno}>
@@ -33,7 +33,7 @@ function ProductList(props) {
               clientName={item.clientName}
               paymentMode={item.paymentMode}
               transactionID={item.transactionID}
-              remarks={item.remarks}
+              remarks={itemNaNpxarks}
             />
           </Grid>
         ))}

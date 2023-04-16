@@ -62,7 +62,7 @@ const PageN4 = () => {
       >
         <Container
           sx={{
-           padding:"20px",
+           padding: "1.25rem",
             height: "100%",
             width: "60vw",
             borderRadius: "3.25rem",
@@ -165,7 +165,7 @@ const PageN4 = () => {
       {data && data.map((img, index) => {
         return (
           <div>
-            <img src={img.url} alt={img.name} height="80px" />
+            <img src={img.url} alt={img.name} height="5rem" />
             <br></br>
           </div>
         );

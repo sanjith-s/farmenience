@@ -67,11 +67,11 @@ const PageM10b = (props) => {
       fullAnotherSpeak(e.target.innerText)
     }}
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
@@ -84,32 +84,32 @@ const PageM10b = (props) => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          border: "2px solid #555555",
+          borderRadius: ".5rem",
+          border: ".125rem solid #555555",
         }}
       >
         <FormControl
           style={{
             width: "100%",
-            height: "48px",
+            height: "3rem",
           }}
         >
           <Input
-            style={{ height: "40px", fontSize: "25px" }}
+            style={{ height: "2.5rem", fontSize: "1.5625rem" }}
             id="input-with-icon-adornment"
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green", fontSize: "35px" }} />
+                <SearchIcon style={{ color: "green", fontSize: "2.1875rem" }} />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="start">
                 <IconButton>
-                  <MicIcon style={{ color: "green", fontSize: "35px" }} />
+                  <MicIcon style={{ color: "green", fontSize: "2.1875rem" }} />
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green", fontSize: "35px" }}
+                    style={{ color: "green", fontSize: "2.1875rem" }}
                   />
                 </IconButton>
               </InputAdornment>
@@ -122,22 +122,22 @@ const PageM10b = (props) => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          padding: "0px",
+          borderRadius: ".5rem",
+          padding: "0rem",
         }}
       >
         <CardActionArea style={{ width: "100%" }}>
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               width: "100%",
               alignItems: "center",
             }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "600" }}>
               sort
             </Typography>
           </Button>
@@ -146,14 +146,14 @@ const PageM10b = (props) => {
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               alignItems: "center",
               width: "100%",
             }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "600" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "600" }}>
               filter
             </Typography>
           </Button>
@@ -164,12 +164,12 @@ const PageM10b = (props) => {
           backgroundColor: "#86fe9ede",
           display: "flex",
           flexDirection: "column",
-          rowGap: "20px",
-          height: "500px",
+          rowGap: "1.25rem",
+          height: "31.25rem",
           overflow: "auto",
-          padding: "20px 15px",
-          borderRadius: "5px",
-          border: "3px solid #000000",
+          padding: "1.25rem .9375rem",
+          borderRadius: ".3125rem",
+          border: ".1875rem solid #000000",
         }}
       >
         {/* {(location.state ? location.state.marketData : data).map(
@@ -180,7 +180,7 @@ const PageM10b = (props) => {
           style={{
             width: "100%",
             backgroundColor: "#ffffff",
-            borderRadius: "8px",
+            borderRadius: ".5rem",
             display: "flex",
             justifyContent: "space-between",
           }}
@@ -192,7 +192,7 @@ const PageM10b = (props) => {
               alignItems: "flex-start",
               justifyContent: "center",
               width: "50%",
-              padding: "0px 20px",
+              padding: "0rem 1.25rem",
             }}
           >
             <Box style={{ display: "flex" }}>
@@ -200,7 +200,7 @@ const PageM10b = (props) => {
                 style={{
                   fontWeight: "600",
                   textTransform: "uppercase",
-                  fontSize: "22px",
+                  fontSize: "1.375rem",
                 }}
               >
                 name of the seller:
@@ -210,8 +210,8 @@ const PageM10b = (props) => {
                   style={{
                     fontWeight: "400",
                     textTransform: "uppercase",
-                    fontSize: "22px",
-                    paddingLeft: "20px",
+                    fontSize: "1.375rem",
+                    paddingLeft: "1.25rem",
                   }}
                 >
                   {data.owner}
@@ -222,7 +222,7 @@ const PageM10b = (props) => {
               <Typography
                 variant="boby1"
                 style={{
-                  fontSize: "22px",
+                  fontSize: "1.375rem",
                   fontWeight: "600",
                   textTransform: "uppercase",
                   display: "flex",
@@ -234,8 +234,8 @@ const PageM10b = (props) => {
                 style={{
                   fontWeight: "400",
                   textTransform: "uppercase",
-                  fontSize: "22px",
-                  paddingLeft: "28px",
+                  fontSize: "1.375rem",
+                  paddingLeft: "1.75rem",
                 }}
               >
                 {data.name}
@@ -247,7 +247,7 @@ const PageM10b = (props) => {
               width: "20%",
               display: "flex",
               alignItems: "center",
-              padding: "0px 20px",
+              padding: "0rem 1.25rem",
             }}
           >
             <Rating value={data.rating} max={5} precision={0.5} readOnly />

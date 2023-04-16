@@ -25,7 +25,8 @@ function MarketCard(props) {
       quantity: props.sellerCount,
       price: props.price,
       rating: props.stars,
-      type: props.type
+      type: props.type,
+      // sellerName: 
     } 
     // console.log(props.array);
     let dummy=props.array;

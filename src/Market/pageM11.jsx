@@ -477,15 +477,15 @@ const PageM11 = () => {
               //     {val.records.map((v, i)=>{
                     // return (
                       <MarketCard
-                        key={i+ 1}
-                        image={v.image}
-                        productName={v.productName}
-                        sellerCount={v.quantity}
-                        price={v.price}
-                        stars={v.rating}
+                        key ={i+ 1}
+                        image ={v.image}
+                        productName ={v.productName}
+                        sellerCount ={v.quantity}
+                        price ={v.price}
+                        stars ={v.rating}
                         type = {v.type}
-                        cartArray={setcart}
-                        array={cart}
+                        cartArray ={setcart}
+                        array = {cart}
                       />
                     // );
                   // }

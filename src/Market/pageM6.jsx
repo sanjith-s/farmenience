@@ -84,6 +84,7 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
+
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
@@ -93,7 +94,9 @@ const PageM6 = () => {
       image: {
         data: file,
         contentType: "jpg"
-      }
+      },
+      sellerName: "",
+      sellerEmail: ""
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
         alert("SUCCESS");

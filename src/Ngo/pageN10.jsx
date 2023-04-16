@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import { baseURL } from '../constants';
 import Axios from "axios";
 import Cookies from 'js-cookie';
-import "./Pagen10.css";
+// import "./Pagen10.css";
 import { Divider } from '@material-ui/core';
 import BackImg from "../components/homepageBackground.png";
 import "../css/pageM0.css"
@@ -70,15 +70,17 @@ function BasicTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const [queries, setQueries] = useState([]);
-  const [appointments, setAppointments] = useState([]);
+  const [queries, setQueries] = useState([{subject:""},{subject:""},{subject:""}]);
+const [appointments, setAppointments] = useState([{subject:""},{subject:""},{subject:""}]);
 
   const AxiosSet = () => {
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/getqueriesN10`, { headers: { tokenstring: token } }).
       then((response) => {
-        setQueries(response.data.message);
+        alert("hi");
+        setQueries([...response.data.message,...queries]);
+        console.log(response.data.message);
+        console.log(queries);
       })
       .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -100,7 +102,7 @@ function BasicTabs() {
 
     Axios.get(`${baseURL}/getmeetsN10`, { headers: { tokenstring: token } }).
       then((response) => {
-        setAppointments(response.data.message);
+        setAppointments([...response.data.message, ...appointments]);
       })
       .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -125,6 +127,10 @@ function BasicTabs() {
     AxiosSet();
   }, []);
 
+  useEffect(()=>{
+   console.log(queries);
+  },[queries])
+
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -140,7 +146,7 @@ function BasicTabs() {
             {queries.map((que, ind) => {
               return (<div className='texts-box'>
                 <a className='links' href="/n11">
-                  <span className='b-text'>{que}</span>
+                  <span className='b-text'>{que.subject}</span>
                 </a>
               </div>)
             })}
@@ -153,7 +159,7 @@ function BasicTabs() {
             {appointments.map(que => {
               return (<div className='texts-box'>
                 <a className='links' href="/n13">
-                  <span className='b-text'>{que}</span>
+                  <span className='b-text'>{que.subject}</span>
                 </a>
               </div>)
             })}
@@ -165,27 +171,6 @@ function BasicTabs() {
 }
 
 function pageN10() {
-
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-  }
-
-  const fullAnotherSpeak = (text) => {
-    responsiveVoice.speak(text, "Tamil Male");
-  }
-
-  useEffect(() => {
-    var addScript = document.createElement('script');
-    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-    document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
-  }, []);
-
-  useEffect(() => {
-    var addScript = document.createElement('script');
-    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-    document.body.appendChild(addScript);
-  }, []);
 
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
@@ -240,9 +225,7 @@ function pageN10() {
       })
   }, []);
   return (
-    <div style={{ backgroundColor: "#E5FDD1" }} id="google_translate_element" onClick={(e) => {
-        fullAnotherSpeak(e.target.innerText)
-      }}>
+    <div style={{ backgroundColor: "#E5FDD1" }}>
       <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">

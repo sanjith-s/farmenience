@@ -28,35 +28,6 @@ const c = {
   Email: "yuviexample@gmail.com",
 };
 
-const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
-
-const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setData(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-  }, []);
-
 const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
@@ -88,6 +59,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   //   document.body.appendChild(addScript);
   // }, []);
   
+
   const classes = useStyles();
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
@@ -115,7 +87,8 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   }
   return (
     <div className='backProfile' style={{
-      background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)"
+      background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)",
+      height:"max-content"
     }} id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
@@ -203,7 +176,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                  return (  
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                  <Typography>{crop}</Typography>
-                 {cropEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeCrop} name={crop} ><RemoveIcon color="error" fontSize='large' /></button>}
+                 {cropEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeCrop} name={crop}>❌</button>}
                  </Stack> )
                  })}
                  {cropEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
@@ -229,7 +202,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                  return (  
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                  <Typography>{skill}</Typography>
-                 {skillEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeSkill} name={skill} ><RemoveIcon color="error" fontSize='large' /></button>}
+                 {skillEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeSkill} name={skill} >❌</button>}
                  </Stack> )
                  })}
                  {skillEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
@@ -252,6 +225,35 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
 
 export default function () {
+  const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
+  
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  let token = Cookies.get('token');
+  Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+    then((response) => {
+      setData(response.data.message);
+    })
+    .catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+}, []);
+
   return (
     <div>
       <ProfilePage name={data.name} email={data.email} phoneNumber={data.phoneno} city={data.city} district={data.district} line1={data.addline1} line2={data.addline2} state={data.state} pincode={data.pincode} aadharNumber={data.aadhaarno} profilePicture={src} />

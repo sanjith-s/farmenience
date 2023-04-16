@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 }
 .contents > .box1 {
-  flex: 25%;
+  /* flex: 20%; */
   max-width: 20.5rem;
 }
 .contents > .roller {
@@ -92,8 +92,8 @@
   text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 800px) {
-  .box1 {
-    flex: 55%;
+  .contents > .box1 {
+    /* flex: 45%; */
     max-width: 50%;
   }
 }

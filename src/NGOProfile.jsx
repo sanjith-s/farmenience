@@ -24,34 +24,6 @@ const c = {
   Email: "ngoemaileg@gmail.com",
 };
 
-const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
-
-const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setData(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-  }, []);
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -87,13 +59,12 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
   const classes = useStyles();
   return (
     <div className='backProfile' style={{
-      background:"linear-gradient(-4deg,white 0%,white 50%,#ffea93 50%,#ffdb4a 100%)"
-    }} id="google_translate_element" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
+      background:"linear-gradient(-4deg,white 0%,white 50%,#ffea93 50%,#ffdb4a 100%)",
+      height:"max-content"
     }}>
       <div className='profileBox' style={{
         width: "70%",
-        height: "91%",
+        // height:"120%",
         background: "linear-gradient(176deg,#FFD93D 0%,white 70%,white 100%)"
       }}>
         <Stack direction={"column"} spacing={1}
@@ -157,6 +128,35 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
 
 
 export default function () {
+  const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
+
+const [data, setData] = useState({});
+
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
   return (
     <>
       <ProfilePage name={data.name} email={data.email} phoneNumber={data.phoneno} city={data.city} line1={data.addline1} line2={data.addline2} district={data.district} state={data.state} pincode={data.pincode} aadharNumber={data.aadhaarno} profilePicture={src} />

@@ -4,3 +4,8 @@
 .ntemp-items {
     font-size: 30px !important;
 }
+.goog-te-gadget {
+    position: absolute;
+    top:1%;
+    right:0%;
+}

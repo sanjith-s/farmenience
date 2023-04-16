@@ -8,8 +8,13 @@
 	bottom: 0; */
 	border-top: 0.06rem solid darkgreen;
 }
-
-.foot-body {
+/* .cfoot {
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	width:100%;
+}*/
+foot-body { 
 	font-size: 1.1rem;
 }
 

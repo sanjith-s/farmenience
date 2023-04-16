@@ -102,26 +102,26 @@ const billingAddress = "Room No: 30 , Kurinji Hostel , CEG , Anna University";
 
 function PageM4() {
 
-  const googleTranslateElementInit = () => {
-    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-  }
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
 
-  const fullAnotherSpeak = (text) => {
-    responsiveVoice.speak(text, "Tamil Male");
-  }
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
 
-  useEffect(() => {
-    var addScript = document.createElement('script');
-    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-    document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
-  }, []);
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
 
-  useEffect(() => {
-    var addScript = document.createElement('script');
-    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-    document.body.appendChild(addScript);
-  }, []);
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
 
   const printRef = useRef();
   const handleDownloadPdf = async () => {
@@ -137,7 +137,7 @@ function PageM4() {
 
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('Receipt.pdf');
-
+  }
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
       setOpen(true);
@@ -149,7 +149,7 @@ function PageM4() {
 
     const location = useLocation();
 
-    data = location.state ? location.state.data : item;
+    var data = location.state ? location.state.data : item;
     const ordDate = location.state ? location.state.date[0] : item.orderDate;
     const delDate = location.state ? location.state.date[1] : item.deliveryDate;
 
@@ -179,20 +179,10 @@ function PageM4() {
 
     handleChange();
 
-    tot_amount = 0;
-    filterItems.map((item) => {
-      tot_amount += item.quantity * item.eachPrice;
-      return;
-    });
-    console.log("hello");
-    console.log(filterItems);
-
     return (
       <>
         <Card id="google_translate_element">
-          <Box className="gx-d-flex justify-content-center" style={{ padding: "15px 0px" }} onClick={(e) => {
-            fullAnotherSpeak(e.target.innerText)
-          }}>
+          <Box className="gx-d-flex justify-content-center">
             <Typography
               variant="h4"
               style={{ fontWeight: "600", textTransform: "uppercase", textAlign: "center" }}
@@ -483,7 +473,6 @@ function PageM4() {
         </div>
       </>
     );
-  }
 }
 
 export default PageM4;

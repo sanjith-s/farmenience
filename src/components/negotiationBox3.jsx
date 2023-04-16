@@ -3,8 +3,8 @@ import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import PublishedWithChangesIcon from "@mui/icons-material/PublishedWithChanges";
-import VerifiedIcon from "@mui/icons-material/Verified";
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import {
   CardMedia,
   CardContent,
@@ -102,7 +102,7 @@ function NegotiationBox3(props) {
                 fontSize: "1.125rem",
               }}
             >
-              list price
+              product price
             </Typography>
             <Typography variant="h6">
               <CurrencyRupeeIcon style={{ fontSize: "1.063re" }} />
@@ -125,7 +125,7 @@ function NegotiationBox3(props) {
                 fontSize: "1.125rem",
               }}
             >
-              your price
+              negotiated price
             </Typography>
             <Typography variant="h6">
               <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
@@ -151,8 +151,8 @@ function NegotiationBox3(props) {
               less
             </Typography>
             <Typography variant="h6">
-              <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
-              {props.userPrice - props.discountPrice}
+              <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
+              { props.actualPrice - props.userPrice}
             </Typography>
           </Box>
           <Divider
@@ -198,15 +198,15 @@ function NegotiationBox3(props) {
             fontWeight: "600",
           }}
         >
-          {props.acceptance == "no" ? (
-            <VerifiedIcon />
+          {props.acceptance == "notChanged" ? (
+            <UnpublishedIcon/>
           ) : (
             <PublishedWithChangesIcon />
           )}
 
-          {props.acceptance == "no"
-            ? "Accepted by Seller-Contact Now"
-            : "Revised by Seller-Respond Now"}
+          {props.acceptance == "notChanged"
+            ? "Not yet seen"
+            : "Revised by Seller"}
         </Button>
       </CardActions>
     </Card>

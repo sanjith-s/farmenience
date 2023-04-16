@@ -369,8 +369,8 @@ function PageM12() {
                 />
                 {active === "negot1" && (
                   <Button
-                    variant="contained"
                     onClick={updateHandler}
+                    variant="contained"
                     style={{
                       position: "absolute",
                       backgroundColor:"#74e81c",

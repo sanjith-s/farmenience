@@ -3,6 +3,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { IconButton, Typography, Box, CssBaseline, Tooltip } from "@mui/material";
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 function NegotNav({ handleClick }) {
   return (
@@ -18,10 +19,10 @@ function NegotNav({ handleClick }) {
       }}
     >
       <CssBaseline />
-      <Box sx={{ position: "absolute", left: "1.25rem ", top: ".4375rem" }}>
-        <Tooltip title="Negotiate Price">
-          <IconButton color="success" onClick={()=>handleClick(2)}>
-            <MonetizationOnIcon style={{ color: "#ffffff" }} />
+      <Box sx={{ position: "absolute", left: "10px ", top: "7px" }}>
+        <Tooltip title="previous">
+          <IconButton >
+            <ArrowBackIosNewIcon style={{ color: "#ffffff" }} />
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit Quantity">

@@ -4,16 +4,17 @@ import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import wheat from "../wheatimg.jpg";
 import { useState } from "react";
-const data = {
-  name: "Consumer name",
-  phno: 1000000000,
-  address: "consumer address ",
-  itemName: "product",
-  itemQuantity: 0,
-  itemPrice: 0,
-  regNo: "xxx.yyy.zzz",
-  img: wheat,
-};
+// const data = {
+//   name: "Consumer name",
+//   phno: 1000000000,
+//   address: "consumer address ",
+//   itemName: "product",
+//   itemQuantity: 0,
+//   itemPrice: 0,
+//   regNo: "xxx.yyy.zzz",
+//   img: wheat,
+// };
+
 
 const PageM2 = () => {
 
@@ -38,11 +39,18 @@ const PageM2 = () => {
   //   document.body.appendChild(addScript);
   // }, []);
 
+  
+  
+   
+
   const location = useLocation();
 
-  const content = location.state ? location.state.data : data;
-  const ids = location.state ? location.state.reg : data;
-  
+  const content = location.state ? location.state.data : "nodata";
+  const ids = location.state ? location.state.reg : "nodata";
+
+  console.log("content:")
+  console.log(location.state.data);
+
   return (
     <Box sx={{ margin: "2.5rem", justifyContent: "center",
      alignItems: "center", backgroundColor: "white" }}>
@@ -71,6 +79,7 @@ const PageM2 = () => {
       >
         <Box onClick={(e) => {
             fullAnotherSpeak(e.target.innerText)
+            
           }}
           sx={{
             width: "95%",
@@ -79,9 +88,10 @@ const PageM2 = () => {
             rowGap: "2.5rem",
             boxShadow: 20,
           }}
-        >
+        > 
           <Box>
             <SellerNegotiate
+              id = {content._id}
               name={content.name}
               phno={content.phoneNumber}
               iquantity={content.quantity}

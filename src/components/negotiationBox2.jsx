@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SendIcon from '@mui/icons-material/Send';
 import Snackbar from "@mui/material/Snackbar";
 import {
   CardMedia,
@@ -115,42 +116,15 @@ function NegotiationBox2(props) {
           lineHeight={2.5}
           sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
-          {props.quantity}kg
+          ₹ {props.actualPrice}
         </Typography>
-        <Box>
-          <Typography
-            variant="overline"
-            lineHeight={0.2}
-            sx={{ fontSize: "1.125rem", fontWeight: "600" }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "1rem" }} />
-            {props.discountPrice}
-          </Typography>
-          <Typography
-            variant="overline"
-            lineHeight={0.2}
-            sx={{
-              textDecoration: "line-through",
-              fontSize: "0.813rem",
-              paddingLeft: "0.625rem",
-            }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "0.813rem" }} />
-            {props.actualPrice}
-          </Typography>
-        </Box>
-
-        <Box>
-          <Typography
-            variant="h6"
-            color="green"
-            lineHeight={2.5}
-            sx={{ fontWeight: "600" }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
-            {props.discountAmount} off
-          </Typography>
-        </Box>
+        <Typography
+        variant="overline"
+        lineHeight={2.5}
+        sx={{ fontSize: "15px", paddingLeft: "5px"}}
+        >
+          {props.weight}kg
+        </Typography>
       </CardContent>
 
       <CardActions
@@ -166,14 +140,14 @@ function NegotiationBox2(props) {
         <Typography
           variant="h6"
           lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+          sx={{ textTransform: "uppercase", fontWeight: "600",marginBottom:"12px" }}
         >
           quantity
         </Typography>
 
         <StyledBadge
           style={{ position: "sticky" }}
-          badgeContent={props.userQuantity}
+          badgeContent={props.quantity}
           color="success"
         >
           <ShoppingCartIcon style={{ fill: "#000000", fontSize: "2.5rem" }} />
@@ -211,7 +185,7 @@ function NegotiationBox2(props) {
               min={props.actualPrice / 2}
               max={props.actualPrice / 2 + props.actualPrice}
               message="hello"
-              placeholder={props.discountPrice}
+              placeholder={props.userPrice}
               onChange={limitHandler}
               startAdornment={
                 <InputAdornment position="start">

@@ -70,6 +70,7 @@ const PageM11 = () => {
   }
 
   const [defaultData, setDefaultData] = useState([]);
+  
   const [cart, setcart] = useState([]);
 
   useEffect(() => {
@@ -123,81 +124,6 @@ const PageM11 = () => {
     addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
     document.body.appendChild(addScript);
   }, []);
-
-  // const defaultData = [
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "orange",
-  //     count: 4,
-  //     price: 32,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 4,
-  //     price: 132,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 10,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 100,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "mango",
-  //     count: 4,
-  //     price: 732,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 332,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 432,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 230,
-  //     rate: 3,
-  //   },
-  // ]
 
   async function confirmCart() {
     let token = Cookies.get('token');
@@ -283,12 +209,14 @@ const PageM11 = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
   const filterPrice = (a, min, max) => {
     if (a.price >= min && a.price <= max) {
       return true;
     }
     return false;
   }
+
   const ApplyChange = () => {
     var min = document.getElementById("minPrice").value;
     var max = document.getElementById("maxPrice").value;
@@ -304,10 +232,12 @@ const PageM11 = () => {
   }
 
   const [ngoType, setNgoType] = useState([]);
+
   const handleNGOtype = (option) => {
     setNgoType(option);
     setappntdata({ ...appntdata, ngoType: ngoType.value });
   };
+
   const [appntdata, setappntdata] = useState({
     meetdate: "",
     image: "",
@@ -476,9 +406,6 @@ const PageM11 = () => {
 
           {content.map((v, i) => {
             return (
-              // <>
-              //     {val.records.map((v, i)=>{
-                    // return (
                       <MarketCard
                         key={i+ 1}
                         image={v.image}
@@ -490,11 +417,6 @@ const PageM11 = () => {
                         cartArray={setcart}
                         array={cart}
                       />
-                    // );
-                  // }
-                // )
-              //   }
-              // </>
             );
           })}
           

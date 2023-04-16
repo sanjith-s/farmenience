@@ -86,23 +86,18 @@ const forgetPasswordGetEmail = () => {
     return (
         <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
             <CssBaseline />
-            <span className="title">Forget Password</span>
-            <Stack
-                direction="row"
-                divider={<Divider orientation="vertical" flexItem />}
+            <Box
                 spacing={2}
-                sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
+                sx={{ height: "50vh", display: "flex", justifyContent: "center", alignItems: "space-around", flexDirection: "column" }}
             >
+                <Typography variant="h3" style={{ margin: "auto" }}>Forget Password</Typography>
                 <Container
                     sx={{
                         bgcolor: "#D9D9D9;",
-                        height: "100%",
-                        width: "60vw",
-                        borderRadius: "3.125rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-evenly",
-                        alignItems: "center",
+                        borderRadius: "10px 15px",
+                        width: "70%",
+                        margin: "auto",
+                        padding: "1% 2%"
                     }}
                 >
                     <React.Fragment>
@@ -117,15 +112,18 @@ const forgetPasswordGetEmail = () => {
                                 minLength: 1
                             }}
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#bde3e5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "100%"
                             }}
                             onChange={(e) => { setEmail(e.target.value) }}
                         />
 
-                        <Box textAlign="center" padding={"1.25rem"}>
-                            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postEmail}>
+                        <Box sx={{display:"flex", padding:"1.2rem", justifyContent:"space-evenly",width:"100%"}}>
+                            <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#138ac5"}}>
+                               Back
+                            </Button>
+                            <Button variant="contained" sx={{ bgcolor: "#138ac5" }} onClick={postEmail}>
                                 Next
                             </Button>
                         </Box>
@@ -173,14 +171,7 @@ const forgetPasswordGetEmail = () => {
             <Button onClick={postQuery}>CONFIRM</Button>
           </DialogActions>
         </Dialog> */}
-            </Stack>
-
-            <Box textAlign="center" padding={"1.25rem"}>
-                <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-                    Home Page
-                </Button>
             </Box>
-
         </div>
     );
 };

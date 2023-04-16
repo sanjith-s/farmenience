@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
 const ordersData = [{ orderNo: '123456789', destination: 'Chennai', },
 { orderNo: '987654321', destination: 'Koyambedu', },
 { orderNo: '456123789', destination: 'THiruchi', },];
-
-const navigate = useNavigate();
     
 const saleRequestsData = [
     {
@@ -230,6 +228,8 @@ function BasicTabs() {
 }
 
 function pageM0() {
+
+    const navigate = useNavigate();
 
 // const googleTranslateElementInit = () => {
     //     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')

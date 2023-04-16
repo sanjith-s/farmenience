@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import lineGraph from "../images/lineGraph.png";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { baseURL } from '../constants';
 
 import {
   Button,
@@ -137,7 +140,7 @@ const fetchData = async () => {
 
 function PageM10() {
 
-  [chartData, setChartData] = useState(null);
+  const [chartData, setChartData] = useState(null);
 
   const data = [
     createData("00:00", 0),

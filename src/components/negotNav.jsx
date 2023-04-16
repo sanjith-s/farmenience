@@ -25,6 +25,12 @@ function NegotNav({ handleClick }) {
             <ArrowBackIosNewIcon style={{ color: "#ffffff" }} />
           </IconButton>
         </Tooltip>
+        <Tooltip title="Edit Quantity">
+          <IconButton color="success" onClick={()=>handleClick(1)}>
+            <ShoppingBasketIcon style={{ color: "#ffffff" }} />
+          </IconButton>
+        </Tooltip>
+
       </Box>
 
       <Box

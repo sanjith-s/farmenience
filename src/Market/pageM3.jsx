@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import SalesCardsList from "../components/salesCardsList";
 import SalesItemsList from "../components/salesItemsList";
-import { CssBaseline, Typography, Box, Container, Stack, Divider } from "@mui/material";
+import { CssBaseline, Typography, Box, Container, Stack, Divider, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import Cookies from "js-cookie";
 import Axios from "axios";
@@ -141,6 +141,13 @@ function PageM3(props) {
     }
   }
 
+  const clearFilter = () => {
+    setSelected('');
+    setOrdDate('');
+    setDelDate('');
+    setFilt(false);
+  }
+
   let productDetails = salesDetails;
   ordDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && ordDate.substr(0, 4) >= product.orderDate.getFullYear() && ordDate.substr(5, 5).substr(0, 2) == product.orderDate.getMonth()) : delDate ? productDetails = salesDetails.filter(product => product.items.includes(selected) && delDate.substr(0, 4) == product.deliveryDate.getFullYear() && delDate.substr(5, 5).substr(0, 2) <= product.deliveryDate.getMonth()) : productDetails = salesDetails.filter(product => product.items.includes(selected));
 
@@ -185,7 +192,7 @@ function PageM3(props) {
             Filter by
           </Typography>
           <Divider flexItem />
-          <Box>
+          <Box sx={{display: "flex", flexDirection: "column"}}>
             <SalesItemsList itemsList={salesItems} onSelectedValue={selctedValueHandler} />
           </Box>
 
@@ -255,6 +262,7 @@ function PageM3(props) {
                 ></input>
               </Typography>
             </Box>
+            <Button variant="contained" onClick={clearFilter} sx={{margin: "20px"}}>Clear Filters</Button>
           </Box>
         </Box>
 

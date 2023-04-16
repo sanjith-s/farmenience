@@ -56,8 +56,8 @@ const Homepage2 = () => {
   }
   
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", rowGap: "30px" }}>
-      <Box sx={{ marginTop: "30px", textAlign: "center" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", rowGap: "1.875rem" }}>
+      <Box sx={{ marginTop: "1.875rem", textAlign: "center" }}>
         <Typography variant="h4" style={{ textTransform: "uppercase" }}>
           Homepage after Login
         </Typography>

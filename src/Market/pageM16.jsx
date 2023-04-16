@@ -36,7 +36,7 @@ const PageM16 = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        margin: "35px",
+        margin: "2.1875rem",
       }}
     >
       <Typography
@@ -44,22 +44,22 @@ const PageM16 = () => {
         style={{
           textTransform: "uppercase",
           textAlign: "center",
-          fontWeight: "600px",
-          fontSize: "45px",
-          marginBottom: "20px",
+          fontWeight: "37.5rem",
+          fontSize: "2.8125rem",
+          marginBottom: "1.25rem",
         }}
       >
         Negotiate Prices
       </Typography>
       <Box
         sx={{
-          border: "6px solid",
+          border: ".375rem solid",
           width: "95%",
-          padding: "25px",
-          borderRadius: "8px",
+          padding: "1.5625rem",
+          borderRadius: ".5rem",
           display: "flex",
           flexDirection: "column",
-          rowGap: "30px",
+          rowGap: "1.875rem",
           backgroundColor: "#86fe9ede",
         }}
       >

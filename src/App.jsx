@@ -70,7 +70,7 @@ import Headroom from "react-headroom";
 // import Chart from "./components/chart";
 // import Calendar from "./components/calender";
 // import CropRecommendation from "./cropRecommendation";
-import N10Navbar from "./components/n10Navbar";
+// import N10Navbar from "./components/n10Navbar";
 // import { display } from "@mui/system";
 // import Success from "./Market/success";
 // import Cancel from "./Market/cancel";
@@ -117,7 +117,7 @@ const Cancel = lazy(() => import("./Market/cancel"));
 const PdfPrint = lazy(() => import("./PdfPrint"));
 const Navbar = lazy(() => import("./components/navbar"));
 const Footer1 = lazy(() => import("./components/footerFinal"));
-// const N10Navbar = lazy(() => import("./components/n10Navbar"));
+const N10Navbar = lazy(() => import("./components/n10Navbar"));
 
 const PageM0 = lazy(() => import("./Market/pageM0"));
 const PageM1 = lazy(() => import("./Market/pageM1"));
@@ -181,14 +181,14 @@ function App() {
   }
 
   return (
-    <div>
-      <N10Navbar />
-      {/* {displayNavbar()} */}
-      <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
-        fullAnotherSpeak(e.target.innerText)
-      }} >
+    <Suspense fallback={<h1>Loading ...</h1>}>
+      <div>
+        {/* <N10Navbar /> */}
+        {displayNavbar()}
+        <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
+          fullAnotherSpeak(e.target.innerText)
+        }} >
 
-        <Suspense fallback={<h1>Loading ...</h1>}>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<LandingPage />} />
@@ -256,21 +256,21 @@ function App() {
               <Route path="/voice" element={<Voice />} />
               <Route path="/cropRecommendation" element={<CropRecommendation />} />
               <Route path="/imageDetection" element={<ImageDetection />} />
-              <Route path="/web" element={<Web />} />
+              <Route path="web" element={<Web />} />
               <Route path="/ordersummary" />
               <Route path="/payments/success" element={<Success />} />
               <Route path="/payments/cancel" element={<Cancel />} />
               <Route path="/pdfprint" element={<PdfPrint />} />
             </Routes>
           </BrowserRouter>
-        </Suspense>
-      </main>
+
+        </main>
 
 
-      {/* <Footer1 /> */}
-      {displayFooter()}
-    </div >
-
+        {/* <Footer1 /> */}
+        {displayFooter()}
+      </div >
+    </Suspense>
   );
 }
 

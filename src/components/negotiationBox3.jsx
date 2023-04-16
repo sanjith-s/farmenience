@@ -24,30 +24,30 @@ function NegotiationBox3(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "6px 0px",
+        padding: "1.25rem",
+        margin: "0.375rem 0rem",
       }}
     >
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "30%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "5px",
+          padding: "0.313rem",
         }}
       >
-        <CardHeader style={{ padding: "5px" }} title={date} subheader={text} />
+        <CardHeader style={{ padding: "0.313rem" }} title={date} subheader={text} />
         <CardMedia
           component="img"
-          height="140px"
+          height="8.75rem"
           image={WheatImg}
           sx={{
-            width: "190px",
-            border: "4px solid #285430",
-            borderRadius: "3px",
+            width: "11.875rem",
+            border: "0.25rem solid #285430",
+            borderRadius: "0.188rem",
           }}
         />
       </CardContent>
@@ -58,8 +58,8 @@ function NegotiationBox3(props) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "5px",
-          columnGap: "20px",
+          padding: "0.313rem",
+          columnGap: "1.25rem",
         }}
       >
         <CardContent
@@ -70,7 +70,7 @@ function NegotiationBox3(props) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "5px",
+            padding: "0.313rem",
           }}
         >
           <Typography
@@ -79,7 +79,7 @@ function NegotiationBox3(props) {
             sx={{
               textTransform: "uppercase",
               fontWeight: "600",
-              marginBottom: "30px",
+              marginBottom: "1.875rem",
               justifySelf: "flex-start",
             }}
           >
@@ -99,14 +99,14 @@ function NegotiationBox3(props) {
               sx={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               product price
             </Typography>
             <Typography variant="h6">
-              <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
-              {props.actualPrice}
+              <CurrencyRupeeIcon style={{ fontSize: "1.063re" }} />
+              {props.discountPrice}
             </Typography>
           </Box>
           <Box
@@ -122,13 +122,13 @@ function NegotiationBox3(props) {
               sx={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               negotiated price
             </Typography>
             <Typography variant="h6">
-              <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
+              <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
               {props.userPrice}
             </Typography>
           </Box>
@@ -145,7 +145,7 @@ function NegotiationBox3(props) {
               sx={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               less
@@ -175,13 +175,13 @@ function NegotiationBox3(props) {
               sx={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               total amount
             </Typography>
             <Typography variant="h6">
-              <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
+              <CurrencyRupeeIcon style={{ fontSize: "1.063rem" }} />
               {props.userPrice * props.userQuantity}
             </Typography>
           </Box>
@@ -191,8 +191,8 @@ function NegotiationBox3(props) {
           color="success"
           style={{
             display: "flex",
-            columnGap: "10px",
-            padding: "10px",
+            columnGap: "0.625rem",
+            padding: "0.625rem",
             justifyContent: "center",
             alignItems: "center",
             fontWeight: "600",

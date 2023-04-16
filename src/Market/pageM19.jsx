@@ -20,7 +20,7 @@ const itemsValue = ["rice", "5kg", "5000", "agro corps", "chennai"];
 
 const PageM19 = () => {
   return (
-    <Container style={{ padding: "30px 0px" }}>
+    <Container style={{ padding: "1.875rem 0rem" }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}
@@ -31,14 +31,14 @@ const PageM19 = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          border: "3px solid",
+          border: ".1875rem solid",
           justifyContent: "center",
           alignItems: "center",
-          rowGap: "20px",
-          padding: "30px 0px",
+          rowGap: "1.25rem",
+          padding: "1.875rem 0rem",
           backgroundColor: "#7bff96",
-          margin: "26px",
-          borderRadius: "8px",
+          margin: "1.625rem",
+          borderRadius: ".5rem",
         }}
       >
         <Typography variant="h4" style={{ textTransform: "uppercase" }}>
@@ -46,13 +46,13 @@ const PageM19 = () => {
         </Typography>
         <Box
           sx={{
-            width: "400px",
-            borderRadius: "8px",
-            border: "4px solid #000",
+            width: "25rem",
+            borderRadius: ".5rem",
+            border: ".25rem solid #000",
             backgroundColor: "#fff",
           }}
         >
-          <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+          <CardContent style={{ padding: ".9375rem 1.5625rem", borderRadius: ".5rem" }}>
             <Stack>
               {itemsName.map((value, index) => {
                 return (
@@ -60,17 +60,17 @@ const PageM19 = () => {
                     key={index}
                     sx={{
                       display: "flex",
-                      columnGap: "20px",
+                      columnGap: "1.25rem",
                       justifyContent: "space-between",
-                      height: "50px",
+                      height: "3.125rem",
                       alignItems: "center",
-                      margin: "2px 0px",
+                      margin: ".125rem 0rem",
                     }}
                   >
                     <Typography
                       style={{
                         fontWeight: "600",
-                        fontSize: "20px",
+                        fontSize: "1.25rem",
                         textTransform: "uppercase",
                       }}
                     >
@@ -88,7 +88,7 @@ const PageM19 = () => {
             </Stack>
           </CardContent>
         </Box>
-        <Box sx={{ display: "flex", columnGap: "70px" }}>
+        <Box sx={{ display: "flex", columnGap: "4.375rem" }}>
           <Button
              variant="contained"
              color="success"

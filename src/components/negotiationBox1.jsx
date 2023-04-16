@@ -47,24 +47,24 @@ function NegotiationBox1(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "6px 0px",
+        padding: "1.25rem",
+        margin: "0.375rem 0rem",
       }}
     >
       <CardMedia
         component="img"
-        height="140px"
+        height="8.75rem"
         image={WheatImg}
         sx={{
-          width: "190px",
-          border: "4px solid #285430",
-          borderRadius: "3px",
+          width: "11.875rem",
+          border: "0.25rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",

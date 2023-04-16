@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import BackImg from "../components/homepageBackground.png";
 import Menubar from "../components/menubar";
 import ImageSlider from "../components/imageSlider";
-import "../css/pageM9.css"
+import "../css/pageM0.css";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,7 +16,7 @@ import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
-    minWidth: '40px',
+    minWidth: '2.5rem',
   }
 }));
 
@@ -171,7 +171,7 @@ function pageM9() {
     <div id="google_translate_element" style={{ backgroundColor: "#E5FDD1" }} onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
-      <img src={BackImg} style={{ objectFit: "cover", height: "370px", width: "100%" }} className='back-img' />
+      <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">
           <div className="box-header">

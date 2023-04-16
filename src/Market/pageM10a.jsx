@@ -120,11 +120,11 @@ const PageM10a = () => {
       fullAnotherSpeak(e.target.innerText)
     }}
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
@@ -135,18 +135,18 @@ const PageM10a = () => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          border: "2px solid #555555",
+          borderRadius: ".5rem",
+          border: ".125rem solid #555555",
         }}
       >
         <FormControl
           style={{
             width: "100%",
-            height: "48px",
+            height: "3rem",
           }}
         >
           <Input
-            style={{ height: "40px"}}
+            style={{ height: "2.5rem"}}
             id="input-with-icon-adornment"
             startAdornment={
               <InputAdornment position="start">
@@ -173,22 +173,22 @@ const PageM10a = () => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          padding: "0px",
+          borderRadius: ".5rem",
+          padding: "0rem",
         }}
       >
         <CardActionArea style={{ width: "100%" }}>
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               width: "100%",
               alignItems: "center",
             }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -197,14 +197,14 @@ const PageM10a = () => {
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               alignItems: "center",
               width: "100%",
             }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>
@@ -215,12 +215,12 @@ const PageM10a = () => {
           backgroundColor: "#86fe9ede",
           display: "flex",
           flexDirection: "column",
-          rowGap: "20px",
-          height: "500px",
+          rowGap: "1.25rem",
+          height: "31.25rem",
           overflow: "auto",
-          padding: "20px 15px",
-          borderRadius: "5px",
-          border: "3px solid #000000",
+          padding: "1.25rem .9375rem",
+          borderRadius: ".3125rem",
+          border: ".1875rem solid #000000",
         }}
       >
         {(location.state ? location.state.dataList : market).map((val, index) => {
@@ -230,7 +230,7 @@ const PageM10a = () => {
               style={{
                 width: "100%",
                 backgroundColor: "#ffffff",
-                borderRadius: "8px",
+                borderRadius: ".5rem",
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -242,21 +242,21 @@ const PageM10a = () => {
                   alignItems: "flex-start",
                   justifyContent: "center",
                   width: "50%",
-                  padding: "0px 20px",
+                  padding: "0rem 1.25rem",
                 }}
               >
                 <Typography
                   style={{
                     fontWeight: "600",
                     textTransform: "uppercase",
-                    fontSize: "22px",
+                    fontSize: "1.375rem",
                   }}
                 >
                   {val.name}
                 </Typography>
                 <Typography
                   variant="boby1"
-                  style={{ fontSize: "20px", fontWeight: "400" }}
+                  style={{ fontSize: "1.25rem", fontWeight: "400" }}
                 >
                   {val.distance.miles} Kilometers
                 </Typography>
@@ -266,14 +266,14 @@ const PageM10a = () => {
                   width: "20%",
                   display: "flex",
                   alignItems: "center",
-                  padding: "0px 20px",
+                  padding: "0rem 1.25rem",
                 }}
               >
                 <Typography
                   style={{
                     fontWeight: "600",
                     textTransform: "uppercase",
-                    fontSize: "22px",
+                    fontSize: "1.375rem",
                   }}
                 >
                   {val.location}

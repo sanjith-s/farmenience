@@ -10,8 +10,8 @@ function NegotNav({ handleClick }) {
     <Box
       sx={{
         bgcolor: "green",
-        padding: "5px",
-        borderRadius: "5px",
+        padding: ".3125rem",
+        borderRadius: ".3125rem",
         display: "flex",
         justifyContent: "center",
 
@@ -43,7 +43,7 @@ function NegotNav({ handleClick }) {
           style={{
             textTransform: "uppercase",
             fontWeight: "500",
-            fontSize: "28px",
+            fontSize: "1.75rem",
           }}
         >
           My negotiation

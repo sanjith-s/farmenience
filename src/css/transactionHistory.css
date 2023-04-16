@@ -5,15 +5,15 @@
     flex-direction: column;
     padding-inline-start: 1.2rem;
     width: 100%;
-    /* height: 150px; */
+    /* height: 9.375rem; */
     scrollbar-color: #1e1e1e4d #e4e4e4;
     scrollbar-width: revert-layer;
-    border-radius: 8px;
-    width: 1300px;
+    border-radius: .5rem;
+    width: 81.25rem;
   }
   
   .sales-items-list li {
-    margin: 1px 0;
+    margin: .0625rem 0;
     padding-inline-start: 1rem;
     background-color: #66e2a0;
     width: 100%;
@@ -21,12 +21,12 @@
   }
 
 #card-trans-his{
-  margin: 30px;
+  margin: 1.875rem;
 }
 
 .t-rows {
   padding: 1%;
-  width: 10px;
+  width: .625rem;
   text-align: center;
 }
 

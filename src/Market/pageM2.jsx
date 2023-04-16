@@ -52,16 +52,18 @@ const PageM2 = () => {
   console.log(location.state.data);
 
   return (
-    <Box sx={{ margin: "35px", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }} id="google_translate_element">
+    <Box sx={{ margin: "40px", justifyContent: "center",
+     alignItems: "center", backgroundColor: "white" }}>
+
       <Typography
         style={{
           textTransform: "uppercase",
           textAlign: "center",
-          fontSize: "36px",
-          marginBottom: "20px",
+          fontSize: "2.25rem",
+          marginBottom: "1.25rem",
           fontFamily: "Satoshi",
-          border: "3px solid",
-          borderRadius: "20px",
+          border: ".1875rem solid",
+          borderRadius: "1.25rem",
           width: "10em",
           backgroundColor: "lightskyblue"
         }}
@@ -83,7 +85,7 @@ const PageM2 = () => {
             width: "95%",
             display: "flex",
             flexDirection: "column",
-            rowGap: "40px",
+            rowGap: "2.5rem",
             boxShadow: 20,
           }}
         > 

@@ -8,10 +8,10 @@ const Homepage1 = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        rowGap: "30px",
+        rowGap: "1.875rem",
       }}
     >
-      <Box sx={{ marginTop: "30px", textAlign: "center" }}>
+      <Box sx={{ marginTop: "1.875rem", textAlign: "center" }}>
         <Typography variant="h4" style={{ textTransform: "uppercase" }}>
           Homepage Before Login
         </Typography>
@@ -22,7 +22,7 @@ const Homepage1 = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          rowGap: "30px",
+          rowGap: "1.875rem",
         }}
       >
         <Button variant="contained">

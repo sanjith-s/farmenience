@@ -41,12 +41,12 @@ export default function MediaCard(props) {
     <Card
       sx={{
         maxWidth: 345,
-        borderRadius: "10px 15px",
-        boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+        borderRadius: ".625rem .938rem",
+        boxShadow: ".125rem .125rem .125rem .125rem rgba(0, 0, 0, 0.2)",
         background:"linear-gradient(white,#74e81c)"
       }}>
       <CardMedia
-        sx={{ height: "200px" }}
+        sx={{ height: "12.5rem" }}
         image={img}
         title="green iguana"
       />

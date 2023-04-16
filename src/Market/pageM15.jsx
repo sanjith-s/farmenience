@@ -136,7 +136,7 @@ function PageM15() {
   };
 
   return (
-    <Container style={{ padding: "10px 0px" }} id="google_translate_element" onClick={(e) => {
+    <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
       <CssBaseline />
@@ -155,7 +155,7 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
+                margin: "1.25rem 0rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -195,8 +195,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -235,8 +235,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}

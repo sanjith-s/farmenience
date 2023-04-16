@@ -16,15 +16,15 @@ function PriceDetails(props) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "0px",
+          padding: "0rem",
           width: "70%",
-          margin: "5px",
+          margin: ".3125rem",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            margin: "8px 0px",
+            margin: ".5rem 0rem",
             justifyContent: "center",
           }}
         >
@@ -42,7 +42,7 @@ function PriceDetails(props) {
         <Box
           sx={{
             display: "flex",
-            margin: "8px 0px",
+            margin: ".5rem 0rem",
             justifyContent: "space-between",
           }}
         >
@@ -68,7 +68,7 @@ function PriceDetails(props) {
         <Box
           sx={{
             display: "flex",
-            margin: "8px 0px",
+            margin: ".5rem 0rem",
             justifyContent: "space-between",
           }}
         >

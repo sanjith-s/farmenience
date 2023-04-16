@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../css/queryBox.css";
 import {
   Card,
   CardContent,
@@ -34,30 +35,60 @@ function BuyerRequest(props) {
   console.log(props.data);
 
   return (
-    <Card
-      style={{
+    <div>
+      <Card id="card-n1">
+                <div className="query-card">
+                    <h3 className="query-card__title">{props.itemName}</h3>
+                    <div className="query-card__info">
+                        <p className="query-card__id">Request ID: {props.reqId}</p>
+                        <p className="query-card__date">Name: {props.name}</p>
+                        <p className="query-card__date">Phone Number: {props.phoneNo}</p>
+                        <p className="query-card__date">Quantity: {props.itemQuantity}</p>
+                    </div>
+                        <div className="query-card__actions">
+                        <div>
+                            <button onClick={viewRequest} className="query-card__button query-card__button--respond">
+                            <Link
+            to="/M2"
+            state={{
+              from: "Request details",
+              data: props.data,
+            }}
+            style={{ textDecoration: "none" }}
+          >
+                                View Request </Link>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+      </Card>
+      </div>
+/*     <Card
+     boxShadow = {15}
+     style={{
         padding: "15px",
         width: "450px",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+        borderRadius: "5px", 
       }}
     >
       <CardContent
         style={{
+          boxShadow:15,
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          borderTop: ".125rem solid",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -67,9 +98,9 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.reqId}
@@ -79,16 +110,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -98,10 +129,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.name}
@@ -111,16 +142,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -130,10 +161,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.phoneNo}
@@ -143,16 +174,16 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          padding: "10px 5px",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          columnGap: "1.25rem",
         }}
       >
         <Typography
           style={{
             width: "45%",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -162,10 +193,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.itemName}
@@ -175,17 +206,17 @@ function BuyerRequest(props) {
         style={{
           display: "flex",
           flexDirection: "row",
-          columnGap: "20px",
-          padding: "10px 5px",
-          borderBottom: "2px solid",
+          columnGap: "1.25rem",
+          padding: ".625rem .3125rem",
+          borderBottom: ".125rem solid",
         }}
       >
         <Typography
           style={{
             width: "45%",
             backgroundColor: "#16e575",
-            padding: "5px 5px 5px 10px",
-            borderRadius: "3px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -195,10 +226,10 @@ function BuyerRequest(props) {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.itemQuantity}
@@ -231,7 +262,7 @@ function BuyerRequest(props) {
           </Link>
         </Button>
       </CardActions>
-    </Card>
+    </Card> */
   );
 }
 export default BuyerRequest;

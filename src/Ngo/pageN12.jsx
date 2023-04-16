@@ -53,11 +53,14 @@ const PageN12 = () => {
   return (
     <Container id="google_translate_element"
       style={{
+
+        margin : "30px",
         padding: "15px 0px",
+
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
         width: "100%",
         height: "100%",
       }}
@@ -78,7 +81,7 @@ const PageN12 = () => {
           >
             <ArrowBackIcon
               sx={{
-                fontSize: "2.5rem",
+                fontSize: "40px",
               }}
             />
           </IconButton>
@@ -98,15 +101,18 @@ const PageN12 = () => {
 
       <Box
         sx={{
-          padding: "10px",
-          backgroundColor: "#86fe9ede",
-          height: "100%",
-          borderRadius: "20px",
+          margin:"30px",
+          padding: "20px",
+          backgroundColor: "#ffffff",
+          boxShadow : 10,
+          borderRadius: "10px",
         }}
       >
         <Grid
           container
           sx={{
+
+            margin: "10px",
             padding: "10px",
             height: "100%",
           }}
@@ -115,24 +121,31 @@ const PageN12 = () => {
           <Grid xs={6}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
                 display: "flex",
                 flexDirection: "row",
               }}
             >
+              
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
+                  fontWeight:600,
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Query ID:
               </Typography>
               <Typography
                 style={{
+
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
-                  background: "white",
+                  background: "#f5f5f5",
                   marginLeft: "5px",
                   borderRadius: "4px",
                   width: "70%",
@@ -145,27 +158,32 @@ const PageN12 = () => {
           <Grid xs={6}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
                 display: "flex",
                 flexDirection: "row",
               }}
             >
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
+                  fontWeight:600,
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Query Type:
               </Typography>
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
-                  background: "white",
+                  background: "#f5f5f5",
                   marginLeft: "5px",
                   borderRadius: "4px",
-                  width: "70%",
+                  width: "350px",
                 }}
               >
                 {content.type}
@@ -175,24 +193,29 @@ const PageN12 = () => {
           <Grid xs={6}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
                 display: "flex",
                 flexDirection: "row",
               }}
             >
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
+                  fontWeight:600,
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Query Name:
               </Typography>
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
-                  background: "white",
+                  background: "#f5f5f5",
                   marginLeft: "5px",
                   borderRadius: "4px",
                   width: "70%",
@@ -206,27 +229,33 @@ const PageN12 = () => {
           <Grid xs={12}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
+                
                 display: "flex",
                 flexDirection: "column",
               }}
             >
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
+                  fontWeight:600,
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Description:
               </Typography>
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
-                  background: "white",
+                  background: "#f5f5f5",
                   marginLeft: "5px",
                   borderRadius: "4px",
-                  width: "100%",
+                  width: "90%",
                 }}
               >
                 {content.description}
@@ -236,24 +265,30 @@ const PageN12 = () => {
           <Grid xs={6}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
+                
                 display: "flex",
                 flexDirection: "row",
               }}
             >
               <Typography
                 style={{
+                  margin:"10px",
+                  fontWeight:600,
                   fontSize: "1rem",
                   padding: "10px",
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Date:
               </Typography>
               <Typography
                 style={{
+                  margin:"10px",
                   fontSize: "1rem",
                   padding: "10px",
-                  background: "white",
+                  background: "#f5f5f5",
                   marginLeft: "5px",
                   borderRadius: "4px",
                   width: "70%",
@@ -266,15 +301,20 @@ const PageN12 = () => {
           <Grid xs={6}>
             <Box
               sx={{
-                backgroundColor: "#86fe9ede",
+                
                 display: "flex",
                 flexDirection: "row",
               }}
             >
               <Typography
                 style={{
+                  margin:"10px",
+                  fontWeight:600,
                   fontSize: "1rem",
                   padding: "10px",
+                  width:"125px",
+                  /* backgroundColor :"#99edc3", */
+                  borderRadius:"7px",
                 }}
               >
                 Attachments:
@@ -283,16 +323,17 @@ const PageN12 = () => {
               <FormControl
                 variant="standard"
                 sx={{
+                  margin:"10px",
                   width: "50%",
-                  borderRadius: "4px",
+                  borderRadius: ".25rem",
                   color: "black",
-                  background: "white",
+                  background: "#f5f5f5",
                   height: "20%",
                 }}
               >
                 <InputLabel
                   id="select-attachments"
-                  sx={{ paddingLeft: "10px" }}
+                  sx={{ paddingLeft: ".625rem" }}
                 >
                   Open
                 </InputLabel>
@@ -315,15 +356,18 @@ const PageN12 = () => {
           </Grid>
           <Grid xs={12}>
             <Box
+             margin = {2}
               sx={{
-                backgroundColor: "#86fe9ede",
+                 
                 display: "flex",
                 justifyContent: "space-evenly",
-                padding: "7px",
+                padding: ".4375rem",
               }}
             >
               <Button
-                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" ,
+                variant="contained"
+                sx={{
+                  backgroundColor: "red",
                   "&:hover": {
                     color:"white",
                     backgroundColor: "red",
@@ -334,7 +378,9 @@ const PageN12 = () => {
                 Delete
               </Button>
               <Button
-                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" ,
+                variant="contained"
+                sx={{
+                  backgroundColor: "green",
                   "&:hover": {
                     color:"white",
                     backgroundColor: "green",

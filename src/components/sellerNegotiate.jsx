@@ -120,64 +120,64 @@ const SellerNegotiate = (props) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        padding: "30px 0px",
-        borderRadius: "20px",
-        columnGap: "50px",
+        padding: "1.875rem 0rem",
+        borderRadius: "1.25rem",
+        columnGap: "3.125rem",
         backgroundColor: "#fff",
-        border: "3px solid",
+        border: ".1875rem solid",
       }}
     >
       <Box
         sx={{
-          width: "600px",
+          width: "37.5rem",
         }}
       >
-        <CardContent style={{ padding: "0px 0px" }}>
+        <CardContent style={{ padding: "0rem 0rem" }}>
           <Box
             style={{
               display: "flex",
-              columnGap: "20px",
-              borderBottom: "2px solid",
-              marginBottom: "30px",
+              columnGap: "1.25rem",
+              borderBottom: ".125rem solid",
+              marginBottom: "1.875rem",
               width: "fit-content",
-              padding: "0px 5px",
-              border: "3px solid",
-              borderRadius: "20px",
+              padding: "0rem .3125rem",
+              border: ".1875rem solid",
+              borderRadius: "1.25rem",
               backgroundColor: "lightyellow"
             }}
           >
             <Typography
               style={{
                 textTransform: "uppercase",
-                fontSize: "22px",
+                fontSize: "1.375rem",
               }}
             >
               regno:
             </Typography>
             <Typography
               style={{
-                fontSize: "22px",
+                fontSize: "1.375rem",
               }}
             >
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px", backgroundColor: "lightyellow" }}>
+          <Stack sx = {{border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
                   key={index}
                   sx={{
                     display: "flex",
-                    columnGap: "20px",
-                    margin: "14px 10px",
+                    columnGap: "1.25rem",
+                    margin: ".875rem .625rem",
                   }}
                 >
                   <Box style={{ width: "40%" }}>
                     <Typography
                       style={{
                         fontWeight: "600",
-                        fontSize: "22px",
+                        fontSize: "1.375rem",
                         textTransform: "uppercase",
                       }}
                     >
@@ -189,7 +189,7 @@ const SellerNegotiate = (props) => {
                       display: "flex",
                       width: "60%",
                       justifyContent: "flex-start",
-                      padding: "0px 50px",
+                      padding: "0rem 3.125rem",
                     }}
                   >
                     <Typography
@@ -213,10 +213,10 @@ const SellerNegotiate = (props) => {
           <img
             src={props.img}
             alt="wheat img"
-            width="300px"
+            width="18.75rem"
             style={{
-              border: "5px solid darkgreen",
-              borderRadius: "16px",
+              border: ".3125rem solid darkgreen",
+              borderRadius: "1rem",
             }}
           />
         </CardMedia>
@@ -224,13 +224,13 @@ const SellerNegotiate = (props) => {
         <CardActions>
           <Box
             sx={{
-              padding: "20px",
+              padding: "1.25rem",
               display: "flex",
               flexDirection: "column",
-              rowGap: "20px",
+              rowGap: "1.25rem",
               alignItems: "center",
-              border: "3px solid",
-              borderRadius: "20px",
+              border: ".1875rem solid",
+              borderRadius: "1.25rem",
               backgroundColor: "lightyellow"
             }}
           >
@@ -285,7 +285,7 @@ const SellerNegotiate = (props) => {
           sx={{
             display: "flex",
             justifyContent: "space-around",
-            padding: "0px",
+            padding: "0rem",
             width: "100%",
           }}
         >
@@ -305,7 +305,7 @@ const SellerNegotiate = (props) => {
               <ThumbUpIcon
                 variant="contained"
                 onClick={handleSubmit}
-                style={{ color: "green", fontSize: "30px" }}
+                style={{ color: "green", fontSize: "1.875rem" }}
               />
             </Link>
             </IconButton>
@@ -313,7 +313,7 @@ const SellerNegotiate = (props) => {
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               accept
@@ -330,7 +330,7 @@ const SellerNegotiate = (props) => {
             >
               <ThumbDownIcon
                 variant="contained"
-                style={{ color: "lightgreen", fontSize: "30px" }}
+                style={{ color: "lightgreen", fontSize: "1.875rem" }}
               />
             </Link>
               
@@ -339,7 +339,7 @@ const SellerNegotiate = (props) => {
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               reject
@@ -356,17 +356,17 @@ const SellerNegotiate = (props) => {
               style={{
                 backgroundColor: "red",
                 width: "100%",
-                padding: "8px",
+                padding: ".5rem",
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <ErrorSharpIcon
-                style={{ marginRight: "5px", textTransform: "uppercase" }}
+                style={{ marginRight: ".3125rem", textTransform: "uppercase" }}
               />
               Enter only numbers greater than default value
             </InputLabel>

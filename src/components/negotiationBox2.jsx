@@ -64,13 +64,13 @@ function NegotiationBox2(props) {
     "& .MuiBadge-badge": {
       right: -2,
       top: 13,
-      border: `1px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-      width: "30px",
-      height: "30px",
-      fontSize: "20px",
+      border: `0.063rem solid ${theme.palette.background.paper}`,
+      padding: "0rem 0.25rem",
+      width: "1.875rem",
+      height: "1.875rem",
+      fontSize: "1.25rem",
       fontWeight: "600",
-      borderRadius: "20px",
+      borderRadius: "1.25rem",
     },
   }));
 
@@ -79,24 +79,24 @@ function NegotiationBox2(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "6px 0px",
+        padding: "1.25rem",
+        margin: "0.375rem 0rem",
       }}
     >
       <CardMedia
         component="img"
-        height="140px"
+        height="8.75rem"
         image={WheatImg}
         sx={{
-          width: "190px",
-          border: "4px solid #285430",
-          borderRadius: "3px",
+          width: "11.875rem",
+          border: "0.25rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",
@@ -113,9 +113,8 @@ function NegotiationBox2(props) {
         </Typography>
         <Typography
           variant="overline"
-          sx={{
-            fontSize: "22px", fontWeight: "500"
-          }}
+          lineHeight={2.5}
+          sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
           ₹ {props.actualPrice}
         </Typography>
@@ -126,7 +125,6 @@ function NegotiationBox2(props) {
         >
           {props.weight}kg
         </Typography>
-
       </CardContent>
 
       <CardActions
@@ -134,7 +132,7 @@ function NegotiationBox2(props) {
           width: "20%",
           display: "flex",
           flexDirection: "column",
-          rowGap: "20px",
+          rowGap: "1.25rem",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -152,7 +150,7 @@ function NegotiationBox2(props) {
           badgeContent={props.quantity}
           color="success"
         >
-          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "40px" }} />
+          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "2.5rem" }} />
         </StyledBadge>
       </CardActions>
 
@@ -173,9 +171,9 @@ function NegotiationBox2(props) {
         </Typography>
         <Box
           sx={{
-            padding: "20px",
+            padding: "2.5rem",
             display: "flex",
-            columnGap: "20px",
+            columnGap: "1.25rem",
             alignItems: "center",
           }}
         >
@@ -217,16 +215,16 @@ function NegotiationBox2(props) {
             style={{
               backgroundColor: "red",
               width: "100%",
-              padding: "8px",
+              padding: "0.5rem",
               color: "#ffffff",
               fontWeight: "600",
-              fontSize: "18px",
+              fontSize: "1.125rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <ErrorSharpIcon style={{ marginRight: "5px" }} />
+            <ErrorSharpIcon style={{ marginRight: "0.313rem" }} />
             Enter values from {maximum} to {minimum} only
           </InputLabel>
         </Snackbar>

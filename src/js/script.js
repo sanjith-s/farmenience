@@ -74,14 +74,14 @@ function script() {
       }
 
       if (ent.isIntersecting === true) {
-        document.body.classList.remove("sticky");
+        document.body.classListNaNpxove("sticky");
       }
     },
     {
       // In the viewport
       root: null,
       threshold: 0,
-      rootMargin: "-80px",
+      rootMargin: "-5rem",
     }
   );
   obs.observe(sectionHeroEl);
@@ -92,14 +92,14 @@ function script() {
     var flex = document.createElement("div");
     flex.style.display = "flex";
     flex.style.flexDirection = "column";
-    flex.style.rowGap = "1px";
+    flex.style.rowGap = ".0625rem";
 
     flex.appendChild(document.createElement("div"));
     flex.appendChild(document.createElement("div"));
 
     document.body.appendChild(flex);
     var isSupported = flex.scrollHeight === 1;
-    flex.parentNode.removeChild(flex);
+    flex.parentNodeNaNpxoveChild(flex);
     console.log(isSupported);
 
     if (!isSupported) document.body.classList.add("no-flexbox-gap");

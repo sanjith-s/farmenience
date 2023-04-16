@@ -28,7 +28,7 @@
     padding-left: 8%;
     padding-top: 3%;
     padding-bottom: 3%;
-    border-radius: 21px;
+    border-radius: 1.3125rem;
 }
 
 .det-cont-elem{
@@ -40,7 +40,7 @@
 
 .att-header{
     background-color: rgba(65, 209, 62, 1);
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     padding-top: 4.5%;
     padding-left: 4.5%;
     padding-right: 5.5%;
@@ -53,7 +53,7 @@
 
 .att-val{
     background: rgba(190, 202, 190, 1);
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     padding-top: 4.5%;
     padding-left: 4.5%;
     padding-right: 5.5%;
@@ -69,7 +69,7 @@
 
 .btn-gen-btnE{
     background: #FF8787;
-    border-radius: 21px;
+    border-radius: 1.3125rem;
     outline: none;
     border: none;
     padding: 44%;
@@ -79,7 +79,7 @@
 
 .btn-gen-btnP{
     background: #59D246;
-    border-radius: 21px;
+    border-radius: 1.3125rem;
     outline: none;
     border: none;
     padding: 24%;

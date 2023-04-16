@@ -58,9 +58,9 @@ const Success = () => {
       </Typography>
       <div style={{width: "80%",marginLeft:"auto",marginRight:"auto"}} ref={printRef}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <img src={logo} style={{ width: "200px", objectFit: "cover", height: "50px", position: "relative", right: "2%" }} />
-          <span style={{ width: "200px", fontWeight: "bolder", fontSize: "30px" }} >INVOICE</span>
-          <span style={{ width: "200px" }} ></span>
+          <img src={logo} style={{ width: "12.5rem", objectFit: "cover", height: "3.125rem", position: "relative", right: "2%" }} />
+          <span style={{ width: "12.5rem", fontWeight: "bolder", fontSize: "1.875rem" }} >INVOICE</span>
+          <span style={{ width: "12.5rem" }} ></span>
         </div>
         <Row gutter={39} style={{ marginTop: 32 }}>
           <Col span={8}>
@@ -97,7 +97,7 @@ const Success = () => {
           </Table>
           <Col span={12} offset={17} style={{ marginTop: "2%" }} >
             <table>
-              <div style={{ borderBottom: "1px solid", borderTop: "1px solid", paddingTop: "3%", paddingBottom: "3%" }}>
+              <div style={{ borderBottom: ".0625rem solid", borderTop: ".0625rem solid", paddingTop: "3%", paddingBottom: "3%" }}>
                 <tr>
                   <th style={{ textAlign: "left" }}>Net Total - &nbsp;</th>
                   <th>
@@ -116,7 +116,7 @@ const Success = () => {
           color="success"
           onClick={handleDownloadPdf}
           style={{
-            fontSize: "16px",
+            fontSize: "1rem",
             fontWeight: "600",
           }}
         >

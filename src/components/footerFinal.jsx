@@ -31,7 +31,7 @@ import "../css/footer.css";
 const Footer = () => {
 
     return (
-        // <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"20px"}}>
+        // <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"1.25rem"}}>
         //     <Box
         //         sx={{
         //             display: "flex",
@@ -45,27 +45,27 @@ const Footer = () => {
         //         }}
                 
         //     >
-        //         <Grid container sx={{padding:"5px",paddingBottom:"0px"}} spacing={2}>
+        //         <Grid container sx={{padding:".3125rem",paddingBottom:"0rem"}} spacing={2}>
         //             <Grid item sm={5} md={5} xs={12} direction="column" className="foot-body">
-        //                 <CardContent style={{ borderRadius: "8px" }}>
-        //                     <Stack style={{display:"flex",flexDirection:"column",rowGap:"15px"}}>
+        //                 <CardContent style={{ borderRadius: ".5rem" }}>
+        //                     <Stack style={{display:"flex",flexDirection:"column",rowGap:".9375rem"}}>
         //                         <Box className="foot-items" sx={{ display: "flex" }}>
         //                             <LocationOnIcon className="foot-items-logo" style={{fill:"#333"}}  />
-        //                             <Typography sx={{ fontSize: "18px", fontFamily: "Roboto" }}>
+        //                             <Typography sx={{ fontSize: "1.125rem", fontFamily: "Roboto" }}>
         //                                 Sardar Patel Road, Guindy, Chennai<br />Tamilnadu, India<br />Pincode: 600025
         //                             </Typography>
         //                         </Box>
 
         //                         <Box sx={{ display: "flex" }}>
         //                             <PhoneIcon className="foot-items-logo" style={{fill:"#333"}} />
-        //                             <Typography sx={{ fontSize: "18px", fontFamily: "Roboto" }}>
+        //                             <Typography sx={{ fontSize: "1.125rem", fontFamily: "Roboto" }}>
         //                                 +91 99999 99999
         //                             </Typography>
         //                         </Box>
 
         //                         <Box sx={{ display: "flex" }}>
         //                             <EmailIcon className="foot-items-logo" style={{fill:"#333"}} />
-        //                             <Typography sx={{ fontSize: "18px", fontFamily: "Roboto" }}>
+        //                             <Typography sx={{ fontSize: "1.125rem", fontFamily: "Roboto" }}>
         //                                 farmenience23@gmail.com
         //                             </Typography>
         //                         </Box>
@@ -75,19 +75,19 @@ const Footer = () => {
         //             </Grid>
 
         //             <Grid item sm={7} md={7} xs={12} direction="column" >
-        //                 <CardContent style={{  borderRadius: "8px" }}>
+        //                 <CardContent style={{  borderRadius: ".5rem" }}>
         //                     <Stack>
         //                         <Box sx={{ display: "flex"}}>
-        //                             <Typography sx={{ fontSize: "20px", fontWeight: "bold", fontFamily: "Roboto" }}>
+        //                             <Typography sx={{ fontSize: "1.25rem", fontWeight: "bold", fontFamily: "Roboto" }}>
         //                                 ABOUT THE COMPANY
         //                             </Typography>
         //                         </Box>
-        //                         <Box className="regular" sx={{ display: "flex", marginTop: "20px" }}>
-        //                             <Typography className="regular" sx={{ fontSize: "16px" } } >
+        //                         <Box className="regular" sx={{ display: "flex", marginTop: "1.25rem" }}>
+        //                             <Typography className="regular" sx={{ fontSize: "1rem" } } >
         //                                 Farmenience is a website that is built to make farming convenient and economical for the farmers. We are providing solutions to the existing problems in the field of agriculture to make India a healthier economy.<br /> {<Link href="../M17">{'Click me to know more'}</Link>}
         //                             </Typography>
         //                         </Box>
-        //                         <Box className="iconFlex" sx={{ display: "flex", marginTop: "20px",justifyContent:"center",columnGap:"20px" }}>
+        //                         <Box className="iconFlex" sx={{ display: "flex", marginTop: "1.25rem",justifyContent:"center",columnGap:"1.25rem" }}>
         //                             <Link href="https://www.facebook.com/"><FacebookIcon style={{fill:"#333"}} /></Link>
         //                             <Link href="https://www.twitter.com/"><TwitterIcon style={{fill:"#333"}} /></Link>
         //                             <Link href="https://www.linkedin.com/"><LinkedInIcon style={{fill:"#333"}} /></Link>
@@ -101,7 +101,7 @@ const Footer = () => {
         // </Container>
 
         
-<footer class="bg-[#ffff]">
+<footer class="bg-[#ffff] cfoot">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -152,7 +152,6 @@ const Footer = () => {
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
                   <span class="sr-only">Twitter page</span>
               </a>
-             
              
           </div>
       </div>

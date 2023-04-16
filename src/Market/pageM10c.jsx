@@ -45,11 +45,11 @@ const PageM10c = (props) => {
       fullAnotherSpeak(e.target.innerText)
     }}
       style={{
-        padding: "30px 0px",
+        padding: "1.875rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
@@ -58,13 +58,13 @@ const PageM10c = (props) => {
           title={data.name}
         />
       </Box>
-      <Card style={{ padding: "18px", display: "flex", columnGap: "24px" }}>
+      <Card style={{ padding: "1.125rem", display: "flex", columnGap: "1.5rem" }}>
         <CardContent
           style={{
-            padding: "5px 10px",
+            padding: ".3125rem .625rem",
             display: "flex",
             flexDirection: "column",
-            rowGap: "25px",
+            rowGap: "1.5625rem",
           }}
         >
           <Box>
@@ -72,7 +72,7 @@ const PageM10c = (props) => {
               style={{
                 fontWeight: "600",
                 textTransform: "uppercase",
-                fontSize: "26px",
+                fontSize: "1.625rem",
                 color: "#333",
               }}
             >
@@ -83,7 +83,7 @@ const PageM10c = (props) => {
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 color: "#444",
               }}
             >
@@ -98,8 +98,8 @@ const PageM10c = (props) => {
             <Typography
               style={{
                 fontWeight: "400",
-                fontSize: "22px",
-                paddingLeft: "18  px",
+                fontSize: "1.375rem",
+                paddingLeft: "1.125rem",
                 color: "#555",
               }}
             >
@@ -107,17 +107,17 @@ const PageM10c = (props) => {
             </Typography>
           </Box>
         </CardContent>
-        <CardMedia style={{ padding: "20px" }}>
+        <CardMedia style={{ padding: "1.25rem" }}>
           <Paper
             elevation={14}
             style={{
-              width: "200px",
-              height: "200px",
+              width: "12.5rem",
+              height: "12.5rem",
               borderRadius: "50%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: "10px",
+              padding: ".625rem",
               backgroundColor: "#fff",
               position: "sticky",
             }}
@@ -139,8 +139,8 @@ const PageM10c = (props) => {
                     width: "110%",
                     height: "110%",
                     color: "#555555",
-                    border: "10px solid #ffffff",
-                    borderRadius: "500px",
+                    border: ".625rem solid #ffffff",
+                    borderRadius: "31.25rem",
                     backgroundColor: "#86fe9eee",
                   }}
                 />
@@ -151,8 +151,8 @@ const PageM10c = (props) => {
                   width: "110%",
                   height: "110%",
                   color: "#555555",
-                  border: "10px solid #ffffff",
-                  borderRadius: "500px",
+                  border: ".625rem solid #ffffff",
+                  borderRadius: "31.25rem",
                   backgroundColor: "#86fe9eee",
                 }}
               />

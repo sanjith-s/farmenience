@@ -35,10 +35,10 @@ const AboutUsPage = () => {
   // }, []);
 
   return (
-    <div className="about-hero ">
-      <img className="abt-img " src={abtImg5} alt="" />
+    <div className="about-hero">
+      <img className="abt-img" src={abtImg5} alt="" />
 
-      <main className="about-section gradient" onClick={(e) => {
+      <main className="about-section" onClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }}>
         <section>

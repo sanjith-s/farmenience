@@ -22,6 +22,8 @@ function Login() {
     setPwd(document.querySelector("#pwd").value);
   };
 
+  document.title = "Login - Farmenience";
+
   const submit = async (event) => {
     event.preventDefault();
     let emailChk = 0;
@@ -121,7 +123,7 @@ function Login() {
             style={{ textTransform: "uppercase", textAlign: "center" }}
           >
 
-            login page
+            login
           </Typography>
         </Box>
         <TextField onChange={(e)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" sx={{width:"400px"}} value={email} />

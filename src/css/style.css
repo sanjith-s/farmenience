@@ -1,7 +1,15 @@
 /**************************/
 /* HEADER */
 /**************************/
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+.about-hero{
+  /* padding: 4.8rem 4rem ; */
+  display: inline-block;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 600;
+  background-color: #fff;
+  /* background-image: linear-gradient(to right bottom, #eb984e, #e67e22); */
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -98,11 +106,6 @@
 /*  ABOUT US PAGE */
 /**************************/
 
-.about-hero{
-  /* padding: 4.8rem 4rem ; */
-  position: relative; 
-  /* background-image: linear-gradient(to right bottom, #eb984e, #e67e22); */
-}
 
 .about-description{
   background-color: transparent;

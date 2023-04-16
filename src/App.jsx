@@ -268,7 +268,9 @@ function App() {
 
 
       {/* <Footer1 /> */}
+      <footer>
       {displayFooter()}
+      </footer>
     </div >
 
   );

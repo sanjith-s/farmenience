@@ -3,10 +3,11 @@
 
 body{
     /*background: linear-gradient(to right, #a8ff78, #78ffd6); */
+    background-color: #96F0FF;
 }
 
 .title{
-    font-size: 4.6875rem ;
+    font-size: 150px ;
     font-family: 'Montserrat', sans-serif; ;
     margin: 4.375rem;
 }
@@ -14,17 +15,22 @@ body{
 .label{
    
 }
+Typography {
+    font-family: "TimesNewRoman" ;
+    font-size : "15px"; 
+    color:"black";
+}
 
 /* .textbox{
 
 } */
 
 .button{
-    font-size: 1.875rem;
+    font-size: 50px;
     font-family: 'Josefin Sans', sans-serif;
-    border-radius: 2.5rem;
-    width:18.75rem;
-    height: 43.75rem;
+    border-radius: 30px;
+    width:300px;
+    height: 700 px;
     background-color: aquamarine;
 }
 

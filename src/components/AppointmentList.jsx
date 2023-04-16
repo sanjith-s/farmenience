@@ -1,15 +1,8 @@
 import React from "react";
 import {
-    TableContainer,
-    Table,
-    TableRow,
-    TableCell,
-    TableHead,
-    TableBody,
-    Box,
-    Paper,
-    Button
+    Card
 } from "@mui/material";
+import "../css/queryBox.css";
 import { makeStyles } from '@material-ui/styles';
 import { useNavigate } from "react-router-dom";
 
@@ -63,7 +56,34 @@ function AppointmentList(props) {
     const navigate = useNavigate();
 
     return (
-        <Box>
+        <div>
+        <Card id="card-n1">
+                  <div>
+                     {rows.map((row, index) => (
+                        <div className="query-card">
+                          <h3 className="query-card__title">{row.appName}</h3>
+                          <div className="query-card__info">
+                          <p className="query-card__id">Application ID: {row.appID}</p>
+                          <p className="query-card__date">Client Name: {row.clientName}</p>
+                          <p className="query-card__date">Date: {row.dateTime}</p>
+                          <p className="query-card__date">Location: {row.location}</p>
+                          </div>
+                          <div className="query-card__actions">
+                          <div>
+                              <button onClick={() => {
+                                            navigate('../N14a', { state: { data: row } })
+                                        }}
+                              className="query-card__button query-card__button--respond">
+                              View Details
+                              </button>
+                          </div>
+                          </div>
+                    </div>
+                      ))}
+                  </div>
+        </Card>
+        </div>
+/*         <Box>
             <TableContainer
                 component={Paper}
                 style={{
@@ -217,7 +237,7 @@ function AppointmentList(props) {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Box>
+        </Box> */
     );
 }
 

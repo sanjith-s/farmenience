@@ -44,7 +44,9 @@ const PageM2 = () => {
   const ids = location.state ? location.state.reg : data;
   
   return (
-    <Box sx={{ margin: "2.1875rem", justifyContent: "center", alignItems: "center", backgroundColor: "lightgreen" }} id="google_translate_element">
+    <Box sx={{ margin: "40px", justifyContent: "center",
+     alignItems: "center", backgroundColor: "white" }}>
+
       <Typography
         style={{
           textTransform: "uppercase",

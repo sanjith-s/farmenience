@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "../css/queryBox.css";
 import {
   Card,
   CardContent,
@@ -27,16 +28,46 @@ function BuyerRequest(props) {
   };
 
   return (
-    <Card
-      style={{
-        padding: ".9375rem",
-        width: "28.125rem",
-        borderRadius: ".3125rem",
-        border: ".125rem solid #000000",
+    <div>
+      <Card id="card-n1">
+                <div className="query-card">
+                    <h3 className="query-card__title">{props.itemName}</h3>
+                    <div className="query-card__info">
+                        <p className="query-card__id">Request ID: {props.reqId}</p>
+                        <p className="query-card__date">Name: {props.name}</p>
+                        <p className="query-card__date">Phone Number: {props.phoneNo}</p>
+                        <p className="query-card__date">Quantity: {props.itemQuantity}</p>
+                    </div>
+                        <div className="query-card__actions">
+                        <div>
+                            <button onClick={viewRequest} className="query-card__button query-card__button--respond">
+                            <Link
+            to="/M2"
+            state={{
+              from: "Request details",
+              data: props.data,
+            }}
+            style={{ textDecoration: "none" }}
+          >
+                                View Request </Link>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+      </Card>
+      </div>
+/*     <Card
+     boxShadow = {15}
+     style={{
+        padding: "15px",
+        width: "450px",
+        borderRadius: "5px", 
       }}
     >
       <CardContent
         style={{
+          boxShadow:15,
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
@@ -224,7 +255,7 @@ function BuyerRequest(props) {
           </Link>
         </Button>
       </CardActions>
-    </Card>
+    </Card> */
   );
 }
 export default BuyerRequest;

@@ -22,7 +22,7 @@ function Menubar() {
           justifyContent: "space-between",
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center", columnGap: "25px" }}>
+        <Box sx={{ display: "flex", alignItems: "center", columnGap: "1.5625rem" }}>
           <IconButton>
             <Link to="/m0">
             <HomeRoundedIcon fontSize="large" style={{ fill: "#000000" }} />
@@ -31,7 +31,7 @@ function Menubar() {
           <Typography variant="h5">
             <Link to="/m0" style={{textDecoration:"none"}}>
             <Button
-              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+              sx={{ color: "#000000", fontSize: "1.125rem", fontWeight: "600" }}
             >
               Track Orders
             </Button>
@@ -40,7 +40,7 @@ function Menubar() {
           <Typography variant="h5">
             <Link to="" style={{textDecoration:"none"}}>
             <Button
-              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+              sx={{ color: "#000000", fontSize: "1.125rem", fontWeight: "600" }}
             >
               View Requests{" "}
             </Button>
@@ -49,7 +49,7 @@ function Menubar() {
           <Typography variant="h5">
             <Link to="" style={{textDecoration:"none"}}>
             <Button
-              sx={{ color: "#000000", fontSize: "18px", fontWeight: "600" }}
+              sx={{ color: "#000000", fontSize: "1.125rem", fontWeight: "600" }}
             >
               Enter Details
             </Button>

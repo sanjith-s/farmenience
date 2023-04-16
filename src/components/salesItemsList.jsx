@@ -15,7 +15,7 @@ function SalesItemsList(props) {
     <>
     <FormControl>
     <FormLabel style={{display:"flex",justifyContent:"center"}}>
-      <Typography style={{textTransform:"uppercase",fontSize:"28px",fontWeight:"600",textAligh:"center"}}>items list</Typography>
+      <Typography style={{textTransform:"uppercase",fontSize:"1.75rem",fontWeight:"600",textAligh:"center"}}>items list</Typography>
     </FormLabel>
       <RadioGroup
         onChange={valueChangeHandler}

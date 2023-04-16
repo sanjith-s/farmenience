@@ -5,10 +5,10 @@ const OrderTrack = (props) => {
   return (
     <Card
         style={{
-            padding: "15px",
-        width: "450px",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+            padding: ".9375rem",
+        width: "28.125rem",
+        borderRadius: ".3125rem",
+        border: ".125rem solid #000000",
         // display: "flex"
         }}
     >
@@ -17,17 +17,17 @@ const OrderTrack = (props) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          borderTop: ".125rem solid",
+          columnGap: "1.25rem",
         }}
       > 
       <Typography
           style={{
             width: "45%",
             backgroundColor: "#16e575",
-            padding: "5px 5px 5px 10px",
-            borderRadius: "3px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -37,10 +37,10 @@ const OrderTrack = (props) => {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.orderNum}
@@ -49,8 +49,8 @@ const OrderTrack = (props) => {
           style={{
             width: "45%",
             backgroundColor: "#16e575",
-            padding: "5px 5px 5px 10px",
-            borderRadius: "3px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}
@@ -60,10 +60,10 @@ const OrderTrack = (props) => {
         <Typography
           style={{
             width: "55%",
-            paddingLeft: "10px",
-            padding: "5px 5px 5px 10px",
+            paddingLeft: ".625rem",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#c4e1c5",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
           }}
         >
           {props.destination}

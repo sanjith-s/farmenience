@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(20),
     height: theme.spacing(20),
     marginBottom: theme.spacing(2),
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+    boxShadow: "0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25)"
   }
 }))
 
@@ -87,7 +87,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district, homeAddres
             </Stack>
           </Box>
           <Typography variant='h4'>{name}</Typography>
-          <Box sx={{boxShadow:"0px 0px 10px lightgrey",margin:"20%",padding:"2%",borderRadius:"10px 15px",marginBottom:"5%",width: "22%"}}>
+          <Box sx={{boxShadow:"0rem 0rem 0.625rem lightgrey",margin:"20%",padding:"2%",borderRadius:"0.625rem 0.938rem",marginBottom:"5%",width: "22%"}}>
           <Stack spacing={2}>
             <Stack direction={"row"} spacing={2}>
               <Email />
@@ -107,7 +107,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district, homeAddres
             </Stack>
           </Stack>
           </Box>
-          <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "22%" }}>
+          <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "22%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>

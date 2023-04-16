@@ -1,5 +1,4 @@
 import React from "react";
-import '../css/pageN13.css';
 import AppointmentList from "../components/AppointmentList";
 import { Typography, Box, Card } from "@mui/material";
 import Cookies from 'js-cookie';
@@ -36,7 +35,16 @@ function PageN13() {
     }, []);
 
     return (
-        <Card
+        <>
+        <Box className="query-list">
+            <h2 className="query-list__heading">You have appointments</h2>
+            {
+                <AppointmentList data={data} />
+            }
+        </Box>
+            
+          </>
+/*         <Card
             style={{
                 padding: "1.25rem 0rem 1.875rem 0rem",
                 margin: "1.875rem 6.25rem",
@@ -62,7 +70,7 @@ function PageN13() {
             >
                 <AppointmentList data={data} />
             </Box>
-        </Card>
+        </Card> */
     );
 }
 

@@ -21,11 +21,11 @@ const TermsAndCondition = () => {
         <div>
 
           
-            <h2 className="heading-primary" style={{textAlign:"center" , color:"#000",fontWeight:"600",fontSize:"2.625rem"}}>
+            <h2 className="heading-primary" style={{textAlign:"center" , color:"#000",fontWeight:"37.5rem",fontSize:"2.625rem"}}>
               Terms and Condition
             </h2>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}}> Welcome to Farmenience!</h2>
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}}> Welcome to Farmenience!</h2>
 
             <p className="tandc-description indent" >These terms and conditions outline the rules and regulations for the use of Farmenience's Website, located at <a href="#">Farmenience.com </a></p>
 
@@ -35,7 +35,7 @@ const TermsAndCondition = () => {
             The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You” and “Your” refers to you, the person log on this website and compliant to the Company's terms and conditions. “The Company”, “Ourselves”, “We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
             </p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem", fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem", fontWeight:"37.5",marginBottom:"1rem"}} >
               Cookies
             </h2>
 
@@ -43,13 +43,14 @@ const TermsAndCondition = () => {
 
             <p className="tandc-description indent">Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.</p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
               License
             </h2>
 
             <p className="tandc-description indent">Unless otherwise stated, Farmenience and/or its licensors own the intellectual property rights for all material on Farmenience. All intellectual property rights are reserved. You may access this from Farmenience for your own personal use subjected to restrictions set in these terms and conditions.</p>
             
             
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
             You must not:
             </h2>
@@ -92,7 +93,7 @@ const TermsAndCondition = () => {
             <li className="indent">You hereby grant Company Name a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</li>
             </ul>
           
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             Hyperlinking to our Content
             </h2>
 
@@ -155,7 +156,7 @@ const TermsAndCondition = () => {
             No use of Company Name's logo or other artwork will be allowed for linking absent a trademark license agreement.
             </p>
             
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             iFrames
             </h2>
 
@@ -163,7 +164,7 @@ const TermsAndCondition = () => {
             Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.
             </p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem"  , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem"  , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             Content Liability
             </h2>
 
@@ -171,7 +172,7 @@ const TermsAndCondition = () => {
             We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
             </p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             Reservation of Rights
             </h2>
 
@@ -179,7 +180,7 @@ const TermsAndCondition = () => {
             We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions
             </p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             Removal of links from our website
             </h2>
 
@@ -191,7 +192,7 @@ const TermsAndCondition = () => {
             We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.
             </p>
 
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem"  , fontWeight:"600",marginBottom:"16px"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem"  , fontWeight:"37.5rem",marginBottom:"1rem"}} >
             Disclaimer
             </h2>
 

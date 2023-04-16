@@ -6,6 +6,7 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import "../css/queryBox.css";
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -53,6 +54,24 @@ function Query(props) {
     };
   return (
     <div>
+      <Card id="card-n1">
+                <div className="query-card">
+                    <h3 className="query-card__title">{props.queryName}</h3>
+                    <div className="query-card__info">
+                        <p className="query-card__id">Query ID: {props.queryID}</p>
+                        <p className="query-card__date">Date: {props.date}</p>
+                    </div>
+                        <div className="query-card__actions">
+                        <div>
+                            <button onClick={handleClickOpen} className="query-card__button query-card__button--respond">
+                                Respond Query
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+      </Card>
+    {/* /*     
     <Card
       style={{
         padding: "0.94rem",
@@ -164,11 +183,13 @@ function Query(props) {
           display: "flex",
           justifyContent: "center",
         }}
-      >
-        <Button
-          variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-            backgroundColor:"#ffff00",
-          } }}
+      > */ }
+{/*         <Button
+          style={{
+            backgroundColor: "green",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
+          }}
           onClick={handleClickOpen}
         >
             <Typography>
@@ -176,7 +197,7 @@ function Query(props) {
             </Typography>
         </Button>
       </CardActions>
-    </Card>
+    </Card> */}
     <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Response Submit</DialogTitle>
         <DialogContent>

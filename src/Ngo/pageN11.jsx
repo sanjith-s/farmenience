@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../css/pageN11.css';
+import Swal from "sweetalert2";
+import QueryBox from "../components/queryBox";
 import QueryList from "../components/queryList";
-import { Box, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { Box, Typography, TextField, Button, Stack,Pagination} from "@mui/material";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -54,9 +55,30 @@ function PageN11() {
         }
       })
   }, []);
-
-  return (
-    <Box
+return(
+  <>
+  <Box className="query-list">
+      <h2 className="query-list__heading">You have {data.length} queries</h2>
+      {
+          data.map((req,index) => {
+              return (
+                  <div>
+                      <QueryList
+                key={index + 1} 
+                queryID={req._id}
+                queryName={req.subject}
+                queryDesc={req.description}
+                date={req.updatedAt}
+              />
+                  </div>
+              )
+          })
+      }
+  </Box>
+      
+    </>
+     
+    /* <Box
       style={{
         display: "flex",
         alignItems: "center",
@@ -69,6 +91,8 @@ function PageN11() {
         <Typography
           variant="h4"
           style={{ fontWeight: "600", textTransform: "uppercase" }}
+          backgroundColor = "yellow"
+          borderRadius={2}
         >
           you have {data.length} queries to view{" "}
         </Typography>
@@ -103,7 +127,7 @@ function PageN11() {
           })}
         </Box>
       </Box>
-    </Box>
+    </Box> */
   );
 }
 export default PageN11;

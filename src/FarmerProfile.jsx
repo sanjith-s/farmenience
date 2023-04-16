@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(20),
     height: theme.spacing(20),
     marginBottom: theme.spacing(2),
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+    boxShadow: "0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25)"
   }
 }))
 
@@ -124,7 +124,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
           <Typography variant='subtitle1'>Farmer Account</Typography>
           <Grid container rowSpacing={0} columnSpacing={{ xs: 0, sm: 0, md: 0 }} sx={{ width: "80%" }}>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Personal Info</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -149,7 +149,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
               </Box>
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -164,7 +164,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />
@@ -190,7 +190,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
               <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />

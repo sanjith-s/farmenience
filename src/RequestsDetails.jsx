@@ -401,11 +401,11 @@ function BuyerRequestDetails(props) {
           variant="contained"
           style={{
             fontWeight: "600",
-            fontSize: "17px",
+            fontSize: "1.063rem",
             backgroundColor: "green",
             // position: "absolute",
-            top: "20px",
-            left: "20px",
+            top: "1.25rem",
+            left: "1.25rem",
           }}
         >
           Print PDF

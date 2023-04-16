@@ -23,14 +23,14 @@ function CropCard() {
     <Box style={{ display: "flex", justifyContent: "center" }}>
       <Box
         style={{
-          width: "700px",
-          border: "8px solid green",
-          padding: "30px",
-          borderRadius: "5px",
-          borderTopLeftRadius: "50px",
-          borderBottomRightRadius: "50px",
+          width: "43.75rem",
+          border: ".5rem solid green",
+          padding: "1.875rem",
+          borderRadius: ".3125rem",
+          borderTopLeftRadius: "3.125rem",
+          borderBottomRightRadius: "3.125rem",
           backgroundColor: "lightgreen",
-          marginTop: "15px",
+          marginTop: ".9375rem",
         }}
       >
         <Box>
@@ -53,9 +53,9 @@ function CropCard() {
                 setCropName(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
             />
           </FormControl>
@@ -79,9 +79,9 @@ function CropCard() {
                 setHarvestDate(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               placeholder="dd/mm/yyyy"
             />
@@ -120,9 +120,9 @@ function CropCard() {
                 setQuantity(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
             />
           </FormControl>
@@ -152,9 +152,9 @@ function CropCard() {
                 setQuotedAmount(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
             />
           </FormControl>
@@ -162,8 +162,8 @@ function CropCard() {
         <Box
           style={{
             display: "flex",
-            padding: "10px",
-            borderBottom: "1px solid",
+            padding: ".625rem",
+            borderBottom: ".0625rem solid",
             justifyContent: "flex-start",
             alignItems: "center",
           }}
@@ -187,11 +187,11 @@ function CropCard() {
               setCultivation(event.target.value);
             }}
           >
-            <Button style={{ fontWeight: "600", fontSize: "16px" }}>
+            <Button style={{ fontWeight: "600", fontSize: "1rem" }}>
               {" "}
               yes{" "}
             </Button>
-            <Button style={{ fontWeight: "600", fontSize: "16px" }}>
+            <Button style={{ fontWeight: "600", fontSize: "1rem" }}>
               {" "}
               no{" "}
             </Button>

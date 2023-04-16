@@ -115,9 +115,9 @@ const PageM7 = () => {
     <Box
       sx={{
         backgroundColor: "white",
-        margin: "45px",
-        borderRadius: "8px",
-        border: "5px solid",
+        margin: "2.8125rem",
+        borderRadius: ".5rem",
+        border: ".3125rem solid",
         position: "relative",
       }}
     >
@@ -127,7 +127,7 @@ const PageM7 = () => {
           flexDirection: "column",
           alignItems: "center",
           backgroundColor: "transparent",
-          padding: "30px 0px",
+          padding: "1.875rem 0rem",
         }}
       >
         <CssBaseline />
@@ -148,7 +148,7 @@ const PageM7 = () => {
               display: "flex",
               justifyContent: "center",
               width: "100%",
-              padding: "20px",
+              padding: "1.25rem",
             }}
           >
             <ConfirmationTable rows={itemsBought} />
@@ -157,7 +157,7 @@ const PageM7 = () => {
           <Box
             sx={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -183,10 +183,10 @@ const PageM7 = () => {
           <Box
             sx={{
               display: "flex",
-              columnGap: "30px",
+              columnGap: "1.875rem",
               position: "absolute",
-              bottom: "20px",
-              right: "30px",
+              bottom: "1.25rem",
+              right: "1.875rem",
             }}
           >
             <Button

@@ -70,7 +70,7 @@ const Map = () => {
           window.addEventListener("keydown", listener);
       
           return () => {
-            window.removeEventListener("keydown", listener);
+            windowNaNpxoveEventListener("keydown", listener);
           };
     },[]);
     const [currentLocation, setCurrentLocation] = useState({});
@@ -110,7 +110,7 @@ const Map = () => {
                 setSelectedPark(park);
               }}
             >
-              <img src="https://png.pngtree.com/png-clipart/20210311/original/pngtree-location-marker-png-image_5990782.jpg" alt="Skate Park Icon" width="1000px" height="1000px" />
+              <img src="https://png.pngtree.com/png-clipart/20210311/original/pngtree-location-marker-png-image_5990782.jpg" alt="Skate Park Icon" width="62.5rem" height="62.5rem" />
             </button>
           </Marker>
         ))}
@@ -153,7 +153,7 @@ const Map = () => {
                 setSelectedPark(park);
               }}
             >
-              <img src="https://png.pngtree.com/png-clipart/20210311/original/pngtree-location-marker-png-image_5990782.jpg" alt="Skate Park Icon" width="1000px" height="1000px" />
+              <img src="https://png.pngtree.com/png-clipart/20210311/original/pngtree-location-marker-png-image_5990782.jpg" alt="Skate Park Icon" width="62.5rem" height="62.5rem" />
             </button>
           </Marker>
         ))}

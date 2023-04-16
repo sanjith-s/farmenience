@@ -56,9 +56,9 @@ function UserDetails(props) {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "8px 0px",
-        borderRadius: "4px",
+        padding: "1.25rem",
+        margin: ".5rem 0rem",
+        borderRadius: ".25rem",
       }}
     >
       <Typography
@@ -66,7 +66,7 @@ function UserDetails(props) {
         sx={{
           textTransform: "uppercase",
           fontWeight: "600",
-          marginBottom: "15 px",
+          marginBottom: "0.938rem",
           alignSelf: "center",
         }}
       >
@@ -79,7 +79,7 @@ function UserDetails(props) {
           justifyContent: "center",
           alignItems: "flex-end",
           width: "100%",
-          paddingTop: "20px",
+          paddingTop: "1.25rem",
         }}
       >
         <TextField

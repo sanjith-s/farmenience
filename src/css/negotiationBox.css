@@ -5,9 +5,9 @@
   background-color: #fff;
   color: #555;
   font-size: 200;
-  line-height: 20px;
+  line-height: 1.25rem;
   padding: 2rem;
-  margin-top: 10px;
+  margin-top: .625rem;
 }
 
 .product_img {
@@ -23,7 +23,7 @@
 
 .negot_price {
   display: flex;
-  column-gap: 10px;
+  column-gap: .625rem;
 }
 
 .discount_price {
@@ -45,7 +45,7 @@
 .price_limit {
   display: flex;
   flex-direction: row;
-  column-gap: 20px;
+  column-gap: 1.25rem;
   justify-content: center;
   align-items: center;
 }
@@ -56,7 +56,7 @@
   width: fit-content;
   display: inline-block;
   font-size: 1.8rem;
-  border-radius: 50px;
+  border-radius: 3.125rem;
   border-style: none;
   background: none;
   color: #41d13e;
@@ -77,7 +77,7 @@
   width: fit-content;
   display: inline-block;
   font-size: 1.8rem;
-  border-radius: 10px;
+  border-radius: .625rem;
   border-style: none;
   color: #41d13e;
 }
@@ -88,7 +88,7 @@
 }
 
 .limit_input {
-  block-size: 40px;
+  block-size: 2.5rem;
 }
 
 .price_content {
@@ -105,7 +105,7 @@
 
 .date_img {
   align-self: center;
-  row-gap: 20px;
+  row-gap: 1.25rem;
 }
 
 .product_img_caption {
@@ -116,11 +116,11 @@
 
 .end_price_content {
   text-align: center;
-  row-gap: 20px;
+  row-gap: 1.25rem;
 }
 
 .accept_btn {
-  padding: 10px 40px;
+  padding: .625rem 2.5rem;
   display: inline-block;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -131,14 +131,14 @@
   border-radius: 0;
 
   /* position: absolute;
-  bottom: 15px;
-  right: 30px; */
+  bottom: .9375rem;
+  right: 1.875rem; */
 }
 
 .price_list {
   display: flex;
   justify-content: space-between;
-  padding: 0 1.4rem;
+  padding: 0rem 1.4rem;
   text-transform: uppercase;
 }
 

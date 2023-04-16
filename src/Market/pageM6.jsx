@@ -103,12 +103,12 @@ const PageM6 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+    <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
 
       <Typography fontWeight={700} fontSize={50} sx={{
         alignItems:"center",
-        marginLeft:"600px"
+        marginLeft:"37.5rem"
       }}>Sell Products</Typography>
       {count.map(ele=>{
               return ( 
@@ -116,14 +116,14 @@ const PageM6 = () => {
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        sx={{ height: "auto", width: "auto", marginTop: "30px",padding:"50px" }}
+        sx={{ height: "auto", width: "auto", marginTop: "1.875rem",padding:"3.125rem" }}
       >
         <Container
           sx={{
             // bgcolor: "#D9D9D9;",
             height: "100%",
             width: "60vw",
-            borderRadius: "50px",
+            borderRadius: "3.125rem",
             display: "flex",
             flexDirection: "column",
             // justifyContent: "space-evenly",
@@ -272,7 +272,7 @@ const PageM6 = () => {
                               width: "100%",
                               height: "100%",
                               objectFit: "fill",
-                              borderRadius: "50px",
+                              borderRadius: "3.125rem",
                             }}
                           /></TableCell>
                       </TableRow>
@@ -293,15 +293,15 @@ const PageM6 = () => {
 
                 height: "100%",
                 width: "40vw",
-                borderRadius: "50px",
-                paddingLeft: "0px",
-                paddingRight: "0px",
+                borderRadius: "3.125rem",
+                paddingLeft: "0rem",
+                paddingRight: "0rem",
                 display: "flex",
 
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                marginTop:"90px"
+                marginTop:"5.625rem"
               }}
             >
               {!isUploaded && (
@@ -341,7 +341,7 @@ const PageM6 = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "fill",
-                    borderRadius: "50px",
+                    borderRadius: "3.125rem",
                   }}
                 />
               )}
@@ -365,7 +365,7 @@ const PageM6 = () => {
           Delete Item
         </Button>
       </Stack>
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
 
         <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
           Submit

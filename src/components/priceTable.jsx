@@ -30,7 +30,7 @@ function PriceTable(props) {
     <TableContainer
       component={Paper}
       style={{
-        border: "3px solid",
+        border: ".1875rem solid",
         width: "fit-content",
         overflow: "auto",
       }}

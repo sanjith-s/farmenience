@@ -22,20 +22,6 @@ import Axios from "axios";
 import { baseURL } from "../constants";
 
 const PageM18 = () => {
-  // let [prod, setProd] = useState([
-  //   { ele: <ProductCard />, delStatus: 0, num: 0 },
-  // ]);
-
-  // const addProd = () => {
-  //   setProd([
-  //     ...prod,
-  //     {
-  //       ele: <ProductCard />,
-  //       delStatus: 0,
-  //       num: prod[prod.length - 1].num + 1,
-  //     },
-  //   ]);
-  // };
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -87,118 +73,32 @@ const PageM18 = () => {
   return (
     <Box
       sx={{
-        margin: "50px",
+        margin: "3.125rem",
         backgroundColor: "white",
-        padding: "30px",
-        borderRadius: "30px",
-        border: "6px solid",
+        padding: "1.875rem",
+        borderRadius: "1.875rem",
+        border: ".375rem solid",
       }}
     >
-      <Box sx={{ marginBottom: "30px" }}>
+      <Box sx={{ marginBottom: "1.875rem" }}>
         <Typography
-          fontWeight={700} fontSize={"45px"}
+          fontWeight={700} fontSize={"2.8125rem"}
           style={{ textTransform: "uppercase", textAlign: "center" }}
         >
           {" "}
           publish new request{" "}
         </Typography>
       </Box>
-      {/* <Box
-        style={{
-          margin: "0px 200px",
-          paddingTop: "30px",
-          borderRadius: "10px",
-        }}
-      >
-        {prod.map((val) => {
-          return (
-            <Box>
-              {val.delStatus == 0 ? (
-                <Box>
-                  {val.ele}
-                  <Box style={{ display: "flex", justifyContent: "center" }}>
-                    <Button endIcon={<DeleteIcon />}
-                      variant="contained"
-                      style={{
-                        backgroundColor: "green",
-                        color: "white",
-                        fontWeight: "600",
-                        fontSize: "16px",
-                        margin: "30px",
-                      }}
-                      onClick={() => {
-                        let temp = prod.map((id) => {
-                          if (id.num == val.num) {
-                            return { ...id, delStatus: 1 };
-                          } else {
-                            return id;
-                          }
-                        });
-                        setProd(temp);
-                      }}
-                    >
-                      delete
-                    </Button>
-                  </Box>
-                </Box>
-              ) : (
-                <></>
-              )}
-            </Box>
-          );
-        })}
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "20px",
-          paddingBottom: "10px",
-        }}
-      >
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "800px",
-          }}
-        >
-          <Button endIcon={<AddIcon />}
-            variant="contained"
-            onClick={addProd}
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
-          >
-            Add Product
-          </Button>
-          <Button endIcon={<DoneIcon />}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
-          >
-            submit request
-          </Button>
-        </Box> */}
-      {/* </Box> */}
 
       <Box style={{ display: "flex", justifyContent: "center" }}>
         <Box
           style={{
-            width: "700px",
-            border: "8px solid green",
-            padding: "30px",
-            borderRadius: "5px",
-            borderTopRightRadius: "50px",
-            borderBottomLeftRadius: "50px",
+            width: "43.75rem",
+            border: ".5rem solid green",
+            padding: "1.875rem",
+            borderRadius: ".3125rem",
+            borderTopRightRadius: "3.125rem",
+            borderBottomLeftRadius: "3.125rem",
             backgroundColor: "lightgreen",
           }}
         >
@@ -223,9 +123,9 @@ const PageM18 = () => {
                   setName(event.target.value);
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,
@@ -264,9 +164,9 @@ const PageM18 = () => {
                   }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   min: 1,
@@ -313,9 +213,9 @@ const PageM18 = () => {
                   }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   min: 1,
@@ -349,9 +249,9 @@ const PageM18 = () => {
                   // }
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,
@@ -381,9 +281,9 @@ const PageM18 = () => {
                   setLocation(event.target.value);
                 }}
                 style={{
-                  borderRadius: "5px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
+                  borderRadius: ".3125rem",
+                  borderBottomLeftRadius: "0rem",
+                  borderBottomRightRadius: "0rem",
                 }}
                 inputProps={{
                   minLength: 1,

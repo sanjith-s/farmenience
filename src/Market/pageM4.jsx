@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import Swal from 'sweetalert2';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import PriceTable from "../components/priceTable";
@@ -26,6 +27,7 @@ import {
   TableCell,
   TableHead,
 } from "@mui/material";
+
 const itemsBought = [
   {
     sno: 1,
@@ -138,10 +140,16 @@ function PageM4() {
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save('Receipt.pdf');
   }
-    const [open, setOpen] = useState(false);
-    const handleClickOpen = () => {
-      setOpen(true);
+    // const [open, setOpen] = useState(false);
+    const handleClickOpen = async () => {
+      await Swal.fire({
+        icon: 'info',
+        title: 'Client Details',
+        html: "<b>Email: </b> " + data.clientEmailId + "<br /><br />" + "<b>Mobile Number: </b>" + data.clientPh,
+        confirmButtonText: 'Confirm'
+      })
     };
+
     const handleClickClose = () => {
       setOpen(false);
 
@@ -234,7 +242,7 @@ function PageM4() {
                   clientName={data.clientName}
                   paymentMode={data.paymentMode}
                   transactionID={data.transactionID}
-                  remarks={dataNaNpxarks}
+                  remarks={data.remarks}
                 />
               </Box>
               <Box
@@ -256,7 +264,7 @@ function PageM4() {
                   contact client
                 </Button>
               </Box>
-              <Dialog open={open} onClick={handleClickClose} >
+              {/* <Dialog open={open} onClick={handleClickClose} >
                 <DialogTitle style={{ borderBottom: ".3125rem solid green" }}> <Typography style={{ textTransform: "uppercase", fontWeight: "600" }}>client contact details</Typography></DialogTitle>
                 <List>
                   <ListItem>
@@ -266,7 +274,7 @@ function PageM4() {
                     <ListItemButton><Typography>Mobile Number: {data.clientPh}</Typography></ListItemButton>
                   </ListItem>
                 </List>
-              </Dialog>
+              </Dialog> */}
             </CardContent>
 
             <CardContent

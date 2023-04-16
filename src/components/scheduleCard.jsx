@@ -1,5 +1,5 @@
 import React from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import dayjs from 'dayjs';
 import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Divider, Button, TextField, Slide } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';

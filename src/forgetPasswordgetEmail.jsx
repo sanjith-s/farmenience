@@ -129,48 +129,6 @@ const forgetPasswordGetEmail = () => {
                         </Box>
                     </React.Fragment>
                 </Container>
-
-                {/* <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={() => { setOpen(false) }}
-          aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle>CONFIRM?</DialogTitle>
-          <DialogContent>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 200 }} aria-label="simple table">
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Query Subject</TableCell>
-                    <TableCell>{subject}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Description</TableCell>
-                    <TableCell>{desc}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell colSpan={2} rowSpan={2}>
-                      <img
-                        src={file}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "fill",
-                          borderRadius: "3.125rem",
-                        }}
-                      /></TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => { setOpen(false) }}>Cancel</Button>
-            <Button onClick={postQuery}>CONFIRM</Button>
-          </DialogActions>
-        </Dialog> */}
             </Box>
         </div>
     );

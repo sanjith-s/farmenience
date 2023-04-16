@@ -87,7 +87,11 @@ const PageN7 = () => {
           navigate('../login')
         }
         else {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         }
       })
   }
@@ -99,7 +103,11 @@ const PageN7 = () => {
         console.log(response.data);
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
   }
 

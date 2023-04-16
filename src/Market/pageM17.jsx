@@ -110,7 +110,6 @@ function M17() {
           )
         })
         setTransaction(buyTransaction)
-        alert(transaction[0].ifscCode);
       }).catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
             await Swal.fire({

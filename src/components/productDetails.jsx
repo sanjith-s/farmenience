@@ -18,7 +18,7 @@ function ProductDetails(props) {
     props.clientName,
     props.paymentMode,
     props.transactionID,
-    propsNaNpxarks,
+    props.remarks,
   ];
 
   return (

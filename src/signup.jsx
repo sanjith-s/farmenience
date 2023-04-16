@@ -664,7 +664,7 @@ function Signup() {
                   InputLabelProps={{ style: { fontSize: 15 } }}
               </Typography>
 
-              <FormControl variant="standard" sx={{ width: "200px" }}>
+              <FormControl variant="standard" sx={{ width: "12.5rem" }}>
                 <Select value={selection} onClick={selectionChange}>
                   <MenuItem value="Farmer">
                     <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>

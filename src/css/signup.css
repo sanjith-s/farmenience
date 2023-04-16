@@ -7,17 +7,18 @@ body{
 }
 
 .title{
-    font-size: 150px ;
+    font-size: 9.375rem ;
     font-family: 'Montserrat', sans-serif; ;
     margin: 4.375rem;
 }
 
-.label{
+/* .label{
    
-}
+} */
+
 Typography {
     font-family: "TimesNewRoman" ;
-    font-size : "15px"; 
+    font-size : ".9375rem"; 
     color:"black";
 }
 
@@ -26,11 +27,11 @@ Typography {
 } */
 
 .button{
-    font-size: 50px;
+    font-size: 3.125rem;
     font-family: 'Josefin Sans', sans-serif;
-    border-radius: 30px;
-    width:300px;
-    height: 700 px;
+    border-radius: 1.875rem;
+    width:18.75rem;
+    height: 43.75rem;
     background-color: aquamarine;
 }
 

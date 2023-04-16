@@ -234,13 +234,6 @@ const PageN14a = () => {
                   onClick={() => {
                     navigate('../N14b', { state: { id: data.appID, name: data.appName } })
                   }}
-                  variant="contained"
-                  style={{
-                    color: "white",
-                    backgroundColor: "green",
-                    fontWeight: "600",
-                    fontSize: "1.125rem",
-                  }}
                 >
                   Reschedule
                 </Button>

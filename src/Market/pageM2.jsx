@@ -44,7 +44,7 @@ const PageM2 = () => {
   const ids = location.state ? location.state.reg : data;
   
   return (
-    <Box sx={{ margin: "40px", justifyContent: "center",
+    <Box sx={{ margin: "2.5rem", justifyContent: "center",
      alignItems: "center", backgroundColor: "white" }}>
 
       <Typography

@@ -16,7 +16,6 @@ import {
   Container,
 } from "@mui/material";
 import { baseURL } from '../constants';
-import DeleteIcon from "@mui/icons-material/Delete";
 
 const PageN14a = () => {
 
@@ -132,34 +131,33 @@ const PageN14a = () => {
     }}>
       <Typography
         variant="h3"
-        style={{  textAlign: "center" }}
+        style={{ textTransform: "uppercase", textAlign: "center" }}
       >
-        View Appoinment
+        VIEW APPOINTMENT
       </Typography>
       <Box className="gx-d-flex justify-content-center"
         sx={{
-          boxShadow : 5,
           display: "flex",
           flexDirection: "column",
-          /* border: "0.19rem solid", */
+          border: "0.19rem solid",
           justifyContent: "center",
           rowGap: "1.25rem",
           padding: "1.875rem 1.875rem",
           paddingRight: "0",
-          backgroundColor: "#ffffff",
+          backgroundColor: "#7bff96",
           margin: "1.625rem",
-          /* borderRadius: "0.5rem", */
+          borderRadius: "0.5rem",
         }}
       >
         <Stack direction={"row"}>
-          {/* <Box
+          <Box
             sx={{
               borderRadius: "0.5rem",
               border: "0.25rem solid #000",
               backgroundColor: "#fff",
               width: "100%"
             }}
-          > */}
+          >
             <Grid container item xs={12} direction="column">
               <CardContent
                 style={{ padding: "0.94rem", borderRadius: "0.5rem" }}
@@ -180,27 +178,16 @@ const PageN14a = () => {
                       >
                         <Typography
                           style={{
-                            margin:"10px",
-                            fontSize: "1rem",
-                            padding: "7px",
-                            fontWeight:600,
-                            width:"200px",
-                            /* backgroundColor :"#99edc3", */
-                            borderRadius:"7px",
+                            fontWeight: "600",
+                            fontSize: "1.25rem",
+                            textTransform: "uppercase",
                           }}
                         >
                           {value}
                         </Typography>
                         <Typography
-                          style={{
-                            margin:"10px",
-                            fontSize: "1rem",
-                            padding: "7px",
-                            background: "#f5f5f5",
-                            marginLeft: "5px",
-                            borderRadius: "4px",
-                            width: "70%",
-                          }}
+                          variant="h6"
+                          style={{ textTransform: "capitalize" }}
                         >
                           {itemsValue1[index]}
                         </Typography>
@@ -210,7 +197,7 @@ const PageN14a = () => {
                 </Stack>
               </CardContent>
             </Grid>
-          {/* </Box> */}
+          </Box>
           <Box>
             <Stack spacing={2} display="flex" justifyContent={"center"} alignContent="center" alignItems={"center"} >
               <img
@@ -223,36 +210,20 @@ const PageN14a = () => {
                   borderRadius: "3.125rem",
                 }}
               /><br />
-              <Stack direction={"row"} spacing={4}>
-               {/*  <Button
+              <Stack direction={"column"} spacing={4}>
+                <Button
                   onClick={DeleteAppointment}
                   variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
                     backgroundColor:"#ffff00",
                   } }}
                 >
                   DELETE
-                </Button> */}
-                <Button
-                onClick={DeleteAppointment}
-                variant="contained"
-                sx={{
-                  backgroundColor: "red",
-                  "&:hover": {
-                    backgroundColor: "red",
-                  },
-                }}
-              >
-                <DeleteIcon />
-                Delete
-              </Button>
+                </Button>
                 <Button
                   onClick={AcceptAppointment}
-                  variant="contained"
-                  style={{
-                    backgroundColor: "green",
-                    /* fontWeight: "600",
-                    fontSize: "1.125rem", */
-                  }}
+                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}
                 >
                   ACCEPT
                 </Button>
@@ -263,12 +234,11 @@ const PageN14a = () => {
                   onClick={() => {
                     navigate('../N14b', { state: { id: data.appID, name: data.appName } })
                   }}
-                  variant="contained"
                   style={{
                     color: "white",
-                    backgroundColor: "blue",
-                    /* fontWeight: "600",
-                    fontSize: "1.125rem", */
+                    backgroundColor: "green",
+                    fontWeight: "600",
+                    fontSize: "1.125rem",
                   }}
                 >
                   Reschedule

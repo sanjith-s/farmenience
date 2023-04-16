@@ -54,8 +54,8 @@ const PageN12 = () => {
     <Container id="google_translate_element"
       style={{
 
-        margin : "30px",
-        padding: "15px 0px",
+        margin : "1.875rem",
+        padding: ".9375rem 0rem",
 
         backgroundColor: "transparent",
         display: "flex",
@@ -81,7 +81,7 @@ const PageN12 = () => {
           >
             <ArrowBackIcon
               sx={{
-                fontSize: "40px",
+                fontSize: "2.5rem",
               }}
             />
           </IconButton>
@@ -101,19 +101,19 @@ const PageN12 = () => {
 
       <Box
         sx={{
-          margin:"30px",
-          padding: "20px",
+          margin:"1.875rem",
+          padding: "1.25rem",
           backgroundColor: "#ffffff",
           boxShadow : 10,
-          borderRadius: "10px",
+          borderRadius: ".625rem",
         }}
       >
         <Grid
           container
           sx={{
 
-            margin: "10px",
-            padding: "10px",
+            margin: ".625rem",
+            padding: ".625rem",
             height: "100%",
           }}
           columnSpacing={2}
@@ -128,13 +128,13 @@ const PageN12 = () => {
               
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   fontWeight:600,
-                  width:"125px",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Query ID:
@@ -142,12 +142,12 @@ const PageN12 = () => {
               <Typography
                 style={{
 
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   background: "#f5f5f5",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -164,26 +164,26 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   fontWeight:600,
-                  width:"125px",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Query Type:
               </Typography>
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   background: "#f5f5f5",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
-                  width: "350px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
+                  width: "21.875rem",
                 }}
               >
                 {content.type}
@@ -199,25 +199,25 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   fontWeight:600,
-                  width:"125px",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Query Name:
               </Typography>
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   background: "#f5f5f5",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -236,25 +236,25 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   fontWeight:600,
-                  width:"125px",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Description:
               </Typography>
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "7px",
+                  padding: ".4375rem",
                   background: "#f5f5f5",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "90%",
                 }}
               >
@@ -272,25 +272,25 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontWeight:600,
                   fontSize: "1rem",
-                  padding: "10px",
-                  width:"125px",
+                  padding: ".625rem",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Date:
               </Typography>
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontSize: "1rem",
-                  padding: "10px",
+                  padding: ".625rem",
                   background: "#f5f5f5",
-                  marginLeft: "5px",
-                  borderRadius: "4px",
+                  marginLeft: ".3125rem",
+                  borderRadius: ".25rem",
                   width: "70%",
                 }}
               >
@@ -308,13 +308,13 @@ const PageN12 = () => {
             >
               <Typography
                 style={{
-                  margin:"10px",
+                  margin:".625rem",
                   fontWeight:600,
                   fontSize: "1rem",
-                  padding: "10px",
-                  width:"125px",
+                  padding: ".625rem",
+                  width:"7.8125rem",
                   /* backgroundColor :"#99edc3", */
-                  borderRadius:"7px",
+                  borderRadius:".4375rem",
                 }}
               >
                 Attachments:
@@ -323,7 +323,7 @@ const PageN12 = () => {
               <FormControl
                 variant="standard"
                 sx={{
-                  margin:"10px",
+                  margin:".625rem",
                   width: "50%",
                   borderRadius: ".25rem",
                   color: "black",

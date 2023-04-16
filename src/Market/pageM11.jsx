@@ -486,6 +486,7 @@ const PageM11 = () => {
                         type = {v.type}
                         cartArray ={setcart}
                         array = {cart}
+                        imgsrc={v.filename}
                       />
                     // );
                   // }

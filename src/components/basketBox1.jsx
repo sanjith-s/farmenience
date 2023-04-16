@@ -21,7 +21,7 @@ function BasketBox1(props) {
   const decrement = () => {
     if(counter > 0) setcounter(counter >= 2 ? counter - 1 : (counter = 1));
   };
-
+  // console.log(props.filename);
   props.onCounterHandler(counter, props.index);
 
   return (
@@ -36,7 +36,7 @@ function BasketBox1(props) {
       <CardMedia
         component="img"
         height="120"
-        image={WheatImg}
+        image={props.imgsrc}
         sx={{
           width: "150px",
           border: "3px solid #285430",

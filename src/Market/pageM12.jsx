@@ -488,6 +488,7 @@ function PageM12() {
                       index={item.index}
                       userQuantity={qcounter}
                       onCounterHandler={QuantityCounterHandler}
+                      imgsrc={item.filename}
                     />
                   </Box>
                 );

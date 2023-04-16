@@ -26,7 +26,7 @@ function MarketCard(props) {
       price: props.price,
       rating: props.stars,
       type: props.type,
-      // sellerName: 
+      filename: props.imgsrc 
     } 
     // console.log(props.array);
     let dummy=props.array;
@@ -46,7 +46,7 @@ function MarketCard(props) {
       }}
     >
       <CardMedia style={{ display: "flex", justifyContent: "center" }}>
-        <img width="100px" src={img} alt="product image" />
+        <img width="100px" src={props.imgsrc} alt="product image" />
       </CardMedia>
       <CardContent
         style={{

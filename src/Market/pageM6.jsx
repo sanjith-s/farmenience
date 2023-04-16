@@ -86,17 +86,29 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
+    let filename='';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', fileName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename=response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
 
+      alert(filename);
+      
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
       quantity: quantity,
       type: type,
       rating: rating,
-      image: {
-        data: file,
-        contentType: "jpg"
-      },
+      filename: filename,
       sellerName: "",
       sellerEmail: ""
     }, { headers: { tokenstring: token } })

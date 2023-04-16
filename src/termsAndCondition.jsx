@@ -50,7 +50,7 @@ const TermsAndCondition = () => {
             <p className="tandc-description indent">Unless otherwise stated, Farmenience and/or its licensors own the intellectual property rights for all material on Farmenience. All intellectual property rights are reserved. You may access this from Farmenience for your own personal use subjected to restrictions set in these terms and conditions.</p>
             
             
-            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} >
+            <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"37.5rem",marginBottom:"1rem"}} ></h2>
             <h2 className="heading-tertiary" style={{fontSize:"1.75rem" , fontWeight:"600",marginBottom:"16px"}} >
             You must not:
             </h2>

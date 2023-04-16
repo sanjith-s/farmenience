@@ -12,6 +12,7 @@ import Axios from "axios"
 import "../css/button.css"
 
 function BuyerRequest(props) {
+
   const viewRequest = () => {
     const [buyerRequestDetails, setBuyerRequestDetails] = useState([]);
 
@@ -25,6 +26,12 @@ function BuyerRequest(props) {
       }
     });
   };
+
+  console.log("requestBox:")
+  
+  const data = props.data;
+  Object.assign(props.data, {"index" : `${props.key}`});
+  console.log(props.data);
 
   return (
     <Card
@@ -213,7 +220,7 @@ function BuyerRequest(props) {
             to="/M2"
             state={{
               from: "Request details",
-              data: props.data,
+              data: data,
               reg: props.reqId
             }}
             style={{ textDecoration: "none" }}

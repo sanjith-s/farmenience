@@ -83,12 +83,17 @@ function PageM1() {
     content = orders;
   }
 
-  //  useEffect(()=> {
-  //   setOrders(content);
-  //   console.log("useeffect");
-  //  },content)
+  useEffect(()=>{
+    localStorage.setItem("orders",JSON.stringify(orders)) 
+  },[])
 
-  //  setOrders(content);   
+  // const [changeOrders,setChangeOrders] = useState(()=>{
+  //   const savedItem = localStorage.getItem("orders");
+  //   const parsedItem = JSON.parse(savedItem);
+  //   return parsedItem || " nothing "
+  // }) ;
+  // console.log("changeOrders");
+  // console.log(changeOrders);
 
 
   return (
@@ -127,9 +132,15 @@ function PageM1() {
           }}
         >
           {orders.map((req, index) => {
+            // {console.log(req) ;
+            //   Object.assign(req, {"index" : `${index}`});
+            //   console.log("updated:");
+            //   console.log(req);
+            // }
+            console.log(`index : ${index}`)
             return (
               <RequestBox
-                key={index + 1}
+                key={index}
                 reqId={req._id}
                 name={req.name}
                 phoneNo={req.phoneNumber}

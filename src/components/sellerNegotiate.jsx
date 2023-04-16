@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
@@ -45,18 +45,46 @@ const SellerNegotiate = (props) => {
   ];
 
   console.log(props.address);
+// --------------------------------------------------------------------
+
+  const [orders,setOrders] = useState(()=>{
+    const savedItem = localStorage.getItem('orders');
+    const parsedItem = JSON.parse(savedItem);
+    return parsedItem || " nothing "
+  }) ;
+
+  const index = orders.indexOf(orders.find((order)=> { 
+    return order._id === props.id;
+  }));
+
+  console.log(index);
+
+  // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
+    orders[index].price = newLimit ;
     setLimit(newLimit);
   };
 
   let [quantity, setQuantity] = useState(props.iquantity);
   const quantityHandler = (event) => {
     let newQuantity = event.target.value;
+    orders[index].quantity = newQuantity ;
     setQuantity(newQuantity);
+    
   };
+
+  // ----------------------------------------------------------------------------
+
+  
+  useEffect(()=>{
+    console.log("useEffects");
+    localStorage.setItem("orders",JSON.stringify(orders)) 
+  },[limit,quantity]);
+
+  // -----------------------------------------------------------------------------
 
   const [open, setOpen] = useState(false);
 
@@ -84,6 +112,8 @@ const SellerNegotiate = (props) => {
       return;
     }
   };
+
+  
 
   return (
     <Card
@@ -208,6 +238,8 @@ const SellerNegotiate = (props) => {
               {" "}
               negotiate price{" "}
             </Typography>
+            
+            {/* -------------------------------------------------------------------------------------- */}
             <FormControl style={{ position: "sticky" }}>
               <InputLabel htmlFor="outlined-adornment-quantity">
                 Quantity
@@ -245,7 +277,9 @@ const SellerNegotiate = (props) => {
                 label="Price"
               />
             </FormControl>
+            {/* ----------------------------------------------------------------------------------------- */}
           </Box>
+
         </CardActions>
         <Box
           sx={{

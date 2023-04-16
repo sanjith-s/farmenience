@@ -77,7 +77,6 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/getqueriesN10`, { headers: { tokenstring: token } }).
       then((response) => {
-        alert("hi");
         setQueries([...response.data.message,...queries]);
         console.log(response.data.message);
         console.log(queries);
@@ -142,7 +141,7 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
       </Box>
       <TabPanel value={value} index={0}>
         <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={() => { document.getElementById("roller1").stop() }} onMouseOut={() => { document.getElementById("roller1").start() }} >
-          <div className='shower' style={{ margin: "2%" }}>
+          <div className='shower' style={{ margin: "2%",height:"100%" }}>
             {queries.map((que, ind) => {
               return (<div className='texts-box'>
                 <a className='links' href="/n11">

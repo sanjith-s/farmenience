@@ -96,7 +96,7 @@ function ShowUserDetails(props) {
               width: "80%",
             }}
           >
-            {props.userAddressLine1}, {props.userAddressLine2}
+            {props.userAddressLine1},<br/> {props.userAddressLine2}
           </Typography>
         </Box>
       </CardContent>

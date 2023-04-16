@@ -15,6 +15,15 @@ const data = {
   img: wheat,
 };
 
+const [quantity,setQuantity] = useState(1);
+const [price,setPrice] = useState()
+
+
+
+useEffect(()=>{
+
+},[quantity,price])
+
 const PageM2 = () => {
 
   // const googleTranslateElementInit = () => {

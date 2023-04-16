@@ -22,20 +22,6 @@ import Axios from "axios";
 import { baseURL } from "../constants";
 
 const PageM18 = () => {
-  // let [prod, setProd] = useState([
-  //   { ele: <ProductCard />, delStatus: 0, num: 0 },
-  // ]);
-
-  // const addProd = () => {
-  //   setProd([
-  //     ...prod,
-  //     {
-  //       ele: <ProductCard />,
-  //       delStatus: 0,
-  //       num: prod[prod.length - 1].num + 1,
-  //     },
-  //   ]);
-  // };
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -103,92 +89,6 @@ const PageM18 = () => {
           publish new request{" "}
         </Typography>
       </Box>
-      {/* <Box
-        style={{
-          margin: "0px 200px",
-          paddingTop: "30px",
-          borderRadius: "10px",
-        }}
-      >
-        {prod.map((val) => {
-          return (
-            <Box>
-              {val.delStatus == 0 ? (
-                <Box>
-                  {val.ele}
-                  <Box style={{ display: "flex", justifyContent: "center" }}>
-                    <Button endIcon={<DeleteIcon />}
-                      variant="contained"
-                      style={{
-                        backgroundColor: "green",
-                        color: "white",
-                        fontWeight: "600",
-                        fontSize: "16px",
-                        margin: "30px",
-                      }}
-                      onClick={() => {
-                        let temp = prod.map((id) => {
-                          if (id.num == val.num) {
-                            return { ...id, delStatus: 1 };
-                          } else {
-                            return id;
-                          }
-                        });
-                        setProd(temp);
-                      }}
-                    >
-                      delete
-                    </Button>
-                  </Box>
-                </Box>
-              ) : (
-                <></>
-              )}
-            </Box>
-          );
-        })}
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "20px",
-          paddingBottom: "10px",
-        }}
-      >
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "800px",
-          }}
-        >
-          <Button endIcon={<AddIcon />}
-            variant="contained"
-            onClick={addProd}
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
-          >
-            Add Product
-          </Button>
-          <Button endIcon={<DoneIcon />}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "16px",
-            }}
-          >
-            submit request
-          </Button>
-        </Box> */}
-      {/* </Box> */}
 
       <Box style={{ display: "flex", justifyContent: "center" }}>
         <Box

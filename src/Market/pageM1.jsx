@@ -63,7 +63,10 @@ function PageM1() {
     });
   }, []);
 
-  let location = useLocation();
+  	
+
+
+  let location = useLocation(); 
   // const [content,setContent] = useState(orders);
   let content;
   let data = location.state;

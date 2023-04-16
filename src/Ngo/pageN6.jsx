@@ -134,6 +134,7 @@ function PageN6() {
               >
                 <img
                   src={request.filename}
+                  alt="!!!! No image uploaded !!!!"
                   style={{
                     width: "100%",
                     height: "100%",

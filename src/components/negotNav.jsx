@@ -25,7 +25,7 @@ function NegotNav({ handleClick }) {
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit Quantity">
-          <IconButton color="success" onClick={()=>handleClick(3)}>
+          <IconButton color="success" onClick={()=>handleClick(1)}>
             <ShoppingBasketIcon style={{ color: "#ffffff" }} />
           </IconButton>
         </Tooltip>

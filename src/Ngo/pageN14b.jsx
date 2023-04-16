@@ -113,40 +113,44 @@ const PageN14b = () => {
     };
 
     return (
+<<<<<<< Updated upstream
         <Container style={{ padding: "1.875rem 0rem" }} id="google_translate_element" onClick={(e) => {
             fullAnotherSpeak(e.target.innerText)
         }}>
+=======
+        <Container  style={{ padding: "1.875rem 0rem" }}>
+>>>>>>> Stashed changes
             <Typography
                 variant="h3"
-                style={{ textTransform: "uppercase", textAlign: "center" }}
+                style={{ textAlign: "center" }}
             >
-                RESCHEDULE APPOINTMENT
+                Reschedule Appointment
             </Typography>
+<<<<<<< Updated upstream
             <Box className="gx-d-flex justify-content-center"
+=======
+            <Box
+                /* margin = {5} */
+                 ml = {30} mb = {5} mt = {5} mr = {5} 
+>>>>>>> Stashed changes
                 sx={{
+                    width:"700px",
                     display: "flex",
                     flexDirection: "column",
-                    border: "0.19rem solid",
+                    boxShadow: 10,
+                    /* border: "0.19rem solid", */
                     justifyContent: "center",
                     alignItems: "center",
                     rowGap: "1.25rem",
-                    padding: "1.875rem 0rem",
-                    backgroundColor: "#7bff96",
-                    margin: "1.625rem",
+                    padding: "10px",
+                    backgroundColor: "#ffffff",
                     borderRadius: "0.5rem",
                 }}
             >
-                <Box
-                    sx={{
-                        width: "62.5rem",
-                        borderRadius: "0.5rem",
-                        border: "0.25rem solid #000",
-                        backgroundColor: "#fff",
-                    }}
-                >
                     <Grid container spacing={2} >
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", 
+                            borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName1.map((value, index) => {
                                         return (
@@ -157,47 +161,62 @@ const PageN14b = () => {
                                                     columnGap: "1.25rem",
                                                     justifyContent: "space-between",
                                                     height: "15.625rem",
-                                                    alignItems: "center",
+                                                    alignItems: "left",
                                                     margin: "0.125 0rem",
                                                 }}
                                             >
                                                 <Box padding="1.25rem">
                                                     <Typography
+                                                    align = "left"
                                                         style={{
-                                                            fontWeight: "600",
-                                                            fontSize: "1.25rem",
-                                                            textTransform: "uppercase",
+                                                            margin:"10px",
+                                                            fontSize: "1rem",
+                                                            padding: "7px",
+                                                            fontWeight:600,
+                                                            width:"200px",
+                                                            borderRadius:"7px",
                                                         }}
                                                     >
                                                         {value}
                                                     </Typography>
                                                     <Typography
-                                                        variant="h6"
-                                                        style={{ textTransform: "capitalize" }}
+                                                        
+                                                        style={{
+                                                        margin:"10px",
+                                                        fontSize: "1rem",
+                                                        padding: "7px",
+                                                        background: "#f5f5f5",
+                                                        borderRadius: "4px",
+                                                         }}
                                                     >
                                                         {itemsValue1[index]}
                                                     </Typography>
                                                 </Box>
-                                                <Box padding="1.25rem">
+                                                <Box padding="1.25rem" >
                                                     <InputLabel>
                                                         <Typography
-                                                            variant="h6"
+                                                            
                                                             style={{
-                                                                fontWeight: "600",
-                                                                fontSize: "1.25rem",
-                                                                textTransform: "uppercase",
-                                                                color: "black",
+                                                            margin:"5px",
+                                                            fontSize: "1rem",
+                                                            padding: "7px",
+                                                            fontWeight:600,
+                                                            width:"200px",
+                                                            borderRadius:"7px",
+                                                            color:"black"
                                                             }}
                                                         >
                                                             Date
                                                         </Typography>
                                                     </InputLabel>
                                                     <FilledInput
+                                                    align = "left"
                                                         type="date"
                                                         onChange={(event) => {
                                                             setDate(event.target.value);
                                                         }}
                                                         style={{
+                                                            margin:"5px",
                                                             borderRadius: "0.31rem",
                                                             borderBottomLeftRadius: "0rem",
                                                             borderBottomRightRadius: "0rem",
@@ -213,7 +232,8 @@ const PageN14b = () => {
                         </Grid>
 
                         <Grid container item xs={6} direction="column" >
-                            <CardContent style={{ padding: "0.94rem 1.56rem", borderRadius: "0.5rem" }}>
+                            <CardContent style={{ padding: "0.94rem 1.56rem", 
+                            borderRadius: "0.5rem" }}>
                                 <Stack>
                                     {itemsName2.map((value, index) => {
                                         return (
@@ -223,24 +243,32 @@ const PageN14b = () => {
                                                     display: "grid",
                                                     columnGap: "1.25rem",
                                                     justifyContent: "space-between",
-                                                    height: "15.625",
-                                                    alignItems: "center",
-                                                    margin: "0.125rem 0rem",
+                                                    height: "15.625rem",
+                                                    alignItems: "left",
+                                                    margin: "0.125 0rem",
                                                 }}
                                             >
                                                 <Box padding="1.25rem">
                                                     <Typography
+                                                    align = "left"
                                                         style={{
-                                                            fontWeight: "600",
-                                                            fontSize: "1.25rem",
-                                                            textTransform: "uppercase",
+                                                            margin:"10px",
+                                                            fontSize: "1rem",
+                                                            padding: "7px",
+                                                            fontWeight:600,
+                                                            width:"200px",
+                                                            borderRadius:"7px",
                                                         }}
                                                     >
                                                         {value}
                                                     </Typography>
                                                     <Typography
-                                                        variant="h6"
-                                                        style={{ textTransform: "capitalize" }}
+                                                    style = {{
+                                                        margin:"10px",
+                                                        fontSize: "1rem",
+                                                        padding: "7px",
+                                                        background: "#f5f5f5",
+                                                        borderRadius: "4px",}}
                                                     >
                                                         {itemsValue2[index]}
                                                     </Typography>
@@ -248,23 +276,27 @@ const PageN14b = () => {
                                                 <Box padding="1.25rem">
                                                     <InputLabel>
                                                         <Typography
-                                                            variant="h6"
-                                                            style={{
-                                                                fontWeight: "600",
-                                                                fontSize: "1.25rem",
-                                                                textTransform: "uppercase",
-                                                                color: "black",
-                                                            }}
+                                                             style={{
+                                                                margin:"5px",
+                                                                fontSize: "1rem",
+                                                                padding: "7px",
+                                                                fontWeight:600,
+                                                                width:"200px",
+                                                                borderRadius:"7px",
+                                                                color:"black"
+                                                                }}
                                                         >
                                                             Time
                                                         </Typography>
                                                     </InputLabel>
                                                     <FilledInput
+                                                    align = "left"
                                                         type="time"
                                                         onChange={(event) => {
                                                             setTime(event.target.value);
                                                         }}
                                                         style={{
+                                                            margin:"5px",
                                                             borderRadius: "0.31rem",
                                                             borderBottomLeftRadius: "0rem",
                                                             borderBottomRightRadius: "0rem",
@@ -279,13 +311,22 @@ const PageN14b = () => {
                             </CardContent>
                         </Grid>
                     </Grid>
-                </Box>
-                <Box sx={{ display: "flex", columnGap: "3.125rem", justify: "center" }}>
+
+                <Box  sx={{ columnGap: "3.125rem", justify: "center" }}>
                     <Button onClick={RescheduleAppointment}
                         variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
                             backgroundColor:"#ffff00",
                           } }}
                         style={{
+<<<<<<< Updated upstream
+=======
+                            margin:"20px",
+                            color: "white",
+                            backgroundColor: "blue",
+                            /* backgroundColor: "green", */
+                            fontWeight: "600",
+                            fontSize: "1.125rem",
+>>>>>>> Stashed changes
                             justify: "center",
                         }}
                     >

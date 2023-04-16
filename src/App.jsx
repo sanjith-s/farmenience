@@ -182,8 +182,8 @@ function App() {
 
   return (
     <div>
-      <N10Navbar />
-      {/* {displayNavbar()} */}
+      {/* <N10Navbar /> */}
+      {displayNavbar()}
       <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }} >
@@ -270,7 +270,6 @@ function App() {
       {/* <Footer1 /> */}
       {displayFooter()}
     </div >
-
   );
 }
 

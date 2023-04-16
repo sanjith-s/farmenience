@@ -19,6 +19,7 @@ import {
   StepLabel,
   InputAdornment,
   IconButton,
+  Container,
 } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -257,6 +258,7 @@ function Signup() {
         flexDirection: "column",
         alignItems: "center",
         rowGap: "40px",
+        
       }}
     >
       <Stepper activeStep={activeStep}>
@@ -550,7 +552,7 @@ function Signup() {
           <form style={{ width: "450px" }}>
             {selection === "Farmer" &&
               <>
-                <Container
+                {/* <Container
                   disableGutters={true}
                   sx={{
                     bgcolor: "#ffff",
@@ -607,7 +609,7 @@ function Signup() {
                       }}
                     />
                   )}
-                </Container>
+                </Container> */}
 
                 <Box
                 >
@@ -649,7 +651,6 @@ function Signup() {
               <Box
 
               >
-
                 <Typography
                   style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
@@ -682,29 +683,17 @@ function Signup() {
 
             {selection === "Retailer" &&
               <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
 
+              >
                 <Typography
                   style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
                   Trading License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   <br />
                   <br />
@@ -716,17 +705,9 @@ function Signup() {
                   Aadhaar Card of Owner
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
-                  style={{ width: "fit-content", height: "fit-content" }}
                 >
                   <br />
                   <br />

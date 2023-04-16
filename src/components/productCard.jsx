@@ -7,11 +7,7 @@ import {
   FilledInput,
   InputLabel,
   Typography,
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Button,
+  Box
 } from "@mui/material";
 
 function ProductCard(props) {

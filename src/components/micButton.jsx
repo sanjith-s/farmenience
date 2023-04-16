@@ -1,7 +1,6 @@
 import React from "react";
 import { Mic, Stop, PlayArrow } from "@material-ui/icons";
 
-
 export default function Button({ title, record, play, stop, playStop }) {
   switch (title) {
     case "Square": {

@@ -1,7 +1,5 @@
 import React , {useState} from "react";
-
 import { FormControl,FormControlLabel,RadioGroup,Radio,Typography, FormLabel } from "@mui/material";
-
 
 function SalesItemsList(props) {
   

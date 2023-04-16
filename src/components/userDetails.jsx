@@ -1,23 +1,7 @@
 import React, { useState } from "react";
-import { Box, Card, TextField, Typography, Dialog, DialogTitle, DialogActions,Button } from "@mui/material";
+import { Box, Card, TextField, Typography } from "@mui/material";
 
 function UserDetails(props) {
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
   const [address, setAddress] = useState(props.userAddress);
   const addressHandler = async (event) => {
     let newAddress = event.target.value;

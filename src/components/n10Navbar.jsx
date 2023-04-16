@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Box } from '@mui/system'
 import React from 'react'
 import "./navbar.css";
-import { Button, Menu, MenuItem, IconButton } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const N10Navbar = () => {

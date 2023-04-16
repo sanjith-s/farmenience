@@ -4,7 +4,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
-import {Link,useLocation } from "react-router-dom";
+import {Link } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -20,7 +20,6 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
-import { data } from "autoprefixer";
 
 const itemsName = [
   "name",

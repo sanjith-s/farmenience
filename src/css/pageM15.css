@@ -1,8 +1,8 @@
 .negot_address {
   position: relative;
   background-color: #7bff96;
-  padding: 10px;
-  line-height: 20px;
+  padding: .625rem;
+  line-height: 1.25rem;
   color: #555;
   font-weight: 300;
 }
@@ -23,8 +23,8 @@
   color: #41d13e;
 
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: .625rem;
+  right: .625rem;
 }
 
 .chg_btn:hover {
@@ -34,7 +34,7 @@
 
 .pg1_items {
   position: relative;
-  line-height: 20px;
+  line-height: 1.25rem;
   color: #555;
   font-weight: 300;
 }
@@ -47,7 +47,7 @@
 
 .price_btn,
 .submit_btn {
-  padding: 10px 40px;
+  padding: .625rem 2.5rem;
   display: inline-block;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -58,6 +58,6 @@
   border-radius: 0;
 
   position: absolute;
-  bottom: 15px;
-  right: 30px;
+  bottom: .9375rem;
+  right: 1.875rem;
 }

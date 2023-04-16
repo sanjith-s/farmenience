@@ -2,13 +2,14 @@ import React from "react";
 import '../css/pageN6.css';
 import Swal from 'sweetalert2'
 import farmImg from "../images/farm_land.jpg";
-import { Container, Button, Box, Stack, Divider } from "@mui/material";
+import { Container, Button, Box, Stack, Divider,Typography } from "@mui/material";
 import Request from "../RequestsDetails";
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from '../constants';
+
 
 function PageN6() {
   const [listOfRequests, setListOfRequests] = useState([
@@ -50,18 +51,46 @@ function PageN6() {
       })
   }, []);
 
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   return (
-    <div className="">
+    <div id="google_translate_element">
       <br />
-      <p className="total-req-count">You Have {listOfRequests.length} Request</p>
+      <Typography className="total-req-count" fontWeight="700" fontSize="2.5rem" sx={{
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+      }}> You Have {listOfRequests.length} Requests</Typography>
       {listOfRequests.map((request, index) => {
         return (
           <>
-            <Stack
+            <Stack className="gx-d-flex justify-content-center"
               direction="row"
               divider={<Divider orientation="vertical" flexItem />}
               spacing={0}
               sx={{ height: "70vh", width: "vw", marginTop: "1.25rem" }}
+              onClick={(e) => {
+                fullAnotherSpeak(e.target.innerText)
+              }}
             >
               <Container
                 sx={{
@@ -86,6 +115,7 @@ function PageN6() {
                   status={request.status}
                   newDate={request.requestdate}
                   newTime={request.requesttime}
+                  imageLink={request.filename}
                 />
               </Container>
               <Container
@@ -103,7 +133,8 @@ function PageN6() {
                 }}
               >
                 <img
-                  src={farmImg}
+                  src={request.filename}
+                  alt="!!!! No image uploaded !!!!"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -119,7 +150,9 @@ function PageN6() {
       })}
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Home Page
         </Button>
       </Box>

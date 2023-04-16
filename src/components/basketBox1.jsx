@@ -29,8 +29,8 @@ function BasketBox1(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "8px 0px",
+        padding: "1.25rem",
+        margin: "0.5rem 0rem",
       }}
     >
       <CardMedia
@@ -38,15 +38,15 @@ function BasketBox1(props) {
         height="120"
         image={WheatImg}
         sx={{
-          width: "150px",
-          border: "3px solid #285430",
-          borderRadius: "3px",
+          width: "9.375rem",
+          border: "0.188rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",
@@ -57,14 +57,14 @@ function BasketBox1(props) {
         <Typography
           variant="h6"
           lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+          sx={{ textTransform: "uppercase", fontWeight: "37.5rem" }}
         >
           {props.iName}
         </Typography>
         <Typography
           variant="overline"
           lineHeight={2.5}
-          sx={{ fontSize: "15px", paddingLeft: "5px" }}
+          sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
           {props.quantity}kg
         </Typography>
@@ -72,9 +72,9 @@ function BasketBox1(props) {
           <Typography
             variant="overline"
             lineHeight={0.2}
-            sx={{ fontSize: "24px", fontWeight: "600" }}
+            sx={{ fontSize: "1.5rem", fontWeight: "37.5rem" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "20px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1.25rem" }} />
             {props.discountPrice}
           </Typography>
           <Typography
@@ -82,11 +82,11 @@ function BasketBox1(props) {
             lineHeight={0.2}
             sx={{
               textDecoration: "line-through",
-              fontSize: "15px",
-              paddingLeft: "10px",
+              fontSize: "0.938rem",
+              paddingLeft: "0.625rem",
             }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "13px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "0.813rem" }} />
             {props.actualPrice}
           </Typography>
         </Box>
@@ -96,9 +96,9 @@ function BasketBox1(props) {
             variant="h6"
             color="green"
             lineHeight={2.5}
-            sx={{ fontWeight: "600" }}
+            sx={{ fontWeight: "37.5rem" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "18px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1.125rem" }} />
             {props.discountAmount} off
           </Typography>
         </Box>
@@ -109,7 +109,7 @@ function BasketBox1(props) {
           width: "20%",
           display: "flex",
           flexDirection: "column",
-          rowGap: "30px",
+          rowGap: "1.875rem",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -117,7 +117,7 @@ function BasketBox1(props) {
         <Typography
           variant="h6"
           lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+          sx={{ textTransform: "uppercase", fontWeight: "37.5rem" }}
         >
           quantity
         </Typography>
@@ -137,7 +137,7 @@ function BasketBox1(props) {
           >
             <AddIcon />
           </IconButton>
-          <Box sx={{ padding: "10px" }}>
+          <Box sx={{ padding: "0.625rem" }}>
             <Typography variant="h6">{counter}</Typography>
           </Box>
           <IconButton

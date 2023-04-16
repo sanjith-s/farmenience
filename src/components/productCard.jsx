@@ -14,7 +14,7 @@ import {
   Button,
 } from "@mui/material";
 
-function ProductCard() {
+function ProductCard(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
@@ -40,12 +40,12 @@ function ProductCard() {
     <Box style={{ display: "flex", justifyContent: "center" }}>
       <Box
         style={{
-          width: "700px",
-          border: "8px solid green",
-          padding: "30px",
-          borderRadius: "5px",
-          borderTopRightRadius: "50px",
-          borderBottomLeftRadius: "50px",
+          width: "43.75rem",
+          border: ".5rem solid green",
+          padding: "1.875rem",
+          borderRadius: ".3125rem",
+          borderTopRightRadius: "3.125rem",
+          borderBottomLeftRadius: "3.125rem",
           backgroundColor: "lightgreen",
         }}
       >
@@ -69,9 +69,9 @@ function ProductCard() {
                 setName(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,
@@ -108,9 +108,9 @@ function ProductCard() {
                 }
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 min: 1,
@@ -156,9 +156,9 @@ function ProductCard() {
                 }  
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 min: 1,
@@ -191,9 +191,9 @@ function ProductCard() {
                 }
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,
@@ -222,9 +222,9 @@ function ProductCard() {
                 setLocation(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,

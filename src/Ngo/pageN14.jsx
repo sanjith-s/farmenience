@@ -23,11 +23,11 @@ function PageM10() {
     return (
         <Container
             style={{
-                padding: "15px 0px",
+                padding: ".9375rem 0rem",
                 backgroundColor: "transparent",
                 display: "flex",
                 flexDirection: "column",
-                rowGap: "15px",
+                rowGap: ".9375rem",
             }}
         >
             <CssBaseline />
@@ -37,15 +37,15 @@ function PageM10() {
             <Box
                 sx={{
                     position: "relative ",
-                    // width: "500px",
+                    // width: "31.25rem",
                     backgroundColor: "#86fe9ede",
                     width: "100%",
                     display: "flex",
                     justifyContent: "flex-start",
                     alignItems: "center",
-                    padding: "30px 0px",
-                    border: "1px solid #000",
-                    borderRadius: "4px",
+                    padding: "1.875rem 0rem",
+                    border: ".0625rem solid #000",
+                    borderRadius: ".25rem",
                 }}
             >
                 <Box
@@ -57,7 +57,7 @@ function PageM10() {
                     }}
                 >
                     <FormControl fullWidth variant="filled" style={{
-                            width: "600px"
+                            width: "37.5rem"
                         }}>
                         <InputLabel>
                             <Typography
@@ -76,22 +76,21 @@ function PageM10() {
                                 setName(event.target.value);
                             }}
                             style={{
-                                borderRadius: "5px",
-                                borderBottomLeftRadius: "0px",
-                                borderBottomRightRadius: "0px",
+                                borderRadius: ".3125rem",
+                                borderBottomLeftRadius: "0rem",
+                                borderBottomRightRadius: "0rem",
                             }}
                         />
                     </FormControl>
                 </Box>
                 <Button
-                    variant="contained"
-                    color="success"
+                    variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                        backgroundColor:"#ffff00",
+                      } }}
                     style={{
                         position: "absolute",
-                        bottom: "10px",
-                        right: "10px",
-                        fontWeight: "600",
-                        fontSize: "15px",
+                        bottom: ".625rem",
+                        right: ".625rem",
                     }}
                 >
                     <Link
@@ -105,7 +104,7 @@ function PageM10() {
                             style={{
                                 color: "#ffffff",
                                 fontWeight: "600",
-                                fontSize: "16px",
+                                fontSize: "1rem",
                             }}
                         >
                             SEARCH

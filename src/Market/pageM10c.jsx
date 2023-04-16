@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import Page10Nav from "../components/page10Nav";
 import PersonRoundIcon from "@mui/icons-material/PersonRounded";
@@ -14,31 +14,57 @@ import {
   Divider,
 } from "@mui/material";
 
-const PageM10c = () => {
+const PageM10c = (props) => {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const location = useLocation();
+  const data = location.state?.data;
+
   return (
-    <Container
+    <Container id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}
       style={{
-        padding: "30px 0px",
+        padding: "1.875rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
-      <Box>
+      <Box className="gx-d-flex justify-content-center">
         <Page10Nav
-          title={location.state ? location.state.store : "Store Name"}
+          title={data.name}
         />
       </Box>
-      <Card style={{ padding: "18px", display: "flex", columnGap: "24px" }}>
+      <Card style={{ padding: "1.125rem", display: "flex", columnGap: "1.5rem" }}>
         <CardContent
           style={{
-            padding: "5px 10px",
+            padding: ".3125rem .625rem",
             display: "flex",
             flexDirection: "column",
-            rowGap: "25px",
+            rowGap: "1.5625rem",
           }}
         >
           <Box>
@@ -46,23 +72,25 @@ const PageM10c = () => {
               style={{
                 fontWeight: "600",
                 textTransform: "uppercase",
-                fontSize: "26px",
+                fontSize: "1.625rem",
                 color: "#333",
               }}
             >
-              {location.state ? location.state.from : "Seller Name"}
+              {/* {location.state ? location.state.from : "Seller Name"} */}
+              {data.name}
             </Typography>
             <Typography
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 color: "#444",
               }}
             >
-              {location.state
+              {/* {location.state
                 ? location.state.branches.toString()
-                : "branch places"}
+                : "branch places"} */}
+                {data.location}
             </Typography>
           </Box>
           <Divider style={{ width: "98%" }} flexItem />
@@ -70,26 +98,26 @@ const PageM10c = () => {
             <Typography
               style={{
                 fontWeight: "400",
-                fontSize: "22px",
-                paddingLeft: "18  px",
+                fontSize: "1.375rem",
+                paddingLeft: "1.125rem",
                 color: "#555",
               }}
             >
-              {location.state ? location.state.content : "seller description"}
+              {data.sellerDesc}
             </Typography>
           </Box>
         </CardContent>
-        <CardMedia style={{ padding: "20px" }}>
+        <CardMedia style={{ padding: "1.25rem" }}>
           <Paper
             elevation={14}
             style={{
-              width: "200px",
-              height: "200px",
+              width: "12.5rem",
+              height: "12.5rem",
               borderRadius: "50%",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: "10px",
+              padding: ".625rem",
               backgroundColor: "#fff",
               position: "sticky",
             }}
@@ -111,8 +139,8 @@ const PageM10c = () => {
                     width: "110%",
                     height: "110%",
                     color: "#555555",
-                    border: "10px solid #ffffff",
-                    borderRadius: "500px",
+                    border: ".625rem solid #ffffff",
+                    borderRadius: "31.25rem",
                     backgroundColor: "#86fe9eee",
                   }}
                 />
@@ -123,8 +151,8 @@ const PageM10c = () => {
                   width: "110%",
                   height: "110%",
                   color: "#555555",
-                  border: "10px solid #ffffff",
-                  borderRadius: "500px",
+                  border: ".625rem solid #ffffff",
+                  borderRadius: "31.25rem",
                   backgroundColor: "#86fe9eee",
                 }}
               />

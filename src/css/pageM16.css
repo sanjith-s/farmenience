@@ -8,13 +8,13 @@
 #main-com{
     width: 80%;
     background-color: #DAFC8E73;
-    border-radius: 24px;
+    border-radius: 1.5rem;
     margin: auto;
     padding: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 #left{
     margin: auto;
@@ -25,7 +25,7 @@
 #left-content{
     border: none;
     background-color: inherit;
-    margin: 15px;
+    margin: .9375rem;
 }
 #left-table{
     border:none;
@@ -44,29 +44,29 @@
 }
 #price-entry{ 
     background: #B8FFB2;
-    border-radius: 14px;
-    margin: 4px;
+    border-radius: .875rem;
+    margin: .25rem;
 }
 #price-entry-title{
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     text-align: center;
-    padding-top: 5px;
+    padding-top: .3125rem;
 }
 #price-input{
     border: none;
     background-color: inherit;
-    border-bottom: 2.5px solid black;
-    border-radius: 0px;
-    width: 100px;
+    border-bottom: .1563rem solid black;
+    border-radius: 0rem;
+    width: 6.25rem;
 }
 #price-entry-box{
     border: none;
     background-color: inherit;
-    margin: 15px;
+    margin: .9375rem;
 }
 input::placeholder {
-    font-size: 13px;
+    font-size: .8125rem;
     color: black;
 }
 #inr-style{
@@ -79,13 +79,13 @@ input::placeholder {
 }
 #price-submit{
     background: rgba(111, 154, 18, 0.38);
-    border-radius: 9px;
+    border-radius: .5625rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    border: 2px;
-    margin: 7px;
+    border: .125rem;
+    margin: .4375rem;
     cursor: pointer;
-    padding: 7px;
+    padding: .4375rem;
     font-size:medium;
     color: black;
 }

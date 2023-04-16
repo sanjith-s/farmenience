@@ -1,14 +1,16 @@
 import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { IconButton, Typography, Box, CssBaseline } from "@mui/material";
+import { IconButton, Typography, Box, CssBaseline, Tooltip } from "@mui/material";
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
-function NegotNav() {
+function NegotNav({ handleClick }) {
   return (
     <Box
       sx={{
-        bgcolor: "#41d93e",
-        padding: "5px",
-        borderRadius: "5px",
+        bgcolor: "green",
+        padding: ".3125rem",
+        borderRadius: ".3125rem",
         display: "flex",
         justifyContent: "center",
 
@@ -16,10 +18,18 @@ function NegotNav() {
       }}
     >
       <CssBaseline />
-      <Box sx={{ position: "absolute", left: "20px ", top: "7px" }}>
-        <IconButton color="success">
-          <ArrowBackIosIcon style={{ color: "#ffffff" }} />
-        </IconButton>
+      <Box sx={{ position: "absolute", left: "1.25rem ", top: ".4375rem" }}>
+        <Tooltip title="Negotiate Price">
+          <IconButton color="success" onClick={()=>handleClick(2)}>
+            <MonetizationOnIcon style={{ color: "#ffffff" }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Edit Quantity">
+          <IconButton color="success" onClick={()=>handleClick(1)}>
+            <ShoppingBasketIcon style={{ color: "#ffffff" }} />
+          </IconButton>
+        </Tooltip>
+
       </Box>
 
       <Box
@@ -31,9 +41,8 @@ function NegotNav() {
           color="#ffffff"
           style={{
             textTransform: "uppercase",
-            fontWeight: "600",
-            fontSize: "30px",
-            marginTop: "7px",
+            fontWeight: "500",
+            fontSize: "1.75rem",
           }}
         >
           My negotiation

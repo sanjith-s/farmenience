@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import lineGraph from "../images/lineGraph.png";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import { baseURL } from '../constants';
 
 import {
   Button,
@@ -14,6 +17,7 @@ import {
 import profilePhoto from "../images/face1.jpg";
 import Page10Nav from "../components/page10Nav";
 import Chart from "../components/chart";
+
 const data = [
   {
     market: "SABJI MANDI",
@@ -104,15 +108,68 @@ const marketData = [
   },
 ];
 
+ function createData(time, amount) {
+    return { time, amount };
+}
+
+
+const fetchData = async () => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/fetchprice`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setChartData(response.data.priceHistory);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+}
+
 function PageM10() {
+
+  const [chartData, setChartData] = useState(null);
+
+  const data = [
+    createData("00:00", 0),
+    createData("03:00", 300),
+    createData("06:00", 600),
+    createData("09:00", 800),
+    createData("12:00", 1500),
+    createData("15:00", 2000),
+    createData("18:00", 2400),
+    createData("21:00", 2400),
+    createData("24:00", undefined),
+  ];
+
+  useEffect(() => {
+    fetchData();
+    setInterval(this.loadData, 30000);
+  });
+
+
+  
+
   return (
     <Container
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
@@ -122,15 +179,15 @@ function PageM10() {
       <Box
         sx={{
           position: "relative ",
-          // width: "500px",
+          // width: "31.25rem",
           backgroundColor: "#86fe9ede",
           width: "100%",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
-          padding: "30px 0px",
-          border: "1px solid #000",
-          borderRadius: "4px",
+          padding: "1.875rem 0rem",
+          border: ".0625rem solid #000",
+          borderRadius: ".25rem",
         }}
       >
         <Box
@@ -141,23 +198,21 @@ function PageM10() {
             alignItems: "center",
           }}
         >
-          {/* <Chart /> */}
-          <img
+          <Chart />
+          {/* <img
             src={lineGraph}
             width={800}
             height={350}
-            style={{ border: "2px solid #000", borderRadius: "4px" }}
-          />
+            style={{ border: ".125rem solid #000", borderRadius: ".25rem" }}
+          /> */}
         </Box>
         <Button
           variant="contained"
           color="success"
           style={{
             position: "absolute",
-            bottom: "10px",
-            right: "10px",
-            fontWeight: "600",
-            fontSize: "15px",
+            bottom: ".625rem",
+            right: ".625rem",
           }}
         >
           <Link
@@ -173,7 +228,7 @@ function PageM10() {
               style={{
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "16px",
+                fontSize: "1rem",
               }}
             >
               available markets

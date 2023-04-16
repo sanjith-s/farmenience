@@ -8,9 +8,9 @@ function ShowUserDetails(props) {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "8px 0px",
-        borderRadius: "4px",
+        padding: "1.25rem",
+        margin: ".5rem 0rem",
+        borderRadius: ".25rem",
       }}
     >
       <Typography
@@ -21,7 +21,7 @@ function ShowUserDetails(props) {
           alignSelf: "center",
         }}
       >
-        consumer details
+        Receiver Details
       </Typography>
 
       <CardContent
@@ -29,11 +29,11 @@ function ShowUserDetails(props) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "5px",
+          padding: ".3125rem",
           width: "100%",
         }}
       >
-        <Box sx={{ display: "flex", columnGap: "20px", margin: "5px 0px" }}>
+        <Box sx={{ display: "flex", columnGap: "1.25rem", margin: ".3125rem 0rem" }}>
           <Typography
             variant="h6"
             sx={{
@@ -55,7 +55,7 @@ function ShowUserDetails(props) {
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", columnGap: "20px", margin: "5px 0px" }}>
+        <Box sx={{ display: "flex", columnGap: "1.25rem", margin: ".3125rem 0rem" }}>
           <Typography
             variant="h6"
             sx={{
@@ -77,7 +77,7 @@ function ShowUserDetails(props) {
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", columnGap: "20px", margin: "5px 0px" }}>
+        <Box sx={{ display: "flex", columnGap: "1.25rem", margin: ".3125rem 0rem" }}>
           <Typography
             variant="h6"
             sx={{
@@ -91,12 +91,12 @@ function ShowUserDetails(props) {
           <Typography
             sx={{
               textTransform: "uppercase",
-              fontSize: "18px",
+              fontSize: "1.125rem",
               overflow: "auto",
               width: "80%",
             }}
           >
-            {props.userAddress}
+            {props.userAddressLine1}, {props.userAddressLine2}
           </Typography>
         </Box>
       </CardContent>

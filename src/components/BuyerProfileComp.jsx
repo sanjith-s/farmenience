@@ -10,7 +10,7 @@ import {
 
 const itemsName = [
     "Name: ",
-    "Aadhaar Card Number: ",
+    "Aadhaar Number: ",
     "Phone Number: ",
     "Address Line 1: ",
     "Address Line 2: ",
@@ -43,13 +43,13 @@ const BuyerProfileComp = (props) => {
         >
             <Box
                 sx={{
-                    width: "500px",
-                    borderRadius: "8px",
-                    border: "3px solid #888",
+                    width: "31.25rem",
+                    borderRadius: ".5rem",
+                    border: ".1875rem solid #888",
                     backgroundColor: "#A7FF91",
                 }}
             >
-                <CardContent style={{ padding: "15px 25px", alignItems: "center", justifyContent: "center" }}>
+                <CardContent style={{ padding: ".9375rem 1.5625rem", alignItems: "center", justifyContent: "center" }}>
                     <Stack sx={{  }}>
                         {itemsName.map((value, index) => {
                             return (
@@ -57,17 +57,17 @@ const BuyerProfileComp = (props) => {
                                     key={index}
                                     sx={{
                                         display: "flex",
-                                        columnGap: "20px",
+                                        columnGap: "1.25rem",
                                         justifyContent: "space-between",
-                                        height: "50px",
+                                        height: "3.125rem",
                                         alignItems: "center",
-                                        margin: "2px 0px",
+                                        margin: ".125rem 0rem",
                                     }}
                                 >
                                     <Typography
                                         style={{
                                             fontWeight: "600",
-                                            fontSize: "20px",
+                                            fontSize: "1.25rem",
                                             textTransform: "uppercase",
                                             color: "#000",
                                         }}
@@ -85,7 +85,7 @@ const BuyerProfileComp = (props) => {
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    rowGap: "30px",
+                    rowGap: "1.875rem",
                     justifyContent: "center",
                     alignItems: "center",
                     width: "40%",

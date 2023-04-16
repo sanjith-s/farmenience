@@ -3,7 +3,22 @@
     padding: 1.875rem;
     
 }
-
+.row-ant {
+    background-color: rgb(172, 237, 196);
+}
+.row-ant:hover {
+    background-color: rgb(153, 237, 184);
+}
+.ant-table-thead .ant-table-cell {
+    background-color:rgb(153, 267, 174) !important;
+}
+.ant-table-cell {
+    border-bottom: .0625rem solid rgb(99, 103, 102) !important;
+}
+th.ant-table-cell::before {
+    background-color: rgb(99, 103, 102) !important;
+    width: .0625rem !important;
+}
 #header {
 	font-size: 2.5em;
     text-align: center;

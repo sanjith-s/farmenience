@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NegotNav from "../components/negotNav";
 import UserDetails from "../components/userDetails";
 import ShowUserDetails from "../components/showUserDetails";
@@ -10,6 +10,28 @@ import { Box, Button } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 
 function PageM15() {
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const salesItems = [
     {
       index: 1,
@@ -35,54 +57,6 @@ function PageM15() {
       purchaseDate: new Date(2022, 4, 23),
       acceptance: "no",
     },
-    // {
-    //   index: 1,
-    //   seller: 1,
-    //   itemName: "Whole wheat",
-    //   quantity: 10,
-    //   actualPrice: 525,
-    //   discountPrice: 500,
-    //   imgSrc: "WheatImg",
-    //   discountAmount: 25,
-    //   purchaseDate: new Date(2022, 5, 13),
-    //   acceptance: "yes",
-    // },
-    // {
-    //   index: 2,
-    //   seller: 2,
-    //   itemName: "parboiled rice",
-    //   quantity: 15,
-    //   actualPrice: 950,
-    //   discountPrice: 800,
-    //   imgSrc: "WheatImg",
-    //   discountAmount: 150,
-    //   purchaseDate: new Date(2022, 4, 23),
-    //   acceptance: "no",
-    // },
-    // {
-    //   index: 1,
-    //   seller: 1,
-    //   itemName: "Whole wheat",
-    //   quantity: 10,
-    //   actualPrice: 525,
-    //   discountPrice: 500,
-    //   imgSrc: "WheatImg",
-    //   discountAmount: 25,
-    //   purchaseDate: new Date(2022, 5, 13),
-    //   acceptance: "yes",
-    // },
-    // {
-    //   index: 2,
-    //   seller: 2,
-    //   itemName: "parboiled rice",
-    //   quantity: 15,
-    //   actualPrice: 950,
-    //   discountPrice: 800,
-    //   imgSrc: "WheatImg",
-    //   discountAmount: 150,
-    //   purchaseDate: new Date(2022, 4, 23),
-    //   acceptance: "no",
-    // },
   ];
 
   const userData = {
@@ -132,7 +106,21 @@ function PageM15() {
     }
   };
 
+
+
   const [active, setActive] = useState("negot1");
+
+
+  const handleClick = (opt) => {
+    if(opt==2) {
+      setActive("negot2");
+    } else if(opt==3) {
+      setActive("negot1");
+    } else {
+      alert("Illegal Event");
+    }
+ }
+
   const negotHandler = () => {
     if (active === "negot1") {
       setActive("negot2");
@@ -144,11 +132,13 @@ function PageM15() {
   };
 
   return (
-    <Container style={{ padding: "10px 0px" }}>
+    <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
       <CssBaseline />
 
-      <Box>
-        <NegotNav />
+      <Box className="gx-d-flex justify-content-center">
+        <NegotNav handleClick={handleClick}/>
         {/* {update === "editCard" && (
           <Box style={{ position: "relative " }}>
             <UserDetails
@@ -163,8 +153,9 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
-                top: "15px",
-                right: "10px",
+                backgroundColor:"#74e81c",
+                top: ".9375rem",
+                right: ".625rem",
                 fontWeight: "600",
               }}
             >
@@ -186,8 +177,9 @@ function PageM15() {
               onClick={updateHandler}
               style={{
                 position: "absolute",
-                bottom: "15px",
-                right: "10px",
+                backgroundColor:"#74e81c",
+                bottom: ".9375rem",
+                right: ".625rem",
                 fontWeight: "600",
               }}
             >
@@ -196,17 +188,17 @@ function PageM15() {
           </Box>
         )} */}
 
-            <ShowUserDetails
-              userName={userData.name}
-              userAddress={userData.address}
-              userNumber={userData.number}
-            />
+        <ShowUserDetails
+          userName={userData.name}
+          userAddress={userData.address}
+          userNumber={userData.number}
+        />
 
         {active === "negot1" && (
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
+                margin: "1.25rem 0rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -231,10 +223,10 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "34px",
-                  right: "14px",
-                  fontWeight: "600",
-                  fontSize: "15px",
+                  backgroundColor:"#74e81c",
+                  bottom: "2.125rem",
+                  right: ".875rem",
+                  
                 }}
               >
                 Negotiation price
@@ -247,8 +239,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -275,10 +267,11 @@ function PageM15() {
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "18px",
-                  right: "14px",
+                  bottom: "1.125rem",
+                  backgroundColor:"#74e81c",
+                  right: ".875rem",
                   fontWeight: "600",
-                  fontSize: "15px",
+                  fontSize: ".9375rem",
                 }}
               >
                 Submit Deal{" "}
@@ -291,8 +284,8 @@ function PageM15() {
           <Box style={{ position: "relative " }}>
             <Box
               style={{
-                margin: "20px 0px",
-                borderRadius: "8px",
+                margin: "1.25rem 0rem",
+                borderRadius: ".5rem",
                 display: "flex",
                 flexDirection: "column",
               }}
@@ -315,14 +308,14 @@ function PageM15() {
               })}
               <Button
                 variant="contained"
-                color="success"
+                color="error"
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "18px",
-                  right: "14px",
+                  bottom: "1.125rem",
+                  right: ".875rem",
                   fontWeight: "600",
-                  fontSize: "15px",
+                  fontSize: ".9375rem",
                 }}
               >
                 Cancel Deal{" "}

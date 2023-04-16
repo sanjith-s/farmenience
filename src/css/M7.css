@@ -9,7 +9,7 @@
     width: fit-content;
     height: 8%;
 background: #1FE57A;
-border-radius: 15px;
+border-radius: .9375rem;
 }
 
 th{
@@ -35,5 +35,5 @@ th{
     background: #1FE57A;
     outline: none;
     padding: 3%;
-    border-radius: 15px;
+    border-radius: .9375rem;
 }

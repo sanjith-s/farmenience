@@ -6,15 +6,18 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
+        width:"auto",
         alignItems: 'center',
         padding: theme.spacing(4),
-        backgroundColor: '#f1faee',
+        // backgroundColor: '#c9f26f',
     },
     card: {
         backgroundColor: '#edf5e1',
         width: '80%',
         margin: theme.spacing(4),
         padding: theme.spacing(2),
+        borderRadius:20,
+        boxShadow:"20"
     },
     buttonGroup: {
         display: 'flex',
@@ -37,6 +40,17 @@ const useStyles = makeStyles((theme) => ({
         width: '80%',
         textAlign: 'left',
     },
+    fontsize:{
+        fontSize:"2.5rem",
+        fontWeight:500
+    },
+    querycontent:{
+        fontStyle:"Italic",
+        fontWeight:100
+    },  
+    boldy:{
+        fontWeight:500
+    }
 }));
 
 const QueryDetails = (props) => {
@@ -46,25 +60,25 @@ const QueryDetails = (props) => {
         <div className={classes.root}>
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography variant="h5" component="h2" gutterBottom>
+                    <Typography variant="h4" component="h2" gutterBottom className={classes.fontsize}>
                         {props.query.subject}
                     </Typography>
-                    <Typography variant="body1" component="p" gutterBottom>
+                    <Typography variant="body1" component="p" gutterBottom className={classes.querycontent}>
                         {props.query.description}
                     </Typography>
                     <Divider />
                     <Box mt={2}>
                         <Typography variant="body2" component="p">
-                            Status: {props.query.status}
+                           <Typography className={classes.boldy}> Status: </Typography> {props.query.status}
                         </Typography>
-                        <Typography variant="body2" component="p">
+                        <Typography variant="body2" component="p" className={classes.boldy}>
                             Date of Submission: {(props.query.updatedAt + "").substr(0, 10)}
                         </Typography>
-                        <Typography variant="body2" component="p">
+                        <Typography variant="body2" component="p" className={classes.boldy}>
                             Date of Response : {(props.query.createdAt + "").substr(0, 10)}
                         </Typography>
                         <Typography variant="body2" component="p">
-                            Responder Name: {props.query.responser}
+                        <Typography className={classes.boldy}> Responder Name: </Typography>{props.query.responser}
                         </Typography>
                     </Box>
                 </CardContent>

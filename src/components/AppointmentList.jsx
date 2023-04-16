@@ -24,7 +24,8 @@ function AppointmentList(props) {
         dateTime,
         location,
         crops,
-        reason
+        reason,
+        filename
     ) => {
         return {
             appID,
@@ -33,7 +34,8 @@ function AppointmentList(props) {
             dateTime,
             location,
             crops,
-            reason
+            reason,
+            filename
         };
     };
 
@@ -45,7 +47,8 @@ function AppointmentList(props) {
             row.updatedAt,
             row.location,
             row.crops,
-            row.reason
+            row.reason,
+            row.filename
         );
     });
 

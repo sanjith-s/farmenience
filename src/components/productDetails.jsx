@@ -18,49 +18,49 @@ function ProductDetails(props) {
     props.clientName,
     props.paymentMode,
     props.transactionID,
-    props.remarks,
+    propsNaNpxarks,
   ];
 
   return (
     <React.Fragment>
       <Box
-        padding="2px"
-        margin="0px"
+        padding=".125rem"
+        margin="0rem"
         sx={{
-          width: "420px",
+          width: "26.25rem",
           bgcolor: "#fff",
-          borderRadius: "8px",
+          borderRadius: ".5rem",
         }}
       >
-        <CardContent style={{ padding: "15px" }}>
-          <Stack style={{ padding: "0px" }}>
+        <CardContent style={{ padding: ".9375rem" }}>
+          <Stack style={{ padding: "0rem" }}>
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
                 backgroundColor: "#C4E1C5",
                 width: "100%",
-                height: "60px",
-                borderRadius: "4px ",
-                padding: "0px 10px",
+                height: "3.75rem",
+                borderRadius: ".25rem ",
+                padding: "0rem .625rem",
                 alignItems: "center",
-                margin: "2px 0px",
+                margin: ".125rem 0rem",
               }}
             >
               <Typography
                 variant="h7"
                 style={{
-                  margin: "0px",
+                  margin: "0rem",
                   fontWeight: "600",
-                  fontSize: "20px",
+                  fontSize: "1.25rem",
                   textTransform: "uppercase",
-                  padding: "0px",
+                  padding: "0rem",
                 }}
               >
-                sale name
+                ID
               </Typography>
-              <Typography margin="0px" variant="h6">
-                xxxyyyzzz
+              <Typography margin="0rem" variant="h6">
+                {props.key}
               </Typography>
             </Box>
             {itemsName.map((value, index) => {
@@ -72,26 +72,26 @@ function ProductDetails(props) {
                     justifyContent: "space-between",
                     backgroundColor: "#C4E1C5",
                     width: "100%",
-                    height: "60px",
-                    borderRadius: "4px ",
-                    padding: "0px 10px",
+                    height: "3.75rem",
+                    borderRadius: ".25rem ",
+                    padding: "0rem .625rem",
                     alignItems: "center",
-                    margin: "2px 0px",
+                    margin: ".125rem 0rem",
                   }}
                 >
                   <Typography
                     variant="h7"
                     style={{
-                      margin: "0px",
+                      margin: "0rem",
                       fontWeight: "600",
-                      fontSize: "20px",
+                      fontSize: "1.25rem",
                       textTransform: "uppercase",
-                      padding: "0px",
+                      padding: "0rem",
                     }}
                   >
                     {value}
                   </Typography>
-                  <Typography margin="0px" variant="h6">
+                  <Typography margin="0rem" variant="h6">
                     {itemsValue[index]}
                   </Typography>
                 </Box>

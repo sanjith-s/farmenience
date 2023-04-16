@@ -63,7 +63,7 @@ const PageMain = () => {
                 <img
                   src="/img/hero-img.jpg"
                   class="hero-img"
-                  alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+                  alt="Woman enjoying food, meals in storage container1, and food bowls on a table"
                 />
               </picture>
             </div>
@@ -72,7 +72,7 @@ const PageMain = () => {
 
 
         <section class="section-featured">
-          <div class="container">
+          <div class="container1">
             <h2 class="heading-featured-in">As featured in</h2>
             <div class="logos">
               <img src="/img/logos/klogo_white.png" alt="Kuruckshetra logo" />
@@ -93,14 +93,14 @@ const PageMain = () => {
         </section>
 
         <section class="section-how" id="how">
-          <div class="container">
+          <div class="container1">
             <span class="subheading">How it works</span>
             <h2 class="heading-secondary">
               Components of the website in 2 simple steps
             </h2>
           </div>
 
-          <div class="container grid grid--2-cols grid--center-v">
+          <div class="container1 grid grid--2-cols grid--center-v">
 
             <div class="step-text-box">
               <p class="step-number">01</p>
@@ -297,7 +297,7 @@ const PageMain = () => {
         <section class="section-pricing" id="features">
 
 
-          <div class="container grid grid--3-cols">
+          <div class="container1 grid grid--3-cols">
             <div class="feature">
               <ion-icon class="feature-icon" name="leaf-outline"></ion-icon>
               <p class="feature-title">
@@ -332,7 +332,7 @@ const PageMain = () => {
 
 
         <section class="section-cta" id="cta">
-          <div class="container">
+          <div class="container1">
             <div class="cta">
               <div class="cta-text-box">
                 <h2 class="heading-secondary">Get your first trial right now!</h2>
@@ -360,7 +360,7 @@ const PageMain = () => {
 
       <section id="contact">
         <footer class="footer">
-          <div class="container grid grid--footer">
+          <div class="container1 grid grid--footer">
             <div class="logo-col">
               <a href="#" class="footer-logo">
                 <h1>FARMENIENCE</h1>

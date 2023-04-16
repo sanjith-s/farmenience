@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     CardActions,
@@ -6,11 +6,13 @@ import {
     Typography,
     Card,
     Stack,
+    TextField,
+    Button
 } from "@mui/material";
 
 const itemsName = [
     "Name: ",
-    "Aadhaar Card Number: ",
+    "Aadhaar Number: ",
     "Phone Number: ",
     "Address Line 1: ",
     "Address Line 2: ",
@@ -19,8 +21,6 @@ const itemsName = [
     "State: ",
     "Pincode: ",
     "Email Address: ",
-    "Crops Grown: ",
-    "Skills: "
 ];
 
 const FarmerProfileComp = (props) => {
@@ -39,6 +39,18 @@ const FarmerProfileComp = (props) => {
         props.skills
     ];
 
+    const [crops, setCrops] = useState();
+    const [skills, setSkills] = useState();
+
+    const handleAllChange = () => {
+        setCrops(document.querySelector("#crops").value);
+        setSkills(document.querySelector("#skills").value);
+    }
+
+    const handleSubmit = () => {
+        alert("Hi")
+    }
+
     return (
         <Card
             sx={{
@@ -47,31 +59,31 @@ const FarmerProfileComp = (props) => {
         >
             <Box
                 sx={{
-                    width: "500px",
-                    borderRadius: "8px",
-                    border: "3px solid #888",
+                    width: "31.25rem",
+                    borderRadius: ".5rem",
+                    border: ".1875rem solid #888",
                     backgroundColor: "#A7FF91",
                 }}
             >
-                <CardContent style={{ padding: "15px 25px", alignItems: "center", justifyContent: "center" }}>
-                    <Stack sx={{  }}>
+                <CardContent style={{ padding: ".9375rem 1.5625rem", alignItems: "center", justifyContent: "center" }}>
+                    <Stack sx={{}}>
                         {itemsName.map((value, index) => {
                             return (
                                 <Box
                                     key={index}
                                     sx={{
                                         display: "flex",
-                                        columnGap: "20px",
+                                        columnGap: "1.25rem",
                                         justifyContent: "space-between",
-                                        height: "50px",
+                                        height: "3.125rem",
                                         alignItems: "center",
-                                        margin: "2px 0px",
+                                        margin: ".125rem 0rem",
                                     }}
                                 >
                                     <Typography
                                         style={{
                                             fontWeight: "600",
-                                            fontSize: "20px",
+                                            fontSize: "1.25rem",
                                             textTransform: "uppercase",
                                             color: "#000",
                                         }}
@@ -82,21 +94,111 @@ const FarmerProfileComp = (props) => {
                                 </Box>
                             );
                         })}
+
+                        <Box
+                            sx={{
+                                display: "flex",
+                                columnGap: "1.25rem",
+                                justifyContent: "space-between",
+                                height: "3.125rem",
+                                alignItems: "center",
+                                margin: ".125rem 0rem",
+                            }}
+                        >
+                            <Typography
+                                style={{
+                                    fontWeight: "600",
+                                    fontSize: "1.25rem",
+                                    textTransform: "uppercase",
+                                    color: "#000",
+                                }}
+                            >
+                                Crops Grown:
+                            </Typography>
+                            <TextField
+                                id="crops"
+                                variant="filled"
+                                color="success"
+                                value={crops}
+                                onChange={handleAllChange}
+                                sx={{
+                                    backgroundColor: "white",
+                                    borderBottomColor: "black",
+                                    width: "50%",
+                                }}
+                                inputProps={{
+                                    minLength: 1,
+                                    maxLength: 25
+                                }}
+                            />
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: "flex",
+                                columnGap: "1.25rem",
+                                justifyContent: "space-between",
+                                height: "3.125rem",
+                                alignItems: "center",
+                                margin: ".125rem 0rem",
+                            }}
+                        >
+                            <Typography
+                                style={{
+                                    fontWeight: "600",
+                                    fontSize: "1.25rem",
+                                    textTransform: "uppercase",
+                                    color: "#000",
+                                }}
+                            >
+                                Skills:
+                            </Typography>
+                            <TextField
+                                id="skills"
+                                variant="filled"
+                                color="success"
+                                value={skills}
+                                onChange={handleAllChange}
+                                sx={{
+                                    backgroundColor: "white",
+                                    borderBottomColor: "black",
+                                    width: "50%",
+                                }}
+                                inputProps={{
+                                    minLength: 1,
+                                    maxLength: 25
+                                }}
+                            />
+                        </Box>
                     </Stack>
                 </CardContent>
             </Box>
+
+            <Button
+                variant="contained"
+                color="success"
+                onClick={handleSubmit}
+                style={{
+                    position: "absolute",
+                    fontSize: "1rem",
+                    fontWeight: "600",
+                }}
+            >
+                Update Details
+            </Button>
+
             <CardActions
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    rowGap: "30px",
+                    rowGap: "1.875rem",
                     justifyContent: "center",
                     alignItems: "center",
                     width: "40%",
                 }}
             >
             </CardActions>
-        </Card>
+        </Card >
     );
 };
 

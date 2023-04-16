@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Typography,
   Button,
@@ -19,6 +19,27 @@ import CallIcon from "@mui/icons-material/Call";
 const PageN12 = () => {
   const handleChange = (event) => { };
 
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
   const content = {
     id: "1",
     type: "request",
@@ -30,20 +51,25 @@ const PageN12 = () => {
   };
 
   return (
-    <Container
+    <Container id="google_translate_element"
       style={{
+
         margin : "30px",
         padding: "15px 0px",
+
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
         width: "100%",
         height: "100%",
       }}
+      onClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }}
     >
       <CssBaseline />
-      <Grid container sx={{ width: "100%" }}>
+      <Grid container sx={{ width: "100%" }} className="gx-d-flex justify-content-center" >
         <Grid xs={2}>
           <IconButton
             sx={{
@@ -55,7 +81,7 @@ const PageN12 = () => {
           >
             <ArrowBackIcon
               sx={{
-                fontSize: "2.5rem",
+                fontSize: "40px",
               }}
             />
           </IconButton>
@@ -85,6 +111,7 @@ const PageN12 = () => {
         <Grid
           container
           sx={{
+
             margin: "10px",
             padding: "10px",
             height: "100%",
@@ -114,6 +141,7 @@ const PageN12 = () => {
               </Typography>
               <Typography
                 style={{
+
                   margin:"10px",
                   fontSize: "1rem",
                   padding: "7px",
@@ -297,7 +325,7 @@ const PageN12 = () => {
                 sx={{
                   margin:"10px",
                   width: "50%",
-                  borderRadius: "4px",
+                  borderRadius: ".25rem",
                   color: "black",
                   background: "#f5f5f5",
                   height: "20%",
@@ -305,7 +333,7 @@ const PageN12 = () => {
               >
                 <InputLabel
                   id="select-attachments"
-                  sx={{ paddingLeft: "10px" }}
+                  sx={{ paddingLeft: ".625rem" }}
                 >
                   Open
                 </InputLabel>
@@ -333,7 +361,7 @@ const PageN12 = () => {
                  
                 display: "flex",
                 justifyContent: "space-evenly",
-                padding: "7px",
+                padding: ".4375rem",
               }}
             >
               <Button
@@ -341,6 +369,7 @@ const PageN12 = () => {
                 sx={{
                   backgroundColor: "red",
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "red",
                   },
                 }}
@@ -353,6 +382,7 @@ const PageN12 = () => {
                 sx={{
                   backgroundColor: "green",
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "green",
                   },
                 }}
@@ -361,11 +391,11 @@ const PageN12 = () => {
                 Respond
               </Button>
               <Button
-                variant="contained"
-                sx={{
+                variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , 
                   "&:hover": {
+                    color:"white",
                     backgroundColor: "#f7a900",
-                  },
+                  },  
                 }}
               >
                 Sender Details

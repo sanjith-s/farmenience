@@ -15,16 +15,16 @@ function PageM13() {
     <Container>
       <CssBaseline />
 
-      <Box sx={{ margin: "30px 0px" }}>
+      <Box sx={{ margin: "1.875rem 0rem" }}>
         <Card sx={{ backgroundColor: "green" }}>
           <Typography
             style={{
               textAlign: "center",
               color: "white",
               fontWeight: 600,
-              fontSize: "32px",
+              fontSize: "1.5625rem",
               textTransform: "uppercase",
-              padding: "6px 0px",
+              padding: ".375rem 0rem",
             }}
           >
             {location.state ? location.state.from : "payment method"}
@@ -35,27 +35,27 @@ function PageM13() {
           style={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "20px",
-            paddingBottom: "20px",
+            marginTop: "1.25rem",
+            paddingBottom: "1.25rem",
           }}
         >
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              rowGap: "10px",
+              rowGap: ".625rem",
               width: "50%",
             }}
           >
             <Skeleton
               variant="text"
               animation="wave"
-              sx={{ fontSize: "4rem", bgcolor: "grey.400" }}
+              sx={{ fontSize: "64px", bgcolor: "grey.400" }}
             />
             <Box
               sx={{
                 display: "flex",
-                columnGap: "30px",
+                columnGap: "1.875rem",
                 justifyContent: "flex-start",
                 alignItems: "center",
               }}
@@ -71,7 +71,7 @@ function PageM13() {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  rowGap: "10px",
+                  rowGap: ".625rem",
                 }}
               >
                 <Skeleton

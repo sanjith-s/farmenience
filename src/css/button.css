@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+
+.mbtn{
+  background-color:green;
+  color: white ;
+  font-weight: 500;
+  /* font-size: 1rem; */
+  border: .125rem solid white;
+  box-shadow: none;
+}
+
+.mbtn:hover{
+  background-color:white;
+  color: green ;
+  font-weight: 500;
+  /* font-size: 1rem; */
+  border: .125rem solid green;
+  box-shadow: none;
+}

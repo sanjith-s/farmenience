@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
 
+
+
+
 .rectangle-29 {
   position: absolute;
   width: 55%;
@@ -8,7 +11,7 @@
   top: 25%;
 
   background: #d9d9d9;
-  border-radius: 50px;
+  border-radius: 3.125rem;
 }
 
 .frame-2 {
@@ -18,7 +21,7 @@
   left: 8%;
   top: 12%;
   background: #3dd282;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-2-text {
@@ -34,7 +37,7 @@
   top: 12%;
 
   background: #c4e1c5;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-1 {
@@ -44,7 +47,7 @@
   left: 8%;
   top: 29%;
   background: #3dd282;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-1-text {
@@ -60,7 +63,7 @@
   top: 29%;
 
   background: #c4e1c5;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-3 {
@@ -70,7 +73,7 @@
   left: 8%;
   top: 45%;
   background: #3dd282;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-3-text {
@@ -86,7 +89,7 @@
   top: 45%;
 
   background: #c4e1c5;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .rectangle-15 {
@@ -97,7 +100,7 @@
   top: 4%;
 
   background: #1fe57a;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .rectangle-15-text {
@@ -113,7 +116,7 @@
   left: 8%;
   top: 62%;
   background: #3dd282;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .frame-4-text {
@@ -129,7 +132,7 @@
   top: 62%;
 
   background: #c4e1c5;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .rectangle-15-4 {
@@ -140,7 +143,7 @@
   top: 4%;
 
   background: #1fe57a;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .rectangle-15-text {
@@ -155,7 +158,7 @@
   height: 10%;
   left: 8%;
   top: 81%;
-  border-radius: 10px;
+  border-radius: .625rem;
 
   background: #1fe67a;
 }
@@ -174,7 +177,7 @@
   top: 81%;
 
   background: #d9d9d9;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .btn-1 {
@@ -184,7 +187,7 @@
   left: 0%;
 
   background: #1fe57a;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 .btn-2 {
   position: absolute;
@@ -193,7 +196,7 @@
   left: 20%;
 
   background: #c4e1c5;
-  border-radius: 10px;
+  border-radius: .625rem;
 }
 
 .btn-text {
@@ -210,7 +213,7 @@
   top: 25%;
   max-width: auto;
   background-image: url("image.png");
-  border-radius: 7px;
+  border-radius: .4375rem;
 }
 
 .edit-Deal {
@@ -221,7 +224,7 @@
   top: 81%;
 
   background: #1fe57a;
-  border-radius: 15px;
+  border-radius: .9375rem;
 }
 
 .edit-Deal-text {
@@ -240,7 +243,7 @@
   top: 81%;
 
   background: #1fe57a;
-  border-radius: 15px;
+  border-radius: .9375rem;
 }
 
 .post-Deal-text {
@@ -277,7 +280,7 @@ input {
   width: 90%;
   height: 100%;
   border: none;
-  border-radius: 10px;
+  border-radius: .625rem;
   background-color: #c4e1c5;
   padding-left: 10%;
   font-family: "Ubuntu", sans-serif;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useRef} from "react";
 import { useNavigate } from "react-router-dom";
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import {
   Card,
   CardContent,
@@ -92,6 +94,22 @@ function BuyerRequestDetails(props) {
         }
       })
   }
+
+  const printRef = useRef();
+    const handleDownloadPdf = async () => {
+        const element = printRef.current;
+        const canvas = await html2canvas(element);
+        const data = canvas.toDataURL('image/png');
+    
+        const pdf = new jsPDF();
+        const imgProperties = pdf.getImageProperties(data);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight =
+          (imgProperties.height * pdfWidth) / imgProperties.width;
+    
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('AppointmentDetails.pdf');
+      };
 
   return (
     <Card
@@ -354,7 +372,7 @@ function BuyerRequestDetails(props) {
             textTransform: "uppercase",
           }}
         >
-          Quantity
+          Status
         </Typography>
         <Typography
           style={{
@@ -365,8 +383,9 @@ function BuyerRequestDetails(props) {
             borderRadius: "0.19rem",
           }}
         >
-          {props.itemQuantity}
+          {props.status}
         </Typography>
+
       </CardContent>
       <CardActions
         style={{
@@ -375,8 +394,24 @@ function BuyerRequestDetails(props) {
           justifyContent: "center",
         }}
       >
-
       </CardActions>
+
+      <Button
+          onClick={handleDownloadPdf}
+          variant="contained"
+          style={{
+            fontWeight: "600",
+            fontSize: "1.063rem",
+            backgroundColor: "green",
+            // position: "absolute",
+            top: "1.25rem",
+            left: "1.25rem",
+          }}
+        >
+          Print PDF
+        </Button>
+
+      <div ref={printRef}>{props.cropsGrowing}</div>
     </Card>
   );
 }

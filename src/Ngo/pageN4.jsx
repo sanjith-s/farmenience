@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -61,7 +62,7 @@ const PageN4 = () => {
       >
         <Container
           sx={{
-           padding:"20px",
+           padding: "1.25rem",
             height: "100%",
             width: "60vw",
             borderRadius: "3.25rem",
@@ -134,19 +135,29 @@ const PageN4 = () => {
       </Stack>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
           Home Page
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={handleSubmit} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+
+        <Button onClick={handleSubmit} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
+
           Submit
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={getImages} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
+
+        <Button onClick={getImages} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
+                    backgroundColor:"#ffff00",
+                  } }}>
+
           Get All Images
         </Button>
       </Box>
@@ -154,13 +165,13 @@ const PageN4 = () => {
       {data && data.map((img, index) => {
         return (
           <div>
-            <img src={img.url} alt={img.name} height="80px" />
+            <img src={img.url} alt={img.name} height="5rem" />
             <br></br>
           </div>
         );
       })}
 
-    </div >
+    </div>
   );
 };
 

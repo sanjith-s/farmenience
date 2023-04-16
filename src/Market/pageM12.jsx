@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "../css/pageM12.css";
@@ -16,8 +16,8 @@ import BasketBox1 from "../components/basketBox1";
 import BasketBox2 from "../components/basketBox2";
 import BasketBox3 from "../components/basketBox3";
 import ShareIcon from "@mui/icons-material/Share";
-
-import {baseURL} from "../constants";
+import Axios from "axios";
+import { baseURL } from "../constants";
 
 import {
   Card,
@@ -31,6 +31,7 @@ import {
   Step,
   StepLabel,
 } from "@mui/material";
+import Cookies from "js-cookie";
 
 const salesItems = [
   {
@@ -67,10 +68,96 @@ const salesItems = [
 
 const steps = ["address", "order summary", "payment"];
 
-
-
+const ConsumerName = createContext();
+const ConsumerAddress = createContext();
+const ConsumerNumber = createContext();
+const Quantities = createContext();
+const PaymentMethod = createContext();
 
 function PageM12() {
+  const [cartDeatils, setcartDeatils] = useState([]);
+
+  // const googleTranslateElementInit = () => {
+  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  // }
+
+  // const fullAnotherSpeak = (text) => {
+  //   responsiveVoice.speak(text, "Tamil Male");
+  // }
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  //   document.body.appendChild(addScript);
+  //   window.googleTranslateElementInit = googleTranslateElementInit;
+  // }, []);
+
+  // useEffect(() => {
+  //   var addScript = document.createElement('script');
+  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+  //   document.body.appendChild(addScript);
+  // }, []);
+
+  const discount = 0.23;
+  const [profile, setProfile] = useState({});
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+
+    const fun = async () => {
+      let token = Cookies.get('token');
+    await Axios.get(`${baseURL}/profile`, {
+      headers: {tokenstring: token}
+    }).then((res)=> {
+      console.log(res);
+        setProfile(res.data.message);
+    })
+    .catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+
+    await Axios.get(`${baseURL}/buyer/getcart`, {
+      headers: {tokenstring: token}
+    }).then((res) => {
+        setCart(res.data.message);
+        // console.log(res.data.message.items);
+        console.log(cart.items);
+        setcartDeatils(res.data.message.items);
+    }).catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+    }
+    fun();
+  }, []);
+
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
     setConsumerAddress(address);
@@ -122,6 +209,13 @@ function PageM12() {
     }
   };
 
+  const [quantities, setQuantities] = useState([]);
+  useEffect(() => {
+    setQuantities(quantities => [...quantities, quantity1]);
+    setQuantities(quantities => [...quantities, quantity2]);
+  })
+
+
   let total = 0;
 
   salesItems.map((item) => {
@@ -148,40 +242,51 @@ function PageM12() {
     setPaymentMethod(method);
   };
 
-
   const items = [
     { pid: 1, quantity: 3 },
     { pid: 2, quantity: 1 },
   ]
 
-  const makePayment =() => {
+  const makePayment = () => {
+    localStorage.setItem('ConsumerName', consumerName);
+    localStorage.setItem('ConsumerAddress', consumerAddress);
+    localStorage.setItem('ConsumerNumber', consumerNumber);
+    localStorage.setItem('Quantities', JSON.stringify(quantities));
+    localStorage.setItem('PaymentMethod', paymentMethod);
+
     fetch(`${baseURL}/createPayment`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: "test@farm.com",
-      cart: items,
-    }),
-  })
-    .then(res => {
-      if (res.ok) return res.json()
-      return res.json().then(json => Promise.reject(json))
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "test@farm.com",
+        cart: items,
+      }),
     })
-    .then(({ url }) => {
-      window.location = url
-    })
-    .catch(e => {
-      console.error(e.error)
-    })
+      .then(res => {
+        if (res.ok) return res.json()
+        return res.json().then(json => Promise.reject(json))
+      })
+      .then(({ url }) => {
+        window.location = url
+      })
+      .catch(e => {
+        console.error(e.error)
+      })
   }
 
   return (
-    <Container style={{ padding: "20px 0px" }}>
+    <Container style={{ padding: "1.25rem 0rem" }} id="google_translate_element" >
+    {/*onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}*/}
+    
       <CssBaseline />
+      <ul id="mylist">
 
-      <Box sx={{ marginBottom: "20px" }}>
+      </ul>
+      <Box sx={{ marginBottom: "1.25rem" }} className="gx-d-flex justify-content-center">
         <Stepper activeStep={value} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
@@ -191,7 +296,7 @@ function PageM12() {
                     textTransform: "uppercase",
                     fontWeight: "600",
                     color: "darkgreen",
-                    fontSize: "20px",
+                    fontSize: "1.25rem",
                   }}
                 >
                   {label}
@@ -230,26 +335,26 @@ function PageM12() {
             {update === "editCard" && active === "negot1" && (
               <Box style={{ position: "relative " }}>
                 <UserDetails
-                  userAddress={userData.address}
-                  userName={userData.name}
-                  userNumber={userData.number}
-                  onDataHandler={userDataHandler}
+                  userAddress= {profile.address}
+                  userName= {profile.name}
+                  userNumber= {userData.number}
+                  onDataHandler= {userDataHandler}
                 />
                 <Button
-                  // variant="contained"
-                  color="success"
+                  variant="contained"
                   onClick={updateHandler}
                   style={{
                     position: "absolute",
-                    top: "10px",
-                    right: "10px",
+                    backgroundColor:"#74e81c",
+                    top: ".625rem",
+                    right: ".625rem",
                     // fontWeight: "600",
-                    borderRadius:"50%",
-                    height:"60px",
-                    width:"10px",
+                    borderRadius: "50%",
+                    height: "3.75rem",
+                    width: ".625rem",
                   }}
                 >
-                <ThumbUpAltIcon style={{width:"30px",height:"30px"}} />
+                  <ThumbUpAltIcon style={{ width: "1.875rem", height: "1.875rem" }} />
                 </Button>
               </Box>
             )}
@@ -257,26 +362,27 @@ function PageM12() {
             {(update === "updatedCard" || active === "negot2") && (
               <Box style={{ position: "relative " }}>
                 <ShowUserDetails
-                  userName={consumerName}
-                  userAddress={consumerAddress}
-                  userNumber={consumerNumber}
+                  userName={profile.name}
+                  userAddressLine1={profile.addline1}
+                  userAddressLine2={profile.addline2}
+                  userNumber={profile.phoneno}
                 />
                 {active === "negot1" && (
                   <Button
-                    // variant="contained"
-                    color="success"
+                    variant="contained"
                     onClick={updateHandler}
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      right: "10px",
+                      backgroundColor:"#74e81c",
+                      top: ".625rem",
+                      right: ".625rem",
                       // fontWeight: "600", 
-                      borderRadius:"50%",
-                      height:"60px",
-                      width:"10px",
+                      borderRadius: "50%",
+                      height: "3.75rem",
+                      width: ".625rem",
                     }}
                   >
-                    <EditIcon style={{width:"30px",height:"30px"}} /> 
+                    <EditIcon style={{ width: "1.875rem", height: "1.875rem" }} />
                   </Button>
                 )}
               </Box>
@@ -285,33 +391,66 @@ function PageM12() {
         )}
 
         {active === "negot1" && (
-          <Box sx={{ marginTop: "10px" }}>
+
+          <Box sx={{ marginTop: ".625rem" }}>
             <Box
               sx={{
                 backgroundColor: "#fff",
-                padding: "15px",
-                borderRadius: "5px",
+                padding: ".9375rem",
+                borderRadius: ".3125rem",
                 display: "flex",
-                columnGap: "40px",
+                columnGap: "2.5rem",
                 justifyContent: "center",
               }}
             >
-              <Button color="success" variant="contained">
-                Go to cart <ShoppingCartIcon style={{ marginLeft: "8px" }} />
+              <Button 
+              style={{
+                backgroundColor:"#74e81c",
+              }}
+              variant="contained">
+                add <ShoppingCartIcon style={{ marginLeft: ".5rem" }} />
               </Button>
-              <Button color="success" variant="contained">
+              <Button
+              style={{
+                backgroundColor:"#74e81c",
+              }}
+       variant="contained">
                 share
-                <ShareIcon style={{ marginLeft: "8px" }} />
+                <ShareIcon style={{ marginLeft: ".5rem" }} />
+              </Button>
+              <Button 
+              style={{
+                backgroundColor:"#74e81c",
+              }} variant="contained">
+                delete <DeleteIcon style={{ marginLeft: ".5rem" }} />
               </Button>
             </Box>
+
             <Box
               style={{
-                height: "400px",
+                height: "25rem",
                 overflow: "auto",
-                borderRadius: "8px",
+                borderRadius: ".5rem",
               }}
             >
-              {salesItems.map((item, index) => {
+              {cartDeatils.map((item, index) => {
+                // const qcounter = item.index == 1 ? quantity1 : quantity2;
+                return (
+                  <Box key={index++}>
+                    <BasketBox1
+                      iName={item.productName}
+                      quantity={item.quantity}
+                      actualPrice={item.price}
+                      discountAmount={(item.price * discount).toPrecision(2)}
+                      discountPrice={item.price - (item.price * discount).toPrecision(2)}
+                      index={item.index}
+                      // userQuantity={qcounter}
+                      onCounterHandler={QuantityCounterHandler}
+                    />
+                  </Box>
+                );
+              })}
+              {/* {salesItems.map((item, index) => {
                 const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
                   <Box key={index}>
@@ -327,7 +466,7 @@ function PageM12() {
                     />
                   </Box>
                 );
-              })}
+              })} */}
             </Box>
           </Box>
         )}
@@ -336,10 +475,10 @@ function PageM12() {
           <Box>
             <Box
               style={{
-                height: "450px",
+                height: "28.125rem",
                 overflow: "auto",
-                marginBottom: "20px",
-                borderRadius: "8px",
+                marginBottom: "1.25rem",
+                borderRadius: ".5rem",
               }}
             >
               {salesItems.map((item, index) => {
@@ -364,8 +503,8 @@ function PageM12() {
         {active === "negot3" && (
           <Box
             style={{
-              marginBottom: "20px",
-              borderRadius: "8px",
+              marginBottom: "1.25rem",
+              borderRadius: ".5rem",
             }}
           >
             <BasketBox3 onPaymentHandler={paymentHandler} />
@@ -377,7 +516,7 @@ function PageM12() {
             position: "relative ",
             backgroundColor: "white",
             width: "100%",
-            padding: "20px 0px",
+            padding: "1.25rem 0rem",
           }}
         >
           <Typography
@@ -406,9 +545,9 @@ function PageM12() {
 
                     <Divider
                       style={{
-                        border: "1px solid",
+                        border: ".0625rem solid",
                         width: "70%",
-                        margin: "0px auto",
+                        margin: "0rem auto",
                       }}
                     />
                   </Box>
@@ -421,14 +560,14 @@ function PageM12() {
             style={{
               display: "flex",
               justifyContent: "center",
-              padding: "10px 0px",
+              padding: ".625rem 0rem",
             }}
           >
             <Box style={{ width: "70%" }}>
               <Box
                 sx={{
                   display: "flex",
-                  margin: "8px 0px",
+                  margin: ".5rem 0rem",
                   justifyContent: "space-between",
                 }}
               >
@@ -444,7 +583,7 @@ function PageM12() {
                 <Typography
                   sx={{
                     textTransform: "uppercase",
-                    fontSize: "18px",
+                    fontSize: "1.125rem",
                     overflow: "auto",
                   }}
                 >
@@ -454,11 +593,11 @@ function PageM12() {
               <Box
                 sx={{
                   display: "flex",
-                  margin: "8px 0px",
+                  margin: ".5rem 0rem",
                   justifyContent: "space-between",
                   backgroundColor: "lightskyblue",
-                  padding: "8px ",
-                  borderRadius: "5px",
+                  padding: ".5rem ",
+                  borderRadius: ".3125rem",
                 }}
               >
                 {active === "negot1" ? (
@@ -486,7 +625,7 @@ function PageM12() {
                 <Typography
                   sx={{
                     textTransform: "uppercase",
-                    fontSize: "18px",
+                    fontSize: "1.125rem",
                     overflow: "auto",
                   }}
                 >
@@ -498,9 +637,9 @@ function PageM12() {
                   style={{
                     textAlign: "center",
                     fontWeight: "600",
-                    fontSize: "24px",
+                    fontSize: "1.5rem",
                     textTransform: "uppercase",
-                    wordSpacing: "6px",
+                    wordSpacing: ".375rem",
                     color: "red",
                   }}
                 >
@@ -516,10 +655,10 @@ function PageM12() {
               onClick={makePayment}
               style={{
                 position: "absolute",
-                bottom: "12px",
-                right: "12px",
-                fontSize: "16px",
-                fontWeight: "600",
+                backgroundColor:"#74e81c",
+                bottom: ".75rem",
+                right: ".75rem",
+                
               }}
             >
               place order
@@ -528,13 +667,14 @@ function PageM12() {
           {active === "negot2" && (
             <Button
               variant="contained"
-              color="success"
+      
               onClick={negotHandler}
               style={{
                 position: "absolute",
-                bottom: "12px",
-                right: "12px",
-                fontSize: "18px",
+                bottom: ".75rem",
+                backgroundColor:"#74e81c",
+                right: ".75rem",
+                fontSize: "1.125rem",
                 fontWeight: "600",
               }}
             >
@@ -543,16 +683,16 @@ function PageM12() {
           )}
 
           {active === "negot3" && (
-            <Box style={{ padding: "15px" }}>
+            <Box style={{ padding: ".9375rem" }}>
               <Button
                 variant="contained"
-                color="success"
+                color="error"
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "12px",
-                  left: "12px",
-                  fontSize: "16px",
+                  bottom: ".75rem",
+                  left: ".75rem",
+                  fontSize: "1rem",
                   fontWeight: "600",
                 }}
               >
@@ -560,12 +700,13 @@ function PageM12() {
               </Button>
               <Button
                 variant="contained"
-                color="success"
+        
                 style={{
                   position: "absolute",
-                  bottom: "12px",
-                  right: "12px",
-                  fontSize: "16px",
+                  bottom: ".75rem",
+                  backgroundColor:"#74e81c",
+                  right: ".75rem",
+                  fontSize: "1rem",
                   fontWeight: "600",
                 }}
               >
@@ -580,7 +721,7 @@ function PageM12() {
                     style={{
                       color: "#ffffff",
                       fontWeight: "600",
-                      fontSize: "16px",
+                      fontSize: "1rem",
                     }}
                   >
                     continue payment
@@ -591,8 +732,21 @@ function PageM12() {
           )}
         </Card>
       </Box>
+
+      <ConsumerName.Provider value={consumerName}>
+        <ConsumerAddress.Provider value={consumerNumber}>
+          <ConsumerNumber.Provider value={consumerAddress}>
+            <Quantities.Provider value={quantities}>
+              <PaymentMethod.Provider value={paymentMethod}>
+              </PaymentMethod.Provider>
+            </Quantities.Provider>
+          </ConsumerNumber.Provider>
+        </ConsumerAddress.Provider>
+      </ConsumerName.Provider>
+
     </Container>
   );
 }
 
+export { ConsumerName, ConsumerAddress, ConsumerNumber, Quantities, PaymentMethod }
 export default PageM12;

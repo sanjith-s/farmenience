@@ -37,11 +37,11 @@ const PageN10a = () => {
   return (
     <Container
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
         width: "100%",
         height: "100%",
       }}
@@ -52,7 +52,7 @@ const PageN10a = () => {
         container
         sx={{
           height: "100%",
-          borderRadius: "20px",
+          borderRadius: "1.25rem",
           backgroundColor: "#16e575",
         }}
         columnSpacing={2}
@@ -61,12 +61,12 @@ const PageN10a = () => {
           xs={6}
           sx={{
             backgroundColor: "#1eeb69",
-            borderTopLeftRadius: "20px",
+            borderTopLeftRadius: "1.25rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
-            border: "2px solid black",
+            border: ".125rem solid black",
             "&:hover": {
               backgroundColor: "white",
             },
@@ -83,12 +83,12 @@ const PageN10a = () => {
           }}
         >
           <EmailIcon
-            sx={{ color: "white", fontSize: "7rem" }}
+            sx={{ color: "white", fontSize: "112px" }}
             className="queries-icon"
           />
           <Typography
             className="queries-text"
-            sx={{ color: "white", fontSize: "2rem", display: "none" }}
+            sx={{ color: "white", fontSize: "32px", display: "none" }}
           >
             Queries
           </Typography>
@@ -97,8 +97,8 @@ const PageN10a = () => {
           xs={6}
           sx={{
             backgroundColor: "#1eeb69",
-            borderTopRightRadius: "20px",
-            border: "2px solid black",
+            borderTopRightRadius: "1.25rem",
+            border: ".125rem solid black",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -119,12 +119,12 @@ const PageN10a = () => {
           }}
         >
           <CalendarMonthIcon
-            sx={{ color: "white", fontSize: "7rem" }}
+            sx={{ color: "white", fontSize: "112px" }}
             className="appointment-icon"
           />
           <Typography
             className="appointment-text"
-            sx={{ color: "white", fontSize: "2rem", display: "none" }}
+            sx={{ color: "white", fontSize: "32px", display: "none" }}
           >
             Appointments
           </Typography>
@@ -134,8 +134,8 @@ const PageN10a = () => {
           xs={6}
           sx={{
             backgroundColor: "#1eeb69",
-            borderBottomLeftRadius: "20px",
-            border: "2px solid black",
+            borderBottomLeftRadius: "1.25rem",
+            border: ".125rem solid black",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -157,12 +157,12 @@ const PageN10a = () => {
           }}
         >
           <AccountCircleIcon
-            sx={{ color: "white", fontSize: "7rem" }}
+            sx={{ color: "white", fontSize: "112px" }}
             className="profile-icon"
           />
           <Typography
             className="profile-text"
-            sx={{ color: "white", fontSize: "2rem", display: "none" }}
+            sx={{ color: "white", fontSize: "32px", display: "none" }}
           >
             Profile
           </Typography>
@@ -171,8 +171,8 @@ const PageN10a = () => {
           xs={6}
           sx={{
             backgroundColor: "#1eeb69",
-            borderBottomRightRadius: "20px",
-            border: "2px solid black",
+            borderBottomRightRadius: "1.25rem",
+            border: ".125rem solid black",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -193,12 +193,12 @@ const PageN10a = () => {
           }}
         >
           <LogoutIcon
-            sx={{ color: "white", fontSize: "7rem" }}
+            sx={{ color: "white", fontSize: "112px" }}
             className="logout-icon"
           />
           <Typography
             className="logout-text"
-            sx={{ color: "white", fontSize: "2rem", display: "none" }}
+            sx={{ color: "white", fontSize: "32px", display: "none" }}
           >
             Logout
           </Typography>

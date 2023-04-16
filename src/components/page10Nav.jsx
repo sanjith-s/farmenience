@@ -6,9 +6,10 @@ function Page10Nav(props) {
   return (
     <Box
       sx={{
-        bgcolor: "#41d93e",
-        padding: "5px",
-        borderRadius: "5px",
+        bgcolor: "#74e81c",
+
+        padding: ".3125rem",
+        borderRadius: ".3125rem",
         display: "flex",
         justifyContent: "center",
 
@@ -19,9 +20,9 @@ function Page10Nav(props) {
       <Box
         sx={{
           position: "absolute",
-          left: "20px ",
-          top: "7px",
-          marginTop: "5px",
+          left: "1.25rem ",
+          top: ".4375rem",
+          marginTop: "0rem",
         }}
       >
         <IconButton color="success">
@@ -38,9 +39,9 @@ function Page10Nav(props) {
           color="#ffffff"
           style={{
             textTransform: "uppercase",
-            fontWeight: "600",
-            fontSize: "30px",
-            marginTop: "7px",
+            fontWeight: "500",
+            fontSize: "1.5625rem",
+            marginTop: ".4375rem",
           }}
         >
           {props.title}

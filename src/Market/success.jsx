@@ -16,12 +16,21 @@ const Success = () => {
   // const quantities = useContext(Quantities);
   // const paymentMethod = useContext(PaymentMethod);
 
-  const conName = localStorage.getItem('ConsumerName');
-  const conAddress = localStorage.getItem('ConsumerAddress');
-  const conNumber = localStorage.getItem('ConsumerNumber');
-  const quantities = JSON.parse(localStorage.getItem('Quantities'));
-  const paymentMethod = localStorage.getItem('PaymentMethod');
+  // const conName = localStorage.getItem('ConsumerName');
+  // const conAddress = localStorage.getItem('ConsumerAddress');
+  // const conNumber = localStorage.getItem('ConsumerNumber');
+  // const quantities = JSON.parse(localStorage.getItem('Quantities'));
+  // const paymentMethod = localStorage.getItem('PaymentMethod');
   
+  const conName = "Karthik";
+  const conAddress = "hell";
+  const conNumber = "1234567890";
+  const quantities = [{
+    rice: 2,
+    wheat: 23
+  }];
+  const paymentMethod = "card";
+
   console.log(conName);
 
   const navigate = useNavigate();

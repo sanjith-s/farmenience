@@ -162,7 +162,7 @@ function PageM12() {
   let priceArr = [];
   async function addToOrder() {
       deleteCart();
-      alert('hell');
+      alert('making payment');
       let cartOld=cartDeatils;
       for(let i=0;i<cartOld.length;i++)
       {
@@ -171,6 +171,9 @@ function PageM12() {
       }
       setcartDeatils(cartOld);
       console.log(cartOld);
+
+      makePayment();
+
     let token = Cookies.get('token');
     await Axios.post(`${baseURL}/buyer/postOrder`, {
       items: cartDeatils
@@ -334,7 +337,7 @@ function PageM12() {
       },
       body: JSON.stringify({
         email: "test@farm.com",
-        cart: items,
+        cart: cartDeatils,
       }),
     })
       .then(res => {

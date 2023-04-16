@@ -147,7 +147,6 @@ import { baseURL } from "../constants";
 export default function MediaCard(props) {
   
   function addCart() {
-    // alert("fsnk")
     const items = {
       productName: props.productName,
       quantity: props.sellerCount,

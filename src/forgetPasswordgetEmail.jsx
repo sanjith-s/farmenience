@@ -50,10 +50,10 @@ const forgetPasswordGetEmail = () => {
             then(async (response) => {
                 console.log(response);
                 // if (response.data.message === 'Query Added Successfully') {
-                    await Swal.fire({
-                        icon: 'success',
-                        title: 'Email Received Successfully !!',
-                    })
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Email Received Successfully !!',
+                })
                 // }
                 navigate('../verifyOTP')
             })
@@ -74,7 +74,11 @@ const forgetPasswordGetEmail = () => {
                     navigate('../login')
                 }
                 else {
-                    alert(res.response.data.message);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.response.data.message,
+                    })
                 }
             })
     }
@@ -119,7 +123,7 @@ const forgetPasswordGetEmail = () => {
                             }}
                             onChange={(e) => { setEmail(e.target.value) }}
                         />
-                        
+
                         <Box textAlign="center" padding={"1.25rem"}>
                             <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postEmail}>
                                 Next

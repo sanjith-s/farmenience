@@ -41,18 +41,25 @@ const ScheduleCard = (props) => {
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    let filename='';
+    let filename = '';
     let formData = new FormData();
     formData.append('caption', "hello");
     formData.append('file', props.imgName);
     console.log(Array.from(formData.entries()))
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
-        console.log(response);
-        filename=response.data.message;
+        await Swal.fire({
+          icon: 'success',
+          title: response.data.message,
+        })
+        filename = response.data.message;
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
@@ -223,14 +230,18 @@ const ScheduleCard = (props) => {
       >
       </Stack>
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={Reset}>
+        <Button variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={async () => {
+        <Button variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }} onClick={async () => {
           await Swal.fire({
             icon: 'info',
             title: 'Please confirm the details ...',

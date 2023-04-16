@@ -55,7 +55,6 @@ const ReviewsForm = () => {
 
     const postReview = async () => {
         let token = Cookies.get('token');
-        alert(review);
         await Axios.post(`${baseURL}/review`, {
             name: name,
             email: email,

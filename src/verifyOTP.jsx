@@ -74,7 +74,11 @@ const verifyOTP = () => {
                     navigate('../login')
                 }
                 else {
-                    alert(res.response.data.message);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.response.data.message,
+                    })
                 }
             })
     }
@@ -118,7 +122,7 @@ const verifyOTP = () => {
                             }}
                             onChange={(e) => { setOTP(e.target.value) }}
                         />
-                        
+
                         <Box textAlign="center" padding={"1.25rem"}>
                             <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postOTP}>
                                 Verify

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
@@ -19,14 +20,16 @@ import {
   Badge,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
+import Swal from "sweetalert2";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 
 function NegotiationBox2(props) {
-  let [limit, setlimit] = useState(props.discountPrice);
+  const navigate = useNavigate();
+  let [limit, setlimit] = useState(props.userPrice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
     setlimit(newLimit);
+    props.getValue(newLimit);
   };
 
   const [open, setOpen] = useState(false);
@@ -39,21 +42,27 @@ function NegotiationBox2(props) {
   };
 
   let [maximum, setMaximum] = useState(
-    Math.round(props.actualPrice / 2 + props.actualPrice)
+    Math.round(1000.5)
   );
   let [minimum, setMinimum] = useState(Math.round(props.actualPrice / 2));
 
   const handleSubmit = () => {
-    let regex = /^[0-9]+$/;
-    if (!limit.match(regex)) {
-      setOpen(true);
-      setlimit(props.discountPrice);
-    } else if (limit < minimum || limit > maximum) {
-      setOpen(true);
-      setlimit(props.discountPrice);
-    } else {
+      var content2 = JSON.parse(localStorage.getItem("reqs"));
+      if (limit == props.userPrice) {
+        content2.splice(props.index, 1);
+      } else {
+      content2[props.index].price = content2[props.index].nprice;
+      content2[props.index].price = limit;
+      content2[props.index].flag = 1;
+      }
+      localStorage.setItem("reqs",JSON.stringify(content2));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
+      navigate("../m10");
       return;
-    }
   };
 
   props.onlimitHandler(limit, props.index);
@@ -194,10 +203,11 @@ function NegotiationBox2(props) {
             />
           </FormControl>
 
-          <IconButton>
+          <IconButton
+              onClick={handleSubmit}
+          >
             <ThumbUpIcon
               variant="contained"
-              onClick={handleSubmit}
               color="success"
             />
           </IconButton>
@@ -223,7 +233,7 @@ function NegotiationBox2(props) {
             }}
           >
             <ErrorSharpIcon style={{ marginRight: "0.313rem" }} />
-            Enter values from {maximum} to {minimum} only
+            Enter values from {minimum} to {maximum} only
           </InputLabel>
         </Snackbar>
       </CardActions>

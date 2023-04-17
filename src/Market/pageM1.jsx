@@ -9,6 +9,7 @@ import Axios from "axios";
 import { baseURL } from '../constants';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import { Content } from "antd/es/layout/layout";
 
 function PageM1() {
 
@@ -18,10 +19,16 @@ function PageM1() {
   const [prof, setProf] = useState([]);
 
   useEffect(() => {
+    var content1 = JSON.parse(localStorage.getItem("reqs")).filter(o => {
+      return o.flag == 1;
+    });
+    console.log("filed" + content1);
+    setOrders(content1);
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
       then((response) => {
-        setOrders(response.data.message);
+        // setOrders(response.data.message);
+        // setOrders(JSON.parse(localStorage.getItem("reqs")));
       })
       .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -70,7 +77,6 @@ function PageM1() {
   // const [content,setContent] = useState(orders);
   let content;
   let data = location.state;
-
   if (location.state) {
     console.log(location.state);
     content = orders.filter((order) => {
@@ -80,12 +86,12 @@ function PageM1() {
   }
   else {
     console.log("nothing");
-    content = orders;
+    
   }
 
-  useEffect(() => {
-    localStorage.setItem("orders", JSON.stringify(orders))
-  }, [])
+  // useEffect(() => {
+  //   localStorage.setItem("orders", JSON.stringify(orders))
+  // }, [])
 
   // const [changeOrders,setChangeOrders] = useState(()=>{
   //   const savedItem = localStorage.getItem("orders");
@@ -99,17 +105,17 @@ function PageM1() {
   return (
     <>
       <Box className="query-list">
-        <h2 className="query-list__heading">You have {content.length} requests</h2>
+        <h2 className="query-list__heading">You have {orders.length} requests</h2>
         {
-            content.map((req,index) => {
+            orders.map((req,index) => {
                 return (
                     <div>
                         <RequestBox
                         key={index + 1}
-                       reqId={req._id}
-                       name={req.name}
-                       phoneNo={req.phoneNumber}
-                       itemName={req.itemName}
+                       reqId={req.buyer._id}
+                       name={req.buyer.name}
+                       phoneNo={req.buyer.phoneno}
+                       itemName={req.name}
                        itemQuantity={req.quantity}
                        data={req}
                 />

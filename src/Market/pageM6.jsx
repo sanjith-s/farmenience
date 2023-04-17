@@ -110,28 +110,31 @@ const PageM6 = () => {
         alignItems:"center",
         marginLeft:"600px"
       }}>Sell Products</Typography>
-      {count.map(ele=>{
-              return ( 
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{ height: "auto", width: "auto", marginTop: "30px",padding:"50px" }}
-      >
-        <Container
-          sx={{
-            // bgcolor: "#D9D9D9;",
-            height: "100%",
-            width: "60vw",
-            borderRadius: "50px",
-            display: "flex",
-            flexDirection: "column",
-            // justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <React.Fragment>
-          {/* <Box
+      {count.map(ele => {
+        return (
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem  />}
+            spacing={2}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem",  }}
+          >
+            <Box
+              sx={{
+                bgcolor: "#b8ebab;",
+                height: "100%",
+                width: "50vw",
+                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "column",
+                // justifyContent: "space-evenly",
+                alignItems: "center",
+                boxShadow:"2",
+                padding:"20px"
+
+              }}
+            >
+              <React.Fragment>
+                {/* <Box
 
             sx={{
               overflow: "auto",
@@ -151,9 +154,10 @@ const PageM6 = () => {
                   value={name}
                   onChange={handleAllChange}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -174,9 +178,10 @@ const PageM6 = () => {
                     max: 200
                   }}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -193,9 +198,10 @@ const PageM6 = () => {
                   variant="filled"
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -206,9 +212,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -224,9 +231,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -235,7 +243,7 @@ const PageM6 = () => {
                 />
 
               </React.Fragment>
-            </Container>
+            </Box>
             <Dialog
               open={open}
               TransitionComponent={Transition}
@@ -358,10 +366,10 @@ const PageM6 = () => {
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": {backgroundColor: "#78beff", }}}>
+        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#4CAF50", "&:hover": { backgroundColor: "#78beff", } }}>
           Add Item
         </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f","&:hover": {backgroundColor: "#fa552f", } }}>
+        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#4CAF50", } }}>
           Delete Item
         </Button>
       </Stack>

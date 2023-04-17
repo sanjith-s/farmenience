@@ -158,7 +158,7 @@ const PageN12 = () => {
                   width: "70%",
                 }}
               >
-                {data._id}
+                {/* {data._id} */}
               </Typography>
             </Box>
           </Grid>

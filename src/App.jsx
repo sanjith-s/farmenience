@@ -5,6 +5,7 @@ import "./css/app.css";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
+import Page404 from "./page404";
 import { useEffect, useContext, createContext, useState } from "react";
 export const AuthContext = createContext();
 
@@ -157,7 +158,7 @@ const PageN11 = lazy(() => import("./Ngo/pageN11"));
 const PageN12 = lazy(() => import("./Ngo/pageN12"));
 const PageN13 = lazy(() => import("./Ngo/pageN13"));
 const PageN14a = lazy(() => import("./Ngo/pageN14a"));
-const PageN14b = lazy(() => import("./Ngo/pageN14b"));
+const PageN14b = lazy(() => import("./Ngo/pageN14b"));  
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -281,6 +282,7 @@ function App() {
               <Route path="/payments/success" element={<Success />} />
               <Route path="/payments/cancel" element={<Cancel />} />
               <Route path="/pdfprint" element={<PdfPrint />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
           </BrowserRouter>
 

@@ -22,13 +22,8 @@
   overflow: hidden;
   text-align: center;
   position: relative;
-<<<<<<< Updated upstream
   margin: 1.25rem;
   width: 100px;
-=======
-  margin: 2.25rem;
-  width: "25%"
->>>>>>> Stashed changes
 }
 
 .box-header {

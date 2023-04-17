@@ -620,7 +620,7 @@ function Signup() {
                 variant="filled" 
                 inputProps={{style: {fontSize: 15,backgroundColor : "#f5f5f5",borderRadius: 5}}} // font size of input text
                 InputLabelProps={{style: {fontSize: 15}}}
-              </Typography>
+              />
               <Input
                 type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
@@ -657,7 +657,7 @@ function Signup() {
                 variant="filled" 
                 inputProps={{style: {fontSize: 15,backgroundColor : "#f5f5f5",borderRadius: 5}}} // font size of input text
                 InputLabelProps={{style: {fontSize: 15}}}
-              </Typography>
+              />
 
               <FormControl variant="standard" sx={{ width: "12.5rem" }}>
                 <Select value={selection} onClick={selectionChange}>
@@ -681,11 +681,11 @@ function Signup() {
                       job seeker
                     </Typography>
                   </MenuItem>
-                </TextField>
+                </Select>
+              </FormControl>
               </FormControl>
             </Box>
-          </form>
-
+</form>
           </Box>
           <Box 
            pt = {10}

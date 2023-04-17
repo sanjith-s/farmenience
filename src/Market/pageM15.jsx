@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NegotNav from "../components/negotNav";
+import "../css/pageM15.css"
 import UserDetails from "../components/userDetails";
 import ShowUserDetails from "../components/showUserDetails";
 import NegotiationBox1 from "../components/negotiationBox1";
@@ -192,7 +193,7 @@ function PageM15() {
               }}
             >
                   {item.map((i,ind)=>{
-                  return <div><NegotiationBox1
+                  return <div className="n-card1"><NegotiationBox1
                     iName={i.name}
                     quantity={i.quantity}
                     actualPrice={i.price}
@@ -202,7 +203,7 @@ function PageM15() {
                     userQuantity={i.quantity}
                     onCounterHandler={QuantityCounterHandler}
                   />
-                  <Button
+                  <div className="p-btn1"><Button
           variant="contained"
           color="success"
           style={{
@@ -223,7 +224,7 @@ function PageM15() {
           {i.flag == 1
             ? "Not yet seen"
             : "Revised by Seller"}
-        </Button>
+        </Button></div>
                   </div>})}
 
               <div
@@ -269,9 +270,9 @@ function PageM15() {
                   top: "10px",
                   right: "10px",
                 }} >
-                <Tooltip onClick={negotHandler} title="Send Request"  >
+                <Tooltip onClick={negotHandler} title="Back"  >
                   <IconButton >
-                    <SendIcon style={{ color: "#74e81c", width: "38px", height: "38px" }} />
+                    <CancelIcon style={{ color: "red", width: "38px", height: "38px" }} />
                   </IconButton>
                 </Tooltip>
               </div>

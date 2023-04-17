@@ -101,8 +101,13 @@ const PageM10a = () => {
       })
   }
 
+  const handleBack = (val) => {
+    console.log('hello');
+    setMarket(val);
+  }
+
   useEffect(() => {
-    handleGetMarkets();
+    // h  andleGetMarkets();
   }, []);
 
   /*
@@ -117,6 +122,16 @@ const PageM10a = () => {
       );
   })
   */
+   const handleSearch = (event) => {
+
+    let searchTerm = event.target.value.toLowerCase().trim()
+    console.log(searchTerm);
+    if (searchTerm.length == 0) {
+      setMarket(market);
+    } else {
+      setMarket(market.filter((item) => item.name.toLowerCase().includes(searchTerm)))
+    }
+  };
 
   const loadGoogleMapScript = (callback) => {
     if (typeof window.google === 'object' && typeof window.google.maps === 'object') {
@@ -171,6 +186,7 @@ const PageM10a = () => {
           <Input
             style={{ height: "2.5rem" }}
             id="input-with-icon-adornment"
+            onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
                 <SearchIcon style={{ color: "green" }} />
@@ -237,7 +253,7 @@ const PageM10a = () => {
       <div className="App" style={{justifyItems: "center"}}>
         {/* <a href="https://www.cluemediator.com">Clue Mediator</a> */}
         <br /><br />
-        {!loadMap ? <div>Loading...</div> : <MarketMap />}
+        {!loadMap ? <div>Loading...</div> : <MarketMap filterMarket={handleBack}/>}
         <br /><br />
         {/* <small><b>Note:</b> In order to make it work, you have to set the YOUR_GOOGLE_MAP_API_KEY in App.js file. </small> */}
       </div>
@@ -290,7 +306,7 @@ const PageM10a = () => {
                   variant="boby1"
                   style={{ fontSize: "1.25rem", fontWeight: "400" }}
                 >
-                  {val.distance.miles} Kilometers
+                  {/* {val.distance.miles} Kilometers */}
                 </Typography>
               </Box>
               <Box
@@ -308,7 +324,7 @@ const PageM10a = () => {
                     fontSize: "1.375rem",
                   }}
                 >
-                  {val.location}
+                  {val.phoneno}
                 </Typography>
               </Box>
 

@@ -9,7 +9,7 @@ import {
     Button
 } from "@mui/material";
 
-const MarketMap = () => {
+const MarketMap = (props) => {
 
     const navigate = useNavigate();
     const googleMapRef = useRef(null);
@@ -39,8 +39,9 @@ const MarketMap = () => {
     useEffect(() => {
         const getM = async () => {
             let token = Cookies.get('token');
-            await Axios.get(`${baseURL}/getMarket`, { headers: { tokenstring: token } }).
+            await Axios.get(`${baseURL}/buyer/getmarkets`, { headers: { tokenstring: token } }).
                 then((response) => {
+                    console.log("ENTERING");
                     setData(response.data.message);
                     setFilterData(response.data.message);
                     console.log(response.data.message);
@@ -122,13 +123,15 @@ const MarketMap = () => {
         let r = 6371;
 
         // calculate the result
+        console.log(c*r);
         return (c * r);
     }
     // initialize the google map
     const initGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
+            // return new google.maps.Map(googleMapRef.current, {
             center: { lat: 13.0213, lng: 80.2231 },
-            zoom: 8
+            zoom: 8 
         });
     }
 
@@ -151,6 +154,7 @@ const MarketMap = () => {
         let temp = data.filter(val => {
             return distance(lat, val.latitude, lng, val.longitude) < radius;
         });
+        console.log(temp);
         if (temp.length == 0) {
             Swal.fire({
                 icon: 'error',
@@ -160,7 +164,9 @@ const MarketMap = () => {
             setFilterData(data);
         }
         else {
+            props.filterMarket(data);
             setFilterData(temp);
+            props.filterMarket(data);
         }
         // googleMap = initGoogleMap();
         //     var bounds = new window.google.maps.LatLngBounds();

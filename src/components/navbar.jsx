@@ -13,6 +13,9 @@ import Calendar from "./calender";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { useState } from "react";
 import Link from '@mui/material/Link';
+import Cookies from "js-cookie";
+import { useContext } from "react";
+import { AuthContext } from "../App";
 
 const drawerBleeding = 70;
 
@@ -44,6 +47,7 @@ function SwipeableEdgeDrawer(props) {
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+  const { auth,setAuth,role,setRole } = useContext(AuthContext);
 
   // This is used only for the example
   const container =
@@ -135,7 +139,44 @@ function SwipeableEdgeDrawer(props) {
                 </div>
             </div>
         </li>
+        {
+          !auth ? 
+          <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
+        </li>
+          :
+          role=='Farmer'
+          ?
+          <>
+          <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Farmer1</a>
+        </li>
         <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Farmer2</a>
+        </li>
+          </>
+          :
+          role=='NGO'
+          ?
+          <>
+          <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">NGO1</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">NGO2</a>
+        </li>
+        </>
+          :
+          <>
+          <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">RETAILER 1</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">RETAILER 2</a>
+        </li>
+        </>
+        }
+        {/* <li>
           <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
         </li>
         <li>
@@ -143,7 +184,7 @@ function SwipeableEdgeDrawer(props) {
         </li>
         <li>
           <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-        </li>
+        </li> */}
       </ul>
     </div>
   </div>

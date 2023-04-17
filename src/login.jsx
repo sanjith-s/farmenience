@@ -65,6 +65,8 @@ function Login() {
           title: 'Login Successful!',
         });
         Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
         if (response.data.details[0].typeOfAcc == "Farmer") {
           navigate("/FarmerHomepage");
         }

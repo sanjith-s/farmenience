@@ -6,6 +6,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Axios from "axios";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
+import Cookies from "js-cookie";
 
 const LogoutAllDevice = () => {
   const location = useLocation();
@@ -21,6 +22,10 @@ const LogoutAllDevice = () => {
             icon: 'success',
             title: 'Logout Successful!',
           })
+          Cookies.remove("token");
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
+        Cookies.remove("role");
           navigate('../login');
         }
         else {

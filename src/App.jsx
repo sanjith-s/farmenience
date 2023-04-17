@@ -5,6 +5,8 @@ import "./css/app.css";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
+import { useEffect, useContext, createContext, useState } from "react";
+export const AuthContext = createContext();
 
 // import Homepage1 from "./homepage1";
 // import LandingPage from "./landingPage";
@@ -181,10 +183,27 @@ function App() {
     responsiveVoice.speak(text, "Tamil Male");
   }
 
+  const [auth, setAuth] = useState(false);
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    if (localStorage.getItem("role")) {
+      setRole(localStorage.getItem("role"));
+    } else {
+      setAuth("");
+    }
+  }, []);
+
   return (
     <div>
-      {/* <Navbar /> */}
-      {displayNavbar()}
+    <AuthContext.Provider value={{ auth, setAuth,role,setRole }}>
+        {/* <Navbar /> */}
+        <Navbar />
       <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }} >
@@ -270,7 +289,8 @@ function App() {
 
         {/* <Footer1 /> */}
         {displayFooter()}
-      </div >
+    </AuthContext.Provider>
+      </div>
 
   );
 }

@@ -31,7 +31,6 @@ import useGeoLocation from '../src/components/useGeoLocation';
 import { Delete, DeleteOutline, FileUploadOutlined, FileUploadRounded, FileUploadTwoTone, Padding, Upload, UploadFileRounded, UploadFileSharp } from "@mui/icons-material";
 import getThemeProps from '@material-ui/styles/getThemeProps'
 import collage12 from "./images/sign_up.jpg";
-import { IconButton } from "@mui/joy";
 
 function Signup() {
 

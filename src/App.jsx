@@ -73,7 +73,6 @@ import Headroom from "react-headroom";
 // import Chart from "./components/chart";
 // import Calendar from "./components/calender";
 // import CropRecommendation from "./cropRecommendation";
-
 import N10Navbar from "./components/n10Navbar";
 // import { display } from "@mui/system";
 // import Success from "./Market/success";
@@ -166,7 +165,16 @@ function displayNavbar() {
   if (token != null)
     return <Navbar />
   else
-    return <NavbarBefore />
+    return null
+}
+
+function displayFooter() {
+  const token = Cookies.get("token");
+
+  if (token != null)
+    return <Footer1 />
+  else
+    return null
 }
 
 function App() {
@@ -179,7 +187,6 @@ function App() {
     <div>
       {/* <N10Navbar /> */}
       {displayNavbar()}
-
       <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }} >

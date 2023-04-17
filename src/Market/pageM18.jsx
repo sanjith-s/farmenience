@@ -62,11 +62,16 @@ const PageM18 = () => {
       location: location
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
-        alert("SUCCESS");
-        console.log("Successfully added request");
-      }).catch((err) => {
-        alert("FAILURE");
-        console.log(err);
+        await Swal.fire({
+          icon: 'success',
+          title: "Successfully added request !!!",
+        })
+      }).catch(async (err) => {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.response.data.message,
+        })
       })
   }
 
@@ -156,11 +161,15 @@ const PageM18 = () => {
                     <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 2000)
                     setPrice(event.target.value);
                   else {
-                    setOpen1(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Price",
+                    })
                   }
                 }}
                 style={{
@@ -205,11 +214,15 @@ const PageM18 = () => {
                     </Typography>
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 50)
                     setQty(event.target.value);
                   else {
-                    setOpen2(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Quantity",
+                    })
                   }
                 }}
                 style={{
@@ -293,49 +306,6 @@ const PageM18 = () => {
             </FormControl>
           </Box>
         </Box>
-
-        <Dialog
-          open={open1}
-          onClose={handleClose1}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Price
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose1}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Quantity
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose2}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open3}
-          onClose={handleClose3}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Type
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose3}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
       </Box>
 
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>

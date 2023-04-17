@@ -1,9 +1,6 @@
-// import PreviousMap from "postcss/lib/previous-map";
 import React from "react";
 import SalesCard from "./salesCard";
 import {Box,Grid,Typography} from "@mui/material";
-
-
 
 function SalesCardsList(props) {
   var items = props.all;

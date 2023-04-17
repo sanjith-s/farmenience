@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
   
 const Progress_bar = ({step,bgcolor,progress,height}) => {
     const Parentdiv = {

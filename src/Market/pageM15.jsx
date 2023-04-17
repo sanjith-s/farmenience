@@ -6,7 +6,7 @@ import NegotiationBox1 from "../components/negotiationBox1";
 import NegotiationBox2 from "../components/negotiationBox2";
 import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
-import { Box, Button , IconButton ,Tooltip } from "@mui/material";
+import { Box, Button, IconButton, Tooltip } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 import SendIcon from '@mui/icons-material/Send';
@@ -44,6 +44,32 @@ function PageM15() {
   //   number: 8300677299,
   // };
   const [userData, setData] = useState([]);
+  const salesItems = [
+    {
+      index: 1,
+      seller: 1,
+      itemName: "Whole wheat",
+      quantity: 10,
+      actualPrice: 525,
+      userPrice: 500,
+      weight: 1,
+      imgSrc: "WheatImg",
+      purchaseDate: new Date(2022, 5, 13),
+      acceptance: "notChanged",
+    },
+    {
+      index: 2,
+      seller: 2,
+      itemName: "parboiled rice",
+      quantity: 15,
+      weight: 1,
+      actualPrice: 950,
+      userPrice: 850,
+      imgSrc: "WheatImg",
+      purchaseDate: new Date(2022, 4, 23),
+      acceptance: "Changed",
+    },
+  ];
 
   useEffect(() => {
     let token = Cookies.get('token');
@@ -114,15 +140,19 @@ function PageM15() {
   const [active, setActive] = useState("negot1");
 
 
-  const handleClick = (opt) => {
-    if(opt==2) {
+  const handleClick = async (opt) => {
+    if (opt == 2) {
       setActive("negot2");
-    } else if(opt==3) {
+    } else if (opt == 3) {
       setActive("negot1");
     } else {
-      alert("Illegal Event");
+      await Swal.fire({
+        icon: 'error',
+        title: 'Alert !!!',
+        text: "Illegal Event",
+      })
     }
- }
+  }
 
   const negotHandler = () => {
     if (active === "negot1") {
@@ -141,7 +171,7 @@ function PageM15() {
       <CssBaseline />
 
       <Box className="gx-d-flex justify-content-center">
-        <NegotNav handleClick={handleClick}/>
+        <NegotNav handleClick={handleClick} />
 
         <ShowUserDetails
           userName={userData.name}
@@ -172,13 +202,13 @@ function PageM15() {
 
               <div
                 style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
                 }} >
                 <Tooltip onClick={negotHandler} title="Negotiatation" >
                   <IconButton >
-                  <ThumbsUpDownIcon style={{color: "#74e81c", width: "38px", height: "38px" }} />
+                    <ThumbsUpDownIcon style={{ color: "#74e81c", width: "38px", height: "38px" }} />
                   </IconButton>
                 </Tooltip>
               </div>
@@ -204,7 +234,7 @@ function PageM15() {
                     quantity={item.quantity}
                     weight={item.weight}
                     actualPrice={item.actualPrice}
-                    userPrice = {item.userPrice}
+                    userPrice={item.userPrice}
                     index={item.index}
                     onlimitHandler={priceLimitHandler}
                   />
@@ -212,13 +242,13 @@ function PageM15() {
               })}
               <div
                 style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
                 }} >
                 <Tooltip onClick={negotHandler} title="Send Request"  >
                   <IconButton >
-                  <SendIcon style={{color: "#74e81c", width: "38px", height: "38px" }} />
+                    <SendIcon style={{ color: "#74e81c", width: "38px", height: "38px" }} />
                   </IconButton>
                 </Tooltip>
               </div>
@@ -252,14 +282,14 @@ function PageM15() {
               })}
               <div
                 style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-                
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+
                 }} >
                 <Tooltip onClick={negotHandler} title="Cancel Deal" >
                   <IconButton >
-                  <CancelIcon style={{color: "red", width: "38px", height: "38px"  }} />
+                    <CancelIcon style={{ color: "red", width: "38px", height: "38px" }} />
                   </IconButton>
                 </Tooltip>
               </div>

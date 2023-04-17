@@ -1,31 +1,4 @@
 import React from 'react'
-// import { Link, useLocation } from "react-router-dom";
-import Link from '@mui/material/Link';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneIcon from '@mui/icons-material/Phone';
-import EmailIcon from '@mui/icons-material/Email';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import {
-    Input,
-    InputAdornment,
-    IconButton,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogContentText,
-    DialogTitle,
-    Grid,
-    Box,
-    CardContent,
-    Stack,
-    Typography,
-    Button,
-    Container,
-} from "@mui/material";
-import { TextField } from '@mui/material';
 import "../css/footer.css";
 
 const Footer = () => {

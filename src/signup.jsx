@@ -137,8 +137,19 @@ function Signup() {
         })
     }
 
-    alert(signupdata.email)
-    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
+    {
+      location.loaded ?
+        Swal.fire({
+          icon: 'error',
+          title: 'Location Received',
+          text: JSON.stringify(location),
+        }) :
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: "Location data not available yet",
+        })
+    }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -185,11 +196,19 @@ function Signup() {
       console.log(Array.from(formData1.entries()))
       await Axios.post(`${baseURL}/upload`, formData1)
         .then(async (response) => {
-          console.log(response);
+          await Swal.fire({
+            icon: 'success',
+            title: 'Meet Added !!',
+            text: response.data.message,
+          })
           FILE1 = response.data.message;
         })
         .catch(async (res) => {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         })
 
       let FILE2 = '';
@@ -200,13 +219,20 @@ function Signup() {
 
       await Axios.post(`${baseURL}/upload`, formData2)
         .then(async (response) => {
-          console.log(response);
+          await Swal.fire({
+            icon: 'success',
+            title: 'Meet Added !!',
+            text: response.data.message,
+          })
           FILE2 = response.data.message;
         })
         .catch(async (res) => {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         })
-      alert(FILE1 + " " + FILE2);
 
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,

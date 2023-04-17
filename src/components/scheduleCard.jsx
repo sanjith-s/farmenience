@@ -119,6 +119,20 @@ const ScheduleCard = (props) => {
 
   return (
     <React.Fragment>
+      <Box sx={{
+        bgcolor: "#b8ebab;",
+        height: "100%",
+        width: "50vw",
+        borderRadius: "10px",
+        display: "flex",
+        flexDirection: "column",
+        // justifyContent: "space-evenly",
+        alignItems: "center",
+        boxShadow:"2",
+        padding:"20px",
+        marginTop:"10%",
+        // marginBotto:"10%"
+      }}>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
         <DesktopDatePicker
           label="Meet Date"
@@ -126,9 +140,10 @@ const ScheduleCard = (props) => {
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-            backgroundColor: "#C4E1C5",
+            backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
+            margin:"5px"
           }} />}
         />
         <TimePicker
@@ -136,9 +151,10 @@ const ScheduleCard = (props) => {
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-            backgroundColor: "#C4E1C5",
+            backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
+            margin:"5px"
           }} />}
         />
       </LocalizationProvider>
@@ -148,9 +164,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -166,9 +183,10 @@ const ScheduleCard = (props) => {
         color="success"
         onChange={(e) => { setCrops(e.target.value) }}
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -183,9 +201,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 80,
@@ -199,9 +218,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -210,8 +230,9 @@ const ScheduleCard = (props) => {
         onChange={(e) => { setLocation(e.target.value) }}
         value={location}
       />
+      
       <Box sx={{
-        backgroundColor: "#C4E1C5",
+        backgroundColor: "#ffff",
         borderBottomColor: "black",
         width: "70%",
       }}>
@@ -230,28 +251,27 @@ const ScheduleCard = (props) => {
           </Select>
         </FormControl>
       </Box>
-      <Stack
+      </Box>
+      {/* <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
         display="flex"
         justifyContent="center"
       >
-      </Stack>
+      </Stack> */}
       <Box textAlign="center" padding={"1.25rem"}>
+        
+        <Button variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}
+         onClick={async () => {verify()}}>
+          Submit
+        </Button><br /><br />
         <Button variant="contained" sx={{
-          backgroundColor: "#fafa01", color: "black", "&:hover": {
-            backgroundColor: "#ffff00",
+          backgroundColor: "#ff2519", color: "white", "&:hover": {
+            backgroundColor: "#7ad14f",
           }
         }} onClick={Reset}>
           Reset To Old Values
-        </Button><br /><br />
-        <Button variant="contained" sx={{
-          backgroundColor: "#fafa01", color: "black", "&:hover": {
-            backgroundColor: "#ffff00",
-          }
-        }} onClick={async () => {verify()}}>
-          Submit
         </Button>
       </Box>
     </React.Fragment>

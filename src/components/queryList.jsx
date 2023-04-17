@@ -230,12 +230,12 @@ function Query(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} variant="contained" sx={{
-            backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
               backgroundColor: "#ffff00",
             }
           }} >Cancel</Button>
           <Button onClick={submitResponse} variant="contained" sx={{
-            backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
               backgroundColor: "#ffff00",
             }
           }} >Submit</Button>

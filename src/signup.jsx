@@ -1,7 +1,10 @@
 import "./css/signup.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
+import Geocode from "react-geocode";
+Geocode.setLanguage("en");
+Geocode.setApiKey("AIzaSyD-79BSbusu8q97EMXY2Ewy16Xtlhi4UFA");
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,
@@ -16,21 +19,31 @@ import {
   StepLabel,
   TextField,
   Icon,
+  InputAdornment,
+  IconButton,
+  Container,
 } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
 import { Delete, DeleteOutline, FileUploadOutlined, FileUploadRounded, FileUploadTwoTone, Padding, Upload, UploadFileRounded, UploadFileSharp } from "@mui/icons-material";
 import getThemeProps from '@material-ui/styles/getThemeProps'
 import collage12 from "./images/sign_up.jpg";
-import { IconButton } from "@mui/joy";
 
 function Signup() {
+
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
+
+  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const nextStep = () => {
     if (activeStep < 2)
@@ -58,9 +71,53 @@ function Signup() {
     utype: "",
   });
 
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [file, setFile] = useState();
+  const [filename, setFilename] = useState({})
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [file1, setFile1] = useState();
+  const [filename1, setFilename1] = useState({});
+  const [isUploaded1, setIsUploaded1] = useState(false);
+  const [file2, setFile2] = useState();
+  const [filename2, setFilename2] = useState({});
+  const [isUploaded2, setIsUploaded2] = useState(false);
+
+  function handleChange(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded(true);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    setFilename(e.target.files[0]);
+  }
+
+  function handleChange1(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded1(true);
+    setFile1(URL.createObjectURL(e.target.files[0]));
+    setFilename1(e.target.files[0]);
+  }
+
+  function handleChange2(e) {
+    console.log(e.target.files[0]);
+    setIsUploaded2(true);
+    setFile2(URL.createObjectURL(e.target.files[0]));
+    setFilename2(e.target.files[0]);
+  }
+
   const addSignupData = (event) => {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
+
+  Geocode.fromAddress("Eiffel Tower").then(
+    (response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      console.log(lat, lng);
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
 
   const submit = async (event) => {
     if (!navigator.geolocation) {
@@ -80,19 +137,8 @@ function Signup() {
         })
     }
 
-    {
-      location.loaded ?
-        Swal.fire({
-          icon: 'error',
-          title: 'Location Received',
-          text: JSON.stringify(location),
-        }) :
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: "Location data not available yet",
-        })
-    }
+    alert(signupdata.email)
+    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -109,6 +155,7 @@ function Signup() {
       })
       return;
     }
+
     if (!passChk) {
       await Swal.fire({
         icon: 'error',
@@ -122,10 +169,12 @@ function Signup() {
       icon: 'success',
       title: 'Validation Successful!',
     })
+
     await Swal.fire({
       icon: 'success',
       title: selection,
     })
+
     if (
       signupdata.password === signupdata.confpass
     ) {
@@ -172,6 +221,10 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
+        latitude: lat,
+        longitude: lng,
+        doc1: FILE1,
+        doc2: FILE2,
       })
         .then((response) => {
           if (response.data.message == "Success") {
@@ -185,7 +238,9 @@ function Signup() {
             text: res.response.data.message,
           })
         });
-    } else {
+    }
+
+    else {
       await Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -229,7 +284,7 @@ function Signup() {
         rowGap: "40px",
         ,
         width:"50%",
-        borderRadius: "40", */
+        borderRadius: "40px", */
       }}
     >
       <Box
@@ -272,7 +327,6 @@ function Signup() {
         </Step>
       </Stepper></Box>
 
-         
       {activeStep === 0 &&
         <Box>
           <Box
@@ -534,9 +588,20 @@ function Signup() {
                 variant="filled" 
                 inputProps={{style: {fontSize: 15,backgroundColor : "#f5f5f5",borderRadius: 5}}} // font size of input text
                 InputLabelProps={{style: {fontSize: 15}}} 
-                type="password"
+                type={showPassword1 ? 'text' : 'password'}
                 name="password"
                 value={signupdata.password}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword1}
+                      edge="end"
+                    >
+                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -546,6 +611,7 @@ function Signup() {
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 confirm password
+
               </Typography> */}
               <TextField 
                 sx={{width:"100%"}} 
@@ -554,9 +620,22 @@ function Signup() {
                 variant="filled" 
                 inputProps={{style: {fontSize: 15,backgroundColor : "#f5f5f5",borderRadius: 5}}} // font size of input text
                 InputLabelProps={{style: {fontSize: 15}}}
-                type="password"
+              </Typography>
+              <Input
+                type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
                 value={signupdata.confpass}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword2}
+                      edge="end"
+                    >
+                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -567,6 +646,7 @@ function Signup() {
                 fontFamily : "Roboto", fontSize:20,color:"black",fontWeight : 500}}
               >
                 account type
+
               </Typography> */}
               
               <FormControl variant="standard" sx={{ width: "100%" }}>
@@ -577,7 +657,10 @@ function Signup() {
                 variant="filled" 
                 inputProps={{style: {fontSize: 15,backgroundColor : "#f5f5f5",borderRadius: 5}}} // font size of input text
                 InputLabelProps={{style: {fontSize: 15}}}
-                select  value={selection} onClick={selectionChange}>
+              </Typography>
+
+              <FormControl variant="standard" sx={{ width: "12.5rem" }}>
+                <Select value={selection} onClick={selectionChange}>
                   <MenuItem value="Farmer">
                     <Typography style={{ textTransform: "capitalize", fontSize:15}}>
                       farmer
@@ -749,14 +832,7 @@ function Signup() {
                   NGO License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
                   style={{ textTransform: "uppercase" , margin : "20px", display :"flex",
@@ -779,14 +855,7 @@ function Signup() {
                   Aadhaar Card of Owner
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
                   style={{ textTransform: "uppercase" , margin : "30px", display:"flex"
@@ -825,14 +894,7 @@ function Signup() {
                   Trading License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
                   style={{ textTransform: "uppercase" , margin : "30px", display:"flex"
@@ -847,6 +909,7 @@ function Signup() {
                   </Box>
                 </label> </Box>
                  <Box display="flex">
+
                 <Typography
                   style={{  margin : "20px", width:"400px",
                   fontFamily : "Roboto" , fontSize : "20px" , color: "black",
@@ -876,8 +939,7 @@ function Signup() {
                   <Icon ><FileUploadOutlined sx={{fontSize: "large"}} /></Icon>
                   </Box>
                 </label> 
-              </Box>
-              
+              </Box>             
               </Box>
             }
           </form>

@@ -12,7 +12,7 @@ import Axios from "axios";
 import Cookies from 'js-cookie';
 // import "./Pagen10.css";
 import { Divider } from '@material-ui/core';
-import BackImg from "../components/homepageBackground.png";
+import BackImg from "../images/NgoBG.jpg";
 import "../css/pageM0.css"
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
@@ -140,7 +140,7 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={() => { document.getElementById("roller1").stop() }} onMouseOut={() => { document.getElementById("roller1").start() }} >
+        <marquee id="roller1" behavior="scroll" direction="up" onMouseOver={() => { document.getElementById("roller1").stop() }} onMouseOut={() => { document.getElementById("roller1").start() }} >
           <div className='shower' style={{ margin: "2%",height:"100%" }}>
             {queries.map((que, ind) => {
               return (<div className='texts-box'>
@@ -153,12 +153,12 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
         </marquee>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <marquee id="roller2" behavior="scroll" direction="down" onMouseOver={() => { document.getElementById("roller2").stop() }} onMouseOut={() => { document.getElementById("roller2").start() }} >
+        <marquee id="roller2" behavior="scroll" direction="up" onMouseOver={() => { document.getElementById("roller2").stop() }} onMouseOut={() => { document.getElementById("roller2").start() }} >
           <div className='shower' style={{ margin: "2%" }}>
             {appointments.map(que => {
               return (<div className='texts-box'>
                 <a className='links' href="/n13">
-                  <span className='b-text'>{que.subject}</span>
+                  <span className='b-text'>{que.reason}</span>
                 </a>
               </div>)
             })}

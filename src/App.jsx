@@ -87,6 +87,7 @@ import Headroom from "react-headroom";
 
 const LandingPage = lazy(() => import("./landingPage"));
 const Homepage2 = lazy(() => import("./homepage2"));
+const FarmerHomepage = lazy(() => import("./FarmerHomepage"));
 const AboutUsPage = lazy(() => import("./aboutUsPage"));
 const TermsAndCondition = lazy(() => import("./termsAndCondition"));
 const ReviewsForm = lazy(() => import("./ReviewsForm"));
@@ -141,20 +142,20 @@ const PageM17 = lazy(() => import("./Market/pageM17"));
 const PageM18 = lazy(() => import("./Market/pageM18"));
 const PageM19 = lazy(() => import("./Market/pageM19"));
 
-const PageN1 = lazy(() => import("././Ngo/pageN1"));
-const PageN2 = lazy(() => import("././Ngo/pageN2a"));
-const PageN4 = lazy(() => import("././Ngo/pageN4"));
-const PageN5 = lazy(() => import("././Ngo/pageN5"));
-const PageN6 = lazy(() => import("././Ngo/pageN6"));
-const PageN7 = lazy(() => import("././Ngo/pageN7"));
-const PageN9 = lazy(() => import("././Ngo/pageN9"));
-const PageN10 = lazy(() => import("././Ngo/pageN10"));
-const PageN10a = lazy(() => import("././Ngo/pageN10a"));
-const PageN11 = lazy(() => import("././Ngo/pageN11"));
-const PageN12 = lazy(() => import("././Ngo/pageN12"));
-const PageN13 = lazy(() => import("././Ngo/pageN13"));
-const PageN14a = lazy(() => import("././Ngo/pageN14a"));
-const PageN14b = lazy(() => import("././Ngo/pageN14b"));
+const PageN1 = lazy(() => import("./Ngo/pageN1"));
+const PageN2 = lazy(() => import("./Ngo/pageN2a"));
+const PageN4 = lazy(() => import("./Ngo/pageN4"));
+const PageN5 = lazy(() => import("./Ngo/pageN5"));
+const PageN6 = lazy(() => import("./Ngo/pageN6"));
+const PageN7 = lazy(() => import("./Ngo/pageN7"));
+const PageN9 = lazy(() => import("./Ngo/pageN9"));
+const PageN10 = lazy(() => import("./Ngo/pageN10"));
+const PageN10a = lazy(() => import("./Ngo/pageN10a"));
+const PageN11 = lazy(() => import("./Ngo/pageN11"));
+const PageN12 = lazy(() => import("./Ngo/pageN12"));
+const PageN13 = lazy(() => import("./Ngo/pageN13"));
+const PageN14a = lazy(() => import("./Ngo/pageN14a"));
+const PageN14b = lazy(() => import("./Ngo/pageN14b"));
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -197,6 +198,7 @@ function App() {
               <Route path="/aboutUs" element={<AboutUsPage />} />
               <Route path="/termsAndCondition" element={<TermsAndCondition />} />
               <Route path="/ReviewsForm" element={<ReviewsForm />} />
+              <Route path="/farmerHomepage" element={<FarmerHomepage />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />

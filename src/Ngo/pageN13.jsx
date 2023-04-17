@@ -37,7 +37,7 @@ function PageN13() {
     return (
         <>
         <Box className="query-list">
-            <h2 className="query-list__heading">You have appointments</h2>
+            <h2 className="query-list__heading">You have {data.length } appointments</h2>
             {
                 <AppointmentList data={data} />
             }

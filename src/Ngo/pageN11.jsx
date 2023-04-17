@@ -69,6 +69,7 @@ return(
                 queryName={req.subject}
                 queryDesc={req.description}
                 date={req.updatedAt}
+                data={req}
               />
                   </div>
               )

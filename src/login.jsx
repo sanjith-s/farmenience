@@ -131,6 +131,12 @@ function Login() {
 
           <Button
             variant="contained"
+            sx={{
+              backgroundColor: "#000080", color: "white", "&:hover": {
+                backgroundColor: "#0067A5",
+              }
+            }}
+  
             onClick={() => LogMeIn(email, password)}
           >
             login

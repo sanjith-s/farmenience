@@ -107,6 +107,7 @@ function PageM1() {
       <Box className="query-list">
         <h2 className="query-list__heading">You have {orders.length} requests</h2>
         {
+<<<<<<< Updated upstream
             orders.map((req,index) => {
                 return (
                     <div>
@@ -118,6 +119,19 @@ function PageM1() {
                        itemName={req.name}
                        itemQuantity={req.quantity}
                        data={req}
+=======
+          content.map((req, index) => {
+            return (
+              <div>
+                <RequestBox
+                  key={index + 1}
+                  reqId={req._id}
+                  name={req.name}
+                  phoneNo={req.phoneNumber}
+                  itemName={req.itemName}
+                  itemQuantity={req.quantity}
+                  data={req}
+>>>>>>> Stashed changes
                 />
               </div>
             )

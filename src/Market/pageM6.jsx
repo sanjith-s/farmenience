@@ -374,29 +374,32 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
+      
+        {/* <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
+          Add Item
+        </Button> */}
+        {/* <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
+          Delete Item
+        </Button> */}
+      <Box textAlign="center" padding={"1.25rem"}>
       <Stack
-        direction="row"
+        direction="column"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
-          Add Item
-        </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
-          Delete Item
-        </Button>
-      </Stack>
-      <Box textAlign="center" padding={"1.25rem"}>
-
         <Button onClick={async () => {
           await Swal.fire({
             icon: 'info',
             title: 'Please confirm the details ...',
             html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
             imageUrl: file,
-            confirmButtonText: 'Confirm'
+            confirmButtonText: 'Confirm',
+            preConfirm: () => {
+              handleSubmit();
+              console.log('click');
+            }
           })
         }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
           Submit
@@ -404,11 +407,12 @@ const PageM6 = () => {
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
-        <Button variant="contained"
+        <Button variant="contained" 
           color="success" onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-      </Box>
+        </Stack>
+        </Box>
     </div>
   );
 };

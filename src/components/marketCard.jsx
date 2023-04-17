@@ -15,10 +15,20 @@ import img from "../images/product8.jpg";
 import Axios from "axios";
 import Cookies from "js-cookie";
 import { baseURL } from "../constants";
+import Swal from "sweetalert2";
 
 export default function MediaCard(props) {
   
-  function addCart() {
+  async function addCart() {
+
+    await Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Item added to cart',
+      showConfirmButton: false,
+      timer: 950
+    });
+
     const items = {
       productName: props.productName,
       quantity: props.sellerCount,
@@ -33,6 +43,17 @@ export default function MediaCard(props) {
     console.log(dummy);
     props.cartArray(dummy);
     console.log(props.cartArray);
+  }
+
+  async function viewItem() {
+    await Swal.fire({
+      position: 'center',
+      icon: 'info',
+      html: "<b>Product Name: </b> " + props.productName + "<br /><br />" + "<b>Price: </b>" + props.price + "<br /><br />" + "<b>Quantity: </b>" + props.sellerCount + "<br /><br />" + "<b>Type: </b>" + props.type + "<br /><br />" + "<b>Rating: </b>" + props.stars,
+      imageUrl: props.imgsrc,
+      // // showConfirmButton: false,
+      // timer: 950
+    });
   }
 
   return (
@@ -58,7 +79,8 @@ export default function MediaCard(props) {
 
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Button size="small" variant="contained">View</Button>
+        <Button size="small" variant="contained"
+        onClick={viewItem}>View</Button>
         <Typography variant="h6" color="text.success">
           ₹ {props.price}
         </Typography>

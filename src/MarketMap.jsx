@@ -90,6 +90,7 @@ const MarketMap = () => {
 
     useEffect(() => {
         googleMap = initGoogleMap();
+        initGoogleMap();
         var bounds = new window.google.maps.LatLngBounds();
         filterData.map(x => {
             const marker = createMarker(x);
@@ -127,8 +128,9 @@ const MarketMap = () => {
     // initialize the google map
     const initGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
+            // return new google.maps.Map(googleMapRef.current, {
             center: { lat: 13.0213, lng: 80.2231 },
-            zoom: 8
+            zoom: 8 
         });
     }
 

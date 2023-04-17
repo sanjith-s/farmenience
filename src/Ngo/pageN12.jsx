@@ -56,6 +56,7 @@ const PageN12 = () => {
   const location = useLocation();
     const navigate = useNavigate();
     const data = location.state.data;
+    console.log(data);
 
   return (
     <Container id="google_translate_element"
@@ -158,7 +159,7 @@ const PageN12 = () => {
                   width: "70%",
                 }}
               >
-                {/* {data._id} */}
+                {data._id}
               </Typography>
             </Box>
           </Grid>
@@ -180,7 +181,7 @@ const PageN12 = () => {
                   borderRadius:".4375rem",
                 }}
               >
-                Query Type:
+                Query Status:
               </Typography>
               <Typography
                 style={{
@@ -193,7 +194,7 @@ const PageN12 = () => {
                   width: "21.875rem",
                 }}
               >
-                {content.type}
+                {data.status}
               </Typography>
             </Box>
           </Grid>
@@ -228,7 +229,7 @@ const PageN12 = () => {
                   width: "70%",
                 }}
               >
-                {content.name}
+                {data.subject}
               </Typography>
             </Box>
           </Grid>
@@ -265,7 +266,7 @@ const PageN12 = () => {
                   width: "90%",
                 }}
               >
-                {content.description}
+                {data.description}
               </Typography>
             </Box>
           </Grid>
@@ -301,7 +302,7 @@ const PageN12 = () => {
                   width: "70%",
                 }}
               >
-                {content.date}
+                {data.updatedAt}
               </Typography>
             </Box>
           </Grid>

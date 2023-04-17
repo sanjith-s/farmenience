@@ -5,6 +5,7 @@ import "./css/app.css";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
+import Page404 from "./page404";
 
 // import Homepage1 from "./homepage1";
 // import LandingPage from "./landingPage";
@@ -155,7 +156,7 @@ const PageN11 = lazy(() => import("./Ngo/pageN11"));
 const PageN12 = lazy(() => import("./Ngo/pageN12"));
 const PageN13 = lazy(() => import("./Ngo/pageN13"));
 const PageN14a = lazy(() => import("./Ngo/pageN14a"));
-const PageN14b = lazy(() => import("./Ngo/pageN14b"));
+const PageN14b = lazy(() => import("./Ngo/pageN14b"));  
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -182,13 +183,12 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<h1>Loading ...</h1>}>
-      <div>
-        {/* <N10Navbar /> */}
-        {displayNavbar()}
-        <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
-          fullAnotherSpeak(e.target.innerText)
-        }} >
+    <div>
+      {/* <Navbar /> */}
+      {displayNavbar()}
+      <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }} >
 
           <BrowserRouter>
             <Routes>
@@ -263,6 +263,7 @@ function App() {
               <Route path="/payments/success" element={<Success />} />
               <Route path="/payments/cancel" element={<Cancel />} />
               <Route path="/pdfprint" element={<PdfPrint />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
           </BrowserRouter>
 
@@ -272,7 +273,7 @@ function App() {
         {/* <Footer1 /> */}
         {displayFooter()}
       </div >
-    </Suspense>
+
   );
 }
 

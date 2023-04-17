@@ -73,7 +73,7 @@ function TransactionHistory(props) {
               top: 0,
               borderBottom: ".1875rem solid",
             }}>
-              <TableCell
+              {/* <TableCell
                 align="center"
                 style={{
                   fontWeight: "600",
@@ -83,6 +83,19 @@ function TransactionHistory(props) {
                   position: "sticky",
                   top: 0,
                   borderBottom: ".1875rem solid",
+                }}
+              >
+                ifsc_code
+              </TableCell> */}
+              <TableCell
+                align="center"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "1.125rem",
+                  textTransform: "uppercase",
+                  borderRight: ".1875rem solid",
+                  position: "sticky",
+                  top: 0
                 }}
               >
                 trans. id
@@ -98,22 +111,9 @@ function TransactionHistory(props) {
                   top: 0
                 }}
               >
-                ifsc_code
-              </TableCell>
-              <TableCell
-                align="center"
-                style={{
-                  fontWeight: "600",
-                  fontSize: "1.125rem",
-                  textTransform: "uppercase",
-                  borderRight: ".1875rem solid",
-                  position: "sticky",
-                  top: 0
-                }}
-              >
                 payment mode
               </TableCell>
-              <TableCell
+              {/* <TableCell
                 align="center"
                 style={{
                   fontWeight: "600",
@@ -128,7 +128,7 @@ function TransactionHistory(props) {
                 }}
               >
                 bank name
-              </TableCell>
+              </TableCell> */}
               <TableCell
                 align="center"
                 style={{
@@ -155,7 +155,7 @@ function TransactionHistory(props) {
               >
                 sender
               </TableCell>
-              <TableCell
+              {/* <TableCell
                 align="center"
                 style={{
                   fontWeight: "600",
@@ -166,13 +166,13 @@ function TransactionHistory(props) {
                 }}
               >
                 receiver
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody style={{ backgroundColor: "#c8f1d9" }}>
             {rows.map((row, index) => (
               <TableRow key={index} style={{ borderBottom: ".125rem solid #000" }}>
-                <TableCell
+                {/* <TableCell
                   component="th"
                   scope="row"
                   align="center"
@@ -184,7 +184,7 @@ function TransactionHistory(props) {
                   }}
                 >
                   {row.ifscCode}
-                </TableCell>
+                </TableCell> */}
                 <TableCell
                   align="right"
                   style={{
@@ -208,7 +208,7 @@ function TransactionHistory(props) {
                 >
                   {row.paymentMethod}
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   align="right"
                   style={{
                     fontWeight: "600",
@@ -218,7 +218,7 @@ function TransactionHistory(props) {
                   }}
                 >
                   {row.bankName}
-                </TableCell>
+                </TableCell> */}
                 <TableCell
                   align="right"
                   style={{
@@ -242,7 +242,7 @@ function TransactionHistory(props) {
                 >
                   {row.sender}
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   align="right"
                   style={{
                     fontWeight: "600",
@@ -252,7 +252,7 @@ function TransactionHistory(props) {
                   }}
                 >
                   {row.receiver}
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

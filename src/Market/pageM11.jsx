@@ -128,6 +128,8 @@ const PageM11 = () => {
   }, []);
 
   async function confirmCart() {
+    navigate('../M12');
+    alert("Items added to Cart: goto M12");
     let token = Cookies.get('token');
     await Axios.post(`${baseURL}/buyer/postcart`, {
       cartItems: cart
@@ -408,17 +410,26 @@ const PageM11 = () => {
 
           {content.map((v, i) => {
             return (
-              <MarketCard
-                key={i + 1}
-                image={v.image}
-                productName={v.productName}
-                sellerCount={v.quantity}
-                price={v.price}
-                stars={v.rating}
-                type={v.type}
-                cartArray={setcart}
-                array={cart}
-              />
+              // <>
+              //     {val.records.map((v, i)=>{
+                    // return (
+                      <MarketCard
+                        key ={i+ 1}
+                        image ={v.image}
+                        productName ={v.productName}
+                        sellerCount ={v.quantity}
+                        price ={v.price}
+                        stars ={v.rating}
+                        type = {v.type}
+                        cartArray ={setcart}
+                        array = {cart}
+                        imgsrc={v.filename}
+                      />
+                    // );
+                  // }
+                // )
+              //   }
+              // </>
             );
           })}
 

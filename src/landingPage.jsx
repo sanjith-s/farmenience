@@ -41,18 +41,7 @@ const LandingPage = () => {
         <a href="#">
         </a>
 
-        <nav className="main-nav">
-          <ul className="main-nav-list">
-            <li><a className="main-nav-link" href="#how">How it works</a></li>
-            <li>
-              <a className="main-nav-link" href="#testimonials">Testimonials</a>
-            </li>
-            <li><a className="main-nav-link" href="#features">Features</a></li>
-            <li><a className="main-nav-link" href="#contact">Contact</a></li>
-            <li><a className="main-nav-link nav-cta" href="#cta">Try it now </a></li>
-          </ul>
-        </nav>
-
+        
         <button className="btn-mobile-nav">
           <ion-icon className="icon-mobile-nav" name="menu-outline"></ion-icon>
           <ion-icon className="icon-mobile-nav" name="close-outline"></ion-icon>
@@ -74,19 +63,7 @@ const LandingPage = () => {
               >
 
               <a href="#how" className="btn btn--outline">Learn more &darr;</a>
-              <div className="delivered-meals">
-                <div className="delivered-imgs">
-                  <img src={customer1} alt="Customer photo" />
-                  <img src={customer2} alt="Customer photo" />
-                  <img src={customer3} alt="Customer photo" />
-                  <img src={customer4} alt="Customer photo" />
-                  <img src={customer5} alt="Customer photo" />
-                  <img src={customer6} alt="Customer photo" />
-                </div>
-                <p className="delivered-text">
-                  <span>250,000+</span>  have already used!
-                </p>
-              </div>
+              
             </div>
             <div className="hero-img-box">
               <picture>
@@ -396,7 +373,7 @@ const LandingPage = () => {
       {/* <!-- FOOTER  --> */}
 
       <section id="contact">
-        <footer className="footer">
+        {/* <footer className="footer">
           <div className="container1 grid grid--footer">
             <div className="logo-col">
               <a href="#" className="footer-logo">
@@ -477,7 +454,7 @@ const LandingPage = () => {
               </ul>
             </nav>
           </div>
-        </footer>
+        </footer> */}
       </section>
     </div>
   )

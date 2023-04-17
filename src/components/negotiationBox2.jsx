@@ -46,9 +46,29 @@ function NegotiationBox2(props) {
   );
   let [minimum, setMinimum] = useState(Math.round(props.actualPrice / 2));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
       var content2 = JSON.parse(localStorage.getItem("reqs"));
       if (limit == props.userPrice) {
+      let token = Cookies.get('token');
+      await Axios.post(`${baseURL}/buyer/postrequest`, {
+          name: content2[props.index].name,
+          price: content2[props.index].price,
+          quantity: content2[props.index].quantity,
+          specificType: content2[props.index].specificType,
+          location: content2[props.index].location
+        }, { headers: { tokenstring: token } })
+          .then(async (res) => {
+            await Swal.fire({
+              icon: 'success',
+              title: "Successfully added request !!!",
+            })
+          }).catch(async (err) => {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.response.data.message,
+            })
+          })
         content2.splice(props.index, 1);
       } else {
       content2[props.index].price = content2[props.index].nprice;

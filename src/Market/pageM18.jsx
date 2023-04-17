@@ -53,33 +53,12 @@ const PageM18 = () => {
     setType('');
     setLocation('');
   }
-  // let token = Cookies.get('token');
-  // await Axios.post(`${baseURL}/buyer/postrequest`, {
-  //   name: name,
-  //   price: price,
-  //   quantity: qty,
-  //   specificType: type,
-  //   location: location
-  // }, { headers: { tokenstring: token } })
-  //   .then(async (res) => {
-  //     await Swal.fire({
-  //       icon: 'success',
-  //       title: "Successfully added request !!!",
-  //     })
-  //   }).catch(async (err) => {
-  //     await Swal.fire({
-  //       icon: 'error',
-  //       title: 'Oops...',
-  //       text: err.response.data.message,
-  //     })
-  //   })
+  
   const [data, setData] = useState([]);
 
   useEffect(() => {
     let token = Cookies.get('token');
-    alert(localStorage.getItem("reqs"));
     if (localStorage.getItem("reqs") == null || localStorage.getItem("reqs") == "" ) {
-      alert("yes");
       localStorage.setItem("reqs", "[]");
     }
     Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
@@ -105,7 +84,6 @@ const PageM18 = () => {
       })
   }, []);
   const handleSubmit = async () => {
-    alert("hi");
     var items = [];
     
     items = JSON.parse(localStorage.getItem("reqs"));

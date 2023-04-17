@@ -22,6 +22,8 @@ function Login() {
     setPwd(document.querySelector("#pwd").value);
   };
 
+  document.title = "Login - Farmenience";
+
   const submit = async (event) => {
     event.preventDefault();
     let emailChk = 0;
@@ -103,53 +105,45 @@ function Login() {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Card sx={{ margin: "30px",padding:"20px",width:"665px", boxShadow:20, marginLeft:"420px" }}>
-      <form
-        onSubmit={submit}
-        method="post"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          rowGap: "30px",
-        }}
-      >
-        <Box>
-          <Typography
-            fontWeight={500}
-            fontSize={"35px"}
-            style={{ textTransform: "uppercase", textAlign: "center" }}
+    <>
+      <Card sx={{ margin: "1.875rem", padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: "26.25" }}>
+        <form
+          onSubmit={submit}
+          method="post"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            rowGap: "1.875rem",
+          }}
+        >
+          <Box>
+            <Typography
+              fontWeight={500}
+              fontSize={"2.188rem"}
+              style={{ textTransform: "uppercase", textAlign: "center" }}
+            >
+              login
+            </Typography>
+          </Box>
+          <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email" variant="filled" sx={{ width: "25rem" }} value={email} />
+          <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic" label="Password" variant="filled" type="password" sx={{ width: "25rem" }} value={password} />
+
+          <Button
+            variant="contained"
+            onClick={() => LogMeIn(email, password)}
           >
+            login
+          </Button>
+        </form>
 
-            login page
-          </Typography>
-        </Box>
-        <TextField onChange={(e)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" sx={{width:"400px"}} value={email} />
-        <TextField onChange={(e)=>{setPwd(e.target.value)}} id="filled-basic" label="Password" variant="filled" type="password"sx={{width:"400px"}} value={password} />
-       
-        <Button
-          variant="contained"
-          onClick={() => LogMeIn(email, password)}
-        >
-          login
-        </Button>
-      </form>
-        <Button
-          variant="contained"
-          onClick={goToSignup}
-          style={{ backgroundColor: "green" }}
-        sx={{
-          marginLeft:"663px",
-          marginTop:"20px"
-        }}
-        >
-          <Link to="/signup" style={{ textDecoration: "none" }}>
-            <Typography style={{ color: "white" }}>signup</Typography>
-          </Link>
-        </Button>
-      
+      </Card>
 
-    </Card>
+      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../signup">Don't have an account ?</a></div>
+      <br />
+      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
+      <br /><br />
+    </>
   );
 }
 

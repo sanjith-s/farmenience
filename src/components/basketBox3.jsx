@@ -19,9 +19,9 @@ function BasketBox3(props) {
       style={{
         display: "flex",
         flexDirection: "column",
-        padding: "18px",
+        padding: "1.125rem",
         alignItems: "center",
-        marginTop: "15px",
+        marginTop: ".9375rem",
       }}
     >
       <Typography
@@ -43,8 +43,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   upi
@@ -58,8 +58,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   net banking
@@ -73,8 +73,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   credit/debit card
@@ -88,8 +88,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   postpaid
@@ -103,8 +103,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   crypto payment
@@ -118,8 +118,8 @@ function BasketBox3(props) {
                 <Typography
                   style={{
                     textTransform: "uppercase",
-                    fontSize: "26px",
-                    padding: "10px 0px",
+                    fontSize: "1.625rem",
+                    padding: ".625rem 0rem",
                   }}
                 >
                   cash on delivery

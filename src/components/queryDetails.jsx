@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardContent, Typography, Divider, Box } from '@material-ui/core';
+import { useNavigate } from "react-router-dom/dist";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
     },
     fontsize:{
-        fontSize:"40px",
+        fontSize:"2.5rem",
         fontWeight:500
     },
     querycontent:{
@@ -55,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 const QueryDetails = (props) => {
     const classes = useStyles();
+    const navigate = useNavigate();
 
     return (
         <div className={classes.root}>
@@ -86,7 +88,7 @@ const QueryDetails = (props) => {
                     {
                         props.query.status === 'Pending' ?
                             <>
-                                <Button onClick={() => { navigate('../N10') }} className={classes.button}>Home Page</Button>
+                                <Button onClick={() => { navigate('../N1') }} className={classes.button}>Back</Button>
                                 {props.query.responser = "No response till now"}
                             </>
                             :

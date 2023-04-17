@@ -52,22 +52,22 @@ const Negotiate = (props) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        padding: "50px 0px",
-        borderRadius: "12px",
-        columnGap: "50px",
+        padding: "3.125rem 0rem",
+        borderRadius: ".75rem",
+        columnGap: "3.125rem",
         backgroundColor: "cornsilk",
-        border: "2px solid",
+        border: ".125rem solid",
       }}
     >
       <Box
         sx={{
-          width: "400px",
-          borderRadius: "8px",
-          border: "3px solid #888",
+          width: "25rem",
+          borderRadius: ".5rem",
+          border: ".1875rem solid #888",
           backgroundColor: "#fff",
         }}
       >
-        <CardContent style={{ padding: "15px 25px" }}>
+        <CardContent style={{ padding: ".9375rem 1.5625rem" }}>
           <Stack>
             {itemsName.map((value, index) => {
               return (
@@ -75,17 +75,17 @@ const Negotiate = (props) => {
                   key={index}
                   sx={{
                     display: "flex",
-                    columnGap: "20px",
+                    columnGap: "1.25rem",
                     justifyContent: "space-between",
-                    height: "50px",
+                    height: "3.125rem",
                     alignItems: "center",
-                    margin: "2px 0px",
+                    margin: ".125rem 0rem",
                   }}
                 >
                   <Typography
                     style={{
                       fontWeight: "600",
-                      fontSize: "20px",
+                      fontSize: "1.25rem",
                       textTransform: "uppercase",
                       color: "#000",
                     }}
@@ -103,7 +103,7 @@ const Negotiate = (props) => {
         style={{
           display: "flex",
           flexDirection: "column",
-          rowGap: "30px",
+          rowGap: "1.875rem",
           justifyContent: "center",
           alignItems: "center",
           width: "40%",
@@ -112,18 +112,18 @@ const Negotiate = (props) => {
         <Box
           sx={{
             display: "flex",
-            columnGap: "50px",
+            columnGap: "3.125rem",
             justifyContent: "space-between",
-            height: "50px",
+            height: "3.125rem",
             alignItems: "center",
-            margin: "2px 0px",
-            borderBottom: "2px solid",
+            margin: ".125rem 0rem",
+            borderBottom: ".125rem solid",
           }}
         >
           <Typography
             style={{
               fontWeight: "600",
-              fontSize: "22px",
+              fontSize: "1.375rem",
               textTransform: "uppercase",
             }}
           >
@@ -135,11 +135,11 @@ const Negotiate = (props) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            rowGap: "40px",
+            rowGap: "2.5rem",
             backgroundColor: "#fff",
-            padding: "20px",
-            borderRadius: "8px",
-            border: "3px solid #888",
+            padding: "1.25rem",
+            borderRadius: ".5rem",
+            border: ".1875rem solid #888",
           }}
         >
           <Typography
@@ -148,7 +148,7 @@ const Negotiate = (props) => {
             style={{
               textAlign: "center",
               textTransform: "uppercase",
-              fontSize: "28px",
+              fontSize: "1.75rem",
             }}
           >
             Enter the price
@@ -156,18 +156,18 @@ const Negotiate = (props) => {
 
           <Box
             sx={{
-              padding: "20px",
+              padding: "1.25rem",
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               alignItems: "center",
-              borderRadius: "4px",
+              borderRadius: ".25rem",
               backgroundColor: "white",
             }}
           >
             <FormControl
               style={{
                 position: "sticky",
-                borderRadius: "4px",
+                borderRadius: ".25rem",
               }}
               onChange={(e) => {
                 setPrice(e.target.value);

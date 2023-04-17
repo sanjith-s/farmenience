@@ -9,8 +9,6 @@ import {
   Box,
   Paper,
 } from "@mui/material";
-// import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
-// import { TableColumnResizing } from '@devexpress/dx-react-grid-material-ui';
 
 function TransactionHistory(props) {
   const createData = (
@@ -50,21 +48,21 @@ function TransactionHistory(props) {
       <TableContainer
         component={Paper}
         style={{
-          border: "3px solid",
+          border: ".1875rem solid",
           width: "fit-content",
         }}
         sx={{
-          height: "400px"    
+          height: "25rem"    
         }}
       >
         <Table
-          sx={{ width: "650px", overflow: "auto", height: "max-content" }}
+          sx={{ width: "40.625rem", overflow: "auto", height: "max-content" }}
           aria-label="prece table"
         >
           <TableHead
             style={{
-              borderTop: "0px solid",
-              borderBottom: "3px solid",
+              borderTop: "0rem solid",
+              borderBottom: ".1875rem solid",
               backgroundColor: "#ccc",
               position: "sticky",
                   top: 0
@@ -73,18 +71,18 @@ function TransactionHistory(props) {
             <TableRow style={{
               position: "sticky",
               top: 0,
-              borderBottom: "3px solid",
+              borderBottom: ".1875rem solid",
             }}>
               <TableCell
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0,
-                  borderBottom: "3px solid",
+                  borderBottom: ".1875rem solid",
                 }}
               >
                 trans. id
@@ -93,9 +91,9 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0
                 }}
@@ -106,9 +104,9 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0
                 }}
@@ -119,9 +117,9 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0
                 }}
@@ -135,9 +133,9 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0
                 }}
@@ -148,9 +146,9 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
-                  borderRight: "3px solid",
+                  borderRight: ".1875rem solid",
                   position: "sticky",
                   top: 0
                 }}
@@ -161,7 +159,7 @@ function TransactionHistory(props) {
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   textTransform: "uppercase",
                   position: "sticky",
                   top: 0
@@ -173,15 +171,15 @@ function TransactionHistory(props) {
           </TableHead>
           <TableBody style={{ backgroundColor: "#c8f1d9" }}>
             {rows.map((row, index) => (
-              <TableRow key={index} style={{ borderBottom: "2px solid #000" }}>
+              <TableRow key={index} style={{ borderBottom: ".125rem solid #000" }}>
                 <TableCell
                   component="th"
                   scope="row"
                   align="center"
                   style={{
                     fontWeight: "600",
-                    fontSize: "18px",
-                    borderRight: "3px solid",
+                    fontSize: "1.125rem",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -191,9 +189,9 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "16px",
+                    fontSize: "1rem",
                     textTransform: "capitalize",
-                    borderRight: "3px solid",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -203,8 +201,8 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "18px",
-                    borderRight: "3px solid",
+                    fontSize: "1.125rem",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -214,8 +212,8 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "18px",
-                    borderRight: "3px solid",
+                    fontSize: "1.125rem",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -225,8 +223,8 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "18px",
-                    borderRight: "3px solid",
+                    fontSize: "1.125rem",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -236,9 +234,9 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "16px",
+                    fontSize: "1rem",
                     textTransform: "capitalize",
-                    borderRight: "3px solid",
+                    borderRight: ".1875rem solid",
                     textAlign: "center"
                   }}
                 >
@@ -248,7 +246,7 @@ function TransactionHistory(props) {
                   align="right"
                   style={{
                     fontWeight: "600",
-                    fontSize: "16px",
+                    fontSize: "1rem",
                     textTransform: "capitalize",
                     textAlign: "center"
                   }}

@@ -277,7 +277,7 @@ function PageM12() {
   }
 
   return (
-    <Container style={{ padding: "20px 0px" }} id="google_translate_element" >
+    <Container style={{ padding: "1.25rem 0rem" }} id="google_translate_element" >
     {/*onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}*/}
@@ -286,7 +286,7 @@ function PageM12() {
       <ul id="mylist">
 
       </ul>
-      <Box sx={{ marginBottom: "20px" }} className="gx-d-flex justify-content-center">
+      <Box sx={{ marginBottom: "1.25rem" }} className="gx-d-flex justify-content-center">
         <Stepper activeStep={value} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
@@ -296,7 +296,7 @@ function PageM12() {
                     textTransform: "uppercase",
                     fontWeight: "600",
                     color: "darkgreen",
-                    fontSize: "20px",
+                    fontSize: "1.25rem",
                   }}
                 >
                   {label}
@@ -346,15 +346,15 @@ function PageM12() {
                   style={{
                     position: "absolute",
                     backgroundColor:"#74e81c",
-                    top: "10px",
-                    right: "10px",
+                    top: ".625rem",
+                    right: ".625rem",
                     // fontWeight: "600",
                     borderRadius: "50%",
-                    height: "60px",
-                    width: "10px",
+                    height: "3.75rem",
+                    width: ".625rem",
                   }}
                 >
-                  <ThumbUpAltIcon style={{ width: "30px", height: "30px" }} />
+                  <ThumbUpAltIcon style={{ width: "1.875rem", height: "1.875rem" }} />
                 </Button>
               </Box>
             )}
@@ -369,20 +369,20 @@ function PageM12() {
                 />
                 {active === "negot1" && (
                   <Button
-                    variant="contained"
                     onClick={updateHandler}
+                    variant="contained"
                     style={{
                       position: "absolute",
                       backgroundColor:"#74e81c",
-                      top: "10px",
-                      right: "10px",
+                      top: ".625rem",
+                      right: ".625rem",
                       // fontWeight: "600", 
                       borderRadius: "50%",
-                      height: "60px",
-                      width: "10px",
+                      height: "3.75rem",
+                      width: ".625rem",
                     }}
                   >
-                    <EditIcon style={{ width: "30px", height: "30px" }} />
+                    <EditIcon style={{ width: "1.875rem", height: "1.875rem" }} />
                   </Button>
                 )}
               </Box>
@@ -392,14 +392,14 @@ function PageM12() {
 
         {active === "negot1" && (
 
-          <Box sx={{ marginTop: "10px" }}>
+          <Box sx={{ marginTop: ".625rem" }}>
             <Box
               sx={{
                 backgroundColor: "#fff",
-                padding: "15px",
-                borderRadius: "5px",
+                padding: ".9375rem",
+                borderRadius: ".3125rem",
                 display: "flex",
-                columnGap: "40px",
+                columnGap: "2.5rem",
                 justifyContent: "center",
               }}
             >
@@ -408,7 +408,7 @@ function PageM12() {
                 backgroundColor:"#74e81c",
               }}
               variant="contained">
-                add <ShoppingCartIcon style={{ marginLeft: "8px" }} />
+                add <ShoppingCartIcon style={{ marginLeft: ".5rem" }} />
               </Button>
               <Button
               style={{
@@ -416,21 +416,21 @@ function PageM12() {
               }}
        variant="contained">
                 share
-                <ShareIcon style={{ marginLeft: "8px" }} />
+                <ShareIcon style={{ marginLeft: ".5rem" }} />
               </Button>
               <Button 
               style={{
                 backgroundColor:"#74e81c",
               }} variant="contained">
-                delete <DeleteIcon style={{ marginLeft: "8px" }} />
+                delete <DeleteIcon style={{ marginLeft: ".5rem" }} />
               </Button>
             </Box>
 
             <Box
               style={{
-                height: "400px",
+                height: "25rem",
                 overflow: "auto",
-                borderRadius: "8px",
+                borderRadius: ".5rem",
               }}
             >
               {cartDeatils.map((item, index) => {
@@ -475,10 +475,10 @@ function PageM12() {
           <Box>
             <Box
               style={{
-                height: "450px",
+                height: "28.125rem",
                 overflow: "auto",
-                marginBottom: "20px",
-                borderRadius: "8px",
+                marginBottom: "1.25rem",
+                borderRadius: ".5rem",
               }}
             >
               {salesItems.map((item, index) => {
@@ -503,8 +503,8 @@ function PageM12() {
         {active === "negot3" && (
           <Box
             style={{
-              marginBottom: "20px",
-              borderRadius: "8px",
+              marginBottom: "1.25rem",
+              borderRadius: ".5rem",
             }}
           >
             <BasketBox3 onPaymentHandler={paymentHandler} />
@@ -516,7 +516,7 @@ function PageM12() {
             position: "relative ",
             backgroundColor: "white",
             width: "100%",
-            padding: "20px 0px",
+            padding: "1.25rem 0rem",
           }}
         >
           <Typography
@@ -545,9 +545,9 @@ function PageM12() {
 
                     <Divider
                       style={{
-                        border: "1px solid",
+                        border: ".0625rem solid",
                         width: "70%",
-                        margin: "0px auto",
+                        margin: "0rem auto",
                       }}
                     />
                   </Box>
@@ -560,14 +560,14 @@ function PageM12() {
             style={{
               display: "flex",
               justifyContent: "center",
-              padding: "10px 0px",
+              padding: ".625rem 0rem",
             }}
           >
             <Box style={{ width: "70%" }}>
               <Box
                 sx={{
                   display: "flex",
-                  margin: "8px 0px",
+                  margin: ".5rem 0rem",
                   justifyContent: "space-between",
                 }}
               >
@@ -583,7 +583,7 @@ function PageM12() {
                 <Typography
                   sx={{
                     textTransform: "uppercase",
-                    fontSize: "18px",
+                    fontSize: "1.125rem",
                     overflow: "auto",
                   }}
                 >
@@ -593,11 +593,11 @@ function PageM12() {
               <Box
                 sx={{
                   display: "flex",
-                  margin: "8px 0px",
+                  margin: ".5rem 0rem",
                   justifyContent: "space-between",
                   backgroundColor: "lightskyblue",
-                  padding: "8px ",
-                  borderRadius: "5px",
+                  padding: ".5rem ",
+                  borderRadius: ".3125rem",
                 }}
               >
                 {active === "negot1" ? (
@@ -625,7 +625,7 @@ function PageM12() {
                 <Typography
                   sx={{
                     textTransform: "uppercase",
-                    fontSize: "18px",
+                    fontSize: "1.125rem",
                     overflow: "auto",
                   }}
                 >
@@ -637,9 +637,9 @@ function PageM12() {
                   style={{
                     textAlign: "center",
                     fontWeight: "600",
-                    fontSize: "24px",
+                    fontSize: "1.5rem",
                     textTransform: "uppercase",
-                    wordSpacing: "6px",
+                    wordSpacing: ".375rem",
                     color: "red",
                   }}
                 >
@@ -656,8 +656,8 @@ function PageM12() {
               style={{
                 position: "absolute",
                 backgroundColor:"#74e81c",
-                bottom: "12px",
-                right: "12px",
+                bottom: ".75rem",
+                right: ".75rem",
                 
               }}
             >
@@ -671,10 +671,10 @@ function PageM12() {
               onClick={negotHandler}
               style={{
                 position: "absolute",
-                bottom: "12px",
+                bottom: ".75rem",
                 backgroundColor:"#74e81c",
-                right: "12px",
-                fontSize: "18px",
+                right: ".75rem",
+                fontSize: "1.125rem",
                 fontWeight: "600",
               }}
             >
@@ -683,16 +683,16 @@ function PageM12() {
           )}
 
           {active === "negot3" && (
-            <Box style={{ padding: "15px" }}>
+            <Box style={{ padding: ".9375rem" }}>
               <Button
                 variant="contained"
                 color="error"
                 onClick={negotHandler}
                 style={{
                   position: "absolute",
-                  bottom: "12px",
-                  left: "12px",
-                  fontSize: "16px",
+                  bottom: ".75rem",
+                  left: ".75rem",
+                  fontSize: "1rem",
                   fontWeight: "600",
                 }}
               >
@@ -703,10 +703,10 @@ function PageM12() {
         
                 style={{
                   position: "absolute",
-                  bottom: "12px",
+                  bottom: ".75rem",
                   backgroundColor:"#74e81c",
-                  right: "12px",
-                  fontSize: "16px",
+                  right: ".75rem",
+                  fontSize: "1rem",
                   fontWeight: "600",
                 }}
               >
@@ -721,7 +721,7 @@ function PageM12() {
                     style={{
                       color: "#ffffff",
                       fontWeight: "600",
-                      fontSize: "16px",
+                      fontSize: "1rem",
                     }}
                   >
                     continue payment

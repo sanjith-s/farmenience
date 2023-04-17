@@ -15,7 +15,7 @@ const Cancel = () => {
     }, []);
 
   return (
-    <Container style={{ padding: "30px 0px" }}>
+    <Container style={{ padding: "1.875rem 0rem" }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}

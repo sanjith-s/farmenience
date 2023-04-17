@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
@@ -21,8 +21,8 @@ function BasketBox2(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "10px 0px",
+        padding: "1.25rem",
+        margin: "0.625rem 0rem",
       }}
     >
       <CardMedia
@@ -30,15 +30,15 @@ function BasketBox2(props) {
         height="120"
         image={WheatImg}
         sx={{
-          width: "150px",
-          border: "3px solid #285430",
-          borderRadius: "3px",
+          width: "9.375rem",
+          border: "0.188rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",
@@ -56,7 +56,7 @@ function BasketBox2(props) {
         <Typography
           variant="overline"
           lineHeight={2.5}
-          sx={{ fontSize: "15px", paddingLeft: "5px" }}
+          sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
           {props.quantity}kg
         </Typography>
@@ -64,9 +64,9 @@ function BasketBox2(props) {
           <Typography
             variant="overline"
             lineHeight={0.2}
-            sx={{ fontSize: "24px", fontWeight: "600" }}
+            sx={{ fontSize: "1.5rem", fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "20px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1.25rem" }} />
             {props.discountPrice}
           </Typography>
           <Typography
@@ -74,11 +74,11 @@ function BasketBox2(props) {
             lineHeight={0.2}
             sx={{
               textDecoration: "line-through",
-              fontSize: "15px",
-              paddingLeft: "10px",
+              fontSize: "0.938rem",
+              paddingLeft: "0.625rem",
             }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "13px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "0.813rem" }} />
             {props.actualPrice}
           </Typography>
         </Box>
@@ -90,7 +90,7 @@ function BasketBox2(props) {
             lineHeight={2.5}
             sx={{ fontWeight: "600" }}
           >
-            <CurrencyRupeeIcon style={{ fontSize: "18px" }} />
+            <CurrencyRupeeIcon style={{ fontSize: "1.125rem" }} />
             {props.discountAmount} off
           </Typography>
         </Box>
@@ -100,7 +100,7 @@ function BasketBox2(props) {
         style={{
           diplay: "flex",
           flexDirection: "column",
-          rowGap: "20px",
+          rowGap: "1.25rem",
         }}
       >
         <FormControl
@@ -217,7 +217,7 @@ function BasketBox2(props) {
               control={<Radio />}
               label={
                 <Typography
-                  style={{ textTransform: "uppercase", wordSpacing: "3px" }}
+                  style={{ textTransform: "uppercase", wordSpacing: "0.188rem" }}
                 >
                   9:00 am to 12:00 pm
                 </Typography>
@@ -229,7 +229,7 @@ function BasketBox2(props) {
               control={<Radio />}
               label={
                 <Typography
-                  style={{ textTransform: "uppercase", wordSpacing: "3px" }}
+                  style={{ textTransform: "uppercase", wordSpacing: "0.188rem" }}
                 >
                   1:30 pm to 5:30 pm
                 </Typography>

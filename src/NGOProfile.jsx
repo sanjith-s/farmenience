@@ -24,41 +24,13 @@ const c = {
   Email: "ngoemaileg@gmail.com",
 };
 
-const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
-
-const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setData(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-  }, []);
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
     marginBottom: theme.spacing(2),
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+    boxShadow: "0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25)"
   }
 }))
 
@@ -87,13 +59,12 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
   const classes = useStyles();
   return (
     <div className='backProfile' style={{
-      background:"linear-gradient(-4deg,white 0%,white 50%,#ffea93 50%,#ffdb4a 100%)"
-    }} id="google_translate_element" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
+      background:"linear-gradient(-4deg,white 0%,white 50%,#ffea93 50%,#ffdb4a 100%)",
+      height:"max-content"
     }}>
       <div className='profileBox' style={{
         width: "70%",
-        height: "91%",
+        // height:"120%",
         background: "linear-gradient(176deg,#FFD93D 0%,white 70%,white 100%)"
       }}>
         <Stack direction={"column"} spacing={1}
@@ -116,7 +87,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
           </Box>
           <Typography variant='h4'>{name}</Typography>
           <Typography variant='subtitle1'>An NGO</Typography>
-          <Box sx={{boxShadow:"0px 0px 10px lightgrey",margin:"20%",padding:"2%",borderRadius:"10px 15px",marginBottom:"5%",width: "22%"}}>
+          <Box sx={{boxShadow:"0rem 0rem 0.625rem lightgrey",margin:"20%",padding:"2%",borderRadius:"0.625rem 0.938rme",marginBottom:"5%",width: "22%"}}>
           <Stack spacing={2}>
             <Stack direction={"row"} spacing={2}>
               <Email />
@@ -136,7 +107,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
             </Stack>
           </Stack>
           </Box>
-          <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "22%" }}>
+          <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "22%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -157,6 +128,35 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
 
 
 export default function () {
+  const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
+
+const [data, setData] = useState({});
+
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
   return (
     <>
       <ProfilePage name={data.name} email={data.email} phoneNumber={data.phoneno} city={data.city} line1={data.addline1} line2={data.addline2} district={data.district} state={data.state} pincode={data.pincode} aadharNumber={data.aadhaarno} profilePicture={src} />

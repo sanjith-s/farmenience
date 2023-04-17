@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
 #card-person{
     background: #FFFFFF;
-    border-radius: 30px;
+    border-radius: 1.875rem;
     width: 90%;
     margin: auto;
-    margin-top: 10px;
-    padding: 20px;
+    margin-top: .625rem;
+    padding: 1.25rem;
 }
 #top-person{
     display: flex;
     flex-wrap: wrap;
-    padding: 15px;
+    padding: .9375rem;
     justify-content: space-around;
     color: #76E741;
 }
@@ -29,6 +29,6 @@
     font-size: large;
     color: #76E741;
     padding-left: 10%;
-    margin: 40px;
+    margin: 2.5rem;
     text-align: justify;
 }

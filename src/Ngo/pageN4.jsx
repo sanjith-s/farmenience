@@ -1,6 +1,6 @@
-
 import React from "react";
 import { useState } from "react";
+import Swal from 'sweetalert2';
 import CssBaseline from "@mui/material/CssBaseline";
 import { Container, Typography, Fab, Button, Box, Stack, Divider } from "@mui/material";
 import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
@@ -31,11 +31,13 @@ const PageN4 = () => {
     console.log(Array.from(formData.entries()))
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
-        console.log(response);
-
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
   }
 
@@ -43,10 +45,13 @@ const PageN4 = () => {
     await Axios.get(`${baseURL}/files`)
       .then(async (response) => {
         setData(response.data);
-        console.log(response.data);
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
   }
 
@@ -62,7 +67,7 @@ const PageN4 = () => {
       >
         <Container
           sx={{
-           padding:"20px",
+            padding: "1.25rem",
             height: "100%",
             width: "60vw",
             borderRadius: "3.25rem",
@@ -135,28 +140,33 @@ const PageN4 = () => {
       </Stack>
 
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}>
+        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }}>
           Home Page
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
 
-        <Button onClick={handleSubmit} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}>
-
+        <Button onClick={handleSubmit} variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }}>
           Submit
         </Button>
       </Box>
 
       <Box textAlign="center" padding={"1.25rem"}>
 
-        <Button onClick={getImages} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}>
+        <Button onClick={getImages} variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }}>
 
           Get All Images
         </Button>
@@ -165,7 +175,7 @@ const PageN4 = () => {
       {data && data.map((img, index) => {
         return (
           <div>
-            <img src={img.url} alt={img.name} height="80px" />
+            <img src={img.url} alt={img.name} height="5rem" />
             <br></br>
           </div>
         );

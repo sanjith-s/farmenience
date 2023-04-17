@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from "axios"
 import BackImg from "../components/homepageBackground.png";
-import "../css/pageM0.css"
+import "..src/css/pageM0.css"
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const ordersData = [{ orderNo: '123456789', destination: 'Chennai', },
 { orderNo: '987654321', destination: 'Koyambedu', },
 { orderNo: '456123789', destination: 'THiruchi', },];
-
+    
 const saleRequestsData = [
     {
         item: 'Item 1',
@@ -157,7 +157,7 @@ function BasicTabs() {
     useEffect(() => {
         AxiosSet();
     }, []);
-
+  
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -166,7 +166,7 @@ function BasicTabs() {
     return (
         <Box id="google_translate_element" sx={{ width: "100%" }} onClick={(e) => {
             fullAnotherSpeak(e.target.innerText)
-        }}>
+          }}>
             <Box sx={{ borderBottom: 2, borderColor: 'divider' }} className="tabs-head" >
                 <Tabs TabIndicatorProps={{ style: { background: 'darkgreen' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label={<span className='lab-text1'> Orders</span>} {...N10Props(0)} />
@@ -174,12 +174,12 @@ function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={() => { document.getElementById("roller1").stop() }} onMouseOut={() => { document.getElementById("roller1").start() }} >
+                    <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={()=>{document.getElementById("roller1").stop()}} onMouseOut={()=>{document.getElementById("roller1").start()}} >
                     {ordersData.map((order, index) => (
                         <React.Fragment key={index}>
                             <ListItem>
                                 <Room fontSize="small" />
-                                <ListItemText primary={`Order No: ${order.orderNo}`} />
+                                <ListItemText primary={`Order No: ${order.orderNo}`} /> 
                             </ListItem>
                             <ListItem>
                                 <Room fontSize="small" />
@@ -190,36 +190,36 @@ function BasicTabs() {
                             )}
                         </React.Fragment>
                     ))}
-                </marquee>
+                    </marquee>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <List>
-                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={() => { document.getElementById("roller2").stop() }} onMouseOut={() => { document.getElementById("roller2").start() }}>
-                        {saleRequestsData.map((request, index) => (
-                            <ListItem key={index}>
-                                <ListItemIcon className={useStyles.listItemIcon}>
-                                    <ShoppingCart fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={request.item}
-                                    secondary={
-                                        <React.Fragment>
-                                            <Typography variant="subtitle2">
-                                                Item: {request.itemName}
-                                            </Typography>
-                                            <Typography variant="subtitle2">
-                                                Quantity: {request.quantity}
-                                            </Typography>
-                                            <Typography variant="subtitle2">
-                                                Request Sender: {request.requestSender}
-                                            </Typography>
+                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
+                    {saleRequestsData.map((request, index) => (
+                        <ListItem key={index}>
+                            <ListItemIcon className={useStyles.listItemIcon}>
+                                <ShoppingCart fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={request.item}
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography variant="subtitle2">
+                                            Item: {request.itemName}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Quantity: {request.quantity}
+                                        </Typography>
+                                        <Typography variant="subtitle2">
+                                            Request Sender: {request.requestSender}
+                                        </Typography>
 
-                                        </React.Fragment>
-                                    }
-                                />
-                            </ListItem>
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
 
-                        ))}
+                    ))}
                     </marquee>
                 </List>
             </TabPanel>
@@ -231,7 +231,7 @@ function pageM0() {
 
     const navigate = useNavigate();
 
-    // const googleTranslateElementInit = () => {
+// const googleTranslateElementInit = () => {
     //     new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
     // }
 
@@ -251,10 +251,10 @@ function pageM0() {
     //     addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
     //     document.body.appendChild(addScript);
     // }, []);
-
+    
     return (
         <div style={{ backgroundColor: "#E5FDD1" }}>
-            <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
+            <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width:"100%" }} className='back-img' />
             <div className='contents'>
                 <div className="box1">
                     <div className="box-header">
@@ -262,20 +262,16 @@ function pageM0() {
                     </div>
                     <div className="box-body">
                         <p className="box-description">{"Create a New Sale"}</p>
-                        <button onClick={() => {
-                            navigate('../M6')
-                        }} className="box-button">{"Create Now"}</button>
+                        <button className="box-button">{"Create Now"}</button>
                     </div>
                 </div>
                 <div className="box1">
                     <div className="box-header">
-                        <span className="box-title">{"Sale Requests"}</span>
+                        <span className="box-title">{"Sale Request"}</span>
                     </div>
                     <div className="box-body">
                         <p className="box-description">{"See a list of sale requests"}</p>
-                        <button onClick={() => {
-                            navigate('../M1')
-                        }} className="box-button">{"View"}</button>
+                        <button className="box-button">{"View"}</button>
                     </div>
                 </div>
                 <div className="box1">
@@ -284,13 +280,11 @@ function pageM0() {
                     </div>
                     <div className="box-body">
                         <p className="box-description">{"See a list of sales you have done"}</p>
-                        <button onClick={() => {
-                            navigate('../M3')
-                        }} className="box-button">{"View"}</button>
+                        <button className="box-button">{"View"}</button>
                     </div>
                 </div>
-                <div className="roller box1">
-                    <BasicTabs />
+                <div className="roller box1">                    
+                        <BasicTabs />
                 </div>
             </div>
         </div>

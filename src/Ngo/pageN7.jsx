@@ -59,10 +59,6 @@ const PageN7 = () => {
     await Axios.post(`${baseURL}/postquery`, {
       subject: subject,
       description: desc,
-      image: {
-        data: file,
-        contentType: "jpg"
-      }
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
@@ -91,7 +87,11 @@ const PageN7 = () => {
           navigate('../login')
         }
         else {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         }
       })
   }
@@ -103,7 +103,11 @@ const PageN7 = () => {
         console.log(response.data);
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
   }
 
@@ -217,7 +221,7 @@ const PageN7 = () => {
           </DialogActions>
         </Dialog> */}
 
-        <Container
+        {/* <Container
           disableGutters={true}
           sx={{
             bgcolor: "#ffff",
@@ -271,7 +275,7 @@ const PageN7 = () => {
               }}
             />
           )}
-        </Container>
+        </Container> */}
       </Stack>
 
       <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
@@ -291,7 +295,7 @@ const PageN7 = () => {
       {data && data.map((img, index) => {
         return (
           <div>
-            <img src={img.url} alt={img.name} height="80px" />
+            <img src={img.url} alt={img.name} height="5rem" />
             <br></br>
           </div>
         );

@@ -8,10 +8,10 @@
 .left-half h2,
 .left-half label {
   width: fit-content;
-  padding: 0.4rem 0;
-  background-color: ;
-  margin: 0.8rem 0;
-  border-radius: 8px;
+  padding: .4rem 0;
+  /* background-color: ; */
+  margin: .8rem 0;
+  border-radius: 0.5rem;
 }
 
 .left-half {
@@ -36,12 +36,12 @@
   font-size: 1.8rem;
   font-weight: 500;
   align-self: center;
-  padding: 0.8rem 0;
+  padding: .8rem 0;
   text-align: center;
 }
 
 .sales-filters h1 + h2 {
-  padding: 0.4rem 0.8rem;
+  padding: .4rem .8rem;
 }
 
 .items {
@@ -59,7 +59,7 @@
 
 .date label,
 .date input {
-  padding: 0.4rem;
+  padding: .4rem;
   width: 40%;
 }
 
@@ -71,7 +71,7 @@
 .date input {
   width: 50%;
   align-self: flex-end;
-  border-radius: 8px;
+  border-radius: .5rem;
   color: black;
   background-color: #e2f3eb;
 }

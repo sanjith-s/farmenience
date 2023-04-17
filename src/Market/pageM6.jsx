@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
 import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -94,44 +95,49 @@ const PageM6 = () => {
       }
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
-        alert("SUCCESS");
-        console.log("Successfully added seller's products", res);
-      }).catch((err) => {
-        alert("FAILURE");
-        console.log(err);
+        await Swal.fire({
+          icon: 'success',
+          title: "Successfully added seller's products" + res.data.message,
+        })
+      }).catch(async (err) => {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err,
+        })
       })
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+    <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
 
       <Typography fontWeight={700} fontSize={50} sx={{
-        alignItems:"center",
-        marginLeft:"600px"
+        alignItems: "center",
+        marginLeft: "37.5rem"
       }}>Sell Products</Typography>
-      {count.map(ele=>{
-              return ( 
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{ height: "auto", width: "auto", marginTop: "30px",padding:"50px" }}
-      >
-        <Container
-          sx={{
-            // bgcolor: "#D9D9D9;",
-            height: "100%",
-            width: "60vw",
-            borderRadius: "50px",
-            display: "flex",
-            flexDirection: "column",
-            // justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <React.Fragment>
-          {/* <Box
+      {count.map(ele => {
+        return (
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={2}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem" }}
+          >
+            <Container
+              sx={{
+                // bgcolor: "#D9D9D9;",
+                height: "100%",
+                width: "60vw",
+                borderRadius: "3.125rem",
+                display: "flex",
+                flexDirection: "column",
+                // justifyContent: "space-evenly",
+                alignItems: "center",
+              }}
+            >
+              <React.Fragment>
+                {/* <Box
 
             sx={{
               overflow: "auto",
@@ -142,7 +148,7 @@ const PageM6 = () => {
               alignContent:"center"
             }}
           > */}
-          
+
                 <TextField
                   id="p-name"
                   label="Product Name"
@@ -272,7 +278,7 @@ const PageM6 = () => {
                               width: "100%",
                               height: "100%",
                               objectFit: "fill",
-                              borderRadius: "50px",
+                              borderRadius: "3.125rem",
                             }}
                           /></TableCell>
                       </TableRow>
@@ -282,7 +288,7 @@ const PageM6 = () => {
 
               </DialogContent>
               <DialogActions>
-                <Button  onClick={() => { setOpen(false) }}>Cancel</Button>
+                <Button onClick={() => { setOpen(false) }}>Cancel</Button>
                 <Button >CONFIRM</Button>
               </DialogActions>
             </Dialog>
@@ -293,15 +299,15 @@ const PageM6 = () => {
 
                 height: "100%",
                 width: "40vw",
-                borderRadius: "50px",
-                paddingLeft: "0px",
-                paddingRight: "0px",
+                borderRadius: "3.125rem",
+                paddingLeft: "0rem",
+                paddingRight: "0rem",
                 display: "flex",
 
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                marginTop:"90px"
+                marginTop: "5.625rem"
               }}
             >
               {!isUploaded && (
@@ -341,7 +347,7 @@ const PageM6 = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "fill",
-                    borderRadius: "50px",
+                    borderRadius: "3.125rem",
                   }}
                 />
               )}
@@ -358,23 +364,31 @@ const PageM6 = () => {
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": {backgroundColor: "#78beff", }}}>
+        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
           Add Item
         </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f","&:hover": {backgroundColor: "#fa552f", } }}>
+        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
           Delete Item
         </Button>
       </Stack>
-      <Box textAlign="center" padding={"20px"}>
+      <Box textAlign="center" padding={"1.25rem"}>
 
-        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
+        <Button onClick={async () => {
+          await Swal.fire({
+            icon: 'info',
+            title: 'Please confirm the details ...',
+            html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
+            imageUrl: file,
+            confirmButtonText: 'Confirm'
+          })
+        }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
         <Button variant="contained"
-            color="success"onClick={Reset}>
+          color="success" onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
       </Box>

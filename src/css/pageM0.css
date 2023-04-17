@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 }
 .contents > .box1 {
-  flex: 25%;
+  /* flex: 20%; */
   max-width: 20.5rem;
 }
 .contents > .roller {
@@ -15,14 +15,15 @@
   --title-font: 'Bungee', cursive;
   --body-font: 'Montserrat', sans-serif;
   background-color: #78c093;
-  border-radius: 0.625rem;
-  box-shadow: 0rem 0.125rem 0.625rem rgba(0, 0, 0, 0.2);
+  border-radius: .625rem;
+  box-shadow: 0rem .125rem .625rem rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   text-align: center;
   position: relative;
   margin: 1.25rem;
+  width: 100px;
 }
 
 .box-header {
@@ -40,7 +41,7 @@
   color: rgb(72, 69, 69);
   font-size: 2.5rem;
   font-family: var(--title-font);
-  text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+  text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.5);
 }
 
 .box-body {
@@ -58,7 +59,7 @@
   font-size: 1.5rem;
   font-family: var(--body-font);
   margin: 0 0 1.5rem;
-  text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
+  text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.2);
 }
 
 .box-button {
@@ -69,7 +70,7 @@
   cursor: pointer;
   font-size: 1.125rem;
   font-family: var(--body-font);
-  padding: 0.75rem 1.5rem;
+  padding: .75rem 1.5rem;
   transition: background-color 0.2s ease-in-out;
   width: 100%;
   text-transform: uppercase;
@@ -84,16 +85,19 @@
   flex: 2;
   aspect-ratio: 3/1;
 }
+.texts-box {
+  display: block;
+}
 
 .lab-text1 {
   color: rgb(72, 69, 69);
   font-size: 1.2rem;
   font-family: var(--title-font);
-  text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+  text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.5);
 }
-@media (max-width: 800px) {
-  .box1 {
-    flex: 55%;
+@media (max-width: 50rem) {
+  .contents > .box1 {
+    /* flex: 45%; */
     max-width: 50%;
   }
 }

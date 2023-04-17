@@ -66,10 +66,13 @@ function Login() {
         });
         Cookies.set("token", response.data.token, { expires: 1 });
         if (response.data.details[0].typeOfAcc == "Farmer") {
-          navigate("/N9");
+          navigate("/FarmerHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "NGO") {
           navigate("/N10");
+        }
+        else if (response.data.details[0].typeOfAcc == "Retailer") {
+          navigate("/M9");
         }
         else {
           navigate("/homepage2");

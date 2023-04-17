@@ -174,7 +174,9 @@ function BasicTabs() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                    <marquee id="roller1" behavior="scroll" direction="down" onMouseOver={()=>{document.getElementById("roller1").stop()}} onMouseOut={()=>{document.getElementById("roller1").start()}} >
+                    <marquee id="roller1" behavior="scroll" direction="up" 
+                    onMouseOver={()=>{document.getElementById("roller1").stop()}} 
+                    onMouseOut={()=>{document.getElementById("roller1").start()}} >
                     {ordersData.map((order, index) => (
                         <React.Fragment key={index}>
                             <ListItem>
@@ -194,7 +196,8 @@ function BasicTabs() {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <List>
-                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
+                    <marquee id="roller2" direction="up" behaviour="scroll" 
+                    onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
                     {saleRequestsData.map((request, index) => (
                         <ListItem key={index}>
                             <ListItemIcon className={useStyles.listItemIcon}>

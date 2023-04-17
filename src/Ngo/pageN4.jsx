@@ -85,9 +85,14 @@ const PageN4 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
+    <div style={{ boxSizing: "borderBox", padding: "25px",}}>
       <CssBaseline />
-      <span className="title">Schedule a Meet with NGO</span>
+      <Typography fontWeight={700} fontSize={50} sx={{
+        alignItems: "center",
+        // marginLeft: "auto"
+        textAlign:"center"
+      }}>Schedule a Meet with NGO</Typography>
+     
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
@@ -168,38 +173,7 @@ const PageN4 = () => {
         </Container>
       </Stack>
 
-      <Box textAlign="center" padding={"1.25rem"}>
-        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{
-          backgroundColor: "#fafa01", color: "black", "&:hover": {
-            backgroundColor: "#ffff00",
-          }
-        }}>
-          Home Page
-        </Button>
-      </Box>
-
-      <Box textAlign="center" padding={"1.25rem"}>
-
-        <Button onClick={handleSubmit} variant="contained" sx={{
-          backgroundColor: "#fafa01", color: "black", "&:hover": {
-            backgroundColor: "#ffff00",
-          }
-        }}>
-          Submit
-        </Button>
-      </Box>
-
-      <Box textAlign="center" padding={"1.25rem"}>
-
-        <Button onClick={getImages} variant="contained" sx={{
-          backgroundColor: "#fafa01", color: "black", "&:hover": {
-            backgroundColor: "#ffff00",
-          }
-        }}>
-
-          Get All Images
-        </Button>
-      </Box>
+      
 
       {data && data.map((img, index) => {
         return (

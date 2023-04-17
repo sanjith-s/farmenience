@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
@@ -19,10 +20,11 @@ import {
   Badge,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
+import Swal from "sweetalert2";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 
 function NegotiationBox2(props) {
+  const navigate = useNavigate();
   let [limit, setlimit] = useState(props.userPrice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
@@ -45,7 +47,6 @@ function NegotiationBox2(props) {
   let [minimum, setMinimum] = useState(Math.round(props.actualPrice / 2));
 
   const handleSubmit = () => {
-      alert(limit);
       var content2 = JSON.parse(localStorage.getItem("reqs"));
       if (limit == props.userPrice) {
         content2.splice(props.index, 1);
@@ -55,6 +56,12 @@ function NegotiationBox2(props) {
       content2[props.index].flag = 1;
       }
       localStorage.setItem("reqs",JSON.stringify(content2));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
+      navigate("../m10");
       return;
   };
 

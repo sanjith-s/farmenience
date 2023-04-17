@@ -5,6 +5,7 @@ import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantity
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 import {Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   Box,
   FormControl,
@@ -115,7 +116,11 @@ const SellerNegotiate = (props) => {
           orders[index].nprice = limit;
       }
       localStorage.setItem("reqs",JSON.stringify(orders));
-      alert("Hi");
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
       return;
     }
   };

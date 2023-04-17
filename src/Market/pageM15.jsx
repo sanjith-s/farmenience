@@ -7,7 +7,7 @@ import NegotiationBox2 from "../components/negotiationBox2";
 import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
-
+import Swal from "sweetalert2";
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import { baseURL } from "../constants";
@@ -303,7 +303,6 @@ function PageM15() {
                   position: "absolute",
                   top: "10px",
                   right: "10px",
-
                 }} >
                 <Tooltip onClick={negotHandler} title="Cancel Deal" >
                   <IconButton >

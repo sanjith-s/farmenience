@@ -79,7 +79,6 @@ const PageM2 = () => {
       >
         <Box onClick={(e) => {
             fullAnotherSpeak(e.target.innerText)
-            
           }}
           sx={{
             width: "95%",

@@ -109,6 +109,18 @@ const SellerNegotiate = (props) => {
       setLimit(props.iprice);
       setQuantity(props.iquantity);
     } else {
+      var rData = {
+        id: props.id,
+        quan:props.iquantity,
+        price:props.iprice,
+        name:props.name,
+        status:"Revised"
+      }
+      if (limit == props.iprice) {
+        rData.status = "Not responded"
+      }
+      localStorage.setItem("Reply",rData);
+      alert("Hi");
       return;
     }
   };

@@ -122,7 +122,6 @@ function Login() {
             fontSize={"2.188rem"}
             style={{ textTransform: "uppercase", textAlign: "center" }}
           >
-
             login
           </Typography>
         </Box>

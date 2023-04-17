@@ -106,11 +106,11 @@ function PageM1() {
                     <div>
                         <RequestBox
                         key={index + 1}
-                       reqId={req.regNo}
-                       name={req.cname}
-                       phoneNo={req.phno}
+                       reqId={req._id}
+                       name={req.name}
+                       phoneNo={req.phoneNumber}
                        itemName={req.itemName}
-                       itemQuantity={req.itemQuantity}
+                       itemQuantity={req.quantity}
                        data={req}
                 />
                     </div>

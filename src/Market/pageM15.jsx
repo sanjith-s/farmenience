@@ -35,41 +35,40 @@ function PageM15() {
   //   document.body.appendChild(addScript);
   // }, []);
 
-  const salesItems = [
-    {
-      index: 1,
-      seller: 1,
-      itemName: "Whole wheat",
-      quantity: 10,
-      actualPrice: 525,
-      userPrice: 500,
-      weight:1,
-      imgSrc: "WheatImg",
-      purchaseDate: new Date(2022, 5, 13),
-      acceptance: "notChanged",
-    },
-    {
-      index: 2,
-      seller: 2,
-      itemName: "parboiled rice",
-      quantity: 15,
-      weight:1,
-      actualPrice: 950,
-      userPrice: 850,
-      imgSrc: "WheatImg",
-      purchaseDate: new Date(2022, 4, 23),
-      acceptance: "Changed",
-    },
-  ];
+  const item = localStorage.getItem("Reply");
+  // const userData = {
+  //   name: "Rakesh k",
+  //   addressLine1:
+  //     "No 7, Dr Sadaasivam road , HI Look salon , Thirumurthy street ",
+  //   addressLine2: "TNagar , Chennai 600017",
+  //   number: 8300677299,
+  // };
+  const [userData, setData] = useState([]);
 
-  const userData = {
-    name: "Rakesh k",
-    addressLine1:
-      "No 7, Dr Sadaasivam road , HI Look salon , Thirumurthy street ",
-    addressLine2: "TNagar , Chennai 600017",
-    number: 8300677299,
-  };
-
+  useEffect(() => {
+    let token = Cookies.get('token');
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
   const [priceLimit1, setPriceLimit1] = useState();
   const [priceLimit2, setPriceLimit2] = useState();
   const [quantity1, setQuantity1] = useState();
@@ -160,21 +159,17 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-              {salesItems.map((item, index) => {
-                return (
                   <NegotiationBox1
-                    key={index}
                     iName={item.itemName}
                     quantity={item.quantity}
                     actualPrice={item.actualPrice}
                     userPrice = {item.userPrice}
                     weight = {item.weight}
-                    index={item.index}
+                    index={1}
                     userQuantity={item.quantity}
                     onCounterHandler={QuantityCounterHandler}
                   />
-                );
-              })}
+
               <div
                 style={{
                 position: "absolute",

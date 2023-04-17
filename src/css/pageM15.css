@@ -61,3 +61,11 @@
   bottom: .9375rem;
   right: 1.875rem;
 }
+.n-card1 > .p-btn1 {
+  position: absolute;
+  bottom: 15%;
+  right: 4%;
+}
+.n-card1 {
+  position: relative;
+}

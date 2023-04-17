@@ -2,6 +2,9 @@ import "./css/signup.css";
 import { useState,useEffect } from "react";
 import validator from "validator";
 import Axios from "axios";
+import Geocode from "react-geocode";
+Geocode.setLanguage("en");
+Geocode.setApiKey("AIzaSyD-79BSbusu8q97EMXY2Ewy16Xtlhi4UFA");
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,
@@ -19,18 +22,26 @@ import {
 } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
 
 function Signup() {
+
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const [showPassword1, setShowPassword1] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
+
+  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
   const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
@@ -86,6 +97,16 @@ function Signup() {
     setsignupdata({ ...signupdata, [event.target.name]: event.target.value });
   };
 
+  Geocode.fromAddress("Eiffel Tower").then(
+    (response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      console.log(lat, lng);
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
+
   const submit = async (event) => {
     if(!navigator.geolocation)
     {
@@ -122,6 +143,7 @@ function Signup() {
       })
       return;
     }
+
     if (!passChk) {
       await Swal.fire({
         icon: 'error',
@@ -135,10 +157,12 @@ function Signup() {
       icon: 'success',
       title: 'Validation Successful!',
     })
+
     await Swal.fire({
       icon: 'success',
       title: selection,
     })
+
     if (
       signupdata.password === signupdata.confpass
     ) {
@@ -199,7 +223,9 @@ function Signup() {
             text: res.response.data.message,
           })
         });
-    } else {
+    }
+
+    else {
       await Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -426,6 +452,17 @@ function Signup() {
                     </IconButton>
                   </InputAdornment>
                 }
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword1}
+                      edge="end"
+                    >
+                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 onChange={addSignupData}
               />
             </Box>
@@ -440,6 +477,17 @@ function Signup() {
                 type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
                 value={signupdata.confpass}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword2}
+                      edge="end"
+                    >
+                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -563,6 +611,7 @@ function Signup() {
                 </Typography>
 
                 <input type="file" onChange={handleChange1} />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
                 >
@@ -577,6 +626,7 @@ function Signup() {
                   Aadhaar Card of Owner
                 </Typography>
 
+                <input type="file" onChange={handleChange2} />
                 <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
@@ -602,14 +652,7 @@ function Signup() {
                   Trading License
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
                   style={{ width: "fit-content", height: "fit-content" }}

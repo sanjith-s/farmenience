@@ -132,16 +132,16 @@ function PageN6() {
                   justifyItems: "center",
                 }}
               >
-                <img
+                {request.filename && <img
                   src={request.filename}
-                  alt="!!!! No image uploaded !!!!"
                   style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "fill",
                     borderRadius: "3.125rem",
                   }}
-                />
+                />}
+                {!request.filename && <p style={{fontSize: "2rem"}}>No image uploaded</p>}
               </Container>
             </Stack>
             <hr />

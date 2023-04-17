@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import BackImg from "../components/homepageBackground.png";
+import BackImg from "../images/MarketBG.jpg";
 import Menubar from "../components/menubar";
 import ImageSlider from "../components/imageSlider";
 import "../css/pageM0.css";

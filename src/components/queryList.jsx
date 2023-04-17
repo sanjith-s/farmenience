@@ -76,7 +76,11 @@ function Query(props) {
           </div>
           <div className="query-card__actions">
             <div>
-              <button onClick={handleClickOpen} className="query-card__button query-card__button--respond">
+            {/* onClick={handleClickOpen} */}
+              <button onClick={()=>{
+                // console.log(props.data);
+                navigate('../N12', { state: { data: props.data } })
+              }} className="query-card__button query-card__button--respond">
                 Respond Query
               </button>
             </div>
@@ -226,12 +230,12 @@ function Query(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} variant="contained" sx={{
-            backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
               backgroundColor: "#ffff00",
             }
           }} >Cancel</Button>
           <Button onClick={submitResponse} variant="contained" sx={{
-            backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
               backgroundColor: "#ffff00",
             }
           }} >Submit</Button>

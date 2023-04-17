@@ -63,7 +63,6 @@ const PageN7 = () => {
       then(async (response) => {
         console.log(response);
         if (response.data.message === 'Query Added Successfully') {
-          setOpen3(true);
           await Swal.fire({
             icon: 'success',
             title: 'Query Added Successfully !!',
@@ -71,6 +70,7 @@ const PageN7 = () => {
         }
       })
       .catch(async (res) => {
+        console.log(res);
         if (res.response.data.message === 'Error in connection') {
           await Swal.fire({
             icon: 'error',

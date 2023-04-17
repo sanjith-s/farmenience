@@ -10,6 +10,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
+import login1 from "./images/LOGIN.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -65,10 +66,13 @@ function Login() {
         });
         Cookies.set("token", response.data.token, { expires: 1 });
         if (response.data.details[0].typeOfAcc == "Farmer") {
-          navigate("/N9");
+          navigate("/FarmerHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "NGO") {
           navigate("/N10");
+        }
+        else if (response.data.details[0].typeOfAcc == "Retailer") {
+          navigate("/M9");
         }
         else {
           navigate("/homepage2");
@@ -106,31 +110,48 @@ function Login() {
 
   return (
     <>
-      <Card sx={{ margin: "1.875rem", padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: "26.25" }}>
+      <Card sx={{
+        backgroundColor: "#96f0ff", margin: "1.875rem",
+        padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: 40
+      }}>
         <form
           onSubmit={submit}
+
           method="post"
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             rowGap: "1.875rem",
+
           }}
         >
-          <Box>
+          <Box align="center">
+            <img src={login1} alt="Login Image" width="50px" length="50px" />
             <Typography
+              mt={2}
               fontWeight={500}
               fontSize={"2.188rem"}
               style={{ textTransform: "uppercase", textAlign: "center" }}
             >
+
               login
             </Typography>
+
           </Box>
-          <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email" variant="filled" sx={{ width: "25rem" }} value={email} />
-          <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic" label="Password" variant="filled" type="password" sx={{ width: "25rem" }} value={password} />
+          <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email"
+            variant="filled" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={email} />
+          <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic"
+            label="Password" variant="filled" type="password" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={password} />
 
           <Button
             variant="contained"
+            sx={{
+              backgroundColor: "#000080", color: "white", "&:hover": {
+                backgroundColor: "#4B0081",
+              }
+            }}
+
             onClick={() => LogMeIn(email, password)}
           >
             login
@@ -139,9 +160,9 @@ function Login() {
 
       </Card>
 
-      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../signup">Don't have an account ?</a></div>
+      <div style={{ color: "blue", fontSize: "1.25rem", textAlign: "center" }}><a href="../signup">Don't have an account ?</a></div>
       <br />
-      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
+      <div style={{ color: "blue", fontSize: "1.25rem", textAlign: "center" }}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
       <br /><br />
     </>
   );

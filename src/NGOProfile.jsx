@@ -87,7 +87,8 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
           </Box>
           <Typography variant='h4'>{name}</Typography>
           <Typography variant='subtitle1'>An NGO</Typography>
-          <Box sx={{boxShadow:"0rem 0rem 0.625rem lightgrey",margin:"20%",padding:"2%",borderRadius:"0.625rem 0.938rme",marginBottom:"5%",width: "22%"}}>
+          <Box sx={{boxShadow:"0rem 0rem 0.625rem lightgrey",margin:"20%",padding:"2%",
+          borderRadius:"0.625rem 0.938rem",marginBottom:"5%",width: "35%"}}>
           <Stack spacing={2}>
             <Stack direction={"row"} spacing={2}>
               <Email />
@@ -107,7 +108,9 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
             </Stack>
           </Stack>
           </Box>
-          <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "22%" }}>
+          <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey",
+           margin: "5%", padding: "2%", paddingTop: "1%", 
+           borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "35%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>

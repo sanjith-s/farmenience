@@ -34,6 +34,7 @@ import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState({});
   const [open, setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [count, setCount] = useState([0]);
@@ -53,8 +54,9 @@ const PageM6 = () => {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFileName(e.target.files[0]);  
   }
-
+  
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -83,16 +85,31 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
+    let filename='';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', fileName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename=response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
+
+      alert(filename);
+      
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
       quantity: quantity,
       type: type,
       rating: rating,
-      image: {
-        data: file,
-        contentType: "jpg"
-      }
+      filename: filename,
+      sellerName: "",
+      sellerEmail: ""
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
         await Swal.fire({

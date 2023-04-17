@@ -24,7 +24,8 @@ export default function MediaCard(props) {
       quantity: props.sellerCount,
       price: props.price,
       rating: props.stars,
-      type: props.type
+      type: props.type,
+      filename: props.imgsrc 
     } 
     console.log(items);
     let dummy=props.array;
@@ -44,7 +45,7 @@ export default function MediaCard(props) {
       }}>
       <CardMedia
         sx={{ height: "12.5rem" }}
-        image={img}
+        image={props.imgsrc}
         title="green iguana"
       />
       <CardContent sx={{ display: "flex", flexDirection: "column" }}>

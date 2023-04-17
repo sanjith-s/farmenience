@@ -7,6 +7,9 @@ import NegotiationBox2 from "../components/negotiationBox2";
 import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
+
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import { baseURL } from "../constants";
 import Axios from "axios";
 import Cookies from "js-cookie";
@@ -160,8 +163,6 @@ function PageM15() {
     if (active === "negot1") {
       setActive("negot2");
     } else if (active === "negot2") {
-      setActive("negot3");
-    } else if (active === "negot3") {
       setActive("negot1");
     }
   };
@@ -191,7 +192,7 @@ function PageM15() {
               }}
             >
                   {item.map((i,ind)=>{
-                  return <NegotiationBox1
+                  return <div><NegotiationBox1
                     iName={i.name}
                     quantity={i.quantity}
                     actualPrice={i.price}
@@ -200,7 +201,30 @@ function PageM15() {
                     index={ind}
                     userQuantity={i.quantity}
                     onCounterHandler={QuantityCounterHandler}
-                  />})}
+                  />
+                  <Button
+          variant="contained"
+          color="success"
+          style={{
+            display: "flex",
+            columnGap: "0.625rem",
+            padding: "0.625rem",
+            justifyContent: "center",
+            alignItems: "center",
+            fontWeight: "600",
+          }}
+        >
+          {i.flag == 1 ? (
+            <UnpublishedIcon/>
+          ) : (
+            <PublishedWithChangesIcon />
+          )}
+
+          {i.flag == 1
+            ? "Not yet seen"
+            : "Revised by Seller"}
+        </Button>
+                  </div>})}
 
               <div
                 style={{
@@ -228,7 +252,7 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-                  {item.map((i,ind) => {return <NegotiationBox2
+                  {item.map((i,ind) => {return <div><NegotiationBox2
                     iName={i.name}
                     quantity={i.quantity}
                     weight={i.weight}
@@ -237,7 +261,9 @@ function PageM15() {
                     index={ind}
                     userPrice={i.nprice}
                     onlimitHandler={priceLimitHandler}
-                  />})}
+                  />
+                  </div>
+                  })}
               <div style={{
                   position: "absolute",
                   top: "10px",

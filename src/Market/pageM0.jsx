@@ -196,7 +196,7 @@ function BasicTabs() {
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <List>
-                    <marquee id="roller2" direction="down" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
+                    <marquee id="roller2" direction="up" behaviour="scroll" onMouseOver={()=>{document.getElementById("roller2").stop()}} onMouseOut={()=>{document.getElementById("roller2").start()}}>
                     {saleRequestsData.map((request, index) => (
                         <ListItem key={index}>
                             <ListItemIcon className={useStyles.listItemIcon}>

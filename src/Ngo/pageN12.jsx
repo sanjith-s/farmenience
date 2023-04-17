@@ -63,6 +63,7 @@ const PageN12 = () => {
         rowGap: ".9375rem",
         width: "100%",
         height: "100%",
+        // alignItems:"center"
       }}
       onClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
@@ -106,6 +107,9 @@ const PageN12 = () => {
           backgroundColor: "#ffffff",
           boxShadow : 10,
           borderRadius: ".625rem",
+          alignItems:"center",
+          display:"flex",
+          textAlign:"center"
         }}
       >
         <Grid

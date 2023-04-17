@@ -120,7 +120,7 @@ function BuyerRequestDetails(props) {
         width: "80%",
         marginLeft: "10%",
         borderRadius: "0.31rem",
-        border: "0.125rem solid #000000",
+        border: "0.125rem solid #000000"
       }}
     >
       {
@@ -128,7 +128,7 @@ function BuyerRequestDetails(props) {
           <>
             <Button
               style={{
-                backgroundColor: "#1fe57a",
+                // backgroundColor: "#1fe57a",
                 color: "#000000",
                 fontWeight: "600",
                 fontSize: "1rem",
@@ -143,7 +143,7 @@ function BuyerRequestDetails(props) {
             </Button>
             <Button
               style={{
-                backgroundColor: "#1fe57a",
+                // backgroundColor: "#1fe57a",
                 color: "#000000",
                 fontWeight: "600",
                 fontSize: "1rem",
@@ -174,10 +174,10 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
           Request ID
@@ -186,7 +186,7 @@ function BuyerRequestDetails(props) {
           style={{
             width: "55%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -205,10 +205,10 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
           Reason
@@ -218,7 +218,7 @@ function BuyerRequestDetails(props) {
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -238,10 +238,10 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
           Meet Date
@@ -251,7 +251,7 @@ function BuyerRequestDetails(props) {
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -271,10 +271,10 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
           Meet Time
@@ -284,7 +284,7 @@ function BuyerRequestDetails(props) {
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -303,20 +303,20 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
-          soil Details
+          Soil Details
         </Typography>
         <Typography
           style={{
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -335,20 +335,20 @@ function BuyerRequestDetails(props) {
           style={{
             width: "45%",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
-          crops Growing
+          Crops Growing
         </Typography>
         <Typography
           style={{
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >
@@ -367,11 +367,11 @@ function BuyerRequestDetails(props) {
         <Typography
           style={{
             width: "45%",
-            backgroundColor: "#16e575",
+            // backgroundColor: "#16e575",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
             borderRadius: "0.19rem",
             fontWeight: "600",
-            textTransform: "uppercase",
+            // textTransform: "uppercase",
           }}
         >
           Status
@@ -381,7 +381,7 @@ function BuyerRequestDetails(props) {
             width: "55%",
             paddingLeft: "0.625rem",
             padding: "0.31rem 0.31rem 0.31rem 0.625rem",
-            backgroundColor: "#c4e1c5",
+            backgroundColor: "#e6e3e3",
             borderRadius: "0.19rem",
           }}
         >

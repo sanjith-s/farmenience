@@ -365,20 +365,20 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        display="flex"
-        justifyContent="center"
-      >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#4CAF50", "&:hover": { backgroundColor: "#78beff", } }}>
-          Add Item
-        </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#4CAF50", } }}>
-          Delete Item
-        </Button>
-      </Stack>
+        {/* <Stack
+          direction="row"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          display="flex"
+          justifyContent="center"
+        >
+          <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#4CAF50", "&:hover": { backgroundColor: "#78beff", } }}>
+            Add Item
+          </Button>
+          <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#4CAF50", } }}>
+            Delete Item
+          </Button>
+        </Stack> */}
       <Box textAlign="center" padding={"1.25rem"}>
 
         <Button onClick={async () => {
@@ -396,7 +396,7 @@ const PageM6 = () => {
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
         <Button variant="contained"
-          color="success" onClick={Reset}>
+          color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
           Reset To Old Values
         </Button><br /><br />
       </Box>

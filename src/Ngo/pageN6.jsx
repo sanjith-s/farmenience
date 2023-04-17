@@ -94,7 +94,7 @@ function PageN6() {
             >
               <Container
                 sx={{
-                  bgcolor: "#D9D9D9;",
+                  // bgcolor: "#D9D9D9;",
                   height: "100%",
                   width: "60vw",
                   borderRadius: "3.125rem",

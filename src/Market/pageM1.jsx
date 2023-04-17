@@ -9,6 +9,7 @@ import Axios from "axios";
 import { baseURL } from '../constants';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
+import { Content } from "antd/es/layout/layout";
 
 function PageM1() {
 
@@ -16,12 +17,18 @@ function PageM1() {
 
   const [orders, setOrders] = useState([]);
   const [prof, setProf] = useState([]);
-  
+
   useEffect(() => {
+    var content1 = JSON.parse(localStorage.getItem("reqs")).filter(o => {
+      return o.flag == 1;
+    });
+    console.log("filed" + content1);
+    setOrders(content1);
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
       then((response) => {
-        setOrders(response.data.message);
+        // setOrders(response.data.message);
+        // setOrders(JSON.parse(localStorage.getItem("reqs")));
       })
       .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -41,33 +48,35 @@ function PageM1() {
         }
       });
 
-      Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } })
-    .then((response) => {
-      setProf(response.data.message);
-    }).catch(async (res) => {
-    if (res.response.data.message === 'Error in connection') {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please Check Network Connection!',
-      })
-    }
-    else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Login Error',
-      })
-      navigate('../login')
-      }
-    });
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } })
+      .then((response) => {
+        setProf(response.data.message);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      });
   }, []);
+
+
+
 
   let location = useLocation();
   // const [content,setContent] = useState(orders);
   let content;
   let data = location.state;
-
   if (location.state) {
     console.log(location.state);
     content = orders.filter((order) => {
@@ -77,92 +86,103 @@ function PageM1() {
   }
   else {
     console.log("nothing");
-    content = orders;
+
   }
 
-  //  useEffect(()=> {
-  //   setOrders(content);
-  //   console.log("useeffect");
-  //  },content)
+  // useEffect(() => {
+  //   localStorage.setItem("orders", JSON.stringify(orders))
+  // }, [])
 
-  //  setOrders(content);   
+  // const [changeOrders,setChangeOrders] = useState(()=>{
+  //   const savedItem = localStorage.getItem("orders");
+  //   const parsedItem = JSON.parse(savedItem);
+  //   return parsedItem || " nothing "
+  // }) ;
+  // console.log("changeOrders");
+  // console.log(changeOrders);
 
 
   return (
     <>
-    <Box className="query-list">
-        <h2 className="query-list__heading">You have {content.length} requests</h2>
+      <Box className="query-list">
+        <h2 className="query-list__heading">You have {orders.length} requests</h2>
         {
-            content.map((req,index) => {
-                return (
-                    <div>
-                        <RequestBox
-                        key={index + 1}
-                       reqId={req.regNo}
-                       name={req.cname}
-                       phoneNo={req.phno}
-                       itemName={req.itemName}
-                       itemQuantity={req.itemQuantity}
-                       data={req}
+          orders.map((req, index) => {
+            return (
+              <div>
+                <RequestBox
+                  key={index + 1}
+                  reqId={req.buyer._id}
+                  name={req.buyer.name}
+                  phoneNo={req.buyer.phoneno}
+                  itemName={req.name}
+                  itemQuantity={req.quantity}
+                  data={req}
                 />
-                    </div>
-                )
-            })
+              </div>
+            )
+          })
         }
-    </Box>
-        
-      </>
-/*     <Box
-      style={{
-        boxShadow:15,
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        margin: "1.25rem 0rem",
-        marginBottom: "2.5rem",
-      }}
-    >
-      <Box sx={{ padding: "1.25rem 0rem" }}>
-        <Typography
-          variant="h4"
-          style={{ fontWeight: "600", textTransform: "uppercase" }}
-        >
-          you have {content.length} requests{" "}
-        </Typography>
       </Box>
-      <Box
-        sx={{
-          width: "fit-content",
-          border: ".3125rem solid",
-          borderRadius: ".1875rem",
-          backgroundColor: "#bdfbbf",
-        }}
-      >
-        <Box
-          sx={{
-            padding: "2.5rem",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            columnGap: "3.125rem",
-            rowGap: "3.125rem",
+
+    </>
+    /*     <Box
+          style={{
+            boxShadow:15,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            margin: "1.25rem 0rem",
+            marginBottom: "2.5rem",
           }}
         >
-          {orders.map((req, index) => {
-            return (
-              <RequestBox
-                key={index + 1}
-                reqId={req._id}
-                name={req.name}
-                phoneNo={req.phoneNumber}
-                itemName={req.itemName}
-                itemQuantity={req.quantity}
-                data={req}
-              />
-            );
-          })}
-        </Box>
-      </Box>
-    </Box> */
+          <Box sx={{ padding: "1.25rem 0rem" }}>
+            <Typography
+              variant="h4"
+              style={{ fontWeight: "600", textTransform: "uppercase" }}
+            >
+              you have {content.length} requests{" "}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              width: "fit-content",
+              border: ".3125rem solid",
+              borderRadius: ".1875rem",
+              backgroundColor: "#bdfbbf",
+            }}
+          >
+            <Box
+              sx={{
+                padding: "2.5rem",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                columnGap: "3.125rem",
+                rowGap: "3.125rem",
+              }}
+            >
+              {orders.map((req, index) => {
+                // {console.log(req) ;
+                //   Object.assign(req, {"index" : `${index}`});
+                //   console.log("updated:");
+                //   console.log(req);
+                // }
+                console.log(`index : ${index}`)
+                return (
+                  <RequestBox
+                    key={index}
+                    reqId={req._id}
+                    name={req.name}
+                    phoneNo={req.phoneNumber}
+                    itemName={req.itemName}
+                    itemQuantity={req.quantity}
+                    data={req}
+                  />
+                );
+              })}
+            </Box>
+          </Box>
+        </Box> */
   );
 }
 export default PageM1;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";

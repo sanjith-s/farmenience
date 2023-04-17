@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Details from "./components/FarmerProfileComp";
 import { Avatar, Typography, Box, Paper, TextField, IconButton } from '@material-ui/core';
 import { Button } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Email, Phone, LocationOn, Home, PinDrop, PermIdentity, Fingerprint, AccountBalance, AspectRatio } from '@material-ui/icons';
 import ModeEdit from '@mui/icons-material/ModeEdit';
@@ -27,6 +28,46 @@ const c = {
   Pincode: "600000",
   Email: "yuviexample@gmail.com",
 };
+
+const logout = async () => {
+  let token = Cookies.get('token')
+  await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
+  )
+    .then(async (response) => {
+      if (response.data.message == "Logout Successful") {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Logout Successful'
+        })
+        Cookies.remove('token')
+        navigate('../login');
+      }
+      else {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error',
+        })
+      }
+      console.log(response);
+    }).
+    catch(async (response) => {
+      if (response.response.data.message === "Token not found" || response.response.data.message === "Logout Fail, Please Logout Again") {
+        await Swal.fire({
+          icon: 'warning',
+          title: 'Please Login, Before Logout !!',
+        })
+        navigate('../login');
+      }
+      if (response.response.data.message === "Invalid token") {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Expired, Please Login Again !!',
+        })
+        navigate('../login');
+      }
+    });
+}
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -59,7 +100,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   //   document.body.appendChild(addScript);
   // }, []);
   
-
+  
   const classes = useStyles();
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
@@ -112,7 +153,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
               <Typography variant='subtitle1'></Typography>
             </Stack>
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
-            <Button color="error" variant="contained" sx={{ width: "15%" }}>Logout</Button>
+            <Button color="error" variant="contained" sx={{ width: "15%" }} onClick={logout}>Logout</Button>
           </Box>
         </Stack>
         <Stack direction={"column"} spacing={1}
@@ -124,7 +165,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
           <Typography variant='subtitle1'>Farmer Account</Typography>
           <Grid container rowSpacing={0} columnSpacing={{ xs: 0, sm: 0, md: 0 }} sx={{ width: "80%" }}>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey",
+               margin: "5%", padding: "2%", borderRadius: "0.625rem 0.938rem", 
+               marginBottom: "5%", width: "80%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Personal Info</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -149,7 +192,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
               </Box>
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
+              margin: "5%", padding: "2%", paddingTop: "1%", 
+              borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -164,7 +209,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
+              margin: "5%", padding: "2%", paddingTop: "1%",
+               borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />
@@ -190,7 +237,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
+              margin: "5%", padding: "2%", paddingTop: "1%", 
+              borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
               <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />
@@ -225,6 +274,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
 
 export default function () {
+  const navigate = useNavigate();
   const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
   
 const [data, setData] = useState([]);
@@ -234,6 +284,7 @@ useEffect(() => {
   Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
     then((response) => {
       setData(response.data.message);
+      console.log(data);
     })
     .catch(async (res) => {
       if (res.response.data.message === 'Error in connection') {

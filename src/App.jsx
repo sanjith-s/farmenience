@@ -8,6 +8,9 @@ import "./css/app.css";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
+import Page404 from "./page404";
+import { useEffect, useContext, createContext, useState } from "react";
+export const AuthContext = createContext();
 
 // import Homepage1 from "./homepage1";
 // import LandingPage from "./landingPage";
@@ -73,7 +76,7 @@ import Headroom from "react-headroom";
 // import Chart from "./components/chart";
 // import Calendar from "./components/calender";
 // import CropRecommendation from "./cropRecommendation";
-import N10Navbar from "./components/n10Navbar";
+// import N10Navbar from "./components/n10Navbar";
 // import { display } from "@mui/system";
 // import Success from "./Market/success";
 // import Cancel from "./Market/cancel";
@@ -90,6 +93,7 @@ import N10Navbar from "./components/n10Navbar";
 
 const LandingPage = lazy(() => import("./landingPage"));
 const Homepage2 = lazy(() => import("./homepage2"));
+const FarmerHomepage = lazy(() => import("./FarmerHomepage"));
 const AboutUsPage = lazy(() => import("./aboutUsPage"));
 const TermsAndCondition = lazy(() => import("./termsAndCondition"));
 const ReviewsForm = lazy(() => import("./ReviewsForm"));
@@ -120,7 +124,7 @@ const Cancel = lazy(() => import("./Market/cancel"));
 const PdfPrint = lazy(() => import("./PdfPrint"));
 const Navbar = lazy(() => import("./components/navbar"));
 const Footer1 = lazy(() => import("./components/footerFinal"));
-// const N10Navbar = lazy(() => import("./components/n10Navbar"));
+const N10Navbar = lazy(() => import("./components/n10Navbar"));
 
 const PageM0 = lazy(() => import("./Market/pageM0"));
 const PageM1 = lazy(() => import("./Market/pageM1"));
@@ -144,20 +148,20 @@ const PageM17 = lazy(() => import("./Market/pageM17"));
 const PageM18 = lazy(() => import("./Market/pageM18"));
 const PageM19 = lazy(() => import("./Market/pageM19"));
 
-const PageN1 = lazy(() => import("././Ngo/pageN1"));
-const PageN2 = lazy(() => import("././Ngo/pageN2a"));
-const PageN4 = lazy(() => import("././Ngo/pageN4"));
-const PageN5 = lazy(() => import("././Ngo/pageN5"));
-const PageN6 = lazy(() => import("././Ngo/pageN6"));
-const PageN7 = lazy(() => import("././Ngo/pageN7"));
-const PageN9 = lazy(() => import("././Ngo/pageN9"));
-const PageN10 = lazy(() => import("././Ngo/pageN10"));
-const PageN10a = lazy(() => import("././Ngo/pageN10a"));
-const PageN11 = lazy(() => import("././Ngo/pageN11"));
-const PageN12 = lazy(() => import("././Ngo/pageN12"));
-const PageN13 = lazy(() => import("././Ngo/pageN13"));
-const PageN14a = lazy(() => import("././Ngo/pageN14a"));
-const PageN14b = lazy(() => import("././Ngo/pageN14b"));
+const PageN1 = lazy(() => import("./Ngo/pageN1"));
+const PageN2 = lazy(() => import("./Ngo/pageN2a"));
+const PageN4 = lazy(() => import("./Ngo/pageN4"));
+const PageN5 = lazy(() => import("./Ngo/pageN5"));
+const PageN6 = lazy(() => import("./Ngo/pageN6"));
+const PageN7 = lazy(() => import("./Ngo/pageN7"));
+const PageN9 = lazy(() => import("./Ngo/pageN9"));
+const PageN10 = lazy(() => import("./Ngo/pageN10"));
+const PageN10a = lazy(() => import("./Ngo/pageN10a"));
+const PageN11 = lazy(() => import("./Ngo/pageN11"));
+const PageN12 = lazy(() => import("./Ngo/pageN12"));
+const PageN13 = lazy(() => import("./Ngo/pageN13"));
+const PageN14a = lazy(() => import("./Ngo/pageN14a"));
+const PageN14b = lazy(() => import("./Ngo/pageN14b"));
 
 function displayNavbar() {
   const token = Cookies.get("token");
@@ -183,96 +187,114 @@ function App() {
     responsiveVoice.speak(text, "Tamil Male");
   }
 
+  const [auth, setAuth] = useState(false);
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    if (localStorage.getItem("role")) {
+      setRole(localStorage.getItem("role"));
+    } else {
+      setAuth("");
+    }
+  }, []);
+
   return (
-    <div>
-      {/* <N10Navbar /> */}
-      {displayNavbar()}
-      <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
-        fullAnotherSpeak(e.target.innerText)
-      }} >
+    <Suspense fallback={<h1>Loading ...</h1>}>
+      <div>
+        <AuthContext.Provider value={{ auth, setAuth, role, setRole }}>
+          {/* <Navbar /> */}
+          <Navbar />
+          <main className="main-content" >
 
-        <Suspense fallback={<h1>Loading ...</h1>}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/homepage2" element={<Homepage2 />} />
-              <Route path="/landingPage" element={<LandingPage />} />
-              <Route path="/aboutUs" element={<AboutUsPage />} />
-              <Route path="/termsAndCondition" element={<TermsAndCondition />} />
-              <Route path="/ReviewsForm" element={<ReviewsForm />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
-              <Route path="/verifyOTP" element={<VerifyOTP />} />
-              <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
-              <Route path="/resetpass" element={<ResetEnterNewPassword />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/chart" element={<Chart />} />
-              <Route path="/NGOProfile" element={<NGOProfile />} />
-              <Route path="/BuyerProfile" element={<BuyerProfile />} />
-              <Route path="/FarmerProfile" element={<FarmerProfile />} />
-              <Route path="/M0" element={<PageM0 />} />
-              <Route path="/M1" element={<PageM1 />} />
-              <Route path="/M2" element={<PageM2 />} />
-              <Route path="/M3" element={<PageM3 />} />
-              <Route path="/M4" element={<PageM4 />} />
-              <Route path="/M5" element={<PageM5 />} />
-              <Route path="/M6" element={<PageM6 />} />
-              <Route path="/M7" element={<PageM7 />} />
-              <Route path="/M9" element={<PageM9 />} />
-              <Route path="/M10" element={<PageM10 />} />
-              <Route path="/M10a" element={<PageM10a />} />
-              <Route path="/M10b" element={<PageM10b />} />
-              <Route path="/M10c" element={<PageM10c />} />
-              <Route path="/M11" element={<PageM11 />} />
-              <Route path="/M12" element={<PageM12 />} />
-              <Route path="/M13" element={<PageM13 />} />
-              <Route path="/M15" element={<PageM15 />} />
-              <Route path="/M16" element={<PageM16 />} />
-              <Route path="/M17" element={<PageM17 />} />
-              <Route path="/M18" element={<PageM18 />} />
-              <Route path="/M19" element={<PageM19 />} />
-              <Route path="/N1" element={<PageN1 />} />
-              <Route path="/N2" element={<PageN2 />} />
-              <Route path="/N4" element={<PageN4 />} />
-              <Route path="/N5" element={<PageN5 />} />
-              <Route path="/N6" element={<PageN6 />} />
-              <Route path="/N7" element={<PageN7 />} />
-              <Route path="/N9" element={<PageN9 />} />
-              <Route path="/N10" element={<PageN10 />} />
-              <Route path="/N10a" element={<PageN10a />} />
-              <Route path="/N11" element={<PageN11 />} />
-              {/* <Route path="/N12" element={<PageN12 />} /> */}
-              <Route path="/N12" element={<PageN12 />} />
-              <Route path="/N13" element={<PageN13 />} />
-              {/* <Route path="/N14" element={<PageN14 />} /> */}
-              <Route path="/N14a" element={<PageN14a />} />
-              <Route path="/N14b" element={<PageN14b />} />
-              {/* <Route path="/mapngo" element={<Map/>} /> */}
-              <Route path="/mapngo" element={<MainMap />} />
-              <Route path="/cal" element={<Calendar />} />
-              <Route path="/graph" element={<Graph />} />
-              <Route path="/logoutAll" element={<LogoutAllDevice />} />
-              <Route path="/vtt1" element={<Voicetotext />} />
-              <Route path="/vtt" element={<Vtt />} />
-              <Route path="/langtrans" element={<LangTranslate />} />
-              <Route path="/voice" element={<Voice />} />
-              <Route path="/cropRecommendation" element={<CropRecommendation />} />
-              <Route path="/imageDetection" element={<ImageDetection />} />
-              <Route path="/web" element={<Web />} />
-              <Route path="/ordersummary" />
-              <Route path="/payments/success" element={<Success />} />
-              <Route path="/payments/cancel" element={<Cancel />} />
-              <Route path="/pdfprint" element={<PdfPrint />} />
-            </Routes>
-          </BrowserRouter>
-        </Suspense>
-      </main>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/homepage2" element={<Homepage2 />} />
+                <Route path="/landingPage" element={<LandingPage />} />
+                <Route path="/aboutUs" element={<AboutUsPage />} />
+                <Route path="/termsAndCondition" element={<TermsAndCondition />} />
+                <Route path="/ReviewsForm" element={<ReviewsForm />} />
+                <Route path="/farmerHomepage" element={<FarmerHomepage />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
+                <Route path="/verifyOTP" element={<VerifyOTP />} />
+                <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
+                <Route path="/resetpass" element={<ResetEnterNewPassword />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/chart" element={<Chart />} />
+                <Route path="/NGOProfile" element={<NGOProfile />} />
+                <Route path="/BuyerProfile" element={<BuyerProfile />} />
+                <Route path="/FarmerProfile" element={<FarmerProfile />} />
+                <Route path="/M0" element={<PageM0 />} />
+                <Route path="/M1" element={<PageM1 />} />
+                <Route path="/M2" element={<PageM2 />} />
+                <Route path="/M3" element={<PageM3 />} />
+                <Route path="/M4" element={<PageM4 />} />
+                <Route path="/M5" element={<PageM5 />} />
+                <Route path="/M6" element={<PageM6 />} />
+                <Route path="/M7" element={<PageM7 />} />
+                <Route path="/M9" element={<PageM9 />} />
+                <Route path="/M10" element={<PageM10 />} />
+                <Route path="/M10a" element={<PageM10a />} />
+                <Route path="/M10b" element={<PageM10b />} />
+                <Route path="/M10c" element={<PageM10c />} />
+                <Route path="/M11" element={<PageM11 />} />
+                <Route path="/M12" element={<PageM12 />} />
+                <Route path="/M13" element={<PageM13 />} />
+                <Route path="/M15" element={<PageM15 />} />
+                <Route path="/M16" element={<PageM16 />} />
+                <Route path="/M17" element={<PageM17 />} />
+                <Route path="/M18" element={<PageM18 />} />
+                <Route path="/M19" element={<PageM19 />} />
+                <Route path="/N1" element={<PageN1 />} />
+                <Route path="/N2" element={<PageN2 />} />
+                <Route path="/N4" element={<PageN4 />} />
+                <Route path="/N5" element={<PageN5 />} />
+                <Route path="/N6" element={<PageN6 />} />
+                <Route path="/N7" element={<PageN7 />} />
+                <Route path="/N9" element={<PageN9 />} />
+                <Route path="/N10" element={<PageN10 />} />
+                <Route path="/N10a" element={<PageN10a />} />
+                <Route path="/N11" element={<PageN11 />} />
+                {/* <Route path="/N12" element={<PageN12 />} /> */}
+                <Route path="/N12" element={<PageN12 />} />
+                <Route path="/N13" element={<PageN13 />} />
+                {/* <Route path="/N14" element={<PageN14 />} /> */}
+                <Route path="/N14a" element={<PageN14a />} />
+                <Route path="/N14b" element={<PageN14b />} />
+                {/* <Route path="/mapngo" element={<Map/>} /> */}
+                <Route path="/mapngo" element={<MainMap />} />
+                <Route path="/cal" element={<Calendar />} />
+                <Route path="/graph" element={<Graph />} />
+                <Route path="/logoutAll" element={<LogoutAllDevice />} />
+                <Route path="/vtt1" element={<Voicetotext />} />
+                <Route path="/vtt" element={<Vtt />} />
+                <Route path="/langtrans" element={<LangTranslate />} />
+                <Route path="/voice" element={<Voice />} />
+                <Route path="/cropRecommendation" element={<CropRecommendation />} />
+                <Route path="/imageDetection" element={<ImageDetection />} />
+                <Route path="web" element={<Web />} />
+                <Route path="/ordersummary" />
+                <Route path="/payments/success" element={<Success />} />
+                <Route path="/payments/cancel" element={<Cancel />} />
+                <Route path="/pdfprint" element={<PdfPrint />} />
+                <Route path="*" element={<Page404 />} />
+              </Routes>
+            </BrowserRouter>
 
+          </main>
 
-      {/* <Footer1 /> */}
-      {displayFooter()}
-    </div >
+          {/* <Footer1 /> */}
+          <Footer1 />
+        </AuthContext.Provider>
+      </div>
+    </Suspense>
   );
 }
 

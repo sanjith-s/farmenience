@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime'
 import Swal from 'sweetalert2';
 import Axios from "axios"
 import Cookies from 'js-cookie';
-import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition"
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition"
 import MarketCard from "../components/marketCard";
 import {
   Card,
@@ -41,7 +41,7 @@ import { Label } from "recharts";
 
 const PageM11 = () => {
   const navigate = useNavigate();
-  let count=0;
+  let count = 0;
 
   const {
     transcript,
@@ -52,24 +52,27 @@ const PageM11 = () => {
 
   const controlMic = () => {
     alert('1');
-    
-    if(count == 0)
-    {
-    SpeechRecognition.startListening;
-    count=1;
+
+    if (count == 0) {
+      SpeechRecognition.startListening;
+      count = 1;
     }
-    else
-    {
+    else {
       SpeechRecognition.stopListening;
-      count=0;
+      count = 0;
     }
   }
 
-  if(!browserSupportsSpeechRecognition) {
-    alert("Your Browser doesn't support speech to text !!")
+  if (!browserSupportsSpeechRecognition) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: "Your Browser doesn't support speech to text !!",
+    })
   }
 
   const [defaultData, setDefaultData] = useState([]);
+
   const [cart, setcart] = useState([]);
 
   useEffect(() => {
@@ -124,105 +127,32 @@ const PageM11 = () => {
     document.body.appendChild(addScript);
   }, []);
 
-  // const defaultData = [
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "orange",
-  //     count: 4,
-  //     price: 32,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 4,
-  //     price: 132,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "banana",
-  //     count: 10,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "apple",
-  //     count: 100,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "mango",
-  //     count: 4,
-  //     price: 732,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 332,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 432,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 232,
-  //     rate: 3,
-  //   },
-  //   {
-  //     product: "promegranate",
-  //     count: 4,
-  //     price: 230,
-  //     rate: 3,
-  //   },
-  // ]
-
   async function confirmCart() {
+    navigate('../M12');
+    alert("Items added to Cart: goto M12");
     let token = Cookies.get('token');
     await Axios.post(`${baseURL}/buyer/postcart`, {
-        cartItems: cart
-    }, {headers: {tokenstring: token}})
-    .then((response) => {
-      // setCart(response.data.message);
-    }).catch(async (res) => {
-    if (res.response.data.message === 'Error in connection') {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please Check Network Connection!',
-      })
-    }
-    else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Login Error',
-      })
-      navigate('../login')
-      }
-    });
+      cartItems: cart
+    }, { headers: { tokenstring: token } })
+      .then((response) => {
+        // setCart(response.data.message);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      });
   }
 
   const [content, setContent] = useState(defaultData);
@@ -283,12 +213,14 @@ const PageM11 = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
   const filterPrice = (a, min, max) => {
     if (a.price >= min && a.price <= max) {
       return true;
     }
     return false;
   }
+
   const ApplyChange = () => {
     var min = document.getElementById("minPrice").value;
     var max = document.getElementById("maxPrice").value;
@@ -304,10 +236,12 @@ const PageM11 = () => {
   }
 
   const [ngoType, setNgoType] = useState([]);
+
   const handleNGOtype = (option) => {
     setNgoType(option);
     setappntdata({ ...appntdata, ngoType: ngoType.value });
   };
+
   const [appntdata, setappntdata] = useState({
     meetdate: "",
     image: "",
@@ -320,8 +254,8 @@ const PageM11 = () => {
   return (
     <div id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
-      }} style={{
-      }}>
+    }} style={{
+    }}>
       <Container
         className="check"
         sx={{
@@ -347,7 +281,7 @@ const PageM11 = () => {
             width: "100%",
           }}
         >
-          <FormControl style={{width:"100%" , height: "3rem",}} onClick={() => { setOpen2(true) }}>
+          <FormControl style={{ width: "100%", height: "3rem", }} onClick={() => { setOpen2(true) }}>
             <Input
               style={{ height: "2.5rem" }}
               id="input-with-icon-adornment"
@@ -355,17 +289,17 @@ const PageM11 = () => {
               placeholder="Search here"
               startAdornment={
                 <InputAdornment position="start">
-                  <SearchIcon style={{ color: "green" , fontSize: "2.1875rem"}} />
+                  <SearchIcon style={{ color: "green", fontSize: "2.1875rem" }} />
                 </InputAdornment>
               }
               endAdornment={
                 <InputAdornment position="start">
                   <IconButton>
-                    <MicIcon style={{ color: "green" , fontSize: "2.1875rem"}} onClick={controlMic}/>
+                    <MicIcon style={{ color: "green", fontSize: "2.1875rem" }} onClick={controlMic} />
                   </IconButton>
                   <IconButton>
                     <PhotoCameraIcon
-                      style={{ color: "green" , fontSize: "2.1875rem"}}
+                      style={{ color: "green", fontSize: "2.1875rem" }}
                     />
                   </IconButton>
                 </InputAdornment>
@@ -408,7 +342,7 @@ const PageM11 = () => {
               </Button>
             </CardActionArea>
             <Divider orientation="vertical" />
-            
+
             <CardActionArea style={{ width: "100%" }}>
               <Button
                 style={{
@@ -430,37 +364,37 @@ const PageM11 = () => {
           <Divider orientation="horizontal" />
 
           <div>
-              <Dialog onClose={handleClose} open={open}>
-                <DialogTitle>Sort By</DialogTitle>
-                  <Box>
-                    <FormControl>
-                      <RadioGroup
-                        aria-labelledby="demo-controlled-radio-buttons-group"
-                        name="controlled-radio-buttons-group"
-                        value={value}
-                        onChange={handleChange1}
-                      >
-                        <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
-                        <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
-                      </RadioGroup>
-                      <Button onClick={resetSort}>Reset Filter</Button>
-                    </FormControl>
-                  </Box>
-              </Dialog>
-              <Dialog onClose={handleClose2} open={open2}>
-                <DialogTitle>Filter By</DialogTitle>
-                <Box sx={{ padding: "8%" }}>
-                  <FormControl>
-                    <Stack spacing={3}>
-                      <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
-                      <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
-                      <Button onClick={ApplyChange}>Apply</Button>
-                      <Button onClick={resetFilter}>Reset Filter</Button>
-                    </Stack>
-                  </FormControl>
-                </Box>
-              </Dialog>
-            </div>
+            <Dialog onClose={handleClose} open={open}>
+              <DialogTitle>Sort By</DialogTitle>
+              <Box>
+                <FormControl>
+                  <RadioGroup
+                    aria-labelledby="demo-controlled-radio-buttons-group"
+                    name="controlled-radio-buttons-group"
+                    value={value}
+                    onChange={handleChange1}
+                  >
+                    <FormControlLabel value="PriceI" control={<Radio />} label="Price (Increasing)" />
+                    <FormControlLabel value="PriceD" control={<Radio />} label="Price (Descreasing)" />
+                  </RadioGroup>
+                  <Button onClick={resetSort}>Reset Filter</Button>
+                </FormControl>
+              </Box>
+            </Dialog>
+            <Dialog onClose={handleClose2} open={open2}>
+              <DialogTitle>Filter By</DialogTitle>
+              <Box sx={{ padding: "8%" }}>
+                <FormControl>
+                  <Stack spacing={3}>
+                    <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="minPrice" placeholder="Minimum price" />
+                    <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} id="maxPrice" placeholder="Maximum price" />
+                    <Button onClick={ApplyChange}>Apply</Button>
+                    <Button onClick={resetFilter}>Reset Filter</Button>
+                  </Stack>
+                </FormControl>
+              </Box>
+            </Dialog>
+          </div>
         </CardActions>
 
         <Box
@@ -480,15 +414,16 @@ const PageM11 = () => {
               //     {val.records.map((v, i)=>{
                     // return (
                       <MarketCard
-                        key={i+ 1}
-                        image={v.image}
-                        productName={v.productName}
-                        sellerCount={v.quantity}
-                        price={v.price}
-                        stars={v.rating}
+                        key ={i+ 1}
+                        image ={v.image}
+                        productName ={v.productName}
+                        sellerCount ={v.quantity}
+                        price ={v.price}
+                        stars ={v.rating}
                         type = {v.type}
-                        cartArray={setcart}
-                        array={cart}
+                        cartArray ={setcart}
+                        array = {cart}
+                        imgsrc={v.filename}
                       />
                     // );
                   // }
@@ -497,21 +432,21 @@ const PageM11 = () => {
               // </>
             );
           })}
-          
+
         </Box>
 
-        
+
         {transcript}
-        <div style={{display:"flex" , justifyContent:"center"}}>
-        <Button
-        variant="contained"
-        color="success"
-        style={{width:"max-content"}}
-        onClick={confirmCart}>
-          Confirm Cart
-        </Button>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button
+            variant="contained"
+            color="success"
+            style={{ width: "max-content" }}
+            onClick={confirmCart}>
+            Confirm Cart
+          </Button>
         </div>
-      
+
       </Container>
     </div>
   );

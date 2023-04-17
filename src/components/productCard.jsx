@@ -7,11 +7,7 @@ import {
   FilledInput,
   InputLabel,
   Typography,
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Button,
+  Box
 } from "@mui/material";
 
 function ProductCard(props) {
@@ -100,11 +96,15 @@ function ProductCard(props) {
                   <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                 </InputAdornment>
               }
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value >= 1 && event.target.value <= 2000)
                   setPrice(event.target.value);
                 else {
-                  setOpen1(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Price",
+                  })
                 }
               }}
               style={{
@@ -148,11 +148,15 @@ function ProductCard(props) {
                   </Typography>
                 </InputAdornment>
               }
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value >= 1 && event.target.value <= 50)
                   setQty(event.target.value);
                 else {
-                  setOpen2(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Quantity",
+                  })
                 }  
               }}
               style={{
@@ -183,11 +187,15 @@ function ProductCard(props) {
             </InputLabel>
             <FilledInput
               type="text"
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
                   setType(event.target.value);
                 else {
-                  setOpen3(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Type",
+                  })
                 }
               }}
               style={{
@@ -234,48 +242,6 @@ function ProductCard(props) {
           </FormControl>
         </Box>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Price
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Quantity
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Type
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
 
     </Box>
   );

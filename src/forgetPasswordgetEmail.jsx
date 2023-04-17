@@ -50,10 +50,10 @@ const forgetPasswordGetEmail = () => {
             then(async (response) => {
                 console.log(response);
                 // if (response.data.message === 'Query Added Successfully') {
-                    await Swal.fire({
-                        icon: 'success',
-                        title: 'Email Received Successfully !!',
-                    })
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Email Received Successfully !!',
+                })
                 // }
                 navigate('../verifyOTP')
             })
@@ -74,7 +74,11 @@ const forgetPasswordGetEmail = () => {
                     navigate('../login')
                 }
                 else {
-                    alert(res.response.data.message);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.response.data.message,
+                    })
                 }
             })
     }
@@ -82,23 +86,18 @@ const forgetPasswordGetEmail = () => {
     return (
         <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
             <CssBaseline />
-            <span className="title">Forget Password</span>
-            <Stack
-                direction="row"
-                divider={<Divider orientation="vertical" flexItem />}
+            <Box
                 spacing={2}
-                sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
+                sx={{ height: "50vh", display: "flex", justifyContent: "center", alignItems: "space-around", flexDirection: "column" }}
             >
+                <Typography variant="h3" style={{ margin: "auto" }}>Forget Password</Typography>
                 <Container
                     sx={{
                         bgcolor: "#D9D9D9;",
-                        height: "100%",
-                        width: "60vw",
-                        borderRadius: "3.125rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-evenly",
-                        alignItems: "center",
+                        borderRadius: "10px 15px",
+                        width: "70%",
+                        margin: "auto",
+                        padding: "1% 2%"
                     }}
                 >
                     <React.Fragment>
@@ -113,70 +112,24 @@ const forgetPasswordGetEmail = () => {
                                 minLength: 1
                             }}
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#bde3e5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "100%"
                             }}
                             onChange={(e) => { setEmail(e.target.value) }}
                         />
-                        
-                        <Box textAlign="center" padding={"1.25rem"}>
-                            <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={postEmail}>
+
+                        <Box sx={{display:"flex", padding:"1.2rem", justifyContent:"space-evenly",width:"100%"}}>
+                            <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#138ac5"}}>
+                               Back
+                            </Button>
+                            <Button variant="contained" sx={{ bgcolor: "#138ac5" }} onClick={postEmail}>
                                 Next
                             </Button>
                         </Box>
                     </React.Fragment>
                 </Container>
-
-                {/* <Dialog
-          open={open}
-          TransitionComponent={Transition}
-          keepMounted
-          onClose={() => { setOpen(false) }}
-          aria-describedby="alert-dialog-slide-description"
-        >
-          <DialogTitle>CONFIRM?</DialogTitle>
-          <DialogContent>
-            <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 200 }} aria-label="simple table">
-                <TableBody>
-                  <TableRow>
-                    <TableCell>Query Subject</TableCell>
-                    <TableCell>{subject}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Description</TableCell>
-                    <TableCell>{desc}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell colSpan={2} rowSpan={2}>
-                      <img
-                        src={file}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "fill",
-                          borderRadius: "3.125rem",
-                        }}
-                      /></TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => { setOpen(false) }}>Cancel</Button>
-            <Button onClick={postQuery}>CONFIRM</Button>
-          </DialogActions>
-        </Dialog> */}
-            </Stack>
-
-            <Box textAlign="center" padding={"1.25rem"}>
-                <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#1FE57A", margin: "auto" }}>
-                    Home Page
-                </Button>
             </Box>
-
         </div>
     );
 };

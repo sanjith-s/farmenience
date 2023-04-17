@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import MarketMap from '../MarketMap';
 import Cookies from 'js-cookie';
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -25,7 +26,6 @@ import Swal from 'sweetalert2';
 import Page10Nav from "../components/page10Nav";
 import Axios from "axios";
 import { baseURL } from "../constants";
-import { useEffect, useState } from "react";
 
 const data = [
   {
@@ -70,6 +70,8 @@ const PageM10a = () => {
   //   document.body.appendChild(addScript);
   // }, []);
 
+  const GOOGLE_MAP_API_KEY = 'AIzaSyDrQFK0vnEuz5BUAjAjdKrhq2N3UvDbjXg';
+
   const location = useLocation();
 
   const [market, setMarket] = useState([]);
@@ -77,30 +79,35 @@ const PageM10a = () => {
   const handleGetMarkets = () => {
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/buyer/getmarkets`, { headers: { tokenstring: token } })
-    .then((res) => {
-      const hell = res.data.message;
-      setMarket(hell);
-    }).catch(async (res) => {
-      if (res.response.data.message === 'Error in connection') {
+      .then((res) => {
+        const hell = res.data.message;
+        setMarket(hell);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
           await Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Please Check Network Connection!',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
           })
-      }
-      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
           await Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Login Error',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
           })
           navigate('../login')
-      }
-  })
+        }
+      })
+  }
+
+  const handleBack = (val) => {
+    console.log('hello');
+    setMarket(val);
   }
 
   useEffect(() => {
-    handleGetMarkets();
+    // h  andleGetMarkets();
   }, []);
 
   /*
@@ -115,6 +122,36 @@ const PageM10a = () => {
       );
   })
   */
+   const handleSearch = (event) => {
+
+    let searchTerm = event.target.value.toLowerCase().trim()
+    console.log(searchTerm);
+    if (searchTerm.length == 0) {
+      setMarket(market);
+    } else {
+      setMarket(market.filter((item) => item.name.toLowerCase().includes(searchTerm)))
+    }
+  };
+
+  const loadGoogleMapScript = (callback) => {
+    if (typeof window.google === 'object' && typeof window.google.maps === 'object') {
+      callback();
+    } else {
+      const googleMapScript = document.createElement("script");
+      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}`;
+      window.document.body.appendChild(googleMapScript);
+      googleMapScript.addEventListener("load", callback);
+    }
+  }
+
+  const [loadMap, setLoadMap] = useState(false);
+
+  useEffect(() => {
+    loadGoogleMapScript(() => {
+      setLoadMap(true)
+    });
+  }, []);
+
   return (
     <Container id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
@@ -128,6 +165,7 @@ const PageM10a = () => {
       }}
     >
       <CssBaseline />
+
       <Box className="gx-d-flex justify-content-center">
         <Page10Nav title={location.state ? location.state.from : "List"} />
       </Box>
@@ -146,11 +184,12 @@ const PageM10a = () => {
           }}
         >
           <Input
-            style={{ height: "2.5rem"}}
+            style={{ height: "2.5rem" }}
             id="input-with-icon-adornment"
+            onChange={handleSearch}
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green"}} />
+                <SearchIcon style={{ color: "green" }} />
               </InputAdornment>
             }
             endAdornment={
@@ -160,7 +199,7 @@ const PageM10a = () => {
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green"}}
+                    style={{ color: "green" }}
                   />
                 </IconButton>
               </InputAdornment>
@@ -210,6 +249,15 @@ const PageM10a = () => {
           </Button>
         </CardActionArea>
       </CardActions>
+
+      <div className="App" style={{justifyItems: "center"}}>
+        {/* <a href="https://www.cluemediator.com">Clue Mediator</a> */}
+        <br /><br />
+        {!loadMap ? <div>Loading...</div> : <MarketMap filterMarket={handleBack}/>}
+        <br /><br />
+        {/* <small><b>Note:</b> In order to make it work, you have to set the YOUR_GOOGLE_MAP_API_KEY in App.js file. </small> */}
+      </div>
+
       <Card
         style={{
           backgroundColor: "#86fe9ede",
@@ -258,7 +306,7 @@ const PageM10a = () => {
                   variant="boby1"
                   style={{ fontSize: "1.25rem", fontWeight: "400" }}
                 >
-                  {val.distance.miles} Kilometers
+                  {/* {val.distance.miles} Kilometers */}
                 </Typography>
               </Box>
               <Box
@@ -276,7 +324,7 @@ const PageM10a = () => {
                     fontSize: "1.375rem",
                   }}
                 >
-                  {val.location}
+                  {val.phoneno}
                 </Typography>
               </Box>
 

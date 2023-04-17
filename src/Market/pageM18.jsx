@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom/dist";
 import ProductCard from "../components/productCard";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,25 +21,13 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import Axios from "axios";
 import { baseURL } from "../constants";
+import { LocalSeeOutlined } from "@material-ui/icons";
+import Item from './../components/itemBox';
 
 const PageM18 = () => {
-  // let [prod, setProd] = useState([
-  //   { ele: <ProductCard />, delStatus: 0, num: 0 },
-  // ]);
 
-  // const addProd = () => {
-  //   setProd([
-  //     ...prod,
-  //     {
-  //       ele: <ProductCard />,
-  //       delStatus: 0,
-  //       num: prod[prod.length - 1].num + 1,
-  //     },
-  //   ]);
-  // };
-
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
@@ -66,22 +57,55 @@ const PageM18 = () => {
     setLocation('');
   }
 
-  const handleSubmit = async () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
     let token = Cookies.get('token');
-    await Axios.post(`${baseURL}/buyer/postrequest`, {
+    if (localStorage.getItem("reqs") == null || localStorage.getItem("reqs") == "") {
+      localStorage.setItem("reqs", "[]");
+    }
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+
+  const handleSubmit = async () => {
+    var items = [];
+
+    items = JSON.parse(localStorage.getItem("reqs"));
+    var newitems = [{
       name: name,
       price: price,
       quantity: qty,
       specificType: type,
-      location: location
-    }, { headers: { tokenstring: token } })
-      .then(async (res) => {
-        alert("SUCCESS");
-        console.log("Successfully added request");
-      }).catch((err) => {
-        alert("FAILURE");
-        console.log(err);
-      })
+      location: location,
+      flag: 1,
+      buyer: data
+    }, ...items];
+    localStorage.setItem("reqs", JSON.stringify(newitems));
+    Swal.fire({
+      icon: 'success',
+      title: 'Item Requested !!',
+    })
+    navigate('../M15')
   }
 
   return (
@@ -91,129 +115,43 @@ const PageM18 = () => {
         backgroundColor: "white",
         padding: "1.875rem",
         borderRadius: "1.875rem",
-        border: ".375rem solid",
+        // border: ".375rem solid",
       }}
     >
       <Box sx={{ marginBottom: "1.875rem" }}>
         <Typography
           fontWeight={700} fontSize={"2.8125rem"}
-          style={{ textTransform: "uppercase", textAlign: "center" }}
+          style={{ textTransform: " ", textAlign: "center" }}
         >
           {" "}
-          publish new request{" "}
+          Publish New Request{" "}
         </Typography>
       </Box>
-      {/* <Box
-        style={{
-          margin: "0rem 12.5rem",
-          paddingTop: "1.875rem",
-          borderRadius: ".625rem",
-        }}
-      >
-        {prod.map((val) => {
-          return (
-            <Box>
-              {val.delStatus == 0 ? (
-                <Box>
-                  {val.ele}
-                  <Box style={{ display: "flex", justifyContent: "center" }}>
-                    <Button endIcon={<DeleteIcon />}
-                      variant="contained"
-                      style={{
-                        backgroundColor: "green",
-                        color: "white",
-                        fontWeight: "600",
-                        fontSize: "1rem",
-                        margin: "1.875rem",
-                      }}
-                      onClick={() => {
-                        let temp = prod.map((id) => {
-                          if (id.num == val.num) {
-                            return { ...id, delStatus: 1 };
-                          } else {
-                            return id;
-                          }
-                        });
-                        setProd(temp);
-                      }}
-                    >
-                      delete
-                    </Button>
-                  </Box>
-                </Box>
-              ) : (
-                <></>
-              )}
-            </Box>
-          );
-        })}
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          paddingTop: "1.25rem",
-          paddingBottom: ".625rem",
-        }}
-      >
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "50rem",
-          }}
-        >
-          <Button endIcon={<AddIcon />}
-            variant="contained"
-            onClick={addProd}
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "1rem",
-            }}
-          >
-            Add Product
-          </Button>
-          <Button endIcon={<DoneIcon />}
-            variant="contained"
-            style={{
-              backgroundColor: "green",
-              color: "white",
-              fontWeight: "600",
-              fontSize: "1rem",
-            }}
-          >
-            submit request
-          </Button>
-        </Box> */}
-      {/* </Box> */}
 
       <Box style={{ display: "flex", justifyContent: "center" }}>
         <Box
           style={{
             width: "43.75rem",
-            border: ".5rem solid green",
+            border: "6px solid green",
             padding: "1.875rem",
-            borderRadius: ".3125rem",
-            borderTopRightRadius: "3.125rem",
-            borderBottomLeftRadius: "3.125rem",
+            borderRadius: "7px",
+            // borderTopRightRadius: "3.125rem",
+            // borderBottomLeftRadius: "3.125rem",
             backgroundColor: "lightgreen",
           }}
         >
-          <Box style={{ position: "sticky" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
                   variant="h6"
                   style={{
-                    textTransform: "uppercase",
+                    textTransform: " ",
                     color: "darkgreen",
                     fontWeight: "600",
                   }}
                 >
-                  name of the product
+                  Name of the Product
                 </Typography>
               </InputLabel>
               <FilledInput
@@ -234,19 +172,19 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
                   variant="h6"
 
                   style={{
-                    textTransform: "uppercase",
+                    textTransform: " ",
                     color: "darkgreen",
                     fontWeight: "600",
                   }}
                 >
-                  price
+                  Price
                 </Typography>
               </InputLabel>
               <FilledInput
@@ -256,11 +194,15 @@ const PageM18 = () => {
                     <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 2000)
                     setPrice(event.target.value);
                   else {
-                    setOpen1(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Price",
+                    })
                   }
                 }}
                 style={{
@@ -275,18 +217,18 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
                   variant="h6"
                   style={{
-                    textTransform: "uppercase",
+                    textTransform: " ",
                     color: "darkgreen",
                     fontWeight: "600",
                   }}
                 >
-                  quantity required
+                  Quantity Required
                 </Typography>
               </InputLabel>
               <FilledInput
@@ -296,20 +238,24 @@ const PageM18 = () => {
                     <Typography
                       variant="h6"
                       style={{
-                        textTransform: "uppercase",
+                        textTransform: " ",
                         color: "darkgreen",
                         fontWeight: "600",
                       }}
                     >
-                      kg
+                      Kg
                     </Typography>
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 50)
                     setQty(event.target.value);
                   else {
-                    setOpen2(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Quantity",
+                    })
                   }
                 }}
                 style={{
@@ -324,18 +270,18 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
                   variant="h6"
                   style={{
-                    textTransform: "uppercase",
+                    textTransform: " ",
                     color: "darkgreen",
                     fontWeight: "600",
                   }}
                 >
-                  specific type
+                  Specific Type
                 </Typography>
               </InputLabel>
               <FilledInput
@@ -360,18 +306,18 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
                   variant="h6"
                   style={{
-                    textTransform: "uppercase",
+                    textTransform: " ",
                     color: "darkgreen",
                     fontWeight: "600",
                   }}
                 >
-                  location
+                  Location
                 </Typography>
               </InputLabel>
               <FilledInput
@@ -393,64 +339,23 @@ const PageM18 = () => {
             </FormControl>
           </Box>
         </Box>
-
-        <Dialog
-          open={open1}
-          onClose={handleClose1}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Price
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose1}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Quantity
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose2}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open3}
-          onClose={handleClose3}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Type
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose3}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
       </Box>
 
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-      <Button endIcon={<DoneIcon />}
-        variant="contained"
-        color="success"
-        onClick={handleSubmit}
-      >
-        submit request
-      </Button>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
+        <Button endIcon={<DoneIcon />}
+          variant="contained"
+          color="success"
+          onClick={handleSubmit}
+          sx={{ bgcolor: "#41b547", "&:hover": { backgroundColor: "#2E7D32", }, marginRight: "50px" }}
 
-      <Button variant="contained"
-            color="success" onClick={Reset} >
-        Reset To Old Values
-      </Button>
+        >
+          Submit Request
+        </Button>
+
+        <Button variant="contained"
+          color="success" onClick={Reset} sx={{ bgcolor: "#f23c33", "&:hover": { backgroundColor: "#d63131", } }}>
+          Reset To Old Values
+        </Button>
       </div>
     </Box>
   );

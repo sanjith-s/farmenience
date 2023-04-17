@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from 'sweetalert2';
 import Cookies from 'js-cookie';
 import { useState, useRef } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,6 +34,7 @@ import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState({});
   const [open, setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [count, setCount] = useState([0]);
@@ -52,8 +54,9 @@ const PageM6 = () => {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFileName(e.target.files[0]);  
   }
-
+  
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -82,23 +85,43 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
+    let filename='';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', fileName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename=response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
+
+      alert(filename);
+      
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
       quantity: quantity,
       type: type,
       rating: rating,
-      image: {
-        data: file,
-        contentType: "jpg"
-      }
+      filename: filename,
+      sellerName: "",
+      sellerEmail: ""
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
-        alert("SUCCESS");
-        console.log("Successfully added seller's products", res);
-      }).catch((err) => {
-        alert("FAILURE");
-        console.log(err);
+        await Swal.fire({
+          icon: 'success',
+          title: "Successfully added seller's products" + res.data.message,
+        })
+      }).catch(async (err) => {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err,
+        })
       })
   }
 
@@ -107,31 +130,34 @@ const PageM6 = () => {
       <CssBaseline />
 
       <Typography fontWeight={700} fontSize={50} sx={{
-        alignItems:"center",
-        marginLeft:"37.5rem"
+        alignItems: "center",
+        marginLeft: "37.5rem"
       }}>Sell Products</Typography>
-      {count.map(ele=>{
-              return ( 
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        sx={{ height: "auto", width: "auto", marginTop: "1.875rem",padding:"3.125rem" }}
-      >
-        <Container
-          sx={{
-            // bgcolor: "#D9D9D9;",
-            height: "100%",
-            width: "60vw",
-            borderRadius: "3.125rem",
-            display: "flex",
-            flexDirection: "column",
-            // justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
-          <React.Fragment>
-          {/* <Box
+      {count.map(ele => {
+        return (
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem  />}
+            spacing={2}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem",  }}
+          >
+            <Box
+              sx={{
+                bgcolor: "#b8ebab;",
+                height: "100%",
+                width: "50vw",
+                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "column",
+                // justifyContent: "space-evenly",
+                alignItems: "center",
+                boxShadow:"2",
+                padding:"20px"
+
+              }}
+            >
+              <React.Fragment>
+                {/* <Box
 
             sx={{
               overflow: "auto",
@@ -142,7 +168,7 @@ const PageM6 = () => {
               alignContent:"center"
             }}
           > */}
-          
+
                 <TextField
                   id="p-name"
                   label="Product Name"
@@ -151,9 +177,10 @@ const PageM6 = () => {
                   value={name}
                   onChange={handleAllChange}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -174,9 +201,10 @@ const PageM6 = () => {
                     max: 200
                   }}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -193,9 +221,10 @@ const PageM6 = () => {
                   variant="filled"
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -206,9 +235,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -224,9 +254,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -235,7 +266,7 @@ const PageM6 = () => {
                 />
 
               </React.Fragment>
-            </Container>
+            </Box>
             <Dialog
               open={open}
               TransitionComponent={Transition}
@@ -282,7 +313,7 @@ const PageM6 = () => {
 
               </DialogContent>
               <DialogActions>
-                <Button  onClick={() => { setOpen(false) }}>Cancel</Button>
+                <Button onClick={() => { setOpen(false) }}>Cancel</Button>
                 <Button >CONFIRM</Button>
               </DialogActions>
             </Dialog>
@@ -301,7 +332,7 @@ const PageM6 = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                marginTop:"5.625rem"
+                marginTop: "5.625rem"
               }}
             >
               {!isUploaded && (
@@ -351,33 +382,45 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
+      
+        {/* <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
+          Add Item
+        </Button> */}
+        {/* <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
+          Delete Item
+        </Button> */}
+      <Box textAlign="center" padding={"1.25rem"}>
       <Stack
-        direction="row"
+        direction="column"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
         display="flex"
         justifyContent="center"
       >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": {backgroundColor: "#78beff", }}}>
-          Add Item
-        </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f","&:hover": {backgroundColor: "#fa552f", } }}>
-          Delete Item
-        </Button>
-      </Stack>
-      <Box textAlign="center" padding={"1.25rem"}>
-
-        <Button onClick={()=>{setOpen(true)}} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": {backgroundColor: "#7ad14f", } }}>
+        <Button onClick={async () => {
+          await Swal.fire({
+            icon: 'info',
+            title: 'Please confirm the details ...',
+            html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
+            imageUrl: file,
+            confirmButtonText: 'Confirm',
+            preConfirm: () => {
+              handleSubmit();
+              console.log('click');
+            }
+          })
+        }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
           {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
         <Button variant="contained"
-            color="success"onClick={Reset}>
+          color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
           Reset To Old Values
         </Button><br /><br />
-      </Box>
+        </Stack>
+        </Box>
     </div>
   );
 };

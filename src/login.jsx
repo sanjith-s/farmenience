@@ -10,6 +10,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
+import login1 from "./images/LOGIN.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ function Login() {
     setEmail(document.querySelector("#email").value);
     setPwd(document.querySelector("#pwd").value);
   };
+
+  document.title = "Login - Farmenience";
 
   const submit = async (event) => {
     event.preventDefault();
@@ -62,11 +65,16 @@ function Login() {
           title: 'Login Successful!',
         });
         Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
         if (response.data.details[0].typeOfAcc == "Farmer") {
-          navigate("/N9");
+          navigate("/FarmerHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "NGO") {
           navigate("/N10");
+        }
+        else if (response.data.details[0].typeOfAcc == "Retailer") {
+          navigate("/M9");
         }
         else {
           navigate("/homepage2");
@@ -103,54 +111,62 @@ function Login() {
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Card sx={{ margin: "1.875rem", padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: "26.25" }}>
-      <form
-        onSubmit={submit}
-        method="post"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          rowGap: "1.875rem",
-        }}
-      >
-        <Box>
-          <Typography
-            fontWeight={500}
-            fontSize={"2.188rem"}
-            style={{ textTransform: "uppercase", textAlign: "center" }}
-          >
+    <>
+      <Card sx={{
+        backgroundColor: "#96f0ff", margin: "1.875rem",
+        padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: 40
+      }}>
+        <form
+          onSubmit={submit}
 
-            login page
-          </Typography>
-        </Box>
-        <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email" variant="filled" sx={{ width: "25rem" }} value={email} />
-        <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic" label="Password" variant="filled" type="password" sx={{ width: "25rem" }} value={password} />
+          method="post"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            rowGap: "1.875rem",
 
-        <Button
-          variant="contained"
-          onClick={() => LogMeIn(email, password)}
+          }}
         >
-          login
-        </Button>
-      </form>
+          <Box align="center">
+            <img src={login1} alt="Login Image" width="50px" length="50px" />
+            <Typography
+              mt={2}
+              fontWeight={500}
+              fontSize={"2.188rem"}
+              style={{ textTransform: "uppercase", textAlign: "center" }}
+            >
 
-      <Button
-        variant="contained"
-        onClick={goToSignup}
-        style={{ backgroundColor: "green" }}
-        sx={{
-          marginLeft: "41.438rem",
-          marginTop: "1.25rem"
-        }}
-      >
-        <Link to="/signup" style={{ textDecoration: "none" }}>
-          <Typography style={{ color: "white" }}>signup</Typography>
-        </Link>
-      </Button>
+              login
+            </Typography>
 
+          </Box>
+          <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email"
+            variant="filled" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={email} />
+          <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic"
+            label="Password" variant="filled" type="password" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={password} />
 
-    </Card>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#000080", color: "white", "&:hover": {
+                backgroundColor: "#4B0081",
+              }
+            }}
+
+            onClick={() => LogMeIn(email, password)}
+          >
+            login
+          </Button>
+        </form>
+
+      </Card>
+
+      <div style={{ color: "blue", fontSize: "1.25rem", textAlign: "center" }}><a href="../signup">Don't have an account ?</a></div>
+      <br />
+      <div style={{ color: "blue", fontSize: "1.25rem", textAlign: "center" }}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
+      <br /><br />
+    </>
   );
 }
 

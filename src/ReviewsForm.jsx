@@ -55,7 +55,6 @@ const ReviewsForm = () => {
 
     const postReview = async () => {
         let token = Cookies.get('token');
-        alert(review);
         await Axios.post(`${baseURL}/review`, {
             name: name,
             email: email,
@@ -119,48 +118,49 @@ const ReviewsForm = () => {
                     }
                 }}
             >
+                <Typography variant="h2" fontWeight={600}>Review Form</Typography>
                 <Stack
                     sx={{
-                        bgcolor: "#D9D9D9;",
-                        borderRadius: "3.125rem",
-                        padding: "2%",
-                        width: "60%",
+                        boxShadow:10,
+                        bgcolor: "#96F0FF;",
+                        borderRadius: "10px",
+                        padding: "4%",
+                        width: "700px",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                     }}
                     spacing={2}
                 >
-                    <Typography variant="h2">Review</Typography>
+                    
                     <React.Fragment>
                         <TextField
                             id="p-name"
                             label="Name"
                             variant="filled"
-                            color="success"
+                            
                             value={name}
                             onChange={handleAllChange}
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#f5F5F5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "90%",
+                                
                             }}
-                            inputProps={{
-                                minLength: 1,
-                                maxLength: 25
-                            }}
+                            // inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5"} }} 
+                            // InputLabelProps={{ style: { fontSize: 15 } }}
                         />
                         <TextField
                             id="emailadd"
                             type="email"
                             label="Email"
                             variant="filled"
-                            color="success"
+                            
                             onChange={handleAllChange}
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#F5F5F5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "90%",
                             }}
                         />
                         <TextField
@@ -169,14 +169,14 @@ const ReviewsForm = () => {
                             onChange={handleAllChange}
                             label="Mobile Number"
                             variant="filled"
-                            color="success"
+                            
                             inputProps={{
                                 maxLength: 10
                             }}
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#F5F5F5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "90%",
                             }}
                         />
                         <TextField
@@ -187,11 +187,11 @@ const ReviewsForm = () => {
                             multiline
                             rows={5}
                             onChange={handleAllChange}
-                            color="success"
+                            
                             sx={{
-                                backgroundColor: "#C4E1C5",
+                                backgroundColor: "#F5F5F5",
                                 borderBottomColor: "black",
-                                width: "70%",
+                                width: "90%",
                             }}
                             inputProps={{
                                 minLength: 1,
@@ -200,7 +200,8 @@ const ReviewsForm = () => {
                         />
 
                     </React.Fragment>
-                    <Button onClick={() => { setOpen(true) }} variant="contained" sx={{ bgcolor: "#1FE57A", width: "1.875rem" }}>
+                    <Button  mt = {5} onClick={() => { setOpen(true) }} variant="contained" 
+                    sx={{ bgcolor: "BLUE", width: "90px",}}>
                         Submit
                         {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
                         {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
@@ -217,6 +218,7 @@ const ReviewsForm = () => {
                 keepMounted
                 onClose={() => { setOpen(false) }}
                 aria-describedby="alert-dialog-slide-description"
+                boxShadow = {5}
             >
                 <DialogTitle>CONFIRM?</DialogTitle>
                 <DialogContent>

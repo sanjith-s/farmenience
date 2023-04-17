@@ -1,10 +1,6 @@
 import React from "react";
 import {
-  TableBody,
-  TableCell,
   TableContainer,
-  TableHead,
-  TableRow,
   Paper,
 } from "@mui/material";
 import { Col, Divider, Row, Table } from 'antd';
@@ -37,13 +33,13 @@ function PriceTable(props) {
     >
       <Table dataSource={props.rows}
         pagination={false}
-        >
-          <Table.Column title="S. No" dataIndex='sno' />
-          <Table.Column title="Item" dataIndex='name' />
-          <Table.Column title="Quantity" dataIndex='quantity' />
-          <Table.Column title="Price / kg" dataIndex='unitPrice' />
-          <Table.Column title="Total Price (In Rs.)" dataIndex='total' />
-        </Table>
+      >
+        <Table.Column title="S. No" dataIndex='sno' />
+        <Table.Column title="Item" dataIndex='name' />
+        <Table.Column title="Quantity" dataIndex='quantity' />
+        <Table.Column title="Price / kg" dataIndex='unitPrice' />
+        <Table.Column title="Total Price (In Rs.)" dataIndex='total' />
+      </Table>
     </TableContainer>
   );
 }

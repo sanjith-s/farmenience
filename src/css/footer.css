@@ -23,7 +23,9 @@ foot-body {
 	justify-content: center;
 	align-items: center;
 }
-
+.cfoot {
+	margin-top: auto;
+}
 
 .foot-links {
 	text-decoration: none;

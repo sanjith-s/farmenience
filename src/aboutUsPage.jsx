@@ -17,9 +17,9 @@ const AboutUsPage = () => {
   //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
   // }
 
-  // const fullAnotherSpeak = (text) => {
-  //   responsiveVoice.speak(text, "Tamil Male");
-  // }
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
 
   // useEffect(() => {
   //   var addScript = document.createElement('script');
@@ -28,19 +28,19 @@ const AboutUsPage = () => {
   //   window.googleTranslateElementInit = googleTranslateElementInit;
   // }, []);
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
-  //   document.body.appendChild(addScript);
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
 
   return (
-    <div className="about-hero ">
-      <img className="abt-img " src={abtImg5} alt="" />
+    <div className="about-hero" onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
+      <img className="abt-img" src={abtImg5} alt="" />
 
-      <main className="about-section gradient" onClick={(e) => {
-        fullAnotherSpeak(e.target.innerText)
-      }}>
+      <main className="about-section">
         <section>
           <div id="google_translate_element">
 
@@ -72,7 +72,7 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-       
+
 
       </main>
 

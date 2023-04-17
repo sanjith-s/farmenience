@@ -1,5 +1,5 @@
 import React from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import dayjs from 'dayjs';
 import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Divider, Button, TextField, Slide } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -11,7 +11,6 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import { baseURL } from '../constants';
-import { PropaneSharp } from "@mui/icons-material";
 
 const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
@@ -38,21 +37,38 @@ const ScheduleCard = (props) => {
     setValue();
   }
 
+  const verify = async () => {
+    await Swal.fire({
+      icon: 'info',
+      title: 'Please confirm the details ...',
+      html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
+    });
+
+    postMeet();
+  }
+
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    let filename='';
+    let filename = '';
     let formData = new FormData();
     formData.append('caption', "hello");
     formData.append('file', props.imgName);
     console.log(Array.from(formData.entries()))
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
-        console.log(response);
-        filename=response.data.message;
+        await Swal.fire({
+          icon: 'success',
+          title: response.data.message,
+        })
+        filename = response.data.message;
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
@@ -103,6 +119,20 @@ const ScheduleCard = (props) => {
 
   return (
     <React.Fragment>
+      <Box sx={{
+        bgcolor: "#b8ebab;",
+        height: "100%",
+        width: "50vw",
+        borderRadius: "10px",
+        display: "flex",
+        flexDirection: "column",
+        // justifyContent: "space-evenly",
+        alignItems: "center",
+        boxShadow:"2",
+        padding:"20px",
+        marginTop:"10%",
+        // marginBotto:"10%"
+      }}>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
         <DesktopDatePicker
           label="Meet Date"
@@ -110,9 +140,10 @@ const ScheduleCard = (props) => {
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-            backgroundColor: "#C4E1C5",
+            backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
+            margin:"5px"
           }} />}
         />
         <TimePicker
@@ -120,9 +151,10 @@ const ScheduleCard = (props) => {
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} sx={{
-            backgroundColor: "#C4E1C5",
+            backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
+            margin:"5px"
           }} />}
         />
       </LocalizationProvider>
@@ -132,9 +164,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -150,9 +183,10 @@ const ScheduleCard = (props) => {
         color="success"
         onChange={(e) => { setCrops(e.target.value) }}
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -167,9 +201,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 80,
@@ -183,9 +218,10 @@ const ScheduleCard = (props) => {
         variant="filled"
         color="success"
         sx={{
-          backgroundColor: "#C4E1C5",
+          backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
+          margin:"5px"
         }}
         inputProps={{
           maxLength: 100,
@@ -194,8 +230,9 @@ const ScheduleCard = (props) => {
         onChange={(e) => { setLocation(e.target.value) }}
         value={location}
       />
+      
       <Box sx={{
-        backgroundColor: "#C4E1C5",
+        backgroundColor: "#ffff",
         borderBottomColor: "black",
         width: "70%",
       }}>
@@ -214,31 +251,27 @@ const ScheduleCard = (props) => {
           </Select>
         </FormControl>
       </Box>
-      <Stack
+      </Box>
+      {/* <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
         display="flex"
         justifyContent="center"
       >
-      </Stack>
+      </Stack> */}
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={Reset}>
-          Reset To Old Values
-        </Button><br /><br />
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={async () => {
-          await Swal.fire({
-            icon: 'info',
-            title: 'Please confirm the details ...',
-            html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
-          });
-          postMeet();
-        }}>
+        
+        <Button variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}
+         onClick={async () => {verify()}}>
           Submit
+        </Button><br /><br />
+        <Button variant="contained" sx={{
+          backgroundColor: "#ff2519", color: "white", "&:hover": {
+            backgroundColor: "#7ad14f",
+          }
+        }} onClick={Reset}>
+          Reset To Old Values
         </Button>
       </Box>
     </React.Fragment>

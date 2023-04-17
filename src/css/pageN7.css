@@ -1,1 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+
+.title{
+    font-weight: 500;
+    font-size: 35px;
+    text-align: center;
+    align-items: center;
+}

@@ -182,13 +182,12 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<h1>Loading ...</h1>}>
-      <div>
-        {/* <N10Navbar /> */}
-        {displayNavbar()}
-        <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
-          fullAnotherSpeak(e.target.innerText)
-        }} >
+    <div>
+      {/* <Navbar /> */}
+      {displayNavbar()}
+      <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
+        fullAnotherSpeak(e.target.innerText)
+      }} >
 
           <BrowserRouter>
             <Routes>
@@ -272,7 +271,7 @@ function App() {
         {/* <Footer1 /> */}
         {displayFooter()}
       </div >
-    </Suspense>
+
   );
 }
 

@@ -120,20 +120,23 @@ const PageM6 = () => {
         return (
           <Stack
             direction="row"
-            divider={<Divider orientation="vertical" flexItem />}
+            divider={<Divider orientation="vertical" flexItem  />}
             spacing={2}
-            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem" }}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem",  }}
           >
-            <Container
+            <Box
               sx={{
-                // bgcolor: "#D9D9D9;",
+                bgcolor: "#b8ebab;",
                 height: "100%",
-                width: "60vw",
-                borderRadius: "3.125rem",
+                width: "50vw",
+                borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",
                 // justifyContent: "space-evenly",
                 alignItems: "center",
+                boxShadow:"2",
+                padding:"20px"
+
               }}
             >
               <React.Fragment>
@@ -157,9 +160,10 @@ const PageM6 = () => {
                   value={name}
                   onChange={handleAllChange}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -180,9 +184,10 @@ const PageM6 = () => {
                     max: 200
                   }}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -199,9 +204,10 @@ const PageM6 = () => {
                   variant="filled"
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                 />
                 <TextField
@@ -212,9 +218,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -230,9 +237,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin:"5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -241,7 +249,7 @@ const PageM6 = () => {
                 />
 
               </React.Fragment>
-            </Container>
+            </Box>
             <Dialog
               open={open}
               TransitionComponent={Transition}
@@ -357,20 +365,20 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        display="flex"
-        justifyContent="center"
-      >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
-          Add Item
-        </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
-          Delete Item
-        </Button>
-      </Stack>
+        {/* <Stack
+          direction="row"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          display="flex"
+          justifyContent="center"
+        >
+          <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#4CAF50", "&:hover": { backgroundColor: "#78beff", } }}>
+            Add Item
+          </Button>
+          <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#4CAF50", } }}>
+            Delete Item
+          </Button>
+        </Stack> */}
       <Box textAlign="center" padding={"1.25rem"}>
 
         <Button onClick={async () => {
@@ -388,7 +396,7 @@ const PageM6 = () => {
           {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
         </Button>
         <Button variant="contained"
-          color="success" onClick={Reset}>
+          color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
           Reset To Old Values
         </Button><br /><br />
       </Box>

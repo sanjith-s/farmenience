@@ -4,6 +4,10 @@ import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from './constants';
 import Swal from 'sweetalert2';
+import {
+  TextField,
+  Button
+} from "@mui/material";
 
 const GMap = () => {
 
@@ -11,7 +15,7 @@ const GMap = () => {
   const googleMapRef = useRef(null);
   let googleMap = null;
   const [data, setData] = useState([]);
-  const [filterData,setFilterData]=useState([]);
+  const [filterData, setFilterData] = useState([]);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
@@ -83,23 +87,23 @@ const GMap = () => {
     }
     getN();
   }, []);
-  useEffect(()=>{
-    googleMap = initGoogleMap();
-          var bounds = new window.google.maps.LatLngBounds();
-          filterData.map(x => {
-            const marker = createMarker(x);
-            bounds.extend(marker.position);
-          });
-          googleMap.fitBounds(bounds);
-  },[filterData])
 
-  function distance(lat1, lat2, lon1, lon2)
-    {
+  useEffect(() => {
+    googleMap = initGoogleMap();
+    var bounds = new window.google.maps.LatLngBounds();
+    filterData.map(x => {
+      const marker = createMarker(x);
+      bounds.extend(marker.position);
+    });
+    googleMap.fitBounds(bounds);
+  }, [filterData])
+
+  function distance(lat1, lat2, lon1, lon2) {
 
     // The math module contains a function
     // named toRadians which converts from
     // degrees to radians.
-    lon1 =  lon1 * Math.PI / 180;
+    lon1 = lon1 * Math.PI / 180;
     lon2 = lon2 * Math.PI / 180;
     lat1 = lat1 * Math.PI / 180;
     lat2 = lat2 * Math.PI / 180;
@@ -108,8 +112,8 @@ const GMap = () => {
     let dlon = lon2 - lon1;
     let dlat = lat2 - lat1;
     let a = Math.pow(Math.sin(dlat / 2), 2)
-    + Math.cos(lat1) * Math.cos(lat2)
-    * Math.pow(Math.sin(dlon / 2),2);
+      + Math.cos(lat1) * Math.cos(lat2)
+      * Math.pow(Math.sin(dlon / 2), 2);
 
     let c = 2 * Math.asin(Math.sqrt(a));
 
@@ -118,8 +122,8 @@ const GMap = () => {
     let r = 6371;
 
     // calculate the result
-    return(c * r);
-    }
+    return (c * r);
+  }
   // initialize the google map
   const initGoogleMap = () => {
     return new window.google.maps.Map(googleMapRef.current, {
@@ -138,52 +142,55 @@ const GMap = () => {
       scaledSize: new window.google.maps.Size(50, 50)
     }
   });
-  const closestNGO = () =>
-  {
+  const closestNGO = () => {
     // var bounds = new window.google.maps.LatLngBounds();
     // googleMap = initGoogleMap();
-          //   const marker = createMarker({latitude:lat,longitude:lng});
-          //   bounds.extend(marker.position);
-          // googleMap.fitBounds(bounds);
-      let temp=data.filter(val => {
-        return distance(lat,val.latitude,lng,val.longitude)<radius;
-      });
-      if(temp.length==0)
-      {
-        alert("NO NGO NEAR");
-        setFilterData(data);
-      }
-      else
-      {
-        setFilterData(temp);
-      }
-      // googleMap = initGoogleMap();
-      //     var bounds = new window.google.maps.LatLngBounds();
-      //     temp.map(x => {
-      //       const marker = createMarker(x);
-      //       bounds.extend(marker.position);
-      //     });
-      //       // const marker = createMarker({latitude:lat,longitude:lng});
-      //       // bounds.extend(marker.position);
-      //     googleMap.fitBounds(bounds); // the map to contain all markers
+    //   const marker = createMarker({latitude:lat,longitude:lng});
+    //   bounds.extend(marker.position);
+    // googleMap.fitBounds(bounds);
+    let temp = data.filter(val => {
+      return distance(lat, val.latitude, lng, val.longitude) < radius;
+    });
+    if (temp.length == 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No NGOs in the specified radius',
+      })
+      setFilterData(data);
+    }
+    else {
+      setFilterData(temp);
+    }
+    // googleMap = initGoogleMap();
+    //     var bounds = new window.google.maps.LatLngBounds();
+    //     temp.map(x => {
+    //       const marker = createMarker(x);
+    //       bounds.extend(marker.position);
+    //     });
+    //       // const marker = createMarker({latitude:lat,longitude:lng});
+    //       // bounds.extend(marker.position);
+    //     googleMap.fitBounds(bounds); // the map to contain all markers
   }
   const [radius, setradius] = useState(0);
 
-  return(
+  return (
     <div>
       <div
-    ref={googleMapRef}
-    style={{ width: 600, height: 500 }}
-  />
-    <input type="number" defaultValue={0} onChange={(e)=>{if(e.target.value==null||e.target.value==''){
-      setradius(0);
-    }
-    else
-    {
-      setradius(e.target.value);
-    }
-    }} placeholder='km'></input>
-    <button onClick={()=>{closestNGO()}}>Submit</button>
+        ref={googleMapRef}
+        style={{ width: 600, height: 500 }}
+      />
+      <br />
+      <TextField type="number" sx={{ height: "0.5rem",}} defaultValue={0} onChange={(e) => {
+        if (e.target.value == null || e.target.value == '') {
+          setradius(0);
+        }
+        else {
+          setradius(e.target.value);
+        }
+      }} placeholder='In km'></TextField>
+
+      <Button variant="contained" style={{ background: "yellow", margin: "1rem", color: "black" }} onClick={() => { closestNGO() }}>Submit</Button>
     </div>
   )
 

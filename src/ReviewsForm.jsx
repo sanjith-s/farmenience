@@ -66,7 +66,8 @@ const ReviewsForm = () => {
                 if (response.data.message === 'Review added !!') {
                     await Swal.fire({
                         icon: 'success',
-                        title: 'Review Added !!',
+                        title: 'Thank you for your suggestion !!',
+                        text: "We will take this into consideration and improve the website"
                     })
                     navigate('../homepage1');
                 }

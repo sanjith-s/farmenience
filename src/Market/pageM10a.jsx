@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import MarketMap from '../MarketMap';
 import Cookies from 'js-cookie';
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -25,7 +26,6 @@ import Swal from 'sweetalert2';
 import Page10Nav from "../components/page10Nav";
 import Axios from "axios";
 import { baseURL } from "../constants";
-import { useEffect, useState } from "react";
 
 const data = [
   {
@@ -70,6 +70,8 @@ const PageM10a = () => {
   //   document.body.appendChild(addScript);
   // }, []);
 
+  const GOOGLE_MAP_API_KEY = 'AIzaSyDrQFK0vnEuz5BUAjAjdKrhq2N3UvDbjXg';
+
   const location = useLocation();
 
   const [market, setMarket] = useState([]);
@@ -77,26 +79,26 @@ const PageM10a = () => {
   const handleGetMarkets = () => {
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/buyer/getmarkets`, { headers: { tokenstring: token } })
-    .then((res) => {
-      const hell = res.data.message;
-      setMarket(hell);
-    }).catch(async (res) => {
-      if (res.response.data.message === 'Error in connection') {
+      .then((res) => {
+        const hell = res.data.message;
+        setMarket(hell);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
           await Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Please Check Network Connection!',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
           })
-      }
-      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
           await Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Login Error',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
           })
           navigate('../login')
-      }
-  })
+        }
+      })
   }
 
   useEffect(() => {
@@ -115,19 +117,40 @@ const PageM10a = () => {
       );
   })
   */
+
+  const loadGoogleMapScript = (callback) => {
+    if (typeof window.google === 'object' && typeof window.google.maps === 'object') {
+      callback();
+    } else {
+      const googleMapScript = document.createElement("script");
+      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}`;
+      window.document.body.appendChild(googleMapScript);
+      googleMapScript.addEventListener("load", callback);
+    }
+  }
+
+  const [loadMap, setLoadMap] = useState(false);
+
+  useEffect(() => {
+    loadGoogleMapScript(() => {
+      setLoadMap(true)
+    });
+  }, []);
+
   return (
     <Container id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}
       style={{
-        padding: "15px 0px",
+        padding: ".9375rem 0rem",
         backgroundColor: "transparent",
         display: "flex",
         flexDirection: "column",
-        rowGap: "15px",
+        rowGap: ".9375rem",
       }}
     >
       <CssBaseline />
+
       <Box className="gx-d-flex justify-content-center">
         <Page10Nav title={location.state ? location.state.from : "List"} />
       </Box>
@@ -135,22 +158,22 @@ const PageM10a = () => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          border: "2px solid #555555",
+          borderRadius: ".5rem",
+          border: ".125rem solid #555555",
         }}
       >
         <FormControl
           style={{
             width: "100%",
-            height: "48px",
+            height: "3rem",
           }}
         >
           <Input
-            style={{ height: "40px"}}
+            style={{ height: "2.5rem" }}
             id="input-with-icon-adornment"
             startAdornment={
               <InputAdornment position="start">
-                <SearchIcon style={{ color: "green"}} />
+                <SearchIcon style={{ color: "green" }} />
               </InputAdornment>
             }
             endAdornment={
@@ -160,7 +183,7 @@ const PageM10a = () => {
                 </IconButton>
                 <IconButton>
                   <PhotoCameraIcon
-                    style={{ color: "green"}}
+                    style={{ color: "green" }}
                   />
                 </IconButton>
               </InputAdornment>
@@ -173,22 +196,22 @@ const PageM10a = () => {
         style={{
           width: "100%",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          padding: "0px",
+          borderRadius: ".5rem",
+          padding: "0rem",
         }}
       >
         <CardActionArea style={{ width: "100%" }}>
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               width: "100%",
               alignItems: "center",
             }}
           >
             <SortIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "500" }}>
               sort
             </Typography>
           </Button>
@@ -197,30 +220,39 @@ const PageM10a = () => {
           <Button
             style={{
               display: "flex",
-              columnGap: "20px",
+              columnGap: "1.25rem",
               color: "green",
               alignItems: "center",
               width: "100%",
             }}
           >
             <FilterListIcon />
-            <Typography style={{ fontSize: "18px", fontWeight: "500" }}>
+            <Typography style={{ fontSize: "1.125rem", fontWeight: "500" }}>
               filter
             </Typography>
           </Button>
         </CardActionArea>
       </CardActions>
+
+      <div className="App" style={{justifyItems: "center"}}>
+        {/* <a href="https://www.cluemediator.com">Clue Mediator</a> */}
+        <br /><br />
+        {!loadMap ? <div>Loading...</div> : <MarketMap />}
+        <br /><br />
+        {/* <small><b>Note:</b> In order to make it work, you have to set the YOUR_GOOGLE_MAP_API_KEY in App.js file. </small> */}
+      </div>
+
       <Card
         style={{
           backgroundColor: "#86fe9ede",
           display: "flex",
           flexDirection: "column",
-          rowGap: "20px",
-          height: "500px",
+          rowGap: "1.25rem",
+          height: "31.25rem",
           overflow: "auto",
-          padding: "20px 15px",
-          borderRadius: "5px",
-          border: "3px solid #000000",
+          padding: "1.25rem .9375rem",
+          borderRadius: ".3125rem",
+          border: ".1875rem solid #000000",
         }}
       >
         {(location.state ? location.state.dataList : market).map((val, index) => {
@@ -230,7 +262,7 @@ const PageM10a = () => {
               style={{
                 width: "100%",
                 backgroundColor: "#ffffff",
-                borderRadius: "8px",
+                borderRadius: ".5rem",
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -242,21 +274,21 @@ const PageM10a = () => {
                   alignItems: "flex-start",
                   justifyContent: "center",
                   width: "50%",
-                  padding: "0px 20px",
+                  padding: "0rem 1.25rem",
                 }}
               >
                 <Typography
                   style={{
                     fontWeight: "600",
                     textTransform: "uppercase",
-                    fontSize: "22px",
+                    fontSize: "1.375rem",
                   }}
                 >
                   {val.name}
                 </Typography>
                 <Typography
                   variant="boby1"
-                  style={{ fontSize: "20px", fontWeight: "400" }}
+                  style={{ fontSize: "1.25rem", fontWeight: "400" }}
                 >
                   {val.distance.miles} Kilometers
                 </Typography>
@@ -266,14 +298,14 @@ const PageM10a = () => {
                   width: "20%",
                   display: "flex",
                   alignItems: "center",
-                  padding: "0px 20px",
+                  padding: "0rem 1.25rem",
                 }}
               >
                 <Typography
                   style={{
                     fontWeight: "600",
                     textTransform: "uppercase",
-                    fontSize: "22px",
+                    fontSize: "1.375rem",
                   }}
                 >
                   {val.location}

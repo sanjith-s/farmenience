@@ -5,7 +5,7 @@
 
 .ocart {
     display: flex;
-    margin-left: 10px;
+    margin-left: .625rem;
 }
 
 .cart-logo {
@@ -19,9 +19,9 @@
 .viewButton {
     background-color: rgb(244, 129, 15);
     color: white;
-    border-width: 2px;
+    border-width: .125rem;
     border-color: white;
-    border-radius: 5px;
+    border-radius: .3125rem;
     height: 100%;
 }
 
@@ -31,8 +31,8 @@
     height: max-content;
     margin: 2%;
     border: solid rgb(140, 140, 140);
-    border-width: 2px;
-    border-radius: 5px;
+    border-width: .125rem;
+    border-radius: .3125rem;
 }
 
 .viewButton:hover {
@@ -41,7 +41,7 @@
 }
 
 .flexItem {
-    margin: 5px;
+    margin: .3125rem;
 }
 
 .itemName {

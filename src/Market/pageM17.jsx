@@ -110,7 +110,6 @@ function M17() {
           )
         })
         setTransaction(buyTransaction)
-        alert(transaction[0].ifscCode);
       }).catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
             await Swal.fire({
@@ -139,9 +138,9 @@ function M17() {
       fullAnotherSpeak(e.target.innerText)
     }}
       style={{
-        margin: "30px 100px",
-        borderRadius: "12px",
-        border: "1px solid whitesmoke",
+        margin: "1.875rem 6.25rem",
+        borderRadius: ".75rem",
+        border: ".0625rem solid whitesmoke",
       }}
       sx={{
         boxShadow: 20,
@@ -158,7 +157,7 @@ function M17() {
           style={{
             textTransform: "uppercase",
             textAlign: "center",
-            fontSize: "1.875rem",
+            fontSize: "30px",
             fontWeight: "600",
           }}
         >

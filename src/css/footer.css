@@ -6,10 +6,15 @@
 	background: rgb(36, 164, 96);
 	/* position: sticky;
 	bottom: 0; */
-	border-top: 0.06rem solid darkgreen;
+	border-top: .06rem solid darkgreen;
 }
-
-.foot-body {
+/* .cfoot {
+	position:fixed;
+	left: 0rem;
+	bottom: 0rem;
+	width:100%;
+}*/
+foot-body { 
 	font-size: 1.1rem;
 }
 
@@ -18,7 +23,9 @@
 	justify-content: center;
 	align-items: center;
 }
-
+.cfoot {
+	margin-top: auto;
+}
 
 .foot-links {
 	text-decoration: none;
@@ -40,7 +47,7 @@
 
 .foot-links:hover {
 	color: white;
-	text-shadow: 0.06rem 0.06rem darkgreen;
+	text-shadow: .06rem .06rem darkgreen;
 }
 
 .iconFlex {

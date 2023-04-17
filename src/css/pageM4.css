@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 50rem) {
   .pagem4 {
     flex-direction: column;
   }
@@ -49,20 +49,20 @@
   text-align: center;
   padding-top: 1%;
   padding-bottom: 1%;
-  border-radius: 10px 15px 20px;
+  border-radius: .625rem .9375rem 1.25rem;
   background-color: rgba(22, 229, 117, 1);
 }
 .billbox {
   background-color: rgba(196, 225, 197, 1);
   flex: 1;
   padding: 2%;
-  border-radius: 20px 30px;
+  border-radius: 1.25rem 1.875rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: space-between;
   font-size: 1.2rem;
-  border: 1px solid darkgreen;
+  border: .0625rem solid darkgreen;
 }
 .b-row1 {
   display: flex;
@@ -71,8 +71,8 @@
 .printbox {
   padding: 5% 5% 5% 5%;
   background-color: rgba(22, 229, 117, 1);
-  box-shadow: 2px 3px darkgreen;
-  border-radius: 10px 15px;
+  box-shadow: .125rem .1875rem darkgreen;
+  border-radius: .625rem .9375rem;
   font-weight: normal;
 }
 .printbox:hover,
@@ -112,13 +112,13 @@
 table,
 th,
 td {
-  border: 1px solid black;
+  border: .0625rem solid black;
 }
 table {
   background-color: white;
 }
 td {
-  padding: 10px;
+  padding: .625rem;
 }
 .s-box {
   padding-bottom: 3%;
@@ -129,12 +129,12 @@ td {
 .amt {
   background-color: rgba(22, 229, 117, 1);
   padding: 1% 1% 1% 1%;
-  border: 1px solid;
-  border-radius: 10px 15px;
+  border: .0625rem solid;
+  border-radius: .625rem .9375rem;
 }
 .delsale {
   background-color: rgba(22, 229, 117, 1);
   padding: 2% 1% 2% 1%;
-  border: 1px solid;
-  border-radius: 10px 15px;
+  border: .0625rem solid;
+  border-radius: .625rem .9375rem;
 }

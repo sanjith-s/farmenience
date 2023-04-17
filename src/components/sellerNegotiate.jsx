@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
-import {Link,useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   Box,
   FormControl,
@@ -20,7 +21,6 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
-import { data } from "autoprefixer";
 
 const itemsName = [
   "name",
@@ -34,7 +34,7 @@ const itemsName = [
 const SellerNegotiate = (props) => {
 
   let data = props.data;
-  
+
   const itemsValue = [
     props.name,
     props.phno,
@@ -45,18 +45,46 @@ const SellerNegotiate = (props) => {
   ];
 
   console.log(props.address);
+  // --------------------------------------------------------------------
+
+  const [orders, setOrders] = useState(() => {
+    const savedItem = localStorage.getItem('reqs');
+    const parsedItem = JSON.parse(savedItem);
+    return parsedItem || " nothing "
+  });
+
+  const index = orders.indexOf(orders.find((order) => {
+    return order.name === props.iname;
+  }));
+
+  console.log(" hi" + index);
+
+  // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
+    orders[index].nprice = newLimit;
     setLimit(newLimit);
   };
 
   let [quantity, setQuantity] = useState(props.iquantity);
   const quantityHandler = (event) => {
     let newQuantity = event.target.value;
+    orders[index].quantity = newQuantity;
     setQuantity(newQuantity);
+
   };
+
+  // ----------------------------------------------------------------------------
+
+
+  useEffect(() => {
+    console.log("useEffects");
+    localStorage.setItem("orders", JSON.stringify(orders))
+  }, [limit, quantity]);
+
+  // -----------------------------------------------------------------------------
 
   const [open, setOpen] = useState(false);
 
@@ -70,7 +98,7 @@ const SellerNegotiate = (props) => {
   let [minimum, setMinimum] = useState(Math.round(props.iprice / 2));
   let [iQuantity, setIQuantity] = useState(Math.round(props.iquantity));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let regex = /^[0-9]+$/;
     if (!quantity.match(regex) || !limit.match(regex)) {
       setOpen(true);
@@ -81,73 +109,107 @@ const SellerNegotiate = (props) => {
       setLimit(props.iprice);
       setQuantity(props.iquantity);
     } else {
+      if (limit == props.iprice) {
+        let token = Cookies.get('token');
+        await Axios.post(`${baseURL}/buyer/postrequest`, {
+          name: orders[index].name,
+          price: orders[index].price,
+          quantity: orders[index].quantity,
+          specificType: orders[index].specificType,
+          location: orders[index].locatiom1
+        }, { headers: { tokenstring: token } })
+          .then(async (res) => {
+            await Swal.fire({
+              icon: 'success',
+              title: "Successfully added request !!!",
+            })
+          }).catch(async (err) => {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.response.data.message,
+            })
+          })
+        orders.splice(index, 1);
+      } else {
+        orders[index].flag = 0;
+        orders[index].nprice = limit;
+      }
+      localStorage.setItem("reqs", JSON.stringify(orders));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
       return;
     }
   };
+
+
 
   return (
     <Card
       style={{
         display: "flex",
         justifyContent: "center",
-        padding: "30px 0px",
-        borderRadius: "20px",
-        columnGap: "50px",
+        padding: "1.875rem 0rem",
+        borderRadius: "1.25rem",
+        columnGap: "3.125rem",
         backgroundColor: "#fff",
-        border: "3px solid",
+        border: ".1875rem solid",
       }}
     >
       <Box
         sx={{
-          width: "600px",
+          width: "37.5rem",
         }}
       >
-        <CardContent style={{ padding: "0px 0px" }}>
+        <CardContent style={{ padding: "0rem 0rem" }}>
           <Box
             style={{
               display: "flex",
-              columnGap: "20px",
-              borderBottom: "2px solid",
-              marginBottom: "30px",
+              columnGap: "1.25rem",
+              borderBottom: ".125rem solid",
+              marginBottom: "1.875rem",
               width: "fit-content",
-              padding: "0px 5px",
-              border: "3px solid",
-              borderRadius: "20px",
+              padding: "0rem .3125rem",
+              border: ".1875rem solid",
+              borderRadius: "1.25rem",
               backgroundColor: "lightyellow"
             }}
           >
             <Typography
               style={{
                 textTransform: "uppercase",
-                fontSize: "22px",
+                fontSize: "1.375rem",
               }}
             >
               regno:
             </Typography>
             <Typography
               style={{
-                fontSize: "22px",
+                fontSize: "1.375rem",
               }}
             >
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx = {{border: "3px solid", padding: "20px", width: "40em", borderRadius: "20px", backgroundColor: "lightyellow" }}>
+          <Stack sx={{ border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
                   key={index}
                   sx={{
                     display: "flex",
-                    columnGap: "20px",
-                    margin: "14px 10px",
+                    columnGap: "1.25rem",
+                    margin: ".875rem .625rem",
                   }}
                 >
                   <Box style={{ width: "40%" }}>
                     <Typography
                       style={{
                         fontWeight: "600",
-                        fontSize: "22px",
+                        fontSize: "1.375rem",
                         textTransform: "uppercase",
                       }}
                     >
@@ -159,7 +221,7 @@ const SellerNegotiate = (props) => {
                       display: "flex",
                       width: "60%",
                       justifyContent: "flex-start",
-                      padding: "0px 50px",
+                      padding: "0rem 3.125rem",
                     }}
                   >
                     <Typography
@@ -183,10 +245,10 @@ const SellerNegotiate = (props) => {
           <img
             src={props.img}
             alt="wheat img"
-            width="300px"
+            width="18.75rem"
             style={{
-              border: "5px solid darkgreen",
-              borderRadius: "16px",
+              border: ".3125rem solid darkgreen",
+              borderRadius: "1rem",
             }}
           />
         </CardMedia>
@@ -194,13 +256,13 @@ const SellerNegotiate = (props) => {
         <CardActions>
           <Box
             sx={{
-              padding: "20px",
+              padding: "1.25rem",
               display: "flex",
               flexDirection: "column",
-              rowGap: "20px",
+              rowGap: "1.25rem",
               alignItems: "center",
-              border: "3px solid",
-              borderRadius: "20px",
+              border: ".1875rem solid",
+              borderRadius: "1.25rem",
               backgroundColor: "lightyellow"
             }}
           >
@@ -208,6 +270,8 @@ const SellerNegotiate = (props) => {
               {" "}
               negotiate price{" "}
             </Typography>
+
+            {/* -------------------------------------------------------------------------------------- */}
             <FormControl style={{ position: "sticky" }}>
               <InputLabel htmlFor="outlined-adornment-quantity">
                 Quantity
@@ -245,41 +309,43 @@ const SellerNegotiate = (props) => {
                 label="Price"
               />
             </FormControl>
+            {/* ----------------------------------------------------------------------------------------- */}
           </Box>
+
         </CardActions>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-around",
-            padding: "0px",
+            padding: "0rem",
             width: "100%",
           }}
         >
           <Box>
-          <IconButton>
-            <Link
-              to="/M1"
-              state={{
-                data: data,
-                regNo : props.regNo,
-                quantity: quantity,
-                price: limit,
-                key:'accept',
-              }}
-              style={{ textDecoration: "none" }}  
-            >
-              <ThumbUpIcon
-                variant="contained"
-                onClick={handleSubmit}
-                style={{ color: "green", fontSize: "30px" }}
-              />
-            </Link>
+            <IconButton>
+              <Link
+                to="/M1"
+                state={{
+                  data: data,
+                  regNo: props.regNo,
+                  quantity: quantity,
+                  price: limit,
+                  key: 'accept',
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <ThumbUpIcon
+                  variant="contained"
+                  onClick={handleSubmit}
+                  style={{ color: "green", fontSize: "1.875rem" }}
+                />
+              </Link>
             </IconButton>
             <Typography
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               accept
@@ -287,25 +353,25 @@ const SellerNegotiate = (props) => {
           </Box>
           <Box>
             <IconButton>
-            <Link
-              to="/M1"
-              state={{
-                data: props.data,
-              }}
-              style={{ textDecoration: "none" }}  
-            >
-              <ThumbDownIcon
-                variant="contained"
-                style={{ color: "lightgreen", fontSize: "30px" }}
-              />
-            </Link>
-              
+              <Link
+                to="/M1"
+                state={{
+                  data: props.data,
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <ThumbDownIcon
+                  variant="contained"
+                  style={{ color: "lightgreen", fontSize: "1.875rem" }}
+                />
+              </Link>
+
             </IconButton>
             <Typography
               style={{
                 textTransform: "uppercase",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
               }}
             >
               reject
@@ -322,17 +388,17 @@ const SellerNegotiate = (props) => {
               style={{
                 backgroundColor: "red",
                 width: "100%",
-                padding: "8px",
+                padding: ".5rem",
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               <ErrorSharpIcon
-                style={{ marginRight: "5px", textTransform: "uppercase" }}
+                style={{ marginRight: ".3125rem", textTransform: "uppercase" }}
               />
               Enter only numbers greater than default value
             </InputLabel>

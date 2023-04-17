@@ -34,11 +34,11 @@ body > #root > div {
     "r4c r4i"
     "r5c r5i"
     "r6c r6i";
-  column-gap: 5px;
-  row-gap: 5px;
+  column-gap: .3125rem;
+  row-gap: .3125rem;
   background-color: rgba(255, 254, 254, 0.966);
   padding: 2%;
-  border-radius: 30px;
+  border-radius: 1.875rem;
 }
 
 .r1c {
@@ -101,12 +101,12 @@ body > #root > div {
 
 .submit {
     margin: auto;
-    padding: 10px 20px 10px 20px;
+    padding: .625rem 1.25rem .625rem 1.25rem;
     font-family: "Open Sans", sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border-width: 1px;
+    margin-bottom: .625rem;
+    margin-top: .625rem;
+    border-radius: .625rem;
+    border-width: .0625rem;
 }
 
 .submit:hover {
@@ -126,11 +126,11 @@ body > #root > div {
 }
 
 #ip-cont->input {
-    padding: 6px;
-    border-radius: 8px;
+    padding: .375rem;
+    border-radius: .5rem;
     background-color: rgb(150, 245, 177);
     border-color: gainsboro;
-    border-width: 1px;
+    border-width: .0625rem;
     height: 50%;
 }
 
@@ -139,5 +139,5 @@ body > #root > div {
     max-width: 96%;
     display: block;
     margin: auto;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }

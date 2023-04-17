@@ -61,7 +61,7 @@ const PageN12 = () => {
   };
 
   return (
-    <Container style={{ padding: "30px 0px" }}>
+    <Container style={{ padding: "1.875rem 0rem" }}>
       <Typography
         variant="h3"
         style={{ textTransform: "uppercase", textAlign: "center" }}
@@ -72,27 +72,27 @@ const PageN12 = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          border: "3px solid",
+          border: ".1875rem solid",
           justifyContent: "center",
           alignItems: "center",
-          rowGap: "20px",
-          padding: "30px 0px",
+          rowGap: "1.25rem",
+          padding: "1.875rem 0rem",
           backgroundColor: "#7bff96",
-          margin: "26px",
-          borderRadius: "8px",
+          margin: "1.625rem",
+          borderRadius: ".5rem",
         }}
       >
         <Box
           sx={{
-            width: "1000px",
-            borderRadius: "8px",
-            border: "4px solid #000",
+            width: "62.5rem",
+            borderRadius: ".5rem",
+            border: ".25rem solid #000",
             backgroundColor: "#fff",
           }}
         >
           <Grid container spacing={2} >
             <Grid container item xs={6} direction="column" >
-              <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+              <CardContent style={{ padding: ".9375rem 1.5625rem", borderRadius: ".5rem" }}>
                 <Stack>
                   {itemsName1.map((value, index) => {
                     return (
@@ -100,17 +100,17 @@ const PageN12 = () => {
                         key={index}
                         sx={{
                           display: "flex",
-                          columnGap: "20px",
+                          columnGap: "1.25rem",
                           justifyContent: "space-between",
-                          height: "50px",
+                          height: "3.125rem",
                           alignItems: "center",
-                          margin: "2px 0px",
+                          margin: ".125rem 0rem",
                         }}
                       >
                         <Typography
                           style={{
                             fontWeight: "600",
-                            fontSize: "20px",
+                            fontSize: "1.25rem",
                             textTransform: "uppercase",
                           }}
                         >
@@ -156,7 +156,7 @@ const PageN12 = () => {
             </Dialog>
 
             <Grid container item xs={6} direction="column" >
-              <CardContent style={{ padding: "15px 25px", borderRadius: "8px" }}>
+              <CardContent style={{ padding: ".9375rem 1.5625rem", borderRadius: ".5rem" }}>
                 <Stack>
                   {itemsName2.map((value, index) => {
                     return (
@@ -164,17 +164,17 @@ const PageN12 = () => {
                         key={index}
                         sx={{
                           display: "flex",
-                          columnGap: "20px",
+                          columnGap: "1.25rem",
                           justifyContent: "space-between",
-                          height: "50px",
+                          height: "3.125rem",
                           alignItems: "center",
-                          margin: "2px 0px",
+                          margin: ".125rem 0rem",
                         }}
                       >
                         <Typography
                           style={{
                             fontWeight: "600",
-                            fontSize: "20px",
+                            fontSize: "1.25rem",
                             textTransform: "uppercase",
                           }}
                         >
@@ -216,13 +216,13 @@ const PageN12 = () => {
             <Button onClick={() => { setOpen2(false) }}>Close</Button>
           </DialogActions>
         </Dialog>
-        <Box sx={{ display: "flex", columnGap: "50px" }}>
+        <Box sx={{ display: "flex", columnGap: "3.125rem" }}>
           <Button onClick={handleClickOpen1}
             variant="contained"
             style={{
               backgroundColor: "green",
               fontWeight: "600",
-              fontSize: "18px",
+              fontSize: "1.125rem",
             }}
           >
             DELETE
@@ -258,7 +258,7 @@ const PageN12 = () => {
                           style={{
                             color: "blue",
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "1rem",
                           }}
                         >
                           Ok
@@ -275,7 +275,7 @@ const PageN12 = () => {
             style={{
               backgroundColor: "green",
               fontWeight: "600",
-              fontSize: "18px",
+              fontSize: "1.125rem",
             }}
           >
             SENDER DETAILS
@@ -286,14 +286,14 @@ const PageN12 = () => {
             style={{
               backgroundColor: "green",
               fontWeight: "600",
-              fontSize: "18px",
+              fontSize: "1.125rem",
             }}
           >
             <Typography
               style={{
                 color: "#ffffff",
                 fontWeight: "600",
-                fontSize: "16px",
+                fontSize: "1rem",
               }}
             >
               Respond

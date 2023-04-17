@@ -28,41 +28,12 @@ const c = {
   Email: "yuviexample@gmail.com",
 };
 
-const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
-
-const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let token = Cookies.get('token');
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
-      then((response) => {
-        setData(response.data.message);
-      })
-      .catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      })
-  }, []);
-
 const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(20),
     height: theme.spacing(20),
     marginBottom: theme.spacing(2),
-    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)"
+    boxShadow: "0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25)"
   }
 }))
 
@@ -88,6 +59,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   //   document.body.appendChild(addScript);
   // }, []);
   
+
   const classes = useStyles();
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
@@ -115,7 +87,8 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   }
   return (
     <div className='backProfile' style={{
-      background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)"
+      background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)",
+      height:"max-content"
     }} id="google_translate_element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
@@ -151,7 +124,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
           <Typography variant='subtitle1'>Farmer Account</Typography>
           <Grid container rowSpacing={0} columnSpacing={{ xs: 0, sm: 0, md: 0 }} sx={{ width: "80%" }}>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Personal Info</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -176,7 +149,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
               </Box>
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
@@ -191,7 +164,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
                 <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />
@@ -203,7 +176,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                  return (  
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                  <Typography>{crop}</Typography>
-                 {cropEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeCrop} name={crop} ><RemoveIcon color="error" fontSize='large' /></button>}
+                 {cropEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeCrop} name={crop}>❌</button>}
                  </Stack> )
                  })}
                  {cropEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
@@ -217,7 +190,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
             </Grid>
             <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0px 0px 10px lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "10px 15px", marginBottom: "5%", width: "65%" }}>
+              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "5%", padding: "2%", paddingTop: "1%", borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "65%" }}>
               <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                     <AccountBalance />
@@ -229,7 +202,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                  return (  
                   <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
                  <Typography>{skill}</Typography>
-                 {skillEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeSkill} name={skill} ><RemoveIcon color="error" fontSize='large' /></button>}
+                 {skillEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeSkill} name={skill} >❌</button>}
                  </Stack> )
                  })}
                  {skillEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
@@ -252,6 +225,35 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
 
 export default function () {
+  const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
+  
+const [data, setData] = useState([]);
+
+useEffect(() => {
+  let token = Cookies.get('token');
+  Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+    then((response) => {
+      setData(response.data.message);
+    })
+    .catch(async (res) => {
+      if (res.response.data.message === 'Error in connection') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Please Check Network Connection!',
+        })
+      }
+      else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Error',
+        })
+        navigate('../login')
+      }
+    })
+}, []);
+
   return (
     <div>
       <ProfilePage name={data.name} email={data.email} phoneNumber={data.phoneno} city={data.city} district={data.district} line1={data.addline1} line2={data.addline2} state={data.state} pincode={data.pincode} aadharNumber={data.aadhaarno} profilePicture={src} />

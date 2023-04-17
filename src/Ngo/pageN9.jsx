@@ -21,7 +21,7 @@ import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
-    minWidth: '40px',
+    minWidth: '2.5rem',
   }
 }));
 
@@ -213,7 +213,7 @@ function PageN9() {
             icon: 'success',
             title: 'Logout Successful'
           })
-          Cookies.remove('token')
+          CookiesNaNpxove('token')
           navigate('../login');
         }
         else {
@@ -298,7 +298,7 @@ function PageN9() {
     <div style={{ backgroundColor: "#E5FDD1" }} id="google_translate_element" onClick={(e) => {
         fullAnotherSpeak(e.target.innerText)
       }}>
-      <img src={BackImg} style={{ objectFit: "cover", height: "370px", width: "100%" }} className='back-img' />
+      <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">
           <div className="box-header">

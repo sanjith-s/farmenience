@@ -55,7 +55,6 @@ const ReviewsForm = () => {
 
     const postReview = async () => {
         let token = Cookies.get('token');
-        alert(review);
         await Axios.post(`${baseURL}/review`, {
             name: name,
             email: email,
@@ -67,8 +66,8 @@ const ReviewsForm = () => {
                 if (response.data.message === 'Review added !!') {
                     await Swal.fire({
                         icon: 'success',
-                        title: 'Meet Added !!',
-                        text: 'Waiting for NGO Reply',
+                        title: 'Thank you for your suggestion !!',
+                        text: "We will take this into consideration and improve the website"
                     })
                     navigate('../homepage1');
                 }
@@ -101,16 +100,23 @@ const ReviewsForm = () => {
     }
 
     return (
-        <div style={{ boxSizing: "borderBox", padding: "20px" }}>
+        <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
             <Container
                 spacing={2}
-                sx={{ 
+                sx={{
                     display: "flex",
-                    height:"100vh",
+                    height: "100vh",
                     flexDirection: "column",
-                    justifyContent:"space-evenly",
-                    alignItems:"center",
-                    }}
+                    justifyContent: "space-evenly",
+                    alignItems: "center",
+                    width: {
+                        xs: 100,
+                        sm: 400, 
+                        md: 700, 
+                        lg: 1000,
+                        xl: 1300
+                    }
+                }}
             >
                 <Stack
                     sx={{
@@ -124,7 +130,7 @@ const ReviewsForm = () => {
                     }}
                     spacing={2}
                 >
-                <Typography variant="h2">Review</Typography>
+                    <Typography variant="h2">Review</Typography>
                     <React.Fragment>
                         <TextField
                             id="p-name"
@@ -193,14 +199,14 @@ const ReviewsForm = () => {
                         />
 
                     </React.Fragment>
-                    <Button onClick={() => { setOpen(true) }} variant="contained" sx={{ bgcolor: "#1FE57A",width:"1.875rem" }}>
+                    <Button onClick={() => { setOpen(true) }} variant="contained" sx={{ bgcolor: "#1FE57A", width: "1.875rem" }}>
                         Submit
                         {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
                         {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
                         {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
                     </Button>
                 </Stack>
-                    
+
             </Container>
             {/* {count.map(ele=>{
               return (  */}

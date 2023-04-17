@@ -44,5 +44,5 @@
 
 .r-view:hover {
   background-color: greenyellow;
-  box-shadow: 2px 3px black;
+  box-shadow: .125rem .1875rem black;
 }

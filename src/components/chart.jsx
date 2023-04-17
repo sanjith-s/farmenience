@@ -6,14 +6,8 @@ import {
   XAxis,
   YAxis,
   Label,
-  ResponsiveContainer,
-  CartesianGrid,
-  Tooltip,
-  Legend,
+  ResponsiveContainer
 } from "recharts";
-import { Card } from "@mui/material";
-
-// Generate Sales Data
 
 function Chart(props) {
   const theme = useTheme();

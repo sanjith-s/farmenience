@@ -13,11 +13,11 @@
     background-color:rgb(153, 267, 174) !important;
 }
 .ant-table-cell {
-    border-bottom: 1px solid rgb(99, 103, 102) !important;
+    border-bottom: .0625rem solid rgb(99, 103, 102) !important;
 }
 th.ant-table-cell::before {
     background-color: rgb(99, 103, 102) !important;
-    width: 1px !important;
+    width: .0625rem !important;
 }
 #header {
 	font-size: 2.5em;

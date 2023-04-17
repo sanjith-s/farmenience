@@ -20,11 +20,11 @@ function PageM5() {
   return (
     <Box
       sx={{
-        margin: "50px",
+        margin: "3.125rem",
         backgroundColor: "white",
-        padding: "30px",
-        borderRadius: "30px",
-        border: "6px solid",
+        padding: "1.875rem",
+        borderRadius: "1.875rem",
+        border: ".375rem solid",
       }}
     >
       <Box>
@@ -41,15 +41,15 @@ function PageM5() {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          marginBottom: "20px",
-          marginTop: "10px",
+          marginBottom: "1.25rem",
+          marginTop: ".625rem",
         }}
       >
         <Box
           style={{
-            margin: "0px 200px",
-            borderRadius: "10px",
-            width: "820px",
+            margin: "0rem 12.5rem",
+            borderRadius: ".625rem",
+            width: "51.25rem",
           }}
         >
           {prod.map((val) => {
@@ -67,7 +67,7 @@ function PageM5() {
                             variant="contained"
                             color="success"
                             style={{
-                              margin: "30px 30px 10px 30px",
+                              margin: "1.875rem 1.875rem .625rem 1.875rem",
                             }}
                             onClick={() => {
                               let temp = prod.map((id) => {
@@ -101,14 +101,14 @@ function PageM5() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          paddingBottom: "10px 0px",
+          paddingBottom: ".625rem 0rem",
         }}
       >
         <Box
           style={{
             display: "flex",
             justifyContent: "space-between",
-            width: "800px",
+            width: "50rem",
           }}
         >
           <Button
@@ -124,7 +124,7 @@ function PageM5() {
             color="success"
             // className="mbtn"
           >
-            <ThumbUpIcon style={{ marginRight: "15px" }} />
+            <ThumbUpIcon style={{ marginRight: ".9375rem" }} />
             post deal
           </Button>
         </Box>

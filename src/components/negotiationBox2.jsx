@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
@@ -17,17 +18,18 @@ import {
   OutlinedInput,
   InputAdornment,
   Badge,
-  Button,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
+import Swal from "sweetalert2";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 
 function NegotiationBox2(props) {
-  let [limit, setlimit] = useState(props.discountPrice);
+  const navigate = useNavigate();
+  let [limit, setlimit] = useState(props.userPrice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
     setlimit(newLimit);
+    props.getValue(newLimit);
   };
 
   const [open, setOpen] = useState(false);
@@ -40,21 +42,47 @@ function NegotiationBox2(props) {
   };
 
   let [maximum, setMaximum] = useState(
-    Math.round(props.actualPrice / 2 + props.actualPrice)
+    Math.round(1000.5)
   );
   let [minimum, setMinimum] = useState(Math.round(props.actualPrice / 2));
 
-  const handleSubmit = () => {
-    let regex = /^[0-9]+$/;
-    if (!limit.match(regex)) {
-      setOpen(true);
-      setlimit(props.discountPrice);
-    } else if (limit < minimum || limit > maximum) {
-      setOpen(true);
-      setlimit(props.discountPrice);
-    } else {
+  const handleSubmit = async () => {
+      var content2 = JSON.parse(localStorage.getItem("reqs"));
+      if (limit == props.userPrice) {
+      let token = Cookies.get('token');
+      await Axios.post(`${baseURL}/buyer/postrequest`, {
+          name: content2[props.index].name,
+          price: content2[props.index].price,
+          quantity: content2[props.index].quantity,
+          specificType: content2[props.index].specificType,
+          location: content2[props.index].location
+        }, { headers: { tokenstring: token } })
+          .then(async (res) => {
+            await Swal.fire({
+              icon: 'success',
+              title: "Successfully added request !!!",
+            })
+          }).catch(async (err) => {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.response.data.message,
+            })
+          })
+        content2.splice(props.index, 1);
+      } else {
+      content2[props.index].price = content2[props.index].nprice;
+      content2[props.index].price = limit;
+      content2[props.index].flag = 1;
+      }
+      localStorage.setItem("reqs",JSON.stringify(content2));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
+      navigate("../m10");
       return;
-    }
   };
 
   props.onlimitHandler(limit, props.index);
@@ -63,13 +91,13 @@ function NegotiationBox2(props) {
     "& .MuiBadge-badge": {
       right: -2,
       top: 13,
-      border: `1px solid ${theme.palette.background.paper}`,
-      padding: "0 4px",
-      width: "30px",
-      height: "30px",
-      fontSize: "20px",
+      border: `0.063rem solid ${theme.palette.background.paper}`,
+      padding: "0rem 0.25rem",
+      width: "1.875rem",
+      height: "1.875rem",
+      fontSize: "1.25rem",
       fontWeight: "600",
-      borderRadius: "20px",
+      borderRadius: "1.25rem",
     },
   }));
 
@@ -78,24 +106,24 @@ function NegotiationBox2(props) {
       style={{
         display: "flex",
         backgroundColor: "#ffffff",
-        padding: "20px",
-        margin: "6px 0px",
+        padding: "1.25rem",
+        margin: "0.375rem 0rem",
       }}
     >
       <CardMedia
         component="img"
-        height="140px"
+        height="8.75rem"
         image={WheatImg}
         sx={{
-          width: "190px",
-          border: "4px solid #285430",
-          borderRadius: "3px",
+          width: "11.875rem",
+          border: "0.25rem solid #285430",
+          borderRadius: "0.188rem",
         }}
       />
 
       <CardContent
         style={{
-          lineHeight: "0px",
+          lineHeight: "0rem",
           width: "20%",
           display: "flex",
           flexDirection: "column",
@@ -113,44 +141,17 @@ function NegotiationBox2(props) {
         <Typography
           variant="overline"
           lineHeight={2.5}
+          sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
+        >
+          ₹ {props.actualPrice}
+        </Typography>
+        <Typography
+          variant="overline"
+          lineHeight={2.5}
           sx={{ fontSize: "15px", paddingLeft: "5px" }}
         >
-          {props.quantity}kg
+          {props.weight}kg
         </Typography>
-        <Box>
-          <Typography
-            variant="overline"
-            lineHeight={0.2}
-            sx={{ fontSize: "18px", fontWeight: "600" }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "16px" }} />
-            {props.discountPrice}
-          </Typography>
-          <Typography
-            variant="overline"
-            lineHeight={0.2}
-            sx={{
-              textDecoration: "line-through",
-              fontSize: "13px",
-              paddingLeft: "10px",
-            }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "13px" }} />
-            {props.actualPrice}
-          </Typography>
-        </Box>
-
-        <Box>
-          <Typography
-            variant="h6"
-            color="green"
-            lineHeight={2.5}
-            sx={{ fontWeight: "600" }}
-          >
-            <CurrencyRupeeIcon style={{ fontSize: "17px" }} />
-            {props.discountAmount} off
-          </Typography>
-        </Box>
       </CardContent>
 
       <CardActions
@@ -158,7 +159,7 @@ function NegotiationBox2(props) {
           width: "20%",
           display: "flex",
           flexDirection: "column",
-          rowGap: "20px",
+          rowGap: "1.25rem",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -166,17 +167,17 @@ function NegotiationBox2(props) {
         <Typography
           variant="h6"
           lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
         >
           quantity
         </Typography>
 
         <StyledBadge
           style={{ position: "sticky" }}
-          badgeContent={props.userQuantity}
+          badgeContent={props.quantity}
           color="success"
         >
-          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "40px" }} />
+          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "2.5rem" }} />
         </StyledBadge>
       </CardActions>
 
@@ -197,9 +198,9 @@ function NegotiationBox2(props) {
         </Typography>
         <Box
           sx={{
-            padding: "20px",
+            padding: "2.5rem",
             display: "flex",
-            columnGap: "20px",
+            columnGap: "1.25rem",
             alignItems: "center",
           }}
         >
@@ -211,7 +212,7 @@ function NegotiationBox2(props) {
               min={props.actualPrice / 2}
               max={props.actualPrice / 2 + props.actualPrice}
               message="hello"
-              placeholder={props.discountPrice}
+              placeholder={props.userPrice}
               onChange={limitHandler}
               startAdornment={
                 <InputAdornment position="start">
@@ -222,10 +223,11 @@ function NegotiationBox2(props) {
             />
           </FormControl>
 
-          <IconButton>
+          <IconButton
+              onClick={handleSubmit}
+          >
             <ThumbUpIcon
               variant="contained"
-              onClick={handleSubmit}
               color="success"
             />
           </IconButton>
@@ -241,17 +243,17 @@ function NegotiationBox2(props) {
             style={{
               backgroundColor: "red",
               width: "100%",
-              padding: "8px",
+              padding: "0.5rem",
               color: "#ffffff",
               fontWeight: "600",
-              fontSize: "18px",
+              fontSize: "1.125rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <ErrorSharpIcon style={{ marginRight: "5px" }} />
-            Enter values from {maximum} to {minimum} only
+            <ErrorSharpIcon style={{ marginRight: "0.313rem" }} />
+            Enter values from {minimum} to {maximum} only
           </InputLabel>
         </Snackbar>
       </CardActions>

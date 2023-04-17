@@ -111,13 +111,13 @@ function OneBox(props) {
                     textAlign: "center",
                     color: "#276548",
                     overflow: "hidden",
-                    boxShadow: "5px 5px 2px 1px #ADCF9F",
+                    boxShadow: ".3125rem .3125rem .125rem .0625rem #ADCF9F",
                     "&:hover": {
                         background: "radial-gradient(#96e0db,#96e0db, #36AE7C)",
-                        fontSize: "23px",
-                        border: "2px solid #44b68a",
-                        borderBottom: "4px solid black",
-                        borderTop: "4px solid black",
+                        fontSize: "1.4375rem",
+                        border: ".125rem solid #44b68a",
+                        borderBottom: ".25rem solid black",
+                        borderTop: ".25rem solid black",
                         animationPlayState: "paused",
                         width: 200
                     }

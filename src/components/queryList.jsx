@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
-  CardContent,
-  Typography,
-  CardActions,
   Button,
 } from "@mui/material";
+import "../css/queryBox.css";
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Cookies from 'js-cookie';
 import Axios from "axios";
@@ -18,41 +15,76 @@ import { useNavigate } from "react-router-dom/dist";
 
 function Query(props) {
   const navigate = useNavigate();
-  const submitResponse = () => {
+  const submitResponse = async () => {
     let token = Cookies.get('token');
     Axios.put('http://localhost:5000/respondquery', {
       id: props.queryID,
       response: response
     }, { headers: { tokenstring: token } }).
-      then((response) => {
+      then(async (response) => {
         if (response.data.message === 'Reponse Submitted Successfully') {
+          await Swal.fire({
+            icon: 'success',
+            title: 'Response Submitted Successfully !!',
+          })
           navigate('../N10');
         }
       })
-      .catch((res) => {
+      .catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
         }
         else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
           navigate('../login');
         }
         else {
-          alert(res.response.data.message);
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
         }
       })
     setOpen(false);
   };
   const [open, setOpen] = React.useState(false);
-  const [response,setResponse]=React.useState("");
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const [response, setResponse] = React.useState("");
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div>
+      <Card id="card-n1">
+        <div className="query-card">
+          <h3 className="query-card__title">{props.queryName}</h3>
+          <div className="query-card__info">
+            <p className="query-card__id">Query ID: {props.queryID}</p>
+            <p className="query-card__date">Date: {props.date}</p>
+          </div>
+          <div className="query-card__actions">
+            <div>
+              <button onClick={handleClickOpen} className="query-card__button query-card__button--respond">
+                Respond Query
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </Card>
+      {/* /*     
     <Card
       style={{
         padding: "0.94rem",
@@ -164,11 +196,13 @@ function Query(props) {
           display: "flex",
           justifyContent: "center",
         }}
-      >
-        <Button
-          variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-            backgroundColor:"#ffff00",
-          } }}
+      > */ }
+      {/*         <Button
+          style={{
+            backgroundColor: "green",
+            border: "0.125rem solid #000000",
+            marginTop: "0.94rem",
+          }}
           onClick={handleClickOpen}
         >
             <Typography>
@@ -176,8 +210,8 @@ function Query(props) {
             </Typography>
         </Button>
       </CardActions>
-    </Card>
-    <Dialog open={open} onClose={handleClose}>
+    </Card> */}
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Response Submit</DialogTitle>
         <DialogContent>
           <TextField
@@ -187,16 +221,20 @@ function Query(props) {
             label="Response"
             fullWidth
             variant="standard"
-            onChange={(e)=>{setResponse(e.target.value)}}
+            onChange={(e) => { setResponse(e.target.value) }}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} >Cancel</Button>
-          <Button onClick={submitResponse} variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} >Submit</Button>
+          <Button onClick={handleClose} variant="contained" sx={{
+            backgroundColor: "#fafa01", color: "black", "&:hover": {
+              backgroundColor: "#ffff00",
+            }
+          }} >Cancel</Button>
+          <Button onClick={submitResponse} variant="contained" sx={{
+            backgroundColor: "#fafa01", color: "black", "&:hover": {
+              backgroundColor: "#ffff00",
+            }
+          }} >Submit</Button>
         </DialogActions>
       </Dialog>
     </div>

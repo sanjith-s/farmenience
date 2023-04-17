@@ -5,10 +5,10 @@ function Notification(props) {
   return (
     <Card
         style={{
-            padding: "15px",
-        width: "450px",
-        borderRadius: "5px",
-        border: "2px solid #000000",
+            padding: ".9375rem",
+        width: "28.125rem",
+        borderRadius: ".3125rem",
+        border: ".125rem solid #000000",
         }}
     >
        <CardContent
@@ -16,17 +16,17 @@ function Notification(props) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "flex-start",
-          padding: "10px 5px",
-          borderTop: "2px solid",
-          columnGap: "20px",
+          padding: ".625rem .3125rem",
+          borderTop: ".125rem solid",
+          columnGap: "1.25rem",
         }}
       > 
       <Typography
           style={{
             width: "",
-            padding: "5px 5px 5px 10px",
+            padding: ".3125rem .3125rem .3125rem .625rem",
             backgroundColor: "#16e575",
-            borderRadius: "3px",
+            borderRadius: ".1875rem",
             fontWeight: "600",
             textTransform: "uppercase",
           }}

@@ -28,17 +28,17 @@ function ConfirmationTable(props) {
     <TableContainer
       component={Paper}
       style={{
-        border: "3px solid",
+        border: ".1875rem solid",
         width: "fit-content",
         // overflow: "auto",
-        // height: "400px",
+        // height: "25rem",
       }}
     >
-      <Table sx={{ width: "650px", overflow: "auto" }} aria-label="prece table">
+      <Table sx={{ width: "40.625rem", overflow: "auto" }} aria-label="prece table">
         <TableHead
           style={{
-            borderTop: "0px solid",
-            borderBottom: "3px solid",
+            borderTop: "0rem solid",
+            borderBottom: ".1875rem solid",
             backgroundColor: "#ccc",
           }}
         >
@@ -47,7 +47,7 @@ function ConfirmationTable(props) {
               align="center"
               style={{
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 textTransform: "uppercase",
               }}
             >
@@ -57,7 +57,7 @@ function ConfirmationTable(props) {
               align="center"
               style={{
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 textTransform: "uppercase",
               }}
             >
@@ -67,7 +67,7 @@ function ConfirmationTable(props) {
               align="center"
               style={{
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 textTransform: "uppercase",
               }}
             >
@@ -77,7 +77,7 @@ function ConfirmationTable(props) {
               align="center"
               style={{
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 textTransform: "uppercase",
               }}
             >
@@ -87,7 +87,7 @@ function ConfirmationTable(props) {
               align="center"
               style={{
                 fontWeight: "600",
-                fontSize: "18px",
+                fontSize: "1.125rem",
                 textTransform: "uppercase",
               }}
             >
@@ -97,14 +97,14 @@ function ConfirmationTable(props) {
         </TableHead>
         <TableBody style={{ backgroundColor: "#c8f1d9" }}>
           {rows.map((row) => (
-            <TableRow key={row.sno} style={{ borderBottom: "2px solid #000" }}>
+            <TableRow key={row.sno} style={{ borderBottom: ".125rem solid #000" }}>
               <TableCell
                 component="th"
                 scope="row"
                 align="center"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                 }}
               >
                 {row.sno}
@@ -113,7 +113,7 @@ function ConfirmationTable(props) {
                 align="right"
                 style={{
                   fontWeight: "600",
-                  fontSize: "16px",
+                  fontSize: "1rem",
                   textTransform: "capitalize",
                 }}
               >
@@ -123,7 +123,7 @@ function ConfirmationTable(props) {
                 align="right"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                 }}
               >
                 {row.quantity}
@@ -132,7 +132,7 @@ function ConfirmationTable(props) {
                 align="right"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                 }}
               >
                 {row.eachprice}
@@ -141,7 +141,7 @@ function ConfirmationTable(props) {
                 align="right"
                 style={{
                   fontWeight: "600",
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                 }}
               >
                 {row.price}

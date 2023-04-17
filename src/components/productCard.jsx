@@ -7,11 +7,7 @@ import {
   FilledInput,
   InputLabel,
   Typography,
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Button,
+  Box
 } from "@mui/material";
 
 function ProductCard(props) {
@@ -40,12 +36,12 @@ function ProductCard(props) {
     <Box style={{ display: "flex", justifyContent: "center" }}>
       <Box
         style={{
-          width: "700px",
-          border: "8px solid green",
-          padding: "30px",
-          borderRadius: "5px",
-          borderTopRightRadius: "50px",
-          borderBottomLeftRadius: "50px",
+          width: "43.75rem",
+          border: ".5rem solid green",
+          padding: "1.875rem",
+          borderRadius: ".3125rem",
+          borderTopRightRadius: "3.125rem",
+          borderBottomLeftRadius: "3.125rem",
           backgroundColor: "lightgreen",
         }}
       >
@@ -69,9 +65,9 @@ function ProductCard(props) {
                 setName(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,
@@ -100,17 +96,21 @@ function ProductCard(props) {
                   <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                 </InputAdornment>
               }
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value >= 1 && event.target.value <= 2000)
                   setPrice(event.target.value);
                 else {
-                  setOpen1(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Price",
+                  })
                 }
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 min: 1,
@@ -148,17 +148,21 @@ function ProductCard(props) {
                   </Typography>
                 </InputAdornment>
               }
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value >= 1 && event.target.value <= 50)
                   setQty(event.target.value);
                 else {
-                  setOpen2(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Quantity",
+                  })
                 }  
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 min: 1,
@@ -183,17 +187,21 @@ function ProductCard(props) {
             </InputLabel>
             <FilledInput
               type="text"
-              onChange={(event) => {
+              onChange={async (event) => {
                 if(event.target.value == "Fruit" || event.target.value == "Vegetable" || event.target.value == "Grain" || event.target.value == "Millet")
                   setType(event.target.value);
                 else {
-                  setOpen3(true);
+                  await Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Invalid Type",
+                  })
                 }
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,
@@ -222,9 +230,9 @@ function ProductCard(props) {
                 setLocation(event.target.value);
               }}
               style={{
-                borderRadius: "5px",
-                borderBottomLeftRadius: "0px",
-                borderBottomRightRadius: "0px",
+                borderRadius: ".3125rem",
+                borderBottomLeftRadius: "0rem",
+                borderBottomRightRadius: "0rem",
               }}
               inputProps={{ 
                 minLength: 1,
@@ -234,48 +242,6 @@ function ProductCard(props) {
           </FormControl>
         </Box>
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Price
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Quantity
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Invalid Type
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
 
     </Box>
   );

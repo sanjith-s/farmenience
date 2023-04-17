@@ -48,7 +48,7 @@ function ImageSlider() {
         variant="h5"
         sx={{
           textTransform: "uppercase",
-          fontWeight: "600",
+          fontWeight: "37.5rem",
           textAlign: "center",
         }}
       >
@@ -57,10 +57,10 @@ function ImageSlider() {
       <CardMedia>
         <Box
           sx={{
-            width: "500px",
-            height: "300px",
-            border: "5px solid",
-            borderRadius: "5px",
+            width: "31.25rem",
+            height: "18.75rem",
+            border: "18.75rem solid",
+            borderRadius: "0.313rem",
             animation: "slide",
             animationDuration: "6000",
           }}

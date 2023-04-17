@@ -31,8 +31,10 @@ import collage9 from "./images/collage/collage-21.jpg";
 import collage10 from "./images/collage/collage-22.jpg";
 import collage11 from "./images/collage/collage-23.jpg";
 import collage12 from "./images/collage/collage-24.jpg";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <header className="header">
@@ -68,7 +70,7 @@ const LandingPage = () => {
                 Trying to make the process of agriculture smoother from start to finish all over the year, all over India.
               </p>
               <a href="#cta" className="btn btn--full margin-right-sm "
-              >Start farmenience </a
+              >Start Farmenience </a
               >
 
               <a href="#how" className="btn btn--outline">Learn more &darr;</a>
@@ -376,8 +378,8 @@ const LandingPage = () => {
 
                 <form className="cta-form" name="sign-up" netlify>
 
-                  <a href="#" className="btn btn--form sign-link">Sign up now </a>
-                  <a href="#" className="btn btn--outline sign-link">Sign in </a>
+                  <a href="/signup" className="btn btn--form sign-link">Sign up now </a>
+                  <a href="/login" className="btn btn--outline sign-link">Sign in </a>
 
                 </form>
               </div>

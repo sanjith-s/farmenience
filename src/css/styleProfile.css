@@ -12,12 +12,12 @@
 }
 
 .profileBox {
-    border-radius: 12px 18px;
+    border-radius: .75rem 1.125rem;
     background: linear-gradient(176deg,
             #afeeee 0%,
             white 40%,
             white 100%);
-    box-shadow: 2px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: .125rem .0625rem .125rem .0625rem rgba(0, 0, 0, 0.2);
 }
 .flex1 {
     display: flex;

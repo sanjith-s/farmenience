@@ -2,20 +2,21 @@ import React, { useEffect } from 'react'
 import BackImg from "../components/homepageBackground.png";
 import Menubar from "../components/menubar";
 import ImageSlider from "../components/imageSlider";
-import "../css/pageM9.css"
+import "../css/pageM0.css";
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import { useNavigate } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { ShoppingCart, Room } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { Stack, Box, Avatar, Button, Tab, Tabs, CardContent, CSSBaseline, IconButton } from '@mui/material';
+import { Stack, Box, Avatar, Button, Tab, Tabs, CardContent, IconButton } from '@mui/material';
+import CssBaseline from "@mui/material/CssBaseline";
 import { AspectRatio } from "@mui/icons-material";
 import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   listItemIcon: {
-    minWidth: '40px',
+    minWidth: '2.5rem',
   }
 }));
 
@@ -170,7 +171,7 @@ function pageM9() {
     <div id="google_translate_element" style={{ backgroundColor: "#E5FDD1" }} onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
-      <img src={BackImg} style={{ objectFit: "cover", height: "370px", width: "100%" }} className='back-img' />
+      <img src={BackImg} style={{ objectFit: "cover", height: "23.125rem", width: "100%" }} className='back-img' />
       <div className='contents'>
         <div className="box1">
           <div className="box-header">
@@ -179,7 +180,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of view Items in the market"}</p>
             <button onClick={() => {
-              navigate('../m10')
+              navigate('../M11')
             }} className="box-button">{"Go Now"}</button>
           </div>
         </div>
@@ -190,7 +191,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of orders you placed"}</p>
             <button onClick={() => {
-              navigate('../m17')
+              navigate('../M17')
             }} className="box-button">{"View"}</button>
           </div>
         </div>
@@ -201,7 +202,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of requests"}</p>
             <button onClick={() => {
-              navigate('../m15')
+              navigate('../M15')
             }} className="box-button">{"View"}</button>
           </div>
         </div>
@@ -212,7 +213,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"Publish a new Request"}</p>
             <button onClick={() => {
-              navigate('../m18')
+              navigate('../M18')
             }} className="box-button">{"Create"}</button>
           </div>
         </div>

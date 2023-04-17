@@ -1,4 +1,5 @@
 import React from 'react';
+
 function Fname() {
 	return <div className="pay">
 		<div className="options">

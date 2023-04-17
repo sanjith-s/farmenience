@@ -33,15 +33,11 @@ function Signup() {
   // const emailregex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
   // const passregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
   const navigate = useNavigate();
-  const [showPassword1, setShowPassword1] = useState(false);
-  const [showPassword2, setShowPassword2] = useState(false);
+
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const location = useGeoLocation();
-
-  const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
-  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
   const handleClickShowPassword1 = () => setShowPassword1((show) => !show);
   const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
@@ -452,17 +448,6 @@ function Signup() {
                     </IconButton>
                   </InputAdornment>
                 }
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword1}
-                      edge="end"
-                    >
-                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
                 onChange={addSignupData}
               />
             </Box>
@@ -477,17 +462,6 @@ function Signup() {
                 type={showPassword2 ? 'text' : 'password'}
                 name="confpass"
                 value={signupdata.confpass}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword2}
-                      edge="end"
-                    >
-                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

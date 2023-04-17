@@ -22,8 +22,8 @@ import {
 } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
+
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';

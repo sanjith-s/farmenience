@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Details from "./components/NGOProfileComp";
+import { useNavigate } from "react-router-dom";
 import { Avatar, Typography, Box, Grid, Paper, TextField,Divider } from '@material-ui/core';
 import { Button } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,6 +25,45 @@ const c = {
   Email: "ngoemaileg@gmail.com",
 };
 
+const logout = async () => {
+  let token = Cookies.get('token')
+  await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
+  )
+    .then(async (response) => {
+      if (response.data.message == "Logout Successful") {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Logout Successful'
+        })
+        Cookies.remove('token')
+        navigate('../login');
+      }
+      else {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error',
+        })
+      }
+      console.log(response);
+    }).
+    catch(async (response) => {
+      if (response.response.data.message === "Token not found" || response.response.data.message === "Logout Fail, Please Logout Again") {
+        await Swal.fire({
+          icon: 'warning',
+          title: 'Please Login, Before Logout !!',
+        })
+        navigate('../login');
+      }
+      if (response.response.data.message === "Invalid token") {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login Expired, Please Login Again !!',
+        })
+        navigate('../login');
+      }
+    });
+}
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -83,7 +123,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
               <Typography variant='subtitle1'></Typography>
             </Stack>
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
-            <Button color="error" variant="contained" sx={{ width: "15%" }}>Logout</Button>
+            <Button color="error" variant="contained" sx={{ width: "15%" }} onClick={logout}>Logout</Button>
           </Box>
           <Typography variant='h4'>{name}</Typography>
           <Typography variant='subtitle1'>An NGO</Typography>
@@ -131,6 +171,7 @@ function ProfilePage({ name, email, phoneNumber,line1,line2,district , city, sta
 
 
 export default function () {
+  const navigate = useNavigate();
   const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
 
 const [data, setData] = useState({});

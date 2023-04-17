@@ -380,7 +380,7 @@ const PageM6 = () => {
             html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
             imageUrl: file,
             confirmButtonText: 'Confirm'
-          })
+          }), handleSubmit()
         }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
           Submit
           {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}

@@ -76,7 +76,11 @@ function Query(props) {
           </div>
           <div className="query-card__actions">
             <div>
-              <button onClick={handleClickOpen} className="query-card__button query-card__button--respond">
+            {/* onClick={handleClickOpen} */}
+              <button onClick={()=>{
+                // console.log(props.data);
+                navigate('../N12', { state: { data: props.data } })
+              }} className="query-card__button query-card__button--respond">
                 Respond Query
               </button>
             </div>

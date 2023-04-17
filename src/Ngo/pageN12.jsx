@@ -15,6 +15,10 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CallIcon from "@mui/icons-material/Call";
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom/dist";
+import { useState } from "react";
+
 
 const PageN12 = () => {
   const handleChange = (event) => { };
@@ -49,6 +53,9 @@ const PageN12 = () => {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum tortor ligula, in ultricies est maximus nec. Mauris a porta est, ac iaculis ante. Etiam euismod mi sit amet aliquam efficitur. Aenean ante augue, tincidunt sit amet tristique nec, consectetur cursus dui. Cras placerat luctus diam et fringilla. Etiam elit est, efficitur eget ullamcorper nec, efficitur a lacus.",
     attachments: ["Image", "Bill", "PDF"],
   };
+  const location = useLocation();
+    const navigate = useNavigate();
+    const data = location.state.data;
 
   return (
     <Container id="google_translate_element"
@@ -151,7 +158,7 @@ const PageN12 = () => {
                   width: "70%",
                 }}
               >
-                {content.id}
+                {/* {data._id} */}
               </Typography>
             </Box>
           </Grid>

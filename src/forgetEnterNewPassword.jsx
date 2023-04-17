@@ -56,6 +56,7 @@ const forgetEnterNewPassword = () => {
                             icon: 'success',
                             title: 'Password Updated Successfully !!',
                         })
+                        navigate('../login');
                     }
                     navigate('./resetEnterNewPassword')
                 })

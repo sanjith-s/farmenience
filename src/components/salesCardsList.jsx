@@ -1,9 +1,6 @@
-// import PreviousMap from "postcss/lib/previous-map";
 import React from "react";
 import SalesCard from "./salesCard";
 import {Box,Grid,Typography} from "@mui/material";
-
-
 
 function SalesCardsList(props) {
   var items = props.all;
@@ -38,8 +35,8 @@ function SalesCardsList(props) {
             <SalesCard
               key={item.saleID}
               name={item.clientName}
-              ordDate={item.orderDate}
-              delDate={item.deliveryDate}
+              ordDate={item.orderDate.slice(0, 10)}
+              delDate={item.deliveryDate.slice(0, 10)}
               items={item.items}
               data={item}
               // onDeleteHandler={props.onDeleteHandler}

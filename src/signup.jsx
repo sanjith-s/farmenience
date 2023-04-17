@@ -17,8 +17,6 @@ import {
   Stepper,
   Step,
   StepLabel,
-  TextField,
-  Icon,
   InputAdornment,
   IconButton,
   Container,
@@ -28,9 +26,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import useGeoLocation from '../src/components/useGeoLocation';
-import { Delete, DeleteOutline, FileUploadOutlined, FileUploadRounded, FileUploadTwoTone, Padding, Upload, UploadFileRounded, UploadFileSharp } from "@mui/icons-material";
-import getThemeProps from '@material-ui/styles/getThemeProps'
-import collage12 from "./images/sign_up.jpg";
 
 function Signup() {
 
@@ -137,19 +132,8 @@ function Signup() {
         })
     }
 
-    {
-      location.loaded ?
-        Swal.fire({
-          icon: 'error',
-          title: 'Location Received',
-          text: JSON.stringify(location),
-        }) :
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: "Location data not available yet",
-        })
-    }
+    alert(signupdata.email)
+    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -196,19 +180,11 @@ function Signup() {
       console.log(Array.from(formData1.entries()))
       await Axios.post(`${baseURL}/upload`, formData1)
         .then(async (response) => {
-          await Swal.fire({
-            icon: 'success',
-            title: 'Meet Added !!',
-            text: response.data.message,
-          })
+          console.log(response);
           FILE1 = response.data.message;
         })
         .catch(async (res) => {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: res.response.data.message,
-          })
+          alert(res.response.data.message);
         })
 
       let FILE2 = '';
@@ -219,20 +195,13 @@ function Signup() {
 
       await Axios.post(`${baseURL}/upload`, formData2)
         .then(async (response) => {
-          await Swal.fire({
-            icon: 'success',
-            title: 'Meet Added !!',
-            text: response.data.message,
-          })
+          console.log(response);
           FILE2 = response.data.message;
         })
         .catch(async (res) => {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: res.response.data.message,
-          })
+          alert(res.response.data.message);
         })
+      alert(FILE1 + " " + FILE2);
 
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
@@ -281,593 +250,409 @@ function Signup() {
     console.log(event.target.innerText);
   };
 
-  const stepStyle = {
-
-    "& .MuiStepIcon-root": {
-      fontSize: "1.5rem",
-      fontFamily: "Roboto",
-      fontWeight: 500,
-    },
-
-    "& .MuiStepConnector-line": {
-      borderColor: "black",
-    }
-  }
-
   return (
-    <>
-      <Box
-        sx={{
-          width: "100%",
-          backgroundColor: "#ffffff"
-          /* margin: "1.875rem",
-          display: "flex",
-          flexDirection: "column", */
-          /*         
-          alignItems: "left",
-          rowGap: "2.5rem",
-          ,
-          width:"50%",
-          borderRadius: "2.5rem", */
-        }}
-      >
-        <Box
-          pt={2}
-          sx={{ width: "available" }}
-          alignItems={"top"}
-        >
-          <Typography
-            variant="h4"
-            style={{
-              textTransform: "uppercase", textAlign: "center",
-              fontFamily: "Roboto", fontSize: "1.875rem", color: "black", fontWeight: 1000
-            }}
-          >
-            signup
-          </Typography>
-        </Box>
-        <Box ml={30} mr={30} mt={5} borderRadius={2}
-          pt={2} pb={2} backgroundColor="#96f0ff" align="center">
-          <Stepper activeStep={activeStep} alternativeLabel sx={stepStyle} >
-            <Step >
-              <StepLabel  >
-                <Typography
-                  style={{
-                    textTransform: "uppercase",
-                    alignSelf: "flex-end", fontFamily: "Roboto",
-                    fontSize: ".9375rem", color: "black", fontWeight: 900
-                  }}
-                >
-                  Details
-                </Typography>
-              </StepLabel>
-            </Step>
-            <Step >
-              <StepLabel >
-                <Typography
-                  style={{
-                    textTransform: "uppercase",
-                    alignSelf: "flex-end", fontFamily: "Roboto",
-                    fontSize: ".9375rem", color: "black", fontWeight: 900
-                  }}
-                >
-                  Documents Upload
-                </Typography>
-              </StepLabel>
-            </Step>
-          </Stepper></Box>
-
-        {activeStep === 0 &&
+    <Box
+      sx={{
+        margin: "30px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        rowGap: "40px",
+        
+      }}
+    >
+      <Stepper activeStep={activeStep}>
+        <Step>
+          <StepLabel>Details</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Documents Upload</StepLabel>
+        </Step>
+      </Stepper>
+      {activeStep === 0 &&
+        <Box>
           <Box>
+            <Typography
+              variant="h4"
+              style={{ textTransform: "uppercase", textAlign: "center" }}
+            >
+              signup page
+            </Typography>
+
+          </Box>
+
+          <form style={{ width: "450px" }}>
             <Box
               sx={{
-                boxShadow: 10,
-                margin: "3.125rem",
                 display: "flex",
-                flexDirection: "column",
-
-                rowGap: "2.5rem",
-                backgroundColor: "#96F0FF",
-                width: "50%",
-                borderRadius: "1.25rem",
-                padding: "3.125rem",
-                float: "left",
+                justifyContent: "space-between",
               }}
             >
-              <form style={{ width: "100%" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: ".625rem",
-                    alignItems: "center",
-                    /* width: "100%",  */
-                    /* float:"left" */
-                  }}
-                >
-                  {/*               <Typography
-                style={{ textTransform: "uppercase", 
-                alignSelf: "flex-end", fontWeight:"3.125rem" ,
-                fontSize : "1.25rem", color:"black" }}
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 name
-              </Typography> */}
-                  <TextField
+              </Typography>
+              <Input
+                type="text"
+                name="name"
+                value={signupdata.name}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                    sx={{ width: "100%" }}
-                    label="Name"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="name"
-                    value={signupdata.name}
-                    onChange={addSignupData}
-
-                  />
-                </Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: ".625rem",
-                  }}
-                >
-                  {/* <Typography
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 phone number
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Phone Number"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="tel"
-                    name="phone"
-                    value={signupdata.phone}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="tel"
+                name="phone"
+                value={signupdata.phone}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: ".625rem",
-                  }}
-                >
-                  {/* <Typography
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 aadhaar number
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Aadhar Number"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="aadhar"
-                    value={signupdata.aadhar}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="aadhar"
+                value={signupdata.aadhar}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: ".625rem",
-                  }}
-                >
-                  {/* <Typography
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 address line 1
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Address Line 1"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="addr1"
-                    value={signupdata.addr1}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="addr1"
+                value={signupdata.addr1}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 address line 2
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Address line 2"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="addr2"
-                    value={signupdata.addr2}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="addr2"
+                value={signupdata.addr2}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 city / town
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="City/Town"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="city"
-                    value={signupdata.city}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="city"
+                value={signupdata.city}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 district
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="District"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="district"
-                    value={signupdata.district}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="district"
+                value={signupdata.district}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 state
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="State"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="state"
-                    value={signupdata.state}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="state"
+                value={signupdata.state}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/*  <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 pincode
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Pin Code"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="text"
-                    name="pincode"
-                    value={signupdata.pincode}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="text"
+                name="pincode"
+                value={signupdata.pincode}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 email
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Email"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type="email"
-                    name="email"
-                    value={signupdata.email}
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type="email"
+                name="email"
+                value={signupdata.email}
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/* <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 password
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Password"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
-                    type={showPassword1 ? 'text' : 'password'}
-                    name="password"
-                    value={signupdata.password}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword1}
-                          edge="end"
-                        >
-                          {showPassword1 ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                    onChange={addSignupData}
-                  />
-                </Box>
+              </Typography>
+              <Input
+                type={showPassword1 ? 'text' : 'password'}
+                name="password"
+                value={signupdata.password}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword1}
+                      edge="end"
+                    >
+                      {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                onChange={addSignupData}
+              />
+            </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-                  {/*  <Typography
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
                 style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 confirm password
-
-              </Typography> */}
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Confirm Password"
-                    id="filled-basic"
-                    variant="filled"
-                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                    InputLabelProps={{ style: { fontSize: 15 } }}
               </Typography>
-                <Input
-                  type={showPassword2 ? 'text' : 'password'}
-                  name="confpass"
-                  value={signupdata.confpass}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword2}
-                        edge="end"
-                      >
-                        {showPassword2 ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                  onChange={addSignupData}
-                />
+              <Input
+                type={showPassword2 ? 'text' : 'password'}
+                name="confpass"
+                value={signupdata.confpass}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword2}
+                      edge="end"
+                    >
+                      {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                onChange={addSignupData}
+              />
             </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", padding: ".625rem", }}>
-              {/*   <Typography
-                style={{ textTransform: "uppercase", alignSelf: "flex-end" , 
-                fontFamily : "Roboto", fontSize:20,color:"black",fontWeight : 500}}
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
               >
                 account type
-
-              </Typography> */}
-
-              <FormControl variant="standard" sx={{ width: "100%" }}>
-                <TextField
-                  sx={{ width: "100%" }}
-                  label="Account Type"
-                  id="filled-basic"
-                  variant="filled"
-                  inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
-                  InputLabelProps={{ style: { fontSize: 15 } }}
               </Typography>
 
-              <FormControl variant="standard" sx={{ width: "12.5rem" }}>
+              <FormControl variant="standard" sx={{ width: "200px" }}>
                 <Select value={selection} onClick={selectionChange}>
                   <MenuItem value="Farmer">
-                    <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
+                    <Typography style={{ textTransform: "capitalize" }}>
                       farmer
                     </Typography>
                   </MenuItem>
                   <MenuItem value="NGO">
-                    <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
+                    <Typography style={{ textTransform: "capitalize" }}>
                       NGO
                     </Typography>
                   </MenuItem>
                   <MenuItem value="Retailer">
-                    <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
+                    <Typography style={{ textTransform: "capitalize" }}>
                       retailer
                     </Typography>
                   </MenuItem>
                   <MenuItem value="Job Seeker">
-                    <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
+                    <Typography style={{ textTransform: "capitalize" }}>
                       job seeker
                     </Typography>
                   </MenuItem>
-                </TextField>
+                </Select>
               </FormControl>
             </Box>
           </form>
 
-          </Box>
-      <Box
-        pt={10}
-        pb={5}
-        align="center" >
-        <img src={collage12} alt="Customer photo" width="25rem" length="93.75rem" />
-      </Box>
-
-      <Box width="available" align="center">
-        <Button
-          variant="contained"
-          type="submit"
-          onClick={nextStep}
-          style={{ backgroundColor: "blue", fontWeight: "900", fontSize: "1.25rem" }}>
-          Next Step
-        </Button>
-      </Box>
-
-    </Box >
-    </>
-        
+          <Button
+            variant="contained"
+            type="submit"
+            onClick={nextStep}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
+          >
+            Next Step
+          </Button>
+        </Box>
       }
 
-{
-  activeStep === 1 &&
-    <Box width="100%" length="available" backgroundColor="#ffffff"
-      align="center">
-      {/*   <Box
-           pt = {5}
-           sx = {{width:"available"}}
-           alignItems={"top"}
-           >
+      {activeStep === 1 &&
+        <Box>
+          <Box>
             <Typography
               variant="h4"
-              style={{ textTransform: "uppercase", textAlign: "center",
-              fontFamily: "Rubiks Pixels" , fontSize : "1.875rem", color:"black" }}
+              style={{ textTransform: "uppercase", textAlign: "center" }}
             >
               signup page
             </Typography>
-            </Box>    */}
-      <Box width="100%" alignItems={"center"}  >
-        <form style={{ width: "37.5rem" }}>
-          {selection === "Farmer" &&
-            <Box
-              margin={4}
-              align="left"
-              sx={{
 
-                boxShadow: 10,
-                width: "100%",
-                backgroundColor: "#FFFFFF",
-                borderRadius: ".625rem",
-                alignSelf: "center"
-                /* display: "flex", */
-                /* justifyContent: "space-between", */
-              }}
-            >
-              <Box display="flex" >
-                <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
+          </Box>
+
+          <form style={{ width: "450px" }}>
+            {selection === "Farmer" &&
+              <>
+                {/* <Container
+                  disableGutters={true}
+                  sx={{
+                    bgcolor: "#ffff",
+                    height: "100%",
+                    width: "40vw",
+                    borderRadius: "3.125rem",
+                    paddingLeft: "0rem",
+                    paddingRight: "0rem",
+                    display: "flex",
+                    justifyItems: "center",
                   }}
                 >
-                  Land Document
-                </Typography>
+                  {!isUploaded && (
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <input
+                        type="file"
+                        id="imgUp"
+                        style={{ display: "none" }}
+                        accept="image/png, image/jpeg, image/jpg"
+                        maxsize="2"
+                        minsize="1"
+                        onChange={handleChange}
+                      />
+                      <label
+                        htmlFor="imgUp"
+                        style={{ width: "fit-content", height: "fit-content" }}
+                      >
+                        <Fab component="span">
+                          <FileUploadOutlinedIcon />
+                        </Fab>
+                        <br />
+                        <br />
+                      </label>
+                      <Typography>Upload Image</Typography>
+                    </div>
+                  )}
+                  {isUploaded && (
+                    <img
+                      src={file}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                        borderRadius: "3.125rem",
+                      }}
+                    />
+                  )}
+                </Container> */}
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ textTransform: "uppercase", margin: "1.25rem", display: "flex" }}
+                <Box
                 >
-                  <Box backgroundColor="#3ded97" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize=".9375rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon>
-                  </Box>
-                </label>
-              </Box>
-              <Box display="flex">
+
+                  <Typography
+                    style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                  >
+                    Land Document
+                  </Typography>
+
+                  <input type="file" onChange={handleChange1} />
+                  <br></br>
+                  <label
+                    htmlFor="imgUp"
+                  >
+                    <br />
+                    <br />
+                  </label>
+
+                  <Typography
+                    style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
+                  >
+                    Aadhaar Card
+                  </Typography>
+
+                  <input type="file" onChange={handleChange2} />
+                  <br></br>
+                  <label
+                    htmlFor="imgUp"
+                  >
+                    <br />
+                    <br />
+                  </label>
+                </Box>
+              </>
+            }
+
+            {selection === "NGO" &&
+              <Box
+
+              >
                 <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
-                  }}
-                >
-                  Aadhaar Card
-                </Typography>
-
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
-                <label
-                  htmlFor="imgUp"
-                  style={{ textTransform: "uppercase", margin: "1.25rem", display: "flex" }}
-                >
-                  <Box backgroundColor="#3ded97" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize=".9375rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon>
-                  </Box>
-                </label>
-              </Box>
-            </Box>
-          }
-
-          {selection === "NGO" &&
-
-            <Box
-              /* ml = {40}
-              mt = {5}
-              mb = {5} */
-              margin={4}
-              boxShadow={20}
-              alignSelf="center"
-              sx={{
-                /* margin : "2.5rem", */
-                width: "100%",
-                backgroundColor: "white",
-                borderRadius: ".625rem",
-
-                /* display: "flex", */
-                /* justifyContent: "space-between", */
-              }}
-            >
-
-              <Box display="flex" align="left">
-                <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
-                  }}
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
                   NGO License
                 </Typography>
@@ -875,25 +660,13 @@ function Signup() {
                 <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
-                  style={{
-                    textTransform: "uppercase", margin: "1.25rem", display: "flex",
-                  }}
                 >
-                  <Box backgroundColor="#dec20b" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize="1.125rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon> </Box>
+                  <br />
+                  <br />
                 </label>
-              </Box>
-              <Box display="flex" align="left">
+
                 <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
-                  }}
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
                   Aadhaar Card of Owner
                 </Typography>
@@ -901,41 +674,19 @@ function Signup() {
                 <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
-                  style={{
-                    textTransform: "uppercase", margin: "1.875rem", display: "flex"
-                  }}
                 >
-                  <Box backgroundColor="#dec20b" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize="1.125rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon>
-                  </Box>
-                </label> </Box>
-            </Box>
-          }
+                  <br />
+                  <br />
+                </label>
+              </Box>
+            }
 
-          {selection === "Retailer" &&
-            <Box
-              margin={4}
-              align="left"
-              sx={{
-                boxShadow: 10,
-                width: "100%",
-                backgroundColor: "#ffffff",
-                borderRadius: ".625rem"
-                /* display: "flex", */
-                /* justifyContent: "space-between", */
-              }}
-            >
-              <Box display="flex">
+            {selection === "Retailer" &&
+              <Box
+
+              >
                 <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
-                  }}
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
                   Trading License
                 </Typography>
@@ -943,62 +694,33 @@ function Signup() {
                 <input type="file" onChange={handleChange1} />
                 <label
                   htmlFor="imgUp"
-                  style={{
-                    textTransform: "uppercase", margin: "1.875rem", display: "flex"
-                  }}
                 >
-                  <Box backgroundColor="#b0fc38" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize="1.125rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon>
-                  </Box>
-                </label> </Box>
-              <Box display="flex">
+                  <br />
+                  <br />
+                </label>
 
                 <Typography
-                  style={{
-                    margin: "1.25rem", width: "25rem",
-                    fontFamily: "Roboto", fontSize: "1.25rem", color: "black",
-                    fontWeight: 500
-                  }}
+                  style={{ textTransform: "uppercase", alignSelf: "flex-end" }}
                 >
                   Aadhaar Card of Owner
                 </Typography>
 
-                <input
-                  type="file"
-                  id="imgUp"
-                  style={{ display: "none" }}
-                  maxsize="2"
-                  minsize="1"
-                  onChange={addSignupData}
-                />
+                <input type="file" onChange={handleChange2} />
                 <label
                   htmlFor="imgUp"
-                  style={{
-                    textTransform: "uppercase", margin: "1.875rem", display: "flex"
-                  }}
                 >
-                  <Box backgroundColor="#b0fc38" display={"flex"}
-                    borderRadius={1} alignItems={"center"}>
-                    <Typography ml=".625rem" fontFamily="Roboto"
-                      fontSize="1.125rem" color="black" fontWeight={400}
-                    > Upload </Typography>
-                    <Icon ><FileUploadOutlined sx={{ fontSize: "large" }} /></Icon>
-                  </Box>
+                  <br />
+                  <br />
                 </label>
               </Box>
-            </Box>
-          }
-        </form>
-        <Box align="center" margin=".625rem">
+            }
+          </form>
+
           <Button
             variant="contained"
             type="submit"
             onClick={prevStep}
-            style={{ backgroundColor: "blue", fontWeight: "600", margin: ".625rem", fontSize: ".625rem" }}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
           >
             Previous Step
           </Button>
@@ -1007,15 +729,14 @@ function Signup() {
             variant="contained"
             type="submit"
             onClick={submit}
-            style={{ backgroundColor: "blue", fontWeight: "600", margin: ".625rem", fontSize: ".625rem" }}
+            style={{ backgroundColor: "green", fontWeight: "600" }}
           >
             Submit
           </Button>
+
         </Box>
-      </Box>
+      }
     </Box>
-}
-    </Box >
   );
 }
 

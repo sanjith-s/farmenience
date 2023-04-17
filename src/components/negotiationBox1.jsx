@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import WheatImg from "../wheatimg.jpg";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import AddIcon from "@mui/icons-material/Add";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import {
   CardMedia,
   CardContent,
   Typography,
   CardActions,
   Badge,
-  IconButton,
   Paper
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -88,13 +84,13 @@ function NegotiationBox1(props) {
           ₹ {props.actualPrice}
         </Typography>
         <Typography
-        variant="overline"
-        lineHeight={2.5}
-        sx={{ fontSize: "15px", paddingLeft: "5px"}}
+          variant="overline"
+          lineHeight={2.5}
+          sx={{ fontSize: "15px", paddingLeft: "5px" }}
         >
           {props.weight}kg
         </Typography>
-        
+
       </CardContent>
 
       <CardActions
@@ -110,7 +106,7 @@ function NegotiationBox1(props) {
         <Typography
           variant="h6"
           lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600",marginBottom:"12px" }}
+          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
         >
           quantity
         </Typography>
@@ -149,8 +145,8 @@ function NegotiationBox1(props) {
             justifyItems: "center",
           }}
         >
-          <Paper elevation={5} style={{padding:"10px 20px" , fontWeight:"600",fontSize: "18px" }}>
-          ₹ {props.userPrice}
+          <Paper elevation={5} style={{ padding: "10px 20px", fontWeight: "600", fontSize: "18px" }}>
+            ₹ {props.userPrice}
           </Paper>
         </Box>
       </CardActions>

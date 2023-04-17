@@ -7,7 +7,6 @@ function Page10Nav(props) {
     <Box
       sx={{
         bgcolor: "#74e81c",
-
         padding: ".3125rem",
         borderRadius: ".3125rem",
         display: "flex",

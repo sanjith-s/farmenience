@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Divider from "@mui/material/Divider";
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
-import { FormLabel } from '@mui/material';
-import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
-import ArrowForwardOutlinedIcon from '@mui/icons-material/ArrowForwardOutlined';
-import Fab from "@mui/material/Fab";
 
 const cropML = () => {
     const [nitrogen, setNitrogen] = useState(0);

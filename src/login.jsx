@@ -138,30 +138,27 @@ function Login() {
         <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic"
          label="Password" variant="filled" type="password" sx={{ width: "25rem", backgroundColor :"#f5f5f5" }} value={password} />
 
-        <Button
-          variant="contained"
-          onClick={() => LogMeIn(email, password)}
-        >
-          login
-        </Button>
-      </form>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#000080", color: "white", "&:hover": {
+                backgroundColor: "#0067A5",
+              }
+            }}
+  
+            onClick={() => LogMeIn(email, password)}
+          >
+            login
+          </Button>
+        </form>
 
-      <Button
-        variant="contained"
-        onClick={goToSignup}
-        style={{ backgroundColor: "green" }}
-        sx={{
-          marginLeft: "41.438rem",
-          marginTop: "1.25rem"
-        }}
-      >
-        <Link to="/signup" style={{ textDecoration: "none" }}>
-          <Typography style={{ color: "white" }}>signup</Typography>
-        </Link>
-      </Button>
+      </Card>
 
-
-    </Card>
+      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../signup">Don't have an account ?</a></div>
+      <br />
+      <div style={{color: "blue", fontSize: "1.25rem", textAlign: "center"}}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
+      <br /><br />
+    </>
   );
 }
 

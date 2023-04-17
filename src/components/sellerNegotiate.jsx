@@ -1,10 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
-import {Link,useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   Box,
   FormControl,
@@ -20,7 +21,6 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
-import { data } from "autoprefixer";
 
 const itemsName = [
   "name",
@@ -34,7 +34,7 @@ const itemsName = [
 const SellerNegotiate = (props) => {
 
   let data = props.data;
-  
+
   const itemsValue = [
     props.name,
     props.phno,
@@ -45,44 +45,44 @@ const SellerNegotiate = (props) => {
   ];
 
   console.log(props.address);
-// --------------------------------------------------------------------
+  // --------------------------------------------------------------------
 
-  const [orders,setOrders] = useState(()=>{
-    const savedItem = localStorage.getItem('orders');
+  const [orders, setOrders] = useState(() => {
+    const savedItem = localStorage.getItem('reqs');
     const parsedItem = JSON.parse(savedItem);
     return parsedItem || " nothing "
-  }) ;
+  });
 
-  const index = orders.indexOf(orders.find((order)=> { 
-    return order._id === props.id;
+  const index = orders.indexOf(orders.find((order) => {
+    return order.name === props.iname;
   }));
 
-  console.log(index);
+  console.log(" hi" + index);
 
   // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
-    orders[index].price = newLimit ;
+    orders[index].nprice = newLimit;
     setLimit(newLimit);
   };
 
   let [quantity, setQuantity] = useState(props.iquantity);
   const quantityHandler = (event) => {
     let newQuantity = event.target.value;
-    orders[index].quantity = newQuantity ;
+    orders[index].quantity = newQuantity;
     setQuantity(newQuantity);
-    
+
   };
 
   // ----------------------------------------------------------------------------
 
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     console.log("useEffects");
-    localStorage.setItem("orders",JSON.stringify(orders)) 
-  },[limit,quantity]);
+    localStorage.setItem("orders", JSON.stringify(orders))
+  }, [limit, quantity]);
 
   // -----------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ const SellerNegotiate = (props) => {
   let [minimum, setMinimum] = useState(Math.round(props.iprice / 2));
   let [iQuantity, setIQuantity] = useState(Math.round(props.iquantity));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     let regex = /^[0-9]+$/;
     if (!quantity.match(regex) || !limit.match(regex)) {
       setOpen(true);
@@ -109,11 +109,43 @@ const SellerNegotiate = (props) => {
       setLimit(props.iprice);
       setQuantity(props.iquantity);
     } else {
+      if (limit == props.iprice) {
+        let token = Cookies.get('token');
+        await Axios.post(`${baseURL}/buyer/postrequest`, {
+          name: orders[index].name,
+          price: orders[index].price,
+          quantity: orders[index].quantity,
+          specificType: orders[index].specificType,
+          location: orders[index].locatiom1
+        }, { headers: { tokenstring: token } })
+          .then(async (res) => {
+            await Swal.fire({
+              icon: 'success',
+              title: "Successfully added request !!!",
+            })
+          }).catch(async (err) => {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.response.data.message,
+            })
+          })
+        orders.splice(index, 1);
+      } else {
+        orders[index].flag = 0;
+        orders[index].nprice = limit;
+      }
+      localStorage.setItem("reqs", JSON.stringify(orders));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
       return;
     }
   };
 
-  
+
 
   return (
     <Card
@@ -162,7 +194,7 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx = {{border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
+          <Stack sx={{ border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -238,7 +270,7 @@ const SellerNegotiate = (props) => {
               {" "}
               negotiate price{" "}
             </Typography>
-            
+
             {/* -------------------------------------------------------------------------------------- */}
             <FormControl style={{ position: "sticky" }}>
               <InputLabel htmlFor="outlined-adornment-quantity">
@@ -290,24 +322,24 @@ const SellerNegotiate = (props) => {
           }}
         >
           <Box>
-          <IconButton>
-            <Link
-              to="/M1"
-              state={{
-                data: data,
-                regNo : props.regNo,
-                quantity: quantity,
-                price: limit,
-                key:'accept',
-              }}
-              style={{ textDecoration: "none" }}  
-            >
-              <ThumbUpIcon
-                variant="contained"
-                onClick={handleSubmit}
-                style={{ color: "green", fontSize: "1.875rem" }}
-              />
-            </Link>
+            <IconButton>
+              <Link
+                to="/M1"
+                state={{
+                  data: data,
+                  regNo: props.regNo,
+                  quantity: quantity,
+                  price: limit,
+                  key: 'accept',
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <ThumbUpIcon
+                  variant="contained"
+                  onClick={handleSubmit}
+                  style={{ color: "green", fontSize: "1.875rem" }}
+                />
+              </Link>
             </IconButton>
             <Typography
               style={{
@@ -321,19 +353,19 @@ const SellerNegotiate = (props) => {
           </Box>
           <Box>
             <IconButton>
-            <Link
-              to="/M1"
-              state={{
-                data: props.data,
-              }}
-              style={{ textDecoration: "none" }}  
-            >
-              <ThumbDownIcon
-                variant="contained"
-                style={{ color: "lightgreen", fontSize: "1.875rem" }}
-              />
-            </Link>
-              
+              <Link
+                to="/M1"
+                state={{
+                  data: props.data,
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <ThumbDownIcon
+                  variant="contained"
+                  style={{ color: "lightgreen", fontSize: "1.875rem" }}
+                />
+              </Link>
+
             </IconButton>
             <Typography
               style={{

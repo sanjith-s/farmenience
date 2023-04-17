@@ -12,7 +12,7 @@ import Axios from "axios";
 import Cookies from 'js-cookie';
 // import "./Pagen10.css";
 import { Divider } from '@material-ui/core';
-import BackImg from "../components/homepageBackground.png";
+import BackImg from "../images/NgoBG.jpg";
 import "../css/pageM0.css"
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
@@ -158,7 +158,7 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
             {appointments.map(que => {
               return (<div className='texts-box'>
                 <a className='links' href="/n13">
-                  <span className='b-text'>{que.subject}</span>
+                  <span className='b-text'>{que.reason}</span>
                 </a>
               </div>)
             })}

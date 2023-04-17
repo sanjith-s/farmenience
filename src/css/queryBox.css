@@ -87,7 +87,7 @@
 }
 
 .query-card__button--display {
-    background-color: #5e8c31;
+    background-color: #5e811c31;
     color: white;
     border: none;
     border-radius: 0.19rem;
@@ -207,11 +207,11 @@
 }
 
 .query-card__button:hover {
-    opacity: 0.8;
+    background-color: #299617;
 }
 
 .query-card__button--display {
-    background-color: #5e8c31;
+    background-color: #138808;
     color: white;
     border: none;
     border-radius: 0.19rem;
@@ -221,13 +221,13 @@
 }
 
 .query-card__button--display:hover {
-    background-color: #8fbc58;
+    background-color: #adb6a3;
     color: white;
 }
 
 .query-card__button--respond {
     margin-left: 37rem;
-    background-color: #5e8c31;
+    background-color: #32CD32;
     color: white;
 }
 

@@ -11,7 +11,6 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import { baseURL } from '../constants';
-import { PropaneSharp } from "@mui/icons-material";
 
 const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
@@ -36,6 +35,16 @@ const ScheduleCard = (props) => {
     setNgo("Select");
     setReason("");
     setValue();
+  }
+
+  const verify = async () => {
+    await Swal.fire({
+      icon: 'info',
+      title: 'Please confirm the details ...',
+      html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
+    });
+
+    postMeet();
   }
 
   const postMeet = async () => {
@@ -241,14 +250,7 @@ const ScheduleCard = (props) => {
           backgroundColor: "#fafa01", color: "black", "&:hover": {
             backgroundColor: "#ffff00",
           }
-        }} onClick={async () => {
-          await Swal.fire({
-            icon: 'info',
-            title: 'Please confirm the details ...',
-            html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
-          });
-          postMeet();
-        }}>
+        }} onClick={async () => {verify()}}>
           Submit
         </Button>
       </Box>

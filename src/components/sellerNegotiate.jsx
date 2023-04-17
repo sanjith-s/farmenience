@@ -47,23 +47,23 @@ const SellerNegotiate = (props) => {
 // --------------------------------------------------------------------
 
   const [orders,setOrders] = useState(()=>{
-    const savedItem = localStorage.getItem('orders');
+    const savedItem = localStorage.getItem('reqs');
     const parsedItem = JSON.parse(savedItem);
     return parsedItem || " nothing "
   }) ;
 
   const index = orders.indexOf(orders.find((order)=> { 
-    return order._id === props.id;
+    return order.name === props.iname;
   }));
 
-  console.log(index);
+  console.log(" hi" + index);
 
   // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
-    orders[index].price = newLimit ;
+    orders[index].nprice = newLimit ;
     setLimit(newLimit);
   };
 
@@ -108,17 +108,13 @@ const SellerNegotiate = (props) => {
       setLimit(props.iprice);
       setQuantity(props.iquantity);
     } else {
-      var rData = {
-        id: props.id,
-        quan:props.iquantity,
-        price:props.iprice,
-        name:props.name,
-        status:"Revised"
-      }
       if (limit == props.iprice) {
-        rData.status = "Not responded"
+          orders.splice(index,1);
+      } else {
+          orders[index].flag = 0;
+          orders[index].nprice = limit;
       }
-      localStorage.setItem("Reply",rData);
+      localStorage.setItem("reqs",JSON.stringify(orders));
       alert("Hi");
       return;
     }

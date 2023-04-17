@@ -7,6 +7,9 @@ import NegotiationBox2 from "../components/negotiationBox2";
 import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
+import { baseURL } from "../constants";
+import Axios from "axios";
+import Cookies from "js-cookie";
 import { CssBaseline } from "@mui/material";
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 import SendIcon from '@mui/icons-material/Send';
@@ -35,7 +38,7 @@ function PageM15() {
   //   document.body.appendChild(addScript);
   // }, []);
 
-  const item = localStorage.getItem("Reply");
+  const item = JSON.parse(localStorage.getItem("reqs"));
   // const userData = {
   //   name: "Rakesh k",
   //   addressLine1:
@@ -138,8 +141,7 @@ function PageM15() {
 
 
   const [active, setActive] = useState("negot1");
-
-
+  const [uprice,setUprice] = useState();
   const handleClick = async (opt) => {
     if (opt == 2) {
       setActive("negot2");
@@ -163,11 +165,10 @@ function PageM15() {
       setActive("negot1");
     }
   };
-
+  console.log(item);
+  console.log(userData);
   return (
-    <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
-    }}>
+    <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element">
       <CssBaseline />
 
       <Box className="gx-d-flex justify-content-center">
@@ -175,9 +176,9 @@ function PageM15() {
 
         <ShowUserDetails
           userName={userData.name}
-          userAddressLine1={userData.addressLine1}
-          userAddressLine2={userData.addressLine2}
-          userNumber={userData.number}
+          userAddressLine1={userData.addline1}
+          userAddressLine2={userData.addline2}
+          userNumber={userData.phoneno}
         />
 
         {active === "negot1" && (
@@ -189,16 +190,17 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-                  <NegotiationBox1
-                    iName={item.itemName}
-                    quantity={item.quantity}
-                    actualPrice={item.actualPrice}
-                    userPrice = {item.userPrice}
-                    weight = {item.weight}
-                    index={1}
-                    userQuantity={item.quantity}
+                  {item.map((i,ind)=>{
+                  return <NegotiationBox1
+                    iName={i.name}
+                    quantity={i.quantity}
+                    actualPrice={i.price}
+                    userPrice = {i.nprice}
+                    weight = {i.weight}
+                    index={ind}
+                    userQuantity={i.quantity}
                     onCounterHandler={QuantityCounterHandler}
-                  />
+                  />})}
 
               <div
                 style={{
@@ -226,22 +228,17 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-              {salesItems.map((item, index) => {
-                return (
-                  <NegotiationBox2
-                    key={index}
-                    iName={item.itemName}
-                    quantity={item.quantity}
-                    weight={item.weight}
-                    actualPrice={item.actualPrice}
-                    userPrice={item.userPrice}
-                    index={item.index}
+                  {item.map((i,ind) => {return <NegotiationBox2
+                    iName={i.name}
+                    quantity={i.quantity}
+                    weight={i.weight}
+                    actualPrice={i.price}
+                    getValue={setUprice}
+                    index={ind}
+                    userPrice={i.nprice}
                     onlimitHandler={priceLimitHandler}
-                  />
-                );
-              })}
-              <div
-                style={{
+                  />})}
+              <div style={{
                   position: "absolute",
                   top: "10px",
                   right: "10px",
@@ -266,20 +263,15 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-              {salesItems.map((item, index) => {
-                return (
                   <NegotiationBox3
-                    key={index}
                     seller={item.seller}
-                    iName={item.itemName}
-                    actualPrice={item.actualPrice}
-                    purchaseDate={item.purchaseDate}
-                    userPrice={item.userPrice}
-                    userQuantity={item.quantity}
-                    acceptance={item.acceptance}
+                    iName={item.name}
+                    actualPrice={item.price}
+                    purchaseDate={new Date()}
+                    userPrice={item.cprice}
+                    userQuantity={item.quan}
+                    acceptance={item.status}
                   />
-                );
-              })}
               <div
                 style={{
                   position: "absolute",

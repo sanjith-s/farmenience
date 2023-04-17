@@ -44,7 +44,7 @@ const NGOProfileComp = (props) => {
     }
 
     const handleSubmit = () => {
-        alert("Hi")
+        // alert("Hi")
     }
 
     return (

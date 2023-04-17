@@ -198,13 +198,13 @@ function NegotiationBox3(props) {
             fontWeight: "600",
           }}
         >
-          {props.acceptance == "notChanged" ? (
+          {props.acceptance == "Not responded" ? (
             <UnpublishedIcon/>
           ) : (
             <PublishedWithChangesIcon />
           )}
 
-          {props.acceptance == "notChanged"
+          {props.acceptance == "Not responded"
             ? "Not yet seen"
             : "Revised by Seller"}
         </Button>

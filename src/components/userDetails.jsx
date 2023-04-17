@@ -1,50 +1,46 @@
 import React, { useState } from "react";
-import { Box, Card, TextField, Typography, Dialog, DialogTitle, DialogActions,Button } from "@mui/material";
+import { Box, Card, TextField, Typography } from "@mui/material";
 
 function UserDetails(props) {
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [open3, setOpen3] = useState(false);
-
-  const handleClose1 = () => {
-    setOpen1(false);
-  };
-
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-
-  const handleClose3 = () => {
-    setOpen3(false);
-  };
-
   const [address, setAddress] = useState(props.userAddress);
-  const addressHandler = (event) => {
+  const addressHandler = async (event) => {
     let newAddress = event.target.value;
     if (newAddress.length >= 1)
       setAddress(newAddress);
     else {
-      setOpen1(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Address field is empty",
+      })
     }
   };
 
   const [name, setName] = useState(props.userName);
-  const nameHandler = (event) => {
+  const nameHandler = async (event) => {
     let newName = event.target.value;
     if (newName.length >= 1)
       setName(newName);
     else {
-      setOpen2(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Name field is empty",
+      })
     }
   };
 
   const [number, setNumber] = useState(props.userNumber);
-  const numberHandler = (event) => {
+  const numberHandler = async (event) => {
     let newNumber = event.target.value;
     if (newNumber.length >= 1)
       setNumber(newNumber);
     else {
-      setOpen3(true);
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: "Number field is empty",
+      })
     }
   };
 
@@ -139,49 +135,6 @@ function UserDetails(props) {
           }
         />
       </Box>
-
-      <Dialog
-        open={open1}
-        onClose={handleClose1}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Address field is empty
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose1}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open2}
-        onClose={handleClose2}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Name field is empty
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose2}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog
-        open={open3}
-        onClose={handleClose3}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Number field is empty
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose3}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-
     </Card>
   );
 }

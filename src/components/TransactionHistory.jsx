@@ -9,8 +9,6 @@ import {
   Box,
   Paper,
 } from "@mui/material";
-// import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
-// import { TableColumnResizing } from '@devexpress/dx-react-grid-material-ui';
 
 function TransactionHistory(props) {
   const createData = (

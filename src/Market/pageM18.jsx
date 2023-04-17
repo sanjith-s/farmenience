@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Cookies from 'js-cookie';
 import ProductCard from "../components/productCard";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -18,8 +19,9 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import Axios from "axios";
 import { baseURL } from "../constants";
+import { LocalSeeOutlined } from "@material-ui/icons";
+import Item from './../components/itemBox';
 
 const PageM18 = () => {
 
@@ -51,23 +53,72 @@ const PageM18 = () => {
     setType('');
     setLocation('');
   }
+  // let token = Cookies.get('token');
+  // await Axios.post(`${baseURL}/buyer/postrequest`, {
+  //   name: name,
+  //   price: price,
+  //   quantity: qty,
+  //   specificType: type,
+  //   location: location
+  // }, { headers: { tokenstring: token } })
+  //   .then(async (res) => {
+  //     await Swal.fire({
+  //       icon: 'success',
+  //       title: "Successfully added request !!!",
+  //     })
+  //   }).catch(async (err) => {
+  //     await Swal.fire({
+  //       icon: 'error',
+  //       title: 'Oops...',
+  //       text: err.response.data.message,
+  //     })
+  //   })
+  const [data, setData] = useState([]);
 
-  const handleSubmit = async () => {
+  useEffect(() => {
     let token = Cookies.get('token');
-    await Axios.post(`${baseURL}/buyer/postrequest`, {
+    alert(localStorage.getItem("reqs"));
+    if (localStorage.getItem("reqs") == null || localStorage.getItem("reqs") == "" ) {
+      alert("yes");
+      localStorage.setItem("reqs", "[]");
+    }
+    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }, []);
+  const handleSubmit = async () => {
+    alert("hi");
+    var items = [];
+    
+    items = JSON.parse(localStorage.getItem("reqs"));
+    var newitems = [{
       name: name,
       price: price,
       quantity: qty,
       specificType: type,
-      location: location
-    }, { headers: { tokenstring: token } })
-      .then(async (res) => {
-        alert("SUCCESS");
-        console.log("Successfully added request");
-      }).catch((err) => {
-        alert("FAILURE");
-        console.log(err);
-      })
+      location: location,
+      flag: 1,
+      buyer: data
+    }, ...items];
+    localStorage.setItem("reqs", JSON.stringify(newitems));
   }
 
   return (
@@ -156,11 +207,15 @@ const PageM18 = () => {
                     <CurrencyRupeeIcon style={{ color: "darkgreen" }} />
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 2000)
                     setPrice(event.target.value);
                   else {
-                    setOpen1(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Price",
+                    })
                   }
                 }}
                 style={{
@@ -205,11 +260,15 @@ const PageM18 = () => {
                     </Typography>
                   </InputAdornment>
                 }
-                onChange={(event) => {
+                onChange={async (event) => {
                   if (event.target.value >= 0 && event.target.value <= 50)
                     setQty(event.target.value);
                   else {
-                    setOpen2(true);
+                    await Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: "Invalid Quantity",
+                    })
                   }
                 }}
                 style={{
@@ -293,64 +352,21 @@ const PageM18 = () => {
             </FormControl>
           </Box>
         </Box>
-
-        <Dialog
-          open={open1}
-          onClose={handleClose1}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Price
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose1}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open2}
-          onClose={handleClose2}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Quantity
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose2}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
-        <Dialog
-          open={open3}
-          onClose={handleClose3}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">
-            Invalid Type
-          </DialogTitle>
-          <DialogActions>
-            <Button onClick={handleClose3}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-
       </Box>
 
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-      <Button endIcon={<DoneIcon />}
-        variant="contained"
-        color="success"
-        onClick={handleSubmit}
-      >
-        submit request
-      </Button>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Button endIcon={<DoneIcon />}
+          variant="contained"
+          color="success"
+          onClick={handleSubmit}
+        >
+          submit request
+        </Button>
 
-      <Button variant="contained"
-            color="success" onClick={Reset} >
-        Reset To Old Values
-      </Button>
+        <Button variant="contained"
+          color="success" onClick={Reset} >
+          Reset To Old Values
+        </Button>
       </div>
     </Box>
   );

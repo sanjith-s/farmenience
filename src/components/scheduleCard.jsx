@@ -1,5 +1,5 @@
 import React from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import dayjs from 'dayjs';
 import { Box, FormControl, InputLabel, MenuItem, Select, Stack, Divider, Button, TextField, Slide } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -11,7 +11,6 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom/dist";
 import { baseURL } from '../constants';
-import { PropaneSharp } from "@mui/icons-material";
 
 const ScheduleCard = (props) => {
   const [value, setValue] = React.useState(dayjs('2022-12-20T21:11:54'));
@@ -38,21 +37,38 @@ const ScheduleCard = (props) => {
     setValue();
   }
 
+  const verify = async () => {
+    await Swal.fire({
+      icon: 'info',
+      title: 'Please confirm the details ...',
+      html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
+    });
+
+    postMeet();
+  }
+
   const postMeet = async () => {
     let token = Cookies.get('token');
     let dateStr = new Date(value);
-    let filename='';
+    let filename = '';
     let formData = new FormData();
     formData.append('caption', "hello");
     formData.append('file', props.imgName);
     console.log(Array.from(formData.entries()))
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
-        console.log(response);
-        filename=response.data.message;
+        await Swal.fire({
+          icon: 'success',
+          title: response.data.message,
+        })
+        filename = response.data.message;
       })
       .catch(async (res) => {
-        alert(res.response.data.message);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.response.data.message,
+        })
       })
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
@@ -223,21 +239,18 @@ const ScheduleCard = (props) => {
       >
       </Stack>
       <Box textAlign="center" padding={"1.25rem"}>
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={Reset}>
+        <Button variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }} onClick={Reset}>
           Reset To Old Values
         </Button><br /><br />
-        <Button variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }} onClick={async () => {
-          await Swal.fire({
-            icon: 'info',
-            title: 'Please confirm the details ...',
-            html: "<b>Meet Date and Time: </b> " + Date(Object.values(value)[2]) + "<br /><br />" + "<b>Soil Details: </b>" + details + "<br /><br />" + "<b>Reason: </b>" + reason + "<br /><br />" + "<b>NGO: </b>" + ngo + "<br /><br />",
-          });
-          postMeet();
-        }}>
+        <Button variant="contained" sx={{
+          backgroundColor: "#fafa01", color: "black", "&:hover": {
+            backgroundColor: "#ffff00",
+          }
+        }} onClick={async () => {verify()}}>
           Submit
         </Button>
       </Box>

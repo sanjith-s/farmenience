@@ -180,7 +180,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of view Items in the market"}</p>
             <button onClick={() => {
-              navigate('../m10')
+              navigate('../M11')
             }} className="box-button">{"Go Now"}</button>
           </div>
         </div>
@@ -191,7 +191,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of orders you placed"}</p>
             <button onClick={() => {
-              navigate('../m17')
+              navigate('../M17')
             }} className="box-button">{"View"}</button>
           </div>
         </div>
@@ -202,7 +202,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"See a list of requests"}</p>
             <button onClick={() => {
-              navigate('../m15')
+              navigate('../M15')
             }} className="box-button">{"View"}</button>
           </div>
         </div>
@@ -213,7 +213,7 @@ function pageM9() {
           <div className="box-body">
             <p className="box-description">{"Publish a new Request"}</p>
             <button onClick={() => {
-              navigate('../m18')
+              navigate('../M18')
             }} className="box-button">{"Create"}</button>
           </div>
         </div>

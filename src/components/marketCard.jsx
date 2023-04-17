@@ -11,8 +11,6 @@ import {
 } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-
-
 import img from "../images/product8.jpg";
 import Axios from "axios";
 import Cookies from "js-cookie";
@@ -21,7 +19,6 @@ import { baseURL } from "../constants";
 export default function MediaCard(props) {
   
   function addCart() {
-    // alert("fsnk")
     const items = {
       productName: props.productName,
       quantity: props.sellerCount,

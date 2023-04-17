@@ -55,7 +55,6 @@ const ReviewsForm = () => {
 
     const postReview = async () => {
         let token = Cookies.get('token');
-        alert(review);
         await Axios.post(`${baseURL}/review`, {
             name: name,
             email: email,
@@ -67,8 +66,8 @@ const ReviewsForm = () => {
                 if (response.data.message === 'Review added !!') {
                     await Swal.fire({
                         icon: 'success',
-                        title: 'Meet Added !!',
-                        text: 'Waiting for NGO Reply',
+                        title: 'Thank you for your suggestion !!',
+                        text: "We will take this into consideration and improve the website"
                     })
                     navigate('../homepage1');
                 }

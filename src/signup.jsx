@@ -63,7 +63,36 @@ function Signup() {
   };
 
   const submit = async (event) => {
-    { location.loaded ? alert(JSON.stringify(location)) : "Location data not available yet" }
+    if (!navigator.geolocation) {
+      setStatus("Geolocation is not supported by browser");
+    }
+
+    else {
+      setStatus("Locating..");
+      navigator.geolocation.getCurrentPosition((postion) => {
+        setStatus(null);
+        setLat(postion.coords.latitude);
+        setLng(postion.coords.longitude);
+        console.log(postion.coords.latitude, 2);
+      },
+        () => {
+          setStatus("Unable to retrieve your location");
+        })
+    }
+
+    {
+      location.loaded ?
+        Swal.fire({
+          icon: 'error',
+          title: 'Location Received',
+          text: JSON.stringify(location),
+        }) :
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: "Location data not available yet",
+        })
+    }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -100,6 +129,36 @@ function Signup() {
     if (
       signupdata.password === signupdata.confpass
     ) {
+      let FILE1 = '';
+      let formData1 = new FormData();
+      formData1.append('caption', "hello");
+      formData1.append('file', filename1);
+      console.log(Array.from(formData1.entries()))
+      await Axios.post(`${baseURL}/upload`, formData1)
+        .then(async (response) => {
+          console.log(response);
+          FILE1 = response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+
+      let FILE2 = '';
+      let formData2 = new FormData();
+      formData2.append('caption', "hello");
+      formData2.append('file', filename2);
+      console.log(Array.from(formData2.entries()))
+
+      await Axios.post(`${baseURL}/upload`, formData2)
+        .then(async (response) => {
+          console.log(response);
+          FILE2 = response.data.message;
+        })
+        .catch(async (res) => {
+          alert(res.response.data.message);
+        })
+      alert(FILE1 + " " + FILE2);
+
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
         phoneno: signupdata.phone,

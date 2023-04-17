@@ -4,7 +4,8 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
-import {Link,useLocation } from "react-router-dom";
+import {Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   Box,
   FormControl,
@@ -20,7 +21,6 @@ import {
   CardMedia,
   Snackbar,
 } from "@mui/material";
-import { data } from "autoprefixer";
 
 const itemsName = [
   "name",
@@ -48,23 +48,23 @@ const SellerNegotiate = (props) => {
 // --------------------------------------------------------------------
 
   const [orders,setOrders] = useState(()=>{
-    const savedItem = localStorage.getItem('orders');
+    const savedItem = localStorage.getItem('reqs');
     const parsedItem = JSON.parse(savedItem);
     return parsedItem || " nothing "
   }) ;
 
   const index = orders.indexOf(orders.find((order)=> { 
-    return order._id === props.id;
+    return order.name === props.iname;
   }));
 
-  console.log(index);
+  console.log(" hi" + index);
 
   // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
-    orders[index].price = newLimit ;
+    orders[index].nprice = newLimit ;
     setLimit(newLimit);
   };
 
@@ -109,6 +109,18 @@ const SellerNegotiate = (props) => {
       setLimit(props.iprice);
       setQuantity(props.iquantity);
     } else {
+      if (limit == props.iprice) {
+          orders.splice(index,1);
+      } else {
+          orders[index].flag = 0;
+          orders[index].nprice = limit;
+      }
+      localStorage.setItem("reqs",JSON.stringify(orders));
+      Swal.fire({
+        icon: 'success',
+        title: 'Sent',
+        text: 'Price request sent to seller',
+      })
       return;
     }
   };

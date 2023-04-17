@@ -147,8 +147,8 @@ const ReviewsForm = () => {
                                 width: "90%",
                                 
                             }}
-                            inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5"} }} 
-                            InputLabelProps={{ style: { fontSize: 15 } }}
+                            // inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5"} }} 
+                            // InputLabelProps={{ style: { fontSize: 15 } }}
                         />
                         <TextField
                             id="emailadd"

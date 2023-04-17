@@ -152,9 +152,6 @@ function Signup() {
     "& .MuiStepConnector-line": {
       borderColor: "black",
     }
-
-
-
   }
 
   return (
@@ -481,20 +478,21 @@ function Signup() {
                   variant="filled"
                   inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
                   InputLabelProps={{ style: { fontSize: 15 } }}
-                  type={showPassword1 ? 'text' : 'password'}
+                  // type={sh owPassword1 ? 'text' : 'password'}
+                  type="password"
                   name="password"
                   value={signupdata.password}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword1}
-                        edge="end"
-                      >
-                        {showPassword1 ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
+                  // endAdornment={
+                  //   <InputAdornment position="end">
+                  //     <IconButton
+                  //       aria-label="toggle password visibility"
+                  //       onClick={handleClickShowPassword1}
+                  //       edge="end"
+                  //     >
+                  //       {showPassword1 ? <VisibilityOff /> : <Visibility />}
+                  //     </IconButton>
+                  //   </InputAdornment>
+                  // }
                   onChange={addSignupData}
                 />
               </Box>
@@ -512,20 +510,21 @@ function Signup() {
                   variant="filled"
                   inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
                   InputLabelProps={{ style: { fontSize: 15 } }}
-                  type={showPassword2 ? 'text' : 'password'}
+                  // type={showPassword2 ? 'text' : 'password'}
+                  type="password"
                   name="confpass"
                   value={signupdata.confpass}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword2}
-                        edge="end"
-                      >
-                        {showPassword2 ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
+                  // endAdornment={
+                  //   <InputAdornment position="end">
+                  //     <IconButton
+                  //       aria-label="toggle password visibility"
+                  //       onClick={handleClickShowPassword2}
+                  //       edge="end"
+                  //     >
+                  //       {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                  //     </IconButton>
+                  //   </InputAdornment>
+                  // }
                   onChange={addSignupData}
                 />
               </Box>

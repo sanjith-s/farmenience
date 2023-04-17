@@ -135,7 +135,7 @@ function NegotiationBox1(props) {
           lineHeight={0.2}
           sx={{ textTransform: "uppercase", fontWeight: "600" }}
         >
-          buyer price
+          seller price
         </Typography>
         <Box
           sx={{

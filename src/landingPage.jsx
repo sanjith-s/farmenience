@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/style.css";
 import "./css/queries.css";
 import "./css/general.css";
@@ -31,17 +31,34 @@ import collage9 from "./images/collage/collage-21.jpg";
 import collage10 from "./images/collage/collage-22.jpg";
 import collage11 from "./images/collage/collage-23.jpg";
 import collage12 from "./images/collage/collage-24.jpg";
+import Boy1 from "../src/images/Boy1.png"
+import Boy2 from "../src/images/Boy2.png"
+import Girl1 from "../src/images/Girl1.jpeg"
+import Girl2 from "../src/images/Girl2.png"
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+
+  const fullAnotherSpeak = (text) => {
+    responsiveVoice.speak(text, "Tamil Male");
+  }
+
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', 'https://code.responsivevoice.org/responsivevoice.js?key=EKCH0zej');
+    document.body.appendChild(addScript);
+  }, []);
+
   return (
-    <div>
+    <div onClick={(e) => {
+      fullAnotherSpeak(e.target.innerText)
+    }}>
       <header className="header">
         <a href="#">
         </a>
 
-        
+
         <button className="btn-mobile-nav">
           <ion-icon className="icon-mobile-nav" name="menu-outline"></ion-icon>
           <ion-icon className="icon-mobile-nav" name="close-outline"></ion-icon>
@@ -63,7 +80,7 @@ const LandingPage = () => {
               >
 
               <a href="#how" className="btn btn--outline">Learn more &darr;</a>
-              
+
             </div>
             <div className="hero-img-box">
               <picture>
@@ -98,17 +115,17 @@ const LandingPage = () => {
               />
               <img src={xceedLogo} alt="Xceed logo" />
             </div>
-            </div>
+          </div>
         </section>
 
         <section className="section-how" id="how">
-          <div style={{textAlign:"center"}}>
+          <div style={{ textAlign: "center" }}>
             <span className="subheading">How it works</span>
             <h2 className="heading-secondary">
               Components of the website in 2 simple steps
             </h2>
-            </div>
-          <div className="grid grid--2-cols grid--center-v" style={{margin:"auto",width:"80%"}}>
+          </div>
+          <div className="grid grid--2-cols grid--center-v" style={{ margin: "auto", width: "80%" }}>
             <div className="step-text-box">
               <p className="step-number">01</p>
               <h3 className="heading-tertiary">
@@ -163,52 +180,52 @@ const LandingPage = () => {
                 <img
                   className="testimonial-img"
                   alt="Photo of customer Dave Bryson"
-                  src={dave}
+                  src={Girl1}
                 />
                 <blockquote className="testimonial-text">
-                  Aliquam faucibus purus in massa tempor nec. Quam vulputate dignissim suspendisse in est ante in.
+                  An amazing website with easily made user interface.
 
                 </blockquote>
-                <p className="testimonial-name">&mdash; Dave Bryson</p>
+                <p className="testimonial-name">&mdash; Pragathi, <br />CTF Projects Student Director</p>
               </figure>
 
               <figure className="testimonial">
                 <img
                   className="testimonial-img"
                   alt="Photo of customer Ben Hadley"
-                  src={ben}
+                  src={Boy1}
                 />
                 <blockquote className="testimonial-text">
-                  Aliquam faucibus purus in massa tempor nec. Quam vulputate dignissim suspendisse in est ante in.
+                  Very good website with lot of interesting features integrated into it.
 
                 </blockquote>
-                <p className="testimonial-name">&mdash; Ben Hadley</p>
+                <p className="testimonial-name">&mdash; Kaushik, <br />CTF Techops Student Director</p>
               </figure>
 
               <figure className="testimonial">
                 <img
                   className="testimonial-img"
                   alt="Photo of customer Steve Miller"
-                  src={steve}
+                  src={Girl2}
                 />
                 <blockquote className="testimonial-text">
-                  Aliquam faucibus purus in massa tempor nec. Quam vulputate dignissim suspendisse in est ante in.
+                  Nicely built website making it easy for users who are not very tech-proficient too.
 
                 </blockquote>
-                <p className="testimonial-name">&mdash; Steve Miller</p>
+                <p className="testimonial-name">&mdash; Arsshida, <br />CTF HR Student Director</p>
               </figure>
 
               <figure className="testimonial">
                 <img
                   className="testimonial-img"
                   alt="Photo of customer Hannah Smith"
-                  src={hannah}
+                  src={Boy2}
                 />
                 <blockquote className="testimonial-text">
-                  Aliquam faucibus purus in massa tempor nec. Quam vulputate dignissim suspendisse in est ante in.
+                  Good experience and was able to achieve better outputs after the use of the webite.
 
                 </blockquote>
-                <p className="testimonial-name">&mdash; Hannah Smith</p>
+                <p className="testimonial-name">&mdash; Mohan, <br />Farmer, Kanchipuram, Tamilnadu</p>
               </figure>
             </div>
           </div>
@@ -300,12 +317,12 @@ const LandingPage = () => {
             </figure>
           </div>
         </section>
-          {/* <!-- FEATURE COMPONENT  --> */}
+        {/* <!-- FEATURE COMPONENT  --> */}
 
 
         <section className="section-pricing" id="features">
 
-          <div className="grid grid--3-cols" style={{margin:"auto",width:"80%"}}>
+          <div className="grid grid--3-cols" style={{ margin: "auto", width: "80%" }}>
             <div className="feature">
               <ion-icon className="feature-icon" name="leaf-outline"></ion-icon>
               <p className="feature-title">

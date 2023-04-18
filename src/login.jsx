@@ -5,9 +5,15 @@ import validator from "validator";
 import { useNavigate } from "react-router-dom/dist";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import { Box, Button, Typography, Input, InputAdornment, IconButton, Card, TextField } from "@mui/material";
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Box, Button, Typography, Input, IconButton, Card, TextField } from "@mui/material";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import login1 from "./images/LOGIN.png";
@@ -18,7 +24,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPwd] = useState();
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);2
 
   const handleChange = (event) => {
     setEmail(document.querySelector("#email").value);
@@ -122,7 +128,13 @@ function Login() {
     navigate("/signup");
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -159,8 +171,29 @@ function Login() {
           </Box>
           <TextField onChange={(e) => { setEmail(e.target.value) }} id="filled-basic" label="Email"
             variant="filled" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={email} />
-          <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic"
-            label="Password" variant="filled" type="password" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={password} />
+          {/* <TextField onChange={(e) => { setPwd(e.target.value) }} id="filled-basic"
+            label="Password" variant="filled" type="password" sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} value={password} /> */}
+            <FormControl sx={{ width: "25rem", backgroundColor: "#f5f5f5" }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            onChange={(e) => { setPwd(e.target.value) }}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
 
           <Button
             variant="contained"

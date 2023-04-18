@@ -392,10 +392,13 @@ const PageM6 = () => {
       <Box textAlign="center" padding={"1.25rem"}>
         <Stack
           direction="column"
-          divider={<Divider orientation="vertical" flexItem />}
-          spacing={2}
+          // divider={<Divider orientation="vertical" flexItem />}
+          // spacing={2}
+          
           display="flex"
           justifyContent="center"
+          flexDirection="row"
+
         >
           <Button onClick={async () => {
             await Swal.fire({
@@ -415,8 +418,9 @@ const PageM6 = () => {
             {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
             {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
           </Button>
+          
           <Button variant="contained"
-             onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto",width:"auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
+             onClick={Reset} sx={{ bgcolor: "#ff5d54", margin: "auto",width:"auto", "&:hover": { backgroundColor: "#ff2519", } }} >
             Reset To Old Values
           </Button>
         </Stack>

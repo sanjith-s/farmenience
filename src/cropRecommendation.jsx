@@ -123,12 +123,14 @@ const CropRec = () => {
       rainfall: rainfall,
     })
       .then(async (response) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: response.data
         })
       })
       .catch(async (res, err) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -149,7 +151,7 @@ const CropRec = () => {
       >
         <Box
           sx={{
-            // bgcolor: "#D9D9D9;",
+            // bgcolor: "#D9D9D9;",1
             height: "auto",
             width: "auto",
             borderRadius: "20px",

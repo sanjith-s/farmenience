@@ -151,7 +151,7 @@ const CropRec = () => {
       >
         <Box
           sx={{
-            // bgcolor: "#D9D9D9;",
+            // bgcolor: "#D9D9D9;",1
             height: "auto",
             width: "auto",
             borderRadius: "20px",

@@ -18,7 +18,7 @@ const AboutUsPage = () => {
   }
 
   const fullAnotherSpeak = (text) => {
-    responsiveVoice.speak(text, "Tamil Male");
+    responsiveVoice.speak(text,"Tamil Male");
   }
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const AboutUsPage = () => {
   }, []);
 
   return (
-    <div className="about-hero" onClick={(e) => {
+    <div className="about-hero" id="google-translate-element" onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
       {/* <img className="abt-img" src={abtImg5} alt="" /> */}

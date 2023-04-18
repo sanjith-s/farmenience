@@ -126,9 +126,11 @@ function Login() {
 
   return (
     <>
+    <Box align="center">
       <Card sx={{
+      
         backgroundColor: "#96f0ff", margin: "1.875rem",
-        padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: 40, alignItems:"center", justifyContent:"center"
+        padding: "1.25rem", width: "41.563rem", boxShadow: 20, alignItems:"center", justifyContent:"center"
       }}>
         <form
           onSubmit={submit}
@@ -180,6 +182,7 @@ function Login() {
       <br />
       <div style={{ color: "blue", fontSize: "1.25rem", textAlign: "center" }}><a href="../forgetPasswordGetEmail">Forgot Password ?</a></div>
       <br /><br />
+      </Box>
     </>
   );
 }

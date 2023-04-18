@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom/dist";
 import { Box, Button } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Cookies from 'js-cookie';
 import Axios from "axios";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';

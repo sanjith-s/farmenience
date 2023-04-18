@@ -611,7 +611,8 @@
   box-shadow: 0 2.4rem 2.8rem rgba(0, 0, 0, 0.15);
   border-radius: .6875rem;
 
-  background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+  /* background-image: linear-gradient(to right bottom, #518d4f, #71df6e); */
+  background-color: #e9fdea;
   overflow: hidden;
 }
 
@@ -622,7 +623,8 @@
 
 .cta .heading-secondary {
   /* color: #45260a; */
-  color: inherit;
+  color: #409515;
+  
   margin-bottom: 3.2rem;
 }
 

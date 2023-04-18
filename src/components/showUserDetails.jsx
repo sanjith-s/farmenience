@@ -21,7 +21,7 @@ function ShowUserDetails(props) {
           alignSelf: "center",
         }}
       >
-        Seller Details
+        Buyer Details
       </Typography>
 
       <CardContent
@@ -77,7 +77,7 @@ function ShowUserDetails(props) {
           </Typography>
         </Box>
 
-        {/* <Box sx={{ display: "flex", columnGap: "1.25rem", margin: ".3125rem 0rem" }}>
+        <Box sx={{ display: "flex", columnGap: "1.25rem", margin: ".3125rem 0rem" }}>
           <Typography
             variant="h6"
             sx={{
@@ -96,9 +96,9 @@ function ShowUserDetails(props) {
               width: "80%",
             }}
           >
-            {props.userAddressLine1},<br/> {props.userAddressLine2}
+            {props.userAddressLine1} ,{props.userAddressLine2}
           </Typography>
-        </Box> */}
+        </Box>
       </CardContent>
     </Card>
   );

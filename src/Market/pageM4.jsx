@@ -203,7 +203,7 @@ function PageM4() {
           sx={{
             display: "flex",
             columnGap: "1.25rem",
-            backgroundColor: "#fff",
+            backgroundColor: "white",
             padding: "0rem 1.25rem 1.25rem 1.25rem",
           }}
         >
@@ -212,7 +212,7 @@ function PageM4() {
           <CardContent
             sx={{
               width: "40%",
-              bgcolor: "#ddd",
+              // bgcolor: "#ddd",
               padding: "1.25rem 0rem",
               borderRadius: ".5rem",
               border: ".25rem solid",
@@ -284,7 +284,7 @@ function PageM4() {
               paddingTop: "5rem",
               border: ".25rem solid",
               borderRadius: ".625rem",
-              backgroundColor: "#eee",
+              // backgroundColor: "#eee",
             }}
           >
             <CssBaseline />

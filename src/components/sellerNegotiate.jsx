@@ -282,17 +282,17 @@ const SellerNegotiate = (props) => {
       </Box>
 
       <CardActions style={{ display: "flex", flexDirection: "column" }}>
-        <CardMedia>
+        {/* <CardMedia>
           <img
             src={props.img}
             alt="wheat img"
             width="18.75rem"
             style={{
-              /* border: ".3125rem solid darkgreen", */
-              /* borderRadius: "1rem", */
-            }}
-          />
-        </CardMedia>
+              /* border: ".3125rem solid darkgreen", */}
+              {/* /* borderRadius: "1rem", */}
+            {/* }} */}
+          {/* /> */}
+        {/* </CardMedia> */}
 
         <CardActions>
           <Box

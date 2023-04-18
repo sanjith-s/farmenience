@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 import "../css/pageM12.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -162,7 +162,10 @@ function PageM12() {
   let priceArr = [];
   async function addToOrder() {
       deleteCart();
-      alert('making payment');
+      Swal.fire({
+        icon: 'info',
+        title: 'Making Payment ...',
+      })
       let cartOld=cartDeatils;
       for(let i=0;i<cartOld.length;i++)
       {
@@ -728,7 +731,7 @@ function PageM12() {
                     color: "red",
                   }}
                 >
-                  you will save ₹{save} on this order
+                  {/* you will save ₹{save} on this order */}
                 </Typography>
               )}
             </Box>

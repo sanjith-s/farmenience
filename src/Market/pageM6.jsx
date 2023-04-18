@@ -114,7 +114,7 @@ const PageM6 = () => {
       .then(async (res) => {
         await Swal.fire({
           icon: 'success',
-          title: "Successfully added seller's products" + res.data.message,
+          title: "Successfully added seller's product",
         })
       }).catch(async (err) => {
         await Swal.fire({

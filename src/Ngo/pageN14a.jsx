@@ -202,6 +202,7 @@ const PageN14a = () => {
             <Stack spacing={2} display="flex" justifyContent={"center"} alignContent="center" alignItems={"center"} >
               <img
                 src={data.filename}
+                alt = "No Image"
                 style={{
                   width: "90%",
                   height: "90%",
@@ -211,14 +212,6 @@ const PageN14a = () => {
                 }}
               /><br />
               <Stack direction={"column"} spacing={4}>
-                <Button
-                  onClick={DeleteAppointment}
-                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}
-                >
-                  DELETE
-                </Button>
                 <Button
                   onClick={AcceptAppointment}
                   variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {

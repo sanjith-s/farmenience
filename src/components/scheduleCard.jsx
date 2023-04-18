@@ -34,6 +34,7 @@ const ScheduleCard = (props) => {
     props.toggle(false);
     setNgo("Select");
     setReason("");
+    setLocation("");
     setValue();
   }
 
@@ -57,19 +58,20 @@ const ScheduleCard = (props) => {
     console.log(Array.from(formData.entries()))
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
-        await Swal.fire({
-          icon: 'success',
-          title: response.data.message,
-        })
+        // await Swal.fire({
+        //   icon: 'success',
+        //   title: response.data.message,
+        // })
         filename = response.data.message;
       })
       .catch(async (res) => {
-        await Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: res.response.data.message,
-        })
+        // await Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: res.response.data.message,
+        // })
       })
+
     await Axios.post(`${baseURL}/postmeet`, {
       date: dateStr.toLocaleDateString(),
       time: dateStr.toTimeString(),
@@ -128,129 +130,129 @@ const ScheduleCard = (props) => {
         flexDirection: "column",
         // justifyContent: "space-evenly",
         alignItems: "center",
-        boxShadow:"2",
-        padding:"20px",
-        marginTop:"10%",
+        boxShadow: "2",
+        padding: "20px",
+        marginTop: "10%",
         // marginBotto:"10%"
       }}>
-      <LocalizationProvider dateAdapter={AdapterDayjs} >
-        <DesktopDatePicker
-          label="Meet Date"
-          inputFormat="DD/MM/YYYY"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} sx={{
+        <LocalizationProvider dateAdapter={AdapterDayjs} >
+          <DesktopDatePicker
+            label="Meet Date"
+            inputFormat="DD/MM/YYYY"
+            value={value}
+            onChange={handleChange}
+            renderInput={(params) => <TextField {...params} sx={{
+              backgroundColor: "#ffff",
+              borderBottomColor: "black",
+              width: "70%",
+              margin: "5px"
+            }} />}
+          />
+          <TimePicker
+            label="Meet Time"
+            value={value}
+            onChange={handleChange}
+            renderInput={(params) => <TextField {...params} sx={{
+              backgroundColor: "#ffff",
+              borderBottomColor: "black",
+              width: "70%",
+              margin: "5px"
+            }} />}
+          />
+        </LocalizationProvider>
+        <TextField
+          id="filled-basic"
+          label="Soil Details"
+          variant="filled"
+          color="success"
+          sx={{
             backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
-            margin:"5px"
-          }} />}
+            margin: "5px"
+          }}
+          inputProps={{
+            maxLength: 100,
+            minLength: 1
+          }}
+          onChange={(e) => { setDetails(e.target.value) }}
+          value={details}
         />
-        <TimePicker
-          label="Meet Time"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} sx={{
+        <TextField
+          id="filled-basic"
+          label="Crops growing"
+          variant="filled"
+          color="success"
+          onChange={(e) => { setCrops(e.target.value) }}
+          sx={{
             backgroundColor: "#ffff",
             borderBottomColor: "black",
             width: "70%",
-            margin:"5px"
-          }} />}
+            margin: "5px"
+          }}
+          inputProps={{
+            maxLength: 100,
+            minLength: 1
+          }}
+          value={crops}
         />
-      </LocalizationProvider>
-      <TextField
-        id="filled-basic"
-        label="Soil Details"
-        variant="filled"
-        color="success"
-        sx={{
+        <TextField
+          id="filled-basic"
+          onChange={(e) => { setReason(e.target.value) }}
+          label="Reason for meet"
+          variant="filled"
+          color="success"
+          sx={{
+            backgroundColor: "#ffff",
+            borderBottomColor: "black",
+            width: "70%",
+            margin: "5px"
+          }}
+          inputProps={{
+            maxLength: 80,
+            minLenght: 1
+          }}
+          value={reason}
+        />
+        <TextField
+          id="filled-basic"
+          label="Location"
+          variant="filled"
+          color="success"
+          sx={{
+            backgroundColor: "#ffff",
+            borderBottomColor: "black",
+            width: "70%",
+            margin: "5px"
+          }}
+          inputProps={{
+            maxLength: 100,
+            minLength: 1
+          }}
+          onChange={(e) => { setLocation(e.target.value) }}
+          value={location}
+        />
+
+        <Box sx={{
           backgroundColor: "#ffff",
           borderBottomColor: "black",
           width: "70%",
-          margin:"5px"
-        }}
-        inputProps={{
-          maxLength: 100,
-          minLength: 1
-        }}
-        onChange={(e) => { setDetails(e.target.value) }}
-        value={details}
-      />
-      <TextField
-        id="filled-basic"
-        label="Crops growing"
-        variant="filled"
-        color="success"
-        onChange={(e) => { setCrops(e.target.value) }}
-        sx={{
-          backgroundColor: "#ffff",
-          borderBottomColor: "black",
-          width: "70%",
-          margin:"5px"
-        }}
-        inputProps={{
-          maxLength: 100,
-          minLength: 1
-        }}
-        value={crops}
-      />
-      <TextField
-        id="filled-basic"
-        onChange={(e) => { setReason(e.target.value) }}
-        label="Reason for meet"
-        variant="filled"
-        color="success"
-        sx={{
-          backgroundColor: "#ffff",
-          borderBottomColor: "black",
-          width: "70%",
-          margin:"5px"
-        }}
-        inputProps={{
-          maxLength: 80,
-          minLenght: 1
-        }}
-        value={reason}
-      />
-      <TextField
-        id="filled-basic"
-        label="Location"
-        variant="filled"
-        color="success"
-        sx={{
-          backgroundColor: "#ffff",
-          borderBottomColor: "black",
-          width: "70%",
-          margin:"5px"
-        }}
-        inputProps={{
-          maxLength: 100,
-          minLength: 1
-        }}
-        onChange={(e) => { setLocation(e.target.value) }}
-        value={location}
-      />
-      
-      <Box sx={{
-        backgroundColor: "#ffff",
-        borderBottomColor: "black",
-        width: "70%",
-      }}>
-        <FormControl fullWidth>
-          <InputLabel id="r1">Type of NGO</InputLabel>
-          <Select
-            labelId="r1"
-            id="r2"
-            value={ngo}
-            label="Select"
-            onChange={(e) => { setNgo(e.target.value) }}
-          >
-            <MenuItem value={'Select'}>Select</MenuItem>
-            <MenuItem value={'NGO'}>NGO</MenuItem>
-            <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+        }}>
+          <FormControl fullWidth>
+            <InputLabel id="r1">Type</InputLabel>
+            <Select
+              labelId="r1"
+              id="r2"
+              value={ngo}
+              label="Select"
+              onChange={(e) => { setNgo(e.target.value) }}
+            >
+              <MenuItem value={'Select'}>Select</MenuItem>
+              <MenuItem value={'NGO'}>NGO</MenuItem>
+              <MenuItem value={'Non-NGO'}>Non-NGO</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       </Box>
       {/* <Stack
         direction="row"
@@ -261,9 +263,9 @@ const ScheduleCard = (props) => {
       >
       </Stack> */}
       <Box textAlign="center" padding={"1.25rem"}>
-        
+
         <Button variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}
-         onClick={async () => {verify()}}>
+          onClick={async () => { verify() }}>
           Submit
         </Button><br /><br />
         <Button variant="contained" sx={{

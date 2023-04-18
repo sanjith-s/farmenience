@@ -123,12 +123,14 @@ const CropRec = () => {
       rainfall: rainfall,
     })
       .then(async (response) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: response.data
         })
       })
       .catch(async (res, err) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: 'Oops...',

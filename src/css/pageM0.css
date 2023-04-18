@@ -1,6 +1,7 @@
 .contents {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .contents > .box1 {
   /* flex: 20%; */

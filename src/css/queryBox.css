@@ -128,7 +128,7 @@
 }
 
 .query-card {
-    background-color: #c4fbc4;
+    background-color: #f4fbc4;
     border: 0.06rem solid #ccc;
     border-radius: 0.3rem;
     padding: 1rem;
@@ -211,7 +211,7 @@
 }
 
 .query-card__button--display {
-    background-color: #138808;
+    background-color: #61c358;
     color: white;
     border: none;
     border-radius: 0.19rem;
@@ -237,7 +237,7 @@
     max-width: 50rem;
     margin: 0 auto;
     padding: 1.3rem;
-    background-color: #a9e293;
+    background-color: #e2d393;
     border-radius: 0.6rem;
     margin-top: 3%;
     box-shadow: 0.4rem 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.1);
@@ -251,7 +251,7 @@
     text-align: center;
     color: #fff;
     text-shadow: 0.13rem 0.13rem 0.13rem rgba(46, 78, 37, 0.2);
-    background-color: #2f5b04;
+    background-color: #5b4e04;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

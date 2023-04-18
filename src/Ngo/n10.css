@@ -1,0 +1,106 @@
+.contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .contents > .box1 {
+    /* flex: 20%; */
+  
+    max-width: 19.5rem;
+  }
+  .contents > .roller {
+    flex: 50%;
+    max-width: 41rem;
+  }
+  
+  .box1 {
+    --title-font: 'Bungee', cursive;
+    --body-font: 'Montserrat', sans-serif;
+    background-color: #e2e06c;
+    border-radius: .625rem;
+    box-shadow: 0rem .125rem .625rem rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    margin: 1.25rem;
+    width: 21.875rem;
+  }
+  
+  .box-header {
+    background-color: #e2e06c;
+    padding: 1.5rem;
+    display: flex;
+    text-align: center;
+    margin:0 auto ;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .box-title {
+    color: rgb(0, 0, 0);
+    font-size: 2.5rem;
+    font-family: var(--title-font);
+    text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.5);
+  }
+  
+  .box-body {
+    padding: 1.5rem;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+  }
+  
+  .box-description {
+    font-size: 1.5rem;
+    font-family: var(--body-font);
+    margin: 0 0 1.5rem;
+    text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .box-button {
+    background-color: rgba(151, 168, 66, 0.756);
+    border: none;
+    border-radius: 99em;
+    color: white;
+    cursor: pointer;
+    font-size: 1.125rem;
+    font-family: var(--body-font);
+    padding: .75rem 1.5rem;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%;
+    text-transform: uppercase;
+    align-self: flex-end;
+  }
+  
+  .box-button:hover {
+    background-color:rgba(104, 118, 38, 0.756);
+  }
+  
+  .contents>.roller {
+    flex: 2;
+    aspect-ratio: 3/1;
+  }
+  .texts-box {
+    display: block;
+  }
+  
+  .lab-text1 {
+    color: rgb(72, 69, 69);
+    font-size: 1.2rem;
+    font-family: var(--title-font);
+    text-shadow: .0625rem .0625rem .125rem rgba(0, 0, 0, 0.5);
+  }
+  @media (max-width: 50rem) {
+    .contents > .box1 {
+      /* flex: 45%; */
+      max-width: 50%;
+    }
+  }
+  

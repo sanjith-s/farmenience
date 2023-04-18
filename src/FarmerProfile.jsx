@@ -138,9 +138,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   return (
     <div className='backProfile' style={{
       background: "linear-gradient(-4deg,white 0%,white 50%,#91e6bc 50%,#91e6bc 100%)",
-      height:"max-content"
-    }} id="google_translate_element" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
+      height: "max-content"
     }}>
       <div className='profileBox' style={{
         width: "70%",
@@ -153,7 +151,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
         >
           <Box
             sx={{
-              display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%"
+              display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%", height: "max-content"
             }}>
             <Stack sx={{
               display: "flex", alignItems: "center", justifyContent: "center", width: "15%"
@@ -164,20 +162,13 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
             <Button color="error" variant="contained" sx={{ width: "15%" }} onClick={logout}>Logout</Button>
           </Box>
-        </Stack>
-        <Stack direction={"column"} spacing={1}
-          sx={{
-            display: "flex", alignItems: "center", justifyContent: "center", position: "relative", bottom: "7%"
-          }}>
-
           <Typography variant='h4'>{name}</Typography>
-          <Typography variant='subtitle1'>Farmer Account</Typography>
-          <Grid container rowSpacing={0} columnSpacing={{ xs: 0, sm: 0, md: 0 }} sx={{ width: "80%" }}>
-            <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey",
-               margin: "5%", padding: "2%", borderRadius: "0.625rem 0.938rem", 
-               marginBottom: "5%", width: "80%" }}>
-                <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
+          <Typography variant='subtitle1'>A Farmer</Typography>
+          <Box sx={{
+            boxShadow: "0rem 0rem 0.625rem lightgrey", margin: "20%", padding: "2%",
+            borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "35%"
+          }}>
+            <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Personal Info</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
                     <Stack direction={"row"} spacing={2}>
@@ -198,13 +189,13 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                     </Stack>
                   </Stack>
                 </Stack>
-              </Box>
-            </Grid>
-            <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
-              margin: "5%", padding: "2%", paddingTop: "1%", 
-              borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
-                <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
+          </Box>
+          <Box className='fitem1' sx={{
+            boxShadow: "0rem 0rem 0.625rem lightgrey",
+            margin: "5%", padding: "2%", paddingTop: "1%",
+            borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "35%"
+          }}>
+            <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
                   <Stack direction={"row"} spacing={1}><AccountBalance /><Typography>Address</Typography></Stack>
                   <Stack sx={{ padding: "1%" }} spacing={1}>
                     <Typography>{line1}</Typography>
@@ -214,66 +205,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
                     <Typography>{state}</Typography>
                   </Stack>
                 </Stack>
-              </Box>
-
-            </Grid>
-            <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
-              margin: "5%", padding: "2%", paddingTop: "1%",
-               borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
-                <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
-                  <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                    <AccountBalance />
-                    <Typography>Crops Growing</Typography>
-                    <button style={{border:0,marginLeft:"auto",backgroundColor:"transparent"}} onClick={()=>{setCEdit(!cropEdit)}} ><ModeEdit /></button>
-                  </Stack>
-                  <Stack sx={{ padding: "1%" }} spacing={1}>
-                 {crops.map(crop=>{
-                 return (  
-                  <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                 <Typography>{crop}</Typography>
-                 {cropEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeCrop} name={crop}>❌</button>}
-                 </Stack> )
-                 })}
-                 {cropEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                  <TextField variant='standard' label="Add Item" id="newCrop" />
-                  <IconButton onClick={addCrop} style={{margin:"auto",textAlign:"center",borderRadius:"50%",border:0}} ><AddCircleIcon fontSize='large' color="success" /></IconButton>
-                  </Stack>
-                 }
-                  </Stack>
-                </Stack>
-              </Box>
-
-            </Grid>
-            <Grid item xs={6} sx={{ display: "flex", alignItems: "", justifyContent: "center" }}>
-              <Box className='fitem1' sx={{ boxShadow: "0rem 0rem 0.625rem lightgrey", 
-              margin: "5%", padding: "2%", paddingTop: "1%", 
-              borderRadius: "0.625rem 0.938rem", marginBottom: "5%", width: "80%" }}>
-              <Stack sx={{ margin: "2%" }} divider={<Divider orientation="horizontal" flexItem />} spacing={1} >
-                  <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                    <AccountBalance />
-                    <Typography>Skills</Typography>
-                    <button style={{border:0,marginLeft:"auto",backgroundColor:"transparent"}} onClick={()=>{setSEdit(!skillEdit)}} ><ModeEdit /></button>
-                  </Stack>
-                  <Stack sx={{ padding: "1%" }} spacing={1}>
-                 {skills.map(skill=>{
-                 return (  
-                  <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                 <Typography>{skill}</Typography>
-                 {skillEdit && <button style={{margin:0,marginLeft:"auto",border:0,backgroundColor:"transparent"}} onClick={removeSkill} name={skill} >❌</button>}
-                 </Stack> )
-                 })}
-                 {skillEdit && <Stack direction={"row"} spacing={1} sx={{display:"flex",alignContent:"center",alignItems:"center"}}>
-                  <TextField variant='standard' label="Add Item" id="newSkill" />
-                  <IconButton onClick={addSkill} style={{margin:"auto",textAlign:"center",borderRadius:"50%",border:0}} ><AddCircleIcon fontSize='large' color="success" /></IconButton>
-                  </Stack>
-                 }
-                  </Stack>
-                </Stack>
-              </Box>
-
-            </Grid>
-          </Grid>
+          </Box>
 
         </Stack>
       </div>

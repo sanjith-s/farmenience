@@ -121,9 +121,6 @@ const Footer = () => {
                                     <a href="../cropRecommendation" class="hover:underline">Crop Recommendation</a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="../imageDetection" class="hover:underline">Disease Detection</a>
-                                </li>
-                                <li class="mb-4">
                                     <a href="../web" class="hover:underline">Market Prices</a>
                                 </li>
                                 <li class="mb-4">
@@ -159,10 +156,10 @@ const Footer = () => {
                         </div>
                         <div>
                             <div>
-                                {/* <div>
+                                <div>
                                     <h2 className="title gx-mb-4"></h2>
                                     <div id="google_translate_element" ></div>
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </div>

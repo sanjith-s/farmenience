@@ -439,7 +439,7 @@ const PageN12 = () => {
                 padding: ".4375rem",
               }}
             >
-              <Button
+              {/* <Button
                 variant="contained"
                 sx={{
                   backgroundColor: "red",
@@ -451,7 +451,7 @@ const PageN12 = () => {
               >
                 <DeleteIcon />
                 Delete
-              </Button>
+              </Button> */}
               <Button
                 variant="contained"
                 sx={{
@@ -468,7 +468,7 @@ const PageN12 = () => {
                 <CallIcon />
                 Respond
               </Button>
-              <Button
+              {/* <Button
                 variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , 
                   "&:hover": {
                     color:"white",
@@ -477,7 +477,7 @@ const PageN12 = () => {
                 }}
               >
                 Sender Details
-              </Button>
+              </Button> */}
             </Box>
           </Grid>
           <Dialog open={open} onClose={handleClose}>

@@ -45,7 +45,7 @@ const AboutUsPage = () => {
           <div id="google_translate_element">
 
             <div className="gx-d-flex justify-content-center" style={{ position: "relative" }}>
-              <h1 className="heading-primary" style={{ textAlign: "center", color: "#000", fontWeight: "37.5rem", marginBottom: "5rem" }}>
+              <h1 className="heading-primary" style={{ textAlign: "center", color: "#000", fontWeight: "37.5rem", marginBottom: "5rem", fontFamily:"arial" }}>
                 About Farmenience
               </h1>
               {/* <img src={farmsvg} alt="" style={{ height: "140px", objectFit: "cover", position: "absolute", left: "42%", top: "30px" }} /> */}

@@ -150,7 +150,7 @@ function NegotiationBox2(props) {
           lineHeight={2.5}
           sx={{ fontSize: "15px", paddingLeft: "5px" }}
         >
-          {props.weight}kg
+          {props.weight} kg
         </Typography>
       </CardContent>
 

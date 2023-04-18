@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import WheatImg from "../wheatimg.jpg";
+
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -8,6 +11,7 @@ import {
   CardContent,
   Typography,
   CardActions,
+  Button,
   Badge,
   Paper
 } from "@mui/material";
@@ -83,16 +87,16 @@ function NegotiationBox1(props) {
         >
           ₹ {props.actualPrice}
         </Typography>
+
         <Typography
-          variant="overline"
-          lineHeight={2.5}
-          sx={{ fontSize: "15px", paddingLeft: "5px" }}
+          variant="h6"
+          lineHeight={0.2}
+          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
         >
-          {props.weight}kg
+          quantity : {props.userQuantity} KG
         </Typography>
-
       </CardContent>
-
+      
       <CardActions
         style={{
           width: "20%",
@@ -103,40 +107,29 @@ function NegotiationBox1(props) {
           justifyContent: "center",
         }}
       >
-        <Typography
-          variant="h6"
-          lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
-        >
-          quantity
-        </Typography>
-
-        <StyledBadge
-          style={{ position: "sticky" }}
-          badgeContent={props.userQuantity}
+        <Button
+          variant="contained"
           color="success"
+          style={{
+            display: "flex",
+            columnGap: "0.625rem",
+            padding: "0.625rem",
+            justifyContent: "center",
+            alignItems: "center",
+            fontWeight: "600",
+          }}
         >
-          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "40px" }} />
-        </StyledBadge>
-      </CardActions>
+          {props.flag == 1 ? (
+            <UnpublishedIcon/>
+          ) : (
+            <PublishedWithChangesIcon />
+          )}
 
-      <CardActions
-        style={{
-          width: "20%",
-          display: "flex",
-          flexDirection: "column",
-          rowGap: "30px",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Typography
-          variant="h6"
-          lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600" }}
-        >
-          buyer price
-        </Typography>
+          {props.flag == 1
+            ? "Not yet seen"
+            : "Revised by Seller"}
+        </Button>
+        
         <Box
           sx={{
             display: "flex",
@@ -145,11 +138,16 @@ function NegotiationBox1(props) {
             justifyItems: "center",
           }}
         >
-          <Paper elevation={5} style={{ padding: "10px 20px", fontWeight: "600", fontSize: "18px" }}>
-            ₹ {props.userPrice}
-          </Paper>
+          <Typography
+          variant="h6"
+          lineHeight={0.2}
+          sx={{ textTransform: "uppercase", fontWeight: "600" }}
+        >
+          Seller's price : ₹ {props.userPrice}
+        </Typography>
         </Box>
       </CardActions>
+
     </Card>
   );
 }

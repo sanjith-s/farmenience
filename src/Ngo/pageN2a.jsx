@@ -50,7 +50,7 @@ const PageN2 = () => {
         if (response.data.message === 'Deleted Successfully') {
           await Swal.fire({
             icon: 'success',
-            title: 'Oops...',
+            title: 'Success !!',
             text: 'Accepted Successfully !',
           })
           navigate('../N1');

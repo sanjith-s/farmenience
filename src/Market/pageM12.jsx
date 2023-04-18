@@ -231,6 +231,7 @@ function PageM12() {
       })
       setTotal(total);
   }
+  summer();
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
     setConsumerAddress(address);

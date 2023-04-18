@@ -171,7 +171,7 @@ function PageM15() {
 
 
   const [active, setActive] = useState("negot1");
-  const [uprice,setUprice] = useState();
+  const [uprice, setUprice] = useState();
   const handleClick = async (opt) => {
     if (opt == 2) {
       setActive("negot2");
@@ -324,28 +324,29 @@ function PageM15() {
                     onCounterHandler={QuantityCounterHandler}
                   />
                   <div className="p-btn1"><Button
-          variant="contained"
-          color="success"
-          style={{
-            display: "flex",
-            columnGap: "0.625rem",
-            padding: "0.625rem",
-            justifyContent: "center",
-            alignItems: "center",
-            fontWeight: "600",
-          }}
-        >
-          {i.flag == 1 ? (
-            <UnpublishedIcon/>
-          ) : (
-            <PublishedWithChangesIcon />
-          )}
+                    variant="contained"
+                    color="success"
+                    style={{
+                      display: "flex",
+                      columnGap: "0.625rem",
+                      padding: "0.625rem",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {i.flag == 1 ? (
+                      <UnpublishedIcon />
+                    ) : (
+                      <PublishedWithChangesIcon />
+                    )}
 
-          {i.flag == 1
-            ? "Not yet seen"
-            : "Revised by Seller"}
-        </Button></div>
-                  </div>})}
+                    {i.flag == 1
+                      ? "Not yet seen"
+                      : "Revised by Seller"}
+                  </Button></div>
+                </div>
+              })}
 
               <div
                 style={{
@@ -373,23 +374,24 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-                  {item.map((i,ind) => {return <div><NegotiationBox2
-                    iName={i.name}
-                    quantity={i.quantity}
-                    weight={i.weight}
-                    actualPrice={i.price}
-                    getValue={setUprice}
-                    index={ind}
-                    userPrice={i.nprice}
-                    onlimitHandler={priceLimitHandler}
-                  />
-                  </div>
-                  })}
+              {item.map((i, ind) => {
+                return <div><NegotiationBox2
+                  iName={i.name}
+                  quantity={i.quantity}
+                  weight={i.weight}
+                  actualPrice={i.price}
+                  getValue={setUprice}
+                  index={ind}
+                  userPrice={i.nprice}
+                  onlimitHandler={priceLimitHandler}
+                />
+                </div>
+              })}
               <div style={{
-                  position: "absolute",
-                  top: "10px",
-                  right: "10px",
-                }} >
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+              }} >
                 <Tooltip onClick={negotHandler} title="Back"  >
                   <IconButton >
                     <CancelIcon style={{ color: "red", width: "38px", height: "38px" }} />
@@ -410,15 +412,15 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-                  <NegotiationBox3
-                    seller={item.seller}
-                    iName={item.name}
-                    actualPrice={item.price}
-                    purchaseDate={new Date()}
-                    userPrice={item.cprice}
-                    userQuantity={item.quan}
-                    acceptance={item.status}
-                  />
+              <NegotiationBox3
+                seller={item.seller}
+                iName={item.name}
+                actualPrice={item.price}
+                purchaseDate={new Date()}
+                userPrice={item.cprice}
+                userQuantity={item.quan}
+                acceptance={item.status}
+              />
               <div
                 style={{
                   position: "absolute",

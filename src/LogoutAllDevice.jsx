@@ -6,7 +6,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Axios from "axios";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
-import Cookies from "js-cookie";
+import { Typography } from '@material-ui/core';
 
 const LogoutAllDevice = () => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const LogoutAllDevice = () => {
           Cookies.remove("token");
           localStorage.removeItem("auth");
           localStorage.removeItem("role");
-        Cookies.remove("role");
+          Cookies.remove("role");
           navigate('../login');
         }
         else {
@@ -45,22 +45,29 @@ const LogoutAllDevice = () => {
       });
   }
   return (
-    <div padding="6.25rem">
+    <div align="center" padding="6.25rem">
 
       <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
+          boxShadow: 15,
+          backgroundColor: "#ffffff",
+          padding: "10px",
+          width: "30%",
+          alignItems: "center",
+          margin: "50px"
         }}
       >
-        <Button onClick={fun} variant="contained" className="log-out-btn" endIcon={<LogoutIcon />}
-          sx={{
-            backgroundColor: "#FF8787"
-          }}
-        >
-          Logout from all device
-        </Button>
+        <Box><LogoutIcon sx={{ fontSize: 40 }}></LogoutIcon></Box>
+
+        <Box margin={4}>
+          <Button onClick={fun} variant="contained" className="log-out-btn"
+            sx={{
+              backgroundColor: "#138ac5"
+            }}
+          >
+            <Typography sx={{ fontSize: "500px" }}>Logout from all device</Typography>
+          </Button>
+        </Box>
       </Box>
     </div>
   );

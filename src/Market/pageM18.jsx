@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Cookies from 'js-cookie';
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom/dist";
 import ProductCard from "../components/productCard";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -25,6 +27,7 @@ import Item from './../components/itemBox';
 
 const PageM18 = () => {
 
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [qty, setQty] = useState(0);
@@ -53,12 +56,12 @@ const PageM18 = () => {
     setType('');
     setLocation('');
   }
-  
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     let token = Cookies.get('token');
-    if (localStorage.getItem("reqs") == null || localStorage.getItem("reqs") == "" ) {
+    if (localStorage.getItem("reqs") == null || localStorage.getItem("reqs") == "") {
       localStorage.setItem("reqs", "[]");
     }
     Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
@@ -132,6 +135,11 @@ const PageM18 = () => {
       buyer: data
     }, ...items];
     localStorage.setItem("reqs", JSON.stringify(newitems));
+    Swal.fire({
+      icon: 'success',
+      title: 'Item Requested !!',
+    })
+    navigate('../M15')
   }
 
   return (
@@ -166,7 +174,7 @@ const PageM18 = () => {
             backgroundColor: "lightgreen",
           }}
         >
-          <Box style={{ position: "sticky",marginTop:"10px" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
@@ -198,7 +206,7 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky",marginTop:"10px" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
@@ -243,7 +251,7 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky",marginTop:"10px" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
@@ -296,7 +304,7 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky",marginTop:"10px" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
@@ -332,7 +340,7 @@ const PageM18 = () => {
               />
             </FormControl>
           </Box>
-          <Box style={{ position: "sticky",marginTop:"10px" }}>
+          <Box style={{ position: "sticky", marginTop: "10px" }}>
             <FormControl fullWidth variant="filled">
               <InputLabel>
                 <Typography
@@ -367,19 +375,19 @@ const PageM18 = () => {
         </Box>
       </Box>
 
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop:"20px" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginTop: "20px" }}>
         <Button endIcon={<DoneIcon />}
           variant="contained"
           color="success"
           onClick={handleSubmit}
-          sx={{ bgcolor: "#41b547", "&:hover": { backgroundColor: "#2E7D32", },marginRight:"50px"}}
-          
+          sx={{ bgcolor: "#41b547", "&:hover": { backgroundColor: "#2E7D32", }, marginRight: "50px" }}
+
         >
           Submit Request
         </Button>
 
         <Button variant="contained"
-          color="success" onClick={Reset}  sx={{ bgcolor: "#f23c33", "&:hover": { backgroundColor: "#d63131", } }}>
+          color="success" onClick={Reset} sx={{ bgcolor: "#f23c33", "&:hover": { backgroundColor: "#d63131", } }}>
           Reset To Old Values
         </Button>
       </div>

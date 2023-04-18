@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Swal from 'sweetalert2';
 import CssBaseline from "@mui/material/CssBaseline";
 import { Container, Typography, Fab, Button, Box, Stack, Divider } from "@mui/material";
@@ -43,32 +43,32 @@ const PageN4 = () => {
   useEffect(() => {
     const checkToken = async () => {
       let token = Cookies.get('token');
-    await Axios.get(`${baseURL}/tokenCheck`, { headers: { tokenstring: token } }).
+      await Axios.get(`${baseURL}/tokenCheck`, { headers: { tokenstring: token } }).
         then((response) => {
-            
+
         })
         .catch(async (res) => {
           alert(res.response.data.message)
-            if (res.response.data.message === 'Error in connection') {
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please Check Network Connection!',
-                })
-                navigate('../login')
-            }
-            else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                await Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Login Error',
-                })
-                navigate('../login')
-            }
+          if (res.response.data.message === 'Error in connection') {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Please Check Network Connection!',
+            })
+            navigate('../login')
+          }
+          else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+            await Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Login Error',
+            })
+            navigate('../login')
+          }
         })
     }
     checkToken();
-}, []);
+  }, []);
 
   const getImages = async () => {
     await Axios.get(`${baseURL}/files`)
@@ -85,19 +85,19 @@ const PageN4 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "25px",}}>
+    <div style={{ boxSizing: "borderBox", padding: "20px", }}>
       <CssBaseline />
       <Typography fontWeight={700} fontSize={50} sx={{
         alignItems: "center",
         // marginLeft: "auto"
-        textAlign:"center"
+        textAlign: "center"
       }}>Schedule a Meet with NGO</Typography>
-     
+    
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
+        sx={{ height: "auto", width: "auto", padding: "3.125rem", }}
       >
         <Container
           sx={{
@@ -124,6 +124,9 @@ const PageN4 = () => {
             paddingRight: "0rem",
             display: "flex",
             justifyItems: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            marginTop: "5.625rem"
           }}
         >
           {!isUploaded && (
@@ -174,6 +177,10 @@ const PageN4 = () => {
       </Stack>
 
       
+      
+
+
+
 
       {data && data.map((img, index) => {
         return (

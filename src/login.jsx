@@ -11,6 +11,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import login1 from "./images/LOGIN.png";
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 function Login() {
   const navigate = useNavigate();
@@ -51,6 +53,7 @@ function Login() {
       title: 'Validation Successful!',
     })
   };
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
 
   const LogMeIn = async (em, pass) => {
 
@@ -60,27 +63,38 @@ function Login() {
         password: pass,
       });
       if (response.data.message == "Successful") {
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful!',
-        });
         Cookies.set("token", response.data.token, { expires: 1 });
         localStorage.setItem("auth",response.data.token);
         localStorage.setItem("role",response.data.details[0].typeOfAcc);
+        await Swal.fire({
+          icon: 'success',
+          title: 'Login Successful!',
+        });
+        setAuth(true);
+          setRole(response.data.details[0].typeOfAcc);
         if (response.data.details[0].typeOfAcc == "Farmer") {
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
           navigate("/FarmerHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "NGO") {
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
           navigate("/N10");
         }
         else if (response.data.details[0].typeOfAcc == "Retailer") {
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
           navigate("/M9");
         }
         else {
           navigate("/homepage2");
         }
       } else {
-        Swal.fire({
+        await Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Error in logging in!',
@@ -114,7 +128,7 @@ function Login() {
     <>
       <Card sx={{
         backgroundColor: "#96f0ff", margin: "1.875rem",
-        padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: 40
+        padding: "1.25rem", width: "41.563rem", boxShadow: 20, marginLeft: 40, alignItems:"center", justifyContent:"center"
       }}>
         <form
           onSubmit={submit}

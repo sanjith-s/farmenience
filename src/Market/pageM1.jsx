@@ -14,20 +14,21 @@ import { Content } from "antd/es/layout/layout";
 function PageM1() {
 
   const navigate = useNavigate();
-
+  const [email, setEmail] = useState('');
   const [orders, setOrders] = useState([]);
   const [prof, setProf] = useState([]);
 
   useEffect(() => {
-    var content1 = JSON.parse(localStorage.getItem("reqs")).filter(o => {
-      return o.flag == 1;
-    });
-    console.log("filed" + content1);
-    setOrders(content1);
+    // var content1 = JSON.parse(localStorage.getItem("reqs")).filter(o => {
+    //   return o.flag == 1;
+    // });
+    // console.log("filed" + content1);
+    // setOrders(content1);
     let token = Cookies.get('token');
     Axios.get(`${baseURL}/loadrequests`, { headers: { tokenstring: token } }).
       then((response) => {
-        // setOrders(response.data.message);
+        setOrders(response.data.message);
+        console.log(response.data.message);
         // setOrders(JSON.parse(localStorage.getItem("reqs")));
       })
       .catch(async (res) => {
@@ -47,30 +48,7 @@ function PageM1() {
           navigate('../login')
         }
       });
-
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } })
-      .then((response) => {
-        setProf(response.data.message);
-      }).catch(async (res) => {
-        if (res.response.data.message === 'Error in connection') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please Check Network Connection!',
-          })
-        }
-        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-          await Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Login Error',
-          })
-          navigate('../login')
-        }
-      });
   }, []);
-
-
 
 
   let location = useLocation();
@@ -108,13 +86,15 @@ function PageM1() {
         <h2 className="query-list__heading">You have {orders.length} requests</h2>
         {
           orders.map((req, index) => {
+            // console.log(req.senderEmail);
+            // getUser(req.senderEmail);
             return (
               <div>
                 <RequestBox
                   key={index + 1}
-                  reqId={req.buyer._id}
-                  name={req.buyer.name}
-                  phoneNo={req.buyer.phoneno}
+                  reqId={req._id}
+                  name={req.senderName}
+                  phoneNo={req.senderPhoneNo}
                   itemName={req.name}
                   itemQuantity={req.quantity}
                   data={req}

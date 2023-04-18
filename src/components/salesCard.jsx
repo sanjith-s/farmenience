@@ -46,7 +46,7 @@ function SalesCard(props) {
                   padding: "0rem",
                 }}
               >
-                consumer name
+                Seller name
               </Typography>
               <Typography margin="0rem" variant="h6">
                 {props.name}
@@ -82,7 +82,7 @@ function SalesCard(props) {
                 {props.ordDate}
               </Typography>
             </Box>
-            <Box
+            {/* <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -109,9 +109,9 @@ function SalesCard(props) {
                 delivery date
               </Typography>
               <Typography margin="0rem" variant="h6">
-                {props.delDate}
+                {props.delDate} 
               </Typography>
-            </Box>
+              </Box>  */}
             <Box
               sx={{
                 display: "flex",
@@ -137,17 +137,18 @@ function SalesCard(props) {
                 }}
               >
                 {" "}
-                Items
+                Item
               </Typography>
               <Typography margin="0rem" variant="h6">
-                {props.items.map((val) => {
+                {/* {props.items.map((val) => {
                   return (
                     <>
                       {val.name}
                       <br />
                     </>
                   )
-                })}
+                })} */}
+                {props.iname}
               </Typography>
             </Box>
           </Stack>

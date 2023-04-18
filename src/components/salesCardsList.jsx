@@ -33,12 +33,13 @@ function SalesCardsList(props) {
         {items.map((item) => (
           <Grid item padding={2} key={item.saleID}>
             <SalesCard
-              key={item.saleID}
-              name={item.clientName}
-              ordDate={item.orderDate.slice(0, 10)}
-              delDate={item.deliveryDate.slice(0, 10)}
-              items={item.items}
+              key={item._id}
+              name={item.recieverName}
+              ordDate={item.createdAt.slice(0, 10)}
+              // delDate={item.deliveryDate.slice(0, 10)}
+              // items={item.items}
               data={item}
+              iname={item.name}
               // onDeleteHandler={props.onDeleteHandler}
             />
           </Grid>

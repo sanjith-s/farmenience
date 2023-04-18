@@ -15,6 +15,7 @@ import {
   TextField
 } from "@mui/material";
 
+
 const itemsName1 = [
   "Query ID",
   "Query Type",
@@ -38,6 +39,7 @@ const PageN12 = () => {
   const [open, setOpen] = React.useState(false);
   const [open1x, setOpen1x] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
+
 
   const handleClickOpen1 = () => {
     setOpen1(true);
@@ -129,7 +131,7 @@ const PageN12 = () => {
                 </Stack>
               </CardContent>
             </Grid>
-            <Dialog
+            {/* <Dialog
               open={open}
               keepMounted
               onClose={() => { setOpen(false) }}
@@ -153,7 +155,7 @@ const PageN12 = () => {
                 <Button onClick={() => { setOpen(false) }}>Cancel</Button>
                 <Button onClick={() => { setOpen(false) }}>Send</Button>
               </DialogActions>
-            </Dialog>
+            </Dialog> */}
 
             <Grid container item xs={6} direction="column" >
               <CardContent style={{ padding: ".9375rem 1.5625rem", borderRadius: ".5rem" }}>
@@ -299,6 +301,7 @@ const PageN12 = () => {
               Respond
             </Typography>
           </Button>
+         
         </Box>
       </Box>
     </Container>

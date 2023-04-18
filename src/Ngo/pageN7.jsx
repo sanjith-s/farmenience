@@ -54,7 +54,7 @@ const PageN7 = () => {
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
-        if (response.data.message === 'Query Added Successfully') {
+        if (response.data.messager === 'Query Added Successfully') {
           await Swal.fire({
             icon: 'success',
             title: 'Query Added Successfully !!',

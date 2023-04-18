@@ -80,7 +80,11 @@ const ImageDetection = () => {
     return (
         <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
             <CssBaseline />
-            <span className="title">Image Disease Detection</span>
+            <Typography fontWeight={700} fontSize={50} sx={{
+        alignItems: "center",
+        // marginLeft: "37.5rem"
+        textAlign:"center"
+      }}>Image Disease Detection</Typography>
             <Stack
                 direction="row"
                 divider={<Divider orientation="vertical" flexItem />}
@@ -99,8 +103,8 @@ const ImageDetection = () => {
                         paddingRight: "0rem",
                         display: "flex",
                         justifyItems: "center",
-                        border: "1rem solid black",
-                        borderRadius: "1rem"
+                        border: "5px solid black",
+                        // borderRadius: "1rem" 
                     }}
                 >
                     {!isUploaded && (
@@ -117,7 +121,7 @@ const ImageDetection = () => {
                             <input
                                 type="file"
                                 id="imgUp"
-                                style={{ display: "none" }}
+                                style={{ display: "flex" }}
                                 accept="image/png, image/jpeg, image/jpg"
                                 maxsize="2"
                                 minsize="1"

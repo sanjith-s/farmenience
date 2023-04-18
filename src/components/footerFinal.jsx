@@ -149,19 +149,22 @@ const Footer = () => {
                                 <li class="mb-4">
                                     <a href="#" >+91 999999999</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="#" >farmenience23@gmail.com</a>
+                                </li>
+                                <li class="mb-4">
+                                <div id="google_translate_element" ></div>
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        {/* <div>
                             <div>
                                 <div>
                                     <h2 className="title gx-mb-4"></h2>
                                     <div id="google_translate_element" ></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

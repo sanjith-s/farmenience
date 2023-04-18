@@ -11,6 +11,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import login1 from "./images/LOGIN.png";
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 function Login() {
   const navigate = useNavigate();
@@ -51,6 +53,7 @@ function Login() {
       title: 'Validation Successful!',
     })
   };
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
 
   const LogMeIn = async (em, pass) => {
 
@@ -67,6 +70,8 @@ function Login() {
           icon: 'success',
           title: 'Login Successful!',
         });
+        setAuth(true);
+          setRole(response.data.details[0].typeOfAcc);
         if (response.data.details[0].typeOfAcc == "Farmer") {
           Cookies.set("token", response.data.token, { expires: 1 });
         localStorage.setItem("auth",response.data.token);

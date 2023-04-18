@@ -90,15 +90,15 @@ const PageM2 = () => {
         > 
           <Box>
             <SellerNegotiate
-              id = {content.buyer._id}
-              name={content.buyer.name}
-              phno={content.buyer.phoneno}
+              id = {content._id}
+              name={content.senderName}
+              phno={content.senderPhoneNo}
               iquantity={content.quantity}
-              address={content.buyer}
+              // address={content.buyer}
               iname={content.name}
               iprice={content.price}
               regno={ids}
-              img={content.img}
+              // img={content.img}
               all = {content}
             />
           </Box>

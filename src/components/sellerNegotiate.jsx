@@ -6,6 +6,7 @@ import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import ErrorSharpIcon from "@mui/icons-material/ErrorSharp";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 import {
   Box,
   FormControl,
@@ -20,12 +21,15 @@ import {
   Stack,
   CardMedia,
   Snackbar,
+  Button,
 } from "@mui/material";
+import Axios from "axios";
+import { baseURL } from "../constants";
 
 const itemsName = [
   "name",
   "phone number",
-  "address",
+  // "address",
   "item name",
   "item quantity",
   "item price",
@@ -38,40 +42,42 @@ const SellerNegotiate = (props) => {
   const itemsValue = [
     props.name,
     props.phno,
-    props.address.addline1 + " ," + props.address.addline2,
+    // props.address.addline1 + " ," + props.address.addline2,
     props.iname,
     props.iquantity,
     props.iprice,
   ];
 
-  console.log(props.address);
+  // console.log(props.address);
   // --------------------------------------------------------------------
 
-  const [orders, setOrders] = useState(() => {
-    const savedItem = localStorage.getItem('reqs');
-    const parsedItem = JSON.parse(savedItem);
-    return parsedItem || " nothing "
-  });
+  // const [orders, setOrders] = useState(() => {
+  //   const savedItem = localStorage.getItem('reqs');
+  //   const parsedItem = JSON.parse(savedItem);
+  //   return parsedItem || " nothing "
+  // });
 
-  const index = orders.indexOf(orders.find((order) => {
-    return order.name === props.iname;
-  }));
+  // const index = orders.indexOf(orders.find((order) => {
+  //   return order.name === props.iname;
+  // }));
 
-  console.log(" hi" + index);
+  // console.log(" hi" + index);
 
   // ----------------------------------------------------------------------------
 
   let [limit, setLimit] = useState(props.iprice);
   const limitHandler = (event) => {
     let newLimit = event.target.value;
-    orders[index].nprice = newLimit;
+    console.log(newLimit);
+    // orders[index].nprice = newLimit;
     setLimit(newLimit);
   };
 
   let [quantity, setQuantity] = useState(props.iquantity);
   const quantityHandler = (event) => {
     let newQuantity = event.target.value;
-    orders[index].quantity = newQuantity;
+    console.log(newQuantity);
+    // orders[index].quantity = newQuantity;
     setQuantity(newQuantity);
 
   };
@@ -79,10 +85,10 @@ const SellerNegotiate = (props) => {
   // ----------------------------------------------------------------------------
 
 
-  useEffect(() => {
-    console.log("useEffects");
-    localStorage.setItem("orders", JSON.stringify(orders))
-  }, [limit, quantity]);
+  // useEffect(() => {
+  //   console.log("useEffects");
+  //   localStorage.setItem("orders", JSON.stringify(orders))
+  // }, [limit, quantity]);
 
   // -----------------------------------------------------------------------------
 
@@ -145,7 +151,37 @@ const SellerNegotiate = (props) => {
     }
   };
 
-
+  const negotiate = async() => {
+    alert('Hei');
+    console.log(props.all);
+    console.log(limit, quantity);
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/transit`, {
+        name: props.all.name,
+        price: props.all.price,
+        quantity: props.all.quantity,
+        specificType: props.all.specificType,
+        location: props.all.location,
+        senderEmail: props.all.senderEmail,
+        senderName: props.all.senderName,
+        senderPhoneNo: props.all.senderPhoneNo,
+        negPrice: limit,
+        negQuantity: quantity  
+    } ,{ headers: { tokenstring: token }}).then((res) => {
+      console.log('success');  
+    }).then(async (res) => {
+      await Swal.fire({
+        icon: 'success',
+        title: "Successfully added seller's products" + res.data.message,
+      })
+    }).catch(async (err) => {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err,
+      })
+    })
+  }
 
   return (
     <Card
@@ -191,7 +227,7 @@ const SellerNegotiate = (props) => {
                 fontSize: "1.375rem",
               }}
             >
-              {props.regno}
+              {props.id}
             </Typography>
           </Box>
           <Stack sx={{ border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
@@ -272,25 +308,25 @@ const SellerNegotiate = (props) => {
             </Typography>
 
             {/* -------------------------------------------------------------------------------------- */}
-            <FormControl style={{ position: "sticky" }}>
-              <InputLabel htmlFor="outlined-adornment-quantity">
-                Quantity
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-quantity"
-                type="quantity"
-                min={props.iquantity}
-                message="hello"
-                placeholder={props.iquantity}
-                onChange={quantityHandler}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <ProductionQuantityLimitsIcon />
-                  </InputAdornment>
-                }
-                label="Quantity"
-              />
-            </FormControl>
+              <FormControl style={{ position: "sticky" }}>
+                <InputLabel htmlFor="outlined-adornment-quantity">
+                  Quantity
+                </InputLabel>
+                <OutlinedInput
+                  id="outlined-adornment-quantity"
+                  type="quantity"
+                  min={props.iquantity}
+                  message="hello"
+                  placeholder={props.iquantity}
+                  onChange={quantityHandler}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <ProductionQuantityLimitsIcon />
+                    </InputAdornment>
+                  }
+                  label="Quantity"
+                />
+              </FormControl>
 
             <FormControl style={{ position: "sticky" }}>
               <InputLabel htmlFor="outlined-adornment-price">Price</InputLabel>
@@ -309,6 +345,9 @@ const SellerNegotiate = (props) => {
                 label="Price"
               />
             </FormControl>
+            <Button onClick={negotiate}>
+              Negotiate
+            </Button>
             {/* ----------------------------------------------------------------------------------------- */}
           </Box>
 
@@ -336,7 +375,7 @@ const SellerNegotiate = (props) => {
               >
                 <ThumbUpIcon
                   variant="contained"
-                  onClick={handleSubmit}
+                  // onClick={handleSubmit}
                   style={{ color: "green", fontSize: "1.875rem" }}
                 />
               </Link>

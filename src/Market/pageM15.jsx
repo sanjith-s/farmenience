@@ -51,6 +51,8 @@ function PageM15() {
   //   number: 8300677299,
   // };
   const [userData, setData] = useState([]);
+  const [transit, setTransitData] = useState([]);
+
   const salesItems = [
     {
       index: 1,
@@ -78,9 +80,9 @@ function PageM15() {
     },
   ];
 
-  useEffect(() => {
+  useEffect(async() => {
     let token = Cookies.get('token');
-    Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
+    await Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
       then((response) => {
         setData(response.data.message);
       })
@@ -101,7 +103,31 @@ function PageM15() {
           navigate('../login')
         }
       })
+
+      await Axios.get(`${baseURL}/gettransit`, {
+        headers: {tokenstring: token}
+      }).then((response) => {
+        setTransitData(response.data.message);
+        console.log(response.data.message);
+      }).catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      });
   }, []);
+
   const [priceLimit1, setPriceLimit1] = useState();
   const [priceLimit2, setPriceLimit2] = useState();
   const [quantity1, setQuantity1] = useState();
@@ -169,21 +195,115 @@ function PageM15() {
   };
   console.log(item);
   console.log(userData);
+
+  const successHandler = async() => {
+    alert('Success Chosen');
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/postreqorders`, {
+        name: transit.name,
+        price: transit.price,
+        quantity: transit.quantity,
+        specificType: transit.specificType,
+        location: transit.location,
+        senderEmail: transit.senderEmail,
+        senderName: transit.senderName,
+        senderPhoneNo: transit.senderPhoneNo,
+        negPrice: transit.negPrice,
+        negQuantity: transit.negQuantity,
+        recieverName: transit.recieverName,
+        recieverEmail: transit.recieverEmail,
+    }, { headers: { tokenstring: token }}).then((res) => {
+      console.log('success');  
+    }).then(async (res) => {
+      await Swal.fire({
+        icon: 'success',
+        title: "Successfully added seller's products" + res.data.message,
+      })
+    }).catch(async (err) => {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err,
+      })
+    })
+
+    await Axios.post(`${baseURL}/delRequest`, {
+      recieverEmail: transit.recieverEmail
+    },{ headers: { tokenstring: token }}).then((res) => {
+      console.log('success');  
+    }).then(async (res) => {
+      await Swal.fire({
+        icon: 'success',
+        title: "Successfully added seller's products" + res.data.message,
+      })
+    }).catch(async (err) => {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err,
+      })
+    })
+  }
+
+
+  
   return (
     <Container style={{ padding: ".625rem 0rem" }} id="google_translate_element">
       <CssBaseline />
 
       <Box className="gx-d-flex justify-content-center">
         <NegotNav handleClick={handleClick} />
-
+      
         <ShowUserDetails
-          userName={userData.name}
+          userName={transit.recieverName}
           userAddressLine1={userData.addline1}
           userAddressLine2={userData.addline2}
-          userNumber={userData.phoneno}
+          userNumber={transit.recieverEmail}
         />
 
-        {active === "negot1" && (
+              <div className="n-card1">
+                <NegotiationBox1
+                    iName={transit.name}
+                    quantity={transit.quantity}
+                    actualPrice={transit.price}
+                    userPrice = {transit.negPrice}
+                    // weight = {i.weight}
+                    // index={ind}
+                    userQuantity={transit.negQuantity}
+                    onCounterHandler={QuantityCounterHandler}
+                  />
+                
+                <div className="p-btn1"><Button
+                  variant="contained"
+                  color="success"
+                  style={{
+                    display: "flex",
+                    columnGap: "0.625rem",
+                    padding: "0.625rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontWeight: "600",
+                  }}
+                  onClick={successHandler}
+        > 
+           <PublishedWithChangesIcon />
+        </Button>
+        <br></br>
+        <Button
+                  variant="contained"
+                  color="error"
+                  style={{
+                    display: "flex",
+                    columnGap: "0.625rem",
+                    padding: "0.625rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    fontWeight: "600",
+                  }}
+        > <UnpublishedIcon/></Button>
+        </div>
+        </div>
+        {/* {active === "negot1" && (
           <Box style={{ position: "relative " }}>
             <Box
               style={{
@@ -192,7 +312,7 @@ function PageM15() {
                 flexDirection: "column",
               }}
             >
-                  {item.map((i,ind)=>{
+                  {transit.map((i,ind)=>{
                   return <div className="n-card1"><NegotiationBox1
                     iName={i.name}
                     quantity={i.quantity}
@@ -241,7 +361,7 @@ function PageM15() {
               </div>
             </Box>
           </Box>
-        )}
+        )} */}
 
         {active === "negot2" && (
           <Box style={{ position: "relative " }}>

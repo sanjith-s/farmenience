@@ -34,6 +34,7 @@ import Axios from "axios";
 
 const PageM6 = () => {
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState({});
   const [open, setOpen] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [count, setCount] = useState([0]);
@@ -53,6 +54,7 @@ const PageM6 = () => {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
+    setFileName(e.target.files[0]);
   }
 
   const Transition = React.forwardRef(function Transition(props, ref) {
@@ -83,16 +85,31 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
+    let filename = '';
+    let formData = new FormData();
+    formData.append('caption', "hello");
+    formData.append('file', fileName);
+    console.log(Array.from(formData.entries()))
+    await Axios.post(`${baseURL}/upload`, formData)
+      .then(async (response) => {
+        console.log(response);
+        filename = response.data.message;
+      })
+      .catch(async (res) => {
+        alert(res.response.data.message);
+      })
+
+    alert(filename);
+
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
       quantity: quantity,
       type: type,
       rating: rating,
-      image: {
-        data: file,
-        contentType: "jpg"
-      }
+      filename: filename,
+      sellerName: "",
+      sellerEmail: ""
     }, { headers: { tokenstring: token } })
       .then(async (res) => {
         await Swal.fire({
@@ -122,18 +139,21 @@ const PageM6 = () => {
             direction="row"
             divider={<Divider orientation="vertical" flexItem />}
             spacing={2}
-            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem" }}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem", }}
           >
-            <Container
+            <Box
               sx={{
-                // bgcolor: "#D9D9D9;",
+                bgcolor: "#b8ebab;",
                 height: "100%",
-                width: "60vw",
-                borderRadius: "3.125rem",
+                width: "50vw",
+                borderRadius: "10px",
                 display: "flex",
                 flexDirection: "column",
                 // justifyContent: "space-evenly",
                 alignItems: "center",
+                boxShadow: "2",
+                padding: "20px"
+
               }}
             >
               <React.Fragment>
@@ -157,9 +177,10 @@ const PageM6 = () => {
                   value={name}
                   onChange={handleAllChange}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -180,9 +201,10 @@ const PageM6 = () => {
                     max: 200
                   }}
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin: "5px"
                   }}
                 />
                 <TextField
@@ -199,9 +221,10 @@ const PageM6 = () => {
                   variant="filled"
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin: "5px"
                   }}
                 />
                 <TextField
@@ -212,9 +235,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -230,9 +254,10 @@ const PageM6 = () => {
                   onChange={handleAllChange}
                   color="success"
                   sx={{
-                    backgroundColor: "#C4E1C5",
+                    backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -241,7 +266,7 @@ const PageM6 = () => {
                 />
 
               </React.Fragment>
-            </Container>
+            </Box>
             <Dialog
               open={open}
               TransitionComponent={Transition}
@@ -357,40 +382,44 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
-      <Stack
-        direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        display="flex"
-        justifyContent="center"
-      >
-        <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
-          Add Item
-        </Button>
-        <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
-          Delete Item
-        </Button>
-      </Stack>
-      <Box textAlign="center" padding={"1.25rem"}>
 
-        <Button onClick={async () => {
-          await Swal.fire({
-            icon: 'info',
-            title: 'Please confirm the details ...',
-            html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
-            imageUrl: file,
-            confirmButtonText: 'Confirm'
-          })
-        }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
-          Submit
-          {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
-          {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
-          {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
-        </Button>
-        <Button variant="contained"
-          color="success" onClick={Reset}>
-          Reset To Old Values
-        </Button><br /><br />
+      {/* <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
+          Add Item
+        </Button> */}
+      {/* <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
+          Delete Item
+        </Button> */}
+      <Box textAlign="center" padding={"1.25rem"}>
+        <Stack
+          direction="column"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          display="flex"
+          justifyContent="center"
+        >
+          <Button onClick={async () => {
+            await Swal.fire({
+              icon: 'info',
+              title: 'Please confirm the details ...',
+              html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
+              imageUrl: file,
+              confirmButtonText: 'Confirm',
+              preConfirm: () => {
+                handleSubmit();
+                console.log('click');
+              }
+            })
+          }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
+            Submit
+            {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
+            {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
+            {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
+          </Button>
+          <Button variant="contained"
+             onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto",width:"auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
+            Reset To Old Values
+          </Button>
+        </Stack>
       </Box>
     </div>
   );

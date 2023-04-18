@@ -99,16 +99,17 @@ function M17() {
         dat && dat.map((val) => {
           buyTransaction.push(
             {
-              ifscCode: val.IFSC,
+              // ifscCode: val.IFSC,
               transactionid: val.transactionId,
-              paymentMethod: val.paymentMode,
-              bankName: val.bankName,
+              paymentMode: val.paymentMode,
+              // bankName: val.bankName,
               amount: val.amount,
               sender: val.senderName,
-              receiver: val.recvName
+              // receiver: val.recvName
             }
           )
         })
+        console.log(buyTransaction)
         setTransaction(buyTransaction)
       }).catch(async (res) => {
         if (res.response.data.message === 'Error in connection') {
@@ -149,7 +150,7 @@ function M17() {
       
       <Box className="gx-d-flex justify-content-center"
         sx={{
-    display: "flex", justifyContent: "center", alignItems: "center",backgroundColor:"rgb(153, 237, 184)",
+    display: "flex", justifyContent: "center", alignItems: "center",backgroundColor:"white",
     flexDirection:"column",padding:"2%"
         }}
       >
@@ -165,17 +166,18 @@ function M17() {
         </Typography>
 
         {/* <TransactionHistory rows={buyerHistory} /> */}
-        <Table dataSource={buyerHistory}
+        {console.log(buyTransaction)}
+        <Table dataSource={transaction}
         pagination={false}
         rowClassName={"row-ant"}
         >
           <Table.Column title="Trans Id" dataIndex='transactionid' />
-          <Table.Column title="IFSC Code" dataIndex='ifscCode' />
+          {/* <Table.Column title="IFSC Code" dataIndex='ifscCode' /> */}
           <Table.Column title="Payment Mode" dataIndex='paymentMode' />
-          <Table.Column title="Bank Name" dataIndex='bankName' />
+          {/* <Table.Column title="Bank Name" dataIndex='bankName' /> */}
           <Table.Column title="Amount" dataIndex='amount' />
-          <Table.Column title="Sender" dataIndex='sender' />
-          <Table.Column title="Receiver" dataIndex='receiver' />
+          {/* <Table.Column title="Sender" dataIndex='sender' /> */}
+          {/* <Table.Column title="Receiver" dataIndex='receiver' /> */}
         </Table>
       </Box>
     </Card>

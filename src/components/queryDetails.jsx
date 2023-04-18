@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
     },
     querycontent:{
         fontStyle:"Italic",
-        fontWeight:100
+        fontWeight:500,
+        textIndent:"20px"
     },  
     boldy:{
         fontWeight:500
@@ -114,6 +115,11 @@ const QueryDetails = (props) => {
                     </Card>
                 )
             })}
+
+
+            
+
+
         </div>
     );
 };

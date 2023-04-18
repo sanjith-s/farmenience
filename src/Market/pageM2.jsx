@@ -52,24 +52,25 @@ const PageM2 = () => {
   console.log(location.state.data);
 
   return (
-    <Box sx={{ margin: "2.5rem", justifyContent: "center",
-     alignItems: "center", backgroundColor: "white" }}>
-
-      <Typography
+    <>
+       <Box align = "center">
+       <Typography
         style={{
           textTransform: "uppercase",
           textAlign: "center",
           fontSize: "2.25rem",
           marginBottom: "1.25rem",
-          fontFamily: "Satoshi",
-          border: ".1875rem solid",
-          borderRadius: "1.25rem",
+          fontFamily: "Roboto",
+          /* border: ".1875rem solid", */
+          borderRadius: "0.25rem",
           width: "10em",
-          backgroundColor: "lightskyblue"
+          margin:"1rem",
+          /* backgroundColor: "lightskyblue" */
         }}
       >
         {location.state ? location.state.from : "seller"}
       </Typography>
+      </Box>
       <Box className="gx-d-flex justify-content-center"
         sx={{
           display: "flex",
@@ -85,10 +86,12 @@ const PageM2 = () => {
             display: "flex",
             flexDirection: "column",
             rowGap: "2.5rem",
-            boxShadow: 20,
+            boxShadow: 15,
+            borderRadius:"0.25rem",
+            margin:"1rem"
           }}
         > 
-          <Box>
+          
             <SellerNegotiate
               id = {content.buyer._id}
               name={content.buyer.name}
@@ -101,10 +104,10 @@ const PageM2 = () => {
               img={content.img}
               all = {content}
             />
-          </Box>
+          
         </Box>
       </Box>
-    </Box>
+      </>
   );
 };
 export default PageM2;

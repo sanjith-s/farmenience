@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Details from "./components/FarmerProfileComp";
 import { Avatar, Typography, Box, Paper, TextField, IconButton } from '@material-ui/core';
 import { Button } from '@mui/material';
+import { useNavigate } from "react-router-dom/dist";
 import { makeStyles } from '@material-ui/core/styles';
 import { Email, Phone, LocationOn, Home, PinDrop, PermIdentity, Fingerprint, AccountBalance, AspectRatio } from '@material-ui/icons';
 import ModeEdit from '@mui/icons-material/ModeEdit';
@@ -14,6 +15,8 @@ import { baseURL } from '../src/constants';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 const c = {
   Name: "Yuvaraj Vetrivel",
@@ -27,6 +30,8 @@ const c = {
   Pincode: "600000",
   Email: "yuviexample@gmail.com",
 };
+
+
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -59,8 +64,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   //   document.body.appendChild(addScript);
   // }, []);
   
-
+  
   const classes = useStyles();
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
   const [crops, setCrops] = useState(["Rice","wheat"]);
@@ -84,6 +90,50 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
     const rmVal = e.target.name;
     const updatedSkills = skills.filter((c)=> c!== rmVal);
     setSkills(updatedSkills);
+  }
+  const navigate = useNavigate();
+  const logout = async () => {
+    let token = Cookies.get('token')
+    await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
+    )
+      .then(async (response) => {
+        if (response.data.message == "Logout Successful") {
+          await Swal.fire({
+            icon: 'success',
+            title: 'Logout Successful'
+          })
+          Cookies.remove('token');
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
+          navigate('../login');
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Error',
+          })
+        }
+        console.log(response);
+      }).
+      catch(async (response) => {
+        if (response.response.data.message === "Token not found" || response.response.data.message === "Logout Fail, Please Logout Again") {
+          await Swal.fire({
+            icon: 'warning',
+            title: 'Please Login, Before Logout !!',
+          })
+          navigate('../login');
+        }
+        if (response.response.data.message === "Invalid token") {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Expired, Please Login Again !!',
+          })
+          navigate('../login');
+        }
+      });
   }
   return (
     <div className='backProfile' style={{
@@ -112,7 +162,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
               <Typography variant='subtitle1'></Typography>
             </Stack>
             <Avatar className={classes.avatar} src={profilePicture} alt={name} />
-            <Button color="error" variant="contained" sx={{ width: "15%" }}>Logout</Button>
+            <Button color="error" variant="contained" sx={{ width: "15%" }} onClick={logout}>Logout</Button>
           </Box>
         </Stack>
         <Stack direction={"column"} spacing={1}
@@ -233,6 +283,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
 
 
 export default function () {
+  
   const src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLzNJcVZYifo4XGd9HnBg9f6diJzOAPYiAhu-jxVNE&s";
   
 const [data, setData] = useState([]);
@@ -242,6 +293,7 @@ useEffect(() => {
   Axios.get(`${baseURL}/profile`, { headers: { tokenstring: token } }).
     then((response) => {
       setData(response.data.message);
+      console.log(data);
     })
     .catch(async (res) => {
       if (res.response.data.message === 'Error in connection') {

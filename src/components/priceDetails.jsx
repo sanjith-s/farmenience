@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 
 function PriceDetails(props) {
+  let price = props.userQuantity[props.index] * props.mrp;
+  props.priceHandler(price);
   return (
     <Box
       style={{
@@ -89,7 +91,31 @@ function PriceDetails(props) {
           >
             {props.discount}
           </Typography>
+          
         </Box>
+        <Box sx={{
+            display: "flex",
+            margin: "8px 0px",
+            justifyContent: "space-between",
+          }}>
+        <Typography
+            variant="h6"
+            sx={{
+              textTransform: "uppercase",
+              fontWeight: "600",
+            }}
+          >
+            Price
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              textTransform: "uppercase",
+            }}
+          >
+            {price}
+          </Typography>
+          </Box>
       </Box>
     </Box>
   );

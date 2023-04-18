@@ -86,7 +86,7 @@ function PageM1() {
   }
   else {
     console.log("nothing");
-    
+
   }
 
   // useEffect(() => {
@@ -107,17 +107,17 @@ function PageM1() {
       <Box className="query-list">
         <h2 className="query-list__heading">You have {orders.length} requests</h2>
         {
-            orders.map((req,index) => {
-                return (
-                    <div>
-                        <RequestBox
-                        key={index + 1}
-                       reqId={req.buyer._id}
-                       name={req.buyer.name}
-                       phoneNo={req.buyer.phoneno}
-                       itemName={req.name}
-                       itemQuantity={req.quantity}
-                       data={req}
+          orders.map((req, index) => {
+            return (
+              <div>
+                <RequestBox
+                  key={index + 1}
+                  reqId={req.buyer._id}
+                  name={req.buyer.name}
+                  phoneNo={req.buyer.phoneno}
+                  itemName={req.name}
+                  itemQuantity={req.quantity}
+                  data={req}
                 />
               </div>
             )

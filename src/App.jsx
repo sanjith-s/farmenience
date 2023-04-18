@@ -1,10 +1,14 @@
 import React, { lazy, Suspense } from "react";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./css/app.css";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import styles from "./css/general.css";
 import Headroom from "react-headroom";
+import Page404 from "./page404";
+import { useEffect, useContext, createContext, useState } from "react";
+export const AuthContext = createContext();
 
 // import Homepage1 from "./homepage1";
 // import LandingPage from "./landingPage";
@@ -156,7 +160,7 @@ const PageN12 = lazy(() => import("./Ngo/pageN12"));
 const PageN13 = lazy(() => import("./Ngo/pageN13"));
 const PageN14a = lazy(() => import("./Ngo/pageN14a"));
 const PageN14b = lazy(() => import("./Ngo/pageN14b"));
-
+import Loader from "./loader";
 function displayNavbar() {
   const token = Cookies.get("token");
 
@@ -181,97 +185,114 @@ function App() {
     responsiveVoice.speak(text, "Tamil Male");
   }
 
+  const [auth, setAuth] = useState(false);
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setAuth(true);
+    } else {
+      setAuth(false);
+    }
+    if (localStorage.getItem("role")) {
+      setRole(localStorage.getItem("role"));
+    } else {
+      setAuth("");
+    }
+  }, []);
+
   return (
-    <Suspense fallback={<h1>Loading ...</h1>}>
+    <Suspense fallback={<Loader/>}>
       <div>
-        {/* <N10Navbar /> */}
-        {displayNavbar()}
-        <main className="main-content" id="google_translate_element" onDoubleClick={(e) => {
-          fullAnotherSpeak(e.target.innerText)
-        }} >
+        <AuthContext.Provider value={{ auth, setAuth, role, setRole }}>
+          {/* <Navbar /> */}
+          <Navbar />
+          <main className="main-content" >
 
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/homepage2" element={<Homepage2 />} />
-              <Route path="/landingPage" element={<LandingPage />} />
-              <Route path="/aboutUs" element={<AboutUsPage />} />
-              <Route path="/termsAndCondition" element={<TermsAndCondition />} />
-              <Route path="/ReviewsForm" element={<ReviewsForm />} />
-              <Route path="/farmerHomepage" element={<FarmerHomepage />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
-              <Route path="/verifyOTP" element={<VerifyOTP />} />
-              <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
-              <Route path="/resetpass" element={<ResetEnterNewPassword />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/chart" element={<Chart />} />
-              <Route path="/NGOProfile" element={<NGOProfile />} />
-              <Route path="/BuyerProfile" element={<BuyerProfile />} />
-              <Route path="/FarmerProfile" element={<FarmerProfile />} />
-              <Route path="/M0" element={<PageM0 />} />
-              <Route path="/M1" element={<PageM1 />} />
-              <Route path="/M2" element={<PageM2 />} />
-              <Route path="/M3" element={<PageM3 />} />
-              <Route path="/M4" element={<PageM4 />} />
-              <Route path="/M5" element={<PageM5 />} />
-              <Route path="/M6" element={<PageM6 />} />
-              <Route path="/M7" element={<PageM7 />} />
-              <Route path="/M9" element={<PageM9 />} />
-              <Route path="/M10" element={<PageM10 />} />
-              <Route path="/M10a" element={<PageM10a />} />
-              <Route path="/M10b" element={<PageM10b />} />
-              <Route path="/M10c" element={<PageM10c />} />
-              <Route path="/M11" element={<PageM11 />} />
-              <Route path="/M12" element={<PageM12 />} />
-              <Route path="/M13" element={<PageM13 />} />
-              <Route path="/M15" element={<PageM15 />} />
-              <Route path="/M16" element={<PageM16 />} />
-              <Route path="/M17" element={<PageM17 />} />
-              <Route path="/M18" element={<PageM18 />} />
-              <Route path="/M19" element={<PageM19 />} />
-              <Route path="/N1" element={<PageN1 />} />
-              <Route path="/N2" element={<PageN2 />} />
-              <Route path="/N4" element={<PageN4 />} />
-              <Route path="/N5" element={<PageN5 />} />
-              <Route path="/N6" element={<PageN6 />} />
-              <Route path="/N7" element={<PageN7 />} />
-              <Route path="/N9" element={<PageN9 />} />
-              <Route path="/N10" element={<PageN10 />} />
-              <Route path="/N10a" element={<PageN10a />} />
-              <Route path="/N11" element={<PageN11 />} />
-              {/* <Route path="/N12" element={<PageN12 />} /> */}
-              <Route path="/N12" element={<PageN12 />} />
-              <Route path="/N13" element={<PageN13 />} />
-              {/* <Route path="/N14" element={<PageN14 />} /> */}
-              <Route path="/N14a" element={<PageN14a />} />
-              <Route path="/N14b" element={<PageN14b />} />
-              {/* <Route path="/mapngo" element={<Map/>} /> */}
-              <Route path="/mapngo" element={<MainMap />} />
-              <Route path="/cal" element={<Calendar />} />
-              <Route path="/graph" element={<Graph />} />
-              <Route path="/logoutAll" element={<LogoutAllDevice />} />
-              <Route path="/vtt1" element={<Voicetotext />} />
-              <Route path="/vtt" element={<Vtt />} />
-              <Route path="/langtrans" element={<LangTranslate />} />
-              <Route path="/voice" element={<Voice />} />
-              <Route path="/cropRecommendation" element={<CropRecommendation />} />
-              <Route path="/imageDetection" element={<ImageDetection />} />
-              <Route path="web" element={<Web />} />
-              <Route path="/ordersummary" />
-              <Route path="/payments/success" element={<Success />} />
-              <Route path="/payments/cancel" element={<Cancel />} />
-              <Route path="/pdfprint" element={<PdfPrint />} />
-            </Routes>
-          </BrowserRouter>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/homepage2" element={<Homepage2 />} />
+                <Route path="/landingPage" element={<LandingPage />} />
+                <Route path="/aboutUs" element={<AboutUsPage />} />
+                <Route path="/termsAndCondition" element={<TermsAndCondition />} />
+                <Route path="/ReviewsForm" element={<ReviewsForm />} />
+                <Route path="/farmerHomepage" element={<FarmerHomepage />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgetPasswordGetEmail" element={<ForgetPasswordGetEmail />} />
+                <Route path="/verifyOTP" element={<VerifyOTP />} />
+                <Route path="/forgetEnterNewPassword" element={<ForgetEnterNewPassword />} />
+                <Route path="/resetpass" element={<ResetEnterNewPassword />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/chart" element={<Chart />} />
+                <Route path="/NGOProfile" element={<NGOProfile />} />
+                <Route path="/BuyerProfile" element={<BuyerProfile />} />
+                <Route path="/FarmerProfile" element={<FarmerProfile />} />
+                <Route path="/M0" element={<PageM0 />} />
+                <Route path="/M1" element={<PageM1 />} />
+                <Route path="/M2" element={<PageM2 />} />
+                <Route path="/M3" element={<PageM3 />} />
+                <Route path="/M4" element={<PageM4 />} />
+                <Route path="/M5" element={<PageM5 />} />
+                <Route path="/M6" element={<PageM6 />} />
+                <Route path="/M7" element={<PageM7 />} />
+                <Route path="/M9" element={<PageM9 />} />
+                <Route path="/M10" element={<PageM10 />} />
+                <Route path="/M10a" element={<PageM10a />} />
+                <Route path="/M10b" element={<PageM10b />} />
+                <Route path="/M10c" element={<PageM10c />} />
+                <Route path="/M11" element={<PageM11 />} />
+                <Route path="/M12" element={<PageM12 />} />
+                <Route path="/M13" element={<PageM13 />} />
+                <Route path="/M15" element={<PageM15 />} />
+                <Route path="/M16" element={<PageM16 />} />
+                <Route path="/M17" element={<PageM17 />} />
+                <Route path="/M18" element={<PageM18 />} />
+                <Route path="/M19" element={<PageM19 />} />
+                <Route path="/N1" element={<PageN1 />} />
+                <Route path="/N2" element={<PageN2 />} />
+                <Route path="/N4" element={<PageN4 />} />
+                <Route path="/N5" element={<PageN5 />} />
+                <Route path="/N6" element={<PageN6 />} />
+                <Route path="/N7" element={<PageN7 />} />
+                <Route path="/N9" element={<PageN9 />} />
+                <Route path="/N10" element={<PageN10 />} />
+                <Route path="/N10a" element={<PageN10a />} />
+                <Route path="/N11" element={<PageN11 />} />
+                {/* <Route path="/N12" element={<PageN12 />} /> */}
+                <Route path="/N12" element={<PageN12 />} />
+                <Route path="/N13" element={<PageN13 />} />
+                {/* <Route path="/N14" element={<PageN14 />} /> */}
+                <Route path="/N14a" element={<PageN14a />} />
+                <Route path="/N14b" element={<PageN14b />} />
+                {/* <Route path="/mapngo" element={<Map/>} /> */}
+                <Route path="/mapngo" element={<MainMap />} />
+                <Route path="/cal" element={<Calendar />} />
+                <Route path="/graph" element={<Graph />} />
+                <Route path="/logoutAll" element={<LogoutAllDevice />} />
+                <Route path="/vtt1" element={<Voicetotext />} />
+                <Route path="/vtt" element={<Vtt />} />
+                <Route path="/langtrans" element={<LangTranslate />} />
+                <Route path="/voice" element={<Voice />} />
+                <Route path="/cropRecommendation" element={<CropRecommendation />} />
+                <Route path="/imageDetection" element={<ImageDetection />} />
+                <Route path="web" element={<Web />} />
+                <Route path="/ordersummary" />
+                <Route path="/payments/success" element={<Success />} />
+                <Route path="/payments/cancel" element={<Cancel />} />
+                <Route path="/pdfprint" element={<PdfPrint />} />
+                <Route path="*" element={<Page404 />} />
+                {/* <Route path="/loader" element={<Loader />} /> */}
+              </Routes>
+            </BrowserRouter>
 
-        </main>
+          </main>
 
-
-        {/* <Footer1 /> */}
-        {displayFooter()}
-      </div >
+          {/* <Footer1 /> */}
+          <Footer1 />
+        </AuthContext.Provider>
+      </div>
     </Suspense>
   );
 }

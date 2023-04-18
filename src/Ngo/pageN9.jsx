@@ -213,7 +213,7 @@ function PageN9() {
             icon: 'success',
             title: 'Logout Successful'
           })
-          CookiesNaNpxove('token')
+          Cookies.remove('token')
           navigate('../login');
         }
         else {

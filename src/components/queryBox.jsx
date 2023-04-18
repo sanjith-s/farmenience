@@ -29,10 +29,11 @@ const QueryBox = (props) => {
             then(async (response) => {
                 console.log(response);
                 if (response.data.message === 'Deleted Successfully') {
-                    await Swal.fire({
-                        icon: 'success',
-                        title: 'Deleted Successfully !',
-                    })
+                    // await Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Deleted Successfully !',
+                    // })
+                    navigate('../FarmerHomepage');
                 }
             })
             .catch(async (res) => {
@@ -56,6 +57,7 @@ const QueryBox = (props) => {
 
     const EditQuery = async () => {
         let token = Cookies.get('token');
+        setOpen(false);
         await Axios.put(`${baseURL}/editquery`, {
             subject: subject,
             description: desc,
@@ -68,7 +70,7 @@ const QueryBox = (props) => {
                         icon: 'success',
                         title: 'Edited Successfully !',
                     })
-                    navigate('../N1');
+                    navigate('../FarmerHomepage');
                 }
             })
             .catch(async (res) => {

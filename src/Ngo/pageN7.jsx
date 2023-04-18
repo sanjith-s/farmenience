@@ -60,6 +60,7 @@ const PageN7 = () => {
             title: 'Query Added Successfully !!',
           })
         }
+        navigate('../N1');
       })
       .catch(async (res) => {
         console.log(res);

@@ -97,6 +97,48 @@ function ProfilePage({ name, email, phoneNumber, line1, line2, district, homeAdd
   // }, []);
 
   const classes = useStyles();
+  const navigate = useNavigate();
+  const logout = async () => {
+    let token = Cookies.get('token')
+    await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
+    )
+      .then(async (response) => {
+        if (response.data.message == "Logout Successful") {
+          await Swal.fire({
+            icon: 'success',
+            title: 'Logout Successful'
+          })
+          Cookies.remove('token');
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
+          navigate('../login');
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Error',
+          })
+        }
+        console.log(response);
+      }).
+      catch(async (response) => {
+        if (response.response.data.message === "Token not found" || response.response.data.message === "Logout Fail, Please Logout Again") {
+          await Swal.fire({
+            icon: 'warning',
+            title: 'Please Login, Before Logout !!',
+          })
+          navigate('../login');
+        }
+        if (response.response.data.message === "Invalid token") {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Expired, Please Login Again !!',
+          })
+          navigate('../login');
+        }
+      });
+  }
   return (
     <div className='backProfile' style={{
       height: "max-content"

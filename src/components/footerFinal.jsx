@@ -150,7 +150,7 @@ const Footer = () => {
                                     <a href="#" >+91 999999999</a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="#" >farmenience23@gmail.com</a>
+                                    <a href="#" >teamfarmenience@gmail.com</a>
                                 </li>
                                 <li class="mb-4">
                                 <div id="google_translate_element" ></div>

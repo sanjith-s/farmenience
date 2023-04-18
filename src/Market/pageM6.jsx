@@ -54,9 +54,9 @@ const PageM6 = () => {
     console.log(e.target.files);
     setIsUploaded(true);
     setFile(URL.createObjectURL(e.target.files[0]));
-    setFileName(e.target.files[0]);  
+    setFileName(e.target.files[0]);
   }
-  
+
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -85,7 +85,7 @@ const PageM6 = () => {
 
   const handleSubmit = async () => {
     let token = Cookies.get('token');
-    let filename='';
+    let filename = '';
     let formData = new FormData();
     formData.append('caption', "hello");
     formData.append('file', fileName);
@@ -93,14 +93,14 @@ const PageM6 = () => {
     await Axios.post(`${baseURL}/upload`, formData)
       .then(async (response) => {
         console.log(response);
-        filename=response.data.message;
+        filename = response.data.message;
       })
       .catch(async (res) => {
         alert(res.response.data.message);
       })
 
-      alert(filename);
-      
+    alert(filename);
+
     await Axios.post(`${baseURL}/seller/postsellerproducts`, {
       productName: name,
       price: price,
@@ -137,9 +137,9 @@ const PageM6 = () => {
         return (
           <Stack
             direction="row"
-            divider={<Divider orientation="vertical" flexItem  />}
+            divider={<Divider orientation="vertical" flexItem />}
             spacing={2}
-            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem",  }}
+            sx={{ height: "auto", width: "auto", marginTop: "1.875rem", padding: "3.125rem", }}
           >
             <Box
               sx={{
@@ -151,8 +151,8 @@ const PageM6 = () => {
                 flexDirection: "column",
                 // justifyContent: "space-evenly",
                 alignItems: "center",
-                boxShadow:"2",
-                padding:"20px"
+                boxShadow: "2",
+                padding: "20px"
 
               }}
             >
@@ -180,7 +180,7 @@ const PageM6 = () => {
                     backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
-                    margin:"5px"
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -204,7 +204,7 @@ const PageM6 = () => {
                     backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
-                    margin:"5px"
+                    margin: "5px"
                   }}
                 />
                 <TextField
@@ -224,7 +224,7 @@ const PageM6 = () => {
                     backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
-                    margin:"5px"
+                    margin: "5px"
                   }}
                 />
                 <TextField
@@ -238,7 +238,7 @@ const PageM6 = () => {
                     backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
-                    margin:"5px"
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -257,7 +257,7 @@ const PageM6 = () => {
                     backgroundColor: "#ffff",
                     borderBottomColor: "black",
                     width: "70%",
-                    margin:"5px"
+                    margin: "5px"
                   }}
                   inputProps={{
                     minLength: 1,
@@ -382,45 +382,45 @@ const PageM6 = () => {
       })}
       {/* {count.map(ele=>{
               return (  */}
-      
-        {/* <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
+
+      {/* <Button variant="contained" onClick={addItem} sx={{ bgcolor: "#78beff", "&:hover": { backgroundColor: "#78beff", } }}>
           Add Item
         </Button> */}
-        {/* <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
+      {/* <Button variant="contained" onClick={delItem} sx={{ bgcolor: "#fa552f", "&:hover": { backgroundColor: "#fa552f", } }}>
           Delete Item
         </Button> */}
       <Box textAlign="center" padding={"1.25rem"}>
-      <Stack
-        direction="column"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
-        display="flex"
-        justifyContent="center"
-      >
-        <Button onClick={async () => {
-          await Swal.fire({
-            icon: 'info',
-            title: 'Please confirm the details ...',
-            html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
-            imageUrl: file,
-            confirmButtonText: 'Confirm',
-            preConfirm: () => {
-              handleSubmit();
-              console.log('click');
-            }
-          })
-        }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
-          Submit
-          {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
-          {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
-          {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
-        </Button>
-        <Button variant="contained"
-          color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
-          Reset To Old Values
-        </Button><br /><br />
+        <Stack
+          direction="column"
+          divider={<Divider orientation="vertical" flexItem />}
+          spacing={2}
+          display="flex"
+          justifyContent="center"
+        >
+          <Button onClick={async () => {
+            await Swal.fire({
+              icon: 'info',
+              title: 'Please confirm the details ...',
+              html: "<b>Product Name: </b> " + name + "<br /><br />" + "<b>Price: </b>" + price + "<br /><br />" + "<b>Quantity: </b>" + quantity + "<br /><br />" + "<b>Type: </b>" + type + "<br /><br />" + "<b>Rating: </b>" + rating,
+              imageUrl: file,
+              confirmButtonText: 'Confirm',
+              preConfirm: () => {
+                handleSubmit();
+                console.log('click');
+              }
+            })
+          }} variant="contained" sx={{ bgcolor: "#7ad14f", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }}>
+            Submit
+            {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
+            {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
+            {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
+          </Button>
+          <Button variant="contained"
+            color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
+            Reset To Old Values
+          </Button><br /><br />
         </Stack>
-        </Box>
+      </Box>
     </div>
   );
 };

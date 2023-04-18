@@ -1,5 +1,5 @@
 import "./../css/navbar.css";
-import { useNavigate } from "react-router-dom/dist";
+import { useNavigate } from "react-router-dom";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import * as React from "react";
 import PropTypes from "prop-types";
@@ -18,6 +18,10 @@ import Link from '@mui/material/Link';
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { AuthContext } from "../App";
+import { baseURL } from "../constants";
+import Axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const drawerBleeding = 70;
 
@@ -44,6 +48,7 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 function SwipeableEdgeDrawer(props) {
+  // const navigate = useNavigate();
   const { window } = props;
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = (newOpen) => () => {
@@ -65,8 +70,14 @@ function SwipeableEdgeDrawer(props) {
             icon: 'success',
             title: 'Logout Successful'
           })
-          Cookies.remove('token')
-          navigate('../login');
+          Cookies.remove('token');
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
+          // navigate('../login');
+          window.location.href = "http://localhost:5173/login";
+          // window.location.assign("http://localhost:5173/login")
         }
         else {
           await Swal.fire({
@@ -94,6 +105,7 @@ function SwipeableEdgeDrawer(props) {
         }
       });
   }
+  
 
   return (
     <>
@@ -149,7 +161,7 @@ function SwipeableEdgeDrawer(props) {
       <nav class="bg-white border-gray-200 dark:bg-lime-700 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a href="/" class="flex items-center">
-            <img src="src\images\ffarmenienec.jpg" class="h-8 mr-3" alt="Flowbite Logo" />
+            <img src="src\images\ffarmenienec.jpg" class="h-8 mr-3" alt="Farmenience Logo" />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Farmenience</span>
           </a>
           <button data-collapse-toggle="navbar-dropdown" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
@@ -159,7 +171,7 @@ function SwipeableEdgeDrawer(props) {
           <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
             <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-lime-700 dark:border-gray-700">
             <li>
-                    <a href="../landingPage" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Landing Page</a>
+                    <a href="../landingPage" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
             </li>
               {
                 !auth ?
@@ -173,11 +185,16 @@ function SwipeableEdgeDrawer(props) {
                     ?
                     <>
                     <li>
-                      <a href="../FarmerHomepage" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Farmer Home</a>
+                      <a href="../FarmerHomepage" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Dashboard</a>
                     </li>
                     <li>
-                      <a href="../FarmerProfile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Farmer Profile</a>
+                      <a href="../FarmerProfile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Profile</a>
                     </li>
+                    {/* <li>
+                      <button styles={{border:0,background:'white'}} onClick={()=>{logout()}}>
+                      Logout
+                      </button>
+                    </li> */}
                     </>
                     :
                     role == 'NGO'

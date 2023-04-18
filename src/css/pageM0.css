@@ -1,10 +1,12 @@
 .contents {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .contents > .box1 {
   /* flex: 20%; */
-  max-width: 20.5rem;
+
+  max-width: 19.5rem;
 }
 .contents > .roller {
   flex: 50%;

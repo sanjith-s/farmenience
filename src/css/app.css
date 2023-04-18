@@ -1,6 +1,7 @@
 body > #root > div {
   display: flex;
   flex-direction: column;
+  
 }
 
 /* body {
@@ -17,16 +18,20 @@ body > #root > div {
 }
 
 ::-webkit-scrollbar {
-  width: 1.25rem;
+  width: 15px;
+  /* background-color: transparent; */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(24, 24, 29);
+  /* background-color: rgb(24, 24, 29); */
+  /* background-color: transparent;
+  dis */
+  display:none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fff;
+  background: #088604;
   border: .3125rem solid transparent;
   border-radius: .5625rem;
   background-clip: content-box;
-}
+} 

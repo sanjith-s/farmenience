@@ -123,12 +123,14 @@ const CropRec = () => {
       rainfall: rainfall,
     })
       .then(async (response) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: response.data
         })
       })
       .catch(async (res, err) => {
+        console.log(response);
         await Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -140,20 +142,23 @@ const CropRec = () => {
   return (
     <div style={{ boxSizing: "borderBox", padding: "1.25rem" }}>
       <CssBaseline />
-      <b><span text-align="center" className="title">Find out the most suitable crop to grow in your farm</span></b>
-      <Stack
+      <Typography fontWeight={700} fontSize={50} sx={{
+        alignItems: "center",
+        // marginLeft: "37.5rem"
+        textAlign:"center"
+      }}>Find suitable crop to grow</Typography>      <Stack
         sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
       >
-        <Container
+        <Box
           sx={{
-            // bgcolor: "#D9D9D9;",
+            // bgcolor: "#D9D9D9;",1
             height: "auto",
-            width: "60vw",
-            borderRadius: "3.125rem",
+            width: "auto",
+            borderRadius: "20px",
             display: "flex",
-            flex: "100%",
+            // flex: "100%",
             flexDirection: "column",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
             alignItems: "center",
             padding: "1.563rem",
           }}
@@ -161,7 +166,7 @@ const CropRec = () => {
           <Stack
             direction="row"
             sx={{
-              width: "100%",
+              // width: "100%",
               // display: "flex", 
               flexDirection: "row",
               justifyContent: "space-between",
@@ -178,9 +183,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setNitrogen(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
               
             }}
           />
@@ -193,9 +198,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setPhosphorous(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -207,9 +212,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setPotassium(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -221,9 +226,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setTemp(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -235,9 +240,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setHumidity(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -249,9 +254,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setPh(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -263,9 +268,9 @@ const CropRec = () => {
             color="success"
             onChange={(e) => { setRainfall(e.target.value) }}
             sx={{
-              backgroundColor: "#b0ffc5",
+              backgroundColor: "#ffff",
               borderBottomColor: "black",
-              width: "70%",
+              width: "50%",
             }}
           />
           <br />
@@ -277,10 +282,10 @@ const CropRec = () => {
             justifyContent="center"
           >
           </Stack>
-        </Container>
+        </Box>
       </Stack>
       <Box textAlign="center" padding={"5rem 15.625rem 3.125rem 15.625rem"}>
-        <Button variant="contained" onClick={CheckNitrogen} sx={{ bgcolor: "#e8c113",color:"white", margin: "auto" ,"&:hover": {backgroundColor: "#67d111", }}}>
+        <Button variant="contained" onClick={CheckNitrogen} sx={{ bgcolor: "#67d111",color:"white", margin: "auto" ,"&:hover": {backgroundColor: "#5ec45a", }}}>
           Predict
         </Button>
       </Box>

@@ -54,12 +54,13 @@ const PageN7 = () => {
     }, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
-        if (response.data.message === 'Query Added Successfully') {
+        if (response.data.messager === 'Query Added Successfully') {
           await Swal.fire({
             icon: 'success',
             title: 'Query Added Successfully !!',
           })
         }
+        navigate('../N1');
       })
       .catch(async (res) => {
         console.log(res);
@@ -95,23 +96,24 @@ const PageN7 = () => {
           >
             Send Query
           </Typography>
-      <Stack
+      <Box align="center"
         direction="row"
-        divider={<Divider orientation="vertical" flexItem />}
-        spacing={2}
+        // divider={<Divider orientation="vertical" flexItem />}
+        // spacing={2}
         sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
       >
-        <Box
+        <Box align="center"
           sx={{
             bgcolor: "#b8ebab;",
-            height: "100%",
-            width: "50vw",
+            // height: "100%",
+            width: "45vw",
             borderRadius: "3.125rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            boxShadow:"5"
+            boxShadow:"5",
+            padding:"30px"
           }}
         >
           <React.Fragment>
@@ -141,7 +143,7 @@ const PageN7 = () => {
               color="success"
               InputProps={{
                 endAdornment: <InputAdornment position="end"></InputAdornment>,
-                maxLength: 500,
+                maxLength: 1000,
                 minLength: 1
               }}
               sx={{
@@ -196,7 +198,7 @@ const PageN7 = () => {
             <Button onClick={postQuery}>CONFIRM</Button>
           </DialogActions>
         </Dialog> */}
-
+{/* 
         <Container
           disableGutters={true}
           sx={{
@@ -251,16 +253,14 @@ const PageN7 = () => {
               }}
             />
           )}
-        </Container>
-      </Stack>
+        </Container> */}
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A", marginTop:"5%   " }} onClick={validate}>
+                Submit
+              </Button>
+      </Box>
 
       
 
-      <Box textAlign="center" padding={"1.25rem"}>
-              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={validate}>
-                Submit
-              </Button>
-            </Box>
     </div>
   );
 };

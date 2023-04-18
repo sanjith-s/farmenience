@@ -255,10 +255,7 @@ const PageM11 = () => {
   });
 
   return (
-    <div id="google_translate_element" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
-    }} style={{
-    }}>
+    <div id="google_translate_element" >
       <Container
         className="check"
         sx={{

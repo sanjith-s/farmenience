@@ -44,13 +44,14 @@ const PageN2 = () => {
 
   const DeleteQuery = async () => {
     let token = Cookies.get('token');
+    setOpen(false);
     await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
         if (response.data.message === 'Deleted Successfully') {
           await Swal.fire({
             icon: 'success',
-            title: 'Oops...',
+            title: 'Success !!',
             text: 'Accepted Successfully !',
           })
           navigate('../N1');
@@ -85,6 +86,7 @@ const PageN2 = () => {
 
   const NotHappy = async () => {
     let token = Cookies.get('token');
+    setOpen(false);
     await Axios.put(`${baseURL}/againpostquery`, {
       subject: subject,
       description: desc,

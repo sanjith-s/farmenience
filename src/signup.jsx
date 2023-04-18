@@ -2,6 +2,9 @@ import "./css/signup.css";
 import { useState } from "react";
 import validator from "validator";
 import Axios from "axios";
+import Geocode from "react-geocode";
+Geocode.setLanguage("en");
+Geocode.setApiKey("AIzaSyD-79BSbusu8q97EMXY2Ewy16Xtlhi4UFA");
 import { useNavigate } from "react-router-dom/dist";
 import {
   Box,

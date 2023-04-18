@@ -8,17 +8,6 @@ import {
 
 const Footer = () => {
 
-    const googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-    }
-
-    useEffect(() => {
-        var addScript = document.createElement('script');
-        addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-        document.body.appendChild(addScript);
-        window.googleTranslateElementInit = googleTranslateElementInit;
-    }, []);
-
     return (
         // <Container maxWidth={false} disableGutters style={{position:"sticky",marginTop:"1.25rem"}}>
         //     <Box
@@ -121,9 +110,6 @@ const Footer = () => {
                                     <a href="../cropRecommendation" class="hover:underline">Crop Recommendation</a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="../imageDetection" class="hover:underline">Disease Detection</a>
-                                </li>
-                                <li class="mb-4">
                                     <a href="../web" class="hover:underline">Market Prices</a>
                                 </li>
                                 <li class="mb-4">
@@ -152,19 +138,22 @@ const Footer = () => {
                                 <li class="mb-4">
                                     <a href="#" >+91 999999999</a>
                                 </li>
-                                <li>
-                                    <a href="#" >farmenience23@gmail.com</a>
+                                <li class="mb-4">
+                                    <a href="#" >farmenience@gmail.com</a>
+                                </li>
+                                <li class="mb-4">
+                                <div id="google_translate_element" ></div>
                                 </li>
                             </ul>
                         </div>
-                        <div>
+                        {/* <div>
                             <div>
-                                {/* <div>
+                                <div>
                                     <h2 className="title gx-mb-4"></h2>
                                     <div id="google_translate_element" ></div>
-                                </div> */}
+                                </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

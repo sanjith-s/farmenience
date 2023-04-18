@@ -12,16 +12,76 @@ import {
   FormControl,
   IconButton,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CallIcon from "@mui/icons-material/Call";
 import { useLocation } from 'react-router-dom';
-import { useNavigate } from "react-router-dom/dist";
 import { useState } from "react";
+import Cookies from 'js-cookie';
+import Axios from "axios";
+import Swal from "sweetalert2";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 
 
 const PageN12 = () => {
   const handleChange = (event) => { };
+  const navigate = useNavigate();
+  const submitResponse = async () => {
+    let token = Cookies.get('token');
+    Axios.put('http://localhost:5000/respondquery', {
+      id: data._id,
+      response: response
+    }, { headers: { tokenstring: token } }).
+      then(async (response) => {
+        if (response.data.message === 'Reponse Submitted Successfully') {
+          
+          await Swal.fire({
+            icon: 'success',
+            title: 'Response Submitted Successfully !!',
+          })
+          navigate('../N10');
+        }
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login');
+        }
+        else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: res.response.data.message,
+          })
+        }
+      })
+    setOpen(false);
+  };
+  
+  const [response, setResponse] = React.useState("");
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   // const googleTranslateElementInit = () => {
   //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
@@ -53,12 +113,14 @@ const PageN12 = () => {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum tortor ligula, in ultricies est maximus nec. Mauris a porta est, ac iaculis ante. Etiam euismod mi sit amet aliquam efficitur. Aenean ante augue, tincidunt sit amet tristique nec, consectetur cursus dui. Cras placerat luctus diam et fringilla. Etiam elit est, efficitur eget ullamcorper nec, efficitur a lacus.",
     attachments: ["Image", "Bill", "PDF"],
   };
+  const [open, setOpen] = React.useState(false);
   const location = useLocation();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const data = location.state.data;
     console.log(data);
 
   return (
+    <Box align="center">
     <Container id="google_translate_element"
       style={{
 
@@ -81,6 +143,7 @@ const PageN12 = () => {
       <Grid container sx={{ width: "100%" }} className="gx-d-flex justify-content-center" >
         <Grid xs={2}>
           <IconButton
+          onClick={()=>{navigate("../n11")}}
             sx={{
               "&:hover": {
                 backgroundColor: "#adadad",
@@ -376,7 +439,7 @@ const PageN12 = () => {
                 padding: ".4375rem",
               }}
             >
-              <Button
+              {/* <Button
                 variant="contained"
                 sx={{
                   backgroundColor: "red",
@@ -388,7 +451,7 @@ const PageN12 = () => {
               >
                 <DeleteIcon />
                 Delete
-              </Button>
+              </Button> */}
               <Button
                 variant="contained"
                 sx={{
@@ -398,11 +461,14 @@ const PageN12 = () => {
                     backgroundColor: "green",
                   },
                 }}
+                onClick={()=>{
+                  handleClickOpen();
+                }}
               >
                 <CallIcon />
                 Respond
               </Button>
-              <Button
+              {/* <Button
                 variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , 
                   "&:hover": {
                     color:"white",
@@ -411,12 +477,39 @@ const PageN12 = () => {
                 }}
               >
                 Sender Details
-              </Button>
+              </Button> */}
             </Box>
           </Grid>
+          <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Response Submit</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Response"
+            fullWidth
+            variant="standard"
+            onChange={(e) => { setResponse(e.target.value) }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="contained" sx={{
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
+              backgroundColor: "#ffff00",
+            }
+          }} >Cancel</Button>
+          <Button onClick={submitResponse} variant="contained" sx={{
+            backgroundColor: "#ffdf00", color: "black", "&:hover": {
+              backgroundColor: "#ffff00",
+            }
+          }} >Submit</Button>
+        </DialogActions>
+      </Dialog>
         </Grid>
       </Box>
     </Container>
+    </Box>
   );
 };
 

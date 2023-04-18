@@ -82,7 +82,7 @@ function Login() {
           Cookies.set("token", response.data.token, { expires: 1 });
         localStorage.setItem("auth",response.data.token);
         localStorage.setItem("role",response.data.details[0].typeOfAcc);
-          navigate("/NGOHomepage");
+          navigate("/N10");
         }
         else if (response.data.details[0].typeOfAcc == "Retailer") {
           Cookies.set("token", response.data.token, { expires: 1 });

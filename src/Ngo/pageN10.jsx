@@ -13,7 +13,7 @@ import Cookies from 'js-cookie';
 // import "./Pagen10.css";
 import { Divider } from '@material-ui/core';
 import BackImg from "../images/NgoBG.jpg";
-import "../css/pageM0.css"
+import "../Ngo/n10.css"
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -134,7 +134,7 @@ const [appointments, setAppointments] = useState([{subject:""},{subject:""},{sub
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="tabs-head" >
-        <Tabs TabIndicatorProps={{ style: { background: 'darkgreen' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs TabIndicatorProps={{ style: { background: 'green' } }} value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={<span className='lab-text1'>Latest Queries</span>} {...N10Props(0)} />
           <Tab label={<span className='lab-text1'>Upcoming Appointments</span>} {...N10Props(1)} />
         </Tabs>
@@ -243,7 +243,7 @@ function pageN10() {
             <span className="box-title">{"Appointments"}</span>
           </div>
           <div className="box-body">
-            <p className="box-description">{"See a list of Appointmets"}</p>
+            <p className="box-description">{"See a list of Appointments"}</p>
             <button onClick={() => {
               navigate('../N13')
             }} className="box-button">{"View"}</button>

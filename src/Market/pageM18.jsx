@@ -15,7 +15,7 @@ import {
   FilledInput,
   InputLabel,
   Typography,
-  Box,
+  Box,    
   Dialog,
   DialogTitle,
   DialogActions,
@@ -85,10 +85,44 @@ const PageM18 = () => {
           navigate('../login')
         }
       })
+
   }, []);
+
+  const handleSubmit2 = async() => {
+    let token = Cookies.get('token');
+    await Axios.post(`${baseURL}/buyer/postrequest`, {
+        name: name,
+        price: price,
+        quantity: qty,
+        specificType: type,
+        location: location,
+    }, { headers: { tokenstring: token } }).
+      then((response) => {
+        setData(response.data.message);
+      })
+      .catch(async (res) => {
+        if (res.response.data.message === 'Error in connection') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please Check Network Connection!',
+          })
+        }
+        else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Login Error',
+          })
+          navigate('../login')
+        }
+      })
+  }
 
   const handleSubmit = async () => {
     var items = [];
+    alert('Hello');
+    handleSubmit2();
 
     items = JSON.parse(localStorage.getItem("reqs"));
     var newitems = [{

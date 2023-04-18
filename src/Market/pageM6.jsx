@@ -416,9 +416,9 @@ const PageM6 = () => {
             {/* When adding fn for submit, write type as fruit or vegetable or grain or millet */}
           </Button>
           <Button variant="contained"
-            color="success" onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
+             onClick={Reset} sx={{ bgcolor: "#ff2519", margin: "auto",width:"auto", "&:hover": { backgroundColor: "#7ad14f", } }} >
             Reset To Old Values
-          </Button><br /><br />
+          </Button>
         </Stack>
       </Box>
     </div>

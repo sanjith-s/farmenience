@@ -85,19 +85,19 @@ const PageN4 = () => {
   }
 
   return (
-    <div style={{ boxSizing: "borderBox", padding: "25px", }}>
+    <div style={{ boxSizing: "borderBox", padding: "20px", }}>
       <CssBaseline />
       <Typography fontWeight={700} fontSize={50} sx={{
         alignItems: "center",
         // marginLeft: "auto"
         textAlign: "center"
       }}>Schedule a Meet with NGO</Typography>
-
+    
       <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
-        sx={{ height: "70vh", width: "vw", marginTop: "1.875rem" }}
+        sx={{ height: "auto", width: "auto", padding: "3.125rem", }}
       >
         <Container
           sx={{
@@ -124,6 +124,9 @@ const PageN4 = () => {
             paddingRight: "0rem",
             display: "flex",
             justifyItems: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            marginTop: "5.625rem"
           }}
         >
           {!isUploaded && (
@@ -172,6 +175,10 @@ const PageN4 = () => {
           )}
         </Container>
       </Stack>
+
+      
+      
+
 
 
 

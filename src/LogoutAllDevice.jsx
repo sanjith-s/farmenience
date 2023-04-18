@@ -8,7 +8,6 @@ import Axios from "axios";
 import { baseURL } from '../src/constants';
 import Swal from 'sweetalert2';
 import { Typography } from '@material-ui/core';
-import Cookies from "js-cookie";
 
 const LogoutAllDevice = () => {
   const location = useLocation();

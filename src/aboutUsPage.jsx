@@ -13,20 +13,20 @@ import farmsvg from "./images/farmenience.svg";
 import farmjpeg from "./images/farmenience.jpeg";
 
 const AboutUsPage = () => {
-  // const googleTranslateElementInit = () => {
-  //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
-  // }
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
+  }
 
   const fullAnotherSpeak = (text) => {
     responsiveVoice.speak(text, "Tamil Male");
   }
 
-  // useEffect(() => {
-  //   var addScript = document.createElement('script');
-  //   addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
-  //   document.body.appendChild(addScript);
-  //   window.googleTranslateElementInit = googleTranslateElementInit;
-  // }, []);
+  useEffect(() => {
+    var addScript = document.createElement('script');
+    addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
 
   useEffect(() => {
     var addScript = document.createElement('script');
@@ -35,17 +35,17 @@ const AboutUsPage = () => {
   }, []);
 
   return (
-    <div className="about-hero" onClick={(e) => {
-      fullAnotherSpeak(e.target.innerText)
-    }}>
+    <div className="about-hero">
       <img className="abt-img" src={abtImg5} alt="" />
 
       <main className="about-section">
         <section>
-          <div id="google_translate_element">
+          <div id="google_translate_element" onClick={(e) => {
+            fullAnotherSpeak(e.target.innerText)
+          }}>
 
             <div className="gx-d-flex justify-content-center" style={{ position: "relative" }}>
-              <h1 className="heading-primary" style={{ textAlign: "center", color: "#000", fontWeight: "37.5rem", marginBottom: "5rem", fontFamily:"arial" }}>
+              <h1 className="heading-primary" style={{ textAlign: "center", color: "#000", fontWeight: "37.5rem", marginBottom: "5rem", fontFamily: "arial" }}>
                 About Farmenience
               </h1>
               {/* <img src={farmsvg} alt="" style={{ height: "140px", objectFit: "cover", position: "absolute", left: "42%", top: "30px" }} /> */}

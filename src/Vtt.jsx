@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 const Vtt = () => {
     const fullAnotherSpeak = (text) => {
         alert(text)
-        responsiveVoice.speak(text, "Hindi Male");
+        responsiveVoice.speak(text, "Tamil Male");
     }
     const googleTranslateElementInit = () => {
         new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')

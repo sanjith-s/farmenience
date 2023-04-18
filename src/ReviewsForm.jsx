@@ -56,45 +56,46 @@ const ReviewsForm = () => {
     const postReview = async () => {
         let token = Cookies.get('token');
         await Axios.post(`${baseURL}/review`, {
-            name: name,
             email: email,
-            phonenum: mobno,
             review: review,
         }, { headers: { tokenstring: token } }).
             then(async (response) => {
                 console.log(response);
                 if (response.data.message === 'Review added !!') {
-                    await Swal.fire({
-                        icon: 'success',
-                        title: 'Meet Added !!',
-                        text: 'Waiting for NGO Reply',
-                    })
+                    alert("Review Added !!");
+                    // await Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Review Added !!',
+                    // })
                     navigate('../homepage1');
                 }
             })
             .catch(async (res) => {
                 console.log(res);
                 if (res.response.data.message === 'Error in Connection') {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Please Check Network Connection!',
-                    })
+                    alert("Please Check Network Connection");
+                    // await Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'Oops...',
+                    //     text: 'Please Check Network Connection!',
+                    // })
                 }
                 else if (res.response.data.message === 'Token not found' || res.response.data.message === 'Invalid token' || res.response.data.message === 'Session Logged Out , Please Login Again') {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Login Error',
-                    })
+                    alert("Login Error");
+                    // await Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'Oops...',
+                    //     text: 'Login Error',
+                    // })
                     navigate('../login')
                 }
                 else {
-                    await Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: res.response.data.message,
-                    })
+                    alert(res.response.data.message);
+                    // await Swal.fire({
+                    //     icon: 'error',
+                    //     title: 'Oops...',
+                    //     text: res.response.data.message,
+                    // })
                 }
             })
     }
@@ -111,8 +112,8 @@ const ReviewsForm = () => {
                     alignItems: "center",
                     width: {
                         xs: 100,
-                        sm: 400, 
-                        md: 700, 
+                        sm: 400,
+                        md: 700,
                         lg: 1000,
                         xl: 1300
                     }
@@ -121,7 +122,7 @@ const ReviewsForm = () => {
                 <Typography variant="h2" fontWeight={600}>Review Form</Typography>
                 <Stack
                     sx={{
-                        boxShadow:10,
+                        boxShadow: 10,
                         bgcolor: "#96F0FF;",
                         borderRadius: "10px",
                         padding: "4%",
@@ -132,30 +133,30 @@ const ReviewsForm = () => {
                     }}
                     spacing={2}
                 >
-                    
+
                     <React.Fragment>
                         <TextField
                             id="p-name"
                             label="Name"
                             variant="filled"
-                            
+
                             value={name}
                             onChange={handleAllChange}
                             sx={{
                                 backgroundColor: "#f5F5F5",
                                 borderBottomColor: "black",
                                 width: "90%",
-                                
+
                             }}
-                            // inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5"} }} 
-                            // InputLabelProps={{ style: { fontSize: 15 } }}
+                        // inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5"} }} 
+                        // InputLabelProps={{ style: { fontSize: 15 } }}
                         />
                         <TextField
                             id="emailadd"
                             type="email"
                             label="Email"
                             variant="filled"
-                            
+
                             onChange={handleAllChange}
                             sx={{
                                 backgroundColor: "#F5F5F5",
@@ -169,7 +170,7 @@ const ReviewsForm = () => {
                             onChange={handleAllChange}
                             label="Mobile Number"
                             variant="filled"
-                            
+
                             inputProps={{
                                 maxLength: 10
                             }}
@@ -187,7 +188,7 @@ const ReviewsForm = () => {
                             multiline
                             rows={5}
                             onChange={handleAllChange}
-                            
+
                             sx={{
                                 backgroundColor: "#F5F5F5",
                                 borderBottomColor: "black",
@@ -200,8 +201,8 @@ const ReviewsForm = () => {
                         />
 
                     </React.Fragment>
-                    <Button  mt = {5} onClick={() => { setOpen(true) }} variant="contained" 
-                    sx={{ bgcolor: "BLUE", width: "90px",}}>
+                    <Button mt={5} onClick={() => { setOpen(true) }} variant="contained"
+                        sx={{ bgcolor: "BLUE", width: "90px", }}>
                         Submit
                         {/* When adding fn for submit, write price range as greater than 1 and less than 2000 */}
                         {/* When adding fn for submit, write quantity range as greater than 1 and less than 20 */}
@@ -218,7 +219,7 @@ const ReviewsForm = () => {
                 keepMounted
                 onClose={() => { setOpen(false) }}
                 aria-describedby="alert-dialog-slide-description"
-                boxShadow = {5}
+                boxShadow={5}
             >
                 <DialogTitle>CONFIRM?</DialogTitle>
                 <DialogContent>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import '../css/pageN14.css';
 import Swal from 'sweetalert2'
 import { useLocation } from "react-router-dom";
 import file from "../images/farm_land.jpg";
@@ -157,17 +156,19 @@ const PageN14a = () => {
               backgroundColor: "#fff",
               width: "100%"
             }}
-          >
-            <Grid container item xs={12} direction="column">
-              <CardContent
+          > 
+            <Grid width="50%" container item xs={12} direction="column">
+              <CardContent 
                 style={{ padding: "0.94rem", borderRadius: "0.5rem" }}
               >
-                <Stack>
+                <Stack >
                   {itemsName1.map((value, index) => {
                     return (
                       <Box
+                      
                         key={index}
                         sx={{
+                          
                           display: "flex",
                           columnGap: "1.25rem",
                           justifyContent: "space-between",
@@ -186,8 +187,15 @@ const PageN14a = () => {
                           {value}
                         </Typography>
                         <Typography
-                          variant="h6"
-                          style={{ textTransform: "capitalize" }}
+                          style={{
+                            margin:"10px",
+                            fontSize: "1rem",
+                            padding: "7px",
+                            background: "#f5f5f5",
+                            
+                            borderRadius: "4px",
+                            width: "70%",
+                          }}
                         >
                           {itemsValue1[index]}
                         </Typography>
@@ -210,15 +218,20 @@ const PageN14a = () => {
                   borderRadius: "3.125rem",
                 }}
               /><br />
-              <Stack direction={"column"} spacing={4}>
+              <Stack direction={"row"} spacing={2}>
                 <Button
-                  onClick={DeleteAppointment}
-                  variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
-                    backgroundColor:"#ffff00",
-                  } }}
-                >
-                  DELETE
-                </Button>
+                onClick={DeleteAppointment}
+                variant="contained"
+                sx={{
+                  backgroundColor: "red",
+                  "&:hover": {
+                    backgroundColor: "red",
+                  },
+                }}
+              >
+                <DeleteIcon />
+                Delete
+              </Button>
                 <Button
                   onClick={AcceptAppointment}
                   variant="contained" sx={{backgroundColor:"#fafa01", color:"black" , "&:hover": {
@@ -234,6 +247,7 @@ const PageN14a = () => {
                   onClick={() => {
                     navigate('../N14b', { state: { id: data.appID, name: data.appName } })
                   }}
+                  
                   style={{
                     color: "white",
                     backgroundColor: "green",
@@ -247,9 +261,7 @@ const PageN14a = () => {
             </Stack>
           </Box>
         </Stack>
-        <Box sx={{ display: "flex", columnGap: "3.125rem", padding: "0rem 18.75rem" }}>
-
-        </Box>
+        
       </Box>
     </Container>
   );

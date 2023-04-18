@@ -23,12 +23,12 @@ import {
 } from "@mui/material";
 
 const itemsName = [
-  "name",
-  "phone number",
-  "address",
-  "item name",
-  "item quantity",
-  "item price",
+  "Name",
+  "Phone Number",
+  "Address",
+  "Item Name",
+  "Item Quantity",
+  "Item Price",
 ];
 
 const SellerNegotiate = (props) => {
@@ -36,6 +36,7 @@ const SellerNegotiate = (props) => {
   let data = props.data;
 
   const itemsValue = [
+    
     props.name,
     props.phno,
     props.address.addline1 + " ," + props.address.addline2,
@@ -152,29 +153,30 @@ const SellerNegotiate = (props) => {
       style={{
         display: "flex",
         justifyContent: "center",
-        padding: "1.875rem 0rem",
-        borderRadius: "1.25rem",
+        padding: "0rem",
+        borderRadius: "0.25rem",
         columnGap: "3.125rem",
-        backgroundColor: "#fff",
-        border: ".1875rem solid",
+        backgroundColor: "#ffffff",
+        /* border: ".1875rem solid", */
       }}
     >
       <Box
         sx={{
-          width: "37.5rem",
+          width: "60%", borderRadius : "0.25rem",
         }}
       >
-        <CardContent style={{ padding: "0rem 0rem" }}>
+
           <Box
+            alignSelf = "left"
             style={{
               display: "flex",
               columnGap: "1.25rem",
-              borderBottom: ".125rem solid",
-              marginBottom: "1.875rem",
+              /* borderBottom: ".125rem solid", */
+              margin: "0.8125rem",
               width: "fit-content",
-              padding: "0rem .3125rem",
-              border: ".1875rem solid",
-              borderRadius: "1.25rem",
+              padding: "0.3125rem",
+              /* border: ".1875rem solid", */
+              borderRadius: "0.25rem",
               backgroundColor: "lightyellow"
             }}
           >
@@ -194,7 +196,8 @@ const SellerNegotiate = (props) => {
               {props.regno}
             </Typography>
           </Box>
-          <Stack sx={{ border: ".1875rem solid", padding: "1.25rem", width: "40em", borderRadius: "1.25rem", backgroundColor: "lightyellow" }}>
+          <Stack sx={{ /* border: ".1875rem solid" */ padding: "1.25rem", width: "40rem", 
+          borderRadius: "0.25rem", backgroundColor: "white" , justifyContent:"left",margin: "0.875rem",}}>
             {itemsName.map((value, index) => {
               return (
                 <Box
@@ -205,12 +208,12 @@ const SellerNegotiate = (props) => {
                     margin: ".875rem .625rem",
                   }}
                 >
-                  <Box style={{ width: "40%" }}>
+                  <Box align = "left" style={{ width: "40%" }}>
                     <Typography
                       style={{
-                        fontWeight: "600",
+                        fontWeight: "500",
                         fontSize: "1.375rem",
-                        textTransform: "uppercase",
+                        /* textTransform: "uppercase", */
                       }}
                     >
                       {value}
@@ -225,9 +228,12 @@ const SellerNegotiate = (props) => {
                     }}
                   >
                     <Typography
-                      variant="h6"
                       style={{
                         textTransform: "capitalize",
+                        backgroundColor:"#f5f5f5",
+                        width:"30rem",
+                        borderRadius:"0.2rem",
+                        padding:"0.25rem"
                       }}
                     >
                       {itemsValue[index]}
@@ -237,7 +243,6 @@ const SellerNegotiate = (props) => {
               );
             })}
           </Stack>
-        </CardContent>
       </Box>
 
       <CardActions style={{ display: "flex", flexDirection: "column" }}>
@@ -247,8 +252,8 @@ const SellerNegotiate = (props) => {
             alt="wheat img"
             width="18.75rem"
             style={{
-              border: ".3125rem solid darkgreen",
-              borderRadius: "1rem",
+              /* border: ".3125rem solid darkgreen", */
+              /* borderRadius: "1rem", */
             }}
           />
         </CardMedia>
@@ -261,7 +266,7 @@ const SellerNegotiate = (props) => {
               flexDirection: "column",
               rowGap: "1.25rem",
               alignItems: "center",
-              border: ".1875rem solid",
+              /* border: ".1875rem solid", */
               borderRadius: "1.25rem",
               backgroundColor: "lightyellow"
             }}

@@ -150,7 +150,7 @@ function M17() {
       
       <Box className="gx-d-flex justify-content-center"
         sx={{
-    display: "flex", justifyContent: "center", alignItems: "center",backgroundColor:"rgb(153, 237, 184)",
+    display: "flex", justifyContent: "center", alignItems: "center",backgroundColor:"white",
     flexDirection:"column",padding:"2%"
         }}
       >

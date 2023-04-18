@@ -113,26 +113,16 @@ const PageN14b = () => {
     };
 
     return (
-<<<<<<< Updated upstream
-        <Container style={{ padding: "1.875rem 0rem" }} id="google_translate_element" onClick={(e) => {
-            fullAnotherSpeak(e.target.innerText)
-        }}>
-=======
         <Container  style={{ padding: "1.875rem 0rem" }}>
->>>>>>> Stashed changes
             <Typography
                 variant="h3"
                 style={{ textAlign: "center" }}
             >
                 Reschedule Appointment
             </Typography>
-<<<<<<< Updated upstream
-            <Box className="gx-d-flex justify-content-center"
-=======
             <Box
                 /* margin = {5} */
                  ml = {30} mb = {5} mt = {5} mr = {5} 
->>>>>>> Stashed changes
                 sx={{
                     width:"700px",
                     display: "flex",
@@ -318,15 +308,12 @@ const PageN14b = () => {
                             backgroundColor:"#ffff00",
                           } }}
                         style={{
-<<<<<<< Updated upstream
-=======
                             margin:"20px",
                             color: "white",
                             backgroundColor: "blue",
                             /* backgroundColor: "green", */
                             fontWeight: "600",
                             fontSize: "1.125rem",
->>>>>>> Stashed changes
                             justify: "center",
                         }}
                     >
@@ -339,3 +326,4 @@ const PageN14b = () => {
 };
 
 export default PageN14b;
+

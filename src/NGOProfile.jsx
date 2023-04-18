@@ -11,6 +11,8 @@ import { baseURL } from '../src/constants';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 const c = {
   Name: "Universal Versatile Society (UVS)",
@@ -60,6 +62,7 @@ function ProfilePage({ name, email, phoneNumber, line1, line2, district, city, s
 
   const classes = useStyles();
   const navigate = useNavigate();
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
   const logout = async () => {
     let token = Cookies.get('token')
     await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
@@ -73,6 +76,8 @@ function ProfilePage({ name, email, phoneNumber, line1, line2, district, city, s
           Cookies.remove('token');
           localStorage.removeItem("auth");
           localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
           navigate('../login');
         }
         else {

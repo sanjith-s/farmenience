@@ -67,15 +67,9 @@ const PageN1 = () => {
                     })
                 }
             </Box>
-           
 
-             <div>
 
-                <Box textAlign="center" padding={"3.125rem"}>
-                    <Button onClick={() => { navigate('../FarmerHomePage') }} variant="contained" sx={{ bgcolor: "#18c431", margin: "auto" }}>
-                        Home Page
-                    </Button>
-                </Box>
+            <div>
             </div>
         </>
     )

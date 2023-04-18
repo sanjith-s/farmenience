@@ -168,7 +168,7 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* <!-- TESTIMONIALS  --> */}
+        {/* <!-- TESTIMONIALS  -->
 
         <section className="section-testimonials" id="testimonials">
           <div className="testimonials-container">
@@ -316,7 +316,7 @@ const LandingPage = () => {
               />
             </figure>
           </div>
-        </section>
+        </section> */}
         {/* <!-- FEATURE COMPONENT  --> */}
 
 

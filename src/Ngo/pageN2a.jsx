@@ -44,6 +44,7 @@ const PageN2 = () => {
 
   const DeleteQuery = async () => {
     let token = Cookies.get('token');
+    setOpen(false);
     await Axios.delete(`${baseURL}/deletequery/${id}`, { headers: { tokenstring: token } }).
       then(async (response) => {
         console.log(response);
@@ -85,6 +86,7 @@ const PageN2 = () => {
 
   const NotHappy = async () => {
     let token = Cookies.get('token');
+    setOpen(false);
     await Axios.put(`${baseURL}/againpostquery`, {
       subject: subject,
       description: desc,

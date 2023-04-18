@@ -99,7 +99,9 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
             icon: 'success',
             title: 'Logout Successful'
           })
-          Cookies.remove('token')
+          Cookies.remove('token');
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
           navigate('../login');
         }
         else {

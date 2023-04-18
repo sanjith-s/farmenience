@@ -120,6 +120,7 @@ const PageN12 = () => {
     console.log(data);
 
   return (
+    <Box align="center">
     <Container id="google_translate_element"
       style={{
 
@@ -142,6 +143,7 @@ const PageN12 = () => {
       <Grid container sx={{ width: "100%" }} className="gx-d-flex justify-content-center" >
         <Grid xs={2}>
           <IconButton
+          onClick={()=>{navigate("../n11")}}
             sx={{
               "&:hover": {
                 backgroundColor: "#adadad",
@@ -507,6 +509,7 @@ const PageN12 = () => {
         </Grid>
       </Box>
     </Container>
+    </Box>
   );
 };
 

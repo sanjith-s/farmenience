@@ -120,7 +120,7 @@ const PageN12 = () => {
     console.log(data);
 
   return (
-    <Container id="google_translate_element"
+    <Box id="google_translate_element"
       style={{
 
         margin : "1.875rem",
@@ -130,7 +130,7 @@ const PageN12 = () => {
         display: "flex",
         flexDirection: "column",
         rowGap: ".9375rem",
-        width: "100%",
+        width: "auto",
         height: "100%",
         // alignItems:"center"
       }}
@@ -506,7 +506,7 @@ const PageN12 = () => {
       </Dialog>
         </Grid>
       </Box>
-    </Container>
+    </Box>
   );
 };
 

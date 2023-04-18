@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Details from "./components/NGOProfileComp";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom/dist";
 import { Avatar, Typography, Box, Grid, Paper, TextField, Divider } from '@material-ui/core';
 import { Button } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,6 +11,8 @@ import { baseURL } from '../src/constants';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 const c = {
   Name: "Universal Versatile Society (UVS)",
@@ -25,45 +27,7 @@ const c = {
   Email: "ngoemaileg@gmail.com",
 };
 
-const logout = async () => {
-  let token = Cookies.get('token')
-  await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
-  )
-    .then(async (response) => {
-      if (response.data.message == "Logout Successful") {
-        await Swal.fire({
-          icon: 'success',
-          title: 'Logout Successful'
-        })
-        Cookies.remove('token')
-        navigate('../login');
-      }
-      else {
-        await Swal.fire({
-          icon: 'error',
-          title: 'Error',
-        })
-      }
-      console.log(response);
-    }).
-    catch(async (response) => {
-      if (response.response.data.message === "Token not found" || response.response.data.message === "Logout Fail, Please Logout Again") {
-        await Swal.fire({
-          icon: 'warning',
-          title: 'Please Login, Before Logout !!',
-        })
-        navigate('../login');
-      }
-      if (response.response.data.message === "Invalid token") {
-        await Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Login Expired, Please Login Again !!',
-        })
-        navigate('../login');
-      }
-    });
-}
+
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -98,6 +62,7 @@ function ProfilePage({ name, email, phoneNumber, line1, line2, district, city, s
 
   const classes = useStyles();
   const navigate = useNavigate();
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
   const logout = async () => {
     let token = Cookies.get('token')
     await Axios.get(`${baseURL}/logout`, { headers: { tokenstring: token } }
@@ -111,6 +76,8 @@ function ProfilePage({ name, email, phoneNumber, line1, line2, district, city, s
           Cookies.remove('token');
           localStorage.removeItem("auth");
           localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
           navigate('../login');
         }
         else {

@@ -99,17 +99,17 @@ const Footer = () => {
                             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black">Farmenience</span>
                         </a>
                     </div>
-                    <div class="grid grid-cols-6 gap-2 sm:gap-2 sm:grid-cols-5">
+                    <div class="grid grid-cols-5 gap-2 sm:gap-2 sm:grid-cols-4">
                         <div>
                             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Quick Links</h2>
                             <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                 <li class="mb-4">
                                     <a href="../aboutUs" class="hover:underline">About Us</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../signup" class="hover:underline">Signup</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../login" class="hover:underline">Login</a>
                                 </li>
                             </ul>
@@ -120,16 +120,16 @@ const Footer = () => {
                                 <li class="mb-4">
                                     <a href="../cropRecommendation" class="hover:underline">Crop Recommendation</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../imageDetection" class="hover:underline">Disease Detection</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../web" class="hover:underline">Market Prices</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../M10a" class="hover:underline">Locate Markets</a>
                                 </li>
-                                <li>
+                                <li class="mb-4">
                                     <a href="../mapngo" class="hover:underline">Locate NGOs</a>
                                 </li>
                             </ul>
@@ -149,17 +149,11 @@ const Footer = () => {
                             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Contact Us</h2>
                             <ul class="text-gray-600 dark:text-gray-400 font-medium">
                                 {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.3880122536807!2d80.23287127406883!3d13.010945214016484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52679f0d20f797%3A0x59f9f10c66e02a19!2sCollege%20of%20Engineering%2C%20Guindy!5e0!3m2!1sen!2sin!4v1681769930937!5m2!1sen!2sin" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
-                                <li>
-                                    <PhoneIcon className="foot-items-logo" style={{ fill: "#333" }} />
-                                    <Typography sx={{ fontSize: "18px", fontFamily: "Roboto" }}>
-                                        +91 99999 99999
-                                    </Typography>
+                                <li class="mb-4">
+                                    <a href="#" >+91 999999999</a>
                                 </li>
                                 <li>
-                                    <EmailIcon className="foot-items-logo" style={{ fill: "#333" }} />
-                                    <Typography sx={{ fontSize: "18px", fontFamily: "Roboto" }}>
-                                        farmenience23@gmail.com
-                                    </Typography>
+                                    <a href="#" >farmenience23@gmail.com</a>
                                 </li>
                             </ul>
                         </div>

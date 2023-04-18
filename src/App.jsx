@@ -162,7 +162,7 @@ const PageN12 = lazy(() => import("./Ngo/pageN12"));
 const PageN13 = lazy(() => import("./Ngo/pageN13"));
 const PageN14a = lazy(() => import("./Ngo/pageN14a"));
 const PageN14b = lazy(() => import("./Ngo/pageN14b"));
-
+import Loader from "./loader";
 function displayNavbar() {
   const token = Cookies.get("token");
 
@@ -204,7 +204,7 @@ function App() {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading ...</h1>}>
+    <Suspense fallback={<Loader/>}>
       <div>
         <AuthContext.Provider value={{ auth, setAuth, role, setRole }}>
           {/* <Navbar /> */}
@@ -285,6 +285,7 @@ function App() {
                 <Route path="/payments/cancel" element={<Cancel />} />
                 <Route path="/pdfprint" element={<PdfPrint />} />
                 <Route path="*" element={<Page404 />} />
+                {/* <Route path="/loader" element={<Loader />} /> */}
               </Routes>
             </BrowserRouter>
 

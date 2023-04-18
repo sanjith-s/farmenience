@@ -1,5 +1,5 @@
 import "./../css/navbar.css";
-import { useNavigate } from "react-router-dom/dist";
+import { useNavigate } from "react-router-dom";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import * as React from "react";
 import PropTypes from "prop-types";
@@ -18,6 +18,10 @@ import Link from '@mui/material/Link';
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { AuthContext } from "../App";
+import { baseURL } from "../constants";
+import Axios from "axios";
+import Swal from 'sweetalert2';
+
 
 const drawerBleeding = 70;
 
@@ -44,6 +48,7 @@ const Puller = styled(Box)(({ theme }) => ({
 }));
 
 function SwipeableEdgeDrawer(props) {
+  // const navigate = useNavigate();
   const { window } = props;
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = (newOpen) => () => {
@@ -65,8 +70,14 @@ function SwipeableEdgeDrawer(props) {
             icon: 'success',
             title: 'Logout Successful'
           })
-          Cookies.remove('token')
-          navigate('../login');
+          Cookies.remove('token');
+          localStorage.removeItem("auth");
+          localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
+          // navigate('../login');
+          window.location.href = "http://localhost:5173/login";
+          // window.location.assign("http://localhost:5173/login")
         }
         else {
           await Swal.fire({
@@ -94,6 +105,7 @@ function SwipeableEdgeDrawer(props) {
         }
       });
   }
+  
 
   return (
     <>
@@ -178,6 +190,11 @@ function SwipeableEdgeDrawer(props) {
                     <li>
                       <a href="../FarmerProfile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-green-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Farmer Profile</a>
                     </li>
+                    {/* <li>
+                      <button styles={{border:0,background:'white'}} onClick={()=>{logout()}}>
+                      Logout
+                      </button>
+                    </li> */}
                     </>
                     :
                     role == 'NGO'

@@ -282,15 +282,18 @@ function App() {
                 <Route path="/payments/success" element={<Success />} />
                 <Route path="/payments/cancel" element={<Cancel />} />
                 <Route path="/pdfprint" element={<PdfPrint />} />
+                <Route path="/footer" element={<Footer1 />} />
                 <Route path="*" element={<Page404 />} />
                 {/* <Route path="/loader" element={<Loader />} /> */}
               </Routes>
+             
             </BrowserRouter>
-
+            
           </main>
+          <Footer1 />
 
           {/* <Footer1 /> */}
-          <Footer1 />
+          
         </AuthContext.Provider>
       </div>
     </Suspense>

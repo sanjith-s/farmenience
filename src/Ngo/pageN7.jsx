@@ -198,6 +198,7 @@ const PageN7 = () => {
           </DialogActions>
         </Dialog> */}
 
+{/* 
         <Container
           disableGutters={true}
           sx={{
@@ -252,16 +253,14 @@ const PageN7 = () => {
               }}
             />
           )}
-        </Container>
-      </Stack>
+        </Container> */}
+        <Button variant="contained" sx={{ bgcolor: "#1FE57A", marginTop:"5%" }} onClick={validate}>
+                Submit
+              </Button>
+      </Box>
 
       
 
-      <Box textAlign="center" padding={"1.25rem"}>
-              <Button variant="contained" sx={{ bgcolor: "#1FE57A" }} onClick={validate}>
-                Submit
-              </Button>
-            </Box>
     </div>
   );
 };

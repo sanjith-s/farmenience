@@ -60,27 +60,36 @@ function Login() {
         password: pass,
       });
       if (response.data.message == "Successful") {
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful!',
-        });
         Cookies.set("token", response.data.token, { expires: 1 });
         localStorage.setItem("auth",response.data.token);
         localStorage.setItem("role",response.data.details[0].typeOfAcc);
+        await Swal.fire({
+          icon: 'success',
+          title: 'Login Successful!',
+        });
         if (response.data.details[0].typeOfAcc == "Farmer") {
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
           navigate("/FarmerHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "NGO") {
-          navigate("/N10");
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
+          navigate("/NGOHomepage");
         }
         else if (response.data.details[0].typeOfAcc == "Retailer") {
+          Cookies.set("token", response.data.token, { expires: 1 });
+        localStorage.setItem("auth",response.data.token);
+        localStorage.setItem("role",response.data.details[0].typeOfAcc);
           navigate("/M9");
         }
         else {
           navigate("/homepage2");
         }
       } else {
-        Swal.fire({
+        await Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: 'Error in logging in!',

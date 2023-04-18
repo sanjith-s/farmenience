@@ -15,6 +15,8 @@ import { baseURL } from '../src/constants';
 import Cookies from 'js-cookie';
 import Axios from "axios";
 import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "./App";
 
 const c = {
   Name: "Yuvaraj Vetrivel",
@@ -64,6 +66,7 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
   
   
   const classes = useStyles();
+  const { auth, setAuth, role, setRole } = useContext(AuthContext);
   const [cropEdit,setCEdit] = useState(false);
   const [skillEdit,setSEdit] = useState(false);
   const [crops, setCrops] = useState(["Rice","wheat"]);
@@ -102,6 +105,8 @@ function ProfilePage({ name, email, phoneNumber, location, line1, line2, city, d
           Cookies.remove('token');
           localStorage.removeItem("auth");
           localStorage.removeItem("role");
+          setAuth(false);
+          setRole("");
           navigate('../login');
         }
         else {

@@ -54,7 +54,7 @@ const LandingPage = () => {
     <div onClick={(e) => {
       fullAnotherSpeak(e.target.innerText)
     }}>
-      <header className="header">
+      {/* <header className="header">
         <a href="#">
         </a>
 
@@ -63,7 +63,7 @@ const LandingPage = () => {
           <ion-icon className="icon-mobile-nav" name="menu-outline"></ion-icon>
           <ion-icon className="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
-      </header>
+      </header> */}
 
       <main>
         <section className="section-hero">

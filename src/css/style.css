@@ -85,7 +85,7 @@
 }
 
 /* STICKY NAVIGATION */
-.sticky .header {
+.sticky {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -181,7 +181,7 @@
 
 
 .section-hero {
-  background-color: #fdf2e9;
+  background-color: #e9fdea;
   padding: 2.8rem 0 5.6rem 0;
 }
 
@@ -422,7 +422,7 @@
 /**************************/
 
 .section-testimonials {
-  background-color: #fdf2e9;
+  background-color: #e9fdea;
   display: grid;
   grid-template-columns: 55fr 45fr;
   align-items: center;
@@ -637,7 +637,7 @@
       to right bottom,
       rgba(235, 151, 78, 0.35),
       rgba(230, 125, 34, 0.35)
-    ),
+    ),  
     url("../img/girl_in_farmland.jpg");
   background-size: cover;
   background-position: center;

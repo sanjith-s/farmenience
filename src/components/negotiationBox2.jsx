@@ -123,34 +123,31 @@ function NegotiationBox2(props) {
 
       <CardContent
         style={{
-          lineHeight: "0rem",
           width: "20%",
           display: "flex",
+          height:"100%",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems:"space-evenly",
           justifyContent: "center",
         }}
       >
         <Typography
           variant="h6"
-          lineHeight={0.2}
           sx={{ textTransform: "uppercase", fontWeight: "600" }}
         >
           {props.iName}
         </Typography>
         <Typography
           variant="overline"
-          lineHeight={2.5}
           sx={{ fontSize: "0.938rem", paddingLeft: "0.313rem" }}
         >
           ₹ {props.actualPrice}
         </Typography>
         <Typography
-          variant="overline"
-          lineHeight={2.5}
-          sx={{ fontSize: "15px", paddingLeft: "5px" }}
+          variant="h6"
+          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
         >
-          {props.weight}kg
+          quantity : {props.quantity} KG
         </Typography>
       </CardContent>
 
@@ -164,21 +161,7 @@ function NegotiationBox2(props) {
           justifyContent: "center",
         }}
       >
-        <Typography
-          variant="h6"
-          lineHeight={0.2}
-          sx={{ textTransform: "uppercase", fontWeight: "600", marginBottom: "12px" }}
-        >
-          quantity
-        </Typography>
-
-        <StyledBadge
-          style={{ position: "sticky" }}
-          badgeContent={props.quantity}
-          color="success"
-        >
-          <ShoppingCartIcon style={{ fill: "#000000", fontSize: "2.5rem" }} />
-        </StyledBadge>
+       
       </CardActions>
 
       <CardActions

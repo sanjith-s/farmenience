@@ -143,9 +143,6 @@ const forgetEnterNewPassword = () => {
                     />
 
                     <Box sx={{display:"flex", padding:"1.2rem", justifyContent:"space-evenly",width:"100%"}}>
-                        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#138ac5"}}>
-                           Back to HomePage
-                        </Button>
                         <Button variant="contained" sx={{ bgcolor: "#138ac5" }} onClick={postPass}>
                             Submit
                         </Button>

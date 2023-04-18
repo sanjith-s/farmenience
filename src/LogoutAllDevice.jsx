@@ -25,7 +25,7 @@ const LogoutAllDevice = () => {
           Cookies.remove("token");
           localStorage.removeItem("auth");
           localStorage.removeItem("role");
-        Cookies.remove("role");
+          Cookies.remove("role");
           navigate('../login');
         }
         else {
@@ -45,29 +45,29 @@ const LogoutAllDevice = () => {
       });
   }
   return (
-    <div align = "center" padding="6.25rem">
+    <div align="center" padding="6.25rem">
 
       <Box
         sx={{
-          boxShadow : 15,
-          backgroundColor: "#FFffff",
-          padding :"10px",
-          width:"30%",
+          boxShadow: 15,
+          backgroundColor: "#ffffff",
+          padding: "10px",
+          width: "30%",
           alignItems: "center",
           margin: "50px"
         }}
       >
-       <Box><LogoutIcon sx={{fontSize:40}}></LogoutIcon></Box>
-      
-      <Box margin = {4}>
-        <Button  onClick={fun} variant="contained" className="log-out-btn" 
-          sx={{
-            backgroundColor: "#FF8787"
-          }}
-        >
-          <Typography sx={{fontSize: "500px"}}>Logout from all device</Typography>
-        </Button>
-      </Box>
+        <Box><LogoutIcon sx={{ fontSize: 40 }}></LogoutIcon></Box>
+
+        <Box margin={4}>
+          <Button onClick={fun} variant="contained" className="log-out-btn"
+            sx={{
+              backgroundColor: "#138ac5"
+            }}
+          >
+            <Typography sx={{ fontSize: "500px" }}>Logout from all device</Typography>
+          </Button>
+        </Box>
       </Box>
     </div>
   );

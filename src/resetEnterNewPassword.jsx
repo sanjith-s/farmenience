@@ -108,7 +108,7 @@ const ResetEnterNewPassword = () => {
             spacing={2}
             sx={{ height: "50vh", display: "flex", justifyContent: "center", alignItems: "space-around", flexDirection: "column" }}
         >
-            <Typography variant="h3" style={{ margin: "auto" }}>Forget Password</Typography>
+            <Typography variant="h3" style={{ margin: "auto" }}>Reset Password</Typography>
             <Divider orientation="horizontal" flexItem  />
             <Container
                 sx={{
@@ -157,9 +157,6 @@ const ResetEnterNewPassword = () => {
                     />
 
                     <Box sx={{display:"flex", padding:"1.2rem", justifyContent:"space-evenly",width:"100%"}}>
-                        <Button onClick={() => { navigate('../N9') }} variant="contained" sx={{ bgcolor: "#138ac5"}}>
-                           Back to HomePage
-                        </Button>
                         <Button variant="contained" sx={{ bgcolor: "#138ac5" }} onClick={postPass}>
                             Submit
                         </Button>

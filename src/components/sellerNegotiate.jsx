@@ -367,7 +367,7 @@ const SellerNegotiate = (props) => {
               >
                 <ThumbDownIcon
                   variant="contained"
-                  style={{ color: "lightgreen", fontSize: "1.875rem" }}
+                  style={{ color: "red", fontSize: "1.875rem" }}
                 />
               </Link>
 

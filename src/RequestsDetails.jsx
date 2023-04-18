@@ -117,10 +117,11 @@ function BuyerRequestDetails(props) {
     <Card
       style={{
         padding: "0.94rem",
-        width: "80%",
+        width: "auto ",
         marginLeft: "10%",
         borderRadius: "0.31rem",
-        border: "0.125rem solid #000000"
+        border: "0.125rem solid #000000",
+        height:"auto"
       }}
     >
       {

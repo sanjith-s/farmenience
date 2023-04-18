@@ -12,6 +12,7 @@ const PageN2 = () => {
     const id = location.state.id;
 
     return (
+        <>
         <div className="ext-cont">
             <div></div>
             <div></div>
@@ -75,9 +76,9 @@ const PageN2 = () => {
 
         </div>
 
-
         
-
+        
+        </>
 
 
 

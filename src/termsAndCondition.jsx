@@ -27,9 +27,9 @@ const TermsAndCondition = () => {
       fullAnotherSpeak(e.target.innerText)
     }}>
 
-      <img src={farmsvg} alt="" style={{ height: "11.25rem", width: "11.25rem", objectFit: "cover", position: "absolute", top: "-1.875rem", left: "3.125rem" }} />
 
-      <main className="about-section ">
+      <main style={{marginTop:"5%"}}>
+        
         <section  >
           <div>
 

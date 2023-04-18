@@ -198,7 +198,6 @@ function PageM3(props) {
           component="div"
           sx={{
             width: "40%",
-            bgcolor: "#cccccc",
             padding: "1.25rem",
             borderRadius: ".5rem",
             display: "flex",
@@ -297,7 +296,6 @@ function PageM3(props) {
           component="div"
           sx={{
             width: "60%",
-            bgcolor: "#aaaaaa",
             padding: "1.25rem 0rem",
             borderRadius: ".5rem",
           }}

@@ -9,6 +9,8 @@ import NegotiationBox3 from "../components/negotiationBox3";
 import Container from "@mui/material/Container";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
 import Swal from "sweetalert2";
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import { baseURL } from "../constants";
 import Axios from "axios";
 import Cookies from "js-cookie";
@@ -16,9 +18,10 @@ import { CssBaseline } from "@mui/material";
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 import SendIcon from '@mui/icons-material/Send';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { useNavigate } from "react-router-dom";
 
 function PageM15() {
-
+  const navigate = useNavigate();
   // const googleTranslateElementInit = () => {
   //   new window.google.translate.TranslateElement({ pageLanguage: 'en', layout: window.google.translate.TranslateElement.FloatPosition.TOP_LEFT }, 'google_translate_element')
   // }
@@ -215,8 +218,10 @@ function PageM15() {
     }).then(async (res) => {
       await Swal.fire({
         icon: 'success',
-        title: "Successfully added seller's products" + res.data.message,
-      })
+        title: "Successfully added seller's products"// + res.data.message,
+      });
+      // Navigate()
+      navigate('../M9');
     }).catch(async (err) => {
       await Swal.fire({
         icon: 'error',

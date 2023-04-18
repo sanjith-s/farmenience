@@ -282,11 +282,15 @@ function PageM12() {
     // } else if (index == 2) {
     //   setQuantity2(counter);
     // }
+
     quantityArr.push(counter);
   };
 
   const PriceHandler = (pr) => {
     priceArr.push(pr);
+    let temp  = total;
+    temp += pr;
+    // setTotal(temp);
   }
 
   const [quantities, setQuantities] = useState([]);
@@ -512,7 +516,7 @@ function PageM12() {
               {cartDeatils.map((item, index) => {
                 const qcounter = item.index == 1 ? quantity1 : quantity2;
                 return (
-                  <Box key={index++}>
+                  <Box>
                     <BasketBox1
                       iName={item.productName}
                       quantity={item.quantity}
@@ -707,7 +711,8 @@ function PageM12() {
                     fontSize: "1.125rem",
                     overflow: "auto",
                   }}
-                >
+                > 
+                {/* {summer()} */}
                   {total}
                 </Typography>
               </Box>

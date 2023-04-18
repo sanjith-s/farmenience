@@ -77,9 +77,8 @@ const PageM11 = () => {
 
   useEffect(() => {
     let token = Cookies.get('token');
-    Axios.post(`${baseURL}/buyer/loadproducts`, {
-      productName: ""
-    }, { headers: { tokenstring: token } })
+    Axios.get(`${baseURL}/buyer/loadproducts`, //{productName: ""}, 
+    { headers: { tokenstring: token } })
       .then((response) => {
         setDefaultData(response.data.message);
         setContent(response.data.message);
@@ -87,6 +86,7 @@ const PageM11 = () => {
         // alert(defaultData[0].records[0].productName);
       })
       .catch(async (res) => {
+        console.log(res);
         if (res.response.data.message === 'Error in connection') {
           await Swal.fire({
             icon: 'error',

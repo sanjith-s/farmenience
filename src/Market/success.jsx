@@ -35,11 +35,11 @@ const Success = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     navigate('/M12', { replace: true });
-  //   }, 30000000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/M9', { replace: true });
+    });
+  }, []);
 
   const printRef = useRef();
   const handleDownloadPdf = async () => {

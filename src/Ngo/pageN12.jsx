@@ -131,7 +131,7 @@ const PageN12 = () => {
         display: "flex",
         flexDirection: "column",
         rowGap: ".9375rem",
-        width: "auto",
+        width: "100%",
         height: "100%",
         // alignItems:"center"
       }}
@@ -509,6 +509,7 @@ const PageN12 = () => {
         </Grid>
       </Box>
     </Container>
+    </Box>
   );
 };
 

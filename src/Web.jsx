@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Swal from 'sweetalert2';
-import { Table,TableBody,TableCell,TableHead,TableRow,Paper,TableContainer,Box } from "@mui/material";
+import { Table,TableBody,TableCell,TableHead,TableRow,Paper,TableContainer,Box, Typography } from "@mui/material";
 
 const Web = () =>{
     const [data1,setData1]=useState({});
@@ -106,7 +106,9 @@ const Web = () =>{
             {JSON.stringify(data4)}
             <br></br>
             <br></br> */}
+          
   <Box  sx={{alignItems:"center",textAlign:"center",justifyContent:"center",display:"flex"}}>
+    <Typography fontWeight={500} fontSize={"30px"}>Vegetable Prices</Typography>
 <TableContainer>
       <Table sx={{ minWidth:"50%", marginLeft:"40px", maxWidth:"40%", alignItems:"center",textAlign:"center" }} aria-label="simple table">
         <TableHead>

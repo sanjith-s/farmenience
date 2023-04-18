@@ -101,7 +101,7 @@ function PageM12() {
   const discount = 0.23;
   const [profile, setProfile] = useState({});
   const [cart, setCart] = useState({});
-
+  
   useEffect(() => {
 
     const fun = async () => {
@@ -224,14 +224,14 @@ function PageM12() {
     });
   }
 
-  const summer = () => {
-      let total = 0;
-      priceArr.forEach((x) => {
-         total += x;
-      })
-      setTotal(total);
-  }
-  summer();
+  // const summer = () => {
+  //     let total = 0;
+  //     priceArr.forEach((x) => {
+  //        total += x;
+  //     })
+  //     setTotal(total);
+  // }
+  // summer();
   const userDataHandler = (userName, address, number) => {
     setConsumerName(userName);
     setConsumerAddress(address);

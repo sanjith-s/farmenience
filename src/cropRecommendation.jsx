@@ -284,7 +284,7 @@ const CropRec = () => {
           </Stack>
         </Box>
       </Stack>
-      <Box textAlign="center" padding={"5rem 15.625rem 3.125rem 15.625rem"}>
+      <Box textAlign="center" padding={"10rem 15.625rem 3.125rem 15.625rem"}>
         <Button variant="contained" onClick={CheckNitrogen} sx={{ bgcolor: "#67d111",color:"white", margin: "auto" ,"&:hover": {backgroundColor: "#5ec45a", }}}>
           Predict
         </Button>

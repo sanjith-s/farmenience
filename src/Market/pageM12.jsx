@@ -474,7 +474,7 @@ function PageM12() {
         {active === "negot1" && (
 
           <Box sx={{ marginTop: ".625rem" }}>
-            <Box
+            {/* <Box
               sx={{
                 backgroundColor: "#fff",
                 padding: ".9375rem",
@@ -505,12 +505,12 @@ function PageM12() {
               }} variant="contained">
                 delete <DeleteIcon style={{ marginLeft: ".5rem" }} />
               </Button>
-            </Box>
+            </Box> */}
 
             <Box
               style={{
                 height: "25rem",
-                overflow: "auto",
+                overflow: "scroll",
                 borderRadius: ".5rem",
               }}
             >

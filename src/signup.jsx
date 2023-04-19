@@ -131,8 +131,7 @@ function Signup() {
         })
     }
 
-    alert(signupdata.email)
-    { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
+    // { location.loaded ? alert(JSON.stringify(location)) : alert("Location data not available yet") }
     event.preventDefault();
     let emailChk = 0;
     let passChk = 0;
@@ -157,15 +156,6 @@ function Signup() {
       })
       return;
     }
-
-    await Swal.fire({
-      icon: 'success',
-      title: 'Validation Successful!',
-    })
-    await Swal.fire({
-      icon: 'success',
-      title: selection,
-    })
     if (
       signupdata.password === signupdata.confpass
     ) {
@@ -198,7 +188,6 @@ function Signup() {
           alert(res.response.data.message);
         })
 
-      alert(FILE1 + " " + FILE2);
 
       await Axios.post(`${baseURL}/signup`, {
         name: signupdata.name,
@@ -213,14 +202,19 @@ function Signup() {
         email: signupdata.email,
         password: signupdata.password,
         typeOfAcc: selection,
-        latitude: lat,
-        longitude: lng,
+        latitude: location.latitude,
+        longitude: location.longitude,
         doc1: FILE1,
         doc2: FILE2,
       })
-        .then((response) => {
+        .then(async (response) => {
           if (response.data.message == "Success") {
-            navigate("/login");
+            await Swal.fire({
+              icon: 'success',
+              title: 'Signup Done',
+              text: 'Account Created',
+            })
+            navigate("../login");
           }
         })
         .catch(async (res, err) => {
@@ -642,16 +636,19 @@ function Signup() {
               </Typography> */}
 
                 <FormControl variant="standard" sx={{ width: "100%" }}>
-                  <TextField
+
+                {/* <TextField
                     sx={{ width: "100%" }}
                     label="Account Type"
                     id="filled-basic"
                     variant="filled"
                     inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} // font size of input text
                     InputLabelProps={{ style: { fontSize: 15 } }}
-                  >
+                  > */}
 
-                    <FormControl variant="standard" sx={{ width: "12.5rem" }}>
+                    <FormControl  id="filled-basic" variant="filled" sx={{ width: "100%" }} label="Account Type"
+                    inputProps={{ style: { fontSize: 15, backgroundColor: "#f5f5f5", borderRadius: 5 } }} 
+                    InputLabelProps={{ style: { fontSize: 15 } }}>
                       <Select value={selection} onClick={selectionChange}>
                         <MenuItem value="Farmer">
                           <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
@@ -668,15 +665,10 @@ function Signup() {
                             retailer
                           </Typography>
                         </MenuItem>
-                        <MenuItem value="Job Seeker">
-                          <Typography style={{ textTransform: "capitalize", fontSize: 15 }}>
-                            job seeker
-                          </Typography>
-                        </MenuItem>
                       </Select>
 
                     </FormControl>
-                    <FormControl variant="standard" sx={{ width: "100%" }}>
+                    {/* <FormControl variant="standard" sx={{ width: "100%" }}>
                       <TextField
                         sx={{ width: "100%" }}
                         label="Account Type"
@@ -711,8 +703,8 @@ function Signup() {
                           </Select>
                         </FormControl>
                       </TextField>
-                    </FormControl>
-                  </TextField>
+                    </FormControl> */}
+                  {/* </TextField> */}
                 </FormControl>
               </Box>
             </form>

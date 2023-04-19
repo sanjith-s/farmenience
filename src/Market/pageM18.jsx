@@ -121,7 +121,6 @@ const PageM18 = () => {
 
   const handleSubmit = async () => {
     var items = [];
-    alert('Hello');
     handleSubmit2();
 
     items = JSON.parse(localStorage.getItem("reqs"));

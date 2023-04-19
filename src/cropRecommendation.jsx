@@ -125,8 +125,8 @@ const CropRec = () => {
       .then(async (response) => {
         console.log(response);
         await Swal.fire({
-          icon: 'error',
-          title: response.data
+          icon: 'info',
+          title: "Crop recommended is: " + response.data
         })
       })
       .catch(async (res, err) => {
